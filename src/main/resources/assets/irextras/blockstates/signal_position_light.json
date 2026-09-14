@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "irextras:signal_post"
+    },
+    "facing=east": {
+      "model": "irextras:signal_post",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "irextras:signal_post",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "irextras:signal_post",
+      "y": 270
+    }
+  }
+}

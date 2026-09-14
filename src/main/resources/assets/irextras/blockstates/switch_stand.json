@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "irextras:switch_stand"
+    },
+    "facing=east": {
+      "model": "irextras:switch_stand",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "irextras:switch_stand",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "irextras:switch_stand",
+      "y": 270
+    }
+  }
+}

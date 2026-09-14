@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "irextras:relay_case"
+    },
+    "facing=east": {
+      "model": "irextras:relay_case",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "irextras:relay_case",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "irextras:relay_case",
+      "y": 270
+    }
+  }
+}

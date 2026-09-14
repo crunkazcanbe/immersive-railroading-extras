@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:signal_bridge_leg"
+  },
+  "facing=east": {
+   "model": "irextras:signal_bridge_leg",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:signal_bridge_leg",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:signal_bridge_leg",
+   "y": 270
+  }
+ }
+}

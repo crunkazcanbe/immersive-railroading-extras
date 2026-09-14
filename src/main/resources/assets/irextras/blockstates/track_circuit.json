@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "normal": {
+      "model": "irextras:track_circuit"
+    }
+  }
+}

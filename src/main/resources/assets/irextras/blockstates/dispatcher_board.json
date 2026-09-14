@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "irextras:dispatcher_board" },
+    "facing=east":  { "model": "irextras:dispatcher_board", "y": 90 },
+    "facing=south": { "model": "irextras:dispatcher_board", "y": 180 },
+    "facing=west":  { "model": "irextras:dispatcher_board", "y": 270 }
+  }
+}

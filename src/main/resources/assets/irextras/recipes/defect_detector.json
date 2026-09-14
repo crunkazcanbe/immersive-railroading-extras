@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " A ",
+  "IRI",
+  "ISI"
+ ],
+ "key": {
+  "A": {
+   "item": "minecraft:iron_bars"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "S": {
+   "item": "minecraft:stone_slab"
+  }
+ },
+ "result": {
+  "item": "irextras:defect_detector",
+  "count": 1
+ }
+}

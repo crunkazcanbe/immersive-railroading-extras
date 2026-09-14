@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:defect_detector"
+  },
+  "facing=east": {
+   "model": "irextras:defect_detector",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:defect_detector",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:defect_detector",
+   "y": 270
+  }
+ }
+}

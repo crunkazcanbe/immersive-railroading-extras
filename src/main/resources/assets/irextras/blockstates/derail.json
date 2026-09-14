@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "irextras:derail"
+    },
+    "facing=east": {
+      "model": "irextras:derail",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "irextras:derail",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "irextras:derail",
+      "y": 270
+    }
+  }
+}

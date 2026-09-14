@@ -1,0 +1,14 @@
+{
+ "parent": "item/generated",
+ "textures": {
+  "layer0": "irextras:items/ticket"
+ },
+ "overrides": [
+  {
+   "predicate": {
+    "irextras:punched": 1
+   },
+   "model": "irextras:item/ticket_punched"
+  }
+ ]
+}

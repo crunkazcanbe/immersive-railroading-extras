@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "irextras:speed_sign"
+    },
+    "facing=east": {
+      "model": "irextras:speed_sign",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "irextras:speed_sign",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "irextras:speed_sign",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "irextras:crossing_post"
+    },
+    "facing=east": {
+      "model": "irextras:crossing_post",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "irextras:crossing_post",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "irextras:crossing_post",
+      "y": 270
+    }
+  }
+}
