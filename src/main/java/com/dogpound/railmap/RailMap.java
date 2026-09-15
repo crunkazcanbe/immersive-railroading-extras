@@ -66,6 +66,7 @@ public class RailMap {
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketTicketBuy.Handler.class, com.dogpound.railmap.network.PacketTicketBuy.class, 5, Side.SERVER);
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketRailOps.Handler.class, com.dogpound.railmap.network.PacketRailOps.class, 6, Side.SERVER);
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketRailState.Handler.class, com.dogpound.railmap.network.PacketRailState.class, 7, Side.CLIENT);
+        NETWORK.registerMessage(com.dogpound.railmap.network.PacketScale.Handler.class, com.dogpound.railmap.network.PacketScale.class, 8, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(this, proxy);
         MinecraftForge.EVENT_BUS.register(new TrainTracker());
         MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.signal.SignalEngine());

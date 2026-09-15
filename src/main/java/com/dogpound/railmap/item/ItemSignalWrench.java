@@ -39,8 +39,23 @@ public class ItemSignalWrench extends Item {
     }
 
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand,
-                                      EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing facing,
+                                           float hitX, float hitY, float hitZ, EnumHand hand) {
+        // onItemUseFirst, not onItemUse: signals, relay cases and ticket machines all have their own
+        // right-click, which runs before onItemUse and swallowed every wrench click (it cycled the
+        // signal's mode instead of picking it up).
+        TileEntity peek = world.getTileEntity(pos);
+        // Sneak-right-click anything resizable: open the size slider (client), nothing else happens.
+        if (player.isSneaking() && peek instanceof com.dogpound.railmap.signal.IScalable sc) {
+            if (world.isRemote) {
+                RailMap.proxy.openScaleGui(pos, world.getBlockState(pos).getBlock().getLocalizedName(), sc.scale());
+            }
+            return EnumActionResult.SUCCESS;
+        }
+        boolean ours = peek instanceof TileSignalMast || peek instanceof TileSignalBridge || peek instanceof TileRelayCase
+                || peek instanceof com.dogpound.railmap.block.TileTicketMachine
+                || (peek == null && world.getTileEntity(pos.down()) instanceof com.dogpound.railmap.block.TileTicketMachine);
+        if (!ours) return EnumActionResult.PASS;
         if (world.isRemote) return EnumActionResult.SUCCESS;
         ItemStack stack = player.getHeldItem(hand);
         TileEntity te = world.getTileEntity(pos);
@@ -84,6 +99,7 @@ public class ItemSignalWrench extends Item {
     public void addInformation(ItemStack stack, World world, List<String> tip, ITooltipFlag flag) {
         tip.add("§7Right-click a signal, then a relay case, to wire them together.");
         tip.add("§8Same pair again unlinks · right-click air to clear");
+        tip.add("§8Sneak-right-click a signal, crossing or lineside sign: resize it");
         BlockPos p = getPick(stack);
         if (p != null) {
             tip.add("§dHolding: " + p.getX() + ", " + p.getY() + ", " + p.getZ());

@@ -16,7 +16,7 @@ import net.minecraft.world.World;
  * A sign governs track from where it stands onward, for trains that can read it — the
  * sign faces the oncoming train, like a signal.
  */
-public class TileSpeedSign extends TileEntity {
+public class TileSpeedSign extends TileLineside {
     /** The limits a right-click steps through, mph. */
     private static final int[] STEPS = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 79, 90 };
 
@@ -40,11 +40,6 @@ public class TileSpeedSign extends TileEntity {
             IBlockState s = world.getBlockState(pos);
             world.notifyBlockUpdate(pos, s, s, 3);
         }
-    }
-
-    public EnumFacing facing() {
-        IBlockState s = world.getBlockState(pos);
-        return s.getPropertyKeys().contains(BlockLineside.FACING) ? s.getValue(BlockLineside.FACING) : EnumFacing.NORTH;
     }
 
     @Override
@@ -77,23 +72,4 @@ public class TileSpeedSign extends TileEntity {
         mph = t.hasKey("mph") ? t.getInteger("mph") : 30;
     }
 
-    @Override
-    public NBTTagCompound getUpdateTag() {
-        return writeToNBT(new NBTTagCompound());
-    }
-
-    @Override
-    public SPacketUpdateTileEntity getUpdatePacket() {
-        return new SPacketUpdateTileEntity(pos, 0, getUpdateTag());
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-        readFromNBT(pkt.getNbtCompound());
-    }
-
-    @Override
-    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
-        return oldState.getBlock() != newState.getBlock();
-    }
 }

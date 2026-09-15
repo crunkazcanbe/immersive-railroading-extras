@@ -24,6 +24,7 @@ public class CrossingRenderer extends TileEntitySpecialRenderer<TileCrossing> {
         GlStateManager.pushMatrix();
         GlStateManager.translate(x + 0.5, y, z + 0.5);
         GlStateManager.rotate(-f.getHorizontalIndex() * 90f, 0, 1, 0);
+        GlStateManager.scale(te.scale(), te.scale(), te.scale());
         GlStateManager.disableCull();
         Prims.begin();
 

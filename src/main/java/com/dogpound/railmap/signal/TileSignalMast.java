@@ -30,7 +30,22 @@ import net.minecraft.world.World;
  *       aspect from the input strength: 0 Stop, 1-5 Restricting, 6-10 Approach, 11+ Clear.</li>
  * </ul>
  */
-public class TileSignalMast extends TileEntity implements ITickable {
+public class TileSignalMast extends TileEntity implements ITickable, IScalable {
+    /** Drawn size, 1 = normal; set with the Signal Wrench (sneak-right-click). */
+    private float scale = 1f;
+
+    @Override
+    public float scale() {
+        return scale;
+    }
+
+    @Override
+    public void setScale(float s) {
+        scale = IScalable.clamp(s);
+        markDirty();
+        sync();
+    }
+
     /** How this mast decides what to show. */
     public enum Mode {
         AUTO("Automatic (track circuits)"),
@@ -261,6 +276,7 @@ public class TileSignalMast extends TileEntity implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound t) {
         super.writeToNBT(t);
+        if (scale != 1f) t.setFloat("scale", scale);
         t.setByte("style", (byte) style.ordinal());
         t.setByte("heads", (byte) heads);
         t.setByte("mode", (byte) mode.ordinal());
@@ -275,6 +291,7 @@ public class TileSignalMast extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound t) {
         super.readFromNBT(t);
+        scale = t.hasKey("scale") ? IScalable.clamp(t.getFloat("scale")) : 1f;
         style = SignalStyle.byOrdinal(t.getByte("style"));
         heads = Math.max(1, Math.min(style.maxHeads, t.getByte("heads")));
         Mode[] modes = Mode.values();
@@ -313,7 +330,7 @@ public class TileSignalMast extends TileEntity implements ITickable {
     /** Lamps glow, so the whole mast must stay rendered while any part of it is on screen. */
     @Override
     public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
-        return new net.minecraft.util.math.AxisAlignedBB(pos).grow(1, 5, 1);
+        return new net.minecraft.util.math.AxisAlignedBB(pos).grow(scale, 5 * scale, scale);
     }
 
     public String statusLine() {

@@ -1,19 +1,31 @@
 {
-  "variants": {
-    "facing=north": {
-      "model": "irextras:speed_sign"
-    },
-    "facing=east": {
-      "model": "irextras:speed_sign",
-      "y": 90
-    },
-    "facing=south": {
-      "model": "irextras:speed_sign",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "irextras:speed_sign",
-      "y": 270
-    }
+ "variants": {
+  "facing=north,scaled=false": {
+   "model": "irextras:speed_sign"
+  },
+  "facing=north,scaled=true": {
+   "model": "irextras:empty"
+  },
+  "facing=east,scaled=false": {
+   "model": "irextras:speed_sign",
+   "y": 90
+  },
+  "facing=east,scaled=true": {
+   "model": "irextras:empty"
+  },
+  "facing=south,scaled=false": {
+   "model": "irextras:speed_sign",
+   "y": 180
+  },
+  "facing=south,scaled=true": {
+   "model": "irextras:empty"
+  },
+  "facing=west,scaled=false": {
+   "model": "irextras:speed_sign",
+   "y": 270
+  },
+  "facing=west,scaled=true": {
+   "model": "irextras:empty"
   }
+ }
 }

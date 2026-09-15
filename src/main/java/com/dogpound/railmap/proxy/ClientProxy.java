@@ -49,6 +49,8 @@ public class ClientProxy extends CommonProxy {
                 new com.dogpound.railmap.client.render.ArrivalsBoardRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.signal.TileSpeedSign.class,
                 new com.dogpound.railmap.client.render.SpeedSignRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.signal.TileLineside.class,
+                new com.dogpound.railmap.client.render.LinesideRenderer());
     }
 
     @SubscribeEvent
@@ -77,6 +79,12 @@ public class ClientProxy extends CommonProxy {
             if (mc.currentScreen instanceof com.dogpound.railmap.client.gui.GuiTicketMachine g) g.update(menu);
             else mc.displayGuiScreen(new com.dogpound.railmap.client.gui.GuiTicketMachine(menu));
         });
+    }
+
+    @Override
+    public void openScaleGui(net.minecraft.util.math.BlockPos pos, String what, float scale) {
+        net.minecraft.client.Minecraft.getMinecraft().displayGuiScreen(
+                new com.dogpound.railmap.client.gui.GuiScale(pos, what, scale));
     }
 
     @Override

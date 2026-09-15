@@ -66,7 +66,7 @@ public class BlockLineside extends Block {
         setTranslationKey(RailMap.MODID + "." + kind.id);
         setCreativeTab(RailMapTab.INSTANCE);
         setHardness(1.2f);
-        setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(SCALED, false));
     }
 
     public Kind kind() {
@@ -86,12 +86,22 @@ public class BlockLineside extends Block {
 
     @Override
     public boolean hasTileEntity(IBlockState state) {
-        return kind == Kind.SPEED_SIGN;
+        return true;   // every piece keeps its size (see TileLineside)
     }
 
     @Override
     public net.minecraft.tileentity.TileEntity createTileEntity(World world, IBlockState state) {
-        return kind == Kind.SPEED_SIGN ? new TileSpeedSign() : null;
+        return kind == Kind.SPEED_SIGN ? new TileSpeedSign() : new TileLineside();
+    }
+
+    /**
+     * A resized piece is drawn by LinesideRenderer instead, so the chunk model has to go; at normal
+     * size the cheap baked model stays (and pieces from before this existed keep rendering).
+     */
+    @Override
+    public IBlockState getActualState(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos) {
+        net.minecraft.tileentity.TileEntity te = world.getTileEntity(pos);
+        return state.withProperty(SCALED, te instanceof TileLineside t && t.scale() != 1f);
     }
 
     @Override
@@ -106,9 +116,13 @@ public class BlockLineside extends Block {
         return true;
     }
 
+    /** True while the piece is resized: the model is then drawn by the renderer, not the chunk. */
+    public static final net.minecraft.block.properties.PropertyBool SCALED =
+            net.minecraft.block.properties.PropertyBool.create("scaled");
+
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING);
+        return new BlockStateContainer(this, FACING, SCALED);
     }
 
     @Override

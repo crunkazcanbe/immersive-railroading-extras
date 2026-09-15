@@ -81,6 +81,7 @@ public class CommonProxy implements IGuiHandler {
         GameRegistry.registerTileEntity(TileCrossing.Gate.class, new ResourceLocation(RailMap.MODID, "crossing_gate"));
         GameRegistry.registerTileEntity(TileCrossing.Cantilever.class, new ResourceLocation(RailMap.MODID, "crossing_cantilever"));
         GameRegistry.registerTileEntity(com.dogpound.railmap.signal.TileSpeedSign.class, new ResourceLocation(RailMap.MODID, "speed_sign"));
+        GameRegistry.registerTileEntity(com.dogpound.railmap.signal.TileLineside.class, new ResourceLocation(RailMap.MODID, "lineside"));
         GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileTicketMachine.class, new ResourceLocation(RailMap.MODID, "ticket_machine"));
         GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileArrivalsBoard.class, new ResourceLocation(RailMap.MODID, "arrivals_board"));
         GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileDefectDetector.class, new ResourceLocation(RailMap.MODID, "defect_detector"));
@@ -115,6 +116,8 @@ public class CommonProxy implements IGuiHandler {
     public void openTicketMachine(com.dogpound.railmap.network.PacketTicketMenu menu) {}
 
     public void acceptRailState(com.dogpound.railmap.network.PacketRailState state) {}
+
+    public void openScaleGui(net.minecraft.util.math.BlockPos pos, String what, float scale) {}
 
     /** The board GUI is a plain GuiScreen: no container, so the server side has nothing to open. */
     @Override

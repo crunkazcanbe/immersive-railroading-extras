@@ -25,7 +25,22 @@ import java.util.List;
  * switch, or your own detection), and it emits 15 while it is active so you can drive extra
  * lights, sounds or a second gate from it.
  */
-public class TileCrossing extends TileEntity implements ITickable {
+public class TileCrossing extends TileEntity implements ITickable, IScalable {
+    /** Drawn size, 1 = normal; set with the Signal Wrench (sneak-right-click). */
+    private float scale = 1f;
+
+    @Override
+    public float scale() {
+        return scale;
+    }
+
+    @Override
+    public void setScale(float s) {
+        scale = IScalable.clamp(s);
+        markDirty();
+        sync();
+    }
+
     /** Seconds the gate takes to fall or rise. */
     private static final int GATE_TICKS = 60;
     /** Held down this long after the last train leaves, so it doesn't flicker. */
@@ -171,6 +186,7 @@ public class TileCrossing extends TileEntity implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound t) {
         super.writeToNBT(t);
+        if (scale != 1f) t.setFloat("scale", scale);
         t.setBoolean("act", active);
         t.setByte("appr", (byte) approachIndex);
         t.setShort("gate", (short) gate);
@@ -180,6 +196,7 @@ public class TileCrossing extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound t) {
         super.readFromNBT(t);
+        scale = t.hasKey("scale") ? IScalable.clamp(t.getFloat("scale")) : 1f;
         active = t.getBoolean("act");
         approachIndex = Math.max(0, Math.min(APPROACH.length - 1, t.getByte("appr")));
         gate = t.getShort("gate");
@@ -207,7 +224,7 @@ public class TileCrossing extends TileEntity implements ITickable {
 
     @Override
     public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
-        return new net.minecraft.util.math.AxisAlignedBB(pos).grow(6, 3, 6);
+        return new net.minecraft.util.math.AxisAlignedBB(pos).grow(6 * scale, 3 * scale, 6 * scale);
     }
 
     public static class Signal extends TileCrossing { public Signal() { super(Kind.SIGNAL); } }

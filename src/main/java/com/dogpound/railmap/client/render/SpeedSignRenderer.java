@@ -19,13 +19,17 @@ public class SpeedSignRenderer extends TileEntitySpecialRenderer<TileSpeedSign> 
     public void render(TileSpeedSign te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         if (te.getWorld() == null) return;
         if (Minecraft.getMinecraft().player != null
-                && Minecraft.getMinecraft().player.getDistanceSq(te.getPos()) > 48 * 48) return;
+                && Minecraft.getMinecraft().player.getDistanceSq(te.getPos()) > 48 * 48) { LinesideRenderer.drawModel(te, x, y, z); return; }
         EnumFacing f = te.facing();
         int yRot = switch (f) { case EAST -> 90; case SOUTH -> 180; case WEST -> 270; default -> 0; };
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
 
+        LinesideRenderer.drawModel(te, x, y, z);
+        float s = te.scale();
         GlStateManager.pushMatrix();
-        GlStateManager.translate(x + 0.5, y + PLATE_Y, z + 0.5);
+        GlStateManager.translate(x + 0.5, y, z + 0.5);
+        GlStateManager.scale(s, s, s);
+        GlStateManager.translate(0, PLATE_Y, 0);
         GlStateManager.rotate(-yRot, 0, 1, 0);
         GlStateManager.translate(0, 0, FRONT_Z);
         GlStateManager.disableLighting();
