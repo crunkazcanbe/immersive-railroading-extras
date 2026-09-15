@@ -74,8 +74,14 @@ public class RailMap {
         proxy.preInit();
     }
 
+    /**
+     * Wipe last session's state BEFORE the worlds load. This used to run in serverStarting, which
+     * fires after the integrated server has loaded the worlds -- so every signal mast, crossing,
+     * bridge, speed sign and joint that registered itself while loading was thrown away again,
+     * and none of them ever reacted to a train.
+     */
     @Mod.EventHandler
-    public void serverStarting(FMLServerStartingEvent event) {
+    public void serverAboutToStart(net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent event) {
         Viewers.clear();
         TrainTracker.clear();
         com.dogpound.railmap.signal.SignalRegistry.clear();
@@ -83,6 +89,11 @@ public class RailMap {
         com.dogpound.railmap.auto.Protection.clear();
         com.dogpound.railmap.auto.Interlocking.clear();
         com.dogpound.railmap.auto.ArrivalEvents.clear();
+    }
+
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event) {
+        event.registerServerCommand(new com.dogpound.railmap.server.CommandIrExtras());
         if (Loader.isModLoaded("dynmap") && dynmap == null) {
             try {
                 // Reflection, so the verifier never has to resolve DynmapBridge (and through

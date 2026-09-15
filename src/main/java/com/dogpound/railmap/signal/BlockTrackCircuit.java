@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-/** The flat plate that goes under the rail: insulated joint (boundary) or track circuit (detector). */
+/** The flat plate that goes on the ground beside the rail: insulated joint (boundary) or track circuit (detector). */
 public class BlockTrackCircuit extends Block {
     private static final AxisAlignedBB PLATE = new AxisAlignedBB(0, 0, 0, 1, 2 / 16.0, 1);
 
@@ -57,7 +57,7 @@ public class BlockTrackCircuit extends Block {
     @Override
     public void addInformation(ItemStack stack, World world, List<String> tip, net.minecraft.client.util.ITooltipFlag flag) {
         if (joint) {
-            tip.add("§7Place under the rail to split the line into signal blocks.");
+            tip.add("§7Place on the ground 2-3 blocks from the track centre (outside the train) to split the line into signal blocks.");
             tip.add("§8Signals look ahead as far as the next joint.");
         } else {
             tip.add("§7Detects trains and outputs redstone while one is near.");

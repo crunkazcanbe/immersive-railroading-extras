@@ -31,7 +31,9 @@ public abstract class TileRailDisplay extends TileEntity implements ITickable {
     /** Last pushed network minus its timestamp; a rescan that changes nothing sends nothing. */
     private NBTTagCompound lastContent;
     private int ticks;
-    private long lastScanTick = Long.MIN_VALUE;
+    // Not Long.MIN_VALUE: "now - lastScanTick" overflows to a negative, the debounce never expires and the
+    // display never scans at all.
+    private long lastScanTick = -MIN_RESCAN_GAP;
 
     /** The tile that scans and holds the data for this display (itself, unless part of a panel wall). */
     public TileRailDisplay controller() {

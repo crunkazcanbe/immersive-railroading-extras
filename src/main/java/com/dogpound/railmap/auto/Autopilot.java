@@ -62,9 +62,9 @@ public final class Autopilot {
         /** +1: travel is along the loco's nose; -1: backwards. */
         int sign = 1;
         double stopAt;
-        long planTick = Long.MIN_VALUE;
+        long planTick = -1_000_000L;   // not Long.MIN_VALUE: "now - planTick" would overflow negative
         List<Wayside.Limit> limits = new ArrayList<>();
-        long limitsTick = Long.MIN_VALUE;
+        long limitsTick = -1_000_000L; // not Long.MIN_VALUE: "now - limitsTick >= 20" would never be true
         double signKmh = Double.MAX_VALUE;
         public boolean dwelling, idle;
         long dwellUntil;
@@ -200,19 +200,23 @@ public final class Autopilot {
             }
             cur = r.path.distanceTo(pos.x, pos.y, pos.z, 3.5);
             if (cur < 0) cur = 0;
-            r.limitsTick = Long.MIN_VALUE;
+            r.limitsTick = -1_000_000L;
         }
 
         double remaining = r.stopAt - cur;
         r.metresToStop = Math.max(0, remaining);
 
-        // Arrived?
-        if (remaining < 2.5 && speed < 2.5) {
+        // Arrived? Air brakes can let a train slide a few metres past the mark; that still counts
+        // (otherwise it replans the whole loop and never stops at all).
+        if (remaining < 2.5 && remaining > -12 && speed < 2.5) {
             arrive(world, data, stations, a, r, loco, stop, now);
             return;
         }
 
         double decel = RailMapConfig.autopilotBraking;
+        // Immersive Railroading's air brakes take a moment to build cylinder pressure: plan every
+        // stop as if the train keeps rolling at full speed for that long before it starts slowing.
+        double lag = speed / 3.6 * RailMapConfig.autopilotBrakeLagSeconds;
         double brakingDist = speed / 3.6 * speed / 3.6 / (2 * decel);
         double lookahead = Math.max(80, brakingDist + 60);
 
@@ -251,17 +255,17 @@ public final class Autopilot {
             double dd = l.distance - cur;
             if (!l.stop && l.kmh < 1e6 && dd <= 0.5 && dd > -4) r.signKmh = l.kmh;   // passing a speed sign
             if (dd <= 0.5) continue;
-            double allow = l.stop ? Wayside.allowed(dd - 5, 0, decel) : Wayside.allowed(dd, l.kmh, decel);
+            double allow = l.stop ? Wayside.allowed(dd - 5 - lag, 0, decel) : Wayside.allowed(dd - lag, l.kmh, decel);
             if (allow < target) {
                 target = allow;
                 why = l.what;
             }
         }
         if (blockedAt < Double.MAX_VALUE) {
-            double allow = Wayside.allowed(blockedAt - cur, 0, decel);
+            double allow = Wayside.allowed(blockedAt - cur - lag, 0, decel);
             if (allow < target) { target = allow; why = blockedWhy; }
         }
-        double atStation = Wayside.allowed(remaining - 1.0, 0, decel);
+        double atStation = Wayside.allowed(remaining - 1.0 - lag, 0, decel);
         if (atStation < target) target = atStation;
 
         control(loco, r, speed, target);

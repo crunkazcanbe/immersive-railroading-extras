@@ -40,6 +40,9 @@ public class BlockDispatcherBoard extends Block {
             if (te instanceof TileDispatcherBoard board) {
                 board.rescan(); // fresh data lands on the client right behind the GUI open
             }
+        } else {
+            // The board screen is client-only (the server has no container for it), and FML drops a
+            // server-side openGui whose server element is null -- so it must be opened here.
             player.openGui(RailMap.instance, RailMap.GUI_DISPATCHER_BOARD, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;

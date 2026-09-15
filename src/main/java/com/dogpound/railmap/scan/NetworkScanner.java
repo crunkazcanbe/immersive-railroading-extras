@@ -44,7 +44,7 @@ public final class NetworkScanner {
         // from the signal registry rather than the loaded-tile sweep above.
         List<com.dogpound.railmap.graph.SignalNode> allSignals = new ArrayList<>(signals.found);
         for (com.dogpound.railmap.graph.SignalNode s : RailMapSignalAdapter.collect(world)) {
-            if (nearTrack(r.nodes, s.pos)) allSignals.add(s);
+            if (nearTrack(r.nodes, s.pos, RailMapConfig.signalTrackDistance)) allSignals.add(s);
         }
         return new RailNetwork(origin, r.nodes, r.segments, allSignals, merged, log,
                 world.getTotalWorldTime(), r.truncated, seedRadius);
@@ -80,12 +80,27 @@ public final class NetworkScanner {
     }
 
     private static boolean nearTrack(List<RailNode> nodes, BlockPos p) {
+        return nearTrack(nodes, p, 3);
+    }
+
+    /**
+     * Within {@code radius} blocks of a piece's centre-line. Measured to the line between its
+     * points, not the points themselves: a straight is just its two ends, so a signal half-way
+     * along a 30 m straight was "nowhere near the track" and never showed on the map.
+     */
+    private static boolean nearTrack(List<RailNode> nodes, BlockPos p, double radius) {
         double px = p.getX() + 0.5, py = p.getY(), pz = p.getZ() + 0.5;
+        double r2 = radius * radius;
         for (RailNode n : nodes) {
             float[] q = n.points;
             for (int i = 0; i < q.length; i += 3) {
-                double dx = q[i] - px, dy = q[i + 1] - py, dz = q[i + 2] - pz;
-                if (dx * dx + dy * dy + dz * dz <= 9) return true;
+                if (Math.abs(q[i + 1] - py) > 4) continue;
+                double ax = q[i], az = q[i + 2];
+                double bx = i + 3 < q.length ? q[i + 3] : ax, bz = i + 3 < q.length ? q[i + 5] : az;
+                double vx = bx - ax, vz = bz - az, len2 = vx * vx + vz * vz;
+                double k = len2 < 1e-6 ? 0 : Math.max(0, Math.min(1, ((px - ax) * vx + (pz - az) * vz) / len2));
+                double dx = px - (ax + k * vx), dz = pz - (az + k * vz);
+                if (dx * dx + dz * dz <= r2) return true;
             }
         }
         return false;

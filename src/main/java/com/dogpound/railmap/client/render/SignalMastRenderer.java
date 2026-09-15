@@ -137,7 +137,7 @@ public class SignalMastRenderer extends TileEntitySpecialRenderer<TileSignalMast
         boolean lit = lamp != Aspect.Lamp.OFF && lamp.litAt(ticks);
         double angle = positionAngle(aspect);
         Prims.plate(-0.34, -0.34, 0.34, 0.34, 0.04, 0.03, 0x101215);                  // black disc
-        Prims.box(-0.30, -0.30, -0.04, 0.30, 0.30, 0.04, STEEL_DARK);
+        Prims.box(-0.30, -0.30, -0.04, 0.30, 0.30, 0.20, STEEL_DARK);   // deep enough to read from the side
         int amber = 0xFFB300;
         double ca = Math.cos(Math.toRadians(angle)), sa = Math.sin(Math.toRadians(angle));
         Prims.emissive(lit);
@@ -171,7 +171,7 @@ public class SignalMastRenderer extends TileEntitySpecialRenderer<TileSignalMast
         double angle = positionAngle(aspect);
         int col = lit ? lamp.rgb : 0x14161A;
         Prims.plate(-0.32, -0.32, 0.32, 0.32, 0.04, 0.03, 0x101215);
-        Prims.box(-0.28, -0.28, -0.04, 0.28, 0.28, 0.04, STEEL_DARK);
+        Prims.box(-0.28, -0.28, -0.04, 0.28, 0.28, 0.20, STEEL_DARK);   // deep enough to read from the side
         double ca = Math.cos(Math.toRadians(angle)), sa = Math.sin(Math.toRadians(angle));
         Prims.emissive(lit);
         for (int i = -1; i <= 1; i += 2) {

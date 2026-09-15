@@ -36,15 +36,17 @@ public final class SignalRegistry {
     }
 
     /**
-     * True when a joint sits on, above or beside this track piece. A joint block is placed
-     * next to the rail, so a piece counts if a joint is within one block of it.
+     * True when a joint sits beside this track piece. Joints go on the ground NEXT to the rail:
+     * replacing the block under Immersive Railroading track breaks the track. Standard gauge is
+     * three blocks wide and rolling stock clears small blocks inside its own width, so the joint goes
+     * in the first free row outside the train: up to three blocks from the centre line.
      */
     public static boolean hasJoint(World world, Vec3i railPos) {
         Set<Long> s = JOINTS.get(world.getId());
         if (s == null || s.isEmpty()) return false;
-        for (int dx = -1; dx <= 1; dx++) {
+        for (int dx = -3; dx <= 3; dx++) {
             for (int dy = -1; dy <= 1; dy++) {
-                for (int dz = -1; dz <= 1; dz++) {
+                for (int dz = -3; dz <= 3; dz++) {
                     if (s.contains(new BlockPos(railPos.x + dx, railPos.y + dy, railPos.z + dz).toLong())) return true;
                 }
             }
@@ -61,6 +63,11 @@ public final class SignalRegistry {
     public static void removeMast(int dim, BlockPos pos) {
         Map<Long, TileSignalMast> m = MASTS.get(dim);
         if (m != null) m.remove(pos.toLong());
+    }
+
+    public static int joints(int dim) {
+        Set<Long> s = JOINTS.get(dim);
+        return s == null ? 0 : s.size();
     }
 
     public static List<TileSignalMast> masts(int dim) {

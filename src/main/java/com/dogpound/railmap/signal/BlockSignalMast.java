@@ -63,9 +63,11 @@ public class BlockSignalMast extends Block {
         if (!(te instanceof TileSignalMast mast)) return true;
         if (player.isSneaking()) {
             mast.configure(mast.style(), mast.heads() % mast.style().maxHeads + 1);
-        } else if (mast.mode() == TileSignalMast.Mode.MANUAL) {
+        } else if (mast.mode() == TileSignalMast.Mode.MANUAL && mast.manualAspect() != Aspect.CLEAR) {
             mast.cycleManualAspect();
         } else {
+            // Past the last fixed aspect the click moves on to the next mode, so a signal set to
+            // "Fixed aspect" can always be clicked back to Automatic (it used to be stuck there).
             mast.cycleMode();
         }
         player.sendStatusMessage(new TextComponentString(mast.statusLine()), true);

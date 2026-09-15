@@ -118,6 +118,10 @@ public class TileSignalMast extends TileEntity implements ITickable {
         sync();
     }
 
+    public Aspect manualAspect() {
+        return manualAspect;
+    }
+
     public void cycleManualAspect() {
         Aspect[] pick = { Aspect.STOP, Aspect.RESTRICTING, Aspect.APPROACH, Aspect.CLEAR };
         int i = 0;

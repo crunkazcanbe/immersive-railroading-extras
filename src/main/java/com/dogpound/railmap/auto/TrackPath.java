@@ -186,6 +186,23 @@ public final class TrackPath {
 
     private void add(TileRail rail) {
         double[] p = TrackFollower.worldPath(rail);
+        // A piece's points run from whichever end IR built it from, not the way the route travels.
+        // distanceTo interpolates along them, so a piece crossed "backwards" measured distances the
+        // wrong way round -- on a 30 m straight the distance to a station was off by up to 30 m and
+        // grew as the train closed in, so a driverless train never braked for it.
+        if (p != null && p.length >= 6 && !steps.isEmpty()) {
+            Step prev = steps.get(steps.size() - 1);
+            if (prev.points != null && prev.points.length >= 6) {
+                if (steps.size() == 1 && nearestEnd(prev.points, p) == 0) {
+                    // The first piece had no predecessor to orient by: its START touches this one, so flip it.
+                    steps.set(0, new Step(prev.pos, reversed(prev.points), prev.distance));
+                    prev = steps.get(0);
+                }
+                int n = prev.points.length;
+                double ex = prev.points[n - 3], ez = prev.points[n - 1];
+                if (dist2(ex, ez, p[p.length - 3], p[p.length - 1]) < dist2(ex, ez, p[0], p[2])) p = reversed(p);
+            }
+        }
         length += p == null ? 1 : Math.max(0.5, polyLength(p));
         steps.add(new Step(rail.getPos(), p, length));
     }
@@ -263,6 +280,26 @@ public final class TrackPath {
     private static double pieceLength(TileRail rail) {
         double[] p = TrackFollower.worldPath(rail);
         return p == null ? 1 : Math.max(0.5, polyLength(p));
+    }
+
+    private static double[] reversed(double[] p) {
+        double[] r = new double[p.length];
+        for (int i = 0; i < p.length; i += 3) {
+            int j = p.length - 3 - i;
+            r[i] = p[j]; r[i + 1] = p[j + 1]; r[i + 2] = p[j + 2];
+        }
+        return r;
+    }
+
+    private static double dist2(double ax, double az, double bx, double bz) {
+        return (ax - bx) * (ax - bx) + (az - bz) * (az - bz);
+    }
+
+    /** 0 if {@code a}'s first point is the end nearest to piece {@code b}, else 1 (its last point). */
+    private static int nearestEnd(double[] a, double[] b) {
+        double first = Math.min(dist2(a[0], a[2], b[0], b[2]), dist2(a[0], a[2], b[b.length - 3], b[b.length - 1]));
+        double last = Math.min(dist2(a[a.length - 3], a[a.length - 1], b[0], b[2]), dist2(a[a.length - 3], a[a.length - 1], b[b.length - 3], b[b.length - 1]));
+        return first < last ? 0 : 1;
     }
 
     static double polyLength(double[] p) {

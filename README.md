@@ -5,8 +5,10 @@ set of tracks into a railroad that runs itself: driverless trains, ticket machin
 signalling with real interlocking, train protection, a live dispatcher map, station arrivals
 boards, talking defect detectors and an OpenComputers API.
 
-> **Status: alpha (0.5.0).** Everything compiles and loads, but the newest systems (driverless
-> trains, tickets, CTC routes, train protection, OpenComputers) have **not been play-tested yet**.
+> **Status: alpha (0.5.1).** Play-tested on a loop with a station: automatic block signals, grade
+> crossings, track circuits, the defect detector, the dispatcher board, the handheld map, lines and
+> driverless trains stopping at stations all work. Tickets, CTC routes, train protection and
+> OpenComputers still need more testing.
 > Bug reports, crash logs and pull requests are very welcome — see [Help wanted](#help-wanted).
 
 ---
@@ -82,11 +84,20 @@ rr.isProtected(id)
 ---
 
 ## Quick start
+Keep blocks you place beside the track at least **2 blocks from the track centre** (outside the
+train's width): rolling stock knocks out small blocks inside its own width. Insulated joints go on
+the ground **beside** the rail, never under it (replacing the block under IR track breaks the track).
+
 1. Place a **Dispatcher Board** near your track and open it.
 2. Click a piece of track at each stop → type a station name → Save.
 3. **Lines** → New line → name it → click the stations in order → Save line.
 4. Click a locomotive → **Make driverless…** → Line → pick the line → Start driverless.
 5. Put a **Ticket Machine** and an **Arrivals Board** at a station.
+
+## Commands
+`/irextras status` — trains being tracked, and every registered signal, crossing, bridge, speed sign
+and joint with its current state, plus what a track scan from where you stand finds. Handy for
+checking a layout, and please paste it into bug reports.
 
 ## Requirements
 - Minecraft 1.12.2, Forge 14.23.5 or Cleanroom

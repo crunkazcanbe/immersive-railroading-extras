@@ -97,7 +97,9 @@ public class GuiDispatcherBoard extends GuiScreen {
 
     public GuiDispatcherBoard(TileRailDisplay tile) {
         this.tile = tile;
-        this.origin = tile != null ? tile.origin() : mc.player != null ? mc.player.getPosition() : BlockPos.ORIGIN;
+        // `mc` is only set once the screen is shown, so the constructor has to ask for the client.
+        net.minecraft.client.entity.EntityPlayerSP me = net.minecraft.client.Minecraft.getMinecraft().player;
+        this.origin = tile != null ? tile.origin() : me != null ? me.getPosition() : BlockPos.ORIGIN;
         map.origin = origin;
         map.camX = origin.getX() + 0.5;
         map.camZ = origin.getZ() + 0.5;
@@ -147,7 +149,9 @@ public class GuiDispatcherBoard extends GuiScreen {
         int px = width - MARGIN - PANEL_W;
         if (panel == Panel.TRAIN) {
             // The driving desk: two columns of short buttons under the readout.
-            int by2 = vy + vh - 118;
+            // Bottom-up from the Follow button (vy + vh - 24) so the desk never covers it, and the
+            // readout above gets everything that is left.
+            int by2 = vy + vh - 26 - 5 * 22;
             addCmd(px + 4, by2, 70, "Throttle +", TrainControl.Cmd.THROTTLE_UP);
             addCmd(px + 78, by2, 68, "Thr -", TrainControl.Cmd.THROTTLE_DOWN);
             addCmd(px + 4, by2 + 22, 70, "Brake +", TrainControl.Cmd.BRAKE_UP);
@@ -678,16 +682,16 @@ public class GuiDispatcherBoard extends GuiScreen {
             fontRenderer.drawSplitString(ClientTrains.live() ? "Train left the loaded area." : "Waiting for train feed...", px + 6, y, PANEL_W - 12, 0xFF8A94A0);
             return;
         }
-        y = card(px, y, "Type", MapRenderer.pretty(t.kind.name()));
-        if (!t.tag.isEmpty()) y = card(px, y, "Model", t.name);
-        y = card(px, y, "Speed", Math.round(Math.abs(t.speedKmh)) + " km/h" + (t.moving() ? (t.speedKmh < 0 ? " (reverse)" : "") : " (stopped)"));
+        // Compact on purpose: the driving desk and the driverless button sit below this readout,
+        // and on a normal-size window the long one-fact-per-card version ran underneath them.
+        String kind = MapRenderer.pretty(t.kind.name()) + (!t.tag.isEmpty() ? " · " + t.name : "");
+        y = card(px, y, kind, Math.round(Math.abs(t.speedKmh)) + " km/h" + (t.moving() ? (t.speedKmh < 0 ? " (reverse)" : "") : " (stopped)"));
         if (t.kind.isLoco()) {
-            y = card(px, y, "Throttle", Math.round(t.throttle * 100) + "%");
-            y = card(px, y, "Reverser", t.reverser > 0.05 ? "Forward" : t.reverser < -0.05 ? "Reverse" : "Neutral");
-            y = card(px, y, "Train brake", Math.round(t.brake * 100) + "%");
+            String rev = t.reverser > 0.05 ? "Fwd" : t.reverser < -0.05 ? "Rev" : "N";
+            y = card(px, y, "Throttle · Reverser · Brake", Math.round(t.throttle * 100) + "% · " + rev + " · " + Math.round(t.brake * 100) + "%");
         }
         if (t.consist > 1) y = card(px, y, "Consist", t.consist + " units");
-        if (t.cargoPct >= 0) y = card(px, y, "Cargo", t.cargoPct + "% full");
+        if (t.cargoPct >= 0 && !t.kind.isLoco()) y = card(px, y, "Cargo", t.cargoPct + "% full");   // a loco's own fuel tank isn't cargo
         if (t.passengers > 0) y = card(px, y, "Passengers", String.valueOf(t.passengers));
         PacketRailState.TrainInfo auto = ClientRailway.train(t.id);
         if (auto != null) y = card(px, y, "DRIVERLESS", auto.status);

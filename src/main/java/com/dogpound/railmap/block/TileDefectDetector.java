@@ -22,6 +22,8 @@ import net.minecraft.world.World;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  * A trackside defect detector — the box that talks on the radio after every train.
@@ -41,7 +43,7 @@ import java.util.Set;
  * Redstone: a pulse while it reports, strength 15 on a defect, 8 on a clean train.
  */
 public class TileDefectDetector extends TileEntity implements ITickable {
-    private static final double RANGE = 3.2;
+    private static final double RANGE = 4.0;
     private static final int CLEAR_TICKS = 30;
 
     private String name = "";
@@ -51,6 +53,8 @@ public class TileDefectDetector extends TileEntity implements ITickable {
     // A pass in progress
     private boolean passing;
     private final Set<Integer> seen = new HashSet<>();
+    /** Each train's position at the previous look, to catch trains that pass between samples. */
+    private final Map<Integer, double[]> lastSeen = new HashMap<>();
     private double maxKmh;
     private int axles;
     private int clearFor;
@@ -93,27 +97,42 @@ public class TileDefectDetector extends TileEntity implements ITickable {
             output = 0;
             world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
         }
-        if (++ticks % 5 != 0) return;
+        if (++ticks % 10 != 0) return;   // same rate the train tracker refreshes, so every look is a fresh position
 
         List<TrainNode> trains = TrainTracker.latest(world);
         boolean present = false;
         double cx = pos.getX() + 0.5, cz = pos.getZ() + 0.5;
+        Map<Integer, double[]> now = new HashMap<>();
         for (TrainNode t : trains) {
             if (Math.abs(t.y - pos.getY()) > 4) continue;
-            double dx = t.x - cx, dz = t.z - cz;
-            if (dx * dx + dz * dz > RANGE * RANGE) continue;
+            now.put(t.id, new double[]{t.x, t.z});
+            // Distance to the stretch the train covered since the last look, not just where it is
+            // now: positions only refresh twice a second, so a train doing 45 km/h moves ~6 blocks
+            // between samples and jumped clean over a point check.
+            double[] was = lastSeen.getOrDefault(t.id, new double[]{t.x, t.z});
+            if (distToSegment(cx, cz, was[0], was[1], t.x, t.z) > RANGE) continue;
             present = true;
             if (seen.add(t.id)) axles += axlesOf(t);
             maxKmh = Math.max(maxKmh, Math.abs(t.speedKmh));
-            if (Math.abs(t.speedKmh) < 0.5) stoppedFor += 5;
+            if (Math.abs(t.speedKmh) < 0.5) stoppedFor += 10;
         }
+        lastSeen.clear();
+        lastSeen.putAll(now);
         if (present) {
             passing = true;
             clearFor = 0;
         } else if (passing) {
-            clearFor += 5;
+            clearFor += 10;
             if (clearFor >= CLEAR_TICKS) report();
         }
+    }
+
+    private static double distToSegment(double px, double pz, double ax, double az, double bx, double bz) {
+        double vx = bx - ax, vz = bz - az;
+        double len2 = vx * vx + vz * vz;
+        double k = len2 < 1e-6 ? 0 : Math.max(0, Math.min(1, ((px - ax) * vx + (pz - az) * vz) / len2));
+        double dx = px - (ax + k * vx), dz = pz - (az + k * vz);
+        return Math.sqrt(dx * dx + dz * dz);
     }
 
     private static int axlesOf(TrainNode t) {

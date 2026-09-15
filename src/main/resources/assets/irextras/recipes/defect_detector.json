@@ -16,7 +16,8 @@
    "item": "minecraft:redstone"
   },
   "S": {
-   "item": "minecraft:stone_slab"
+   "item": "minecraft:stone_slab",
+   "data": 0
   }
  },
  "result": {

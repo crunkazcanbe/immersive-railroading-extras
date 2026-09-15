@@ -42,7 +42,11 @@ public final class RailMapConfig {
 
     @Config.Comment("Braking a driverless train plans for, m/s². Lower = gentler stops that start earlier.")
     @Config.RangeDouble(min = 0.1, max = 3.0)
-    public static double autopilotBraking = 0.6;
+    public static double autopilotBraking = 0.45;
+
+    @Config.Comment("Seconds a driverless train allows for air-brake pressure to build before it starts slowing")
+    @Config.RangeDouble(min = 0, max = 10)
+    public static double autopilotBrakeLagSeconds = 2.5;
 
     @Config.Comment("Default top speed for a new driverless train, km/h (you can change it per train on the board).")
     @Config.RangeInt(min = 5, max = 250)

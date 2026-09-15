@@ -48,6 +48,8 @@ public final class TrainTracker {
     private static final Map<Integer, List<TrainNode>> latest = new HashMap<>();
     /** Lead-loco entity id → station key it is currently at (edge detection). */
     private static final Map<Integer, Long> atStation = new HashMap<>();
+    /** World time each dimension's snapshot was last asked for by a wayside device (detector, circuit, signal). */
+    private static final Map<Integer, Long> demandedAt = new HashMap<>();
 
     @SubscribeEvent
     public void onWorldTick(TickEvent.WorldTickEvent e) {
@@ -58,7 +60,11 @@ public final class TrainTracker {
         StationData stations = StationData.get(world);
         boolean anyStations = !stations.names().isEmpty();
         boolean dynmap = RailMap.dynmap != null && RailMap.dynmap.wantsTrains();
-        if (viewers.isEmpty() && !anyStations && !dynmap) return;
+        // Defect detectors, track circuits and signals read latest() on their own; without this
+        // they saw no trains at all on a layout with no named station and nobody at a board.
+        Long asked = demandedAt.get(world.provider.getDimension());
+        boolean demanded = asked != null && world.getTotalWorldTime() - asked < 100;
+        if (viewers.isEmpty() && !anyStations && !dynmap && !demanded) return;
 
         List<TrainNode> trains;
         try {
@@ -76,6 +82,7 @@ public final class TrainTracker {
     }
 
     public static List<TrainNode> latest(World world) {
+        demandedAt.put(world.provider.getDimension(), world.getTotalWorldTime());
         List<TrainNode> l = latest.get(world.provider.getDimension());
         return l == null ? Collections.<TrainNode>emptyList() : l;
     }
@@ -83,6 +90,7 @@ public final class TrainTracker {
     public static void clear() {
         latest.clear();
         atStation.clear();
+        demandedAt.clear();
     }
 
     // ---- IR access below this line ------------------------------------------------------

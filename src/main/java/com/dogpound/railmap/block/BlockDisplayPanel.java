@@ -44,11 +44,13 @@ public class BlockDisplayPanel extends Block {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player,
                                     EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!world.isRemote) {
-            TileEntity te = world.getTileEntity(pos);
-            if (te instanceof TileDisplayPanel p) {
-                TileRailDisplay c = p.controller();
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof TileDisplayPanel p) {
+            TileRailDisplay c = p.controller();
+            if (!world.isRemote) {
                 c.rescan();
+            } else {
+                // Client-only screen: see BlockDispatcherBoard -- a server-side openGui is dropped.
                 BlockPos cp = c.getPos();
                 player.openGui(RailMap.instance, RailMap.GUI_DISPATCHER_BOARD, world, cp.getX(), cp.getY(), cp.getZ());
             }

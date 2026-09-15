@@ -302,6 +302,7 @@ public final class MapRenderer {
 
     private void drawStops(RailNetwork net, int mx, int my, Pick pick) {
         int r = (int) Math.max(3, Math.min(6, zoom));
+        int hit = Math.max(6, r + 2); // the square is tiny when zoomed out; give clicks some room
         for (StopNode s : net.stops) {
             double sx = toScreenX(s.pos.getX() + 0.5), sy = toScreenY(s.pos.getZ() + 0.5);
             if (!inside(sx, sy, r + 40)) continue;
@@ -316,7 +317,7 @@ public final class MapRenderer {
             }
             String label = s.named ? s.name : pretty(s.name);
             if (labels && zoom >= 1.5 && inside(sx, sy, 0)) text(label, sx + r + 2, sy - 4, col);
-            if (mx >= 0 && Math.abs(mx - sx) <= r && Math.abs(my - sy) <= r) {
+            if (mx >= 0 && Math.abs(mx - sx) <= hit && Math.abs(my - sy) <= hit) {
                 pick.stop = s;
                 pick.text = (s.named ? "Station: " : "Stop: ") + label
                         + (s.named ? "" : " (" + s.kind.name().toLowerCase(Locale.ROOT) + ")")
