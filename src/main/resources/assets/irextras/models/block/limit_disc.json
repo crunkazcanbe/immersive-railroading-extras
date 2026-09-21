@@ -1,0 +1,106 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "particle": "irextras:blocks/limitdisc",
+  "f": "irextras:blocks/limitdisc",
+  "s": "irextras:blocks/ohle"
+ },
+ "elements": [
+  {
+   "from": [
+    6,
+    0,
+    7
+   ],
+   "to": [
+    10,
+    1,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#s"
+    },
+    "south": {
+     "texture": "#s"
+    },
+    "east": {
+     "texture": "#s"
+    },
+    "west": {
+     "texture": "#s"
+    },
+    "up": {
+     "texture": "#s"
+    },
+    "down": {
+     "texture": "#s"
+    }
+   }
+  },
+  {
+   "from": [
+    7,
+    1,
+    7.4
+   ],
+   "to": [
+    9,
+    12,
+    8.6
+   ],
+   "faces": {
+    "north": {
+     "texture": "#s"
+    },
+    "south": {
+     "texture": "#s"
+    },
+    "east": {
+     "texture": "#s"
+    },
+    "west": {
+     "texture": "#s"
+    },
+    "up": {
+     "texture": "#s"
+    },
+    "down": {
+     "texture": "#s"
+    }
+   }
+  },
+  {
+   "from": [
+    2.5,
+    11,
+    7.6
+   ],
+   "to": [
+    13.5,
+    21,
+    8.4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#f"
+    },
+    "south": {
+     "texture": "#f"
+    },
+    "east": {
+     "texture": "#f"
+    },
+    "west": {
+     "texture": "#f"
+    },
+    "up": {
+     "texture": "#f"
+    },
+    "down": {
+     "texture": "#f"
+    }
+   }
+  }
+ ]
+}

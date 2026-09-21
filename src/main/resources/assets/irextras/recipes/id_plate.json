@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "YY",
+  " M"
+ ],
+ "key": {
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "dye"
+  },
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:id_plate",
+  "count": 4
+ }
+}

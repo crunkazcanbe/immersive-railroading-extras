@@ -1,0 +1,56 @@
+{
+  "parent": "irextras:block/marker_post",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -0.26,
+        -0.0
+      ],
+      "scale": [
+        0.529,
+        0.529,
+        0.529
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -0.26,
+        -0.0
+      ],
+      "scale": [
+        0.529,
+        0.529,
+        0.529
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        2.74,
+        0
+      ],
+      "scale": [
+        0.265,
+        0.265,
+        0.265
+      ]
+    }
+  }
+}

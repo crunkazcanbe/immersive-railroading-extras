@@ -35,7 +35,19 @@ public class BlockLineside extends Block {
         SWITCH_STAND("switch_stand", "Switch Stand", "Target and lamp beside the points.", 0.5f, 0.7f),
         DERAIL("derail", "Derail", "Yellow wedge that puts a runaway on the ground.", 1.0f, 0.3f),
         BUMPER("bumper", "Bumper Post", "End of track. Stop here.", 1.0f, 0.7f),
-        CROSSBUCK("crossbuck", "Crossbuck", "RAILROAD CROSSING — the plain, unlit sign.", 0.4f, 1.0f);
+        CROSSBUCK("crossbuck", "Crossbuck", "RAILROAD CROSSING — the plain, unlit sign.", 0.4f, 1.0f),
+        // --- lineside equipment: the boxes and clutter that make a right-of-way look worked-in ---
+        CABINET_SMALL("cabinet_small", "Lineside Box", "A small trackside equipment box.", 0.5f, 0.55f),
+        CABINET("cabinet", "Equipment Cabinet", "Trackside apparatus case.", 0.7f, 1.0f),
+        CABINET_TALL("cabinet_tall", "Location Case", "The tall cabinet that feeds a signal.", 0.7f, 1.6f),
+        CABLE_DRUM("cable_drum", "Cable Drum", "Spare signalling cable, left where the gang dropped it.", 0.8f, 0.85f),
+        BOLLARD("bollard", "Hazard Bollard", "Black-and-yellow post. Don't drive into it.", 0.35f, 1.0f),
+        MARKER_POST("marker_post", "Marker Post", "Red-and-white banded post.", 0.3f, 1.1f),
+        // --- boards and markers ---
+        STOP_BOARD("stop_board", "Stop Board", "Red-and-white checker: trains stop here.", 0.5f, 1.4f),
+        LIMIT_DISC("limit_disc", "Limit of Shunt", "The disc that ends shunting movements.", 0.5f, 1.3f),
+        BLANK_BOARD("blank_board", "Blank Board", "Black disc on a post — no entry beyond.", 0.5f, 1.4f),
+        ID_PLATE("id_plate", "Signal ID Plate", "The numbered plate bolted to a signal post.", 0.35f, 0.9f);
 
         public final String id;
         public final String label;

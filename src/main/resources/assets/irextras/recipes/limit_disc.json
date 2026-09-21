@@ -1,0 +1,20 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PPP",
+  " M ",
+  " M "
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "M": {
+   "item": "minecraft:stick"
+  }
+ },
+ "result": {
+  "item": "irextras:limit_disc",
+  "count": 2
+ }
+}

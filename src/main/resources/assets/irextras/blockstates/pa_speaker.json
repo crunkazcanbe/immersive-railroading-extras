@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:pa_speaker"
+  },
+  "facing=east": {
+   "model": "irextras:pa_speaker",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:pa_speaker",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:pa_speaker",
+   "y": 270
+  }
+ }
+}

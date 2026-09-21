@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "MMM",
+  "MRM",
+  "MMM"
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ],
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
+  }
+ },
+ "result": {
+  "item": "irextras:cabinet",
+  "count": 2
+ }
+}

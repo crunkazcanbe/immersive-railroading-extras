@@ -71,9 +71,11 @@ public class DisplayPanelRenderer extends TileEntitySpecialRenderer<TileDisplayP
         int strip = h >= 3 * PX / 2 ? 12 : 0;
         map.h = h - strip;
         map.draw(net, trains, -1, -1);
+        // chrome (scale bar + compass) belongs INSIDE the map area — drawn at full height it
+        // landed on top of the status strip
+        map.drawChrome();
         map.h = h;
         if (strip > 0) drawStatus(net, trains, w, h, strip);
-        map.drawChrome();
 
         GL11.glPopAttrib();
         GlStateManager.enableCull();
@@ -95,9 +97,18 @@ public class DisplayPanelRenderer extends TileEntitySpecialRenderer<TileDisplayP
             right = "no train feed";
         }
         GlStateManager.enableTexture2D();
-        font.drawString(left, 3, h - strip + 2, MapRenderer.COL_DIM);
-        int rw = font.getStringWidth(right);
-        if (rw + 3 + font.getStringWidth(left) + 6 < w) font.drawString(right, w - rw - 3, h - strip + 2, MapRenderer.COL_STATION);
+        // The status strip has to live inside the panel face: trim both halves to the room they
+        // actually have, otherwise the text runs straight off the edge of the sign on a narrow
+        // panel. The right half only gets what the left half doesn't use.
+        int avail = w - 6;
+        int rw = Math.min(font.getStringWidth(right), Math.max(0, avail - font.getStringWidth(left) - 6));
+        String rightFit = rw > 0 ? font.trimStringToWidth(right, rw) : "";
+        rw = font.getStringWidth(rightFit);
+        String leftFit = font.trimStringToWidth(left, Math.max(0, avail - (rw > 0 ? rw + 6 : 0)));
+        font.drawString(leftFit, 3, h - strip + 2, MapRenderer.COL_DIM);
+        if (rw > 0) {
+            font.drawString(rightFit, w - rw - 3, h - strip + 2, MapRenderer.COL_STATION);
+        }
         GlStateManager.disableTexture2D();
     }
 

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:gantry_antenna"
+  },
+  "facing=east": {
+   "model": "irextras:gantry_antenna",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:gantry_antenna",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:gantry_antenna",
+   "y": 270
+  }
+ }
+}

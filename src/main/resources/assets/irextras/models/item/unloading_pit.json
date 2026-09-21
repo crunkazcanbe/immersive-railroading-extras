@@ -1,0 +1,56 @@
+{
+  "parent": "irextras:block/unloading_pit",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        -0.0,
+        1.93,
+        -0.0
+      ],
+      "scale": [
+        0.321,
+        0.321,
+        0.321
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        -0.0,
+        1.93,
+        -0.0
+      ],
+      "scale": [
+        0.321,
+        0.321,
+        0.321
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        4.93,
+        0
+      ],
+      "scale": [
+        0.161,
+        0.161,
+        0.161
+      ]
+    }
+  }
+}

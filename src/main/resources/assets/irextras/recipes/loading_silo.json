@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "MMM",
+  "MHM",
+  "MCM"
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "plateSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ],
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:loading_silo"
+ }
+}

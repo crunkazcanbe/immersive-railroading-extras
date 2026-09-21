@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:empty"
+  },
+  "facing=east": {
+   "model": "irextras:empty"
+  },
+  "facing=south": {
+   "model": "irextras:empty"
+  },
+  "facing=west": {
+   "model": "irextras:empty"
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PPP",
+  " M ",
+  " M "
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:stop_board",
+  "count": 2
+ }
+}

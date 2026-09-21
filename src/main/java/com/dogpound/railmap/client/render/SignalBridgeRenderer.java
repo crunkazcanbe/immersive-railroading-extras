@@ -23,12 +23,16 @@ public class SignalBridgeRenderer extends TileEntitySpecialRenderer<TileSignalBr
         boolean owner = te.isController();
         GlStateManager.pushMatrix();
         GlStateManager.translate(x + 0.5, y, z + 0.5);
+        float sc = te.scale();
+        GlStateManager.scale(sc, sc, sc);   // wrench-set size: raises the whole gantry to clear tall stock
         EnumFacing f = te.facing();
         GlStateManager.rotate(-f.getHorizontalIndex() * 90f, 0, 1, 0);
         GlStateManager.disableCull();
         Prims.begin();
 
-        // Every leg draws itself, so an unpaired post still looks like something.
+        // Every leg draws itself again. This was briefly conditional, back when a paired
+        // gantry stamped real tower blocks and the drawn lattice would have doubled them --
+        // that auto-build is gone, so without this a paired gantry would float with no legs.
         drawLeg();
 
         if (owner) {

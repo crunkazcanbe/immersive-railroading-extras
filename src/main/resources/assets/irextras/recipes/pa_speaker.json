@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " M ",
+  "MNM",
+  "MRM"
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ],
+  "N": {
+   "item": "minecraft:noteblock"
+  },
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
+  }
+ },
+ "result": {
+  "item": "irextras:pa_speaker"
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " M ",
+  "MMM",
+  " M "
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:catenary_mast",
+  "count": 2
+ }
+}

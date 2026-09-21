@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:catenary_mast"
+  },
+  "facing=east": {
+   "model": "irextras:catenary_mast",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:catenary_mast",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:catenary_mast",
+   "y": 270
+  }
+ }
+}

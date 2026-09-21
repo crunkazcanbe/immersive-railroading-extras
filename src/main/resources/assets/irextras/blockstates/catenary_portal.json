@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:catenary_portal"
+  },
+  "facing=east": {
+   "model": "irextras:catenary_portal",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:catenary_portal",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:catenary_portal",
+   "y": 270
+  }
+ }
+}

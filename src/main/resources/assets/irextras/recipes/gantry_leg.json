@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "M",
+  "M",
+  "M"
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:gantry_leg",
+  "count": 4
+ }
+}

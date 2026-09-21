@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "M M",
+  "MRM",
+  "MCM"
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "plateSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ],
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  }
+ },
+ "result": {
+  "item": "irextras:ticket_gate"
+ }
+}

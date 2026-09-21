@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "M M",
+  "MCM",
+  "MRM"
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ],
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
+  }
+ },
+ "result": {
+  "item": "irextras:aei_reader"
+ }
+}

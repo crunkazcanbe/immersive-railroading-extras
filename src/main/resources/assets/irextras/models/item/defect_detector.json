@@ -1,3 +1,56 @@
 {
- "parent": "irextras:block/defect_detector"
+  "parent": "irextras:block/defect_detector",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -2.22,
+        0.24
+      ],
+      "scale": [
+        0.286,
+        0.286,
+        0.286
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -2.22,
+        0.24
+      ],
+      "scale": [
+        0.286,
+        0.286,
+        0.286
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0.78,
+        0
+      ],
+      "scale": [
+        0.143,
+        0.143,
+        0.143
+      ]
+    }
+  }
 }

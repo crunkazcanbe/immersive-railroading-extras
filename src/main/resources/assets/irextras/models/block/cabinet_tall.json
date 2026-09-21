@@ -1,0 +1,170 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "particle": "irextras:blocks/cabinet",
+  "c": "irextras:blocks/cabinet",
+  "d": "irextras:blocks/cabinetdark"
+ },
+ "elements": [
+  {
+   "from": [
+    3,
+    0,
+    4
+   ],
+   "to": [
+    13,
+    1.5,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   }
+  },
+  {
+   "from": [
+    3.5,
+    1.5,
+    4.5
+   ],
+   "to": [
+    12.5,
+    24,
+    11.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#c"
+    },
+    "south": {
+     "texture": "#c"
+    },
+    "east": {
+     "texture": "#c"
+    },
+    "west": {
+     "texture": "#c"
+    },
+    "up": {
+     "texture": "#c"
+    },
+    "down": {
+     "texture": "#c"
+    }
+   }
+  },
+  {
+   "from": [
+    2.6,
+    24,
+    3.6
+   ],
+   "to": [
+    13.4,
+    25.6,
+    12.4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   }
+  },
+  {
+   "from": [
+    5,
+    8,
+    4.2
+   ],
+   "to": [
+    11,
+    16,
+    4.7
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   }
+  },
+  {
+   "from": [
+    6,
+    19,
+    4.2
+   ],
+   "to": [
+    10,
+    21,
+    4.7
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   }
+  }
+ ]
+}

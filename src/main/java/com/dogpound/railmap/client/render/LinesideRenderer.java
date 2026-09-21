@@ -26,12 +26,21 @@ public class LinesideRenderer extends TileEntitySpecialRenderer<TileLineside> {
     }
 
     static void drawModel(TileLineside te, double x, double y, double z) {
-        if (te.getWorld() == null || te.scale() == 1f) return;   // normal size: the chunk draws it
-        BlockPos pos = te.getPos();
-        IBlockState state = te.getWorld().getBlockState(pos);
+        if (te.getWorld() == null) return;
+        drawScaled(te.getWorld(), te.getPos(), te.scale(), x, y, z);
+    }
+
+    /**
+     * Draws a block's own model scaled about the middle of its footing. Shared by every
+     * resizable piece in the mod, so a loading gantry can be dialled down to match small-gauge
+     * stock exactly the way a signal or a milepost can.
+     */
+    public static void drawScaled(net.minecraft.world.World world, BlockPos pos, float s,
+                                  double x, double y, double z) {
+        if (world == null || s == 1f) return;   // normal size: the chunk draws it
+        IBlockState state = world.getBlockState(pos);
         BlockRendererDispatcher brd = Minecraft.getMinecraft().getBlockRendererDispatcher();
         IBakedModel model = brd.getModelForState(state);
-        float s = te.scale();
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
         RenderHelper.disableStandardItemLighting();
@@ -43,7 +52,7 @@ public class LinesideRenderer extends TileEntitySpecialRenderer<TileLineside> {
         BufferBuilder buf = tess.getBuffer();
         buf.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
         buf.setTranslation(-pos.getX(), -pos.getY(), -pos.getZ());
-        brd.getBlockModelRenderer().renderModel(te.getWorld(), model, state, pos, buf, false);
+        brd.getBlockModelRenderer().renderModel(world, model, state, pos, buf, false);
         buf.setTranslation(0, 0, 0);
         tess.draw();
         GlStateManager.popMatrix();

@@ -35,6 +35,15 @@ public class ClientProxy extends CommonProxy {
     public void preInit() {
         MinecraftForge.EVENT_BUS.register(this);
         ClientRegistry.bindTileEntitySpecialRenderer(TileDisplayPanel.class, new DisplayPanelRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.signal.TileRailSign.class, new com.dogpound.railmap.client.render.RailSignRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.block.TileWayside.Scale.class,
+                new com.dogpound.railmap.client.render.WaysideRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.block.TileWayside.Aei.class,
+                new com.dogpound.railmap.client.render.WaysideRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.block.TileFreightTerminal.Loader.class,
+                new com.dogpound.railmap.client.render.FreightTerminalRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.block.TileFreightTerminal.Unloader.class,
+                new com.dogpound.railmap.client.render.FreightTerminalRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.signal.TileSignalMast.class,
                 new com.dogpound.railmap.client.render.SignalMastRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(com.dogpound.railmap.signal.TileSignalBridge.class,
@@ -85,6 +94,12 @@ public class ClientProxy extends CommonProxy {
     public void openScaleGui(net.minecraft.util.math.BlockPos pos, String what, float scale) {
         net.minecraft.client.Minecraft.getMinecraft().displayGuiScreen(
                 new com.dogpound.railmap.client.gui.GuiScale(pos, what, scale));
+    }
+
+    @Override
+    public void openSignTextGui(net.minecraft.util.math.BlockPos pos, String text) {
+        net.minecraft.client.Minecraft.getMinecraft().displayGuiScreen(
+                new com.dogpound.railmap.client.gui.GuiSignText(pos, text));
     }
 
     @Override

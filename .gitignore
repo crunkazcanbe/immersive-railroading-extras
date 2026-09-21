@@ -1,9 +1,0 @@
-build/
-.gradle/
-run/
-out/
-*.iml
-.idea/
-libs/*.jar
-releases/
-__pycache__/

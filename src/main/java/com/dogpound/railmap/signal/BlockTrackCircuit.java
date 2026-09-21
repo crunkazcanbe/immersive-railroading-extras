@@ -22,7 +22,9 @@ import java.util.List;
 
 /** The flat plate that goes on the ground beside the rail: insulated joint (boundary) or track circuit (detector). */
 public class BlockTrackCircuit extends Block {
-    private static final AxisAlignedBB PLATE = new AxisAlignedBB(0, 0, 0, 1, 2 / 16.0, 1);
+    // match the 3D models: the circuit is a trackside cabinet, the joint a squat bolted housing
+    private static final AxisAlignedBB CIRCUIT_BOX = new AxisAlignedBB(1 / 16.0, 0, 1 / 16.0, 15 / 16.0, 13.4 / 16.0, 15 / 16.0);
+    private static final AxisAlignedBB JOINT_BOX   = new AxisAlignedBB(1 / 16.0, 0, 1 / 16.0, 15 / 16.0, 10.6 / 16.0, 15 / 16.0);
 
     private final boolean joint;
 
@@ -113,7 +115,7 @@ public class BlockTrackCircuit extends Block {
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        return PLATE;
+        return joint ? JOINT_BOX : CIRCUIT_BOX;
     }
 
     @Override

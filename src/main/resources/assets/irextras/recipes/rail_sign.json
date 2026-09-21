@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "MMM",
+  " S ",
+  " S "
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   }
+  ],
+  "S": {
+   "item": "minecraft:stick"
+  }
+ },
+ "result": {
+  "item": "irextras:rail_sign",
+  "count": 3
+ }
+}

@@ -32,7 +32,7 @@ import org.apache.logging.log4j.Logger;
  * stations with a timetable, live trains with speed/cargo/heading, block occupancy, and
  * mirrors it all onto Dynmap when present.
  */
-@Mod(modid = RailMap.MODID, name = "Immersive Railroading Extras", version = "0.5.0",
+@Mod(modid = RailMap.MODID, name = "Immersive Railroading Extras", version = "0.5.2",   // keep in step with mod_version in gradle.properties
         acceptableRemoteVersions = "*",
         dependencies = "required-after:universalmodcore;after:immersiverailroading;after:landofsignals;after:dynmap;after:opencomputers")
 public class RailMap {
@@ -67,6 +67,7 @@ public class RailMap {
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketRailOps.Handler.class, com.dogpound.railmap.network.PacketRailOps.class, 6, Side.SERVER);
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketRailState.Handler.class, com.dogpound.railmap.network.PacketRailState.class, 7, Side.CLIENT);
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketScale.Handler.class, com.dogpound.railmap.network.PacketScale.class, 8, Side.SERVER);
+        NETWORK.registerMessage(com.dogpound.railmap.network.PacketSignText.Handler.class, com.dogpound.railmap.network.PacketSignText.class, 9, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(this, proxy);
         MinecraftForge.EVENT_BUS.register(new TrainTracker());
         MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.signal.SignalEngine());

@@ -1,0 +1,56 @@
+{
+  "parent": "irextras:block/catenary_wire_core",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -9.38,
+        -0.0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -9.38,
+        -0.0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        -6.38,
+        0
+      ],
+      "scale": [
+        0.312,
+        0.312,
+        0.312
+      ]
+    }
+  }
+}

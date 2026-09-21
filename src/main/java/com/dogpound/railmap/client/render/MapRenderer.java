@@ -104,6 +104,10 @@ public final class MapRenderer {
     private FontRenderer font() {
         return Minecraft.getMinecraft().fontRenderer;
     }
+    /** Boxes already occupied by a label this frame, so two labels never print on top of
+     *  each other. Cleared at the start of every draw(). */
+    private final java.util.List<double[]> labelBoxes = new java.util.ArrayList<>();
+
     private final Tessellator tess = Tessellator.getInstance();
     private final BufferBuilder buf = tess.getBuffer();
 
@@ -138,6 +142,7 @@ public final class MapRenderer {
      */
     public Pick draw(RailNetwork net, List<TrainNode> trains, int mx, int my) {
         Pick pick = new Pick();
+        labelBoxes.clear();
         GlStateManager.disableTexture2D();
         GlStateManager.enableBlend();
         GlStateManager.disableAlpha();
@@ -457,13 +462,49 @@ public final class MapRenderer {
         return px;
     }
 
+    /**
+     * Draws a label that always stays inside the panel AND never lands on top of another label.
+     * A label that would overhang the right edge flips to the left of its anchor; one that
+     * collides with a label already drawn this frame is nudged above/below; if nothing fits it
+     * is dropped rather than printed as mush. Before this, labels near the edge ran off the
+     * face of the sign and labels near each other overprinted into an unreadable smear.
+     */
     private void text(String s, double x, double y, int col) {
+        // keep a hair of inset: a label flush against x=0 has its first letter shaved off by the
+        // panel bezel on a wall screen
+        final double m = 2;
+        if (y < m || y + 9 > h - m) return;
         int tw = font().getStringWidth(s);
-        if (x < 0 || y < 0 || x + tw > w || y + 9 > h) return;
-        GlStateManager.enableTexture2D();
-        font().drawStringWithShadow(s, (float) x, (float) y, col);
-        GlStateManager.disableTexture2D();
-        GlStateManager.enableBlend();
+        if (tw <= 0) return;
+
+        // candidate positions, in order of preference: as asked, flipped left, then nudged off
+        // the anchor vertically (the usual fix when two stops sit close together on the map)
+        double flipped = x - 4 - tw;
+        double[][] tries = {
+                {x, y}, {flipped, y},
+                {x, y - 10}, {flipped, y - 10},
+                {x, y + 10}, {flipped, y + 10},
+                {x, y - 19}, {x, y + 19},
+        };
+        for (double[] t : tries) {
+            double lx = t[0], ly = t[1];
+            if (lx < m || lx + tw > w - m || ly < m || ly + 9 > h - m) continue;
+            if (overlapsLabel(lx, ly, tw)) continue;
+            labelBoxes.add(new double[]{lx, ly, lx + tw, ly + 9});
+            GlStateManager.enableTexture2D();
+            font().drawStringWithShadow(s, (float) lx, (float) ly, col);
+            GlStateManager.disableTexture2D();
+            GlStateManager.enableBlend();
+            return;
+        }
+    }
+
+    private boolean overlapsLabel(double x, double y, int tw) {
+        double x1 = x + tw, y1 = y + 9;
+        for (double[] b : labelBoxes) {
+            if (x < b[2] && x1 > b[0] && y < b[3] && y1 > b[1]) return true;
+        }
+        return false;
     }
 
     /** Filled rect, clipped. Begins/ends its own draw. */

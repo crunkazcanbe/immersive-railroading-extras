@@ -1,0 +1,56 @@
+{
+  "parent": "irextras:block/loading_silo",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        0.08,
+        -2.27,
+        -0.08
+      ],
+      "scale": [
+        0.282,
+        0.282,
+        0.282
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        0.08,
+        -2.27,
+        -0.08
+      ],
+      "scale": [
+        0.282,
+        0.282,
+        0.282
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0.73,
+        0
+      ],
+      "scale": [
+        0.141,
+        0.141,
+        0.141
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "particle": "irextras:blocks/scale_deck",
+  "grate": "irextras:blocks/scale_deck",
+  "edge": "irextras:blocks/steel"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    12,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "up": {
+     "texture": "#grate"
+    },
+    "down": {
+     "texture": "#grate"
+    },
+    "north": {
+     "texture": "#edge"
+    },
+    "south": {
+     "texture": "#edge"
+    },
+    "east": {
+     "texture": "#edge"
+    },
+    "west": {
+     "texture": "#edge"
+    }
+   }
+  }
+ ]
+}

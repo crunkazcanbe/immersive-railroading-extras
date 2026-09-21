@@ -5,10 +5,12 @@ set of tracks into a railroad that runs itself: driverless trains, ticket machin
 signalling with real interlocking, train protection, a live dispatcher map, station arrivals
 boards, talking defect detectors and an OpenComputers API.
 
-> **Status: alpha (0.5.1).** Play-tested on a loop with a station: automatic block signals, grade
+> **Status: alpha (0.5.2).** Play-tested on a loop with a station: automatic block signals, grade
 > crossings, track circuits, the defect detector, the dispatcher board, the handheld map, lines and
-> driverless trains stopping at stations all work. Tickets, CTC routes, train protection and
-> OpenComputers still need more testing.
+> driverless trains stopping at stations all work. Every block and item has been placed and used
+> in-game (51 blocks, 3 items) with no exceptions; the Dispatcher Board, Display Panel and Ticket
+> Machine screens all open. Tickets, CTC routes, train protection, the new timetable planner and
+> OpenComputers still need more testing with real traffic.
 > Bug reports, crash logs and pull requests are very welcome — see [Help wanted](#help-wanted).
 
 ---
@@ -35,6 +37,25 @@ Click any locomotive on the Dispatcher Board → **Make driverless…**
   dispatcher sends a train — a line train that serves both stations, or the nearest on-call train.
 - Link platform signals with the Signal Wrench and they are held at Stop while a train boards.
 - Redstone: pulse when a ticket is accepted, steady while a train is boarding.
+
+### Timetables & planning
+- Write a **timetable**: named services on a line, each with a first departure, a repeat headway
+  and a call list (arrive/depart offsets). Stored with the world.
+- The planner reserves track in **time and space** before anything moves, with a headway pad, so
+  two services are never planned nose-to-tail. If a run clashes it pushes the departure later and
+  retries instead of failing.
+- **Meet planning** on single track: where two opposing services share a stretch, it picks a
+  passing place, preferring the middle of the shared run.
+
+### Build your own gantry tower
+The gantry is made of parts, so the tower is yours to design rather than something the mod stamps
+out for you:
+- **Gantry Tower Leg** — steel lattice, climbable like a ladder.
+- **Gantry Walkway** — grating you can stand on.
+- **Gantry Handrail** — 1.5 blocks tall in collision (the same trick vanilla fences use) so
+  Auto-Jump cannot hop it and drop you off the deck.
+- **Gantry Radio Mast** — slim mast with cross elements and a dish. Four facings, stacks for a
+  taller mast, decoration only.
 
 ### Signalling
 - Six American signal families: color light, searchlight, PRR position light, B&O color

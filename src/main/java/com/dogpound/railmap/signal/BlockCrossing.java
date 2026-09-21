@@ -139,6 +139,29 @@ public class BlockCrossing extends Block {
         return POST;
     }
 
+    /**
+     * Gates get a big selection box that runs the length of the arm, so a right-click on the
+     * arm itself — not just the post — cycles the approach distance. Signals and cantilevers
+     * keep the tight post box.
+     */
+    @Override
+    public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World world, BlockPos pos) {
+        if (kind != TileCrossing.Kind.GATE) return super.getSelectedBoundingBox(state, world, pos);
+        return POST.union(armBox(state.getValue(FACING))).offset(pos);
+    }
+
+    /** The arm's reach as an AABB in block-local space; direction matches CrossingRenderer. */
+    private static AxisAlignedBB armBox(EnumFacing facing) {
+        double reach = 4.6, w = 0.30, yLo = 0.95, yHi = 1.6, c = 0.5;
+        int i = facing.getHorizontalIndex();
+        double dx = i == 0 ? 1 : i == 2 ? -1 : 0;   // local +X after the renderer's -index*90 Y-spin
+        double dz = i == 1 ? 1 : i == 3 ? -1 : 0;
+        double ex = dx * reach, ez = dz * reach;
+        return new AxisAlignedBB(
+                Math.min(c, c + ex) - (dx == 0 ? w : 0), yLo, Math.min(c, c + ez) - (dz == 0 ? w : 0),
+                Math.max(c, c + ex) + (dx == 0 ? w : 0), yHi, Math.max(c, c + ez) + (dz == 0 ? w : 0));
+    }
+
     /** The TESR draws the whole signal, so the block model itself must not render too. */
     @Override
     public net.minecraft.util.EnumBlockRenderType getRenderType(IBlockState state) {

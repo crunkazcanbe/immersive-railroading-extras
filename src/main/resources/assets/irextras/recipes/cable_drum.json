@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "WMW",
+  "WMW",
+  "WMW"
+ ],
+ "key": {
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "plankWood"
+  },
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:cable_drum",
+  "count": 2
+ }
+}

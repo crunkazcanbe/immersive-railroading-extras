@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "MM",
+  "MM"
+ ],
+ "key": {
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:cabinet_small",
+  "count": 2
+ }
+}

@@ -26,7 +26,7 @@ import java.util.List;
  * one. Each head is its own signal: it walks its own track, sees its own block, and shows its
  * own aspect, exactly like a mast standing beside that rail would.
  */
-public class TileSignalBridge extends TileEntity implements ITickable {
+public class TileSignalBridge extends TileEntity implements ITickable, IScalable {
     /** Widest span the two posts will bridge. */
     public static final int MAX_SPAN = 24;
     /** How far under the span we look for track. */
@@ -51,6 +51,20 @@ public class TileSignalBridge extends TileEntity implements ITickable {
     private int span;                 // blocks between the two posts, 0 = not paired
     private long rescanAt = Long.MIN_VALUE;
     private final List<Head> heads = new ArrayList<>();
+    /** visual height/size, dialled with the wrench so the gantry clears any IR train */
+    private float scale = 1f;
+
+    @Override public float scale() { return scale; }
+
+    @Override
+    public void setScale(float sc) {
+        scale = IScalable.clamp(sc);
+        markDirty();
+        if (world != null && !world.isRemote) {
+            net.minecraft.block.state.IBlockState st = world.getBlockState(pos);
+            world.notifyBlockUpdate(pos, st, st, 3);
+        }
+    }
     private int ticks;
 
     public boolean isController() { return controller && span > 0; }
@@ -67,6 +81,9 @@ public class TileSignalBridge extends TileEntity implements ITickable {
     public EnumFacing spanAxis() {
         return facing().rotateYCCW();
     }
+
+    /** Span the real structure was last built for; -1 until it has been built at all. */
+    private int builtSpan = -1;
 
     public void markDirtyLayout() {
         rescanAt = Long.MIN_VALUE;
@@ -124,6 +141,26 @@ public class TileSignalBridge extends TileEntity implements ITickable {
             findHeads();
         }
         if (wasPaired != (span > 0) || controller) sync();
+        updateStructure();
+    }
+
+    /**
+     * Put up (or take down) the real tower and walkway. A drawn gantry is scenery -- you cannot
+     * stand on a renderer -- so a paired gantry builds itself out of real blocks. Rebuilt only
+     * when the span actually changes, since relink() runs every few seconds.
+     */
+    private void updateStructure() {
+        // Deliberately builds NOTHING any more.
+        //
+        // An earlier version stamped a 5x5 tower and a walkway automatically. She did not
+        // want that: it did not fit the mod, and it took the building away from the player.
+        // The frame / walkway / handrail / antenna are ordinary placeable blocks instead, so
+        // a tower is something you make yourself and decorate how you like.
+        //
+        // Teardown is still wired up in BlockSignalBridge.breakBlock so that any tower left
+        // over from that older version still comes down cleanly when the gantry is broken.
+        if (world == null || world.isRemote) return;
+        builtSpan = span;
     }
 
     /**
@@ -231,6 +268,7 @@ public class TileSignalBridge extends TileEntity implements ITickable {
         }
         t.setIntArray("h_at", along);
         t.setByteArray("h_as", asp);
+        if (scale != 1f) t.setFloat("scale", scale);
         return t;
     }
 
@@ -239,6 +277,7 @@ public class TileSignalBridge extends TileEntity implements ITickable {
         super.readFromNBT(t);
         span = t.getInteger("span");
         controller = t.getBoolean("ctrl");
+        scale = t.hasKey("scale") ? IScalable.clamp(t.getFloat("scale")) : 1f;
         int[] along = t.getIntArray("h_at");
         byte[] asp = t.getByteArray("h_as");
         heads.clear();
@@ -276,9 +315,10 @@ public class TileSignalBridge extends TileEntity implements ITickable {
     /** The controller draws the whole span, so its render box has to cover it. */
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
-        if (world == null || !isController()) return new AxisAlignedBB(pos).grow(1, 7, 1);
+        double h = 8.0 * Math.max(1f, scale);   // a scaled-up gantry rises higher, so grow with it
+        if (world == null || !isController()) return new AxisAlignedBB(pos).grow(1, h, 1);
         BlockPos far = pos.offset(spanAxis(), Math.max(1, span));
-        return new AxisAlignedBB(pos).union(new AxisAlignedBB(far)).grow(1, 8, 1);
+        return new AxisAlignedBB(pos).union(new AxisAlignedBB(far)).grow(2, h, 2);
     }
 
     public String statusLine() {

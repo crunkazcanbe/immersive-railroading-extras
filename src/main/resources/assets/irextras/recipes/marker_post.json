@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "R",
+  "M",
+  "M"
+ ],
+ "key": {
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
+  },
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:marker_post",
+  "count": 4
+ }
+}

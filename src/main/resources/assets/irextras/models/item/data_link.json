@@ -1,3 +1,56 @@
 {
- "parent": "irextras:block/data_link"
+  "parent": "irextras:block/data_link",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -1.34,
+        0.2
+      ],
+      "scale": [
+        0.395,
+        0.395,
+        0.395
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -1.34,
+        0.2
+      ],
+      "scale": [
+        0.395,
+        0.395,
+        0.395
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        1.66,
+        0
+      ],
+      "scale": [
+        0.198,
+        0.198,
+        0.198
+      ]
+    }
+  }
 }

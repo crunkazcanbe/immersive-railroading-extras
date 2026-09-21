@@ -128,6 +128,9 @@ public class BlockSignalBridge extends Block {
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        // Take the real tower and walkway down with the leg, or breaking a gantry would leave
+        // a staircase of orphaned steel standing in the air.
+        GantryTower.clear(world, pos, state.getValue(FACING).rotateYCCW());
         super.breakBlock(world, pos, state);
         poke(world, pos);
     }
@@ -173,5 +176,12 @@ public class BlockSignalBridge extends Block {
     @Override
     public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
+    }
+
+    /** The leg is a lattice you can climb, like a ladder, to reach the walkway across the top. */
+    @Override
+    public boolean isLadder(net.minecraft.block.state.IBlockState state, net.minecraft.world.IBlockAccess world,
+                            net.minecraft.util.math.BlockPos pos, net.minecraft.entity.EntityLivingBase entity) {
+        return true;
     }
 }

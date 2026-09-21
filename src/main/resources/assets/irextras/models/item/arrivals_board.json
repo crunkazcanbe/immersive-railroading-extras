@@ -1,3 +1,56 @@
 {
- "parent": "irextras:block/arrivals_board"
+  "parent": "irextras:block/arrivals_board",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -1.54,
+        -2.58
+      ],
+      "scale": [
+        0.549,
+        0.549,
+        0.549
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -1.54,
+        -2.58
+      ],
+      "scale": [
+        0.549,
+        0.549,
+        0.549
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        1.46,
+        0
+      ],
+      "scale": [
+        0.275,
+        0.275,
+        0.275
+      ]
+    }
+  }
 }

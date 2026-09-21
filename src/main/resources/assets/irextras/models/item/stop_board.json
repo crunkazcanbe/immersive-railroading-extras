@@ -1,0 +1,56 @@
+{
+  "parent": "irextras:block/stop_board",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -1.07,
+        -0.0
+      ],
+      "scale": [
+        0.429,
+        0.429,
+        0.429
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        -0.0,
+        -1.07,
+        -0.0
+      ],
+      "scale": [
+        0.429,
+        0.429,
+        0.429
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        1.93,
+        0
+      ],
+      "scale": [
+        0.214,
+        0.214,
+        0.214
+      ]
+    }
+  }
+}

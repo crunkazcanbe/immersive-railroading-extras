@@ -82,8 +82,11 @@ public class CrossingRenderer extends TileEntitySpecialRenderer<TileCrossing> {
         Prims.box(-0.16, 1.05, -0.16, 0.16, 1.45, 0.16, POST_DARK);              // gate mechanism housing
         GlStateManager.pushMatrix();
         GlStateManager.translate(0, 1.25, -0.10);
-        // 0 = arm straight up, 1 = arm horizontal across the road.
-        GlStateManager.rotate(-90f * p, 0, 0, 1);
+        // Arm is modelled lying along +X (horizontal). 90deg up when open (p=0), swinging down
+        // to horizontal across the road when closed (p=1): rotate(90*(1-p)). Was rotate(-90*p),
+        // which had it backwards -- horizontal when OPEN and pointing straight down when a train
+        // was coming, so it never actually blocked the crossing.
+        GlStateManager.rotate(90f * (1f - p), 0, 0, 1);
         double len = 4.2;
         // Striped arm, red/white in 0.6 block bands like the real thing.
         for (double s = 0; s < len; s += 0.6) {

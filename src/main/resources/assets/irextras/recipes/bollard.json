@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "Y",
+  "M",
+  "M"
+ ],
+ "key": {
+  "Y": {
+   "type": "forge:ore_dict",
+   "ore": "dye"
+  },
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:bollard",
+  "count": 4
+ }
+}

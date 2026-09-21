@@ -53,13 +53,27 @@ public class ItemSignalWrench extends Item {
             return EnumActionResult.SUCCESS;
         }
         boolean ours = peek instanceof TileSignalMast || peek instanceof TileSignalBridge || peek instanceof TileRelayCase
+                || peek instanceof com.dogpound.railmap.signal.TileRailSign
                 || peek instanceof com.dogpound.railmap.block.TileTicketMachine
                 || (peek == null && world.getTileEntity(pos.down()) instanceof com.dogpound.railmap.block.TileTicketMachine);
         if (!ours) return EnumActionResult.PASS;
-        if (world.isRemote) return EnumActionResult.SUCCESS;
+        if (world.isRemote) {
+            if (!player.isSneaking() && peek instanceof com.dogpound.railmap.signal.TileRailSign csign && csign.isCustom()) {
+                RailMap.proxy.openSignTextGui(pos, csign.customText());
+            }
+            return EnumActionResult.SUCCESS;
+        }
         ItemStack stack = player.getHeldItem(hand);
         TileEntity te = world.getTileEntity(pos);
 
+        if (te instanceof com.dogpound.railmap.signal.TileRailSign sign) {
+            if (sign.isCustom()) {
+                // client opens the editor; wrench on custom = edit its text
+                return EnumActionResult.SUCCESS;
+            }
+            say(player, sign.cycle(false));
+            return EnumActionResult.SUCCESS;
+        }
         if (te instanceof TileSignalMast || te instanceof TileSignalBridge) {
             setPick(stack, pos);
             say(player, "Signal picked up — now right-click a relay case to wire it in");
@@ -100,6 +114,7 @@ public class ItemSignalWrench extends Item {
         tip.add("§7Right-click a signal, then a relay case, to wire them together.");
         tip.add("§8Same pair again unlinks · right-click air to clear");
         tip.add("§8Sneak-right-click a signal, crossing or lineside sign: resize it");
+        tip.add("§8Right-click a Railway Sign: change what it says (custom sign = type your own)");
         BlockPos p = getPick(stack);
         if (p != null) {
             tip.add("§dHolding: " + p.getX() + ", " + p.getY() + ", " + p.getZ());

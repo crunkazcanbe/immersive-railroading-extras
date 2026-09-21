@@ -1,0 +1,74 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "particle": "irextras:blocks/idplate",
+  "p": "irextras:blocks/idplate",
+  "s": "irextras:blocks/ohle"
+ },
+ "elements": [
+  {
+   "from": [
+    7,
+    0,
+    7
+   ],
+   "to": [
+    9,
+    9,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#s"
+    },
+    "south": {
+     "texture": "#s"
+    },
+    "east": {
+     "texture": "#s"
+    },
+    "west": {
+     "texture": "#s"
+    },
+    "up": {
+     "texture": "#s"
+    },
+    "down": {
+     "texture": "#s"
+    }
+   }
+  },
+  {
+   "from": [
+    4.5,
+    7,
+    7.6
+   ],
+   "to": [
+    11.5,
+    13,
+    8.4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#p"
+    },
+    "south": {
+     "texture": "#p"
+    },
+    "east": {
+     "texture": "#p"
+    },
+    "west": {
+     "texture": "#p"
+    },
+    "up": {
+     "texture": "#p"
+    },
+    "down": {
+     "texture": "#p"
+    }
+   }
+  }
+ ]
+}

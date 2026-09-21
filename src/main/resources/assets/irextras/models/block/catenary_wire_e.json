@@ -1,0 +1,41 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "particle": "irextras:blocks/ohle",
+  "w": "irextras:blocks/ohle"
+ },
+ "elements": [
+  {
+   "from": [
+    9,
+    22.7,
+    7.2
+   ],
+   "to": [
+    16,
+    23.3,
+    8.8
+   ],
+   "faces": {
+    "north": {
+     "texture": "#w"
+    },
+    "south": {
+     "texture": "#w"
+    },
+    "east": {
+     "texture": "#w"
+    },
+    "west": {
+     "texture": "#w"
+    },
+    "up": {
+     "texture": "#w"
+    },
+    "down": {
+     "texture": "#w"
+    }
+   }
+  }
+ ]
+}

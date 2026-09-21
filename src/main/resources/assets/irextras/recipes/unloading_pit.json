@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "BBB",
+  "MHM",
+  "MMM"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:iron_bars"
+  },
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "plateSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ],
+  "H": {
+   "item": "minecraft:hopper"
+  }
+ },
+ "result": {
+  "item": "irextras:unloading_pit"
+ }
+}

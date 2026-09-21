@@ -1,0 +1,41 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "irextras:catenary_wire_core"
+   }
+  },
+  {
+   "when": {
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:catenary_wire_n"
+   }
+  },
+  {
+   "when": {
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:catenary_wire_s"
+   }
+  },
+  {
+   "when": {
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:catenary_wire_e"
+   }
+  },
+  {
+   "when": {
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:catenary_wire_w"
+   }
+  }
+ ]
+}

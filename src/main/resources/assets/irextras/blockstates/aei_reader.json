@@ -1,0 +1,31 @@
+{
+ "variants": {
+  "facing=north,scaled=false": {
+   "model": "irextras:aei_reader"
+  },
+  "facing=north,scaled=true": {
+   "model": "irextras:empty"
+  },
+  "facing=east,scaled=false": {
+   "model": "irextras:aei_reader",
+   "y": 90
+  },
+  "facing=east,scaled=true": {
+   "model": "irextras:empty"
+  },
+  "facing=south,scaled=false": {
+   "model": "irextras:aei_reader",
+   "y": 180
+  },
+  "facing=south,scaled=true": {
+   "model": "irextras:empty"
+  },
+  "facing=west,scaled=false": {
+   "model": "irextras:aei_reader",
+   "y": 270
+  },
+  "facing=west,scaled=true": {
+   "model": "irextras:empty"
+  }
+ }
+}

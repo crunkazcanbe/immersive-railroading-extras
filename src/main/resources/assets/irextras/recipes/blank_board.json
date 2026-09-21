@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "CCC",
+  " M ",
+  " M "
+ ],
+ "key": {
+  "C": {
+   "item": "minecraft:coal",
+   "data": 0
+  },
+  "M": [
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotSteel"
+   },
+   {
+    "type": "forge:ore_dict",
+    "ore": "ingotIron"
+   }
+  ]
+ },
+ "result": {
+  "item": "irextras:blank_board",
+  "count": 2
+ }
+}

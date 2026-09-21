@@ -1,0 +1,18 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:gantry_rail"
+  },
+  "facing=south": {
+   "model": "irextras:gantry_rail"
+  },
+  "facing=east": {
+   "model": "irextras:gantry_rail",
+   "y": 90
+  },
+  "facing=west": {
+   "model": "irextras:gantry_rail",
+   "y": 90
+  }
+ }
+}

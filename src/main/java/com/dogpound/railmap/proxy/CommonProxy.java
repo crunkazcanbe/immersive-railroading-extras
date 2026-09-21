@@ -40,6 +40,12 @@ import java.util.List;
 public class CommonProxy implements IGuiHandler {
     public static Block dispatcherBoard;
     public static Block displayPanel;
+    public static Block gantryLeg;
+    /** The real structure a paired gantry builds: corner legs you climb, walkway you cross. */
+    public static Block gantryFrame;
+    public static Block gantryDeck;
+    public static Block gantryRail;
+    public static Block gantryAntenna;
     public static Item railMap;
     public static Item signalWrench;
     public static Item ticket;
@@ -54,6 +60,10 @@ public class CommonProxy implements IGuiHandler {
         // Signals: one block per American family, all driven by the same block logic.
         for (SignalStyle style : SignalStyle.values()) add(new BlockSignalMast(style));
         add(new BlockSignalBridge());   // the gantry: two legs that span themselves
+        gantryFrame = add(new com.dogpound.railmap.signal.BlockGantryFrame());
+        gantryDeck  = add(new com.dogpound.railmap.signal.BlockGantryDeck());
+        gantryRail  = add(new com.dogpound.railmap.signal.BlockGantryRail());
+        gantryAntenna = add(new com.dogpound.railmap.signal.BlockGantryAntenna());
         // What goes under the rail.
         add(new BlockTrackCircuit(true));    // insulated joint: block boundary
         add(new BlockTrackCircuit(false));   // track circuit: detector + redstone out
@@ -62,11 +72,25 @@ public class CommonProxy implements IGuiHandler {
         for (TileCrossing.Kind k : TileCrossing.Kind.values()) add(new BlockCrossing(k));
         // Lineside furniture.
         for (BlockLineside.Kind k : BlockLineside.Kind.values()) add(new BlockLineside(k));
+        // Overhead line equipment.
+        for (com.dogpound.railmap.signal.BlockCatenary.Kind k : com.dogpound.railmap.signal.BlockCatenary.Kind.values())
+            add(new com.dogpound.railmap.signal.BlockCatenary(k));
         // Stations and operations.
         add(new com.dogpound.railmap.block.BlockTicketMachine());
         add(new com.dogpound.railmap.block.BlockArrivalsBoard());
         add(new com.dogpound.railmap.block.BlockDefectDetector());
         add(new com.dogpound.railmap.block.BlockDataLink());
+        // Freight terminal: getting goods on and off the train.
+        add(new com.dogpound.railmap.block.BlockFreightTerminal(true));   // loading silo
+        add(new com.dogpound.railmap.block.BlockFreightTerminal(false));  // unloading pit
+        gantryLeg = add(new com.dogpound.railmap.block.BlockGantryLeg());
+        // Passenger side of the station.
+        add(new com.dogpound.railmap.block.BlockTicketGate());
+        add(new com.dogpound.railmap.block.BlockPaSpeaker());
+        // Measuring devices in the rail.
+        add(new com.dogpound.railmap.block.BlockWayside(com.dogpound.railmap.block.TileWayside.Kind.SCALE));
+        add(new com.dogpound.railmap.block.BlockWayside(com.dogpound.railmap.block.TileWayside.Kind.AEI));
+        add(new com.dogpound.railmap.signal.BlockRailSign());
 
         for (Block b : ALL_BLOCKS) e.getRegistry().register(b);
 
@@ -85,6 +109,13 @@ public class CommonProxy implements IGuiHandler {
         GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileTicketMachine.class, new ResourceLocation(RailMap.MODID, "ticket_machine"));
         GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileArrivalsBoard.class, new ResourceLocation(RailMap.MODID, "arrivals_board"));
         GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileDefectDetector.class, new ResourceLocation(RailMap.MODID, "defect_detector"));
+        GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileFreightTerminal.Loader.class, new ResourceLocation(RailMap.MODID, "loading_silo"));
+        GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileFreightTerminal.Unloader.class, new ResourceLocation(RailMap.MODID, "unloading_pit"));
+        GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileTicketGate.class, new ResourceLocation(RailMap.MODID, "ticket_gate"));
+        GameRegistry.registerTileEntity(com.dogpound.railmap.block.TilePaSpeaker.class, new ResourceLocation(RailMap.MODID, "pa_speaker"));
+        GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileWayside.Scale.class, new ResourceLocation(RailMap.MODID, "track_scale"));
+        GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileWayside.Aei.class, new ResourceLocation(RailMap.MODID, "aei_reader"));
+        GameRegistry.registerTileEntity(com.dogpound.railmap.signal.TileRailSign.class, new ResourceLocation(RailMap.MODID, "rail_sign"));
         GameRegistry.registerTileEntity(com.dogpound.railmap.block.TileDataLink.class, new ResourceLocation(RailMap.MODID, "data_link"));
     }
 
@@ -118,6 +149,7 @@ public class CommonProxy implements IGuiHandler {
     public void acceptRailState(com.dogpound.railmap.network.PacketRailState state) {}
 
     public void openScaleGui(net.minecraft.util.math.BlockPos pos, String what, float scale) {}
+    public void openSignTextGui(net.minecraft.util.math.BlockPos pos, String text) {}
 
     /** The board GUI is a plain GuiScreen: no container, so the server side has nothing to open. */
     @Override

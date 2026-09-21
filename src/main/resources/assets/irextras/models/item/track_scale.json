@@ -1,0 +1,56 @@
+{
+  "parent": "irextras:block/track_scale",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        0.71,
+        1.66,
+        -0.0
+      ],
+      "scale": [
+        0.474,
+        0.474,
+        0.474
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        0.71,
+        1.66,
+        -0.0
+      ],
+      "scale": [
+        0.474,
+        0.474,
+        0.474
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        4.66,
+        0
+      ],
+      "scale": [
+        0.237,
+        0.237,
+        0.237
+      ]
+    }
+  }
+}
