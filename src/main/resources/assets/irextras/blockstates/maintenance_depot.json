@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:maintenance_depot"
+  },
+  "facing=east": {
+   "model": "irextras:maintenance_depot",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:maintenance_depot",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:maintenance_depot",
+   "y": 270
+  }
+ }
+}

@@ -152,8 +152,11 @@ public final class TrainTracker {
             boolean moving = Math.abs(speed) > 0.5;
             if (moving && !stationKeys.isEmpty()) heading = headingGuess(p, dx, dz, stations);
 
-            out.add(new TrainNode(stock.getId(), (float) p.x, (float) p.y, (float) p.z, mapYaw, speed, kind,
-                    name, stock.tag, cargo, pax, consist, lead, th, rv, br, heading));
+            TrainNode node = new TrainNode(stock.getId(), (float) p.x, (float) p.y, (float) p.z, mapYaw, speed, kind,
+                    name, stock.tag, cargo, pax, consist, lead, th, rv, br, heading);
+            node.wear = Wear.worst(mcWorld, stock.getUUID());
+            if (stock instanceof LocomotiveDiesel) node.power = Electric.status(mcWorld, stock);
+            out.add(node);
 
             // Timetable: judged once per train, by its lead loco (a handcar counts).
             if (lead && kind.isLoco() && !stationKeys.isEmpty()) {

@@ -22,7 +22,32 @@ import java.util.Map;
  * It accepts a ticket travelling either way: outbound from this station, or arriving at it. A
  * spent ticket is refused, which is what makes a round trip worth the extra fare.
  */
-public class TileTicketGate extends TileEntity implements ITickable {
+public class TileTicketGate extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    private int passed, refused;
+
+    @Override public String settingsTitle() { return "Fare Gate"; }
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return cfg; }
+
+    public boolean creativeWalksThrough() { return cfg.bool("creative"); }
+    public boolean beeps() { return cfg.bool("sound"); }
+
+    @Override
+    public java.util.List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        java.util.List<com.dogpound.railmap.settings.Setting> l = new java.util.ArrayList<>();
+        String g = "Gate", st = "Status";
+        l.add(com.dogpound.railmap.settings.Setting.num(g, "openSec", "Stays open", "", 3, 1, 30, 1, "s"));
+        l.add(com.dogpound.railmap.settings.Setting.choice(g, "accept", "Accept tickets", "", "To or from here", "To or from here", "Leaving from here", "Arriving here", "Any valid ticket"));
+        l.add(com.dogpound.railmap.settings.Setting.bool(g, "punch", "Punch the ticket", "Mark it used at the gate (it can't be used again)", false));
+        l.add(com.dogpound.railmap.settings.Setting.bool(g, "creative", "Creative players walk through", "Open for creative-mode players without a ticket", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool(g, "sound", "Beep", "", true));
+        l.add(com.dogpound.railmap.settings.Setting.num(g, "level", "Redstone while open", "", 15, 1, 15, 1, ""));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Station", stationName.isEmpty() ? "none in range" : stationName));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Let through", String.valueOf(passed)));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Turned away", String.valueOf(refused)));
+        return l;
+    }
+
 
     /** how long the gate stays open after a valid ticket, in ticks */
     private static final int OPEN_TICKS = 60;
@@ -87,23 +112,35 @@ public class TileTicketGate extends TileEntity implements ITickable {
             return "This gate isn't at a station yet — name a station nearby.";
         }
         if (!ItemTicket.valid(held)) {
+            refused++;
             return "Present a ticket for " + stationName + ".";
         }
         if (ItemTicket.isSpent(held)) {
+            refused++;
             return "That ticket is spent.";
         }
-        boolean mine = ItemTicket.from(held) == station || ItemTicket.to(held) == station;
+        String acc = cfg.text("accept");
+        boolean from = ItemTicket.from(held) == station, to = ItemTicket.to(held) == station;
+        boolean mine = switch (acc) {
+            case "Leaving from here" -> from;
+            case "Arriving here" -> to;
+            case "Any valid ticket" -> true;
+            default -> from || to;
+        };
         if (!mine) {
+            refused++;
             return "Not valid here — that ticket is " + ItemTicket.fromName(held)
                     + " to " + ItemTicket.toName(held) + ".";
         }
+        if (cfg.bool("punch")) ItemTicket.punch(held);
+        passed++;
         open();
         return "Ticket accepted — " + stationName + ". Please proceed.";
     }
 
     public void open() {
         boolean was = isOpen();
-        openFor = OPEN_TICKS;
+        openFor = Math.max(20, cfg.num("openSec") * 20);
         if (!was) {
             syncState();
         }
@@ -117,7 +154,7 @@ public class TileTicketGate extends TileEntity implements ITickable {
     }
 
     public int redstoneOutput() {
-        return isOpen() ? 15 : 0;
+        return isOpen() ? Math.max(1, cfg.num("level")) : 0;
     }
 
     public String statusLine() {
@@ -133,6 +170,9 @@ public class TileTicketGate extends TileEntity implements ITickable {
         t.setLong("station", station);
         t.setString("stationName", stationName);
         t.setInteger("open", openFor);
+        t.setInteger("passed", passed);
+        t.setInteger("refused", refused);
+        cfg.write(t);
         return t;
     }
 
@@ -142,6 +182,9 @@ public class TileTicketGate extends TileEntity implements ITickable {
         station = t.hasKey("station") ? t.getLong("station") : Long.MIN_VALUE;
         stationName = t.getString("stationName");
         openFor = t.getInteger("open");
+        passed = t.getInteger("passed");
+        refused = t.getInteger("refused");
+        cfg.read(t);
     }
 
     @Override

@@ -1,0 +1,28 @@
+{
+  "name": "London Underground 2009 Stock passenger car (Pride Rail Voxel)",
+  "model": "immersiverailroading:models/rolling_stock/pride_rail_voxel/tube2009/tube2009_car.obj",
+  "model_gauge_m": 1.435,
+  "tex_variants": {
+    "Real livery": "",
+    "Pride rainbow": "pride",
+    "Trans flag": "trans"
+  },
+  "properties": {
+    "weight_kg": 24300
+  },
+  "passenger": {
+    "slots": 44,
+    "center_x": 0,
+    "center_y": 1.1,
+    "length": 14.600000000000001,
+    "width": 1.7160000000000002
+  },
+  "trucks": {
+    "front": 5.4,
+    "rear": -5.4
+  },
+  "couplers": {
+    "front_offset": 0.12,
+    "rear_offset": 0.12
+  }
+}

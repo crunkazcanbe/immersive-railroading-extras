@@ -1,0 +1,30 @@
+{
+  "name": "Hong Kong MTR M-Train full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_mtr_mtrain",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mtr_mtrain_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mtr_mtrain_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mtr_mtrain_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mtr_mtrain",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

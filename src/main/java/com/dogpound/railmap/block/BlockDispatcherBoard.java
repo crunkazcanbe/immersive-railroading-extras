@@ -23,10 +23,17 @@ import net.minecraft.world.World;
 public class BlockDispatcherBoard extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
+    /** which screen it opens: the board's map, or (Signal Box Computer) straight into the program editor */
+    protected int gui() { return RailMap.GUI_DISPATCHER_BOARD; }
+
     public BlockDispatcherBoard() {
+        this("dispatcher_board");
+    }
+
+    protected BlockDispatcherBoard(String id) {
         super(Material.IRON);
-        setRegistryName(RailMap.MODID, "dispatcher_board");
-        setTranslationKey(RailMap.MODID + ".dispatcher_board");
+        setRegistryName(RailMap.MODID, id);
+        setTranslationKey(RailMap.MODID + "." + id);
         setCreativeTab(RailMapTab.INSTANCE);
         setHardness(2f);
         setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
@@ -43,7 +50,7 @@ public class BlockDispatcherBoard extends Block {
         } else {
             // The board screen is client-only (the server has no container for it), and FML drops a
             // server-side openGui whose server element is null -- so it must be opened here.
-            player.openGui(RailMap.instance, RailMap.GUI_DISPATCHER_BOARD, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(RailMap.instance, gui(), world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
     }

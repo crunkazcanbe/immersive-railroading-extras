@@ -1,0 +1,19 @@
+{
+  "name": "JR MLX01 full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_mlx01"
+    },
+    {
+      "stock": "pride_voxel_mlx01_car"
+    },
+    {
+      "stock": "pride_voxel_mlx01",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

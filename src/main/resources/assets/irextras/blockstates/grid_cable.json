@@ -1,0 +1,934 @@
+{
+ "multipart": [
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "med"
+   },
+   "apply": {
+    "model": "irextras:cable_core_med_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "med",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "med",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_mv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "med",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_mv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "med",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_mv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "med",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_med_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thin"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thin_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thin",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thin",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_mv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thin",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_mv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thin",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_mv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thin",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thin_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thick"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thick_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thick",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thick",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_mv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thick",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_mv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thick",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_mv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "mv",
+    "gauge": "thick",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thick_mv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "med"
+   },
+   "apply": {
+    "model": "irextras:cable_core_med_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "med",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "med",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_lv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "med",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_lv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "med",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_lv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "med",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_med_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thin"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thin_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thin",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thin",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_lv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thin",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_lv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thin",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_lv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thin",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thin_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thick"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thick_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thick",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thick",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_lv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thick",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_lv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thick",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_lv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "lv",
+    "gauge": "thick",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thick_lv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "med"
+   },
+   "apply": {
+    "model": "irextras:cable_core_med_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "med",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "med",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_hv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "med",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_hv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "med",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_hv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "med",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_med_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thin"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thin_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thin",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thin",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_hv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thin",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_hv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thin",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_hv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thin",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thin_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thick"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thick_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thick",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thick",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_hv",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thick",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_hv",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thick",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_hv",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "hv",
+    "gauge": "thick",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thick_hv"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "med"
+   },
+   "apply": {
+    "model": "irextras:cable_core_med_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "med",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "med",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_sc",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "med",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_sc",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "med",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_sc",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "med",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_med_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thin"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thin_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thin",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thin",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_sc",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thin",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_sc",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thin",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_sc",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thin",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thin_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thick"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thick_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thick",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thick",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_sc",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thick",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_sc",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thick",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_sc",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "sc",
+    "gauge": "thick",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thick_sc"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "med"
+   },
+   "apply": {
+    "model": "irextras:cable_core_med_bus"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "med",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_bus"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "med",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_bus",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "med",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_bus",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "med",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_med_bus",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "med",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_med_bus"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thin"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thin_bus"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thin",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_bus"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thin",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_bus",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thin",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_bus",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thin",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thin_bus",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thin",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thin_bus"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thick"
+   },
+   "apply": {
+    "model": "irextras:cable_core_thick_bus"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thick",
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_bus"
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thick",
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_bus",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thick",
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_bus",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thick",
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_side_thick_bus",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "look": "bus",
+    "gauge": "thick",
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:cable_up_thick_bus"
+   }
+  }
+ ]
+}

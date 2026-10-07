@@ -1,0 +1,7 @@
+{
+ "parent": "irextras:block/grid_rectifier_0",
+ "textures": {
+  "cab": "irextras:blocks/grid_inverter_cab",
+  "particle": "irextras:blocks/grid_inverter_cab"
+ }
+}

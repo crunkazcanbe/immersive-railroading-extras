@@ -1,0 +1,22 @@
+{
+  "name": "JR Central L0 Series full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_l0",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_l0_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_l0",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

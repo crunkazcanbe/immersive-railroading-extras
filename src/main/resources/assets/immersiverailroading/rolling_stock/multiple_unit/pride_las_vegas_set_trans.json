@@ -1,0 +1,26 @@
+{
+  "name": "Las Vegas Monorail M-VI full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_las_vegas",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_las_vegas_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_las_vegas_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_las_vegas",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

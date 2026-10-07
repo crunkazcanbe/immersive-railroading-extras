@@ -1,0 +1,122 @@
+{
+ "textures": {
+  "particle": "irextras:blocks/stn_modern_column",
+  "paving": "irextras:blocks/stn_modern_paving",
+  "wall": "irextras:blocks/stn_modern_wall",
+  "column": "irextras:blocks/stn_modern_column",
+  "glass": "irextras:blocks/stn_modern_glass",
+  "roof": "irextras:blocks/stn_modern_roof",
+  "wood": "irextras:blocks/stn_modern_wood",
+  "trim": "irextras:blocks/stn_modern_trim",
+  "sign": "irextras:blocks/stn_modern_sign",
+  "poster": "irextras:blocks/stn_modern_poster",
+  "tactile": "irextras:blocks/stn_tactile",
+  "coping": "irextras:blocks/stn_coping",
+  "line": "irextras:blocks/stn_line",
+  "lamp": "irextras:blocks/stn_lamp_glow",
+  "clock": "irextras:blocks/stn_clock_face",
+  "bin": "irextras:blocks/stn_bin",
+  "desk": "irextras:blocks/stn_desk",
+  "screen": "irextras:blocks/stn_screen",
+  "dark": "irextras:blocks/ohle_dark",
+  "galv": "irextras:blocks/ohle_galv"
+ },
+ "elements": [
+  {
+   "from": [
+    4.5,
+    0,
+    4.5
+   ],
+   "to": [
+    11.5,
+    9,
+    11.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#bin"
+    },
+    "south": {
+     "texture": "#bin"
+    },
+    "east": {
+     "texture": "#bin"
+    },
+    "west": {
+     "texture": "#bin"
+    },
+    "up": {
+     "texture": "#bin"
+    },
+    "down": {
+     "texture": "#bin"
+    }
+   }
+  },
+  {
+   "from": [
+    4,
+    9,
+    4
+   ],
+   "to": [
+    12,
+    10,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#dark"
+    },
+    "south": {
+     "texture": "#dark"
+    },
+    "east": {
+     "texture": "#dark"
+    },
+    "west": {
+     "texture": "#dark"
+    },
+    "up": {
+     "texture": "#dark"
+    },
+    "down": {
+     "texture": "#dark"
+    }
+   }
+  },
+  {
+   "from": [
+    7,
+    10,
+    7
+   ],
+   "to": [
+    9,
+    11,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#dark"
+    },
+    "south": {
+     "texture": "#dark"
+    },
+    "east": {
+     "texture": "#dark"
+    },
+    "west": {
+     "texture": "#dark"
+    },
+    "up": {
+     "texture": "#dark"
+    },
+    "down": {
+     "texture": "#dark"
+    }
+   }
+  }
+ ]
+}

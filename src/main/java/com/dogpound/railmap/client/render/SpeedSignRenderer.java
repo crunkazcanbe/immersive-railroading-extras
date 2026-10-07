@@ -27,7 +27,8 @@ public class SpeedSignRenderer extends TileEntitySpecialRenderer<TileSpeedSign> 
         LinesideRenderer.drawModel(te, x, y, z);
         float s = te.scale();
         GlStateManager.pushMatrix();
-        GlStateManager.translate(x + 0.5, y, z + 0.5);
+        GlStateManager.translate(x + 0.5 + te.offX(), y + te.lift(), z + 0.5 + te.offZ());
+        if (te.turn() != 0f) GlStateManager.rotate(-te.turn(), 0, 1, 0);
         GlStateManager.scale(s, s, s);
         GlStateManager.translate(0, PLATE_Y, 0);
         GlStateManager.rotate(-yRot, 0, 1, 0);

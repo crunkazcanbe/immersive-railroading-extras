@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:industry_power_station"
+  },
+  "facing=east": {
+   "model": "irextras:industry_power_station",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:industry_power_station",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:industry_power_station",
+   "y": 270
+  }
+ }
+}

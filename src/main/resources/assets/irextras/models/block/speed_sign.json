@@ -3,7 +3,7 @@
  "textures": {
   "particle": "irextras:blocks/post_metal",
   "m": "irextras:blocks/post_metal",
-  "s": "irextras:blocks/sign_speed"
+  "s": "irextras:blocks/sign_speed_plate"
  },
  "elements": [
   {

@@ -1,0 +1,251 @@
+{
+ "textures": {
+  "particle": "irextras:blocks/grid_solar_cells",
+  "tank": "irextras:blocks/grid_tank",
+  "fins": "irextras:blocks/grid_fins",
+  "cab": "irextras:blocks/grid_cabinet",
+  "lv": "irextras:blocks/grid_louvre",
+  "sw": "irextras:blocks/grid_switchgear",
+  "warn": "irextras:blocks/grid_warning",
+  "disp": "irextras:blocks/grid_display",
+  "scada": "irextras:blocks/grid_scada",
+  "bat": "irextras:blocks/grid_battery",
+  "cable": "irextras:blocks/grid_cable",
+  "cu": "irextras:blocks/grid_copper",
+  "ins": "irextras:blocks/ohle_insulator",
+  "con": "irextras:blocks/ohle_concrete",
+  "galv": "irextras:blocks/ohle_galv",
+  "dark": "irextras:blocks/ohle_dark",
+  "haz": "irextras:blocks/psd_hazard",
+  "lg": "irextras:blocks/psd_lamp_green",
+  "lr": "irextras:blocks/psd_lamp_red",
+  "lo": "irextras:blocks/psd_lamp_off",
+  "la": "irextras:blocks/grid_lamp_amber",
+  "plate": "irextras:blocks/ohle_plate",
+  "eng": "irextras:blocks/grid_engine",
+  "sol": "irextras:blocks/grid_solar_cells",
+  "blade": "irextras:blocks/grid_blade",
+  "bstart": "irextras:blocks/grid_btn_start",
+  "bstop": "irextras:blocks/grid_btn_stop",
+  "bup": "irextras:blocks/grid_btn_up",
+  "bdown": "irextras:blocks/grid_btn_down",
+  "port": "irextras:blocks/grid_port"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    1,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#con"
+    },
+    "south": {
+     "texture": "#con"
+    },
+    "east": {
+     "texture": "#con"
+    },
+    "west": {
+     "texture": "#con"
+    },
+    "up": {
+     "texture": "#con"
+    },
+    "down": {
+     "texture": "#con"
+    }
+   },
+   "__comment": "footing"
+  },
+  {
+   "from": [
+    7,
+    1,
+    7
+   ],
+   "to": [
+    9,
+    6,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#galv"
+    },
+    "south": {
+     "texture": "#galv"
+    },
+    "east": {
+     "texture": "#galv"
+    },
+    "west": {
+     "texture": "#galv"
+    },
+    "up": {
+     "texture": "#galv"
+    },
+    "down": {
+     "texture": "#galv"
+    }
+   },
+   "__comment": "post"
+  },
+  {
+   "from": [
+    0,
+    6,
+    0
+   ],
+   "to": [
+    16,
+    7,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#sol"
+    },
+    "south": {
+     "texture": "#sol"
+    },
+    "east": {
+     "texture": "#sol"
+    },
+    "west": {
+     "texture": "#sol"
+    },
+    "up": {
+     "texture": "#sol"
+    },
+    "down": {
+     "texture": "#sol"
+    }
+   },
+   "rotation": {
+    "origin": [
+     8,
+     6.5,
+     8
+    ],
+    "axis": "x",
+    "angle": -22.5
+   },
+   "__comment": "panels"
+  },
+  {
+   "from": [
+    1,
+    5.5,
+    1
+   ],
+   "to": [
+    15,
+    6,
+    15
+   ],
+   "faces": {
+    "north": {
+     "texture": "#galv"
+    },
+    "south": {
+     "texture": "#galv"
+    },
+    "east": {
+     "texture": "#galv"
+    },
+    "west": {
+     "texture": "#galv"
+    },
+    "up": {
+     "texture": "#galv"
+    },
+    "down": {
+     "texture": "#galv"
+    }
+   },
+   "rotation": {
+    "origin": [
+     8,
+     6.5,
+     8
+    ],
+    "axis": "x",
+    "angle": -22.5
+   },
+   "__comment": "frame"
+  },
+  {
+   "from": [
+    12,
+    1,
+    2
+   ],
+   "to": [
+    15,
+    4,
+    4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cab"
+    },
+    "south": {
+     "texture": "#cab"
+    },
+    "east": {
+     "texture": "#cab"
+    },
+    "west": {
+     "texture": "#cab"
+    },
+    "up": {
+     "texture": "#cab"
+    },
+    "down": {
+     "texture": "#cab"
+    }
+   },
+   "__comment": "inverter"
+  },
+  {
+   "from": [
+    12.5,
+    3,
+    1.8
+   ],
+   "to": [
+    13.5,
+    3.8,
+    2
+   ],
+   "faces": {
+    "north": {
+     "texture": "#lo"
+    },
+    "south": {
+     "texture": "#lo"
+    },
+    "east": {
+     "texture": "#lo"
+    },
+    "west": {
+     "texture": "#lo"
+    },
+    "up": {
+     "texture": "#lo"
+    },
+    "down": {
+     "texture": "#lo"
+    }
+   }
+  }
+ ]
+}

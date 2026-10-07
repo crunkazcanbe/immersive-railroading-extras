@@ -1,0 +1,25 @@
+{
+  "name": "Disney Monorail Mark VII full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_disney_mk7"
+    },
+    {
+      "stock": "pride_voxel_disney_mk7_car"
+    },
+    {
+      "stock": "pride_voxel_disney_mk7_car"
+    },
+    {
+      "stock": "pride_voxel_disney_mk7_car"
+    },
+    {
+      "stock": "pride_voxel_disney_mk7",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Linimo HSST full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_linimo"
+    },
+    {
+      "stock": "pride_linimo_car"
+    },
+    {
+      "stock": "pride_linimo",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

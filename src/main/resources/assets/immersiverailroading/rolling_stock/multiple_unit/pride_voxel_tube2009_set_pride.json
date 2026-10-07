@@ -1,0 +1,26 @@
+{
+  "name": "London Underground 2009 Stock full train (Pride Rail Voxel - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_voxel_tube2009",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_tube2009_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_tube2009_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_tube2009",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

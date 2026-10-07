@@ -1,0 +1,22 @@
+{
+  "name": "Palm Jumeirah Monorail full train (Pride Rail - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_palm_jumeirah",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_palm_jumeirah_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_palm_jumeirah",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "JR MLX01 full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_mlx01",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mlx01_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mlx01",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

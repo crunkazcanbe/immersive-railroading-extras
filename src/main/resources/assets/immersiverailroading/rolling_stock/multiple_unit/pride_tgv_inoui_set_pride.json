@@ -1,0 +1,30 @@
+{
+  "name": "TGV inOui full train (Pride Rail - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_tgv_inoui",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tgv_inoui_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tgv_inoui_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tgv_inoui_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tgv_inoui",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

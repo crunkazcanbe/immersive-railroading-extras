@@ -45,7 +45,7 @@ public class PacketTicketMenu implements IMessage {
         PacketTicketMenu p = new PacketTicketMenu();
         p.machine = m.getPos();
         p.station = m.stationName();
-        Item fare = TileTicketMachine.fareItem();
+        Item fare = m.fareItemHere();
         p.fareItem = fare == null ? "" : new ItemStack(fare).getDisplayName();
         if (fare != null) {
             for (ItemStack s : player.inventory.mainInventory) if (!s.isEmpty() && s.getItem() == fare) p.wallet += s.getCount();

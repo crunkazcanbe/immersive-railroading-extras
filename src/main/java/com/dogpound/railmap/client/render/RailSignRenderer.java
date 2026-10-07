@@ -42,18 +42,20 @@ public class RailSignRenderer extends TileEntitySpecialRenderer<TileRailSign> {
         GlStateManager.rotate(-yRot, 0, 1, 0);
         GlStateManager.disableLighting();
         GlStateManager.disableCull();
+        if (te.glows()) net.minecraft.client.renderer.OpenGlHelper.setLightmapTextureCoords(net.minecraft.client.renderer.OpenGlHelper.lightmapTexUnit, 240f, 240f);
+        double lift = te.lift();
 
-        // --- post (grey), from the ground up to the board ---
-        quadBox(-1.5 / 16.0, 0, -1.5 / 16.0, 1.5 / 16.0, 11.0 / 16.0, 1.5 / 16.0, 0x585d63);
+        // --- post, from the ground up to the board ---
+        quadBox(-1.5 / 16.0, 0, -1.5 / 16.0, 1.5 / 16.0, 11.0 / 16.0 + lift, 1.5 / 16.0, te.postColour());
 
         // --- board: a flat panel near the top, facing +Z (south of centre after rotation) ---
         double bw = boardWidth(lines);          // half-width in block units
-        double by0 = 11.0 / 16.0, by1 = by0 + boardHeight(lines);
+        double by0 = 11.0 / 16.0 + lift, by1 = by0 + boardHeight(lines);
         double bz = 1.6 / 16.0;
         // border (slightly larger, behind)
-        panel(-bw - 0.03, by0 - 0.03, bw + 0.03, by1 + 0.03, bz - 0.002, face.border);
+        if (te.border()) panel(-bw - 0.03, by0 - 0.03, bw + 0.03, by1 + 0.03, bz - 0.002, face.border);
         // face
-        panel(-bw, by0, bw, by1, bz, face.bg);
+        panel(-bw, by0, bw, by1, bz, te.boardColour());
 
         // --- text ---
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
@@ -70,7 +72,7 @@ public class RailSignRenderer extends TileEntitySpecialRenderer<TileRailSign> {
             GlStateManager.translate(0, startY - i * lineH, bz + 0.002);
             GlStateManager.scale(px, -px, px);
             int w = font.getStringWidth(ln);
-            font.drawString(ln, Math.round(-w / 2f), 0, face.fg);
+            font.drawString(ln, Math.round(-w / 2f), 0, te.textColour());
             GlStateManager.popMatrix();
         }
         GlStateManager.disableTexture2D();

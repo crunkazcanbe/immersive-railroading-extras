@@ -1,0 +1,30 @@
+{
+  "name": "Moscow Metro 81-765 Moskva full train (Pride Rail Voxel - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_voxel_moskva",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_moskva_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_moskva_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_moskva_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_moskva",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

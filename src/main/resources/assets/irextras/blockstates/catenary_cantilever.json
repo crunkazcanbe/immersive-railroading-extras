@@ -1,0 +1,78 @@
+{
+ "multipart": [
+  {
+   "when": {
+    "facing": "north"
+   },
+   "apply": {
+    "model": "irextras:ohle_cant_arm"
+   }
+  },
+  {
+   "when": {
+    "facing": "east"
+   },
+   "apply": {
+    "model": "irextras:ohle_cant_arm",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "facing": "south"
+   },
+   "apply": {
+    "model": "irextras:ohle_cant_arm",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "facing": "west"
+   },
+   "apply": {
+    "model": "irextras:ohle_cant_arm",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "facing": "north",
+    "hung": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_cant_hinge"
+   }
+  },
+  {
+   "when": {
+    "facing": "east",
+    "hung": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_cant_hinge",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "facing": "south",
+    "hung": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_cant_hinge",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "facing": "west",
+    "hung": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_cant_hinge",
+    "y": 270
+   }
+  }
+ ]
+}

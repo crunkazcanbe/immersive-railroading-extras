@@ -1,0 +1,37 @@
+{
+  "era": "diesel",
+  "name": "Chongqing Straddle Monorail (Pride Rail, electric monorail)",
+  "works": "CRRC Changchun",
+  "model": "immersiverailroading:models/rolling_stock/pride_rail/chongqing/chongqing_front.obj",
+  "model_gauge_m": 1.435,
+  "tex_variants": {
+    "Real livery": "",
+    "Pride rainbow": "pride",
+    "Trans flag": "trans"
+  },
+  "multi_unit_capable": true,
+  "properties": {
+    "fuel_efficiency_%": 100,
+    "fuel_capacity_l": 120,
+    "power_hp": 858,
+    "tractive_effort_lbf": 35200,
+    "max_speed_kmh": 75,
+    "weight_kg": 17500,
+    "horn_sustained": true
+  },
+  "passenger": {
+    "slots": 26,
+    "center_x": -0.6,
+    "center_y": 1.2,
+    "length": 11.5,
+    "width": 1.885
+  },
+  "trucks": {
+    "front": 4.4,
+    "rear": -4.4
+  },
+  "couplers": {
+    "front_offset": 0.0,
+    "rear_offset": 0.12
+  }
+}

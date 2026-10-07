@@ -1,0 +1,22 @@
+{
+  "name": "Innovia Monorail 300 full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_innovia"
+    },
+    {
+      "stock": "pride_voxel_innovia_car"
+    },
+    {
+      "stock": "pride_voxel_innovia_car"
+    },
+    {
+      "stock": "pride_voxel_innovia",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

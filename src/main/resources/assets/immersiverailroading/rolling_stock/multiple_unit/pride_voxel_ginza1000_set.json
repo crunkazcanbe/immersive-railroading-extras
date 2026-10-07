@@ -1,0 +1,22 @@
+{
+  "name": "Tokyo Metro 1000 (Ginza) full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_ginza1000"
+    },
+    {
+      "stock": "pride_voxel_ginza1000_car"
+    },
+    {
+      "stock": "pride_voxel_ginza1000_car"
+    },
+    {
+      "stock": "pride_voxel_ginza1000",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

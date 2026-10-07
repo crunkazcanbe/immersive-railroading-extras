@@ -1,0 +1,100 @@
+{
+ "textures": {
+  "particle": "irextras:blocks/grid_cable",
+  "tank": "irextras:blocks/grid_tank",
+  "fins": "irextras:blocks/grid_fins",
+  "cab": "irextras:blocks/grid_cabinet",
+  "lv": "irextras:blocks/grid_louvre",
+  "sw": "irextras:blocks/grid_switchgear",
+  "warn": "irextras:blocks/grid_warning",
+  "disp": "irextras:blocks/grid_display",
+  "scada": "irextras:blocks/grid_scada",
+  "bat": "irextras:blocks/grid_battery",
+  "cable": "irextras:blocks/grid_cable",
+  "cu": "irextras:blocks/grid_copper",
+  "ins": "irextras:blocks/ohle_insulator",
+  "con": "irextras:blocks/ohle_concrete",
+  "galv": "irextras:blocks/ohle_galv",
+  "dark": "irextras:blocks/ohle_dark",
+  "haz": "irextras:blocks/psd_hazard",
+  "lg": "irextras:blocks/psd_lamp_green",
+  "lr": "irextras:blocks/psd_lamp_red",
+  "lo": "irextras:blocks/psd_lamp_off",
+  "la": "irextras:blocks/grid_lamp_amber",
+  "plate": "irextras:blocks/ohle_plate",
+  "eng": "irextras:blocks/grid_engine",
+  "sol": "irextras:blocks/grid_solar_cells",
+  "blade": "irextras:blocks/grid_blade",
+  "bstart": "irextras:blocks/grid_btn_start",
+  "bstop": "irextras:blocks/grid_btn_stop",
+  "bup": "irextras:blocks/grid_btn_up",
+  "bdown": "irextras:blocks/grid_btn_down"
+ },
+ "elements": [
+  {
+   "from": [
+    6,
+    0,
+    6
+   ],
+   "to": [
+    10,
+    3,
+    10
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cable"
+    },
+    "south": {
+     "texture": "#cable"
+    },
+    "east": {
+     "texture": "#cable"
+    },
+    "west": {
+     "texture": "#cable"
+    },
+    "up": {
+     "texture": "#cable"
+    },
+    "down": {
+     "texture": "#cable"
+    }
+   }
+  },
+  {
+   "from": [
+    5.6,
+    0,
+    5.6
+   ],
+   "to": [
+    10.4,
+    0.6,
+    10.4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#dark"
+    },
+    "south": {
+     "texture": "#dark"
+    },
+    "east": {
+     "texture": "#dark"
+    },
+    "west": {
+     "texture": "#dark"
+    },
+    "up": {
+     "texture": "#dark"
+    },
+    "down": {
+     "texture": "#dark"
+    }
+   },
+   "__comment": "cleat"
+  }
+ ]
+}

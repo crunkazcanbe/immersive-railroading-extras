@@ -33,7 +33,42 @@ import java.util.Map;
  * join into one wide board; the left-most one (as you look at it) does the work and draws the
  * whole thing. When a train pulls in, the board chimes and flashes "NOW ARRIVING".
  */
-public class TileArrivalsBoard extends TileEntity implements ITickable {
+public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    public static final String[] THEMES = {"Amber LED", "Green LED", "White", "Blue LCD", "Pride"};
+
+    @Override public String settingsTitle() { return "Arrivals Board"; }
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return cfg; }
+    @Override public void onSettingsChanged(String key) { if (isController()) refresh(); else sync(); }
+
+    @Override
+    public List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        List<com.dogpound.railmap.settings.Setting> l = new ArrayList<>();
+        String sh = "Show", lk = "Look", sd = "Sound", st = "Status";
+        l.add(com.dogpound.railmap.settings.Setting.text(sh, "title", "Station title", "Blank = the nearest named station", "", 32));
+        l.add(com.dogpound.railmap.settings.Setting.num(sh, "rows", "Trains listed", "", 6, 1, 6, 1, "rows"));
+        l.add(com.dogpound.railmap.settings.Setting.bool(sh, "later", "List trains not due yet", "Show LATER trains (on the line but not heading here next)", true));
+        l.add(com.dogpound.railmap.settings.Setting.num(sh, "due", "Show DUE within", "Seconds out when a train turns to DUE", 45, 10, 300, 5, "s"));
+        l.add(com.dogpound.railmap.settings.Setting.bool(sh, "waiting", "Passengers waiting line", "Footer with how many tickets are waiting", true));
+        l.add(com.dogpound.railmap.settings.Setting.text(sh, "footer", "Footer text", "Shown when nobody is waiting", "BUY TICKETS AT THE MACHINE", 40));
+        l.add(com.dogpound.railmap.settings.Setting.num(sh, "banner", "NOW ARRIVING banner", "How long it flashes", 10, 0, 60, 1, "s"));
+        l.add(com.dogpound.railmap.settings.Setting.num(sh, "refresh", "Refresh every", "", 2, 1, 30, 1, "s"));
+        l.add(com.dogpound.railmap.settings.Setting.choice(lk, "theme", "Display", "Colours of the board", "Amber LED", THEMES));
+        l.add(com.dogpound.railmap.settings.Setting.bool(lk, "clock24", "24-hour clock", "", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool(lk, "clock", "Clock in the header", "", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool(lk, "flaps", "Split-flap cells", "Draw the flap tiles behind the text", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool(lk, "upper", "UPPER CASE", "", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool(sd, "chime", "Arrival chime", "Ding... dong when a train pulls in", true));
+        l.add(com.dogpound.railmap.settings.Setting.choice(sd, "chimeSound", "Chime sound", "", "Harp", "Harp", "Bell", "Chime", "Pling", "Flute"));
+        l.add(com.dogpound.railmap.settings.Setting.num(sd, "chimeVol", "Volume", "", 140, 0, 300, 10, "%"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Station", stationName.isEmpty() ? "none in range" : stationName));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Trains on the board", String.valueOf(rows.size())));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Passengers waiting", String.valueOf(waiting)));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Joined boards", isController() ? width() + " wide (this one draws)" : "part of a wider board"));
+        return l;
+    }
+
+    public String theme() { return cfg.text("theme"); }
     public static final int MAX_ROWS = 6;
 
     private long station = Long.MIN_VALUE;
@@ -47,7 +82,7 @@ public class TileArrivalsBoard extends TileEntity implements ITickable {
     private int ticks;
 
     public long station() { return station; }
-    public String stationName() { return stationName; }
+    public String stationName() { String t = cfg.text("title").trim(); return t.isEmpty() ? stationName : t; }
     public List<String[]> rows() { return rows; }
     public int waiting() { return waiting; }
 
@@ -89,11 +124,21 @@ public class TileArrivalsBoard extends TileEntity implements ITickable {
         ticks++;
         if (chimeStep >= 0) {
             // Ding... dong.
-            if (chimeStep == 0) world.playSound(null, pos, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.BLOCKS, 1.4f, 1.19f);
-            if (chimeStep == 9) world.playSound(null, pos, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.BLOCKS, 1.4f, 0.94f);
+            net.minecraft.util.SoundEvent snd = switch (cfg.text("chimeSound")) {
+                case "Bell" -> SoundEvents.BLOCK_NOTE_BELL;
+                case "Chime" -> SoundEvents.BLOCK_NOTE_CHIME;
+                case "Pling" -> SoundEvents.BLOCK_NOTE_PLING;
+                case "Flute" -> SoundEvents.BLOCK_NOTE_FLUTE;
+                default -> SoundEvents.BLOCK_NOTE_HARP;
+            };
+            float vol = cfg.num("chimeVol") / 100f;
+            if (cfg.bool("chime") && vol > 0) {
+                if (chimeStep == 0) world.playSound(null, pos, snd, SoundCategory.BLOCKS, vol, 1.19f);
+                if (chimeStep == 9) world.playSound(null, pos, snd, SoundCategory.BLOCKS, vol, 0.94f);
+            }
             if (++chimeStep > 12) chimeStep = -1;
         }
-        if (ticks % 40 != 0 || !isController()) return;
+        if (ticks % Math.max(20, cfg.num("refresh") * 20) != 0 || !isController()) return;
         refresh();
     }
 
@@ -120,6 +165,7 @@ public class TileArrivalsBoard extends TileEntity implements ITickable {
                 RailwayData.Line line = data.line(a.line);
                 boolean onLine = line != null && line.stations.contains(best);
                 if (!servesHere && !onLine && !a.calls.contains(best)) continue;
+                if (!servesHere && !a.calls.contains(best) && !cfg.bool("later")) continue;
                 String name = a.label.isEmpty() ? "Train " + r.entityId : a.label;
                 String dest = destination(stations, data, a, best);
                 String when;
@@ -130,7 +176,7 @@ public class TileArrivalsBoard extends TileEntity implements ITickable {
                 } else if (servesHere && r.metresToStop >= 0) {
                     double mps = Math.max(r.speedKmh, a.maxKmh * 0.6) / 3.6;
                     double secs = r.metresToStop / Math.max(1, mps);
-                    when = secs < 45 ? "DUE" : Math.round(secs / 60) + " MIN";
+                    when = secs < cfg.num("due") ? "DUE" : Math.max(1, Math.round(secs / 60)) + " MIN";
                     sortKey = secs;
                 } else {
                     when = "LATER";
@@ -140,7 +186,7 @@ public class TileArrivalsBoard extends TileEntity implements ITickable {
             }
             found.sort((x, y) -> Double.compare((double) x[0], (double) y[0]));
             for (Object[] o : found) {
-                if (rows.size() >= MAX_ROWS) break;
+                if (rows.size() >= Math.min(MAX_ROWS, Math.max(1, cfg.num("rows")))) break;
                 rows.add((String[]) o[1]);
             }
             waiting = data.waitingAt(best);
@@ -165,7 +211,7 @@ public class TileArrivalsBoard extends TileEntity implements ITickable {
     public void chime(String train) {
         TileArrivalsBoard c = this;
         arriving = train;
-        arrivingUntil = world.getTotalWorldTime() + 200;
+        arrivingUntil = world.getTotalWorldTime() + cfg.num("banner") * 20L;
         chimeStep = 0;
         if (c.isController()) refresh();
         else sync();
@@ -209,6 +255,7 @@ public class TileArrivalsBoard extends TileEntity implements ITickable {
         t.setInteger("wait", waiting);
         t.setString("arr", arriving);
         t.setLong("arrU", arrivingUntil);
+        cfg.write(t);
         return t;
     }
 
@@ -226,6 +273,7 @@ public class TileArrivalsBoard extends TileEntity implements ITickable {
         waiting = t.getInteger("wait");
         arriving = t.getString("arr");
         arrivingUntil = t.getLong("arrU");
+        cfg.read(t);
     }
 
     @Override

@@ -1,0 +1,26 @@
+{
+  "name": "Osaka Monorail 3000 full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_osaka",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_osaka_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_osaka_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_osaka",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

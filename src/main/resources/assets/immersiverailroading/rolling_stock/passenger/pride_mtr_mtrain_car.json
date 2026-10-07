@@ -1,0 +1,28 @@
+{
+  "name": "Hong Kong MTR M-Train passenger car (Pride Rail)",
+  "model": "immersiverailroading:models/rolling_stock/pride_rail/mtr_mtrain/mtr_mtrain_car.obj",
+  "model_gauge_m": 1.435,
+  "tex_variants": {
+    "Real livery": "",
+    "Pride rainbow": "pride",
+    "Trans flag": "trans"
+  },
+  "properties": {
+    "weight_kg": 36000
+  },
+  "passenger": {
+    "slots": 67,
+    "center_x": 0,
+    "center_y": 1.4500000000000002,
+    "length": 20.0,
+    "width": 2.015
+  },
+  "trucks": {
+    "front": 6.3,
+    "rear": -6.3
+  },
+  "couplers": {
+    "front_offset": 0.12,
+    "rear_offset": 0.12
+  }
+}

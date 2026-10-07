@@ -47,7 +47,7 @@ import java.util.Map;
  * block is still safe to place (it just does nothing).
  */
 @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "opencomputers")
-public class TileDataLink extends TileEntity implements SimpleComponent {
+public class TileDataLink extends TileEntity implements SimpleComponent, com.dogpound.railmap.settings.ISettingsHolder {
 
     @Override
     public String getComponentName() {
@@ -59,6 +59,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function():table -- every loaded rolling stock: id, name, x, y, z, speed (km/h), kind, lead, consist, driverless, status, nextStop, protected")
     @Optional.Method(modid = "opencomputers")
     public Object[] getTrains(Context c, Arguments a) {
+        if (!cfg.bool("read")) return denied("read");
         RailwayData data = RailwayData.get(world);
         Map<Integer, RailwayData.AutoTrain> auto = new HashMap<>();
         for (RailwayData.AutoTrain t : data.trains().values()) {
@@ -94,6 +95,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function():table -- named stations: name, x, y, z, waiting passengers")
     @Optional.Method(modid = "opencomputers")
     public Object[] getStations(Context c, Arguments a) {
+        if (!cfg.bool("read")) return denied("read");
         RailwayData data = RailwayData.get(world);
         List<Object> out = new ArrayList<>();
         for (Map.Entry<Long, String> e : StationData.get(world).names().entrySet()) {
@@ -110,6 +112,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function():table -- lines: name, stations {names}")
     @Optional.Method(modid = "opencomputers")
     public Object[] getLines(Context c, Arguments a) {
+        if (!cfg.bool("read")) return denied("read");
         StationData st = StationData.get(world);
         List<Object> out = new ArrayList<>();
         for (RailwayData.Line l : RailwayData.get(world).lines().values()) {
@@ -126,6 +129,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function():table -- signal masts: x, y, z, aspect, style, mode, clearBlocks, routeSet")
     @Optional.Method(modid = "opencomputers")
     public Object[] getSignals(Context c, Arguments a) {
+        if (!cfg.bool("read")) return denied("read");
         List<Object> out = new ArrayList<>();
         for (TileSignalMast m : SignalRegistry.masts(world.provider.getDimension())) {
             Map<String, Object> t = new HashMap<>();
@@ -145,6 +149,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function(x,y,z, state:string):boolean,string -- throw a switch: straight, turn or auto")
     @Optional.Method(modid = "opencomputers")
     public Object[] setSwitch(Context c, Arguments a) {
+        if (!cfg.bool("switches")) return denied("switches");
         BlockPos p = new BlockPos(a.checkInteger(0), a.checkInteger(1), a.checkInteger(2));
         String s = a.checkString(3).toLowerCase();
         SwitchState want = s.startsWith("t") ? SwitchState.TURN : s.startsWith("s") ? SwitchState.STRAIGHT : SwitchState.NONE;
@@ -162,6 +167,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function(x,y,z, hold:boolean):boolean -- hold a signal at Stop (true) or release it")
     @Optional.Method(modid = "opencomputers")
     public Object[] holdSignal(Context c, Arguments a) {
+        if (!cfg.bool("signals")) return denied("signals");
         BlockPos p = new BlockPos(a.checkInteger(0), a.checkInteger(1), a.checkInteger(2));
         if (!(world.getTileEntity(p) instanceof TileSignalMast m)) return new Object[]{ false };
         m.setRelayControl(a.checkBoolean(3), null);
@@ -171,6 +177,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function(x1,y1,z1, x2,y2,z2):string -- CTC route from one signal to another")
     @Optional.Method(modid = "opencomputers")
     public Object[] setRoute(Context c, Arguments a) {
+        if (!cfg.bool("routes")) return denied("routes");
         return new Object[]{ Interlocking.setRoute(world,
                 new BlockPos(a.checkInteger(0), a.checkInteger(1), a.checkInteger(2)),
                 new BlockPos(a.checkInteger(3), a.checkInteger(4), a.checkInteger(5))) };
@@ -179,12 +186,14 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function(x,y,z):string -- cancel the route starting at this signal")
     @Optional.Method(modid = "opencomputers")
     public Object[] cancelRoute(Context c, Arguments a) {
+        if (!cfg.bool("routes")) return denied("routes");
         return new Object[]{ Interlocking.cancelRoute(world, new BlockPos(a.checkInteger(0), a.checkInteger(1), a.checkInteger(2))) };
     }
 
     @Callback(doc = "function(id, command:string):string -- throttle_up, throttle_down, brake_up, brake_down, forward, neutral, reverse, horn, bell, emergency_stop")
     @Optional.Method(modid = "opencomputers")
     public Object[] trainCommand(Context c, Arguments a) {
+        if (!cfg.bool("drive")) return denied("drive");
         String cmd = a.checkString(1).toUpperCase().replace(' ', '_');
         TrainControl.Cmd k;
         switch (cmd) {
@@ -205,6 +214,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function(id, station:string):string -- make the train driverless and send it to a station")
     @Optional.Method(modid = "opencomputers")
     public Object[] sendTrain(Context c, Arguments a) {
+        if (!cfg.bool("dispatch")) return denied("dispatch");
         Locomotive loco = loco(a.checkInteger(0));
         if (loco == null) return new Object[]{ "train not loaded" };
         Long key = station(a.checkString(1));
@@ -222,6 +232,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function(id, mode:string [, line:string, maxKmh, dwellSeconds]):string -- driverless: line, shuttle, oncall, off")
     @Optional.Method(modid = "opencomputers")
     public Object[] setAutopilot(Context c, Arguments a) {
+        if (!cfg.bool("dispatch")) return denied("dispatch");
         Locomotive loco = loco(a.checkInteger(0));
         if (loco == null) return new Object[]{ "train not loaded" };
         RailwayData data = RailwayData.get(world);
@@ -234,7 +245,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
         RailwayData.AutoTrain t = data.setTrain(loco.getUUID());
         t.mode = mode.startsWith("s") ? RailwayData.Mode.SHUTTLE : mode.startsWith("o") ? RailwayData.Mode.ON_CALL : RailwayData.Mode.LINE;
         t.line = optString(a, 2, t.line);
-        t.maxKmh = Math.max(5, Math.min(250, optInt(a, 3, t.maxKmh)));
+        t.maxKmh = Math.max(5, Math.min(cfg.num("maxKmh"), optInt(a, 3, t.maxKmh)));
         t.dwellSeconds = Math.max(5, Math.min(600, optInt(a, 4, t.dwellSeconds)));
         t.index = 0;
         if (t.label.isEmpty()) t.label = Autopilot.label(t, loco);
@@ -245,6 +256,7 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function(from:string, to:string, passenger:string):string -- book a ride as if a ticket went into a machine")
     @Optional.Method(modid = "opencomputers")
     public Object[] ticket(Context c, Arguments a) {
+        if (!cfg.bool("tickets")) return denied("tickets");
         Long from = station(a.checkString(0)), to = station(a.checkString(1));
         if (from == null || to == null) return new Object[]{ "no station by that name" };
         return new Object[]{ Dispatcher.ticketInserted(world, from, to, optString(a, 2, "computer")) };
@@ -253,8 +265,56 @@ public class TileDataLink extends TileEntity implements SimpleComponent {
     @Callback(doc = "function(id):boolean -- is train protection braking this train right now")
     @Optional.Method(modid = "opencomputers")
     public Object[] isProtected(Context c, Arguments a) {
+        if (!cfg.bool("read")) return denied("read");
         Locomotive loco = loco(a.checkInteger(0));
         return new Object[]{ loco != null && Protection.penalised(loco.getUUID()) };
+    }
+
+    // ---- Settings Console (sneak-right-click with the Signal Wrench) ----
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    private int refused;
+
+    private Object[] denied(String what) {
+        refused++;
+        if (cfg.bool("logRefused")) com.dogpound.railmap.RailMap.LOG.info("[IR Extras] Data Link at {} refused a '{}' call (off in its Settings Console)", pos, what);
+        return new Object[]{ null, "'" + what + "' is switched off in this Data Link's Settings Console" };
+    }
+
+    @Override public String settingsTitle() { return "Railroad Data Link"; }
+
+    @Override
+    public List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        List<com.dogpound.railmap.settings.Setting> l = new ArrayList<>();
+        l.add(com.dogpound.railmap.settings.Setting.bool("Computers may", "read", "Read the railroad", "getTrains, getStations, getLines, getSignals, isProtected", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Computers may", "switches", "Throw switches", "setSwitch (the interlocking still refuses locked ones)", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Computers may", "signals", "Hold signals", "holdSignal", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Computers may", "routes", "Set and cancel routes", "setRoute, cancelRoute", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Computers may", "drive", "Drive trains", "trainCommand: throttle, brakes, reverser, horn", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Computers may", "dispatch", "Send driverless trains", "sendTrain, setAutopilot", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Computers may", "tickets", "Book tickets", "ticket", true));
+        l.add(com.dogpound.railmap.settings.Setting.num("Limits", "maxKmh", "Top speed a computer may set", "Cap for setAutopilot", 250, 5, 250, 5, "km/h"));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Limits", "logRefused", "Log refused calls", "Write a line to the game log when a script hits a switched-off call", false));
+        l.add(com.dogpound.railmap.settings.Setting.info("Status", "Component name", "railroad  (local rr = require(\"component\").railroad)"));
+        l.add(com.dogpound.railmap.settings.Setting.info("Status", "OpenComputers", net.minecraftforge.fml.common.Loader.isModLoaded("opencomputers") ? "installed" : "not installed: the block does nothing"));
+        l.add(com.dogpound.railmap.settings.Setting.info("Status", "Refused calls", String.valueOf(refused)));
+        return l;
+    }
+
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return cfg; }
+
+    @Override public void onSettingsChanged(String key) { markDirty(); }
+
+    @Override
+    public net.minecraft.nbt.NBTTagCompound writeToNBT(net.minecraft.nbt.NBTTagCompound t) {
+        super.writeToNBT(t);
+        cfg.write(t);
+        return t;
+    }
+
+    @Override
+    public void readFromNBT(net.minecraft.nbt.NBTTagCompound t) {
+        super.readFromNBT(t);
+        cfg.read(t);
     }
 
     // ---- helpers ------------------------------------------------------------------------

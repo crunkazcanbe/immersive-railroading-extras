@@ -41,7 +41,48 @@ import java.util.Map;
  *       signal while a train is boarding (doors, lights, a departure bell).</li>
  * </ul>
  */
-public class TileTicketMachine extends TileEntity implements ITickable {
+public class TileTicketMachine extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    private int sold, punched;
+    private long revenue;
+
+    @Override public String settingsTitle() { return "Ticket Machine"; }
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return cfg; }
+    @Override public void onSettingsChanged(String key) { sync(); }
+
+    @Override
+    public java.util.List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        java.util.List<com.dogpound.railmap.settings.Setting> l = new java.util.ArrayList<>();
+        String f = "Fares", h = "Service", b = "Boarding", st = "Status";
+        l.add(com.dogpound.railmap.settings.Setting.bool(f, "free", "Free travel", "Print tickets without taking anything", false));
+        l.add(com.dogpound.railmap.settings.Setting.text(f, "item", "Pay with (item id)", "Blank = the mod config's fare item, e.g. minecraft:iron_nugget or realmcoin:coin", "", 64));
+        l.add(com.dogpound.railmap.settings.Setting.num(f, "per", "Blocks per fare item", "Longer trips cost more: one item per this many blocks", RailMapConfig.fareBlocksPerItem, 10, 5000, 10, "blocks"));
+        l.add(com.dogpound.railmap.settings.Setting.num(f, "min", "Minimum fare", "", 1, 0, 64, 1, "items"));
+        l.add(com.dogpound.railmap.settings.Setting.num(f, "max", "Maximum fare", "0 = no cap", 0, 0, 640, 5, "items"));
+        l.add(com.dogpound.railmap.settings.Setting.bool(f, "roundTrips", "Sell round trips", "", true));
+        l.add(com.dogpound.railmap.settings.Setting.num(f, "roundPct", "Round trip price", "Percent of two singles", 100, 50, 200, 5, "%"));
+        l.add(com.dogpound.railmap.settings.Setting.bool(h, "hours", "Opening hours", "Only sell between the hours below (game clock)", false));
+        l.add(com.dogpound.railmap.settings.Setting.num(h, "openAt", "Opens at", "", 6, 0, 23, 1, ":00"));
+        l.add(com.dogpound.railmap.settings.Setting.num(h, "closeAt", "Closes at", "", 22, 0, 23, 1, ":00"));
+        l.add(com.dogpound.railmap.settings.Setting.text(h, "closedMsg", "Closed message", "", "This machine is closed. Come back in the morning!", 80));
+        l.add(com.dogpound.railmap.settings.Setting.bool(b, "holdSignals", "Hold linked signals while boarding", "Signals you linked with the wrench stay at Stop while a train boards here", true));
+        l.add(com.dogpound.railmap.settings.Setting.num(b, "pulse", "Redstone pulse on ticket", "", 30, 2, 200, 2, "ticks"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Station", stationName.isEmpty() ? "none in range" : stationName));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Tickets sold", String.valueOf(sold)));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Tickets used here", String.valueOf(punched)));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Fares taken", revenue + " items"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Linked signals", String.valueOf(linked.size())));
+        return l;
+    }
+
+    private boolean open() {
+        if (!cfg.bool("hours") || world == null) return true;
+        int h = (int) ((world.getWorldTime() % 24000) / 1000 + 6) % 24, a = cfg.num("openAt"), c = cfg.num("closeAt");
+        return a <= c ? h >= a && h < c : h >= a || h < c;
+    }
+
+    public boolean roundTrips() { return cfg.bool("roundTrips"); }
+
     private final List<BlockPos> linked = new ArrayList<>();
     private long station = Long.MIN_VALUE;
     private String stationName = "";
@@ -73,7 +114,7 @@ public class TileTicketMachine extends TileEntity implements ITickable {
             boarding = now;
             world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
             // Only on a change, so a relay case wired to the same signal keeps its say otherwise.
-            for (BlockPos p : linked) {
+            if (cfg.bool("holdSignals")) for (BlockPos p : linked) {
                 if (world.isBlockLoaded(p) && world.getTileEntity(p) instanceof TileSignalMast m) {
                     m.setRelayControl(boarding, null);
                 }
@@ -104,12 +145,21 @@ public class TileTicketMachine extends TileEntity implements ITickable {
         return id.isEmpty() ? null : Item.getByNameOrId(id);
     }
 
+    /** this machine's fare item (Settings Console), else the config one; null = free */
+    public Item fareItemHere() {
+        if (cfg.bool("free")) return null;
+        String id = cfg.text("item").trim();
+        if (!id.isEmpty()) { Item it = Item.getByNameOrId(id); if (it != null) return it; }
+        return fareItem();
+    }
+
     /** Fare in fare items from here to {@code dest}; 0 when tickets are free. */
     public int fare(long dest, boolean round) {
-        if (fareItem() == null) return 0;
+        if (fareItemHere() == null) return 0;
         double d = Math.sqrt(BlockPos.fromLong(dest).distanceSq(BlockPos.fromLong(station)));
-        int one = Math.max(1, (int) Math.ceil(d / RailMapConfig.fareBlocksPerItem));
-        return round ? one * 2 : one;
+        int one = Math.max(cfg.num("min"), (int) Math.ceil(d / Math.max(1, cfg.num("per"))));
+        if (cfg.num("max") > 0) one = Math.min(one, cfg.num("max"));
+        return round ? (int) Math.ceil(one * 2 * cfg.num("roundPct") / 100.0) : one;
     }
 
     /** Take the fare and print the ticket. Returns a line for the player. */
@@ -119,14 +169,18 @@ public class TileTicketMachine extends TileEntity implements ITickable {
         StationData stations = StationData.get(world);
         String destName = stations.names().get(dest);
         if (destName == null || dest == station) return "Pick a destination";
+        if (!open()) return cfg.text("closedMsg");
+        if (round && !cfg.bool("roundTrips")) return "This machine only sells one-way tickets";
         int fare = fare(dest, round);
-        Item item = fareItem();
+        Item item = fareItemHere();
         if (fare > 0 && !player.capabilities.isCreativeMode) {
             if (count(player, item) < fare) {
                 return "Not enough — this ticket costs " + fare + " " + new ItemStack(item).getDisplayName();
             }
             take(player, item, fare);
+            revenue += fare;
         }
+        sold++;
         RailwayData data = RailwayData.get(world);
         ItemStack ticket = ItemTicket.make(CommonProxy.ticket, station, stationName, dest, destName, round,
                 data.nextTicketSerial(), world.getWorldTime() / 24000);
@@ -148,8 +202,9 @@ public class TileTicketMachine extends TileEntity implements ITickable {
         }
         long to = ItemTicket.to(stack);
         ItemTicket.punch(stack);
+        punched++;
         String reply = Dispatcher.ticketInserted(world, station, to, player.getName());
-        pulse = 30;
+        pulse = Math.max(2, cfg.num("pulse"));
         world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
         world.playSound(null, pos, SoundEvents.BLOCK_NOTE_CHIME, SoundCategory.BLOCKS, 0.9f, 1.3f);
         return reply;
@@ -221,6 +276,10 @@ public class TileTicketMachine extends TileEntity implements ITickable {
         t.setIntArray("links", packed);
         t.setLong("st", station);
         t.setString("sn", stationName);
+        t.setInteger("sold", sold);
+        t.setInteger("punched", punched);
+        t.setLong("revenue", revenue);
+        cfg.write(t);
         return t;
     }
 
@@ -234,6 +293,10 @@ public class TileTicketMachine extends TileEntity implements ITickable {
         }
         station = t.hasKey("st") ? t.getLong("st") : Long.MIN_VALUE;
         stationName = t.getString("sn");
+        sold = t.getInteger("sold");
+        punched = t.getInteger("punched");
+        revenue = t.getLong("revenue");
+        cfg.read(t);
     }
 
     @Override

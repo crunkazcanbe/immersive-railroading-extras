@@ -39,7 +39,9 @@ public class DisplayPanelRenderer extends TileEntitySpecialRenderer<TileDisplayP
         EnumFacing f = te.facing();
         EnumFacing r = TileDisplayPanel.right(f);
         RailNetwork net = te.getNetwork();
-        List<TrainNode> trains = ClientTrains.get();
+        com.dogpound.railmap.settings.SettingsStore S = te.displaySettings();
+        List<TrainNode> trains = S.bool("trains") ? ClientTrains.get() : java.util.Collections.<TrainNode>emptyList();
+        int px = Math.max(32, Math.min(128, S.num("px") <= 0 ? PX : S.num("px")));
 
         GlStateManager.pushMatrix();
         // Block centre, then back to the screen plane, then to the viewer's top-left corner.
@@ -49,16 +51,17 @@ public class DisplayPanelRenderer extends TileEntitySpecialRenderer<TileDisplayP
         GlStateManager.rotate(-f.getHorizontalIndex() * 90f, 0, 1, 0); // local +X -> r
         GlStateManager.scale(1, -1, 1);                                // local +Y -> down
         GlStateManager.translate(INSET, INSET, 0);
-        double scale = 1.0 / PX;
+        double scale = 1.0 / px;
         GlStateManager.scale(scale, scale, scale);
 
-        int w = (int) Math.round((cols - 2 * INSET) * PX), h = (int) Math.round((rows - 2 * INSET) * PX);
+        int w = (int) Math.round((cols - 2 * INSET) * px), h = (int) Math.round((rows - 2 * INSET) * px);
         map.w = w;
         map.h = h;
-        map.labels = cols >= 2 || rows >= 2;
-        map.grid = true;
+        String lab = S.text("labels");
+        map.labels = "Always".equals(lab) || !"Never".equals(lab) && (cols >= 2 || rows >= 2);
+        map.grid = S.bool("grid");
         map.origin = null;
-        map.fit(net, te.getPos(), 6);
+        map.fit(net, te.getPos(), Math.max(0, S.num("margin")));
 
         // Screens glow: full-bright, no lighting, draw on top of the model face.
         GlStateManager.disableLighting();
@@ -68,14 +71,15 @@ public class DisplayPanelRenderer extends TileEntitySpecialRenderer<TileDisplayP
         GL11.glPushAttrib(GL11.GL_LINE_BIT);
 
         // Keep a status strip at the bottom out of the map area.
-        int strip = h >= 3 * PX / 2 ? 12 : 0;
+        String st = S.text("strip");
+        int strip = "Never".equals(st) ? 0 : "Always".equals(st) || h >= 3 * px / 2 ? 12 : 0;
         map.h = h - strip;
         map.draw(net, trains, -1, -1);
         // chrome (scale bar + compass) belongs INSIDE the map area — drawn at full height it
         // landed on top of the status strip
-        map.drawChrome();
+        if (S.bool("chrome")) map.drawChrome();
         map.h = h;
-        if (strip > 0) drawStatus(net, trains, w, h, strip);
+        if (strip > 0) drawStatus(net, trains, w, h, strip, S.bool("stripLast"));
 
         GL11.glPopAttrib();
         GlStateManager.enableCull();
@@ -83,14 +87,15 @@ public class DisplayPanelRenderer extends TileEntitySpecialRenderer<TileDisplayP
         GlStateManager.popMatrix();
     }
 
-    private void drawStatus(RailNetwork net, List<TrainNode> trains, int w, int h, int strip) {
+    private void drawStatus(RailNetwork net, List<TrainNode> trains, int w, int h, int strip, boolean last) {
         map.rect(0, h - strip, w, h, 0xFF000000);
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         int leads = 0;
         for (TrainNode t : trains) if (t.lead) leads++;
         String left = leads + (leads == 1 ? " train" : " trains") + "  " + net.signals.size() + " signals  " + net.stops.size() + " stops";
         String right = "";
-        if (!net.log.isEmpty()) {
+        if (!last) {
+        } else if (!net.log.isEmpty()) {
             LogEntry e = net.log.get(net.log.size() - 1);
             right = e.train + (e.arrive ? " arrived " : " left ") + e.station + "  " + LogEntry.clock(e.time);
         } else if (!ClientTrains.live()) {

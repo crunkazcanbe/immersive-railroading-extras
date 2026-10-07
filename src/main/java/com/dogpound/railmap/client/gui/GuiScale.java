@@ -17,6 +17,7 @@ public class GuiScale extends GuiScreen implements GuiSlider.ISlider {
     private float scale;
     private float sent;
     private GuiSlider slider;
+    private PrideFrame f;
 
     public GuiScale(BlockPos pos, String what, float scale) {
         this.pos = pos;
@@ -27,14 +28,15 @@ public class GuiScale extends GuiScreen implements GuiSlider.ISlider {
 
     @Override
     public void initGui() {
-        int cx = width / 2, cy = height / 2;
-        slider = new GuiSlider(SLIDER, cx - 100, cy - 10, 200, 20, "Size: ", "x",
+        f = PrideFrame.sized(width, height, 240, 100);
+        slider = new GuiSlider(SLIDER, f.cx, f.cy + 4, f.cw, 20, "Size: ", "x",
                 IScalable.MIN, IScalable.MAX, scale, true, true, this);
         slider.precision = 2;
         slider.updateSlider();
         buttonList.add(slider);
-        buttonList.add(new GuiButton(RESET, cx - 100, cy + 16, 98, 20, "Normal size"));
-        buttonList.add(new GuiButton(DONE, cx + 2, cy + 16, 98, 20, "Done"));
+        int half = (f.cw - 4) / 2;
+        buttonList.add(new PrideButton(RESET, f.cx, f.cy + 30, half, 20, "Normal size"));
+        buttonList.add(new PrideButton(DONE, f.cx + f.cw - half, f.cy + 30, half, 20, "Done"));
     }
 
     @Override
@@ -63,9 +65,13 @@ public class GuiScale extends GuiScreen implements GuiSlider.ISlider {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        drawGradientRect(width / 2 - 110, height / 2 - 40, width / 2 + 110, height / 2 + 44, 0xC0101418, 0xC0101418);
-        drawCenteredString(fontRenderer, what, width / 2, height / 2 - 30, 0xFFFFFF);
+        f.draw(this, fontRenderer.trimStringToWidth(what, f.w - 40), "");
         super.drawScreen(mouseX, mouseY, partialTicks);
+    }
+
+    /** No dimming: you watch the piece resize in the world while you drag (as before the restyle). */
+    @Override
+    public void drawDefaultBackground() {
     }
 
     @Override

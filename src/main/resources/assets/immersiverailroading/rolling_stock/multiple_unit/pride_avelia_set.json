@@ -1,0 +1,25 @@
+{
+  "name": "Amtrak Avelia Liberty full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_avelia"
+    },
+    {
+      "stock": "pride_avelia_car"
+    },
+    {
+      "stock": "pride_avelia_car"
+    },
+    {
+      "stock": "pride_avelia_car"
+    },
+    {
+      "stock": "pride_avelia",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

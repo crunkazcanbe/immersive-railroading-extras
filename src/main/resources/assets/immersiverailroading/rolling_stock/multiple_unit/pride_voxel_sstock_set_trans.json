@@ -1,0 +1,30 @@
+{
+  "name": "London Underground S Stock full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_sstock",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_sstock_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_sstock_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_sstock_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_sstock",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

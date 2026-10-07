@@ -1,0 +1,19 @@
+{
+  "name": "Seattle ALWEG Monorail full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_seattle"
+    },
+    {
+      "stock": "pride_seattle_car"
+    },
+    {
+      "stock": "pride_seattle",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

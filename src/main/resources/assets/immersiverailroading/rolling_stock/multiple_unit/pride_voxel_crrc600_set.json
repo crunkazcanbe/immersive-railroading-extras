@@ -1,0 +1,22 @@
+{
+  "name": "CRRC 600 km/h Maglev full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_crrc600"
+    },
+    {
+      "stock": "pride_voxel_crrc600_car"
+    },
+    {
+      "stock": "pride_voxel_crrc600_car"
+    },
+    {
+      "stock": "pride_voxel_crrc600",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

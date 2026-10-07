@@ -24,7 +24,7 @@ import net.minecraft.world.World;
  * A multi-block panel wall has one {@link #controller()} that owns the data; the other panels
  * delegate to it.
  */
-public abstract class TileRailDisplay extends TileEntity implements ITickable {
+public abstract class TileRailDisplay extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
     private static final int MIN_RESCAN_GAP = 20;
 
     private RailNetwork network = RailNetwork.EMPTY;
@@ -34,6 +34,42 @@ public abstract class TileRailDisplay extends TileEntity implements ITickable {
     // Not Long.MIN_VALUE: "now - lastScanTick" overflows to a negative, the debounce never expires and the
     // display never scans at all.
     private long lastScanTick = -MIN_RESCAN_GAP;
+
+    // ---- Settings Console (sneak-right-click with the Signal Wrench); a panel wall uses its controller's options
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+
+    @Override public String settingsTitle() { return "Map Screen"; }
+
+    @Override
+    public java.util.List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        java.util.List<com.dogpound.railmap.settings.Setting> l = new java.util.ArrayList<>();
+        l.add(com.dogpound.railmap.settings.Setting.choice("Map", "labels", "Station and signal names", "Auto shows names once the screen is 2 panels or bigger", "Auto", "Auto", "Always", "Never"));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Map", "grid", "Grid lines", "A faint grid behind the map", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Map", "trains", "Show trains", "Live train positions (needs the train feed)", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Map", "chrome", "Compass and scale bar", "North arrow + distance bar in the corner", true));
+        l.add(com.dogpound.railmap.settings.Setting.num("Map", "margin", "Margin round the track", "Empty space kept round the network, in blocks", 6, 0, 64, 2, "blocks"));
+        l.add(com.dogpound.railmap.settings.Setting.choice("Status strip", "strip", "Status strip at the bottom", "Train count + the latest arrival", "Auto", "Auto", "Always", "Never"));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Status strip", "stripLast", "Latest arrival / departure", "Right side of the strip", true));
+        l.add(com.dogpound.railmap.settings.Setting.num("Screen", "px", "Resolution (pixels per block)", "Higher = sharper text, more work for the graphics card", 64, 32, 128, 16, "px"));
+        l.add(com.dogpound.railmap.settings.Setting.num("Screen", "scanEvery", "Rescan the track every", "How often the map re-reads the railway while someone is near", 10, 2, 120, 2, "s"));
+        TileRailDisplay c = this == controller() || world == null ? this : controller();
+        RailNetwork n = c.network;
+        l.add(com.dogpound.railmap.settings.Setting.info("Screen", "Track pieces", String.valueOf(n.nodes.size())));
+        l.add(com.dogpound.railmap.settings.Setting.info("Screen", "Signals / stops", n.signals.size() + " / " + n.stops.size()));
+        return l;
+    }
+
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return world != null && !isController() ? controller().cfg : cfg; }
+
+    @Override
+    public void onSettingsChanged(String key) {
+        TileRailDisplay c = controller();                 // settings() already wrote into the controller's store
+        c.markDirty();
+        if (world != null && !world.isRemote) { IBlockState s = world.getBlockState(c.getPos()); world.notifyBlockUpdate(c.getPos(), s, s, 3); }
+    }
+
+    /** the options the renderer uses (always the controller's) */
+    public com.dogpound.railmap.settings.SettingsStore displaySettings() { return controller().cfg; }
 
     /** The tile that scans and holds the data for this display (itself, unless part of a panel wall). */
     public TileRailDisplay controller() {
@@ -59,7 +95,8 @@ public abstract class TileRailDisplay extends TileEntity implements ITickable {
         ticks++;
         if (ticks % 20 == 0 && world.isAnyPlayerWithinRangeAt(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, Viewers.TILE_RANGE)) {
             Viewers.markAround(world, pos);
-            if (ticks % RailMapConfig.rescanIntervalTicks < 20) rescan(false);
+            int every = Math.max(40, cfg.num("scanEvery") * 20);
+            if (ticks % every < 20) rescan(false);
         }
     }
 
@@ -107,6 +144,7 @@ public abstract class TileRailDisplay extends TileEntity implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound tag) {
         super.writeToNBT(tag);
+        cfg.write(tag);
         if (!network.isEmpty()) tag.setTag("network", network.toNBT());
         return tag;
     }
@@ -114,6 +152,7 @@ public abstract class TileRailDisplay extends TileEntity implements ITickable {
     @Override
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);
+        cfg.read(tag);
         network = RailNetwork.fromNBT(tag.getCompoundTag("network"));
         lastContent = null; // force the first post-load scan to push
     }

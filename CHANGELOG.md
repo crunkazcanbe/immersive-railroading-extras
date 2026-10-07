@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.6.0-beta - 2026-10-07
+
+**Beta / development version.** The big new systems were tested in game on test rigs but not yet in long survival play, and **textures and models are not final** (they're still being reviewed by hand). Back up your world first. Bug reports are very welcome.
+
+### Added - real electricity (Pride Rail power grid)
+- Voltage levels from 12 V DC to 69 kV plus 600 / 750 / 1500 / 3000 V DC and 25 kV traction; each network solved every second for P, Q, S, power factor, current, I²R losses, voltage drop, efficiency and conductor temperature. Losses are real energy.
+- Power cables you choose: copper / aluminium (1-300 mm²) or superconductor, single / 2-core DC / 3φ+N+PE / motor cable / busbar, LV / MV / HV insulation; undersized cables overheat and burn out, under-insulated ones flash over. Each kind looks different.
+- Inverter (DC→AC) and DC-DC converter; converters have real primary (back) and secondary sides, kVA ratings, wrong-input faults and 150 % overload trips.
+- Generators run up to speed with live frequency, synchroscope and sync-check relay, AUTO synchronising, and under-frequency / overload / reverse-power trips that can cascade into blackouts.
+- Electric Motor with direct-on-line, star-delta, soft-starter or VFD starting (inrush, voltage dip, stall and thermal overload), HAND / OFF / AUTO, driving any mod's Forge Energy machine from its shaft.
+- Prospective short-circuit current per network, breaker breaking capacity (10-63 kA), selective tripping; a breaker that can't break the fault fails violently.
+- Real control panels on every grid machine (only the controls the real equipment has), control-room instruments (volt / amp / watt / var / PF / Hz / temperature meters, screen, lamp), Multimeter / clamp meter, smart energy meter.
+- Lockout padlock + danger tag, electrician's screwdriver (settings, off-circuit taps, zap when live), Unit Substation Kit.
+
+### Added - railway
+- Pride Rail: 40 trains (monorails, maglevs, subways, high-speed) with Real / Pride / Trans liveries, walk-through interiors, automatic doors, platform screen doors, whole-train items and `/irextras consist`.
+- Monorail beams, maglev guideways and third rail as live power rails; redesigned overhead line.
+- Orders and profit, Railway Control Center, maintenance and wear, 4 station styles, industries with supply chains, signal-box programming, NX route-setting desk, Settings Console on every block.
+
+### Fixed
+- Client disconnect with long train names; seat z-fighting; car gaps; flat lighting for moved lineside pieces; many model UV issues.
+- A network that ran out of energy now comes back when its sources refill.
+- Burnt-out cables / failed breakers no longer crash the server mid-solve.
+- Cables never connect into a machine's control panel (old builds keep working).
+
 All notable changes to Immersive Railroading Extras. This project is in **alpha**; versions
 before 1.0 may change behaviour between releases.
 

@@ -1,0 +1,147 @@
+{
+ "credit": "Made with Blockbench",
+ "textures": {
+  "jacket": "irextras:blocks/cable_mv",
+  "particle": "#jacket"
+ },
+ "elements": [
+  {
+   "name": "joint",
+   "from": [
+    6.1,
+    0,
+    6.1
+   ],
+   "to": [
+    9.9,
+    3.4,
+    9.9
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      0,
+      16,
+      10.8
+     ],
+     "texture": "#jacket"
+    },
+    "east": {
+     "uv": [
+      0,
+      0,
+      16,
+      10.8
+     ],
+     "texture": "#jacket"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      16,
+      10.8
+     ],
+     "texture": "#jacket"
+    },
+    "west": {
+     "uv": [
+      0,
+      0,
+      16,
+      10.8
+     ],
+     "texture": "#jacket"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      16,
+      10.8
+     ],
+     "texture": "#jacket"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      16,
+      10.8
+     ],
+     "texture": "#jacket"
+    }
+   }
+  },
+  {
+   "name": "cleat",
+   "from": [
+    5.5,
+    0,
+    7
+   ],
+   "to": [
+    10.5,
+    0.5,
+    9
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      0,
+      16,
+      5
+     ],
+     "texture": "#jacket"
+    },
+    "east": {
+     "uv": [
+      0,
+      0,
+      16,
+      5
+     ],
+     "texture": "#jacket"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      16,
+      5
+     ],
+     "texture": "#jacket"
+    },
+    "west": {
+     "uv": [
+      0,
+      0,
+      16,
+      5
+     ],
+     "texture": "#jacket"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      16,
+      5
+     ],
+     "texture": "#jacket"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      16,
+      5
+     ],
+     "texture": "#jacket"
+    }
+   }
+  }
+ ]
+}

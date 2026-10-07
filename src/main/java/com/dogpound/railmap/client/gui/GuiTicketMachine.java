@@ -9,17 +9,13 @@ import org.lwjgl.input.Mouse;
 import java.io.IOException;
 
 /**
- * The ticket machine's touch screen. Drawn by hand rather than with vanilla buttons, so it
- * reads as a kiosk: a steel bezel, a transit-blue screen, big touch tiles for destinations,
- * One Way / Round Trip, the fare, what you have, and a green PRINT TICKET.
+ * The ticket machine's touch screen, in the shared PrideFrame house style: big touch tiles for
+ * destinations, One Way / Round Trip, the fare, what you have, and a green PRINT TICKET.
  */
 public class GuiTicketMachine extends GuiScreen {
     private static final int W = 340, H = 220;
-    private static final int STEEL = 0xFF3A3F46, STEEL_HI = 0xFF5A6068, STEEL_LO = 0xFF22262B;
-    private static final int SCREEN_TOP = 0xFF0D3B78, SCREEN_BOT = 0xFF06214A;
-    private static final int TILE = 0xFF11509C, TILE_HOVER = 0xFF1A66C2, TILE_SEL = 0xFFFFC23A;
-    private static final int WHITE = 0xFFF5F7FA, DIM = 0xFF9DB6D8, GOLD = 0xFFFFC23A;
-    private static final int GO = 0xFF1FA85A, GO_HI = 0xFF27C76B, NO = 0xFF5B6470, RED = 0xFFFF6B5E;
+    private static final int WHITE = 0xFFF5F7FA, DIM = PrideFrame.DIM, GOLD = 0xFFFFC23A;
+    private static final int GO = 0xFF1FA85A, NO = 0xFF5B6470, RED = 0xFFFF6B5E;
     private static final int ROW_H = 20, ROWS = 7;
 
     private PacketTicketMenu menu;
@@ -27,6 +23,7 @@ public class GuiTicketMachine extends GuiScreen {
     private boolean round;
     private int scroll;
     private int left, top;
+    private PrideFrame f;
 
     public GuiTicketMachine(PacketTicketMenu menu) {
         this.menu = menu;
@@ -42,8 +39,11 @@ public class GuiTicketMachine extends GuiScreen {
 
     @Override
     public void initGui() {
-        left = (width - W) / 2;
-        top = (height - H) / 2;
+        // Centred house-style panel just big enough for the W×H layout below. The layout's offsets
+        // start at top + 26 (under the kiosk's old 18px header), so top sits 26 above the content area.
+        f = PrideFrame.sized(width, height, W + 20, H - 26 + PrideFrame.HEADER + 12);
+        left = f.cx;
+        top = f.cy - 26;
     }
 
     @Override
@@ -53,20 +53,8 @@ public class GuiTicketMachine extends GuiScreen {
 
     @Override
     public void drawScreen(int mx, int my, float partialTicks) {
-        drawDefaultBackground();
-        // Bezel with a bevel, then the glass.
-        drawRect(left - 8, top - 8, left + W + 8, top + H + 8, STEEL_LO);
-        drawRect(left - 7, top - 7, left + W + 7, top + H + 7, STEEL);
-        drawRect(left - 7, top - 7, left + W + 7, top - 5, STEEL_HI);
-        drawRect(left - 2, top - 2, left + W + 2, top + H + 2, 0xFF000000);
-        drawGradientRect(left, top, left + W, top + H, SCREEN_TOP, SCREEN_BOT);
-
-        // Header.
-        drawRect(left, top, left + W, top + 18, 0xFF072A5C);
-        drawRect(left, top + 18, left + W, top + 19, GOLD);
-        fontRenderer.drawString("RAIL TICKETS", left + 6, top + 5, WHITE);
         String from = menu.station.isEmpty() ? "NOT AT A STATION" : "FROM  " + menu.station.toUpperCase();
-        fontRenderer.drawString(from, left + W - fontRenderer.getStringWidth(from) - 6, top + 5, GOLD);
+        f.draw(this, "Rail Tickets", "\u00a7e" + trim(from, f.w - 130));
 
         if (menu.station.isEmpty()) {
             center("Name a station near this machine on the Dispatcher Board.", top + 90, WHITE);
@@ -89,20 +77,13 @@ public class GuiTicketMachine extends GuiScreen {
             int y = ly + i * (ROW_H + 2);
             boolean hover = in(mx, my, lx, y, lw, ROW_H);
             boolean sel = idx == selected;
-            drawRect(lx, y, lx + lw, y + ROW_H, sel ? TILE_SEL : hover ? TILE_HOVER : TILE);
-            int text = sel ? 0xFF1B1300 : WHITE;
-            fontRenderer.drawString(trim(d.name, lw - 50), lx + 5, y + 3, text);
-            fontRenderer.drawString(Math.round(d.distance) + " m", lx + 5, y + 11, sel ? 0xFF4A3A10 : DIM);
+            PrideFrame.tile(lx, y, lw, ROW_H, sel ? PrideFrame.PINK : PrideFrame.BLUE, hover, sel);
+            fontRenderer.drawString(trim(d.name, lw - 50), lx + 5, y + 3, WHITE);
+            fontRenderer.drawString(Math.round(d.distance) + " m", lx + 5, y + 11, sel ? 0xFFD8C8F0 : DIM);
             String fare = d.oneWay == 0 ? "FREE" : String.valueOf(d.oneWay);
-            fontRenderer.drawString(fare, lx + lw - fontRenderer.getStringWidth(fare) - 5, y + 6, sel ? 0xFF1B1300 : GOLD);
+            fontRenderer.drawString(fare, lx + lw - fontRenderer.getStringWidth(fare) - 5, y + 6, GOLD);
         }
-        if (menu.dests.size() > ROWS) {
-            int track = ROWS * (ROW_H + 2) - 2;
-            int knob = Math.max(12, track * ROWS / menu.dests.size());
-            int pos = (track - knob) * scroll / Math.max(1, menu.dests.size() - ROWS);
-            drawRect(lx + lw + 2, ly, lx + lw + 5, ly + track, 0xFF0A2346);
-            drawRect(lx + lw + 2, ly + pos, lx + lw + 5, ly + pos + knob, DIM);
-        }
+        PrideFrame.scrollbar(lx + lw + 2, ly, ROWS * (ROW_H + 2) - 2, scroll, ROWS, menu.dests.size());
 
         // Right panel: the trip.
         int px = left + 192, pw = W - 198, py = top + 26;
@@ -126,15 +107,12 @@ public class GuiTicketMachine extends GuiScreen {
         py += 26;
 
         boolean can = d != null && (free || menu.wallet >= price);
-        boolean hover = can && in(mx, my, px, py, pw, 26);
-        drawRect(px, py, px + pw, py + 26, can ? hover ? GO_HI : GO : NO);
-        drawRect(px, py + 24, px + pw, py + 26, 0x40000000);
         String print = d != null && !can ? "NOT ENOUGH" : "PRINT TICKET";
-        fontRenderer.drawString(print, px + (pw - fontRenderer.getStringWidth(print)) / 2, py + 9, WHITE);
+        PrideFrame.button(px, py, pw, 26, print, can ? GO : NO, can ? mx : -1, can ? my : -1);
 
         // Footer: status, waiting, how to ride.
         int fy = top + H - 30;
-        drawRect(left, fy - 3, left + W, fy - 2, 0x3300A0FF);
+        drawRect(left, fy - 3, left + W, fy - 2, 0x40FFFFFF);
         String msg = menu.message.isEmpty()
                 ? "To ride: hold your ticket and right-click this machine."
                 : menu.message;
@@ -147,10 +125,8 @@ public class GuiTicketMachine extends GuiScreen {
     }
 
     private void toggle(int x, int y, int w, String label, boolean on, int mx, int my) {
-        boolean hover = in(mx, my, x, y, w, 18);
-        drawRect(x, y, x + w, y + 18, on ? GOLD : hover ? TILE_HOVER : TILE);
-        int c = on ? 0xFF1B1300 : WHITE;
-        fontRenderer.drawString(label, x + (w - fontRenderer.getStringWidth(label)) / 2, y + 5, c);
+        PrideFrame.tile(x, y, w, 18, PrideFrame.PINK, in(mx, my, x, y, w, 18), on);
+        fontRenderer.drawString(label, x + (w - fontRenderer.getStringWidth(label)) / 2, y + 6, WHITE);
     }
 
     @Override

@@ -1,0 +1,25 @@
+{
+  "name": "London Underground S Stock full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_sstock"
+    },
+    {
+      "stock": "pride_sstock_car"
+    },
+    {
+      "stock": "pride_sstock_car"
+    },
+    {
+      "stock": "pride_sstock_car"
+    },
+    {
+      "stock": "pride_sstock",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

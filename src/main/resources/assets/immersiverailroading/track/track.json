@@ -1,0 +1,11 @@
+{
+  "pack": "Pride Rail",
+  "types": [
+    "pride_monorail",
+    "pride_monorail_steel",
+    "pride_maglev",
+    "pride_maglev_pride",
+    "pride_monorail_slim",
+    "pride_thirdrail"
+  ]
+}

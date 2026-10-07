@@ -1,0 +1,22 @@
+{
+  "name": "Chongqing Straddle Monorail full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_chongqing"
+    },
+    {
+      "stock": "pride_chongqing_car"
+    },
+    {
+      "stock": "pride_chongqing_car"
+    },
+    {
+      "stock": "pride_chongqing",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

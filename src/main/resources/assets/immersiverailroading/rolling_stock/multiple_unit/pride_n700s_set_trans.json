@@ -1,0 +1,34 @@
+{
+  "name": "Shinkansen N700S full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_n700s",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_n700s_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_n700s_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_n700s_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_n700s_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_n700s",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

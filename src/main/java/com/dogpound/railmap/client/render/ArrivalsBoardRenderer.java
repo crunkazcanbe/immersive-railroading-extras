@@ -23,8 +23,7 @@ public class ArrivalsBoardRenderer extends TileEntitySpecialRenderer<TileArrival
     private static final double FACE_Z = (10.45 - 8) / 16.0;
     private static final double TOP = 14.5 / 16.0, BOTTOM = 4.5 / 16.0, SIDE = 1.0 / 16.0;
 
-    private static final int AMBER = 0xFFFFB02E, AMBER_DIM = 0xFF6E4A12, WHITE = 0xFFF4F1E8;
-    private static final int BG = 0xFF07080A, CELL = 0xFF121418, HEADER = 0xFF0B2A55, LINE = 0xFF1D2128;
+    private static final int BG = 0xFF07080A, LINE = 0xFF1D2128;
     private static final int GREEN = 0xFF55E07A, RED = 0xFFFF5A4E;
 
     @Override
@@ -55,20 +54,33 @@ public class ArrivalsBoardRenderer extends TileEntitySpecialRenderer<TileArrival
         GlStateManager.popMatrix();
     }
 
+    /** [AMBER, AMBER_DIM, WHITE, HEADER, CELL] per theme (Settings Console > Look > Display) */
+    private static final int[][] THEME = {
+            {0xFFFFB02E, 0xFF6E4A12, 0xFFF4F1E8, 0xFF0B2A55, 0xFF121418},
+            {0xFF55FF55, 0xFF1E6A1E, 0xFFE8FFE8, 0xFF0B3A1A, 0xFF0E1A10},
+            {0xFFF4F4F4, 0xFF7A7A7A, 0xFFFFFFFF, 0xFF303030, 0xFF161616},
+            {0xFF8FD8FF, 0xFF2E5C78, 0xFFFFFFFF, 0xFF0B3570, 0xFF0C1626},
+            {0xFFF5A9B8, 0xFF5BCEFA, 0xFFFFFFFF, 0xFF732982, 0xFF1C1530}};
+
     private void draw(TileArrivalsBoard te, int w, int h) {
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
+        com.dogpound.railmap.settings.SettingsStore cfg = te.settings();
+        int ti = 0;
+        for (int i = 0; i < TileArrivalsBoard.THEMES.length; i++) if (TileArrivalsBoard.THEMES[i].equals(te.theme())) ti = i;
+        final int AMBER = THEME[ti][0], AMBER_DIM = THEME[ti][1], WHITE = THEME[ti][2], HEADER = THEME[ti][3], CELL = THEME[ti][4];
+        boolean upper = cfg.bool("upper");
         long t = te.getWorld().getTotalWorldTime();
         Gui.drawRect(0, 0, w, h, BG);
 
         // Header: station name, white on transit blue, a clock at the right.
         int head = 14;
         Gui.drawRect(0, 0, w, head, HEADER);
-        String name = te.stationName().isEmpty() ? "NO STATION NEARBY" : te.stationName().toUpperCase();
+        String name = te.stationName().isEmpty() ? "NO STATION NEARBY" : upper ? te.stationName().toUpperCase() : te.stationName();
         text(font, fit(font, name, w - 44), 3, 3, WHITE);
         long day = te.getWorld().getWorldTime() % 24000;
         int hh = (int) ((day / 1000 + 6) % 24), mm = (int) (day % 1000 * 60 / 1000);
-        String clock = String.format("%02d:%02d", hh, mm);
-        text(font, clock, w - font.getStringWidth(clock) - 3, 3, AMBER);
+        String clock = cfg.bool("clock24") ? String.format("%02d:%02d", hh, mm) : String.format("%d:%02d %s", hh % 12 == 0 ? 12 : hh % 12, mm, hh < 12 ? "AM" : "PM");
+        if (cfg.bool("clock")) text(font, clock, w - font.getStringWidth(clock) - 3, 3, AMBER);
 
         String arriving = te.arriving();
         int y = head + 2;
@@ -95,10 +107,12 @@ public class ArrivalsBoardRenderer extends TileEntitySpecialRenderer<TileArrival
         for (String[] row : rows) {
             if (y + rowH > h - 12) break;
             // Split-flap cells: a darker tile behind every character slot.
-            for (int cx = 2; cx < w - 2; cx += 7) Gui.drawRect(cx, y + 1, cx + 6, y + rowH - 1, CELL);
-            Gui.drawRect(2, y + rowH / 2, w - 2, y + rowH / 2 + 1, BG);   // the hinge line
-            text(font, fit(font, row[0].toUpperCase(), colTo - 6), 3, y + 2, AMBER);
-            text(font, fit(font, row[1].toUpperCase(), colWhen - colTo - 4), colTo, y + 2, AMBER);
+            if (cfg.bool("flaps")) {
+                for (int cx = 2; cx < w - 2; cx += 7) Gui.drawRect(cx, y + 1, cx + 6, y + rowH - 1, CELL);
+                Gui.drawRect(2, y + rowH / 2, w - 2, y + rowH / 2 + 1, BG);   // the hinge line
+            }
+            text(font, fit(font, upper ? row[0].toUpperCase() : row[0], colTo - 6), 3, y + 2, AMBER);
+            text(font, fit(font, upper ? row[1].toUpperCase() : row[1], colWhen - colTo - 4), colTo, y + 2, AMBER);
             int c = row[2].equals("BOARDING") ? ((t / 10) % 2 == 0 ? GREEN : AMBER) : row[2].equals("DUE") ? RED : AMBER;
             text(font, row[2], colWhen, y + 2, c);
             y += rowH;
@@ -106,8 +120,8 @@ public class ArrivalsBoardRenderer extends TileEntitySpecialRenderer<TileArrival
 
         // Footer: passengers waiting.
         Gui.drawRect(0, h - 11, w, h, 0xFF0A0C10);
-        int waiting = te.waiting();
-        String foot = waiting == 0 ? "BUY TICKETS AT THE MACHINE" : waiting + (waiting == 1 ? " PASSENGER WAITING" : " PASSENGERS WAITING");
+        int waiting = cfg.bool("waiting") ? te.waiting() : 0;
+        String foot = waiting == 0 ? cfg.text("footer") : waiting + (waiting == 1 ? " PASSENGER WAITING" : " PASSENGERS WAITING");
         text(font, fit(font, foot, w - 6), 3, h - 9, waiting == 0 ? AMBER_DIM : GREEN);
     }
 

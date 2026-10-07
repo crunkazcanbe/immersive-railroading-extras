@@ -1,0 +1,24 @@
+{
+  "name": "Pennsylvania GG1 full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_gg1"
+    },
+    {
+      "stock": "pride_gg1_car"
+    },
+    {
+      "stock": "pride_gg1_car"
+    },
+    {
+      "stock": "pride_gg1_car"
+    },
+    {
+      "stock": "pride_gg1_car"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

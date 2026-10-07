@@ -1,0 +1,28 @@
+{
+  "name": "Beijing S1 Maglev full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_beijing_s1"
+    },
+    {
+      "stock": "pride_voxel_beijing_s1_car"
+    },
+    {
+      "stock": "pride_voxel_beijing_s1_car"
+    },
+    {
+      "stock": "pride_voxel_beijing_s1_car"
+    },
+    {
+      "stock": "pride_voxel_beijing_s1_car"
+    },
+    {
+      "stock": "pride_voxel_beijing_s1",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

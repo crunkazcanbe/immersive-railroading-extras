@@ -24,7 +24,6 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.math.BlockPos;
 import org.lwjgl.input.Keyboard;
@@ -44,10 +43,10 @@ import java.util.List;
  * by the handheld map's last snapshot. Trains come from {@link ClientTrains} either way.
  */
 public class GuiDispatcherBoard extends GuiScreen {
-    private static final int MARGIN = 8, TOP = 22, BOTTOM = 34, PANEL_W = 150;
+    private static final int MARGIN = 8, BOTTOM = 36, PANEL_W = 150;
     private static final int BTN_RESCAN = 0, BTN_CENTER = 1, BTN_CLOSE = 2, BTN_TIMETABLE = 3, BTN_FOLLOW = 4,
             BTN_NAME_OK = 5, BTN_NAME_REMOVE = 6, BTN_NAME_CANCEL = 7, BTN_AUGMENT = 8,
-            BTN_AUTO = 9, BTN_LINES = 10, BTN_ROUTE = 11,
+            BTN_AUTO = 9, BTN_LINES = 10, BTN_ROUTE = 11, BTN_PROGRAM = 12,
             BTN_MODE_LINE = 30, BTN_MODE_SHUTTLE = 31, BTN_MODE_ONCALL = 32, BTN_LINE_CYCLE = 33,
             BTN_SPEED_DN = 34, BTN_SPEED_UP = 35, BTN_DWELL_DN = 36, BTN_DWELL_UP = 37,
             BTN_START = 38, BTN_OFF = 39, BTN_SEND = 40, BTN_BACK = 41,
@@ -60,6 +59,8 @@ public class GuiDispatcherBoard extends GuiScreen {
     private final TileRailDisplay tile;
     private final BlockPos origin;
     private final MapRenderer map = new MapRenderer();
+    /** Railway Control Center tabs (Map = this board as it always was). */
+    private final ControlCenter cc = new ControlCenter();
     private boolean fitted;
     private boolean dragging, moved;
     private int downX, downY, lastMouseX, lastMouseY;
@@ -67,7 +68,7 @@ public class GuiDispatcherBoard extends GuiScreen {
     private MapRenderer.Pick lastPick = new MapRenderer.Pick();
 
     // Side panel state
-    private enum Panel { NONE, TIMETABLE, TRAIN, NAME, AUTO, LINES }
+    private enum Panel { NONE, TIMETABLE, TRAIN, NAME, AUTO, LINES, PROGRAM }
     private Panel panel = Panel.NONE;
     private int selectedTrain = -1;
     private boolean follow;
@@ -91,9 +92,28 @@ public class GuiDispatcherBoard extends GuiScreen {
     private GuiTextField lineField;
     private String lineName = "";
     private final List<Long> lineStations = new ArrayList<>();
+    /** Order per stop (RailwayData.Order ordinal), same index as lineStations; click a stop to cycle it. */
+    private final List<Integer> lineOrders = new ArrayList<>();
 
     // viewport rectangle (screen px)
     private int vx, vy, vw, vh;
+    /** The centred house-style panel everything sits in; right = its content's right edge. */
+    private PrideFrame frame;
+    private int right;
+    /** Scroll (in rows) of the side panel's list: timetable, lines, or the line being edited. */
+    private int panelScroll, scrollKey = -1;
+
+    /** the signal-box program editor (PROGRAM panel) */
+    private ProgramPanel program;
+    private static final int PROGRAM_W = 300;
+
+    private int pwidth() { return panel == Panel.PROGRAM ? PROGRAM_W : PANEL_W; }
+
+    /** the Signal Box Computer opens straight into the program editor */
+    public GuiDispatcherBoard(TileRailDisplay tile, boolean programming) {
+        this(tile);
+        if (programming) { program = new ProgramPanel(boardPos() != null ? boardPos() : origin); panel = Panel.PROGRAM; }
+    }
 
     public GuiDispatcherBoard(TileRailDisplay tile) {
         this.tile = tile;
@@ -130,23 +150,28 @@ public class GuiDispatcherBoard extends GuiScreen {
     }
 
     private void layout() {
-        int pw = panel == Panel.NONE ? 0 : PANEL_W + MARGIN;
-        vx = MARGIN;
-        vy = TOP;
-        vw = width - 2 * MARGIN - pw;
-        vh = height - TOP - BOTTOM;
+        frame = PrideFrame.fit(width, height);
+        right = frame.cx + frame.cw;
+        int key = panel.ordinal() * 2 + (editingLine ? 1 : 0);
+        if (key != scrollKey) { scrollKey = key; panelScroll = 0; }
+        int pw = panel == Panel.NONE ? 0 : pwidth() + MARGIN;
+        vx = frame.cx;
+        vy = frame.cy + ControlCenter.TAB_H + 3;
+        vw = frame.cw - pw;
+        vh = frame.ch - BOTTOM - ControlCenter.TAB_H - 3;
         map.w = vw;
         map.h = vh;
         buttonList.clear();
-        int by = height - BOTTOM + 8;
-        buttonList.add(new GuiButton(BTN_CLOSE, width - MARGIN - 50, by, 50, 20, "Close"));
-        buttonList.add(new GuiButton(BTN_RESCAN, width - MARGIN - 106, by, 52, 20, "Rescan"));
-        buttonList.add(new GuiButton(BTN_CENTER, width - MARGIN - 160, by, 50, 20, "Center"));
-        buttonList.add(new GuiButton(BTN_TIMETABLE, width - MARGIN - 232, by, 68, 20,
+        int by = frame.cy + frame.ch - 20;
+        buttonList.add(new PrideButton(BTN_CLOSE, right - 50, by, 50, 20, "Close"));
+        buttonList.add(new PrideButton(BTN_RESCAN, right - 106, by, 52, 20, "Rescan"));
+        buttonList.add(new PrideButton(BTN_CENTER, right - 160, by, 50, 20, "Center"));
+        buttonList.add(new PrideButton(BTN_TIMETABLE, right - 232, by, 68, 20,
                 panel == Panel.TIMETABLE ? "Map only" : "Timetable"));
-        buttonList.add(new GuiButton(BTN_LINES, width - MARGIN - 290, by, 54, 20, "Lines"));
-        buttonList.add(new GuiButton(BTN_ROUTE, width - MARGIN - 364, by, 70, 20, routeMode ? "Route: ON" : "Set route"));
-        int px = width - MARGIN - PANEL_W;
+        buttonList.add(new PrideButton(BTN_LINES, right - 290, by, 54, 20, "Lines"));
+        buttonList.add(new PrideButton(BTN_ROUTE, right - 364, by, 70, 20, routeMode ? "Route: ON" : "Set route"));
+        buttonList.add(new PrideButton(BTN_PROGRAM, right - 440, by, 72, 20, panel == Panel.PROGRAM ? "Map only" : "Program"));
+        int px = panelX();
         if (panel == Panel.TRAIN) {
             // The driving desk: two columns of short buttons under the readout.
             // Bottom-up from the Follow button (vy + vh - 24) so the desk never covers it, and the
@@ -162,9 +187,9 @@ public class GuiDispatcherBoard extends GuiScreen {
             addCmd(px + 4, by2 + 66, 70, "Horn", TrainControl.Cmd.HORN);
             addCmd(px + 78, by2 + 66, 68, "Bell", TrainControl.Cmd.BELL);
             addCmd(px + 4, by2 + 88, PANEL_W - 8, "EMERGENCY STOP", TrainControl.Cmd.EMERGENCY_STOP);
-            buttonList.add(new GuiButton(BTN_FOLLOW, px + 4, vy + vh - 24, PANEL_W - 8, 20,
+            buttonList.add(new PrideButton(BTN_FOLLOW, px + 4, vy + vh - 24, PANEL_W - 8, 20,
                     follow ? "Following (stop)" : "Follow on map"));
-            buttonList.add(new GuiButton(BTN_AUTO, px + 4, by2 - 24, PANEL_W - 8, 20,
+            buttonList.add(new PrideButton(BTN_AUTO, px + 4, by2 - 24, PANEL_W - 8, 20,
                     ClientRailway.train(selectedTrain) != null ? "Driverless: ON" : "Make driverless..."));
         }
         if (panel == Panel.AUTO) layoutAuto(px);
@@ -175,11 +200,11 @@ public class GuiDispatcherBoard extends GuiScreen {
             nameField.setMaxStringLength(32);
             nameField.setText(nameOld);
             nameField.setFocused(true);
-            buttonList.add(new GuiButton(BTN_NAME_OK, px + 4, vy + 64, PANEL_W - 8, 20, "Save"));
-            buttonList.add(new GuiButton(BTN_NAME_REMOVE, px + 4, vy + 88, PANEL_W - 8, 20, "Remove station"));
-            buttonList.add(new GuiButton(BTN_NAME_CANCEL, px + 4, vy + 112, PANEL_W - 8, 20, "Cancel"));
+            buttonList.add(new PrideButton(BTN_NAME_OK, px + 4, vy + 64, PANEL_W - 8, 20, "Save"));
+            buttonList.add(new PrideButton(BTN_NAME_REMOVE, px + 4, vy + 88, PANEL_W - 8, 20, "Remove station"));
+            buttonList.add(new PrideButton(BTN_NAME_CANCEL, px + 4, vy + 112, PANEL_W - 8, 20, "Cancel"));
             if (augmentTarget) {
-                buttonList.add(new GuiButton(BTN_AUGMENT, px + 4, vy + 136, PANEL_W - 8, 20, "Load / unload now"));
+                buttonList.add(new PrideButton(BTN_AUGMENT, px + 4, vy + 136, PANEL_W - 8, 20, "Load / unload now"));
             }
         } else {
             nameField = null;
@@ -189,44 +214,45 @@ public class GuiDispatcherBoard extends GuiScreen {
     private void layoutAuto(int px) {
         int w3 = (PANEL_W - 16) / 3;
         int y = vy + 62;
-        buttonList.add(new GuiButton(BTN_MODE_LINE, px + 4, y, w3, 20, mark(autoMode == RailwayData.Mode.LINE, "Line")));
-        buttonList.add(new GuiButton(BTN_MODE_SHUTTLE, px + 8 + w3, y, w3, 20, mark(autoMode == RailwayData.Mode.SHUTTLE, "Shuttle")));
-        buttonList.add(new GuiButton(BTN_MODE_ONCALL, px + 12 + 2 * w3, y, w3, 20, mark(autoMode == RailwayData.Mode.ON_CALL, "On call")));
+        buttonList.add(new PrideButton(BTN_MODE_LINE, px + 4, y, w3, 20, mark(autoMode == RailwayData.Mode.LINE, "Line")));
+        buttonList.add(new PrideButton(BTN_MODE_SHUTTLE, px + 8 + w3, y, w3, 20, mark(autoMode == RailwayData.Mode.SHUTTLE, "Shuttle")));
+        buttonList.add(new PrideButton(BTN_MODE_ONCALL, px + 12 + 2 * w3, y, w3, 20, mark(autoMode == RailwayData.Mode.ON_CALL, "On call")));
         y += 22;
         List<PacketRailState.LineInfo> lines = ClientRailway.get().lines;
         String lineLabel = autoMode == RailwayData.Mode.ON_CALL ? "Home: nearest station"
                 : lines.isEmpty() ? "No lines yet (use Lines)" : "Line: " + lines.get(Math.floorMod(autoLine, lines.size())).name + " >";
-        GuiButton lb = new GuiButton(BTN_LINE_CYCLE, px + 4, y, PANEL_W - 8, 20, fontRenderer.trimStringToWidth(lineLabel, PANEL_W - 16));
+        GuiButton lb = new PrideButton(BTN_LINE_CYCLE, px + 4, y, PANEL_W - 8, 20, fontRenderer.trimStringToWidth(lineLabel, PANEL_W - 16));
         lb.enabled = autoMode != RailwayData.Mode.ON_CALL && !lines.isEmpty();
         buttonList.add(lb);
         y += 24;
-        buttonList.add(new GuiButton(BTN_SPEED_DN, px + 4, y, 24, 20, "-"));
-        buttonList.add(new GuiButton(BTN_SPEED_UP, px + PANEL_W - 28, y, 24, 20, "+"));
+        buttonList.add(new PrideButton(BTN_SPEED_DN, px + 4, y, 24, 20, "-"));
+        buttonList.add(new PrideButton(BTN_SPEED_UP, px + PANEL_W - 28, y, 24, 20, "+"));
         y += 22;
-        buttonList.add(new GuiButton(BTN_DWELL_DN, px + 4, y, 24, 20, "-"));
-        buttonList.add(new GuiButton(BTN_DWELL_UP, px + PANEL_W - 28, y, 24, 20, "+"));
+        buttonList.add(new PrideButton(BTN_DWELL_DN, px + 4, y, 24, 20, "-"));
+        buttonList.add(new PrideButton(BTN_DWELL_UP, px + PANEL_W - 28, y, 24, 20, "+"));
         y += 24;
-        buttonList.add(new GuiButton(BTN_START, px + 4, y, PANEL_W - 8, 20, "Start driverless"));
+        buttonList.add(new PrideButton(BTN_START, px + 4, y, PANEL_W - 8, 20, "Start driverless"));
         y += 22;
-        buttonList.add(new GuiButton(BTN_SEND, px + 4, y, PANEL_W - 8, 20, sendPick ? "Click a station on the map" : "Send to a station..."));
+        buttonList.add(new PrideButton(BTN_SEND, px + 4, y, PANEL_W - 8, 20, sendPick ? "Click a station on the map" : "Send to a station..."));
         y += 22;
-        GuiButton off = new GuiButton(BTN_OFF, px + 4, y, PANEL_W - 8, 20, "Driverless off");
+        GuiButton off = new PrideButton(BTN_OFF, px + 4, y, PANEL_W - 8, 20, "Driverless off");
         off.enabled = ClientRailway.train(selectedTrain) != null;
         buttonList.add(off);
-        buttonList.add(new GuiButton(BTN_BACK, px + 4, vy + vh - 24, PANEL_W - 8, 20, "Back to train"));
+        buttonList.add(new PrideButton(BTN_BACK, px + 4, vy + vh - 24, PANEL_W - 8, 20, "Back to train"));
     }
 
     private void layoutLines(int px) {
         if (!editingLine) {
             lineField = null;
             List<PacketRailState.LineInfo> lines = ClientRailway.get().lines;
+            panelScroll = Math.max(0, Math.min(panelScroll, lines.size() - linesRows()));
             int y = vy + 24;
-            for (int i = 0; i < lines.size() && y + 22 < vy + vh - 50; i++, y += 22) {
-                buttonList.add(new GuiButton(BTN_LINE_PICK + i, px + 4, y, PANEL_W - 8, 20,
-                        fontRenderer.trimStringToWidth(lines.get(i).name + " (" + lines.get(i).stations.size() + ")", PANEL_W - 16)));
+            for (int i = panelScroll; i < lines.size() && y + 22 < vy + vh - 50; i++, y += 22) {
+                buttonList.add(new PrideButton(BTN_LINE_PICK + i, px + 4, y, PANEL_W - 8, 20,
+                        fontRenderer.trimStringToWidth(lines.get(i).name + " (" + lines.get(i).stations.size() + ")", PANEL_W - 20)));
             }
-            buttonList.add(new GuiButton(BTN_LINE_NEW, px + 4, vy + vh - 48, PANEL_W - 8, 20, "New line"));
-            buttonList.add(new GuiButton(BTN_LINE_CANCEL, px + 4, vy + vh - 24, PANEL_W - 8, 20, "Close"));
+            buttonList.add(new PrideButton(BTN_LINE_NEW, px + 4, vy + vh - 48, PANEL_W - 8, 20, "New line"));
+            buttonList.add(new PrideButton(BTN_LINE_CANCEL, px + 4, vy + vh - 24, PANEL_W - 8, 20, "Close"));
             return;
         }
         lineField = new GuiTextField(101, fontRenderer, px + 6, vy + 36, PANEL_W - 12, 16);
@@ -234,10 +260,10 @@ public class GuiDispatcherBoard extends GuiScreen {
         lineField.setText(lineName);
         lineField.setFocused(lineName.isEmpty());
         int half = (PANEL_W - 12) / 2;
-        buttonList.add(new GuiButton(BTN_LINE_UNDO, px + 4, vy + vh - 72, half, 20, "Undo stop"));
-        buttonList.add(new GuiButton(BTN_LINE_DELETE, px + 8 + half, vy + vh - 72, half, 20, "Delete"));
-        buttonList.add(new GuiButton(BTN_LINE_SAVE, px + 4, vy + vh - 48, PANEL_W - 8, 20, "Save line"));
-        buttonList.add(new GuiButton(BTN_LINE_CANCEL, px + 4, vy + vh - 24, PANEL_W - 8, 20, "Cancel"));
+        buttonList.add(new PrideButton(BTN_LINE_UNDO, px + 4, vy + vh - 72, half, 20, "Undo stop"));
+        buttonList.add(new PrideButton(BTN_LINE_DELETE, px + 8 + half, vy + vh - 72, half, 20, "Delete"));
+        buttonList.add(new PrideButton(BTN_LINE_SAVE, px + 4, vy + vh - 48, PANEL_W - 8, 20, "Save line"));
+        buttonList.add(new PrideButton(BTN_LINE_CANCEL, px + 4, vy + vh - 24, PANEL_W - 8, 20, "Cancel"));
     }
 
     private static String mark(boolean on, String label) {
@@ -245,7 +271,7 @@ public class GuiDispatcherBoard extends GuiScreen {
     }
 
     private void addCmd(int x, int y, int w, String label, TrainControl.Cmd cmd) {
-        buttonList.add(new GuiButton(BTN_TRAIN + cmd.ordinal(), x, y, w, 20, label));
+        buttonList.add(new PrideButton(BTN_TRAIN + cmd.ordinal(), x, y, w, 20, label));
     }
 
     private void setPanel(Panel p) {
@@ -285,6 +311,10 @@ public class GuiDispatcherBoard extends GuiScreen {
             case BTN_RESCAN -> RailMap.NETWORK.sendToServer(new PacketRescan(boardPos()));
             case BTN_CENTER -> { follow = false; fitted = false; fitToNetwork(); }
             case BTN_CLOSE -> mc.displayGuiScreen(null);
+            case BTN_PROGRAM -> {
+                if (panel == Panel.PROGRAM) setPanel(Panel.NONE);
+                else { if (program == null) program = new ProgramPanel(boardPos() != null ? boardPos() : origin); setPanel(Panel.PROGRAM); }
+            }
             case BTN_TIMETABLE -> setPanel(panel == Panel.TIMETABLE ? Panel.NONE : Panel.TIMETABLE);
             case BTN_FOLLOW -> { follow = !follow; layout(); }
             case BTN_NAME_OK -> { if (nameField != null) sendName(nameField.getText()); }
@@ -311,11 +341,11 @@ public class GuiDispatcherBoard extends GuiScreen {
             case BTN_OFF -> { RailMap.NETWORK.sendToServer(PacketRailOps.autopilotOff(boardPos(), selectedTrain)); setPanel(Panel.TRAIN); }
             case BTN_SEND -> { sendPick = !sendPick; routeMode = false; layout(); }
             case BTN_BACK -> { sendPick = false; setPanel(Panel.TRAIN); }
-            case BTN_LINE_NEW -> { editingLine = true; lineName = ""; lineStations.clear(); layout(); }
-            case BTN_LINE_UNDO -> { if (!lineStations.isEmpty()) lineStations.remove(lineStations.size() - 1); }
+            case BTN_LINE_NEW -> { editingLine = true; lineName = ""; lineStations.clear(); lineOrders.clear(); layout(); }
+            case BTN_LINE_UNDO -> { if (!lineStations.isEmpty()) { lineStations.remove(lineStations.size() - 1); if (!lineOrders.isEmpty()) lineOrders.remove(lineOrders.size() - 1); } }
             case BTN_LINE_SAVE -> {
                 if (lineField != null) lineName = lineField.getText().trim();
-                RailMap.NETWORK.sendToServer(PacketRailOps.saveLine(boardPos(), lineName, lineStations));
+                RailMap.NETWORK.sendToServer(PacketRailOps.saveLine(boardPos(), lineName, lineStations, lineOrders));
                 editingLine = false;
                 layout();
             }
@@ -336,6 +366,8 @@ public class GuiDispatcherBoard extends GuiScreen {
                     lineName = li.name;
                     lineStations.clear();
                     lineStations.addAll(li.stations);
+                    lineOrders.clear();
+                    for (int k = 0; k < li.stations.size(); k++) lineOrders.add(k < li.orders.size() ? li.orders.get(k) : 0);
                     layout();
                     return;
                 }
@@ -356,6 +388,7 @@ public class GuiDispatcherBoard extends GuiScreen {
 
     @Override
     protected void keyTyped(char c, int key) throws IOException {
+        if (panel == Panel.PROGRAM && program != null && program.keyTyped(c, key)) return;
         if (lineField != null && lineField.isFocused()) {
             if (key == Keyboard.KEY_ESCAPE) { editingLine = false; layout(); return; }
             lineField.textboxKeyTyped(c, key);
@@ -382,6 +415,13 @@ public class GuiDispatcherBoard extends GuiScreen {
         super.mouseClicked(mx, my, button);
         if (nameField != null) nameField.mouseClicked(mx, my, button);
         if (lineField != null) lineField.mouseClicked(mx, my, button);
+        if (button == 0 && cc.clickTabs(frame.cx, frame.cy, frame.cw, mx, my)) {
+            if (cc.tab != ControlCenter.Tab.MAP && panel != Panel.NONE) setPanel(Panel.NONE);
+            return;
+        }
+        if (cc.tab != ControlCenter.Tab.MAP) { if (button == 0) cc.click(mx, my); return; }
+        if (panel == Panel.PROGRAM && program != null && mx >= panelX() && my >= vy && my < vy + vh) { program.click(mx, my, button); return; }
+        if (button == 0 && clickOrderRow(mx, my)) return;
         if (button == 0 && inViewport(mx, my)) {
             dragging = true;
             moved = false;
@@ -414,6 +454,11 @@ public class GuiDispatcherBoard extends GuiScreen {
     /** A click (not a drag) on whatever was under the cursor at the last frame. */
     private void click() {
         MapRenderer.Pick p = lastPick;
+        if (panel == Panel.PROGRAM && program != null) {
+            BlockPos at = p.signal != null ? p.signal.pos : p.node != null ? p.node.pos : p.stop != null ? p.stop.pos : null;
+            if (at != null) { if (program.wantsPick()) program.picked(at); else program.selectFromMap(at); }
+            return;
+        }
         if (routeMode) {
             if (p.signal == null || !"railmap".equals(p.signal.source)) return;
             if (routeStart == null) {
@@ -441,7 +486,7 @@ public class GuiDispatcherBoard extends GuiScreen {
         if (panel == Panel.LINES && editingLine) {
             if (p.stop != null && p.stop.named) {
                 long k = p.stop.pos.toLong();
-                if (lineStations.isEmpty() || lineStations.get(lineStations.size() - 1) != k) lineStations.add(k);
+                if (lineStations.isEmpty() || lineStations.get(lineStations.size() - 1) != k) { lineStations.add(k); lineOrders.add(0); }
             }
             return;
         }
@@ -470,6 +515,16 @@ public class GuiDispatcherBoard extends GuiScreen {
         if (wheel == 0) return;
         int mx = Mouse.getEventX() * width / mc.displayWidth;
         int my = height - Mouse.getEventY() * height / mc.displayHeight - 1;
+        if (cc.tab != ControlCenter.Tab.MAP) { cc.wheel(wheel > 0 ? -1 : 1); return; }
+        if (panel == Panel.PROGRAM && program != null && mx >= panelX()) { program.wheel(wheel > 0 ? -1 : 1); return; }
+        if (panel != Panel.NONE && mx >= panelX() && mx < panelX() + PANEL_W && my >= vy && my < vy + vh) {
+            int rows = panel == Panel.TIMETABLE ? ttRows() : panel == Panel.LINES ? (editingLine ? stopRows() : linesRows()) : 0;
+            int total = panel == Panel.TIMETABLE ? net().log.size() : panel == Panel.LINES
+                    ? (editingLine ? lineStations.size() : ClientRailway.get().lines.size()) : 0;
+            panelScroll = Math.max(0, Math.min(Math.max(0, total - rows), panelScroll + (wheel > 0 ? -1 : 1)));
+            if (panel == Panel.LINES && !editingLine) layout();
+            return;
+        }
         if (!inViewport(mx, my)) return;
         // Zoom about the cursor so the block under it stays put.
         int lx = mx - vx, ly = my - vy;
@@ -481,6 +536,11 @@ public class GuiDispatcherBoard extends GuiScreen {
         }
     }
 
+    // How many rows of each side-panel list fit (same limits the draw/layout loops use).
+    private int ttRows() { return Math.max(1, (vh - 45) / 22 + 1); }
+    private int linesRows() { return Math.max(1, (vh - 97) / 22 + 1); }
+    private int stopRows() { return Math.max(1, (vh - 145) / 11 + 1); }
+
     private boolean inViewport(int mx, int my) {
         return mx >= vx && mx < vx + vw && my >= vy && my < vy + vh;
     }
@@ -489,14 +549,33 @@ public class GuiDispatcherBoard extends GuiScreen {
 
     @Override
     public void drawScreen(int mx, int my, float partialTicks) {
-        drawDefaultBackground();
         RailNetwork net = net();
         if (!fitted && !net.isEmpty()) fitToNetwork();
         List<TrainNode> trains = ClientTrains.get();
 
-        drawRect(vx - 1, vy - 1, vx + vw + 1, vy + vh + 1, 0xFF3A3A3A);
+        drawHeader(net, trains);
+        map.labels = ControlCenter.showLabels;
+        map.grid = ControlCenter.showGrid;
+        cc.hint = "";
+        cc.drawTabs(fontRenderer, frame.cx, frame.cy, frame.cw, mx, my);
+        if (cc.pickedTrain >= 0) {                     // a row clicked on a console page: open that train on the map
+            selectedTrain = cc.pickedTrain;
+            cc.pickedTrain = -1;
+            cc.tab = ControlCenter.Tab.MAP;
+            follow = true;
+            setPanel(Panel.TRAIN);
+        }
+        if (cc.tab != ControlCenter.Tab.MAP) {
+            cc.draw(fontRenderer, net, trains, vx, vy, frame.cw, vh, mx, my);
+            String h = cc.hint.isEmpty() ? "Railway Control Center · tabs across the top · click column titles to sort · click a train to open it on the map" : cc.hint;
+            fontRenderer.drawStringWithShadow(fontRenderer.trimStringToWidth(h, frame.cw), frame.cx, vy + vh + 4, 0xFFDDDDDD);
+            super.drawScreen(mx, my, partialTicks);
+            return;
+        }
+        drawRect(vx - 1, vy - 1, vx + vw + 1, vy + vh + 1, 0x40FFFFFF);
+        drawRect(vx, vy, vx + vw, vy + vh, 0xFF0C0816);
 
-        scissorOn();
+        PrideFrame.clip(vx, vy, vw, vh);
         GlStateManager.pushMatrix();
         GlStateManager.translate(vx, vy, 0);
         boolean inView = inViewport(mx, my) && panel != Panel.NAME;
@@ -504,27 +583,30 @@ public class GuiDispatcherBoard extends GuiScreen {
         drawOverlays(net);
         map.drawChrome();
         GlStateManager.popMatrix();
-        scissorOff();
+        PrideFrame.unclip();
         hoverText = lastPick.text;
 
-        drawHeader(net, trains);
         switch (panel) {
             case TIMETABLE -> drawTimetable(net);
             case TRAIN -> drawTrainCard(net);
             case NAME -> drawNamePanel();
             case AUTO -> drawAutoPanel();
             case LINES -> drawLinesPanel(net);
+            case PROGRAM -> { if (program != null) program.draw(fontRenderer, panelX(), vy, pwidth(), vh, mx, my); }
             default -> { }
         }
-        String hint = routeMode
+        String hint = panel == Panel.PROGRAM && program != null && program.wantsPick() ? "PROGRAM: " + program.pickHint()
+                : panel == Panel.PROGRAM ? "PROGRAM: click a signal or switch on the map to see its rules · + New rule to write one"
+                : routeMode
                 ? (routeStart == null ? "ROUTE: click the signal the train starts at (click a lit route's signal to cancel it)"
                                       : "ROUTE: now click the signal it should run to")
                 : sendPick ? "SEND: click a named station on the map"
                 : panel == Panel.LINES && editingLine ? "LINE: click named stations in the order the train visits them"
+                : !cc.hint.isEmpty() ? cc.hint
                 : hoverText.isEmpty()
                 ? "drag to pan, scroll to zoom, click: switch = throw, track/stop = name station, train = card"
                 : hoverText;
-        fontRenderer.drawStringWithShadow(fontRenderer.trimStringToWidth(hint, width - 2 * MARGIN), MARGIN, height - BOTTOM + 14, 0xFFDDDDDD);
+        fontRenderer.drawStringWithShadow(fontRenderer.trimStringToWidth(hint, frame.cw), frame.cx, vy + vh + 4, 0xFFDDDDDD);
         super.drawScreen(mx, my, partialTicks);
         if (nameField != null) nameField.drawTextBox();
         if (lineField != null) lineField.drawTextBox();
@@ -555,6 +637,8 @@ public class GuiDispatcherBoard extends GuiScreen {
         int y = vy + 62 + 22 + 24;
         centre(px, y + 6, "Top speed " + autoKmh + " km/h");
         centre(px, y + 28, "Wait " + autoDwell + " s at stops");
+        if (t != null && !t.money.isEmpty())       // OpenTTD-style income for this train
+            fontRenderer.drawSplitString(t.money, px + 6, y + 44, PANEL_W - 12, 0xFFFFD54F);
     }
 
     private void centre(int px, int y, String s) {
@@ -569,17 +653,39 @@ public class GuiDispatcherBoard extends GuiScreen {
                 fontRenderer.drawSplitString("A line is a list of stations a driverless train runs. Name your stations first, then press New line.",
                         px + 6, vy + 24, PANEL_W - 12, 0xFF8A94A0);
             }
+            int rows = linesRows();
+            PrideFrame.scrollbar(px + PANEL_W - 5, vy + 24, rows * 22 - 2, panelScroll, rows, ClientRailway.get().lines.size());
             return;
         }
         fontRenderer.drawString("Name", px + 6, vy + 26, 0xFF8A94A0);
         int y = vy + 58;
         if (lineStations.isEmpty()) {
-            fontRenderer.drawSplitString("Click named stations on the map, in order.", px + 6, y, PANEL_W - 12, 0xFF8A94A0);
+            fontRenderer.drawSplitString("Click named stations on the map, in order. Then click a stop in this list to give it an order: Full load, Unload all, Load only, Go via, Wait 60s.", px + 6, y, PANEL_W - 12, 0xFF8A94A0);
         }
-        for (int i = 0; i < lineStations.size() && y + 10 < vy + vh - 76; i++, y += 11) {
+        panelScroll = Math.max(0, Math.min(panelScroll, lineStations.size() - stopRows()));
+        for (int i = panelScroll; i < lineStations.size() && y + 10 < vy + vh - 76; i++, y += 11) {
             String n = stationName(net, lineStations.get(i));
-            fontRenderer.drawString(fontRenderer.trimStringToWidth((i + 1) + ". " + n, PANEL_W - 12), px + 6, y, 0xFFE8ECF0);
+            RailwayData.Order o = RailwayData.Order.byCode(i < lineOrders.size() ? lineOrders.get(i) : 0);
+            String tag = o == RailwayData.Order.STOP ? "" : " [" + o.label + "]";
+            int tw = fontRenderer.getStringWidth(tag);
+            fontRenderer.drawString(fontRenderer.trimStringToWidth((i + 1) + ". " + n, PANEL_W - 16 - tw), px + 6, y, 0xFFE8ECF0);
+            if (!tag.isEmpty()) fontRenderer.drawString(tag, px + PANEL_W - 10 - tw, y, ORDER_COLOR[o.ordinal()]);
         }
+        PrideFrame.scrollbar(px + PANEL_W - 5, vy + 58, stopRows() * 11, panelScroll, stopRows(), lineStations.size());
+    }
+
+    private static final int[] ORDER_COLOR = { 0xFFE8ECF0, 0xFF66BB6A, 0xFFFFA726, 0xFF42A5F5, 0xFFB0BEC5, 0xFFF5A9B8 };
+
+    /** Line editor: a click on a stop's row cycles its order (Stop, Full load, Unload all, Load only, Go via, Wait 60s). */
+    private boolean clickOrderRow(int mx, int my) {
+        if (panel != Panel.LINES || !editingLine) return false;
+        int px = panelX(), y0 = vy + 58;
+        if (mx < px || mx > px + PANEL_W - 6 || my < y0) return false;
+        int i = panelScroll + (my - y0) / 11;
+        if (i < 0 || i >= lineStations.size() || y0 + (i - panelScroll) * 11 + 10 >= vy + vh - 76) return false;
+        while (lineOrders.size() < lineStations.size()) lineOrders.add(0);
+        lineOrders.set(i, (lineOrders.get(i) + 1) % RailwayData.Order.values().length);
+        return true;
     }
 
     private static String stationName(RailNetwork net, long key) {
@@ -615,6 +721,7 @@ public class GuiDispatcherBoard extends GuiScreen {
             for (long k : lineStations) ring(k, 9, 0xFFFFFFFF);
         }
         if (routeStart != null) ring(routeStart.toLong(), 8, 0xFF3BFF6E);
+        if (panel == Panel.PROGRAM && program != null) for (long k : program.highlighted()) ring(k, 10, 0xFFF5A9B8);
         GlStateManager.enableTexture2D();
     }
 
@@ -628,7 +735,7 @@ public class GuiDispatcherBoard extends GuiScreen {
     }
 
     private void drawHeader(RailNetwork net, List<TrainNode> trains) {
-        fontRenderer.drawStringWithShadow(tile == null ? "Rail Map" : "Dispatcher Board", MARGIN, 7, 0xFFFFFFFF);
+        String title = tile == null ? "Rail Map" : "Dispatcher Board";
         String status;
         if (net.isEmpty()) {
             status = "no data";
@@ -640,19 +747,19 @@ public class GuiDispatcherBoard extends GuiScreen {
                     + " stops, " + leads + " trains" + (ClientTrains.live() ? "" : " (feed idle)")
                     + ", updated " + age + "s ago" + (net.truncated ? " (budget hit: more track exists)" : "");
         }
-        fontRenderer.drawStringWithShadow(status, MARGIN + 100, 7, 0xFFA0A0A0);
+        int room = frame.w - 32 - fontRenderer.getStringWidth("\u00a7l\u2726 " + title);
+        frame.draw(this, title, "\u00a77" + fontRenderer.trimStringToWidth(status, room));
     }
 
     private int panelX() {
-        return width - MARGIN - PANEL_W;
+        return right - pwidth();
     }
 
     private void panelFrame(String title) {
         int px = panelX();
-        drawRect(px - 1, vy - 1, px + PANEL_W + 1, vy + vh + 1, 0xFF3A3A3A);
-        drawRect(px, vy, px + PANEL_W, vy + vh, 0xFF14181C);
+        PrideFrame.tile(px, vy, PANEL_W, vh, PrideFrame.PINK, false, false);
         fontRenderer.drawStringWithShadow(title, px + 6, vy + 6, 0xFFFFFFFF);
-        drawRect(px + 4, vy + 17, px + PANEL_W - 4, vy + 18, 0xFF3A3A3A);
+        drawRect(px + 4, vy + 17, px + PANEL_W - 4, vy + 18, 0x40FFFFFF);
     }
 
     private void drawTimetable(RailNetwork net) {
@@ -664,13 +771,16 @@ public class GuiDispatcherBoard extends GuiScreen {
                     px + 6, y, PANEL_W - 12, 0xFF8A94A0);
             return;
         }
-        for (int i = net.log.size() - 1; i >= 0 && y + 20 < vy + vh; i--) {
+        int rows = ttRows();
+        panelScroll = Math.max(0, Math.min(panelScroll, net.log.size() - rows));
+        for (int i = net.log.size() - 1 - panelScroll; i >= 0 && y + 20 < vy + vh; i--) {
             LogEntry e = net.log.get(i);
             fontRenderer.drawString(LogEntry.clock(e.time), px + 6, y, 0xFF8A94A0);
-            String line = fontRenderer.trimStringToWidth(e.train + (e.arrive ? " arr " : " dep ") + e.station, PANEL_W - 12);
+            String line = fontRenderer.trimStringToWidth(e.train + (e.arrive ? " arr " : " dep ") + e.station, PANEL_W - 16);
             fontRenderer.drawString(line, px + 6, y + 10, e.arrive ? MapRenderer.COL_STATION : 0xFFFFC44D);
             y += 22;
         }
+        PrideFrame.scrollbar(px + PANEL_W - 5, vy + 24, rows * 22 - 2, panelScroll, rows, net.log.size());
     }
 
     private void drawTrainCard(RailNetwork net) {
@@ -693,6 +803,8 @@ public class GuiDispatcherBoard extends GuiScreen {
         if (t.consist > 1) y = card(px, y, "Consist", t.consist + " units");
         if (t.cargoPct >= 0 && !t.kind.isLoco()) y = card(px, y, "Cargo", t.cargoPct + "% full");   // a loco's own fuel tank isn't cargo
         if (t.passengers > 0) y = card(px, y, "Passengers", String.valueOf(t.passengers));
+        if (!t.power.isEmpty()) y = card(px, y, "Power", t.power);
+        if (t.wear >= 0) y = card(px, y, "Condition", t.wear >= 100 ? "§cWORN OUT · send to a depot" : t.wear >= 80 ? "§6MAINTENANCE REQUIRED · " + t.wear + "% worn" : (100 - Math.min(100, t.wear)) + "% good");
         PacketRailState.TrainInfo auto = ClientRailway.train(t.id);
         if (auto != null) y = card(px, y, "DRIVERLESS", auto.status);
         StopNode at = net.nearestStop(t.x, t.y, t.z, 6, true);
@@ -714,17 +826,6 @@ public class GuiDispatcherBoard extends GuiScreen {
             fontRenderer.drawString("@ " + nameTarget.getX() + "," + nameTarget.getY() + "," + nameTarget.getZ(), px + 6, vy + 140, 0xFF8A94A0);
         }
         fontRenderer.drawSplitString("Trains stopping within 6 blocks get logged in the timetable.", px + 6, vy + 154, PANEL_W - 12, 0xFF8A94A0);
-    }
-
-    private void scissorOn() {
-        ScaledResolution sr = new ScaledResolution(mc);
-        int s = sr.getScaleFactor();
-        GL11.glEnable(GL11.GL_SCISSOR_TEST);
-        GL11.glScissor(vx * s, mc.displayHeight - (vy + vh) * s, vw * s, vh * s);
-    }
-
-    private void scissorOff() {
-        GL11.glDisable(GL11.GL_SCISSOR_TEST);
     }
 
     @Override

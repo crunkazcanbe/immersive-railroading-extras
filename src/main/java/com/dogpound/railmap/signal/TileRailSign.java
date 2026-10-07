@@ -13,7 +13,7 @@ import net.minecraft.util.EnumFacing;
  * by {@code RailSignRenderer} — a coloured board plus text — so a new sign is just a new enum row,
  * no new texture. Resizable like the rest of the lineside furniture ({@link IScalable}).
  */
-public class TileRailSign extends TileEntity implements IScalable {
+public class TileRailSign extends TileEntity implements IScalable, com.dogpound.railmap.settings.ISettingsHolder {
 
     /**
      * The whole railroad sign vocabulary. Each face is a board colour, a text colour, a border,
@@ -86,6 +86,49 @@ public class TileRailSign extends TileEntity implements IScalable {
 
     private static final Face[] FACES = Face.values();
 
+    // ---- Settings Console (sneak-right-click with the Signal Wrench) ----
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    static final String[] COLOURS = { "Sign's own", "Red", "Yellow", "White", "Blue", "Green", "Black", "Orange", "Purple", "Pink", "Trans blue" };
+    static final int[] RGB = { -1, 0xC1272D, 0xFFC91F, 0xFFFFFF, 0x1B3A6B, 0x2E8B57, 0x101010, 0xF07D1E, 0x6A3FA0, 0xF5A9B8, 0x5BCEFA };
+    static final String[] POSTS = { "Grey", "Black", "Green", "White", "Rust" };
+    static final int[] POST_RGB = { 0x585d63, 0x1E1F22, 0x2F5A3A, 0xE8E8E8, 0x7A4A2C };
+
+    @Override public String settingsTitle() { return "Lineside Sign"; }
+
+    @Override
+    public java.util.List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        java.util.List<com.dogpound.railmap.settings.Setting> l = new java.util.ArrayList<>();
+        String[] labels = new String[FACES.length];
+        for (int i = 0; i < FACES.length; i++) labels[i] = FACES[i].label;
+        l.add(com.dogpound.railmap.settings.Setting.choice("Sign", "face", "What the sign says", "Every railroad sign there is (the wrench also cycles them)", Face.STOP.label, labels));
+        l.add(com.dogpound.railmap.settings.Setting.text("Sign", "custom", "Custom text", "Used when the sign is 'Custom Text': | starts a new line", "", 48));
+        l.add(com.dogpound.railmap.settings.Setting.choice("Look", "board", "Board colour", "Repaint the board", COLOURS[0], COLOURS));
+        l.add(com.dogpound.railmap.settings.Setting.choice("Look", "text", "Text colour", "Repaint the words", COLOURS[0], COLOURS));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Look", "glow", "Lit at night", "The board glows in the dark (reflective)", false));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Look", "border", "Border", "The thin edge round the board", true));
+        l.add(com.dogpound.railmap.settings.Setting.num("Post", "lift", "Raise the board", "Higher post, in pixels", 0, 0, 32, 2, "px"));
+        l.add(com.dogpound.railmap.settings.Setting.choice("Post", "post", "Post colour", "", POSTS[0], POSTS));
+        l.add(com.dogpound.railmap.settings.Setting.info("Post", "Size", Math.round(scale * 100) + "% (Signal Wrench scale screen)"));
+        return l;
+    }
+
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { cfg.put("face", face().label); cfg.put("custom", custom); return cfg; }
+
+    @Override
+    public void onSettingsChanged(String key) {
+        if ("face".equals(key)) for (int i = 0; i < FACES.length; i++) if (FACES[i].label.equals(cfg.text("face"))) face = i;
+        if ("custom".equals(key)) custom = cfg.text("custom").replace('|', '\n');
+        sync();
+    }
+
+    private static int pick(String name, int own) { for (int i = 1; i < COLOURS.length; i++) if (COLOURS[i].equals(name)) return RGB[i]; return own; }
+    public int boardColour() { return pick(cfg.text("board"), face().bg); }
+    public int textColour() { return pick(cfg.text("text"), face().fg); }
+    public boolean glows() { return cfg.bool("glow"); }
+    public boolean border() { return cfg.bool("border"); }
+    public double lift() { return Math.max(0, cfg.num("lift")) / 16.0; }
+    public int postColour() { for (int i = 0; i < POSTS.length; i++) if (POSTS[i].equals(cfg.text("post"))) return POST_RGB[i]; return POST_RGB[0]; }
+
     private int face;
     private String custom = "";
     private float scale = 1f;
@@ -144,6 +187,7 @@ public class TileRailSign extends TileEntity implements IScalable {
         super.writeToNBT(t);
         t.setInteger("face", face);
         t.setString("custom", custom);
+        cfg.write(t);
         if (scale != 1f) t.setFloat("scale", scale);
         return t;
     }
@@ -153,6 +197,7 @@ public class TileRailSign extends TileEntity implements IScalable {
         super.readFromNBT(t);
         face = t.getInteger("face");
         custom = t.getString("custom");
+        cfg.read(t);
         scale = t.hasKey("scale") ? IScalable.clamp(t.getFloat("scale")) : 1f;
     }
 

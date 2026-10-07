@@ -48,6 +48,18 @@ public final class RailMapConfig {
     @Config.RangeDouble(min = 0, max = 10)
     public static double autopilotBrakeLagSeconds = 2.5;
 
+    @Config.Comment("Orders: the longest a 'Full load' stop waits for every car to fill, in minutes")
+    @Config.RangeInt(min = 1, max = 120)
+    public static int fullLoadMaxMinutes = 10;
+
+    @Config.Comment("Profit: money per item (or bucket) delivered, before the distance bonus")
+    @Config.RangeDouble(min = 0, max = 100)
+    public static double profitPerItem = 1.0;
+
+    @Config.Comment("Profit: every this many blocks between loading and unloading adds one more times the base pay")
+    @Config.RangeInt(min = 1, max = 10000)
+    public static int profitBlocksPerCoin = 100;
+
     @Config.Comment("Default top speed for a new driverless train, km/h (you can change it per train on the board).")
     @Config.RangeInt(min = 5, max = 250)
     public static int autopilotDefaultKmh = 60;
@@ -80,6 +92,60 @@ public final class RailMapConfig {
     @Config.Comment("How far (blocks) a defect detector's radio announcement carries.")
     @Config.RangeInt(min = 16, max = 1024)
     public static int detectorRadioRange = 160;
+
+    // ---- maintenance and wear ------------------------------------------------------------
+
+    @Config.Comment("Rolling stock wears out with use (wheels, brakes, engine, bearings, electrics) and needs a Maintenance Depot.")
+    public static boolean wearEnabled = true;
+
+    @Config.Comment("How fast things wear. 1.0 = wheels last about 200 km; 2.0 = twice as fast.")
+    @Config.RangeDouble(min = 0.05, max = 20)
+    public static double wearRate = 1.0;
+
+    @Config.Comment("Worn-out parts limit the train (worn engine = half throttle, worn brakes/wheels/bearings = speed cap). Off = warnings only.")
+    public static boolean wearEffects = true;
+
+    @Config.Comment("Speed cap (km/h) for a train whose brakes, wheels or bearings are worn out.")
+    @Config.RangeInt(min = 5, max = 200)
+    public static int wornSpeedCapKmh = 40;
+
+    @Config.Comment("Percent of wear per second a Maintenance Depot repairs on each part of a stopped train beside it.")
+    @Config.RangeDouble(min = 0.1, max = 100)
+    public static double depotRepairPerSecond = 4.0;
+
+    @Config.Comment("Blocks around a Maintenance Depot in which stopped rolling stock gets serviced.")
+    @Config.RangeInt(min = 2, max = 32)
+    public static int depotReach = 8;
+
+    // ---- electrification and batteries ----------------------------------------------------
+
+    @Config.Comment("Electric locomotives under live contact wire (or beside a live third rail) run without fuel; off the wire they run on their battery.")
+    public static boolean electrification = true;
+
+    @Config.Comment("A locomotive counts as electric when its name contains any of these (lower-case). Override per loco with /irextras electric on|off.")
+    public static String[] electricNames = {"electric", "emu", "metro", "subway", "tram", "gg1", "ae ", "acela", "tgv", "ice ", "shinkansen", "bullet", "pantograph", "battery", "e44", "e60", "class 9", "eurostar", "sprinter", "monorail", "maglev", "pride rail"};
+
+    @Config.Comment("Substations must hold Forge Energy (FE) to power the wire. Off = free power (the breaker still works). Pride default: on, trains run on RF.")
+    public static boolean powerNeedsEnergy = true;
+
+    @Config.Comment("FE a running electric loco draws from its substation each second, at full throttle.")
+    @Config.RangeInt(min = 0, max = 100000)
+    public static int fePerSecond = 400;
+
+    @Config.Comment("How far (blocks) a substation feeds its contact wire and third rail.")
+    @Config.RangeInt(min = 16, max = 4096)
+    public static int substationRange = 512;
+
+    @Config.Comment("Thunderstorms can trip substations exposed to the sky (right-click to reset).")
+    public static boolean stormOutages = true;
+
+    @Config.Comment("Battery size: millibuckets of fuel the battery can stand in for when off the wire (bigger = longer range).")
+    @Config.RangeInt(min = 0, max = 1000000)
+    public static int batteryFuelMb = 24000;
+
+    @Config.Comment("Battery % per second a Charging Station (or live wire) puts back.")
+    @Config.RangeDouble(min = 0.1, max = 100)
+    public static double chargePerSecond = 2.0;
 
     private RailMapConfig() {}
 }

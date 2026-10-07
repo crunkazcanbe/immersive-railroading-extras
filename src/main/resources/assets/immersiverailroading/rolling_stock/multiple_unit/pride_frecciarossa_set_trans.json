@@ -1,0 +1,34 @@
+{
+  "name": "Frecciarossa 1000 full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_frecciarossa",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_frecciarossa_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_frecciarossa_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_frecciarossa_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_frecciarossa_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_frecciarossa",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -2,7 +2,7 @@
  "multipart": [
   {
    "apply": {
-    "model": "irextras:catenary_wire_core"
+    "model": "irextras:ohle_wire_core"
    }
   },
   {
@@ -10,15 +10,7 @@
     "north": "true"
    },
    "apply": {
-    "model": "irextras:catenary_wire_n"
-   }
-  },
-  {
-   "when": {
-    "south": "true"
-   },
-   "apply": {
-    "model": "irextras:catenary_wire_s"
+    "model": "irextras:ohle_wire_side"
    }
   },
   {
@@ -26,7 +18,17 @@
     "east": "true"
    },
    "apply": {
-    "model": "irextras:catenary_wire_e"
+    "model": "irextras:ohle_wire_side",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_wire_side",
+    "y": 180
    }
   },
   {
@@ -34,7 +36,74 @@
     "west": "true"
    },
    "apply": {
-    "model": "irextras:catenary_wire_w"
+    "model": "irextras:ohle_wire_side",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "south": "false",
+    "east": "false",
+    "west": "false"
+   },
+   "apply": {
+    "model": "irextras:ohle_wire_side"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "south": "false",
+    "east": "false",
+    "west": "false"
+   },
+   "apply": {
+    "model": "irextras:ohle_wire_side",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "arm_n": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_wire_arm"
+   }
+  },
+  {
+   "when": {
+    "arm_e": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_wire_arm",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "arm_s": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_wire_arm",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "arm_w": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_wire_arm",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "hung": "true"
+   },
+   "apply": {
+    "model": "irextras:ohle_wire_hanger"
    }
   }
  ]

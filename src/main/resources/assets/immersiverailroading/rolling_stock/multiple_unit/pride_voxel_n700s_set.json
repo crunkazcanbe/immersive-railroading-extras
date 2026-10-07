@@ -1,0 +1,28 @@
+{
+  "name": "Shinkansen N700S full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_n700s"
+    },
+    {
+      "stock": "pride_voxel_n700s_car"
+    },
+    {
+      "stock": "pride_voxel_n700s_car"
+    },
+    {
+      "stock": "pride_voxel_n700s_car"
+    },
+    {
+      "stock": "pride_voxel_n700s_car"
+    },
+    {
+      "stock": "pride_voxel_n700s",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

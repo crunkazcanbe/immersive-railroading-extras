@@ -1,0 +1,22 @@
+{
+  "name": "Changsha Maglev Express full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_changsha",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_changsha_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_changsha",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

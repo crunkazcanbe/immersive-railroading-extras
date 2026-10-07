@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:station_rural_shelter"
+  },
+  "facing=east": {
+   "model": "irextras:station_rural_shelter",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:station_rural_shelter",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:station_rural_shelter",
+   "y": 270
+  }
+ }
+}

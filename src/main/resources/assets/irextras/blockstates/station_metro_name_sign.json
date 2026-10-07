@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:station_metro_name_sign"
+  },
+  "facing=east": {
+   "model": "irextras:station_metro_name_sign",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:station_metro_name_sign",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:station_metro_name_sign",
+   "y": 270
+  }
+ }
+}

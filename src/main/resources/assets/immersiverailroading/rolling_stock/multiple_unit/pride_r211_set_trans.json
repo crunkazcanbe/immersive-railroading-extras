@@ -1,0 +1,30 @@
+{
+  "name": "NYC Subway R211 full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_r211",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_r211_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_r211_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_r211_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_r211",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

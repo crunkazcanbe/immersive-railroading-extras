@@ -63,8 +63,9 @@ public final class SignalEngine {
                 boolean changed = false;
                 for (TileSignalBridge.Head h : b.heads()) {
                     Result r = compute(world, h.rail, b.facing(), trains, 1);
-                    if (r.aspect != h.aspect) changed = true;
-                    h.aspect = r.aspect;
+                    Aspect a = b.heldAtStop() ? Aspect.STOP : r.aspect;
+                    if (a != h.aspect) changed = true;
+                    h.aspect = a;
                     h.clearBlocks = r.clear;
                 }
                 if (changed) b.sync();

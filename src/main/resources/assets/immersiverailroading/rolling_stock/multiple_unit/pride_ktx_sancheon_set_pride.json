@@ -1,0 +1,30 @@
+{
+  "name": "KTX-Sancheon full train (Pride Rail - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_ktx_sancheon",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_ktx_sancheon_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_ktx_sancheon_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_ktx_sancheon_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_ktx_sancheon",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

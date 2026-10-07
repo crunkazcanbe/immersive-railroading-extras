@@ -1,0 +1,37 @@
+{
+  "era": "diesel",
+  "name": "Hong Kong MTR M-Train (Pride Rail Voxel, electric third rail)",
+  "works": "Metro-Cammell",
+  "model": "immersiverailroading:models/rolling_stock/pride_rail_voxel/mtr_mtrain/mtr_mtrain_front.obj",
+  "model_gauge_m": 1.435,
+  "tex_variants": {
+    "Real livery": "",
+    "Pride rainbow": "pride",
+    "Trans flag": "trans"
+  },
+  "multi_unit_capable": true,
+  "properties": {
+    "fuel_efficiency_%": 100,
+    "fuel_capacity_l": 120,
+    "power_hp": 643,
+    "tractive_effort_lbf": 26400,
+    "max_speed_kmh": 80,
+    "weight_kg": 40000,
+    "horn_sustained": true
+  },
+  "passenger": {
+    "slots": 48,
+    "center_x": -0.6,
+    "center_y": 1.4500000000000002,
+    "length": 19.0,
+    "width": 2.015
+  },
+  "trucks": {
+    "front": 6.3,
+    "rear": -6.3
+  },
+  "couplers": {
+    "front_offset": 0.0,
+    "rear_offset": 0.12
+  }
+}

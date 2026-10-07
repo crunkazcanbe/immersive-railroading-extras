@@ -1,0 +1,16 @@
+{
+  "name": "Incheon Ecobee Maglev full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_ecobee"
+    },
+    {
+      "stock": "pride_ecobee",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "2 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

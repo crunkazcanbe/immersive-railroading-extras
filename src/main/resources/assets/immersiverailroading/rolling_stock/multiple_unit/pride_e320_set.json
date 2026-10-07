@@ -1,0 +1,28 @@
+{
+  "name": "Eurostar e320 full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_e320"
+    },
+    {
+      "stock": "pride_e320_car"
+    },
+    {
+      "stock": "pride_e320_car"
+    },
+    {
+      "stock": "pride_e320_car"
+    },
+    {
+      "stock": "pride_e320_car"
+    },
+    {
+      "stock": "pride_e320",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:industry_logging_camp"
+  },
+  "facing=east": {
+   "model": "irextras:industry_logging_camp",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:industry_logging_camp",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:industry_logging_camp",
+   "y": 270
+  }
+ }
+}

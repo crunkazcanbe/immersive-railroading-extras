@@ -32,7 +32,7 @@ import java.util.List;
  * In every mode the box also emits the report value on its comparator output, so you can read
  * the railroad without giving up the control modes.
  */
-public class TileRelayCase extends TileEntity implements ITickable {
+public class TileRelayCase extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
     public enum Mode {
         HOLD("Hold at Stop when powered"),
         DRIVE("Aspect follows input strength"),
@@ -62,6 +62,7 @@ public class TileRelayCase extends TileEntity implements ITickable {
 
     public void cycleMode() {
         mode = mode.next();
+        cfg.put("mode", mode.label);
         lastPower = -1;         // re-apply under the new rules on the next tick
         markDirty();
         sync();
@@ -97,8 +98,11 @@ public class TileRelayCase extends TileEntity implements ITickable {
 
     @Override
     public void update() {
-        if (world.isRemote || ++ticks % 4 != 0) return;
+        if (world.isRemote || ++ticks % Math.max(1, cfg.num("every")) != 0) return;
         int power = world.getRedstonePowerFromNeighbors(pos);
+        if (cfg.bool("invert")) power = 15 - power;
+        if (power < cfg.num("deadband")) power = 0;
+        lastInput = power;
         if (power != lastPower) {
             lastPower = power;
             apply(power);
@@ -122,7 +126,7 @@ public class TileRelayCase extends TileEntity implements ITickable {
             if (te instanceof TileSignalMast mast) {
                 switch (mode) {
                     case HOLD   -> mast.setRelayControl(power > 0, null);
-                    case DRIVE  -> mast.setRelayControl(false, aspectFor(power));
+                    case DRIVE  -> mast.setRelayControl(false, aspectFor(power, cfg.num("restrict"), cfg.num("approach"), cfg.num("clear")));
                     case REPORT -> mast.setRelayControl(false, null);
                 }
             } else if (te == null) {
@@ -133,15 +137,27 @@ public class TileRelayCase extends TileEntity implements ITickable {
         if (dropped) { markDirty(); sync(); }
     }
 
-    static Aspect aspectFor(int power) {
-        if (power <= 0) return Aspect.STOP;
-        if (power <= 5) return Aspect.RESTRICTING;
-        if (power <= 10) return Aspect.APPROACH;
-        return Aspect.CLEAR;
+    static Aspect aspectFor(int power) { return aspectFor(power, 1, 6, 11); }
+
+    /** input strength -> aspect, with the thresholds from the Settings Console */
+    static Aspect aspectFor(int power, int restrict, int approach, int clear) {
+        if (power >= clear) return Aspect.CLEAR;
+        if (power >= approach) return Aspect.APPROACH;
+        if (power >= restrict && power > 0) return Aspect.RESTRICTING;
+        return Aspect.STOP;
     }
 
     /** What the box reports: 15 all clear, 0 if anything linked is at Stop, else the worst. */
     public int redstoneOutput() {
+        int v = rawOutput();
+        String how = cfg.text("output");
+        if (how.startsWith("Off")) return 0;
+        if (how.startsWith("Inverted")) v = 15 - v;
+        else if (how.startsWith("All-or")) v = v >= 15 ? 15 : 0;
+        return Math.max(0, Math.min(15, v * cfg.num("outMax") / 15));
+    }
+
+    private int rawOutput() {
         if (linked.isEmpty()) return 0;
         int worst = 15;
         for (BlockPos p : linked) {
@@ -160,6 +176,51 @@ public class TileRelayCase extends TileEntity implements ITickable {
                 + (linked.isEmpty() ? " · link one with the Signal Wrench" : "");
     }
 
+    // ---- Settings Console (sneak-right-click with the Signal Wrench) ----
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    private int lastInput;
+
+    @Override public String settingsTitle() { return "Relay Case"; }
+
+    @Override
+    public List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        List<com.dogpound.railmap.settings.Setting> l = new ArrayList<>();
+        String[] modes = new String[Mode.values().length];
+        for (int i = 0; i < modes.length; i++) modes[i] = Mode.values()[i].label;
+        l.add(com.dogpound.railmap.settings.Setting.choice("Control", "mode", "What the redstone does", "Hold = lever puts every linked signal at Stop. Drive = strength picks the aspect. Report = output only", Mode.HOLD.label, modes));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Control", "invert", "Invert the input", "Powered counts as off and off counts as powered (fail-safe wiring)", false));
+        l.add(com.dogpound.railmap.settings.Setting.num("Control", "deadband", "Ignore weak signals below", "Stray redstone under this strength counts as no power", 1, 1, 15, 1, ""));
+        l.add(com.dogpound.railmap.settings.Setting.num("Control", "every", "Check the input every", "Slower = ignores quick flickers", 4, 1, 40, 1, "ticks"));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Control", "release", "Release signals when broken", "Breaking the box lets its signals go back to reading the track", true));
+        l.add(com.dogpound.railmap.settings.Setting.num("Drive levels", "restrict", "Restricting from", "Input strength that shows Restricting (Drive mode)", 1, 1, 15, 1, ""));
+        l.add(com.dogpound.railmap.settings.Setting.num("Drive levels", "approach", "Approach from", "Input strength that shows Approach", 6, 1, 15, 1, ""));
+        l.add(com.dogpound.railmap.settings.Setting.num("Drive levels", "clear", "Clear from", "Input strength that shows Clear", 11, 1, 15, 1, ""));
+        l.add(com.dogpound.railmap.settings.Setting.choice("Output", "output", "Comparator output", "What the box tells your redstone about its signals",
+                "Worst signal (15 = all clear)", "Worst signal (15 = all clear)", "Inverted (15 = something at Stop)", "All-or-nothing (15 only when all clear)", "Off"));
+        l.add(com.dogpound.railmap.settings.Setting.num("Output", "outMax", "Output strength", "Scale the output down for short redstone runs", 15, 1, 15, 1, ""));
+        if (world != null) {
+            l.add(com.dogpound.railmap.settings.Setting.info("Status", "Linked signals", linked.size() + (linked.isEmpty() ? " (link with the Signal Wrench)" : "")));
+            l.add(com.dogpound.railmap.settings.Setting.info("Status", "Input now", String.valueOf(lastInput)));
+            l.add(com.dogpound.railmap.settings.Setting.info("Status", "Output now", String.valueOf(redstoneOutput())));
+            for (int i = 0; i < Math.min(8, linked.size()); i++) {
+                BlockPos p = linked.get(i);
+                l.add(com.dogpound.railmap.settings.Setting.info("Status", "Signal " + (i + 1), p.getX() + ", " + p.getY() + ", " + p.getZ()));
+            }
+        }
+        return l;
+    }
+
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { cfg.put("mode", mode.label); return cfg; }
+
+    @Override
+    public void onSettingsChanged(String key) {
+        if ("mode".equals(key)) for (Mode m : Mode.values()) if (m.label.equals(cfg.text("mode"))) mode = m;
+        lastPower = -1;
+        markDirty();
+        sync();
+        if (world != null && !world.isRemote) world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
+    }
+
     private void sync() {
         if (world == null || world.isRemote) return;
         IBlockState s = world.getBlockState(pos);
@@ -169,7 +230,7 @@ public class TileRelayCase extends TileEntity implements ITickable {
     /** Release everything this box was holding, so breaking it never strands a signal at red. */
     @Override
     public void invalidate() {
-        if (world != null && !world.isRemote) {
+        if (world != null && !world.isRemote && cfg.bool("release")) {
             for (BlockPos p : linked) {
                 if (!world.isBlockLoaded(p)) continue;
                 TileEntity te = world.getTileEntity(p);
@@ -194,6 +255,7 @@ public class TileRelayCase extends TileEntity implements ITickable {
         }
         t.setIntArray("links", packed);
         t.setByte("mode", (byte) mode.ordinal());
+        cfg.write(t);
         return t;
     }
 
@@ -209,6 +271,7 @@ public class TileRelayCase extends TileEntity implements ITickable {
         Mode[] all = Mode.values();
         int m = t.getByte("mode");
         mode = m >= 0 && m < all.length ? all[m] : Mode.HOLD;
+        cfg.read(t);
         lastPower = -1;
     }
 

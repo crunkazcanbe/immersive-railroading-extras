@@ -38,6 +38,7 @@ import org.apache.logging.log4j.Logger;
 public class RailMap {
     public static final String MODID = "irextras";
     public static final int GUI_DISPATCHER_BOARD = 0;
+    public static final int GUI_SIGNAL_BOX = 1;
     public static final Logger LOG = LogManager.getLogger("RailMap");
 
     @Mod.Instance(MODID)
@@ -68,8 +69,20 @@ public class RailMap {
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketRailState.Handler.class, com.dogpound.railmap.network.PacketRailState.class, 7, Side.CLIENT);
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketScale.Handler.class, com.dogpound.railmap.network.PacketScale.class, 8, Side.SERVER);
         NETWORK.registerMessage(com.dogpound.railmap.network.PacketSignText.Handler.class, com.dogpound.railmap.network.PacketSignText.class, 9, Side.SERVER);
+        NETWORK.registerMessage(com.dogpound.railmap.network.PacketSettings.Handler.class, com.dogpound.railmap.network.PacketSettings.class, 10, Side.SERVER);
+        NETWORK.registerMessage(com.dogpound.railmap.network.PacketSettings.Handler.class, com.dogpound.railmap.network.PacketSettings.class, 10, Side.CLIENT);
+        NETWORK.registerMessage(com.dogpound.railmap.signs.PacketSigns.Handler.class, com.dogpound.railmap.signs.PacketSigns.class, 11, Side.CLIENT);
+        NETWORK.registerMessage(com.dogpound.railmap.program.PacketProgram.Handler.class, com.dogpound.railmap.program.PacketProgram.class, 12, Side.SERVER);
+        NETWORK.registerMessage(com.dogpound.railmap.program.PacketProgram.Handler.class, com.dogpound.railmap.program.PacketProgram.class, 12, Side.CLIENT);
+        NETWORK.registerMessage(com.dogpound.railmap.grid.PacketCableSpec.Handler.class, com.dogpound.railmap.grid.PacketCableSpec.class, 13, Side.SERVER);
         NetworkRegistry.INSTANCE.registerGuiHandler(this, proxy);
         MinecraftForge.EVENT_BUS.register(new TrainTracker());
+        MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.server.Wear());
+        MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.server.Electric());
+        MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.doors.TrainDoors());
+        MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.signs.SignServer());
+        MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.grid.GridTicker());
+        MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.program.ProgramTicker());
         MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.signal.SignalEngine());
         MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.auto.Autopilot());
         MinecraftForge.EVENT_BUS.register(new com.dogpound.railmap.auto.Protection());

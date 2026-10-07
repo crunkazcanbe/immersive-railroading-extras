@@ -1,0 +1,28 @@
+{
+  "name": "Tokyo Monorail 10000 full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_tokyo"
+    },
+    {
+      "stock": "pride_voxel_tokyo_car"
+    },
+    {
+      "stock": "pride_voxel_tokyo_car"
+    },
+    {
+      "stock": "pride_voxel_tokyo_car"
+    },
+    {
+      "stock": "pride_voxel_tokyo_car"
+    },
+    {
+      "stock": "pride_voxel_tokyo",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

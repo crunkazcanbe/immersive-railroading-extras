@@ -1,0 +1,22 @@
+{
+  "name": "Seattle ALWEG Monorail full train (Pride Rail Voxel - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_voxel_seattle",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_seattle_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_seattle",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

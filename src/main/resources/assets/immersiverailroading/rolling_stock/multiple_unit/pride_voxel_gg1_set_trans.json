@@ -1,0 +1,29 @@
+{
+  "name": "Pennsylvania GG1 full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_gg1",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_gg1_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_gg1_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_gg1_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_gg1_car",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

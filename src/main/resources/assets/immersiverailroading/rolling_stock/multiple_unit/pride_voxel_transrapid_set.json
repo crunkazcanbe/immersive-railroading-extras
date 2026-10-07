@@ -1,0 +1,19 @@
+{
+  "name": "Shanghai Transrapid SMT full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_transrapid"
+    },
+    {
+      "stock": "pride_voxel_transrapid_car"
+    },
+    {
+      "stock": "pride_voxel_transrapid",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

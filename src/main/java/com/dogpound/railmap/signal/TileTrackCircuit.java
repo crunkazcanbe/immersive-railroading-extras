@@ -26,7 +26,37 @@ import java.util.List;
  * </ul>
  * Both are silent and invisible from above once the rail is laid over them.
  */
-public class TileTrackCircuit extends TileEntity implements ITickable {
+public class TileTrackCircuit extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    private int trainsSeen, holdLeft, pulseLeft;
+    private boolean raw;
+
+    @Override public String settingsTitle() { return joint ? "Insulated Joint" : "Track Circuit"; }
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return cfg; }
+    @Override public void onSettingsChanged(String key) { markDirty(); sync(); }
+
+    @Override
+    public java.util.List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        cfg.put("range", Integer.toString(range()));
+        java.util.List<com.dogpound.railmap.settings.Setting> l = new java.util.ArrayList<>();
+        String d = "Detection", o = "Output", st = "Status";
+        if (joint) {
+            l.add(com.dogpound.railmap.settings.Setting.info(st, "What this does", "Marks a signalling block boundary (no options needed)"));
+            return l;
+        }
+        l.add(com.dogpound.railmap.settings.Setting.num(d, "range", "Detection radius", "Right-click also steps this", 4, 1, 128, 1, "blocks"));
+        l.add(com.dogpound.railmap.settings.Setting.num(d, "height", "Height window", "", 4, 1, 32, 1, "blocks"));
+        l.add(com.dogpound.railmap.settings.Setting.choice(d, "which", "Trains that count", "", "Any", "Any", "Locomotives only", "Moving only", "Stopped only"));
+        l.add(com.dogpound.railmap.settings.Setting.num(d, "minKmh", "Faster than", "Only trains above this speed (0 = all)", 0, 0, 200, 5, "km/h"));
+        l.add(com.dogpound.railmap.settings.Setting.num(d, "check", "Check every", "", 5, 1, 40, 1, "ticks"));
+        l.add(com.dogpound.railmap.settings.Setting.choice(o, "mode", "Output", "", "While occupied", "While occupied", "Inverted (on when clear)", "Pulse when a train enters", "Pulse when it leaves"));
+        l.add(com.dogpound.railmap.settings.Setting.num(o, "level", "Strength", "", 15, 1, 15, 1, ""));
+        l.add(com.dogpound.railmap.settings.Setting.num(o, "hold", "Stay on after the train", "Keep the output on this long after it clears", 0, 0, 30, 1, "s"));
+        l.add(com.dogpound.railmap.settings.Setting.num(o, "pulse", "Pulse length", "", 10, 2, 100, 2, "ticks"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Occupied", occupied ? "YES" : "no"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Trains detected", String.valueOf(trainsSeen)));
+        return l;
+    }
     /** Detection radius in blocks; right-click cycles it. */
     private static final int[] RANGES = { 2, 4, 8, 16, 32, 64 };
 
@@ -45,6 +75,8 @@ public class TileTrackCircuit extends TileEntity implements ITickable {
     }
 
     public int range() {
+        String v = cfg == null ? "" : cfg.text("range");
+        try { if (!v.isEmpty()) return Integer.parseInt(v); } catch (NumberFormatException ignored) { }
         return RANGES[rangeIndex];
     }
 
@@ -53,22 +85,41 @@ public class TileTrackCircuit extends TileEntity implements ITickable {
     }
 
     public void cycleRange() {
-        rangeIndex = (rangeIndex + 1) % RANGES.length;
+        int cur = range(), next = RANGES[0];
+        for (int r : RANGES) if (r > cur) { next = r; break; }
+        for (int i = 0; i < RANGES.length; i++) if (RANGES[i] == next) rangeIndex = i;
+        cfg.put("range", Integer.toString(next));
         markDirty();
         sync();
     }
 
     @Override
     public void update() {
-        if (world.isRemote || ++ticks % 5 != 0) return;
+        if (world.isRemote) return;
+        if (pulseLeft > 0 && --pulseLeft == 0) world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
+        int every = Math.max(1, cfg.num("check"));
+        if (++ticks % every != 0) return;
         List<TrainNode> trains = TrainTracker.latest(world);
-        double r = range();
+        double r = range(), h = cfg.num("height"), minKmh = cfg.num("minKmh");
+        String which = cfg.text("which");
         boolean now = false;
         double cx = pos.getX() + 0.5, cy = pos.getY(), cz = pos.getZ() + 0.5;
         for (TrainNode t : trains) {
             double dx = t.x - cx, dy = t.y - cy, dz = t.z - cz;
-            if (Math.abs(dy) > 4) continue;
+            if (Math.abs(dy) > h) continue;
+            if ("Locomotives only".equals(which) && !t.kind.isLoco()) continue;
+            if ("Moving only".equals(which) && !t.moving()) continue;
+            if ("Stopped only".equals(which) && t.moving()) continue;
+            if (Math.abs(t.speedKmh) < minKmh) continue;
             if (dx * dx + dz * dz <= r * r) { now = true; break; }
+        }
+        if (now) holdLeft = cfg.num("hold") * 20;
+        else if (holdLeft > 0) { holdLeft -= every; if (holdLeft > 0) now = true; }
+        if (now != raw) {
+            raw = now;
+            if (now) trainsSeen++;
+            String mode = cfg.text("mode");
+            if (now && mode.startsWith("Pulse when a train enters") || !now && mode.startsWith("Pulse when it leaves")) pulseLeft = Math.max(2, cfg.num("pulse"));
         }
         if (now != occupied) {
             occupied = now;
@@ -79,7 +130,12 @@ public class TileTrackCircuit extends TileEntity implements ITickable {
     }
 
     public int redstoneOutput() {
-        return occupied ? 15 : 0;
+        int lv = Math.max(1, cfg.num("level"));
+        return switch (cfg.text("mode")) {
+            case "Inverted (on when clear)" -> occupied ? 0 : lv;
+            case "Pulse when a train enters", "Pulse when it leaves" -> pulseLeft > 0 ? lv : 0;
+            default -> occupied ? lv : 0;
+        };
     }
 
     private void sync() {
@@ -119,6 +175,8 @@ public class TileTrackCircuit extends TileEntity implements ITickable {
         super.writeToNBT(t);
         t.setByte("range", (byte) rangeIndex);
         t.setBoolean("occ", occupied);
+        t.setInteger("seen", trainsSeen);
+        cfg.write(t);
         return t;
     }
 
@@ -127,6 +185,8 @@ public class TileTrackCircuit extends TileEntity implements ITickable {
         super.readFromNBT(t);
         rangeIndex = Math.max(0, Math.min(RANGES.length - 1, t.getByte("range")));
         occupied = t.getBoolean("occ");
+        trainsSeen = t.getInteger("seen");
+        cfg.read(t);
     }
 
     @Override

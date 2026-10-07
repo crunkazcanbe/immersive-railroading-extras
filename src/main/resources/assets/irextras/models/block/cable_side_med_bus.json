@@ -1,0 +1,7 @@
+{
+ "parent": "irextras:block/cable_side_med",
+ "textures": {
+  "jacket": "irextras:blocks/cable_busbar",
+  "particle": "irextras:blocks/cable_busbar"
+ }
+}

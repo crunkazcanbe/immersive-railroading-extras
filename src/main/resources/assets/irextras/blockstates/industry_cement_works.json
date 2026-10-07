@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:industry_cement_works"
+  },
+  "facing=east": {
+   "model": "irextras:industry_cement_works",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:industry_cement_works",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:industry_cement_works",
+   "y": 270
+  }
+ }
+}

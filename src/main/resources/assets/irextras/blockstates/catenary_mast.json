@@ -1,19 +1,55 @@
 {
- "variants": {
-  "facing=north": {
-   "model": "irextras:catenary_mast"
+ "multipart": [
+  {
+   "when": {
+    "facing": "north"
+   },
+   "apply": {
+    "model": "irextras:ohle_mast_body"
+   }
   },
-  "facing=east": {
-   "model": "irextras:catenary_mast",
-   "y": 90
+  {
+   "when": {
+    "facing": "east"
+   },
+   "apply": {
+    "model": "irextras:ohle_mast_body",
+    "y": 90
+   }
   },
-  "facing=south": {
-   "model": "irextras:catenary_mast",
-   "y": 180
+  {
+   "when": {
+    "facing": "south"
+   },
+   "apply": {
+    "model": "irextras:ohle_mast_body",
+    "y": 180
+   }
   },
-  "facing=west": {
-   "model": "irextras:catenary_mast",
-   "y": 270
+  {
+   "when": {
+    "facing": "west"
+   },
+   "apply": {
+    "model": "irextras:ohle_mast_body",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "down": "false"
+   },
+   "apply": {
+    "model": "irextras:ohle_mast_base"
+   }
+  },
+  {
+   "when": {
+    "up": "false"
+   },
+   "apply": {
+    "model": "irextras:ohle_mast_cap"
+   }
   }
- }
+ ]
 }

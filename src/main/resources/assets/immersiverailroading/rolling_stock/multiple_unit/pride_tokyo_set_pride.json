@@ -1,0 +1,34 @@
+{
+  "name": "Tokyo Monorail 10000 full train (Pride Rail - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_tokyo",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tokyo_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tokyo_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tokyo_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tokyo_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_tokyo",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

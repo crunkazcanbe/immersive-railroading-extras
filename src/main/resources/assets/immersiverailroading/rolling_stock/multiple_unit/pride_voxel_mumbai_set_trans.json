@@ -1,0 +1,26 @@
+{
+  "name": "Mumbai Monorail (pink) full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_mumbai",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_mumbai_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_mumbai_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_mumbai",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

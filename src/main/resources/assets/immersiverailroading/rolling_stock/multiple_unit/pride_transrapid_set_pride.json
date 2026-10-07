@@ -1,0 +1,22 @@
+{
+  "name": "Shanghai Transrapid SMT full train (Pride Rail - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_transrapid",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_transrapid_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_transrapid",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -45,10 +45,30 @@ public class ItemSignalWrench extends Item {
         // right-click, which runs before onItemUse and swallowed every wrench click (it cycled the
         // signal's mode instead of picking it up).
         TileEntity peek = world.getTileEntity(pos);
+        // Sneak-right-click a block with a Settings Console: ask the server for it (the console also has the size page).
+        if (player.isSneaking() && peek instanceof com.dogpound.railmap.settings.ISettingsHolder) {
+            if (world.isRemote) RailMap.NETWORK.sendToServer(com.dogpound.railmap.network.PacketSettings.request(pos));
+            return EnumActionResult.SUCCESS;
+        }
         // Sneak-right-click anything resizable: open the size slider (client), nothing else happens.
         if (player.isSneaking() && peek instanceof com.dogpound.railmap.signal.IScalable sc) {
             if (world.isRemote) {
                 RailMap.proxy.openScaleGui(pos, world.getBlockState(pos).getBlock().getLocalizedName(), sc.scale());
+            }
+            return EnumActionResult.SUCCESS;
+        }
+        // control-room instruments: pick a grid machine / cable, then click the instrument
+        boolean gridPoint = world.getBlockState(pos).getBlock() instanceof com.dogpound.railmap.grid.BlockGrid;
+        if (gridPoint || peek instanceof com.dogpound.railmap.grid.TileInstrument) {
+            if (world.isRemote) return EnumActionResult.SUCCESS;
+            ItemStack st = player.getHeldItem(hand);
+            if (gridPoint) {
+                setPick(st, pos);
+                say(player, "§b" + world.getBlockState(pos).getBlock().getLocalizedName() + " picked - now right-click a meter / screen / lamp to show it");
+            } else {
+                BlockPos pick = getPick(st);
+                com.dogpound.railmap.grid.TileInstrument ti = (com.dogpound.railmap.grid.TileInstrument) peek;
+                say(player, pick == null ? "Pick a grid machine or cable first" : ti.link(pick.equals(ti.target()) ? null : pick));
             }
             return EnumActionResult.SUCCESS;
         }

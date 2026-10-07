@@ -1,0 +1,113 @@
+{
+ "textures": {
+  "particle": "irextras:blocks/ohle_galv",
+  "g": "irextras:blocks/ohle_galv",
+  "d": "irextras:blocks/ohle_dark",
+  "w": "irextras:blocks/ohle_wire",
+  "i": "irextras:blocks/ohle_insulator",
+  "p": "irextras:blocks/ohle_plate",
+  "c": "irextras:blocks/ohle_concrete"
+ },
+ "elements": [
+  {
+   "from": [
+    7.5,
+    1.5,
+    7.5
+   ],
+   "to": [
+    8.5,
+    2.5,
+    8.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#w"
+    },
+    "south": {
+     "texture": "#w"
+    },
+    "east": {
+     "texture": "#w"
+    },
+    "west": {
+     "texture": "#w"
+    },
+    "up": {
+     "texture": "#w"
+    },
+    "down": {
+     "texture": "#w"
+    }
+   }
+  },
+  {
+   "from": [
+    7.6,
+    19,
+    7.6
+   ],
+   "to": [
+    8.4,
+    19.8,
+    8.4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#w",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#w",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#w",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#w",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#w",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "down": {
+     "texture": "#w",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,259 @@
+{
+ "textures": {
+  "particle": "irextras:blocks/ohle_galv",
+  "g": "irextras:blocks/ohle_galv",
+  "d": "irextras:blocks/ohle_dark",
+  "w": "irextras:blocks/ohle_wire",
+  "i": "irextras:blocks/ohle_insulator",
+  "p": "irextras:blocks/ohle_plate",
+  "c": "irextras:blocks/ohle_concrete"
+ },
+ "elements": [
+  {
+   "from": [
+    7.2,
+    3,
+    0
+   ],
+   "to": [
+    8.8,
+    4.4,
+    4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#g"
+    },
+    "south": {
+     "texture": "#g"
+    },
+    "east": {
+     "texture": "#g"
+    },
+    "west": {
+     "texture": "#g"
+    },
+    "up": {
+     "texture": "#g"
+    },
+    "down": {
+     "texture": "#g"
+    }
+   },
+   "__comment": "registration tube"
+  },
+  {
+   "from": [
+    7.6,
+    3.0500000000000003,
+    2.8115265723741394
+   ],
+   "to": [
+    8.4,
+    3.85,
+    7.78847342762586
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   },
+   "rotation": {
+    "origin": [
+     8,
+     3.45,
+     5.3
+    ],
+    "axis": "x",
+    "angle": 22.5,
+    "rescale": false
+   }
+  },
+  {
+   "from": [
+    7.3,
+    1.2,
+    7.2
+   ],
+   "to": [
+    8.7,
+    2.8,
+    8.8
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   },
+   "__comment": "clamp"
+  },
+  {
+   "from": [
+    7.2,
+    20,
+    0
+   ],
+   "to": [
+    8.8,
+    21.4,
+    8.6
+   ],
+   "faces": {
+    "north": {
+     "texture": "#g",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#g",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#g",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#g",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#g",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "down": {
+     "texture": "#g",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    }
+   },
+   "__comment": "upper tube"
+  },
+  {
+   "from": [
+    7,
+    19.6,
+    6.8
+   ],
+   "to": [
+    9,
+    21.6,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "down": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    }
+   },
+   "__comment": "messenger support"
+  }
+ ]
+}

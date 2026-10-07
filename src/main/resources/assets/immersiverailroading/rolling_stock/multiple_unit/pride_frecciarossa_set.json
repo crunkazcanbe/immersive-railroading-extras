@@ -1,0 +1,28 @@
+{
+  "name": "Frecciarossa 1000 full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_frecciarossa"
+    },
+    {
+      "stock": "pride_frecciarossa_car"
+    },
+    {
+      "stock": "pride_frecciarossa_car"
+    },
+    {
+      "stock": "pride_frecciarossa_car"
+    },
+    {
+      "stock": "pride_frecciarossa_car"
+    },
+    {
+      "stock": "pride_frecciarossa",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

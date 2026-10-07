@@ -1,0 +1,74 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "case": "irextras:blocks/grid_cabinet",
+  "face": "irextras:blocks/grid_cabinet",
+  "particle": "irextras:blocks/grid_cabinet"
+ },
+ "elements": [
+  {
+   "from": [
+    1,
+    1,
+    13
+   ],
+   "to": [
+    15,
+    15,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#case"
+    },
+    "south": {
+     "texture": "#case"
+    },
+    "east": {
+     "texture": "#case"
+    },
+    "west": {
+     "texture": "#case"
+    },
+    "up": {
+     "texture": "#case"
+    },
+    "down": {
+     "texture": "#case"
+    }
+   }
+  },
+  {
+   "from": [
+    2,
+    2,
+    12.8
+   ],
+   "to": [
+    14,
+    14,
+    13
+   ],
+   "faces": {
+    "north": {
+     "texture": "#case",
+     "tintindex": 0
+    }
+   }
+  }
+ ],
+ "display": {
+  "gui": {
+   "rotation": [
+    0,
+    180,
+    0
+   ],
+   "scale": [
+    0.8,
+    0.8,
+    0.8
+   ]
+  }
+ }
+}

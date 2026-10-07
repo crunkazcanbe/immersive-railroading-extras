@@ -1,0 +1,22 @@
+{
+  "name": "Palm Jumeirah Monorail full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_palm_jumeirah",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_palm_jumeirah_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_palm_jumeirah",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

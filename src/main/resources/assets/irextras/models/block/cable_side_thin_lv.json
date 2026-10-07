@@ -1,0 +1,7 @@
+{
+ "parent": "irextras:block/cable_side_thin",
+ "textures": {
+  "jacket": "irextras:blocks/cable_lv",
+  "particle": "irextras:blocks/cable_lv"
+ }
+}

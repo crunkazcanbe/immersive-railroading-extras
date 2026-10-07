@@ -1,0 +1,22 @@
+{
+  "name": "Transrapid TR09 full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_tr09",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_tr09_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_tr09",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

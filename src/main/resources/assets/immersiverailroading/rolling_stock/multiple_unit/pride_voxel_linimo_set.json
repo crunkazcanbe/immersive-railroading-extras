@@ -1,0 +1,19 @@
+{
+  "name": "Linimo HSST full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_linimo"
+    },
+    {
+      "stock": "pride_voxel_linimo_car"
+    },
+    {
+      "stock": "pride_voxel_linimo",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:station_modern_platform"
+  },
+  "facing=east": {
+   "model": "irextras:station_modern_platform",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:station_modern_platform",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:station_modern_platform",
+   "y": 270
+  }
+ }
+}

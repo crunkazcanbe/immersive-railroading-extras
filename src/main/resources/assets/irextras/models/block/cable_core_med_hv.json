@@ -1,0 +1,7 @@
+{
+ "parent": "irextras:block/cable_core_med",
+ "textures": {
+  "jacket": "irextras:blocks/cable_hv",
+  "particle": "irextras:blocks/cable_hv"
+ }
+}

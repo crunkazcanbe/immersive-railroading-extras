@@ -1,0 +1,25 @@
+{
+  "name": "NYC Subway R160 full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_r160"
+    },
+    {
+      "stock": "pride_r160_car"
+    },
+    {
+      "stock": "pride_r160_car"
+    },
+    {
+      "stock": "pride_r160_car"
+    },
+    {
+      "stock": "pride_r160",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

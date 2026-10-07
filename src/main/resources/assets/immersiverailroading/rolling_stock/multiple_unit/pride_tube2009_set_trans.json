@@ -1,0 +1,26 @@
+{
+  "name": "London Underground 2009 Stock full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_tube2009",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_tube2009_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_tube2009_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_tube2009",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

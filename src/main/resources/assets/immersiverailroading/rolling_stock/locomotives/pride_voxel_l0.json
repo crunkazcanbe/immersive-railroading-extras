@@ -1,0 +1,37 @@
+{
+  "era": "diesel",
+  "name": "JR Central L0 Series (Pride Rail Voxel, electric maglev)",
+  "works": "Mitsubishi Heavy Industries",
+  "model": "immersiverailroading:models/rolling_stock/pride_rail_voxel/l0/l0_front.obj",
+  "model_gauge_m": 1.435,
+  "tex_variants": {
+    "Real livery": "",
+    "Pride rainbow": "pride",
+    "Trans flag": "trans"
+  },
+  "multi_unit_capable": true,
+  "properties": {
+    "fuel_efficiency_%": 100,
+    "fuel_capacity_l": 120,
+    "power_hp": 4693,
+    "tractive_effort_lbf": 192500,
+    "max_speed_kmh": 505,
+    "weight_kg": 40000,
+    "horn_sustained": true
+  },
+  "passenger": {
+    "slots": 24,
+    "center_x": -0.6,
+    "center_y": 0.9,
+    "length": 11.0,
+    "width": 1.885
+  },
+  "trucks": {
+    "front": 6.5,
+    "rear": -6.5
+  },
+  "couplers": {
+    "front_offset": 0.0,
+    "rear_offset": 0.12
+  }
+}

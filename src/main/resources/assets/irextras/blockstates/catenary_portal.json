@@ -1,19 +1,39 @@
 {
- "variants": {
-  "facing=north": {
-   "model": "irextras:catenary_portal"
+ "multipart": [
+  {
+   "when": {
+    "facing": "north"
+   },
+   "apply": {
+    "model": "irextras:ohle_portal"
+   }
   },
-  "facing=east": {
-   "model": "irextras:catenary_portal",
-   "y": 90
+  {
+   "when": {
+    "facing": "east"
+   },
+   "apply": {
+    "model": "irextras:ohle_portal",
+    "y": 90
+   }
   },
-  "facing=south": {
-   "model": "irextras:catenary_portal",
-   "y": 180
+  {
+   "when": {
+    "facing": "south"
+   },
+   "apply": {
+    "model": "irextras:ohle_portal",
+    "y": 180
+   }
   },
-  "facing=west": {
-   "model": "irextras:catenary_portal",
-   "y": 270
+  {
+   "when": {
+    "facing": "west"
+   },
+   "apply": {
+    "model": "irextras:ohle_portal",
+    "y": 270
+   }
   }
- }
+ ]
 }

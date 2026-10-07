@@ -1,0 +1,18 @@
+{
+  "name": "Okinawa Yui Rail full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_yui_rail",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_yui_rail",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "2 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

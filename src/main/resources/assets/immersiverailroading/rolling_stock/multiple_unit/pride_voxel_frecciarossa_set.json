@@ -1,0 +1,28 @@
+{
+  "name": "Frecciarossa 1000 full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_frecciarossa"
+    },
+    {
+      "stock": "pride_voxel_frecciarossa_car"
+    },
+    {
+      "stock": "pride_voxel_frecciarossa_car"
+    },
+    {
+      "stock": "pride_voxel_frecciarossa_car"
+    },
+    {
+      "stock": "pride_voxel_frecciarossa_car"
+    },
+    {
+      "stock": "pride_voxel_frecciarossa",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:industry_farm"
+  },
+  "facing=east": {
+   "model": "irextras:industry_farm",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:industry_farm",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:industry_farm",
+   "y": 270
+  }
+ }
+}

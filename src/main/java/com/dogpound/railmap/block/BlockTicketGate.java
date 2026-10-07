@@ -78,9 +78,13 @@ public class BlockTicketGate extends BlockStationDevice {
         if (world.getTileEntity(pos) instanceof TileTicketGate gate) {
             ItemStack held = player.getHeldItem(hand);
             boolean wasOpen = gate.isOpen();
-            String msg = gate.present(held);
+            String msg;
+            if (player.capabilities.isCreativeMode && gate.creativeWalksThrough() && !com.dogpound.railmap.item.ItemTicket.valid(held)) {
+                gate.open();
+                msg = "Creative: the gate opens for you";
+            } else msg = gate.present(held);
             player.sendStatusMessage(new TextComponentString(msg), true);
-            if (!wasOpen && gate.isOpen()) {
+            if (!wasOpen && gate.isOpen() && gate.beeps()) {
                 world.playSound(null, pos, SoundEvents.BLOCK_NOTE_PLING, SoundCategory.BLOCKS, 0.6F, 1.6F);
             }
         }

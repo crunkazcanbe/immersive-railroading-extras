@@ -1,0 +1,18 @@
+{
+  "name": "Okinawa Yui Rail full train (Pride Rail - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_yui_rail",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_yui_rail",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "2 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

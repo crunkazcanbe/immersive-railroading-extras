@@ -1,0 +1,156 @@
+{
+ "multipart": [
+  {
+   "when": {
+    "facing": "north",
+    "state": "0"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_0"
+   }
+  },
+  {
+   "when": {
+    "facing": "north",
+    "state": "1"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_1"
+   }
+  },
+  {
+   "when": {
+    "facing": "north",
+    "state": "2"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_1"
+   }
+  },
+  {
+   "when": {
+    "facing": "east",
+    "state": "0"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_0",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "facing": "east",
+    "state": "1"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_1",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "facing": "east",
+    "state": "2"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_1",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "facing": "south",
+    "state": "0"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_0",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "facing": "south",
+    "state": "1"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_1",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "facing": "south",
+    "state": "2"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_1",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "facing": "west",
+    "state": "0"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_0",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "facing": "west",
+    "state": "1"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_1",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "facing": "west",
+    "state": "2"
+   },
+   "apply": {
+    "model": "irextras:grid_feeder_1",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:grid_port_side"
+   }
+  },
+  {
+   "when": {
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:grid_port_side",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:grid_port_side",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:grid_port_side",
+    "y": 270
+   }
+  }
+ ]
+}

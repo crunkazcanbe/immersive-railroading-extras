@@ -1,0 +1,20 @@
+{
+  "name": "Pride Monorail (slim steel beam)",
+  "models": {
+    ">0": "immersiverailroading:models/track/pride_monorail_slim/pride_monorail_slim.obj"
+  },
+  "materials": {
+    "TIE": [
+      {
+        "item": "ore:ingotIron",
+        "cost": 3
+      }
+    ],
+    "RAIL": [
+      {
+        "item": "ore:irRail",
+        "cost": 1
+      }
+    ]
+  }
+}

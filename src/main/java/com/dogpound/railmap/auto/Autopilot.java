@@ -14,7 +14,13 @@ import com.dogpound.railmap.RailMapConfig;
 import com.dogpound.railmap.server.StationData;
 import com.dogpound.railmap.signal.TileSignalMast;
 import com.dogpound.railmap.signal.TrackFollower;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidTankProperties;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -69,6 +75,10 @@ public final class Autopilot {
         public boolean dwelling, idle;
         long dwellUntil;
         public long dwellStation;
+        /** The order being carried out at this stop, and the cargo aboard when it arrived (for profit). */
+        RailwayData.Order order = RailwayData.Order.STOP;
+        int cargoAtArrive;
+        long dwellStart;
         final Set<Long> augmentsOn = new HashSet<>();
         final Set<Vec3i> claimed = new HashSet<>();
         final Set<BlockPos> ctcCleared = new HashSet<>();
@@ -157,6 +167,14 @@ public final class Autopilot {
             hold(loco);
             long left = (r.dwellUntil - now) / 20;
             r.status = "At " + nameOf(stations, r.dwellStation) + " — departing in " + Math.max(0, left) + "s";
+            if (r.order == RailwayData.Order.FULL_LOAD && now >= r.dwellUntil) {
+                int fill = fillPercent(loco);
+                if (fill < 98 && now - r.dwellStart < RailMapConfig.fullLoadMaxMinutes * 1200L) {
+                    r.dwellUntil = now + 40;     // OpenTTD "full load": keep the loaders running until every car is full
+                    r.status = "At " + nameOf(stations, r.dwellStation) + " — full load: " + fill + "% full";
+                    return;
+                }
+            }
             if (now >= r.dwellUntil) depart(world, data, stations, a, r, loco);
             return;
         }
@@ -205,6 +223,20 @@ public final class Autopilot {
 
         double remaining = r.stopAt - cur;
         r.metresToStop = Math.max(0, remaining);
+
+        // "Go via": don't brake for this stop - once it's inside braking range, aim for the next one instead.
+        com.dogpound.railmap.station.TileStationMaster desk = com.dogpound.railmap.station.TileStationMaster.at(world, sp);
+        boolean requestSkip = desk != null && desk.skipRequestStop(riders(loco));
+        if (orderNow(data, a, stop) == RailwayData.Order.VIA || requestSkip) {
+            double ms = speed / 3.6;
+            if (remaining < ms * ms / (2 * RailMapConfig.autopilotBraking) + 20) {
+                Dispatcher.advance(data, a, stop);
+                lapCheck(a);
+                r.path = null;
+                data.markDirty();
+                return;
+            }
+        }
 
         // Arrived? Air brakes can let a train slide a few metres past the mark; that still counts
         // (otherwise it replans the whole loop and never stops at all).
@@ -365,10 +397,16 @@ public final class Autopilot {
         hold(loco);
         r.dwelling = true;
         r.dwellStation = station;
-        r.dwellUntil = now + Math.max(5, a.dwellSeconds) * 20L;
+        r.order = orderNow(data, a, station);
+        r.dwellStart = now;
+        com.dogpound.railmap.station.TileStationMaster desk = com.dogpound.railmap.station.TileStationMaster.at(world, BlockPos.fromLong(station));
+        int dwell = desk != null && desk.dwell() > 0 ? desk.dwell() : a.dwellSeconds;
+        r.dwellUntil = now + (r.order == RailwayData.Order.WAIT ? 60 : Math.max(5, dwell)) * 20L;
+        r.cargoAtArrive = cargoUnits(loco);
         r.path = null;
         loco.setBell(60);
-        setAugmentsNear(world, r, BlockPos.fromLong(station), true);
+        boolean load = r.order != RailwayData.Order.UNLOAD, unload = r.order != RailwayData.Order.LOAD && r.order != RailwayData.Order.FULL_LOAD;
+        setAugmentsNear(world, r, BlockPos.fromLong(station), load, unload);
         String here = nameOf(stations, station);
         String label = label(a, loco);
         Dispatcher.arrived(world, data, a, station, label, here);
@@ -379,8 +417,10 @@ public final class Autopilot {
                                Run r, Locomotive loco) {
         r.dwelling = false;
         setAugments(world, r, false);
+        pay(world, stations, a, r, loco);
         Dispatcher.departed(world, data, a, r.dwellStation);
         Dispatcher.advance(data, a, r.dwellStation);
+        lapCheck(a);
         loco.setHorn(20, 1f);
         loco.setBell(0);
         data.markDirty();
@@ -389,7 +429,8 @@ public final class Autopilot {
     // ---- loaders -------------------------------------------------------------------------
 
     /** Run the IR loaders and unloaders around a station while the train stands there. */
-    private static void setAugmentsNear(World world, Run r, BlockPos station, boolean on) {
+    private static void setAugmentsNear(World world, Run r, BlockPos station, boolean load, boolean unload) {
+        boolean on = load || unload;
         cam72cam.mod.world.World umc = cam72cam.mod.world.World.get(world);
         for (int dx = -12; dx <= 12; dx++) {
             for (int dy = -2; dy <= 2; dy++) {
@@ -399,8 +440,9 @@ public final class Autopilot {
                     TileRailBase base = umc.getBlockEntity(v, TileRailBase.class);
                     if (base == null) continue;
                     Augment aug = base.getAugment();
-                    if (aug != Augment.ITEM_LOADER && aug != Augment.ITEM_UNLOADER
-                            && aug != Augment.FLUID_LOADER && aug != Augment.FLUID_UNLOADER) continue;
+                    boolean isLoad = aug == Augment.ITEM_LOADER || aug == Augment.FLUID_LOADER;
+                    boolean isUnload = aug == Augment.ITEM_UNLOADER || aug == Augment.FLUID_UNLOADER;
+                    if (!(isLoad && load) && !(isUnload && unload)) continue;   // the stop's order picks which ones run
                     try {
                         base.setRedstoneLevel(on ? 15 : 0);
                         base.markDirty();
@@ -430,6 +472,95 @@ public final class Autopilot {
             }
         }
         if (!on) r.augmentsOn.clear();
+    }
+
+    // ---- orders + profit (OpenTTD style) ---------------------------------------------------
+
+    /** The order for the stop the train is heading to: its line's order there, plain STOP otherwise. */
+    static RailwayData.Order orderNow(RailwayData data, RailwayData.AutoTrain a, long stop) {
+        if (!a.calls.isEmpty() || (a.mode != RailwayData.Mode.LINE && a.mode != RailwayData.Mode.SHUTTLE)) return RailwayData.Order.STOP;
+        RailwayData.Line line = data.line(a.line);
+        if (line == null || a.index < 0 || a.index >= line.stations.size() || line.stations.get(a.index) != stop) return RailwayData.Order.STOP;
+        return line.order(a.index);
+    }
+
+    /** A line train back at its first stop: one lap done - roll its lap income over. */
+    private static void lapCheck(RailwayData.AutoTrain a) {
+        if (a.mode == RailwayData.Mode.LINE && a.index == 0 && a.calls.isEmpty()) {
+            a.trips++;
+            a.lastLap = a.earnedLap;
+            a.earnedLap = 0;
+        }
+    }
+
+    /** Cargo dropped here pays by amount x distance from where it was loaded; cargo picked up here starts a new trip. */
+    private static void pay(World world, StationData stations, RailwayData.AutoTrain a, Run r, Locomotive loco) {
+        int now = cargoUnits(loco), dropped = r.cargoAtArrive - now;
+        if (dropped > 0) {
+            BlockPos from = a.loadedAt == 0 ? null : BlockPos.fromLong(a.loadedAt), to = BlockPos.fromLong(r.dwellStation);
+            double dist = from == null ? 0 : Math.sqrt(from.distanceSq(to));
+            long money = Math.round(dropped * (1 + dist / RailMapConfig.profitBlocksPerCoin) * RailMapConfig.profitPerItem);
+            a.earned += money;
+            a.earnedLap += money;
+            a.delivered += dropped;
+            for (EntityPlayer p : riders(loco)) tell(p, "[TRAIN] Delivered " + dropped + " at " + nameOf(stations, r.dwellStation) + " · +$" + money);
+        }
+        if (now > Math.max(0, r.cargoAtArrive - Math.max(0, dropped))) a.loadedAt = r.dwellStation;
+    }
+
+    private static List<Entity> consist(Locomotive loco) {
+        List<Entity> out = new ArrayList<>();
+        try {
+            for (EntityCoupleableRollingStock c : loco.getTrain()) out.add(c.internal);
+        } catch (RuntimeException e) {
+            out.add(loco.internal);
+        }
+        return out;
+    }
+
+    /** Items aboard + fluid buckets aboard, over the whole consist. */
+    static int cargoUnits(Locomotive loco) {
+        int n = 0;
+        for (Entity e : consist(loco)) {
+            if (e == null) continue;
+            if (e.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+                IItemHandler h = e.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+                if (h != null) for (int i = 0; i < h.getSlots(); i++) n += h.getStackInSlot(i).getCount();
+            }
+            if (e.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+                IFluidHandler f = e.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+                if (f != null) for (IFluidTankProperties t : f.getTankProperties()) if (t.getContents() != null) n += t.getContents().amount / 1000;
+            }
+        }
+        return n;
+    }
+
+    /** How full the emptiest cargo car is (100 when the train carries no cargo cars at all). */
+    static int fillPercent(Locomotive loco) {
+        int worst = 100;
+        for (Entity e : consist(loco)) {
+            if (e == null || e == loco.internal) continue;
+            if (e.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+                IItemHandler h = e.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+                if (h != null && h.getSlots() > 0) {
+                    long used = 0, cap = 0;
+                    for (int i = 0; i < h.getSlots(); i++) {
+                        net.minecraft.item.ItemStack st = h.getStackInSlot(i);
+                        used += st.getCount();
+                        cap += st.isEmpty() ? h.getSlotLimit(i) : Math.min(h.getSlotLimit(i), st.getMaxStackSize());
+                    }
+                    if (cap > 0) worst = Math.min(worst, (int) (used * 100 / cap));
+                }
+            }
+            if (e.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null)) {
+                IFluidHandler f = e.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null);
+                if (f != null) for (IFluidTankProperties t : f.getTankProperties()) {
+                    if (t.getCapacity() <= 0) continue;
+                    worst = Math.min(worst, (t.getContents() == null ? 0 : t.getContents().amount) * 100 / t.getCapacity());
+                }
+            }
+        }
+        return worst;
     }
 
     // ---- helpers -------------------------------------------------------------------------

@@ -26,21 +26,74 @@ import java.util.List;
  * Two jobs, same box. A <b>loading silo</b> takes from the stockpile beside it and fills the
  * freight car standing under it; an <b>unloading pit</b> empties the car into the stockpile.
  * Real flood loaders work on a moving train, so this does too — a car creeping past under
- * {@link #MAX_LOAD_KMH} keeps loading, a car highballing through does not.
+ * the "serve cars slower than" setting keeps loading, a car highballing through does not.
  * <p>
  * It reports what it's doing on a comparator: the signal is the served car's fill level, 0–15,
  * so "stop the train when the hopper is full" is just a comparator and a redstone line.
  */
-public class TileFreightTerminal extends TileEntity implements ITickable, com.dogpound.railmap.signal.IScalable {
+public class TileFreightTerminal extends TileEntity implements ITickable, com.dogpound.railmap.signal.IScalable, com.dogpound.railmap.settings.ISettingsHolder {
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    private long totalMoved;
+    private int carsServed;
+    private String lastCar = "";
 
-    /** how far from the block a car can be and still be served, in blocks */
-    private static final double RANGE = 3.5D;
-    /** flood loaders work at a creep; past this the car is moving too fast to fill */
-    private static final double MAX_LOAD_KMH = 15.0D;
-    /** items moved per working cycle */
-    private static final int RATE = 4;
-    /** ticks between cycles */
-    private static final int PERIOD = 10;
+    private double range() { return cfg.num("reach") + 0.5D; }
+    private double maxKmh() { return cfg.num("maxKmh"); }
+
+    @Override public String settingsTitle() { return loader ? "Loading Silo" : "Unloading Pit"; }
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return cfg; }
+    @Override public void onSettingsChanged(String key) { markDirty(); }
+
+    @Override
+    public List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        List<com.dogpound.railmap.settings.Setting> l = new java.util.ArrayList<>();
+        String op = "Operation", fl = "Filter", sk = "Rolling stock", rs = "Redstone", st = "Status";
+        l.add(com.dogpound.railmap.settings.Setting.bool(op, "on", "Working", "Switch the terminal on or off", true));
+        l.add(com.dogpound.railmap.settings.Setting.num(op, "rate", "Items per cycle", "How many items move each working cycle", 4, 1, 64, 1, "items"));
+        l.add(com.dogpound.railmap.settings.Setting.num(op, "period", "Cycle time", "Ticks between cycles (20 ticks = 1 second)", 10, 1, 40, 1, "ticks"));
+        l.add(com.dogpound.railmap.settings.Setting.num(op, "reach", "Reach", "How far from the block a car can stand", 3, 1, 8, 1, "blocks"));
+        l.add(com.dogpound.railmap.settings.Setting.num(op, "maxKmh", "Serve cars slower than", "Flood loading works at a creep", 15, 0, 80, 1, "km/h"));
+        if (loader) l.add(com.dogpound.railmap.settings.Setting.num(op, "stopAt", "Stop filling at", "Leave the car partly empty", 100, 5, 100, 5, "%"));
+        else l.add(com.dogpound.railmap.settings.Setting.num(op, "keep", "Leave in each car", "Unload all but this many items", 0, 0, 1728, 16, "items"));
+        l.add(com.dogpound.railmap.settings.Setting.num(op, "keepYard", loader ? "Keep in the stockpile" : "Stop when the stockpile has", loader ? "Never take the stockpile below this" : "Stop unloading once the stockpile holds this many", 0, 0, 100000, 64, "items"));
+        l.add(com.dogpound.railmap.settings.Setting.choice(fl, "filter", "Filter", "Which items it handles", "Everything", "Everything", "Only these", "All except these"));
+        l.add(com.dogpound.railmap.settings.Setting.text(fl, "list", "Item list", "Comma separated: minecraft:coal, modid:*, ore:ingotIron", "", 300));
+        l.add(com.dogpound.railmap.settings.Setting.bool(sk, "ir", "Immersive Railroading freight", "", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool(sk, "other", "Other mods' wagons and minecarts", "Traincraft, chest minecarts, any wagon with an inventory", true));
+        l.add(com.dogpound.railmap.settings.Setting.choice(rs, "rsMode", "Redstone control", "", "Always", "Always", "Only when powered", "Only when unpowered"));
+        l.add(com.dogpound.railmap.settings.Setting.choice(rs, "rsOut", "Redstone output", "What the block emits", "Fill level", "Fill level", "Car present", "Moving items", "Car full", "Car empty"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Car", servedCar.isEmpty() ? "none in range" : servedCar));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Car fill", fillPct < 0 ? "-" : fillPct + "%"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Rate now", movedLastCycle * 20 / Math.max(1, cfg.num("period")) + " items/s"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Items moved (total)", String.valueOf(totalMoved)));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Cars served", String.valueOf(carsServed)));
+        return l;
+    }
+
+    /** Filter: entries like minecraft:coal, modid:*, ore:ingotIron */
+    private boolean allowed(ItemStack st) {
+        String mode = cfg.text("filter");
+        if ("Everything".equals(mode) || st.isEmpty()) return true;
+        boolean hit = false;
+        String id = st.getItem().getRegistryName() == null ? "" : st.getItem().getRegistryName().toString();
+        for (String raw : cfg.text("list").split(",")) {
+            String e = raw.trim();
+            if (e.isEmpty()) continue;
+            if (e.startsWith("ore:")) {
+                for (int o : net.minecraftforge.oredict.OreDictionary.getOreIDs(st))
+                    if (net.minecraftforge.oredict.OreDictionary.getOreName(o).equals(e.substring(4))) hit = true;
+            } else if (e.endsWith(":*")) { if (id.startsWith(e.substring(0, e.length() - 1))) hit = true; }
+            else if (e.equals(id)) hit = true;
+            if (hit) break;
+        }
+        return "Only these".equals(mode) == hit;
+    }
+
+    private static int count(IItemHandler h) {
+        int n = 0;
+        for (int i = 0; i < h.getSlots(); i++) n += h.getStackInSlot(i).getCount();
+        return n;
+    }
 
     private final boolean loader;
     /** dial the whole structure to match the gauge she runs — small stock wants a small gantry */
@@ -75,10 +128,14 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         if (world == null || world.isRemote) {
             return;
         }
-        if (++timer < PERIOD) {
+        if (++timer < Math.max(1, cfg.num("period"))) {
             return;
         }
         timer = 0;
+        int oldOut = redstoneOutput();
+        boolean powered = world.isBlockPowered(pos);
+        String rsMode = cfg.text("rsMode");
+        boolean run = cfg.bool("on") && !("Only when powered".equals(rsMode) && !powered) && !("Only when unpowered".equals(rsMode) && powered);
 
         Car car = findCar();
         if (car == null) {
@@ -87,12 +144,23 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
             movedLastCycle = 0;
             return;
         }
+        if (!car.name.equals(lastCar)) { lastCar = car.name; carsServed++; }
         servedCar = car.name;
         fillPct = car.fillPct;
 
         IItemHandler yard = adjacentInventory();
-        movedLastCycle = (car.inv == null || yard == null) ? 0
-                : loader ? move(yard, car.inv) : move(car.inv, yard);
+        int budget = Math.max(1, cfg.num("rate"));
+        if (!run || car.inv == null || yard == null) budget = 0;
+        else if (loader) {
+            if (fillPct >= cfg.num("stopAt")) budget = 0;
+            budget = Math.min(budget, Math.max(0, count(yard) - cfg.num("keepYard")));
+        } else {
+            budget = Math.min(budget, Math.max(0, count(car.inv) - cfg.num("keep")));
+            if (cfg.num("keepYard") > 0) budget = Math.min(budget, Math.max(0, cfg.num("keepYard") - count(yard)));
+        }
+        movedLastCycle = budget <= 0 ? 0 : loader ? move(yard, car.inv, budget) : move(car.inv, yard, budget);
+        totalMoved += movedLastCycle;
+        if (oldOut != redstoneOutput()) world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
     }
 
     /** Whatever is sitting under the terminal right now, whichever mod's rolling stock it is. */
@@ -108,12 +176,12 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         }
     }
 
-    /** Moves up to {@link #RATE} items from one inventory to the other. Returns how many moved. */
-    private static int move(IItemHandler from, IItemHandler to) {
-        int budget = RATE;
+    /** Moves up to {@code rate} allowed items from one inventory to the other. Returns how many moved. */
+    private int move(IItemHandler from, IItemHandler to, int rate) {
+        int budget = rate;
         for (int slot = 0; slot < from.getSlots() && budget > 0; slot++) {
             ItemStack peek = from.extractItem(slot, budget, true);
-            if (peek.isEmpty()) {
+            if (peek.isEmpty() || !allowed(peek)) {
                 continue;
             }
             ItemStack left = ItemHandlerHelper.insertItem(to, peek.copy(), true);
@@ -128,7 +196,7 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
             ItemHandlerHelper.insertItem(to, taken, false);
             budget -= taken.getCount();
         }
-        return RATE - budget;
+        return rate - budget;
     }
 
     /** The stockpile: the first neighbouring block that exposes an item handler. */
@@ -155,8 +223,8 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
      * inventory, so the terminal is not tied to one train mod or one size of stock.
      */
     private Car findCar() {
-        Car ir = findImmersiveRailroadingCar();
-        return ir != null ? ir : findGenericCar();
+        Car ir = cfg.bool("ir") ? findImmersiveRailroadingCar() : null;
+        return ir != null ? ir : cfg.bool("other") ? findGenericCar() : null;
     }
 
     private Car findImmersiveRailroadingCar() {
@@ -175,11 +243,11 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
             cam72cam.mod.math.Vec3d p = stock.getPosition();
             double dx = p.x - cx, dy = p.y - cy, dz = p.z - cz;
             double dist = Math.sqrt(dx * dx + dz * dz);
-            if (dist > RANGE || Math.abs(dy) > RANGE) {
+            if (dist > range() || Math.abs(dy) > range()) {
                 continue;
             }
             if (stock instanceof EntityMoveableRollingStock m && m.getCurrentSpeed() != null
-                    && Math.abs(m.getCurrentSpeed().metric()) > MAX_LOAD_KMH) {
+                    && Math.abs(m.getCurrentSpeed().metric()) > maxKmh()) {
                 continue;
             }
             if (dist < bestDist) {
@@ -196,7 +264,7 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
     }
 
     private Car findGenericCar() {
-        AxisAlignedBB box = new AxisAlignedBB(pos).grow(RANGE, RANGE, RANGE);
+        AxisAlignedBB box = new AxisAlignedBB(pos).grow(range(), range(), range());
         List<Entity> ents = world.getEntitiesWithinAABB(Entity.class, box);
         Entity best = null;
         double bestDist = Double.MAX_VALUE;
@@ -210,12 +278,12 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
             }
             // km/h from the entity's own motion — works for any mod's wagon
             double kmh = Math.sqrt(e.motionX * e.motionX + e.motionZ * e.motionZ) * 20.0D * 3.6D;
-            if (kmh > MAX_LOAD_KMH) {
+            if (kmh > maxKmh()) {
                 continue;
             }
             double dx = e.posX - cx, dz = e.posZ - cz;
             double dist = Math.sqrt(dx * dx + dz * dz);
-            if (dist > RANGE || dist >= bestDist) {
+            if (dist > range() || dist >= bestDist) {
                 continue;
             }
             bestDist = dist;
@@ -261,15 +329,21 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
 
     /** Comparator output: the served car's fill level, 0-15. Nothing in range reads 0. */
     public int redstoneOutput() {
-        return fillPct <= 0 ? 0 : Math.max(1, Math.min(15, fillPct * 15 / 100));
+        return switch (cfg.text("rsOut")) {
+            case "Car present" -> servedCar.isEmpty() ? 0 : 15;
+            case "Moving items" -> movedLastCycle > 0 ? 15 : 0;
+            case "Car full" -> fillPct >= 100 ? 15 : 0;
+            case "Car empty" -> !servedCar.isEmpty() && fillPct == 0 ? 15 : 0;
+            default -> fillPct <= 0 ? 0 : Math.max(1, Math.min(15, fillPct * 15 / 100));
+        };
     }
 
     public String statusLine() {
         String job = loader ? "Loading silo" : "Unloading pit";
         if (servedCar.isEmpty()) {
-            return job + " — no car in range (park a freight car within " + (int) RANGE + " blocks)";
+            return job + " — no car in range (park a freight car within " + cfg.num("reach") + " blocks)";
         }
-        String rate = movedLastCycle > 0 ? movedLastCycle * (20 / PERIOD) + "/s" : "idle";
+        String rate = movedLastCycle > 0 ? movedLastCycle * 20 / Math.max(1, cfg.num("period")) + "/s" : "idle";
         return job + " — " + servedCar + "  " + fillPct + "% full  " + rate;
     }
 
@@ -320,6 +394,9 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         super.writeToNBT(tag);
         tag.setInteger("fill", fillPct);
         if (scale != 1f) tag.setFloat("scale", scale);
+        tag.setLong("moved", totalMoved);
+        tag.setInteger("cars", carsServed);
+        cfg.write(tag);
         return tag;
     }
 
@@ -328,5 +405,8 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         super.readFromNBT(tag);
         fillPct = tag.hasKey("fill") ? tag.getInteger("fill") : -1;
         scale = tag.hasKey("scale") ? com.dogpound.railmap.signal.IScalable.clamp(tag.getFloat("scale")) : 1f;
+        totalMoved = tag.getLong("moved");
+        carsServed = tag.getInteger("cars");
+        cfg.read(tag);
     }
 }

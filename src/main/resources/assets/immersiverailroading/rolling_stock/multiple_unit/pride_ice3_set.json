@@ -1,0 +1,22 @@
+{
+  "name": "DB ICE 3 full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_ice3"
+    },
+    {
+      "stock": "pride_ice3_car"
+    },
+    {
+      "stock": "pride_ice3_car"
+    },
+    {
+      "stock": "pride_ice3",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

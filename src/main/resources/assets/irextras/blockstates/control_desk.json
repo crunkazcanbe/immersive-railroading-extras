@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:control_desk"
+  },
+  "facing=east": {
+   "model": "irextras:control_desk",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:control_desk",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:control_desk",
+   "y": 270
+  }
+ }
+}

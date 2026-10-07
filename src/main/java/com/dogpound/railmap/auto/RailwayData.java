@@ -33,10 +33,36 @@ public final class RailwayData extends WorldSavedData {
         public String name;
         public int color;
         public final List<Long> stations = new ArrayList<>();
+        /** OpenTTD-style order for each stop (same index as {@link #stations}); see {@link Order}. */
+        public final List<Integer> orders = new ArrayList<>();
+
+        public Order order(int i) { return Order.byCode(i >= 0 && i < orders.size() ? orders.get(i) : 0); }
 
         Line(String name, int color) {
             this.name = name;
             this.color = color;
+        }
+    }
+
+    /**
+     * What a train does at one stop of its line (requested feature). Every train
+     * running the line shares them, like OpenTTD's shared orders.
+     */
+    public enum Order {
+        STOP("Stop", "stop, load + unload, then go"),
+        FULL_LOAD("Full load", "wait until every car is full"),
+        UNLOAD("Unload all", "only unload here"),
+        LOAD("Load only", "only load here"),
+        VIA("Go via", "pass through without stopping"),
+        WAIT("Wait 60s", "long stop: one minute");
+
+        public final String label, help;
+
+        Order(String label, String help) { this.label = label; this.help = help; }
+
+        public static Order byCode(int i) {
+            Order[] v = values();
+            return i >= 0 && i < v.length ? v[i] : STOP;
         }
     }
 
@@ -76,6 +102,11 @@ public final class RailwayData extends WorldSavedData {
         public int maxKmh = 60;
         /** Extra stops a ticket asked for, served before the line resumes. */
         public final List<Long> calls = new ArrayList<>();
+        /** Money earned delivering cargo (OpenTTD-style income), total and on the current lap of its line. */
+        public long earned, earnedLap, lastLap;
+        public int delivered, trips;
+        /** Where the cargo now on board was loaded, for paying by distance. */
+        public long loadedAt;
 
         AutoTrain(UUID loco) {
             this.loco = loco;
@@ -136,7 +167,9 @@ public final class RailwayData extends WorldSavedData {
     /** Colours handed to new lines in order, the way a transit map picks them. */
     private static final int[] PALETTE = { 0x1E88E5, 0xE53935, 0x43A047, 0xFDD835, 0x8E24AA, 0xFB8C00, 0x00ACC1, 0xD81B60 };
 
-    public Line saveLine(String name, List<Long> stations) {
+    public Line saveLine(String name, List<Long> stations) { return saveLine(name, stations, null); }
+
+    public Line saveLine(String name, List<Long> stations, List<Integer> orders) {
         Line l = lines.get(name);
         if (l == null) {
             l = new Line(name, PALETTE[lines.size() % PALETTE.length]);
@@ -144,6 +177,8 @@ public final class RailwayData extends WorldSavedData {
         }
         l.stations.clear();
         l.stations.addAll(stations);
+        l.orders.clear();
+        for (int i = 0; i < stations.size(); i++) l.orders.add(orders != null && i < orders.size() ? orders.get(i) : 0);
         markDirty();
         return l;
     }
@@ -207,6 +242,8 @@ public final class RailwayData extends WorldSavedData {
             NBTTagCompound c = ls.getCompoundTagAt(i);
             Line l = new Line(c.getString("n"), c.getInteger("c"));
             for (int[] pair : pairs(c.getIntArray("s"))) l.stations.add(unpack(pair));
+            int[] os = c.getIntArray("o");
+            for (int k = 0; k < l.stations.size(); k++) l.orders.add(k < os.length ? os[k] : 0);
             lines.put(l.name, l);
         }
         trains.clear();
@@ -223,6 +260,12 @@ public final class RailwayData extends WorldSavedData {
             a.dwellSeconds = c.hasKey("dw") ? c.getInteger("dw") : 20;
             a.maxKmh = c.hasKey("mx") ? c.getInteger("mx") : 60;
             for (int[] pair : pairs(c.getIntArray("calls"))) a.calls.add(unpack(pair));
+            a.earned = c.getLong("$");
+            a.earnedLap = c.getLong("$lap");
+            a.lastLap = c.getLong("$last");
+            a.delivered = c.getInteger("dl");
+            a.trips = c.getInteger("trips");
+            a.loadedAt = c.getLong("ldAt");
             trains.put(a.loco, a);
         }
         calls.clear();
@@ -248,6 +291,9 @@ public final class RailwayData extends WorldSavedData {
             c.setString("n", l.name);
             c.setInteger("c", l.color);
             c.setIntArray("s", pack(l.stations));
+            int[] os = new int[l.stations.size()];
+            for (int k = 0; k < os.length; k++) os[k] = k < l.orders.size() ? l.orders.get(k) : 0;
+            c.setIntArray("o", os);
             ls.appendTag(c);
         }
         t.setTag("lines", ls);
@@ -264,6 +310,12 @@ public final class RailwayData extends WorldSavedData {
             c.setInteger("dw", a.dwellSeconds);
             c.setInteger("mx", a.maxKmh);
             c.setIntArray("calls", pack(a.calls));
+            c.setLong("$", a.earned);
+            c.setLong("$lap", a.earnedLap);
+            c.setLong("$last", a.lastLap);
+            c.setInteger("dl", a.delivered);
+            c.setInteger("trips", a.trips);
+            c.setLong("ldAt", a.loadedAt);
             ts.appendTag(c);
         }
         t.setTag("trains", ts);

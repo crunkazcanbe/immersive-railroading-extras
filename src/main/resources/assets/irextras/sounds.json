@@ -1,0 +1,102 @@
+{
+ "door_chime": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.door_chime",
+  "sounds": [
+   {
+    "name": "irextras:door_chime",
+    "stream": false
+   }
+  ]
+ },
+ "door_open": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.door_open",
+  "sounds": [
+   {
+    "name": "irextras:door_open",
+    "stream": false
+   }
+  ]
+ },
+ "door_warn": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.door_warn",
+  "sounds": [
+   {
+    "name": "irextras:door_warn",
+    "stream": false
+   }
+  ]
+ },
+ "door_close": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.door_close",
+  "sounds": [
+   {
+    "name": "irextras:door_close",
+    "stream": false
+   }
+  ]
+ },
+ "psd_move": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.psd_move",
+  "sounds": [
+   {
+    "name": "irextras:psd_move",
+    "stream": false
+   }
+  ]
+ },
+ "hum_transformer": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.hum_transformer",
+  "sounds": [
+   {
+    "name": "irextras:hum_transformer",
+    "stream": false
+   }
+  ]
+ },
+ "hum_rectifier": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.hum_rectifier",
+  "sounds": [
+   {
+    "name": "irextras:hum_rectifier",
+    "stream": false
+   }
+  ]
+ },
+ "breaker_clunk": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.breaker_clunk",
+  "sounds": [
+   {
+    "name": "irextras:breaker_clunk",
+    "stream": false
+   }
+  ]
+ },
+ "relay_click": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.relay_click",
+  "sounds": [
+   {
+    "name": "irextras:relay_click",
+    "stream": false
+   }
+  ]
+ },
+ "alarm": {
+  "category": "neutral",
+  "subtitle": "irextras.sub.alarm",
+  "sounds": [
+   {
+    "name": "irextras:alarm",
+    "stream": false
+   }
+  ]
+ }
+}

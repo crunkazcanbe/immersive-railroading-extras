@@ -1,0 +1,34 @@
+{
+  "name": "Beijing S1 Maglev full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_beijing_s1",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_beijing_s1_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_beijing_s1_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_beijing_s1_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_beijing_s1_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_beijing_s1",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:industry_quarry"
+  },
+  "facing=east": {
+   "model": "irextras:industry_quarry",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:industry_quarry",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:industry_quarry",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "textures": {
+  "particle": "irextras:blocks/stn_metro_column",
+  "paving": "irextras:blocks/stn_metro_paving",
+  "wall": "irextras:blocks/stn_metro_wall",
+  "column": "irextras:blocks/stn_metro_column",
+  "glass": "irextras:blocks/stn_metro_glass",
+  "roof": "irextras:blocks/stn_metro_roof",
+  "wood": "irextras:blocks/stn_metro_wood",
+  "trim": "irextras:blocks/stn_metro_trim",
+  "sign": "irextras:blocks/stn_metro_sign",
+  "poster": "irextras:blocks/stn_metro_poster",
+  "tactile": "irextras:blocks/stn_tactile",
+  "coping": "irextras:blocks/stn_coping",
+  "line": "irextras:blocks/stn_line",
+  "lamp": "irextras:blocks/stn_lamp_glow",
+  "clock": "irextras:blocks/stn_clock_face",
+  "bin": "irextras:blocks/stn_bin",
+  "desk": "irextras:blocks/stn_desk",
+  "screen": "irextras:blocks/stn_screen",
+  "dark": "irextras:blocks/ohle_dark",
+  "galv": "irextras:blocks/ohle_galv"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    14,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#roof"
+    },
+    "south": {
+     "texture": "#roof"
+    },
+    "east": {
+     "texture": "#roof"
+    },
+    "west": {
+     "texture": "#roof"
+    },
+    "up": {
+     "texture": "#roof"
+    },
+    "down": {
+     "texture": "#roof"
+    }
+   }
+  },
+  {
+   "from": [
+    2,
+    13.5,
+    6
+   ],
+   "to": [
+    14,
+    14,
+    10
+   ],
+   "faces": {
+    "north": {
+     "texture": "#lamp"
+    },
+    "south": {
+     "texture": "#lamp"
+    },
+    "east": {
+     "texture": "#lamp"
+    },
+    "west": {
+     "texture": "#lamp"
+    },
+    "up": {
+     "texture": "#lamp"
+    },
+    "down": {
+     "texture": "#lamp"
+    }
+   }
+  }
+ ]
+}

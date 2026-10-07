@@ -1,0 +1,28 @@
+{
+  "name": "Shinkansen E5 Hayabusa full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_e5"
+    },
+    {
+      "stock": "pride_e5_car"
+    },
+    {
+      "stock": "pride_e5_car"
+    },
+    {
+      "stock": "pride_e5_car"
+    },
+    {
+      "stock": "pride_e5_car"
+    },
+    {
+      "stock": "pride_e5",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

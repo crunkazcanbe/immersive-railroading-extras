@@ -44,6 +44,7 @@ public class PacketRailOps implements IMessage {
     private int mode, dwell, maxKmh;
     private String text = "";
     private final List<Long> list = new ArrayList<>();
+    private final List<Integer> ints = new ArrayList<>();
 
     public PacketRailOps() {}
 
@@ -77,10 +78,11 @@ public class PacketRailOps implements IMessage {
         return p;
     }
 
-    public static PacketRailOps saveLine(BlockPos board, String name, List<Long> stations) {
+    public static PacketRailOps saveLine(BlockPos board, String name, List<Long> stations, List<Integer> orders) {
         PacketRailOps p = new PacketRailOps(LINE_SAVE, board);
         p.text = name;
         p.list.addAll(stations);
+        p.ints.addAll(orders);
         return p;
     }
 
@@ -118,6 +120,8 @@ public class PacketRailOps implements IMessage {
         p.writeString(text.length() > 40 ? text.substring(0, 40) : text);
         p.writeVarInt(Math.min(list.size(), 64));
         for (int i = 0; i < Math.min(list.size(), 64); i++) p.writeLong(list.get(i));
+        p.writeVarInt(Math.min(ints.size(), 64));
+        for (int i = 0; i < Math.min(ints.size(), 64); i++) p.writeVarInt(ints.get(i));
     }
 
     @Override
@@ -134,6 +138,8 @@ public class PacketRailOps implements IMessage {
         text = p.readString(40);
         int n = Math.min(64, p.readVarInt());
         for (int i = 0; i < n; i++) list.add(p.readLong());
+        int m = Math.min(64, p.readVarInt());
+        for (int i = 0; i < m; i++) ints.add(p.readVarInt());
     }
 
     public static class Handler implements IMessageHandler<PacketRailOps, IMessage> {
@@ -197,8 +203,10 @@ public class PacketRailOps implements IMessage {
                     String name = msg.text.trim();
                     if (name.isEmpty()) { reply = "Give the line a name"; break; }
                     if (msg.list.size() < 2) { reply = "A line needs at least two stations"; break; }
-                    data.saveLine(name, msg.list);
-                    reply = "Line saved: " + name + " · " + msg.list.size() + " stations";
+                    data.saveLine(name, msg.list, msg.ints);
+                    int special = 0;
+                    for (int o : msg.ints) if (o != 0) special++;
+                    reply = "Line saved: " + name + " · " + msg.list.size() + " stations" + (special > 0 ? " · " + special + " special orders" : "");
                 }
                 case LINE_DELETE -> {
                     data.deleteLine(msg.text);

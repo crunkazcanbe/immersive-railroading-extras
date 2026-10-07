@@ -1,0 +1,15 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "WAW",
+  "ISI"
+ ],
+ "key": {
+  "I": { "item": "minecraft:iron_ingot" },
+  "W": { "item": "minecraft:planks", "data": 0 },
+  "A": { "item": "minecraft:anvil", "data": 0 },
+  "S": { "item": "minecraft:stone_slab", "data": 0 }
+ },
+ "result": { "item": "irextras:maintenance_depot", "count": 1 }
+}

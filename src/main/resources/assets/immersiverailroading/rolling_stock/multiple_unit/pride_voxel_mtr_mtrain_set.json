@@ -1,0 +1,25 @@
+{
+  "name": "Hong Kong MTR M-Train full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_mtr_mtrain"
+    },
+    {
+      "stock": "pride_voxel_mtr_mtrain_car"
+    },
+    {
+      "stock": "pride_voxel_mtr_mtrain_car"
+    },
+    {
+      "stock": "pride_voxel_mtr_mtrain_car"
+    },
+    {
+      "stock": "pride_voxel_mtr_mtrain",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

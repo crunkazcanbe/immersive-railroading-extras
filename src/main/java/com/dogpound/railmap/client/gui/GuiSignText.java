@@ -16,6 +16,7 @@ public class GuiSignText extends GuiScreen {
     private final BlockPos pos;
     private final String initial;
     private GuiTextField field;
+    private PrideFrame f;
 
     public GuiSignText(BlockPos pos, String initial) {
         this.pos = pos;
@@ -24,20 +25,20 @@ public class GuiSignText extends GuiScreen {
 
     @Override
     public void initGui() {
-        int cx = width / 2, cy = height / 2;
-        field = new GuiTextField(0, fontRenderer, cx - 130, cy - 10, 260, 20);
+        f = PrideFrame.sized(width, height, 300, 110);
+        field = new GuiTextField(0, fontRenderer, f.cx + 1, f.cy + 6, f.cw - 2, 20);
         field.setMaxStringLength(60);
         field.setText(initial);
         field.setFocused(true);
         field.setCanLoseFocus(false);
-        buttonList.add(new GuiButton(DONE, cx - 130, cy + 18, 128, 20, "Set"));
-        buttonList.add(new GuiButton(CANCEL, cx + 2, cy + 18, 128, 20, "Cancel"));
+        int half = (f.cw - 4) / 2;
+        buttonList.add(new PrideButton(DONE, f.cx, f.cy + 34, half, 20, "Set"));
+        buttonList.add(new PrideButton(CANCEL, f.cx + f.cw - half, f.cy + 34, half, 20, "Cancel"));
     }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        drawDefaultBackground();
-        drawCenteredString(fontRenderer, "Sign text  (use | for a new line)", width / 2, height / 2 - 34, 0xFFFFFF);
+        f.draw(this, "Sign text", "\u00a77use | for a new line");
         field.drawTextBox();
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

@@ -1,0 +1,22 @@
+{
+  "name": "Osaka Monorail 3000 full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_osaka"
+    },
+    {
+      "stock": "pride_voxel_osaka_car"
+    },
+    {
+      "stock": "pride_voxel_osaka_car"
+    },
+    {
+      "stock": "pride_voxel_osaka",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

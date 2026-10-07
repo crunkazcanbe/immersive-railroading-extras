@@ -1,0 +1,30 @@
+{
+  "name": "TGV inOui full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_tgv_inoui",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_tgv_inoui_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_tgv_inoui_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_tgv_inoui_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_tgv_inoui",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -1,0 +1,147 @@
+{
+ "credit": "Made with Blockbench",
+ "textures": {
+  "jacket": "irextras:blocks/cable_mv",
+  "particle": "#jacket"
+ },
+ "elements": [
+  {
+   "name": "riser",
+   "from": [
+    6.5,
+    3,
+    6.5
+   ],
+   "to": [
+    9.5,
+    16,
+    9.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#jacket"
+    },
+    "east": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#jacket"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#jacket"
+    },
+    "west": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#jacket"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#jacket"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#jacket"
+    }
+   }
+  },
+  {
+   "name": "strap",
+   "from": [
+    6.1,
+    8,
+    6.1
+   ],
+   "to": [
+    9.9,
+    9,
+    9.9
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      0,
+      16,
+      6
+     ],
+     "texture": "#jacket"
+    },
+    "east": {
+     "uv": [
+      0,
+      0,
+      16,
+      6
+     ],
+     "texture": "#jacket"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      16,
+      6
+     ],
+     "texture": "#jacket"
+    },
+    "west": {
+     "uv": [
+      0,
+      0,
+      16,
+      6
+     ],
+     "texture": "#jacket"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      16,
+      6
+     ],
+     "texture": "#jacket"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      16,
+      6
+     ],
+     "texture": "#jacket"
+    }
+   }
+  }
+ ]
+}

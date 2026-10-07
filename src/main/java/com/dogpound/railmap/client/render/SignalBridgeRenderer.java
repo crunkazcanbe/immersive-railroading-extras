@@ -12,8 +12,9 @@ import net.minecraft.util.EnumFacing;
  * structure is never doubled.
  */
 public class SignalBridgeRenderer extends TileEntitySpecialRenderer<TileSignalBridge> {
-    private static final int STEEL = 0x565B62;
-    private static final int STEEL_DARK = 0x3B4046;
+    private int STEEL = 0x565B62;
+    private int STEEL_DARK = 0x3B4046;
+    private boolean walkway = true, footing = true, halo = true;
     private static final int HOOD = 0x191C20;
     private static final float DECK = 5.6f;   // height of the span above the leg base
 
@@ -21,6 +22,9 @@ public class SignalBridgeRenderer extends TileEntitySpecialRenderer<TileSignalBr
     public void render(TileSignalBridge te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         if (te.getWorld() == null) return;
         boolean owner = te.isController();
+        STEEL = te.steelColour();
+        STEEL_DARK = darker(STEEL);
+        walkway = te.walkway(); footing = te.footing(); halo = te.halo();
         GlStateManager.pushMatrix();
         GlStateManager.translate(x + 0.5, y, z + 0.5);
         float sc = te.scale();
@@ -55,9 +59,13 @@ public class SignalBridgeRenderer extends TileEntitySpecialRenderer<TileSignalBr
         GlStateManager.popMatrix();
     }
 
+    private static int darker(int c) {
+        return (((c >> 16) & 255) * 2 / 3 << 16) | (((c >> 8) & 255) * 2 / 3 << 8) | ((c & 255) * 2 / 3);
+    }
+
     /** Lattice leg: footing, four corner angles, cross bracing, and a cap plate. */
     private void drawLeg() {
-        Prims.box(-0.34, 0, -0.34, 0.34, 0.14, 0.34, 0x6E6E6E);           // concrete footing
+        if (footing) Prims.box(-0.34, 0, -0.34, 0.34, 0.14, 0.34, 0x6E6E6E);           // concrete footing
         for (int sx = -1; sx <= 1; sx += 2) {
             for (int sz = -1; sz <= 1; sz += 2) {
                 double cx = sx * 0.20, cz = sz * 0.20;
@@ -103,6 +111,7 @@ public class SignalBridgeRenderer extends TileEntitySpecialRenderer<TileSignalBr
             }
         }
         // Walkway deck + handrail along the back, where a signal maintainer would stand.
+        if (!walkway) return;
         Prims.box(x0, bot - 0.10, 0.17, x1, bot - 0.04, 0.40, STEEL_DARK);
         Prims.box(x0, bot + 0.45, 0.38, x1, bot + 0.51, 0.42, STEEL);
     }
@@ -121,7 +130,7 @@ public class SignalBridgeRenderer extends TileEntitySpecialRenderer<TileSignalBr
             Prims.box(-0.14, ly - 0.08, -0.12, 0.14, ly + 0.08, -0.055, HOOD);   // hood
             Prims.emissive(lit);
             Prims.disc(0, ly, -0.125, 0.072, col, 1f);
-            if (lit) Prims.glow(0, ly, -0.145, 0.28, col);
+            if (lit && halo) Prims.glow(0, ly, -0.145, 0.28, col);
             Prims.emissive(false);
             GlStateManager.enableLighting();
         }

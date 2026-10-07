@@ -1,0 +1,18 @@
+{
+  "name": "Birmingham Maglev (1984) full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_birmingham",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_birmingham",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "2 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

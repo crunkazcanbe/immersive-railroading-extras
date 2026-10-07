@@ -1,0 +1,25 @@
+{
+  "name": "NYC Subway R211 full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_r211"
+    },
+    {
+      "stock": "pride_voxel_r211_car"
+    },
+    {
+      "stock": "pride_voxel_r211_car"
+    },
+    {
+      "stock": "pride_voxel_r211_car"
+    },
+    {
+      "stock": "pride_voxel_r211",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

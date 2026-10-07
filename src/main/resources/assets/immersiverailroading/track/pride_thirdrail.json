@@ -1,0 +1,24 @@
+{
+  "name": "Pride Third Rail (subway / metro, DC)",
+  "models": {
+    ">0": "immersiverailroading:models/track/pride_thirdrail/pride_thirdrail.obj"
+  },
+  "materials": {
+    "TIE": [
+      {
+        "item": "ore:concrete",
+        "cost": 1
+      },
+      {
+        "item": "ore:ingotIron",
+        "cost": 1
+      }
+    ],
+    "RAIL": [
+      {
+        "item": "ore:irRail",
+        "cost": 1
+      }
+    ]
+  }
+}

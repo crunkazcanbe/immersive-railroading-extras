@@ -1,0 +1,25 @@
+{
+  "name": "KTX-Sancheon full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_ktx_sancheon"
+    },
+    {
+      "stock": "pride_voxel_ktx_sancheon_car"
+    },
+    {
+      "stock": "pride_voxel_ktx_sancheon_car"
+    },
+    {
+      "stock": "pride_voxel_ktx_sancheon_car"
+    },
+    {
+      "stock": "pride_voxel_ktx_sancheon",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

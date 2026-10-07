@@ -1,0 +1,26 @@
+{
+  "name": "Chongqing Straddle Monorail full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_chongqing",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_chongqing_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_chongqing_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_chongqing",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -113,7 +113,7 @@ public class BlockLineside extends Block {
     @Override
     public IBlockState getActualState(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos) {
         net.minecraft.tileentity.TileEntity te = world.getTileEntity(pos);
-        return state.withProperty(SCALED, te instanceof TileLineside t && t.scale() != 1f);
+        return state.withProperty(SCALED, te instanceof TileLineside t && (t.scale() != 1f || t.moved()));
     }
 
     @Override

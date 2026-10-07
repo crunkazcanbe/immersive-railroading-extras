@@ -27,7 +27,8 @@ public class LinesideRenderer extends TileEntitySpecialRenderer<TileLineside> {
 
     static void drawModel(TileLineside te, double x, double y, double z) {
         if (te.getWorld() == null) return;
-        drawScaled(te.getWorld(), te.getPos(), te.scale(), x, y, z);
+        if (te.scale() == 1f && !te.moved()) return;   // normal size, on its block: the chunk draws it
+        drawScaled(te.getWorld(), te.getPos(), te.scale(), x + te.offX(), y + te.lift(), z + te.offZ(), te.turn());
     }
 
     /**
@@ -37,7 +38,14 @@ public class LinesideRenderer extends TileEntitySpecialRenderer<TileLineside> {
      */
     public static void drawScaled(net.minecraft.world.World world, BlockPos pos, float s,
                                   double x, double y, double z) {
-        if (world == null || s == 1f) return;   // normal size: the chunk draws it
+        if (s == 1f) return;   // normal size: the chunk draws it
+        drawScaled(world, pos, s, x, y, z, 0f);
+    }
+
+    /** same, turned about the footing's middle by the Settings Console angle */
+    public static void drawScaled(net.minecraft.world.World world, BlockPos pos, float s,
+                                  double x, double y, double z, float turn) {
+        if (world == null) return;
         IBlockState state = world.getBlockState(pos);
         BlockRendererDispatcher brd = Minecraft.getMinecraft().getBlockRendererDispatcher();
         IBakedModel model = brd.getModelForState(state);
@@ -46,13 +54,14 @@ public class LinesideRenderer extends TileEntitySpecialRenderer<TileLineside> {
         RenderHelper.disableStandardItemLighting();
         GlStateManager.pushMatrix();
         GlStateManager.translate(x + 0.5, y, z + 0.5);
+        if (turn != 0f) GlStateManager.rotate(-turn, 0, 1, 0);
         GlStateManager.scale(s, s, s);
         GlStateManager.translate(-0.5, 0, -0.5);
         Tessellator tess = Tessellator.getInstance();
         BufferBuilder buf = tess.getBuffer();
         buf.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
         buf.setTranslation(-pos.getX(), -pos.getY(), -pos.getZ());
-        brd.getBlockModelRenderer().renderModel(world, model, state, pos, buf, false);
+        brd.getBlockModelRenderer().renderModelFlat(world, model, state, pos, buf, false, 0L);   // flat: smooth-light AO is wrong once the model is moved/turned
         buf.setTranslation(0, 0, 0);
         tess.draw();
         GlStateManager.popMatrix();

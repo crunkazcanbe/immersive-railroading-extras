@@ -1,0 +1,26 @@
+{
+  "name": "Mumbai Monorail (pink) full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_mumbai",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mumbai_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mumbai_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_mumbai",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:station_victorian_bench"
+  },
+  "facing=east": {
+   "model": "irextras:station_victorian_bench",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:station_victorian_bench",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:station_victorian_bench",
+   "y": 270
+  }
+ }
+}

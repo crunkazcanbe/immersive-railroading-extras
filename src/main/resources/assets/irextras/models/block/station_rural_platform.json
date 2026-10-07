@@ -1,0 +1,90 @@
+{
+ "textures": {
+  "particle": "irextras:blocks/stn_rural_paving",
+  "paving": "irextras:blocks/stn_rural_paving",
+  "wall": "irextras:blocks/stn_rural_wall",
+  "column": "irextras:blocks/stn_rural_column",
+  "glass": "irextras:blocks/stn_rural_glass",
+  "roof": "irextras:blocks/stn_rural_roof",
+  "wood": "irextras:blocks/stn_rural_wood",
+  "trim": "irextras:blocks/stn_rural_trim",
+  "sign": "irextras:blocks/stn_rural_sign",
+  "poster": "irextras:blocks/stn_rural_poster",
+  "tactile": "irextras:blocks/stn_tactile",
+  "coping": "irextras:blocks/stn_coping",
+  "line": "irextras:blocks/stn_line",
+  "lamp": "irextras:blocks/stn_lamp_glow",
+  "clock": "irextras:blocks/stn_clock_face",
+  "bin": "irextras:blocks/stn_bin",
+  "desk": "irextras:blocks/stn_desk",
+  "screen": "irextras:blocks/stn_screen",
+  "dark": "irextras:blocks/ohle_dark",
+  "galv": "irextras:blocks/ohle_galv"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    15,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#wall"
+    },
+    "south": {
+     "texture": "#wall"
+    },
+    "east": {
+     "texture": "#wall"
+    },
+    "west": {
+     "texture": "#wall"
+    },
+    "up": {
+     "texture": "#paving"
+    },
+    "down": {
+     "texture": "#wall"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    15,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#paving"
+    },
+    "south": {
+     "texture": "#paving"
+    },
+    "east": {
+     "texture": "#paving"
+    },
+    "west": {
+     "texture": "#paving"
+    },
+    "up": {
+     "texture": "#paving"
+    },
+    "down": {
+     "texture": "#paving"
+    }
+   }
+  }
+ ]
+}

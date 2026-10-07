@@ -1,0 +1,7 @@
+{
+ "parent": "irextras:block/cable_core_thick",
+ "textures": {
+  "jacket": "irextras:blocks/cable_busbar",
+  "particle": "irextras:blocks/cable_busbar"
+ }
+}

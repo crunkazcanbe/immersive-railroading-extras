@@ -1,0 +1,26 @@
+{
+  "name": "Berlin U-Bahn IK full train (Pride Rail Voxel - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_voxel_berlin_ik",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_berlin_ik_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_berlin_ik_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_berlin_ik",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

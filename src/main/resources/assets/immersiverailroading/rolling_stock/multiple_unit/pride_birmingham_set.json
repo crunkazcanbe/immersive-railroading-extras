@@ -1,0 +1,16 @@
+{
+  "name": "Birmingham Maglev (1984) full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_birmingham"
+    },
+    {
+      "stock": "pride_birmingham",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "2 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

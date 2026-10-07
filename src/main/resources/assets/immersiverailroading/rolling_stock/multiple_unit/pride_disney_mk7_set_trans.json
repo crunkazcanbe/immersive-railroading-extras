@@ -1,0 +1,30 @@
+{
+  "name": "Disney Monorail Mark VII full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_disney_mk7",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_disney_mk7_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_disney_mk7_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_disney_mk7_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_disney_mk7",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

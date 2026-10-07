@@ -1,0 +1,25 @@
+{
+  "name": "Montreal Metro Azur full train (Pride Rail)",
+  "consist": [
+    {
+      "stock": "pride_azur"
+    },
+    {
+      "stock": "pride_azur_car"
+    },
+    {
+      "stock": "pride_azur_car"
+    },
+    {
+      "stock": "pride_azur_car"
+    },
+    {
+      "stock": "pride_azur",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

@@ -30,7 +30,59 @@ import net.minecraft.world.World;
  *       aspect from the input strength: 0 Stop, 1-5 Restricting, 6-10 Approach, 11+ Clear.</li>
  * </ul>
  */
-public class TileSignalMast extends TileEntity implements ITickable, IScalable {
+public class TileSignalMast extends TileEntity implements ITickable, IScalable, com.dogpound.railmap.settings.ISettingsHolder {
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    private int changes;
+
+    @Override public String settingsTitle() { return style.label; }
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return cfg; }
+
+    private static String[] modeLabels() { Mode[] v = Mode.values(); String[] o = new String[v.length]; for (int i = 0; i < v.length; i++) o[i] = v[i].label; return o; }
+    private static String[] styleLabels() { SignalStyle[] v = SignalStyle.values(); String[] o = new String[v.length]; for (int i = 0; i < v.length; i++) o[i] = v[i].label; return o; }
+    private static final Aspect[] MANUAL = { Aspect.STOP, Aspect.STOP_AND_PROCEED, Aspect.RESTRICTING, Aspect.APPROACH, Aspect.MEDIUM_APPROACH, Aspect.APPROACH_MEDIUM, Aspect.MEDIUM_CLEAR, Aspect.ADVANCE_APPROACH, Aspect.CLEAR, Aspect.DARK };
+    private static String[] manualLabels() { String[] o = new String[MANUAL.length]; for (int i = 0; i < MANUAL.length; i++) o[i] = MANUAL[i].label; return o; }
+
+    @Override
+    public java.util.List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        // the mast's own fields are the truth: mirror them into the console every time
+        cfg.put("mode", mode.label); cfg.put("style", style.label); cfg.put("heads", Integer.toString(heads));
+        cfg.put("perm", Boolean.toString(permissive)); cfg.put("manual", manualAspect.label);
+        java.util.List<com.dogpound.railmap.settings.Setting> l = new java.util.ArrayList<>();
+        String c = "Control", a = "Appearance", r = "Redstone", st = "Status";
+        l.add(com.dogpound.railmap.settings.Setting.text(c, "plate", "Number plate", "The signal's name/number (status + board)", "", 16));
+        l.add(com.dogpound.railmap.settings.Setting.choice(c, "mode", "Control mode", "", Mode.AUTO.label, modeLabels()));
+        l.add(com.dogpound.railmap.settings.Setting.choice(c, "manual", "Fixed aspect", "Shown in 'Fixed aspect' mode", Aspect.STOP.label, manualLabels()));
+        l.add(com.dogpound.railmap.settings.Setting.bool(c, "perm", "Permissive (number plate)", "Stop becomes Stop-and-Proceed on automatic signals", false));
+        l.add(com.dogpound.railmap.settings.Setting.bool(c, "rsHold", "Redstone holds it at Stop", "On automatic / CTC signals, a redstone input forces Stop", true));
+        l.add(com.dogpound.railmap.settings.Setting.choice(c, "rsMap", "Redstone strength in redstone mode", "How redstone picks the aspect", "4 steps", "4 steps", "On = Clear, off = Stop", "On = Approach, off = Stop"));
+        l.add(com.dogpound.railmap.settings.Setting.choice(a, "style", "Signal type", "", SignalStyle.COLOR_LIGHT.label, styleLabels()));
+        l.add(com.dogpound.railmap.settings.Setting.num(a, "heads", "Heads", "Number of signal heads (up to the type's maximum)", 1, 1, 3, 1, ""));
+        l.add(com.dogpound.railmap.settings.Setting.choice(r, "rsOut", "Redstone output", "", "By aspect (0-15)", "By aspect (0-15)", "15 when clear", "15 when at stop", "Off"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Showing", aspect.label));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Blocks clear ahead", String.valueOf(clearBlocks)));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Block length", blockLength > 0 ? Math.round(blockLength) + " m" : "-"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Track governed", governed == null ? "none found" : governed.getX() + ", " + governed.getY() + ", " + governed.getZ()));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Relay case", relayHold ? "HOLDING at Stop" : relayAspect != null ? "driving " + relayAspect.label : "not wired"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "CTC route", mode == Mode.CTC ? (routeSet ? "SET" : "none") : "-"));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Aspect changes", String.valueOf(changes)));
+        return l;
+    }
+
+    @Override
+    public void onSettingsChanged(String key) {
+        switch (key) {
+            case "mode" -> { for (Mode m : Mode.values()) if (m.label.equals(cfg.text("mode"))) mode = m; }
+            case "manual" -> { for (Aspect x : MANUAL) if (x.label.equals(cfg.text("manual"))) manualAspect = x; }
+            case "perm" -> permissive = cfg.bool("perm");
+            case "style" -> { for (SignalStyle x : SignalStyle.values()) if (x.label.equals(cfg.text("style"))) style = x; heads = Math.min(heads, style.maxHeads); }
+            case "heads" -> heads = Math.max(1, Math.min(style.maxHeads, cfg.num("heads")));
+            default -> { }
+        }
+        markDirty();
+        sync();
+        if (world != null) world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
+    }
+
     /** Drawn size, 1 = normal; set with the Signal Wrench (sneak-right-click). */
     private float scale = 1f;
 
@@ -185,6 +237,8 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable {
         if (mode == Mode.MANUAL) return manualAspect;
         int power = world.getRedstonePowerFromNeighbors(pos);
         if (power <= 0) return Aspect.STOP;
+        if ("On = Clear, off = Stop".equals(cfg.text("rsMap"))) return Aspect.CLEAR;
+        if ("On = Approach, off = Stop".equals(cfg.text("rsMap"))) return Aspect.APPROACH;
         if (power <= 5) return Aspect.RESTRICTING;
         if (power <= 10) return Aspect.APPROACH;
         return Aspect.CLEAR;
@@ -217,7 +271,7 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable {
         if (relayHold) { applyAspect(Aspect.STOP); return; }
         if (relayAspect != null) { applyAspect(relayAspect); return; }
         // A redstone input on an automatic signal is a dispatcher's HOLD: force it to danger.
-        if (world.getRedstonePowerFromNeighbors(pos) > 0) a = Aspect.STOP;
+        if (cfg.bool("rsHold") && world.getRedstonePowerFromNeighbors(pos) > 0) a = Aspect.STOP;
         else if (mode == Mode.CTC && !routeSet) a = Aspect.STOP;
         else if (a.isStop() && permissive) a = Aspect.STOP_AND_PROCEED;
         applyAspect(a);
@@ -226,6 +280,7 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable {
     private void applyAspect(Aspect a) {
         if (a == aspect) return;
         aspect = a;
+        changes++;
         markDirty();
         sync();
         // Our own redstone output changed, so neighbours need to re-read us.
@@ -234,6 +289,12 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable {
 
     /** Redstone strength this mast emits: the more permissive the aspect, the stronger. */
     public int redstoneOutput() {
+        switch (cfg.text("rsOut")) {
+            case "15 when clear": return aspect == Aspect.CLEAR ? 15 : 0;
+            case "15 when at stop": return aspect.isStop() ? 15 : 0;
+            case "Off": return 0;
+            default: break;
+        }
         switch (aspect) {
             case CLEAR: return 15;
             case ADVANCE_APPROACH: return 12;
@@ -285,6 +346,8 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable {
         t.setByte("manual", (byte) manualAspect.ordinal());
         t.setInteger("clear", clearBlocks);
         t.setBoolean("route", routeSet);
+        t.setInteger("changes", changes);
+        cfg.write(t);
         return t;
     }
 
@@ -305,6 +368,8 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable {
         manualAspect = ma >= 0 && ma < all.length ? all[ma] : Aspect.STOP;
         clearBlocks = t.getInteger("clear");
         routeSet = t.getBoolean("route");
+        changes = t.getInteger("changes");
+        cfg.read(t);
     }
 
     @Override
@@ -335,6 +400,7 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable {
 
     public String statusLine() {
         StringBuilder sb = new StringBuilder();
+        if (!cfg.text("plate").trim().isEmpty()) sb.append("Signal ").append(cfg.text("plate").trim()).append(" · ");
         sb.append(style.label).append(" · ").append(heads).append(heads == 1 ? " head" : " heads");
         sb.append(" · ").append(mode.label);
         if (permissive) sb.append(" · permissive");

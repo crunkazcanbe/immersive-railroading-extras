@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:station_rural_bin"
+  },
+  "facing=east": {
+   "model": "irextras:station_rural_bin",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:station_rural_bin",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:station_rural_bin",
+   "y": 270
+  }
+ }
+}

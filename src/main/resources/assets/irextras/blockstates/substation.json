@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:substation"
+  },
+  "facing=east": {
+   "model": "irextras:substation",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:substation",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:substation",
+   "y": 270
+  }
+ }
+}

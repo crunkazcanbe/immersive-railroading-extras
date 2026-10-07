@@ -284,6 +284,12 @@ public final class Interlocking {
         return false;
     }
 
+    /** what a switch is showing right now (NONE if there is no switch there) */
+    public static SwitchState stateAt(World world, BlockPos p) {
+        TileRail sw = switchAt(cam72cam.mod.world.World.get(world), new Vec3i(p.getX(), p.getY(), p.getZ()));
+        return sw == null ? SwitchState.NONE : safeState(sw);
+    }
+
     static TileRail switchAt(cam72cam.mod.world.World umc, Vec3i pos) {
         if (!umc.isBlockLoaded(pos)) return null;
         TileRailBase base = umc.getBlockEntity(pos, TileRailBase.class);

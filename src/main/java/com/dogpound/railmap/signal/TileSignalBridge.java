@@ -26,7 +26,7 @@ import java.util.List;
  * one. Each head is its own signal: it walks its own track, sees its own block, and shows its
  * own aspect, exactly like a mast standing beside that rail would.
  */
-public class TileSignalBridge extends TileEntity implements ITickable, IScalable {
+public class TileSignalBridge extends TileEntity implements ITickable, IScalable, com.dogpound.railmap.settings.ISettingsHolder {
     /** Widest span the two posts will bridge. */
     public static final int MAX_SPAN = 24;
     /** How far under the span we look for track. */
@@ -94,7 +94,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         if (world.isRemote || ++ticks % 20 != 0) return;
         long now = world.getTotalWorldTime();
         if (rescanAt == Long.MIN_VALUE || now >= rescanAt) {
-            rescanAt = now + 100;   // re-measure every 5s; cheap and self-healing
+            rescanAt = now + 20L * Math.max(1, cfg.num("rescan"));   // re-measure; cheap and self-healing
             relink();
         }
     }
@@ -105,7 +105,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         EnumFacing right = spanAxis();
         BlockPos found = null;
         int dist = 0;
-        for (int i = 1; i <= MAX_SPAN; i++) {
+        for (int i = 1; i <= Math.min(MAX_SPAN, cfg.num("maxSpan")); i++) {
             BlockPos p = pos.offset(right, i);
             if (!world.isBlockLoaded(p)) break;
             IBlockState s = world.getBlockState(p);
@@ -176,7 +176,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         for (int i = 1; i < span; i++) {
             BlockPos col = pos.offset(right, i);
             BlockPos rail = null;
-            for (int dy = 0; dy <= DROP && rail == null; dy++) {
+            for (int dy = 0; dy <= cfg.num("drop") && rail == null; dy++) {
                 BlockPos p = col.down(dy);
                 if (!world.isBlockLoaded(p)) break;
                 Vec3i v = new Vec3i(p.getX(), p.getY(), p.getZ());
@@ -193,7 +193,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
             if (rail.equals(lastRail)) continue;    // same piece as the column before: one head only
             lastRail = rail;
             heads.add(new Head(i, rail));
-            if (heads.size() >= 8) break;
+            if (heads.size() >= cfg.num("maxHeads")) break;
         }
     }
 
@@ -213,8 +213,31 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         return best == null ? Aspect.DARK : best;
     }
 
+    /** the most restrictive aspect on the gantry */
+    public Aspect worstAspect() {
+        Aspect worst = null;
+        for (Head h : heads) {
+            if (worst == null || h.aspect.ordinal() > worst.ordinal()) worst = h.aspect;
+        }
+        return worst == null ? Aspect.DARK : worst;
+    }
+
+    /** maintenance hold from the console: every head shows Stop */
+    public boolean heldAtStop() { return cfg.bool("hold"); }
+
     public int redstoneOutput() {
-        switch (bestAspect()) {
+        String how = cfg.text("output");
+        if (how.startsWith("Off")) return 0;
+        if (how.startsWith("Clear tracks")) {
+            int n = 0;
+            for (Head h : heads) if (h.aspect == Aspect.CLEAR) n++;
+            return Math.min(15, n);
+        }
+        return levelOf(how.startsWith("Worst") ? worstAspect() : bestAspect());
+    }
+
+    private static int levelOf(Aspect a) {
+        switch (a) {
             case CLEAR: return 15;
             case ADVANCE_APPROACH: return 12;
             case APPROACH_MEDIUM:
@@ -269,6 +292,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         t.setIntArray("h_at", along);
         t.setByteArray("h_as", asp);
         if (scale != 1f) t.setFloat("scale", scale);
+        cfg.write(t);
         return t;
     }
 
@@ -278,6 +302,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         span = t.getInteger("span");
         controller = t.getBoolean("ctrl");
         scale = t.hasKey("scale") ? IScalable.clamp(t.getFloat("scale")) : 1f;
+        cfg.read(t);
         int[] along = t.getIntArray("h_at");
         byte[] asp = t.getByteArray("h_as");
         heads.clear();
@@ -320,6 +345,54 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         BlockPos far = pos.offset(spanAxis(), Math.max(1, span));
         return new AxisAlignedBB(pos).union(new AxisAlignedBB(far)).grow(2, h, 2);
     }
+
+    // ---- Settings Console (sneak-right-click with the Signal Wrench) ----
+    private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
+    public static final String[] STEELS = {"Galvanised", "Black", "Signal grey", "Rust", "Railway green", "Pride pink", "White"};
+    private static final int[] STEEL_RGB = {0x565B62, 0x24262A, 0x8C9196, 0x7A4A2E, 0x2F5A3C, 0xE58FB0, 0xD8DCDF};
+
+    @Override public String settingsTitle() { return "Signal Bridge"; }
+
+    @Override
+    public List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        List<com.dogpound.railmap.settings.Setting> l = new ArrayList<>();
+        l.add(com.dogpound.railmap.settings.Setting.num("Tracks", "maxSpan", "Widest span", "How far across it looks for its partner post", MAX_SPAN, 2, MAX_SPAN, 1, "blocks"));
+        l.add(com.dogpound.railmap.settings.Setting.num("Tracks", "drop", "Look down for track", "How far below the span a rail still gets a head", DROP, 1, 16, 1, "blocks"));
+        l.add(com.dogpound.railmap.settings.Setting.num("Tracks", "maxHeads", "Most heads", "Tracks after this many get no head", 8, 1, 8, 1, ""));
+        l.add(com.dogpound.railmap.settings.Setting.num("Tracks", "rescan", "Re-measure every", "How often it looks for new or removed track", 5, 1, 60, 1, "s"));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Signals", "hold", "Hold every head at Stop", "Maintenance / possession: nothing gets a proceed", false));
+        l.add(com.dogpound.railmap.settings.Setting.choice("Signals", "output", "Comparator output", "What the posts tell your redstone",
+                "Best head (15 = clear)", "Best head (15 = clear)", "Worst head (15 = all clear)", "Clear tracks (1 per head)", "Off"));
+        l.add(com.dogpound.railmap.settings.Setting.choice("Look", "steel", "Steel colour", "Paint the gantry", STEELS[0], STEELS));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Look", "walkway", "Walkway and handrail", "The maintainer's catwalk on the back", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Look", "footing", "Concrete footings", "", true));
+        l.add(com.dogpound.railmap.settings.Setting.bool("Look", "halo", "Lamp glow", "Soft halo round lit lenses", true));
+        if (world != null) {
+            l.add(com.dogpound.railmap.settings.Setting.info("Status", "Paired", isPaired() ? "yes, span " + span + " blocks" : "no (place a matching post across the track)"));
+            l.add(com.dogpound.railmap.settings.Setting.info("Status", "This post", controller ? "controller (draws the span)" : "far post"));
+            for (int i = 0; i < heads.size(); i++) {
+                Head h = heads.get(i);
+                l.add(com.dogpound.railmap.settings.Setting.info("Status", "Track " + (i + 1), h.aspect.label + " · " + h.clearBlocks + " blocks clear"));
+            }
+        }
+        return l;
+    }
+
+    @Override public com.dogpound.railmap.settings.SettingsStore settings() { return cfg; }
+
+    @Override
+    public void onSettingsChanged(String key) {
+        rescanAt = Long.MIN_VALUE;
+        sync();
+    }
+
+    public int steelColour() {
+        for (int i = 0; i < STEELS.length; i++) if (STEELS[i].equals(cfg.text("steel"))) return STEEL_RGB[i];
+        return STEEL_RGB[0];
+    }
+    public boolean walkway() { return cfg.bool("walkway"); }
+    public boolean footing() { return cfg.bool("footing"); }
+    public boolean halo() { return cfg.bool("halo"); }
 
     public String statusLine() {
         if (!isPaired()) {

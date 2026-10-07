@@ -1,0 +1,30 @@
+{
+  "name": "KTX-Sancheon full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_ktx_sancheon",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_ktx_sancheon_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_ktx_sancheon_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_ktx_sancheon_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_ktx_sancheon",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "5 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

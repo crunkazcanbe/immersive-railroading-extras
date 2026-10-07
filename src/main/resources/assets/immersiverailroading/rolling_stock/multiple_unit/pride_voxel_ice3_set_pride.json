@@ -1,0 +1,26 @@
+{
+  "name": "DB ICE 3 full train (Pride Rail Voxel - Pride rainbow)",
+  "consist": [
+    {
+      "stock": "pride_voxel_ice3",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_ice3_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_ice3_car",
+      "texture": "pride"
+    },
+    {
+      "stock": "pride_voxel_ice3",
+      "direction": "flipped",
+      "texture": "pride"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

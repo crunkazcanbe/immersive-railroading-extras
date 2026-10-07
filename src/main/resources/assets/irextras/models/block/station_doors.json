@@ -1,0 +1,456 @@
+{
+ "textures": {
+  "particle": "irextras:blocks/ohle_galv",
+  "a": "irextras:blocks/psd_alu",
+  "g": "irextras:blocks/psd_glass",
+  "h": "irextras:blocks/psd_header",
+  "r": "irextras:blocks/psd_rubber",
+  "lo": "irextras:blocks/psd_lamp_off",
+  "lg": "irextras:blocks/psd_lamp_green",
+  "lr": "irextras:blocks/psd_lamp_red",
+  "s": "irextras:blocks/sdc_screen",
+  "z": "irextras:blocks/psd_hazard",
+  "d": "irextras:blocks/ohle_dark",
+  "m": "irextras:blocks/ohle_galv"
+ },
+ "elements": [
+  {
+   "from": [
+    2,
+    0,
+    2
+   ],
+   "to": [
+    14,
+    1,
+    14
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   },
+   "__comment": "base plate"
+  },
+  {
+   "from": [
+    3,
+    1,
+    4.6
+   ],
+   "to": [
+    13,
+    3,
+    11.4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#z"
+    },
+    "south": {
+     "texture": "#z"
+    },
+    "east": {
+     "texture": "#z"
+    },
+    "west": {
+     "texture": "#z"
+    },
+    "up": {
+     "texture": "#z"
+    },
+    "down": {
+     "texture": "#z"
+    }
+   },
+   "__comment": "hazard plinth"
+  },
+  {
+   "from": [
+    4,
+    3,
+    5
+   ],
+   "to": [
+    12,
+    17,
+    11
+   ],
+   "faces": {
+    "north": {
+     "texture": "#m",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#m",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#m",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#m",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#m",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "down": {
+     "texture": "#m",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    }
+   },
+   "__comment": "cabinet"
+  },
+  {
+   "from": [
+    3.5,
+    17,
+    4.5
+   ],
+   "to": [
+    12.5,
+    18,
+    11.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "down": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    }
+   },
+   "__comment": "rain cap"
+  },
+  {
+   "from": [
+    5,
+    11,
+    4.7
+   ],
+   "to": [
+    11,
+    15.5,
+    5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#s"
+    },
+    "south": {
+     "texture": "#s"
+    },
+    "east": {
+     "texture": "#s"
+    },
+    "west": {
+     "texture": "#s"
+    },
+    "up": {
+     "texture": "#s"
+    },
+    "down": {
+     "texture": "#s"
+    }
+   },
+   "__comment": "status screen"
+  },
+  {
+   "from": [
+    5.5,
+    8,
+    4.7
+   ],
+   "to": [
+    7.2,
+    9.6,
+    5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#lg"
+    },
+    "south": {
+     "texture": "#lg"
+    },
+    "east": {
+     "texture": "#lg"
+    },
+    "west": {
+     "texture": "#lg"
+    },
+    "up": {
+     "texture": "#lg"
+    },
+    "down": {
+     "texture": "#lg"
+    }
+   },
+   "__comment": "doors-open lamp"
+  },
+  {
+   "from": [
+    8.8,
+    8,
+    4.7
+   ],
+   "to": [
+    10.5,
+    9.6,
+    5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#lr"
+    },
+    "south": {
+     "texture": "#lr"
+    },
+    "east": {
+     "texture": "#lr"
+    },
+    "west": {
+     "texture": "#lr"
+    },
+    "up": {
+     "texture": "#lr"
+    },
+    "down": {
+     "texture": "#lr"
+    }
+   },
+   "__comment": "doors-closed lamp"
+  },
+  {
+   "from": [
+    7.4,
+    5,
+    4.6
+   ],
+   "to": [
+    8.6,
+    6.2,
+    5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   },
+   "__comment": "key switch"
+  },
+  {
+   "from": [
+    5,
+    4,
+    4.7
+   ],
+   "to": [
+    11,
+    4.6,
+    5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#a"
+    },
+    "south": {
+     "texture": "#a"
+    },
+    "east": {
+     "texture": "#a"
+    },
+    "west": {
+     "texture": "#a"
+    },
+    "up": {
+     "texture": "#a"
+    },
+    "down": {
+     "texture": "#a"
+    }
+   },
+   "__comment": "door-open push bar"
+  },
+  {
+   "from": [
+    7.5,
+    18,
+    7.5
+   ],
+   "to": [
+    8.5,
+    22,
+    8.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "down": {
+     "texture": "#d",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    }
+   },
+   "__comment": "antenna"
+  }
+ ]
+}

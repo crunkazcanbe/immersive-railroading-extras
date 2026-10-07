@@ -1,0 +1,19 @@
+{
+  "name": "Transrapid TR09 full train (Pride Rail Voxel)",
+  "consist": [
+    {
+      "stock": "pride_voxel_tr09"
+    },
+    {
+      "stock": "pride_voxel_tr09_car"
+    },
+    {
+      "stock": "pride_voxel_tr09",
+      "direction": "flipped"
+    }
+  ],
+  "add_tooltip": [
+    "3 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

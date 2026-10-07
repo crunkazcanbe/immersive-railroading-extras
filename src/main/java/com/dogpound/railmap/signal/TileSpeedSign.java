@@ -17,6 +17,27 @@ import net.minecraft.world.World;
  * sign faces the oncoming train, like a signal.
  */
 public class TileSpeedSign extends TileLineside {
+
+    @Override public String settingsTitle() { return "Speed Limit Sign"; }
+
+    @Override
+    public java.util.List<com.dogpound.railmap.settings.Setting> settingDefs() {
+        cfg.put("mph", Integer.toString(mph));
+        java.util.List<com.dogpound.railmap.settings.Setting> l = new java.util.ArrayList<>();
+        l.add(com.dogpound.railmap.settings.Setting.num("Limit", "mph", "Speed limit", "Shown on the sign; trains are held to it (right-click steps it too)", 30, 5, 200, 5, "mph"));
+        l.add(com.dogpound.railmap.settings.Setting.info("Limit", "In km/h", Math.round(kmh()) + " km/h"));
+        l.add(com.dogpound.railmap.settings.Setting.choice("Limit", "kind", "Sign meaning", "Advance warning and End of limit signs don't hold trains to the number", "Permanent", "Permanent", "Temporary (works)", "Advance warning", "End of limit"));
+        l.addAll(super.settingDefs());
+        return l;
+    }
+
+    @Override
+    public void onSettingsChanged(String key) {
+        if ("mph".equals(key)) mph = Math.max(5, cfg.num("mph"));
+        super.onSettingsChanged(key);
+    }
+
+    public String meaning() { return cfg.text("kind"); }
     /** The limits a right-click steps through, mph. */
     private static final int[] STEPS = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 79, 90 };
 
@@ -27,6 +48,8 @@ public class TileSpeedSign extends TileLineside {
     }
 
     public double kmh() {
+        String k = cfg.text("kind");
+        if ("Advance warning".equals(k) || "End of limit".equals(k)) return 999;
         return mph * 1.609344;
     }
 

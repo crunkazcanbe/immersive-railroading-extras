@@ -1,0 +1,34 @@
+{
+  "name": "China CR400AF Fuxing full train (Pride Rail - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_fuxing",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_fuxing_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_fuxing_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_fuxing_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_fuxing_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_fuxing",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "6 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

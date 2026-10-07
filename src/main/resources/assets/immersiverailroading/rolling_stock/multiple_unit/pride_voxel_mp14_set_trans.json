@@ -1,0 +1,26 @@
+{
+  "name": "Paris Metro MP14 full train (Pride Rail Voxel - Trans flag)",
+  "consist": [
+    {
+      "stock": "pride_voxel_mp14",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_mp14_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_mp14_car",
+      "texture": "trans"
+    },
+    {
+      "stock": "pride_voxel_mp14",
+      "direction": "flipped",
+      "texture": "trans"
+    }
+  ],
+  "add_tooltip": [
+    "4 cars, coupled",
+    "Electric - runs on RF / FE"
+  ]
+}

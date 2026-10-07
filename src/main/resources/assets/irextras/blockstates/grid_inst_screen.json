@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:grid_inst_empty"
+  },
+  "facing=south": {
+   "model": "irextras:grid_inst_empty"
+  },
+  "facing=east": {
+   "model": "irextras:grid_inst_empty"
+  },
+  "facing=west": {
+   "model": "irextras:grid_inst_empty"
+  }
+ }
+}

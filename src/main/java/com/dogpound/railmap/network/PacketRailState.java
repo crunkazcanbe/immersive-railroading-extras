@@ -26,11 +26,12 @@ public class PacketRailState implements IMessage {
         public String name;
         public int color;
         public final List<Long> stations = new ArrayList<>();
+        public final List<Integer> orders = new ArrayList<>();
     }
 
     public static final class TrainInfo {
         public int entityId;
-        public String label, line, status, next;
+        public String label, line, status, next, money = "";
         public int mode, dwell, maxKmh;
         public long home;
     }
@@ -59,6 +60,7 @@ public class PacketRailState implements IMessage {
             i.name = l.name;
             i.color = l.color;
             i.stations.addAll(l.stations);
+            for (int k = 0; k < l.stations.size(); k++) i.orders.add(l.order(k).ordinal());
             p.lines.add(i);
         }
         for (RailwayData.AutoTrain a : data.trains().values()) {
@@ -73,6 +75,8 @@ public class PacketRailState implements IMessage {
             t.home = a.home;
             t.status = r == null ? "Starting" : r.status;
             t.next = r == null ? "" : r.nextStopName;
+            t.money = a.earned == 0 && a.trips == 0 ? "" : "$" + a.earned + " earned · " + a.delivered + " delivered · " + a.trips + " laps"
+                    + (a.trips > 0 ? " · last lap $" + a.lastLap : "");
             p.trains.add(t);
         }
         for (Interlocking.Route route : Interlocking.routes(world)) {
@@ -97,6 +101,7 @@ public class PacketRailState implements IMessage {
             b.writeInt(l.color);
             b.writeVarInt(l.stations.size());
             for (long s : l.stations) b.writeLong(s);
+            for (int k = 0; k < l.stations.size(); k++) b.writeVarInt(k < l.orders.size() ? l.orders.get(k) : 0);
         }
         b.writeVarInt(trains.size());
         for (TrainInfo t : trains) {
@@ -109,6 +114,7 @@ public class PacketRailState implements IMessage {
             b.writeVarInt(t.dwell);
             b.writeVarInt(t.maxKmh);
             b.writeLong(t.home);
+            b.writeString(t.money);
         }
         b.writeVarInt(routes.size());
         for (RouteInfo r : routes) {
@@ -132,24 +138,26 @@ public class PacketRailState implements IMessage {
         int nl = b.readVarInt();
         for (int i = 0; i < nl; i++) {
             LineInfo l = new LineInfo();
-            l.name = b.readString(64);
+            l.name = b.readString(512);
             l.color = b.readInt();
             int ns = b.readVarInt();
             for (int k = 0; k < ns; k++) l.stations.add(b.readLong());
+            for (int k = 0; k < ns; k++) l.orders.add(b.readVarInt());
             lines.add(l);
         }
         int nt = b.readVarInt();
         for (int i = 0; i < nt; i++) {
             TrainInfo t = new TrainInfo();
             t.entityId = b.readVarInt() - 1;
-            t.label = b.readString(64);
-            t.line = b.readString(64);
-            t.status = b.readString(128);
-            t.next = b.readString(64);
+            t.label = b.readString(512);
+            t.line = b.readString(512);
+            t.status = b.readString(512);
+            t.next = b.readString(512);
             t.mode = b.readVarInt();
             t.dwell = b.readVarInt();
             t.maxKmh = b.readVarInt();
             t.home = b.readLong();
+            t.money = b.readString(512);
             trains.add(t);
         }
         int nr = b.readVarInt();

@@ -37,6 +37,10 @@ public final class TrainNode {
     public final float throttle, reverser, brake;
     /** Best guess at the next station ahead ("" if stopped or nothing ahead). */
     public final String heading;
+    /** Worst part wear 0-150 (-1 = unknown): maintenance (railway list §13). */
+    public int wear = -1;
+    /** Electric locos: power source + battery, e.g. "wire · battery 87%" ("" = not electric). §10/§11 */
+    public String power = "";
 
     public TrainNode(int id, float x, float y, float z, float yaw, float speedKmh, Kind kind, String name,
                      String tag, int cargoPct, int passengers, int consist, boolean lead,
@@ -70,14 +74,16 @@ public final class TrainNode {
         b.writeFloat(yaw);
         b.writeFloat(speedKmh);
         b.writeByte(kind.ordinal());
-        b.writeString(name);
-        b.writeString(tag);
+        b.writeString(cap(name));
+        b.writeString(cap(tag));
         b.writeByte(cargoPct);
         b.writeByte(passengers);
         b.writeByte(consist);
         b.writeBoolean(lead);
         b.writeFloat(throttle); b.writeFloat(reverser); b.writeFloat(brake);
-        b.writeString(heading);
+        b.writeString(cap(heading));
+        b.writeShort(wear);
+        b.writeString(cap(power));
     }
 
     public static TrainNode read(PacketBuffer b) {
@@ -88,14 +94,22 @@ public final class TrainNode {
         int k = b.readByte() & 0xff;
         Kind[] kinds = Kind.values();
         Kind kind = k < kinds.length ? kinds[k] : Kind.OTHER;
-        String name = b.readString(64);
-        String tag = b.readString(64);
+        String name = b.readString(256);
+        String tag = b.readString(256);
         int cargo = b.readByte();
         int pax = b.readByte() & 0xff;
         int consist = b.readByte() & 0xff;
         boolean lead = b.readBoolean();
         float th = b.readFloat(), rv = b.readFloat(), br = b.readFloat();
-        String heading = b.readString(64);
-        return new TrainNode(id, x, y, z, yaw, spd, kind, name, tag, cargo, pax, consist, lead, th, rv, br, heading);
+        String heading = b.readString(256);
+        TrainNode n = new TrainNode(id, x, y, z, yaw, spd, kind, name, tag, cargo, pax, consist, lead, th, rv, br, heading);
+        n.wear = b.readShort();
+        n.power = b.readString(256);
+        return n;
+    }
+
+    /** packet strings are length-limited: long train names ("... full train (Pride Rail - Trans flag)") disconnected the client */
+    private static String cap(String s) {
+        return s == null ? "" : s.length() > 250 ? s.substring(0, 250) : s;
     }
 }
