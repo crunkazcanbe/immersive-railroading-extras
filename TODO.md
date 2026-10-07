@@ -1,4 +1,4 @@
-# IR Extras — Build List (Bell's requests)
+# IR Extras — Build List
 
 ## ✅ Done
 - Automatic level crossing: train-detected, flashing lamps, bell — VALIDATED with a live loco
