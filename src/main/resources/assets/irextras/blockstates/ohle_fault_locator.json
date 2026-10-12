@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ohle_fault_locator"
+  },
+  "facing=east": {
+   "model": "irextras:ohle_fault_locator",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ohle_fault_locator",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ohle_fault_locator",
+   "y": 270
+  }
+ }
+}

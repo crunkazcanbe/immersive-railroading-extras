@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ISI",
+  "WCW",
+  "WWW"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "S": {
+   "item": "minecraft:iron_shovel"
+  },
+  "W": {
+   "item": "minecraft:wool",
+   "data": 1
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:track_kit",
+  "count": 1
+ }
+}

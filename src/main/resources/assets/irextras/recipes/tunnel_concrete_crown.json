@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "MMM",
+  "MMM"
+ ],
+ "key": {
+  "M": {
+   "item": "minecraft:concrete",
+   "data": 8
+  }
+ },
+ "result": {
+  "item": "irextras:tunnel_concrete_crown",
+  "count": 8
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PSP",
+  "BDB",
+  "PSP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 9
+  },
+  "D": {
+   "type": "forge:ore_dict",
+   "ore": "gemDiamond"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 5,
+  "count": 1
+ }
+}

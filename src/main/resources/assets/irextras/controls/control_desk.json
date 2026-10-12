@@ -1,0 +1,75 @@
+{
+ "title": "control_desk",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 15.19,
+   "title": "METERS",
+   "controls": [
+    {
+     "id": "volts",
+     "t": "gauge",
+     "u": 13.4,
+     "v": 16.7,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "",
+     "max": 15
+    },
+    {
+     "id": "load",
+     "t": "gauge",
+     "u": 2.6,
+     "v": 16.7,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "",
+     "max": 30
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 15.49,
+   "title": "DESK",
+   "controls": [
+    {
+     "id": "lamptest",
+     "t": "push",
+     "u": 5.6,
+     "v": 15.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "e8e8e8",
+     "label": ""
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 4.6,
+     "v": 15.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f2c318",
+     "label": ""
+    },
+    {
+     "id": "deskkey",
+     "t": "key",
+     "u": 6.6,
+     "v": 15.2,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "c0a040",
+     "label": "",
+     "pos": [
+      "ON",
+      "LOCK"
+     ]
+    }
+   ]
+  }
+ ]
+}

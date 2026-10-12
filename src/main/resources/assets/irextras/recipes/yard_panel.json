@@ -1,0 +1,4 @@
+{"type": "minecraft:crafting_shaped", "pattern": ["LRL", "IGI", "IBI"],
+ "key": {"L": {"item": "minecraft:redstone_lamp"}, "R": {"item": "minecraft:repeater"}, "I": {"item": "minecraft:iron_ingot"},
+         "G": {"item": "minecraft:glass_pane"}, "B": {"item": "minecraft:stone_button"}},
+ "result": {"item": "irextras:yard_panel"}}

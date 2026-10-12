@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:water_column"
+  },
+  "facing=east": {
+   "model": "irextras:water_column",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:water_column",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:water_column",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:pub_bar"
+  },
+  "facing=east": {
+   "model": "irextras:pub_bar",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:pub_bar",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:pub_bar",
+   "y": 270
+  }
+ }
+}

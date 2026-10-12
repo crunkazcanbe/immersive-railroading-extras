@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "SSS",
+  "CFC",
+  "PPP"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 23
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:grid_solar",
+  "count": 1
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "title": "grid_inverter",
+ "surfaces": [
+  {
+   "side": "east",
+   "face": 0.4,
+   "title": "",
+   "controls": [
+    {
+     "id": "run",
+     "t": "selector",
+     "u": 12.9,
+     "v": 10.7,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "c81e1e",
+     "label": "",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": -1.85,
+   "title": "",
+   "controls": [
+    {
+     "id": "brun",
+     "t": "lamp",
+     "u": 2.72,
+     "v": 9.8,
+     "w": 0.5,
+     "h": 0.9,
+     "col": "30ff50",
+     "label": ""
+    },
+    {
+     "id": "bflt",
+     "t": "lamp",
+     "u": 2.08,
+     "v": 9.8,
+     "w": 0.5,
+     "h": 0.9,
+     "col": "ff3020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

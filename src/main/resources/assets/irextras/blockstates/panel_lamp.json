@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:panel_lamp"
+  },
+  "facing=east": {
+   "model": "irextras:panel_lamp",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:panel_lamp",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:panel_lamp",
+   "y": 270
+  }
+ }
+}

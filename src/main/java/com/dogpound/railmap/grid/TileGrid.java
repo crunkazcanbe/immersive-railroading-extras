@@ -24,7 +24,7 @@ import java.util.Locale;
  * runs with this chunk unloaded; the tile is the face of it: energy input from other mods, the settings console,
  * the hum, the lamps.
  */
-public class TileGrid extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileGrid extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder, PanelHost, com.dogpound.railmap.wire.IWiredMachine, com.dogpound.railmap.controls.IControlled {
     private final SettingsStore cfg = new SettingsStore(this);
     private GridKind kind = GridKind.TRANSFORMER;
     private int lastState = -1;
@@ -33,6 +33,157 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
     public TileGrid(GridKind k) { kind = k; }
 
     public GridKind kind() { return kind; }
+
+    // ---- control terminal: Instrument Wire landed on the machine (gauges, Control Buttons, the Data Link read it) ----
+    private int ctlWire = -1;
+    @Override public int ctlWire() { return ctlWire; }
+    @Override public void setCtlWire(int c) {
+        ctlWire = c; panelDirty = true; sync();
+        if (world != null) world.markBlockRangeForRenderUpdate(pos.add(-1, -1, -1), pos.add(1, 1, 1));
+    }
+    @Override public String wiredName() { return kind.label; }
+    /** front panel + the working controls modelled on its other faces (indicators the front already has are not repeated) */
+    private static final java.util.Map<GridKind, Panel> WIRED = new java.util.EnumMap<>(GridKind.class);
+    @Override public Panel wiredPanel() {
+        Panel f = Panel.of(kind);
+        if (getBlockType() == null) return f;
+        return WIRED.computeIfAbsent(kind, k -> {
+            com.dogpound.railmap.controls.Layout l = layout();
+            if (l.isEmpty()) return f;
+            Panel p = new Panel(f != null ? f.title : kind.label, 0, 0, 16, 16, 0, 0);
+            java.util.Set<String> seen = new java.util.HashSet<>();
+            if (f != null) for (Panel.C c : f.cs) { p.cs.add(c); seen.add(c.id); }
+            for (Panel.C c : l.all.cs) if (seen.add(c.id)) p.cs.add(c);
+            return p;
+        });
+    }
+    @Override public String wiredPress(String id, String who) {
+        if (!loto.isEmpty()) return "§cLOCKED OUT by " + loto + " - only they can remove the padlock";
+        com.dogpound.railmap.RailMap.LOG.debug("[IR Extras] {} pressed '{}' over the wire ({})", kind, id, who);
+        return press(id, null);
+    }
+    @Override public int wiredState(String id) { return pv(id); }
+    @Override public int wiredLamp() {
+        if (isBurnt()) return 3;
+        if (kind == GridKind.MOTOR) return motorState == 3 ? 3 : motorState > 0 ? 1 : 2;
+        if (kind.generator()) return running ? 1 : 2;
+        Reading r = new Reading();
+        r.read(world, pos, BlockInstrument.Inst.LAMP);
+        return r.lamp == 0 ? 2 : r.lamp;
+    }
+    @Override public void wiredRead(Reading r, BlockInstrument.Inst k) { r.read(world, pos, k); }
+    @Override public java.util.Map<String, Object> wiredInfo() { return remoteInfo(); }
+
+    // ---- wind turbine with a real tower (requested feature) -----------------------------------------------
+    public static final String[] ROTORS = {"250 kW · 30 m rotor", "1.5 MW · 77 m rotor", "3 MW · 100 m rotor"};
+    private static final double[] ROTOR_W = {250_000, 1_500_000, 3_000_000};
+    private static final int[] ROTOR_SECTIONS = {6, 10, 14};
+    /** rotor radius in blocks (drawn) and in real metres (for the rpm) */
+    public static final double[] ROTOR_R = {3, 5, 7}, ROTOR_RM = {15, 38.5, 50};
+    public double windNow;
+
+    public int rotorSize() { String r = cfg.text("rotor"); for (int i = 0; i < ROTORS.length; i++) if (ROTORS[i].equals(r)) return i; return 1; }
+
+    /** Wind Tower Sections stacked on the turbine */
+    public int towerSections() {
+        if (world == null) return 0;
+        int n = 0;
+        while (n < 48 && world.getBlockState(pos.up(n + 1)).getBlock() instanceof BlockWindTower) n++;
+        return n;
+    }
+
+    /** hub height above the ground, metres: the turbine is built ~1:7 (a 1.5 MW rotor drawn 10 blocks across is 77 m),
+     *  so a tower section stands for 7 m; a turbine on a hill catches a little more */
+    public double hubHeightM() { return (towerSections() + 2) * 7.0 + Math.max(0, pos.getY() - 64) * 1.5; }
+
+    /** is the rotor turning (works the same on the client from synced state, for the drawing) */
+    public boolean rotorTurning() {
+        int s = towerSections();
+        if (s == 0 || s < ROTOR_SECTIONS[rotorSize()] || windStopped || estop || estopFault || isBurnt()) return false;
+        double v = Wind.at(world, hubHeightM());
+        return v >= 3 && (v <= 25 || !cfg.bool("stormProtect"));
+    }
+
+    /** rotor rpm (tip-speed ratio 7) */
+    public double rotorRpm() {
+        double v = Math.min(14, Wind.at(world, hubHeightM()));
+        return rotorTurning() ? 7 * v / ROTOR_RM[rotorSize()] * 60 / (2 * Math.PI) : 0;
+    }
+
+    @Override
+    public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
+        if (kind == GridKind.WIND) return new net.minecraft.util.math.AxisAlignedBB(pos).grow(8, 0, 8).expand(0, 60, 0);
+        return super.getRenderBoundingBox();
+    }
+    @Override public double getMaxRenderDistanceSquared() { return kind == GridKind.WIND ? 256 * 256 : super.getMaxRenderDistanceSquared(); }
+
+    // ---- burn-outs (requested feature) ----------------------------------------
+    /** client copy of the node's burnt flag, for the scorch marks and smoke */
+    public boolean burntClient;
+    private long lastTrip = -100000;
+
+    public boolean isBurnt() {
+        if (world == null) return false;
+        if (world.isRemote) return burntClient;
+        GridData.Node n = GridData.get(world).node(pos);
+        return n != null && n.burnt;
+    }
+
+    /** a machine destroys itself: a crack, smoke, flames, and it goes dead (an open circuit) until repaired */
+    public static void burnOut(net.minecraft.world.World w, BlockPos p, String why) {
+        GridData d = GridData.get(w);
+        GridData.Node n = d.node(p);
+        if (n == null || n.burnt) return;
+        n.burnt = true; n.burntWhy = why; d.touch();
+        History.log(w, p, "BURN", "BURNT OUT: " + why);
+        w.playSound(null, p, com.dogpound.railmap.ModSounds.ARC_FLASH, net.minecraft.util.SoundCategory.BLOCKS, 0.7f, 1.0f);
+        w.playSound(null, p, net.minecraft.init.SoundEvents.BLOCK_FIRE_AMBIENT, net.minecraft.util.SoundCategory.BLOCKS, 1.0f, 0.8f);
+        if (w instanceof net.minecraft.world.WorldServer ws) {
+            ws.spawnParticle(net.minecraft.util.EnumParticleTypes.SMOKE_LARGE, p.getX() + 0.5, p.getY() + 0.9, p.getZ() + 0.5, 30, 0.35, 0.3, 0.35, 0.03);
+            ws.spawnParticle(net.minecraft.util.EnumParticleTypes.FLAME, p.getX() + 0.5, p.getY() + 0.8, p.getZ() + 0.5, 25, 0.35, 0.3, 0.35, 0.02);
+            ws.spawnParticle(net.minecraft.util.EnumParticleTypes.LAVA, p.getX() + 0.5, p.getY() + 0.8, p.getZ() + 0.5, 8, 0.3, 0.2, 0.3, 0.0);
+        }
+        String label = n.kind.label;
+        GridTicker.alarm(w, p.toLong(), String.format(java.util.Locale.ROOT, "§4🔥 %s at %d %d %d BURNT OUT: %s - it's dead until you fix it with a screwdriver", label, p.getX(), p.getY(), p.getZ(), why));
+        if (w.getTileEntity(p) instanceof TileGrid t) { t.panelDirty = true; t.sync(); IBlockState st = w.getBlockState(p); w.notifyBlockUpdate(p, st, st, 3); }
+    }
+
+    /** a screwdriver on a burnt-out machine: new windings / boards in */
+    public String repair() {
+        GridData d = GridData.get(world);
+        GridData.Node n = d.node(pos);
+        if (n == null || !n.burnt) return null;
+        n.burnt = false; n.burntWhy = ""; n.heat = 0; n.hot = false; d.touch();
+        Insulation.renew(n);
+        History.log(world, pos, "REPAIR", "rebuilt after burn-out: " + (kind == GridKind.MOTOR ? "rewound windings" : kind == GridKind.TRANSFORMER || kind == GridKind.TRACTION ? "new windings and fresh oil" : "new electronics"));
+        if (kind == GridKind.MOTOR) motorState = 0;
+        lastTrip = -100000;
+        world.playSound(null, pos, com.dogpound.railmap.sound.PackSounds.ev("machine.air_tool"), net.minecraft.util.SoundCategory.BLOCKS, 0.8f, 1.0f);
+        panelDirty = true; sync(); IBlockState st = world.getBlockState(pos); world.notifyBlockUpdate(pos, st, st, 3);
+        return "§aRepaired the " + kind.label + " - " + (kind == GridKind.MOTOR ? "rewound windings" : kind == GridKind.TRANSFORMER || kind == GridKind.TRACTION ? "new windings and fresh oil" : "new electronics") + ". Find out why it burnt before you switch it back on!";
+    }
+
+    /** a motor overload trip: the second one while it's still hot burns the windings */
+    private void motorTripped(String why) {
+        long now = world.getTotalWorldTime();
+        if (now - lastTrip < 2400) burnOut(world, pos, "windings burnt - " + why + " twice in two minutes");
+        lastTrip = now;
+    }
+
+    GridData.Node nodePublic() { return node(); }
+    boolean hasPv(String k) { return ps.containsKey(k); }
+    boolean isRunning() { return running; }
+    boolean hasRelayPublic() { return hasRelay(); }
+    boolean lr() { return pv("lr") == 1; }
+    /** black-start panel: breakers it could not close this run */
+    private final java.util.Set<Long> skip = new java.util.HashSet<>();
+    java.util.Set<Long> skip() { return skip; }
+
+    /** a breaker with an IED on it (the IED times its own overcurrent in real amps) */
+    static boolean hasIed(GridData d, BlockPos bp) {
+        for (EnumFacing f : EnumFacing.values()) { GridData.Node nb = d.node(bp.offset(f)); if (nb != null && nb.kind == GridKind.IED) return true; }
+        return false;
+    }
 
     private GridData.Node node() {
         GridData d = GridData.get(world);
@@ -154,6 +305,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
         String m = cfg.text("redstone");
         if (m.equals("Power runs it")) running = rs;
         else if (m.equals("Power stops it") && rs) running = false;
+        if (kind.buttons() && (pv("batiso") == 1 || pv("trip") == 1)) { running = false; fault = pv("trip") == 1 ? "tripped by hand" : "battery isolator OFF"; return 0; }
         if (kind == GridKind.SOLAR && ps.containsKey("dc") && pv("dc") == 0) { fault = "DC isolator OFF"; return 0; }
         if (kind == GridKind.WIND && windStopped) { fault = "stopped (brake on)"; return 0; }
         if (cfg.bool("stopWhenFull") && n.energy >= kind.capacity) { fault = "full (waiting for load)"; return running ? 1 : 0; }
@@ -175,14 +327,34 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             case SOLAR: {
                 if (!running && cfg.bool("parkable")) return 0;
                 if (!world.canSeeSky(pos.up())) { fault = "no open sky above"; return 2; }
-                long t = world.getWorldTime() % 24000L;
-                if (t > 12800 && t < 23200) { fault = "night"; return 2; }
-                double sun = Math.max(0.15, Math.sin(Math.PI * ((t + 1000) % 24000) / 13800.0));
+                double sunDeg = sunAngle(world, 1f);                                  // 0 = overhead, -90 = rising in the east, +90 = setting in the west
+                if (Math.abs(sunDeg) >= 90) { fault = "night"; return 2; }
+                double tilt = solarTilt(world, 1f);
+                double incidence = Math.cos(Math.toRadians(sunDeg - tilt));           // sunlight striking the deck square-on = 1
                 double k = world.isThundering() ? 0.2 : world.isRaining() ? 0.4 : 1.0;
-                made = (long) (cfg.num("panels") * 12 * sun * k) * 10;
+                double diffuse = 0.08 * Math.cos(Math.toRadians(sunDeg));             // sky glow even off-angle
+                double frac = (Math.max(0, incidence) * Math.cos(Math.toRadians(sunDeg)) * 0.15 + Math.max(0, incidence) * 0.85) * k + diffuse;
+                if (pv("track") == 1 && pv("stow") == 0 && !world.isThundering()) frac *= 0.98;  // the tracker drive's own draw
+                made = (long) (cfg.num("panels") * 12 * frac) * 10;
                 break;
             }
             case WIND: {
+                int secs = towerSections();
+                if (secs > 0) {                                                  // a real tower turbine
+                    int sz = rotorSize();
+                    double v = Wind.at(world, hubHeightM());
+                    windNow = v;
+                    if (secs < ROTOR_SECTIONS[sz]) { fault = String.format(java.util.Locale.ROOT, "tower too short: a %s needs %d sections (has %d)", ROTORS[sz], ROTOR_SECTIONS[sz], secs); return 0; }
+                    if (v > 25) {
+                        if (cfg.bool("stormProtect")) { fault = String.format(java.util.Locale.ROOT, "feathered: storm cut-out at %.0f m/s", v); return 2; }
+                        burnOut(world, pos, String.format(java.util.Locale.ROOT, "OVERSPEED in a %.0f m/s storm with storm protection off - blades and gearbox wrecked", v));
+                        return 2;
+                    }
+                    double frac = Wind.curve(v);
+                    if (frac <= 0) { fault = String.format(java.util.Locale.ROOT, "waiting for wind: %.1f m/s (cuts in at 3)", v); return 1; }
+                    made = (long) (ROTOR_W[sz] * frac / Elec.W_PER_FE_T) * 10;
+                    break;
+                }
                 if (!running && cfg.bool("parkable")) return 0;
                 double height = Math.max(0, Math.min(1.5, (pos.getY() - 60) / 60.0));
                 double weather = world.isThundering() ? 2.0 : world.isRaining() ? 1.5 : 1.0;
@@ -249,10 +421,11 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             boolean real = REAL.equals(cfg.text("sides"));
             if (n.realSides != real) { n.realSides = real; changed = true; }
             String pri = Elec.Level.byName(cfg.text("primaryLv"), defaultPrimary(kind)).name();
-            String sec = kind == GridKind.TRACTION ? Elec.Level.AC25000.name() : kind == GridKind.RECTIFIER ? Elec.Level.dc(n.dcv).name()
+            if (kind == GridKind.UPS) cfg.put("sides", REAL);
+            String sec = kind == GridKind.UPS ? Elec.Level.DC12.name() : kind == GridKind.TRACTION ? Elec.Level.AC25000.name() : kind == GridKind.RECTIFIER ? Elec.Level.dc(n.dcv).name()
                     : Elec.Level.byName(cfg.text("secondaryLv"), kind == GridKind.DCDC ? Elec.Level.DC48 : Elec.Level.AC480).name();
             if (!pri.equals(n.primary) || !sec.equals(n.level)) { n.primary = pri; n.level = sec; changed = true; }
-            n.kva = Math.max(10, cfg.num("kva"));
+            n.kva = kind == GridKind.UPS ? 3 : Math.max(10, cfg.num("kva"));
         }
         if (kind.buttons()) n.kva = Math.max(10, cfg.num("kva"));
         if (kind == GridKind.INTAKE || kind.generator()) {
@@ -268,21 +441,117 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             case RECTIFIER: return Elec.Level.MV4160;
             case INVERTER: return Elec.Level.DC750;
             case DCDC: return Elec.Level.DC750;
+            case UPS: return Elec.Level.AC240;
             default: return Elec.Level.MV13800;
         }
     }
 
     private static String[] labels(Elec.Level... ls) { String[] r = new String[ls.length]; for (int i = 0; i < ls.length; i++) r[i] = ls[i].label; return r; }
 
+    public float soundLevel() {
+        if (!kind.converter() && !kind.buttons()) return 0.7f;
+        return cfg.bool("sound") ? cfg.num("volume") / 100f : 0f;
+    }
+
     public int pv(String k) { Integer v = ps.get(k); return v == null ? 0 : v; }
     public String ptext(String k) { String v = pt.get(k); return v == null ? "" : v; }
     public boolean pressedRecently(String id, long now) { return id.equals(pressId) && now - pressAt < 6; }
     /** client: where each lever is drawn right now, easing toward its position */
     public final java.util.Map<String, float[]> anim = new java.util.HashMap<>();
+    @Override public java.util.Map<String, float[]> anim() { return anim; }
 
-    private void put(String k, int v) { Integer o = ps.put(k, v); if (o == null || o != v) panelDirty = true; }
-    private void put(String k, boolean v) { put(k, v ? 1 : 0); }
-    private void text(String k, String v) { if (!v.equals(pt.put(k, v))) panelDirty = true; }
+    // ---- the working controls modelled on the machine (requested feature). Layout = assets/irextras/controls/<block>.json from
+    // tools/gen_bb_grid*.py. Their values live in ps like the front panel's, so the console, Control Buttons and the
+    // model all see one state; a modelled handle runs the same press() as its front-panel twin.
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { panelDirty = true; sync(); }
+    @Override public int controlValue(String id) { return pv(id); }
+    @Override public String controlPress(String id, EntityPlayer who) { return press(id, who); }
+
+    /** instrument / control supply healthy: lamps, displays and electric controls need it, mechanical handles don't */
+    private boolean aux(GridData.Node n) {
+        if (n.burnt) return false;                                              // the electronics are wrecked
+        if (!com.dogpound.railmap.cabinet.Cabinet.ok(this, "ctl")) return false;  // its cabinet's 12 V aux MCB off / fuse out
+        if (kind == GridKind.DIESEL) return pv("batiso") == 0;                  // the genset runs off its own 12 V battery
+        if (kind == GridKind.AUTO) return pv("mcb") == 0;                       // PLC supply MCB
+        if (kind == GridKind.IED) return n.st("aux") == 1;                       // station battery / UPS
+        if (kind == GridKind.PQA || kind == GridKind.ATS || kind == GridKind.RESTORE) return pv("lpwr") == 1;
+        return true;
+    }
+
+    /** what the modelled lamps, gauges, flags and displays show: all real readings */
+    private void modelTick() {
+        if (layout().isEmpty()) return;
+        GridData d = GridData.get(world);
+        GridData.Node n = node();
+        GridData.Net net = d.netOf(pos);
+        boolean live = net != null && net.problem.isEmpty();
+        boolean aux = aux(n);
+        switch (kind) {
+            case TRANSFORMER: case TRACTION: case METER:
+                put("oillvl", (int) Math.max(5, Math.min(100, 45 + n.heat * 0.5)));   // the conservator float: oil swells as it heats
+                if (kind == GridKind.METER) put("modem", aux && live);
+                break;
+            case INTAKE:
+                for (int i = 1; i <= 3; i++) put("vpis" + i, n.energy > 0);          // VPIS neons run off the incoming HV itself
+                put("surges", n.surges);
+                break;
+            case FEEDER: put("surges", n.surges); put("live", live); break;
+            case RECTIFIER: put("brun", aux && n.dcOn && live); put("bflt", aux && !rectFault.isEmpty()); break;
+            case INVERTER: case DCDC: put("brun", aux && pv("lrun") == 1); put("bflt", aux && pv("lfault") == 1); break;
+            case BREAKER: {
+                put("mclosed", aux && n.breaker == 0); put("mopen", aux && n.breaker != 0); put("mtrip", aux && n.breaker == 2);
+                put("target", n.breaker == 2);                                       // mechanical: drops on a trip
+                put("springf", spring >= 100);
+                put("ops", ops % 100000);
+                put("sf6", n.burnt ? 18 : 82);                                       // a blow-out vents the gas
+                text("rly", !aux ? "" : n.breaker == 2 ? "TRIP I>" : n.breaker == 0 ? "I " + pv("amps") + "%" : "OPEN");
+                for (int i = 1; i <= 3; i++) put("vpis" + i, n.breaker == 0 && live);   // cable side live
+                break;
+            }
+            case BATTERY: {
+                int soc = (int) (n.energy * 100 / Math.max(1, kind.capacity));
+                put("brun", aux && n.batOn); put("bflt", aux && (estop || estopFault)); put("bfire", aux && pv("released") == 1);
+                text("bms", !aux ? "" : String.format(Locale.ROOT, "SOC %d%% %s", soc, !n.batOn ? "OFF" : pv("chg") == 1 ? "CHG" : pv("dis") == 1 ? "DIS" : "IDLE"));
+                break;
+            }
+            case CAPACITOR: for (int i = 1; i <= 4; i++) put("ms" + i, aux && n.steps >= i); break;
+            case DIESEL: case TURBINE:
+                put("brun", aux && running); put("bflt", aux && pv("lfault") == 1);
+                if (kind == GridKind.TURBINE) put("lube", running ? 72 : 86);       // oil drawn up into the bearings when it runs
+                break;
+            case SOLAR: put("ltcu", aux && pv("ltrack") == 1); put("lmon", aux && pv("dc") == 1 && lastOut > 0); break;
+            case WIND: put("brun", aux && pv("run") == 1); put("bflt", aux && pv("fault") == 1); break;
+            case SCADA: {
+                for (int i = 1; i <= 3; i++) put("pwr" + i, aux);
+                put("lprn", aux);
+                long t = world.getWorldTime() % 24000;
+                text("clock", aux ? String.format(Locale.ROOT, "%02d:%02d", (t / 1000 + 6) % 24, t % 1000 * 60 / 1000) : "");
+                break;
+            }
+            case AUTO: {
+                put("llight", aux); put("lcpu", aux); put("lnet", aux);
+                String[] io = {"master", "ar", "shed", "gen", "lar", "lshed", "lgen"};
+                for (int i = 0; i < io.length; i++) put("io" + (i + 1), aux && pv(io[i]) == 1);
+                put("sgreen", aux && pv("master") == 1 && pv("healthy") == 1);
+                put("samber", aux && (pv("lar") == 1 || pv("lshed") == 1));
+                put("sred", aux && pv("lalarm") == 1);
+                break;
+            }
+            case EARTHING: put("vpis1", live && !n.earthOn); put("vpis2", live && !n.earthOn); break;   // neutral voltage until earthed
+            case RELAY: put("ldc", aux); break;
+            default: break;
+        }
+        if (kind.control() || kind == GridKind.UPS) GridGear.display(this, d, n);
+    }
+
+    void put(String k, int v) { Integer o = ps.put(k, v); if (o == null || o != v) panelDirty = true; }
+    /** cabinet.Cabinet: its door / MCB / fuse / relay / PLC positions live here with the other controls */
+    public void cabPut(String k, int v) { put(k, v); }
+    public void cabText(String k, String v) { text(k, v); }
+    void put(String k, boolean v) { put(k, v ? 1 : 0); }
+    void text(String k, String v) { if (!v.equals(pt.put(k, v))) panelDirty = true; }
 
     private void sync() {
         if (!panelDirty || world == null || world.isRemote) return;
@@ -308,11 +577,18 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
 
     /** a control was operated (BlockGrid works out which one from the player's line of sight) */
     String press(String id, EntityPlayer p) {
-        if (!loto.isEmpty() && !id.equals("display") && !id.equals("ack") && !id.equals("lamptest"))
+        if (isBurnt() && !id.equals("door")) { GridData.Node bn = GridData.get(world).node(pos); return "§4🔥 BURNT OUT" + (bn != null ? " (" + bn.burntWhy + ")" : "") + " - fix it with a screwdriver"; }
+        if (!loto.isEmpty() && !id.equals("display") && !id.equals("ack") && !id.equals("lamptest") && !id.equals("door"))
             return "§c🔒 LOCKED OUT by " + loto + " - DANGER, DO NOT OPERATE. Only they can take their padlock off (sneak + right-click empty-handed)";
         pressId = id;
         pressAt = world.getTotalWorldTime();
         panelDirty = true;
+        Panel pnl = Panel.of(kind);
+        if (pnl != null) for (Panel.C c : pnl.cs) if (c.id.equals(id)) {
+            net.minecraft.util.SoundEvent cs = ModSounds.forControl(c.t);
+            if (cs != null) world.playSound(null, pos, cs, SoundCategory.BLOCKS, 0.6f, 0.95f + world.rand.nextFloat() * 0.1f);
+            break;
+        }
         String r = operate(id, p);
         panelTick();
         sync();
@@ -320,9 +596,16 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
     }
 
     private String operate(String id, EntityPlayer p) {
+        String who = p == null ? "remote control" : p.getName();
+        if (id.equals("door")) {                                                // the cabinet door
+            put("door", 1 - pv("door"));
+            world.playSound(null, pos, pv("door") == 1 ? com.dogpound.railmap.sound.PackSounds.ev("machine.door_open") : com.dogpound.railmap.sound.PackSounds.ev("machine.door_close"), SoundCategory.BLOCKS, 0.7f, 1.1f);
+            return pv("door") == 1 ? "§7Cabinet open - right-click a blank spot inside to shut it" : "§7Cabinet shut";
+        }
         GridData d = GridData.get(world);
         GridData.Node n = node();
         GridData.Net net = d.netOf(pos);
+        if (kind.control() || kind == GridKind.UPS) { String r = GridGear.press(this, id, p); if (r != null) return r; }
         switch (kind) {
             case TRANSFORMER: case TRACTION:
                 switch (id) {
@@ -330,7 +613,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                         if (n.avr) return "§eAVR is in AUTO - switch it to MAN to move the tap by hand";
                         int t = Math.max(1, Math.min(17, n.tap + (id.equals("raise") ? 1 : -1)));
                         if (t == n.tap) return "§7Tap changer at its end stop (" + t + ")";
-                        n.tap = t; d.markDirty(); clunk(id.equals("raise") ? 1.3f : 1.1f);
+                        n.tap = t; d.markDirty(); world.playSound(null, pos, ModSounds.TAP_CHANGE, SoundCategory.BLOCKS, 0.9f, id.equals("raise") ? 1.05f : 0.95f);
                         return "§e" + (id.equals("raise") ? "▲" : "▼") + " Tap " + t + " · " + String.format(Locale.ROOT, "%+.1f%%", (t - 9) * 1.25);
                     }
                     case "avr": n.avr = !n.avr; d.markDirty(); click(1.2f); return n.avr ? "§aAVR AUTO - the tap changer holds the voltage by itself" : "§eAVR MANUAL - use RAISE / LOWER";
@@ -367,7 +650,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                         return beginStart(net);
                     case "stop":
                         if (motorState == 0) return "§7Already stopped";
-                        motorState = 0; click(0.8f); return "§c■ Motor stopped - contactor open";
+                        motorState = 0; click(0.8f); world.playSound(null, pos, com.dogpound.railmap.sound.PackSounds.ev("grid.motor_stop"), SoundCategory.BLOCKS, 0.9f, 1f); return "§c■ Motor stopped - contactor open";
                     case "reset":
                         if (motorState != 3) return "§7Nothing to reset";
                         motorState = 0; click(0.9f); return "§aOverload relay reset";
@@ -405,20 +688,22 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                         return local ? "§eREMOTE - redstone / remote control only, the panel is locked" : "§aLOCAL - operate from this panel";
                     case "reset":
                         if (n.breaker != 2) return "§7Nothing to reset";
-                        setBreaker((byte) 1, "lockout reset by " + p.getName()); return "§aLockout reset - breaker OPEN, ready to close";
+                        setBreaker((byte) 1, "lockout reset by " + who); return "§aLockout reset - breaker OPEN, ready to close";
                     case "open":
                         if (!local) return "§eIn REMOTE - switch the key to LOCAL";
                         if (n.breaker != 0) return "§7Already open";
-                        setBreaker((byte) 1, "opened by " + p.getName()); return "§cBreaker OPEN - downstream is dead (safe to work)";
+                        setBreaker((byte) 1, "opened by " + who); return "§cBreaker OPEN - downstream is dead (safe to work)";
                     case "close": case "handle": {
                         if (!local) return "§eIn REMOTE - switch the key to LOCAL";
-                        if (id.equals("handle") && n.breaker == 0) { setBreaker((byte) 1, "opened by hand by " + p.getName()); return "§cBreaker OPEN - downstream is dead (safe to work)"; }
+                        if (id.equals("handle") && n.breaker == 0) { setBreaker((byte) 1, "opened by hand by " + who); return "§cBreaker OPEN - downstream is dead (safe to work)"; }
                         if (n.breaker == 2) return "§6TRIPPED - lockout: press RESET before closing";
                         if (n.breaker == 0) return "§7Already closed";
                         if (spring < 100) return "§eClosing spring still charging (" + spring + "%) - wait";
                         if (!hasRelay()) return "§cWon't close: no Protection Relay touching this breaker (it can't detect faults)";
                         if (!earthedBothSides(d)) return "§cWon't close: this network isn't earthed - fit an Earthing Switch";
-                        setBreaker((byte) 0, "closed by " + p.getName());
+                        { String il = GridGear.interlock(world, pos); if (!il.isEmpty()) return "§c" + il; }
+                        { String pw = Permits.closeBlocked(world, pos); if (!pw.isEmpty()) return "§c" + pw; }
+                        setBreaker((byte) 0, "closed by " + who);
                         spring = 0;
                         return "§aBreaker CLOSED - downstream is live";
                     }
@@ -438,7 +723,9 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 break;
             case EARTHING:
                 if (id.equals("handle")) {
+                    if (n.earthOn) { String pw = Permits.earthBlocked(world, pos); if (!pw.isEmpty()) return "§c" + pw; }
                     n.earthOn = !n.earthOn; d.touch(); clunk(n.earthOn ? 1.1f : 0.8f);
+                    History.log(world, pos, n.earthOn ? "CLOSE" : "OPEN", (n.earthOn ? "earth applied by " : "earth removed by ") + who);
                     return n.earthOn ? "§aNeutral EARTHED - protection can see faults" : "§c⚠ Earth REMOVED - breakers will refuse to close on this network";
                 }
                 break;
@@ -462,7 +749,28 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                     case "estop":
                         estop = !estop;
                         if (estop) { estopFault = true; n.batOn = false; d.touch(); clunk(0.6f); return "§c§lEMERGENCY STOP"; }
-                        estopFault = false; click(1f); return "§7E-STOP released - press START";
+                        estopFault = false; put("released", 0); click(1f); return "§7E-STOP released - press START";
+                    case "release":
+                        if (pv("released") == 1) return "§7Already released - twist the E-STOP out on the door panel to reset";
+                        put("released", 1); estop = true; estopFault = true; n.batOn = false; d.touch(); clunk(0.5f);
+                        world.playSound(null, pos, ModSounds.ALARM, SoundCategory.BLOCKS, 1f, 1f);
+                        return "§c§l🔥 FIRE SUPPRESSION RELEASED - BESS tripped. Twist the E-STOP out on the door panel to reset";
+                }
+                break;
+            case AUTO:
+                switch (id) {
+                    case "master": case "ar": case "shed": case "gen": {
+                        put(id, 1 - pv(id)); click(1.2f);
+                        return "§7" + (id.equals("master") ? "AUTO control" : id.equals("ar") ? "Auto-reclose" : id.equals("shed") ? "Load shedding" : "Standby generator start")
+                                + (pv(id) == 1 ? " §aON" : " §cOFF");
+                    }
+                    case "ack": autoAck = autoHash; click(1.4f); return "§eAlarms acknowledged";
+                    case "reset": arTrips.clear(); autoLog("lockouts reset"); click(0.9f); return "§aAuto-reclose lockouts reset";
+                    case "lamptest": lampTest = 60; click(1.6f); return "§7Lamp test";
+                    case "mcb":
+                        put("mcb", 1 - pv("mcb")); click(0.7f);
+                        if (pv("mcb") == 1) { autoAlarm = false; return "§cPLC supply MCB OFF - the Auto Controller is dead (no reclose, shedding or generator start)"; }
+                        return "§aPLC supply MCB ON - controller booting";
                 }
                 break;
             case SCADA:
@@ -476,7 +784,19 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                         if (m == 0 && running) { running = false; }
                         return "§7Mode: " + new String[]{"§cOFF (won't start)", "§eMANUAL", "§aAUTO (starts itself when the grid runs low)"}[m];
                     }
+                    case "batiso":
+                        put("batiso", 1 - pv("batiso")); clunk(1f);
+                        if (pv("batiso") == 1) { running = false; crank = 0; n.gcb = false; d.touch(); return "§cBattery isolator OFF - controller and fuel solenoid dead, the set stops"; }
+                        return "§aBattery isolator ON - controller powered";
+                    case "trip":
+                        if (pv("trip") == 0) {
+                            put("trip", 1); running = false; crank = 0; n.gcb = false; d.touch(); clunk(0.5f);
+                            return "§c§lTURBINE TRIPPED by hand - trip + throttle valve slammed shut";
+                        }
+                        put("trip", 0); click(1f); return "§aTrip lever re-latched - press START";
                     case "start":
+                        if (pv("batiso") == 1) return "§cBattery isolator is OFF - no cranking power";
+                        if (pv("trip") == 1) return "§cTrip lever is down - latch it on the side of the turbine first";
                         if (estop) return "§cE-STOP pushed in - press it again to twist it out, then RESET";
                         if (estopFault) return "§6Press RESET after an emergency stop";
                         if (pv("mode") != 1) return pv("mode") == 0 ? "§cMode is OFF" : "§eIn AUTO it starts itself - switch to MAN";
@@ -522,7 +842,17 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 }
                 break;
             case SOLAR:
-                if (id.equals("dc")) { put("dc", pv("dc") == 0 ? 1 : 0); clunk(1.1f); return pv("dc") == 1 ? "§7DC isolator OFF - panels disconnected" : "§aDC isolator ON"; }
+                if (id.equals("track")) { put("track", 1 - pv("track")); click(1.1f); return pv("track") == 1 ? "§aTRACKING - the deck follows the sun across the sky" : "§7FIXED - deck parked flat"; }
+                if (id.equals("stow")) { put("stow", 1 - pv("stow")); clunk(0.9f); return pv("stow") == 1 ? "§eSTOWED flat (storm position)" : "§aReleased from stow"; }
+                if (id.equals("volt")) {
+                    Elec.Level[] ls = {Elec.Level.DC48, Elec.Level.DC600, Elec.Level.DC1500, Elec.Level.AC240, Elec.Level.AC480};
+                    Elec.Level cur = Elec.Level.byName(cfg.text("outLv"), Elec.Level.AC480);
+                    int i = 0; while (i < ls.length && ls[i] != cur) i++;
+                    Elec.Level nx = ls[(i + 1) % ls.length];
+                    cfg.put("outLv", nx.label); markDirty(); click(1.3f);
+                    return "§bOutput " + nx.label + (nx.ac ? " (string inverter on)" : " (straight off the strings - DC)");
+                }
+                if (id.equals("dc")) { put("dc", pv("dc") == 0 ? 1 : 0); clunk(1.1f); return pv("dc") == 0 ? "§7DC isolator OFF - panels disconnected" : "§aDC isolator ON"; }
                 break;
             case WIND:
                 switch (id) {
@@ -554,7 +884,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                         boolean any = false;
                         for (EnumFacing f : EnumFacing.values())
                             if (world.getTileEntity(pos.offset(f)) instanceof TileGrid b && b.kind == GridKind.BREAKER && GridData.get(world).node(b.pos).breaker == 0) {
-                                b.setBreaker((byte) 2, "TRIPPED: relay test by " + p.getName()); b.sync(); any = true;
+                                b.setBreaker((byte) 2, "TRIPPED: relay test by " + who); b.sync(); any = true;
                             }
                         return any ? "§6Relay TEST - breaker tripped (secondary injection)" : "§7Relay TEST - no closed breaker to trip";
                     }
@@ -574,7 +904,11 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
 
     /** every panel update: run the controls' logic and set the lamps / needles / displays the client draws */
     private void panelTick() {
-        if (Panel.of(kind) == null) return;
+        if (Panel.of(kind) != null) frontTick();
+        modelTick();
+    }
+
+    private void frontTick() {
         GridData d = GridData.get(world);
         GridData.Node n = node();
         GridData.Net net = d.netOf(pos);
@@ -591,6 +925,8 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 put("volts", (int) Math.round(kv * 10));
                 put("avr", n.avr ? 1 : 0); put("cool", n.cool);
                 put("temp", Math.round(n.heat));
+                put("load", net == null ? 0 : net.level != null ? (int) Math.min(150, net.sVA * 100 / Math.max(1, n.kva * 1000.0))
+                        : (int) Math.min(150, load * 100 / Math.max(1, (long) GridData.RATING * Math.max(1, net.transformers))));
                 put("fanrun", n.cool == 2 || (n.cool == 1 && n.heat > 40));
                 put("alarm", txAlarm); put("trip", n.hot);
                 break;
@@ -659,9 +995,23 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 put("chg", n.batOn && n.batMode != 2 && soc < 100); put("dis", n.batOn && n.batMode != 0 && load > 0);
                 break;
             }
+            case AUTO: {
+                int live = 0, dead = 0;
+                for (GridData.Net nn : d.nets()) if (GridRemote.controlOnly(d, nn)) continue; else if (nn.problem.isEmpty()) live++; else dead++;
+                boolean t = lampTest > 0;
+                text("events", autoEvent.length() > 30 ? autoEvent.substring(0, 30) : autoEvent);
+                text("stats", "RECL " + arDone + " SHED " + shedList.size() + " GEN " + genDone);
+                put("lar", t || pv("master") == 1 && pv("ar") == 1 && arTrips.values().stream().anyMatch(a -> a[0] > 0 && a[0] < 3));
+                put("lshed", t || !shedList.isEmpty());
+                put("lgen", t || genRunning);
+                put("lalarm", t || autoAlarm);
+                put("healthy", t || dead == 0 && live > 0);
+                if (lampTest > 0) lampTest = Math.max(0, lampTest - 10);
+                break;
+            }
             case SCADA: {
                 int live = 0, dead = 0;
-                for (GridData.Net nn : d.nets()) if (nn.problem.isEmpty()) live++; else dead++;
+                for (GridData.Net nn : d.nets()) if (GridRemote.controlOnly(d, nn)) continue; else if (nn.problem.isEmpty()) live++; else dead++;
                 text("count", "LIVE " + live + " DEAD " + dead);
                 int h = problemHash(d);
                 put("alarm", h != 0 && h != ackHash || lampTest > 0); put("healthy", dead == 0 && live > 0 || lampTest > 0);
@@ -674,7 +1024,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 if (!ps.containsKey("mode")) { put("mode", 1); mode = 1; }
                 if (mode == 2 && !estop && !estopFault && net != null) {                 // AUTO: start on low grid, stop when full
                     long cap = Math.max(1, net.capacity);
-                    if (!running && crank == 0 && loto.isEmpty() && net.energy * 100 / cap < 25) crank = kind == GridKind.DIESEL ? 3 : 4;
+                    if (!running && crank == 0 && loto.isEmpty() && pv("batiso") == 0 && pv("trip") == 0 && net.energy * 100 / cap < 25) crank = kind == GridKind.DIESEL ? 3 : 4;
                     if (running && net.energy * 100 / cap > 90) running = false;
                 }
                 if (crank > 0 && --crank == 0) {
@@ -694,6 +1044,20 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             }
             case SOLAR:
                 if (!ps.containsKey("dc")) put("dc", 1);
+                if (!ps.containsKey("track")) put("track", 1);
+                {
+                    double sd = sunAngle(world, 1f);
+                    boolean day = Math.abs(sd) < 90;
+                    double wk = world.isThundering() ? 0.2 : world.isRaining() ? 0.4 : 1.0;
+                    put("kw", (int) Math.round(lastOut * Elec.W_PER_FE_T / 1000));
+                    put("irr", day ? (int) Math.round(1000 * Math.cos(Math.toRadians(sd)) * wk) : 0);
+                    put("sunang", day ? (int) Math.round(90 - Math.abs(sd)) : 0);
+                    put("tiltg", (int) Math.round(Math.abs(solarTilt(world, 1f))));
+                    text("lvl", Elec.Level.byName(cfg.text("outLv"), Elec.Level.AC480).label);
+                    put("ltrack", pv("track") == 1 && day && pv("stow") == 0 && !world.isThundering());
+                    put("lstow", pv("stow") == 1 || world.isThundering());
+                    put("lnight", !day);
+                }
                 put("out", lastOut); put("grid", lastOut > 0 && n.gcb); put("fault", pv("dc") == 1 && !fault.isEmpty() && !fault.equals("night"));
                 break;
             case WIND:
@@ -735,11 +1099,20 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
     public void update() {
         if (world == null || world.isRemote) return;
         if (kind == GridKind.MOTOR) motorDrive();
+        if (kind == GridKind.AUTO && pv("mcb") == 0 && world.getTotalWorldTime() % 20 == (pos.hashCode() & 15)) autoControl();
+        if ((kind.control() || kind == GridKind.UPS) && world.getTotalWorldTime() % 20 == (pos.hashCode() & 15)) { GridGear.second(this); panelDirty = true; }
         if (world.getTotalWorldTime() % 10 != (pos.hashCode() & 7)) return;
         GridData d = GridData.get(world);
         GridData.Node n = node();
         GridData.Net net = d.netOf(pos);
         boolean live = net != null && net.problem.isEmpty();
+        if (n.burnt) { if (kind == GridKind.MOTOR) motorState = 3; }
+        else if (kind.converter() && n.sided() && n.upNet >= 0 && n.upNet < d.nets().size()) {       // fed far over its rating: it fries
+            GridData.Net up = d.nets().get(n.upNet);
+            Elec.Level rated = Elec.Level.byName(n.primary, Elec.Level.MV13800);
+            if (up.level != null && up.problem.isEmpty() && up.level.volts > rated.volts * 1.15)
+                burnOut(world, pos, "fed " + up.level.label + " but built for " + rated.label);
+        }
         if (kind.buttons()) spin(d, n, net);
         if (kind == GridKind.MOTOR) motor(d, n, net);
         int state = kind == GridKind.BREAKER || kind == GridKind.ISOLATOR ? n.breaker : kind.generator() ? generate(n) : kind == GridKind.MOTOR ? (motorState == 3 ? 2 : motorState > 0 ? 1 : 0) : live ? 1 : 0;
@@ -749,15 +1122,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             if (st.getBlock() instanceof BlockGrid && st.getValue(BlockGrid.STATE) != state)
                 world.setBlockState(pos, st.withProperty(BlockGrid.STATE, state), 3);
         }
-        if (kind.buttons() && state == 1 && cfg.bool("sound") && world.getTotalWorldTime() % 40 < 10)
-            world.playSound(null, pos, ModSounds.HUM_RECTIFIER, SoundCategory.BLOCKS, cfg.num("volume") / 100f, kind == GridKind.DIESEL ? 0.55f : 0.8f);
-        // the hum of energised plant (4 s clips, re-triggered)
-        if (live && cfg.bool("sound") && world.getTotalWorldTime() % 80 < 10) {
-            if (kind == GridKind.TRANSFORMER || kind == GridKind.TRACTION)
-                world.playSound(null, pos, ModSounds.HUM_TRANSFORMER, SoundCategory.BLOCKS, cfg.num("volume") / 100f, 1f);
-            else if (kind.electronic())
-                world.playSound(null, pos, ModSounds.HUM_RECTIFIER, SoundCategory.BLOCKS, cfg.num("volume") / 100f, 1f);
-        }
+        // plant hum / whine / fans / engines: client GridSounds loops, following the synced panel values
         if (kind == GridKind.BREAKER) {
             n.rating = cfg.num("rating");
             try { n.kA = Integer.parseInt(cfg.text("kA").replace(" kA", "")); } catch (RuntimeException e) { n.kA = 25; }
@@ -771,6 +1136,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             if (m.equals("Power closes") && rs != (n.breaker == 0) && n.breaker != 2) setBreaker(rs ? (byte) 0 : (byte) 1, "switched by redstone");
         }
         if (kind == GridKind.FEEDER) { n.feeds = cfg.text("feeds"); n.range = cfg.num("range"); n.ownFirst = !"Railway grid".equals(cfg.text("order")); }
+        GridGear.mirror(this, n);
         electrics(d, n);
         panelTick();
         sync();
@@ -793,7 +1159,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
         GridData d = GridData.get(world);
         for (EnumFacing f : EnumFacing.values()) {
             GridData.Node nb = d.node(pos.offset(f));
-            if (nb != null && nb.kind == GridKind.RELAY) return true;
+            if (nb != null && nb.kind.relay()) return true;
         }
         return false;
     }
@@ -856,6 +1222,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
         startTotal = st.equals("Star-delta") ? 120 : st.equals("Soft starter") ? 100 : st.equals("VFD") ? 160 : 60;
         startLeft = startTotal; stallCount = 0; lowV = 0;
         motorState = 1; clunk(1.1f);
+        world.playSound(null, pos, com.dogpound.railmap.sound.PackSounds.ev("grid.motor_start"), SoundCategory.BLOCKS, 0.9f, st.equals("VFD") ? 0.8f : 1f);
         return "§a▶ Starting (" + st + ")";
     }
 
@@ -868,7 +1235,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 : lv.ac && lv.phases != 3 && !vfd ? "single-phase supply - a 3-phase motor won't start (fit a VFD)" : "";
         if (!ps.containsKey("hoa")) put("hoa", 0);
         if (pv("hoa") == 2) {                                                     // AUTO: redstone runs it
-            boolean rs = world.isBlockPowered(pos);
+            boolean rs = world.isBlockPowered(pos) || remoteRun;                // redstone or a SCADA run command
             if (rs && motorState == 0 && loto.isEmpty() && bad.isEmpty()) beginStart(net);
             if (!rs && (motorState == 1 || motorState == 2)) motorState = 0;
         }
@@ -877,6 +1244,8 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             GridTicker.alarm(world, pos.toLong(), "§e⚠ Motor at " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " dropped out: " + bad);
         }
         double sRated = motorKw() * 1000 / (0.92 * 0.86);
+        n.st.put("mva", (int) Math.min(Integer.MAX_VALUE, Math.round(sRated)));   // the thermal model's motor rating (Thermal.models, her 48-next #22)
+        if (motorState == 2 && n.st("t49") == 1) { n.st.remove("t49"); motorState = 3; clunk(0.6f); motorTripped("49 thermal overload (inverse-time)"); }
         double pu = n.pu > 0 ? n.pu : 1;
         String st = cfg.text("starter");
         if (motorState == 1) {
@@ -888,7 +1257,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             startLeft -= 10;
             if (pu < 0.75 && startTotal - startLeft > 10) {
                 if (++stallCount >= 4) {
-                    motorState = 3; clunk(0.6f);
+                    motorState = 3; clunk(0.6f); motorTripped("stalled on start");
                     GridTicker.alarm(world, pos.toLong(), String.format(Locale.ROOT, "§c⚡ Motor STALLED at %d %d %d: only %.0f%% voltage at its terminals while starting - use a soft starter / VFD, a bigger cable or transformer",
                             pos.getX(), pos.getY(), pos.getZ(), pu * 100));
                 }
@@ -901,7 +1270,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             n.loadVA = Math.sqrt(p * p + q * q);
             if (pu < 0.85) {                                                     // low volts: more current for the same torque -> it heats
                 if (++lowV >= 20) {
-                    motorState = 3; clunk(0.6f);
+                    motorState = 3; clunk(0.6f); motorTripped("overloaded on low voltage");
                     GridTicker.alarm(world, pos.toLong(), String.format(Locale.ROOT, "§c⚡ Motor at %d %d %d tripped on OVERLOAD: running at %.0f%% voltage draws too much current",
                             pos.getX(), pos.getY(), pos.getZ(), pu * 100));
                 }
@@ -944,7 +1313,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
             case EARTHING: return n.earthOn ? "" : "switch the earth ON first (locked earthed)";
             case DIESEL: case TURBINE: return !running && crank == 0 && !n.gcb ? "" : "STOP it and open its GCB first";
             case MOTOR: return motorState == 0 || motorState == 3 ? "" : "STOP it first";
-            case RECTIFIER: case INVERTER: case DCDC: return !n.dcOn ? "" : "switch its output OFF first";
+            case RECTIFIER: case INVERTER: case DCDC: case UPS: return !n.dcOn ? "" : "switch its output OFF first";
             case INTAKE: return !n.mainOn ? "" : "turn the MAIN SWITCH off first";
             case BATTERY: return !n.batOn ? "" : "STOP it first";
             default: return "nothing to lock on this one";
@@ -978,11 +1347,17 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
         if (n.breaker == b) return;
         if (b == 0 && !loto.isEmpty()) { last = "refused to close: locked out by " + loto; return; }
         if (b == 0 && kind == GridKind.BREAKER && !hasRelay()) { last = "refused to close: no Protection Relay"; return; }
+        if (b == 0 && kind == GridKind.BREAKER && !com.dogpound.railmap.asset.Commissioning.mayEnergise(world, pos)) { last = "refused to close: UNCOMMISSIONED (config commissioningRequired)"; return; }
         n.breaker = b;
+        ops++;
+        n.ops++;
+        n.wear += 0.0001f;                                                      // mechanical wear: ~10,000 operations
+        if (b == 2) n.lastTrip = why.replaceFirst("^TRIPPED: ", "");
+        History.log(world, pos, b == 0 ? "CLOSE" : b == 2 ? "TRIP" : "OPEN", why);
         d.touch();
-        world.playSound(null, pos, b == 2 ? ModSounds.BREAKER : ModSounds.RELAY, SoundCategory.BLOCKS, 1f, b == 0 ? 1f : 0.85f);
+        world.playSound(null, pos, b == 2 ? ModSounds.BREAKER_TRIP : b == 0 ? ModSounds.BREAKER_CLOSE : ModSounds.BREAKER, SoundCategory.BLOCKS, 1f, 1f);
+        if (b == 0) world.playSound(null, pos, com.dogpound.railmap.sound.PackSounds.ev("grid.spring_charge"), SoundCategory.BLOCKS, 0.6f, 1f);
         if (b == 2) world.playSound(null, pos, ModSounds.ALARM, SoundCategory.BLOCKS, 0.8f, 1f);
-        if (b == 0) world.playSound(null, pos, ModSounds.BREAKER, SoundCategory.BLOCKS, 0.7f, 1.2f);
         last = why;
         markDirty();
         world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
@@ -1001,17 +1376,23 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
     }
 
     private int trips;
+    private int ops;                // breaker: mechanical operation counter
 
     String click(EntityPlayer p) {
+        if (p == null) return "ok";                                             // a remote (SCADA) command, no player to talk to
         GridData d = GridData.get(world);
         GridData.Node n = node();
         GridData.Net net = d.netOf(pos);
+        { String gs = GridGear.status(this, n); if (gs != null) return gs; }
         switch (kind) {
             case BREAKER:
                 return "§7Breaker " + (n.breaker == 0 ? "§cCLOSED (live)" : n.breaker == 1 ? "§aOPEN (dead)" : "§6TRIPPED - press RESET")
                         + "§7 · " + (pv("lr") == 0 ? "LOCAL" : "REMOTE") + " · use the handle or CLOSE / OPEN" + (last.isEmpty() ? "" : " · last: " + last);
             case SCADA:
                 return summary(d);
+            case AUTO:
+                return "§7Auto Controller · " + (pv("master") == 1 ? "§aAUTO ON" : "§cAUTO OFF") + "§7 · last: " + autoEvent
+                        + " · breakers it works need their key in REMOTE";
             case ISOLATOR: {
                 boolean opening = n.breaker == 0;
                 long load = net == null ? 0 : net.lastSecond / 20;
@@ -1024,10 +1405,12 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                     p.setFire(4);
                     world.playSound(null, pos, ModSounds.BREAKER, SoundCategory.BLOCKS, 1.5f, 0.5f);
                     last = "ARC FLASH: opened on load (" + load + " FE/t) by " + p.getName();
+                    n.ops++; History.log(world, pos, "FAULT", last);
                     return "§c§l⚡ ARC FLASH! §r§cYou opened a disconnector carrying " + load + " FE/t. Open the breaker first, then the disconnector.";
                 }
                 world.playSound(null, pos, ModSounds.RELAY, SoundCategory.BLOCKS, 1f, 0.7f);
                 last = (opening ? "opened" : "closed") + " by " + p.getName();
+                n.ops++; History.log(world, pos, opening ? "OPEN" : "CLOSE", last);
                 return opening ? "§eDisconnector OPEN - visible break, safe to work downstream" : "§aDisconnector CLOSED";
             }
             case DIESEL: case TURBINE: case SOLAR: case WIND: {
@@ -1060,6 +1443,14 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
 
     // ---- Settings Console ------------------------------------------------------------------------------------
     @Override public String settingsTitle() { return kind.label; }
+
+    /** HV plant: settings are changed under a permit (IEDs: only in TEST mode) */
+    @Override public String denySettings(EntityPlayer p) {
+        if (kind == GridKind.IED) return node().st("test") == 1 ? null : "§cIED settings are locked IN SERVICE - turn its key to TEST first";
+        if (kind.control() || p.capabilities.isCreativeMode) return null;
+        String why = Permits.mayWork(p, pos);
+        return why.isEmpty() ? null : why;
+    }
     @Override public SettingsStore settings() { return cfg; }
 
     @Override
@@ -1108,12 +1499,15 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 l.add(Setting.bool(g, "stopWhenFull", "Idle when its store is full", "", true));
                 break;
             case WIND:
-                l.add(Setting.bool(g, "stormStop", "Feather the blades in storms", "Real turbines stop in very high wind", false));
+                l.add(Setting.choice(g, "rotor", "Rotor", "Bigger rotors make more but need a taller tower (stack Wind Tower Sections on it)", ROTORS[1], ROTORS));
+                l.add(Setting.bool(g, "stormProtect", "Storm protection (tower turbines)", "Feathers and brakes above 25 m/s. OFF in a thunderstorm = overspeed: the blades and gearbox wreck themselves", true));
+                l.add(Setting.bool(g, "stormStop", "Feather the blades in storms (compact turbine)", "Real turbines stop in very high wind", false));
                 l.add(Setting.bool(g, "stopWhenFull", "Idle when its store is full", "", true));
                 break;
             default:
                 break;
         }
+        GridGear.settings(this, l);
         String el = "Electrical";
         switch (kind) {
             case INTAKE:
@@ -1122,7 +1516,7 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 break;
             case DIESEL: case TURBINE: case SOLAR: case WIND:
                 l.add(Setting.choice(el, "outLv", "Output voltage", "What the generator / inverter puts out - step it up with a Power Transformer for long runs",
-                        Elec.Level.AC480.label, kind == GridKind.SOLAR ? labels(Elec.Level.AC480, Elec.Level.AC240, Elec.Level.DC48) : labels(Elec.Level.AC480, Elec.Level.MV4160, Elec.Level.MV13800)));
+                        Elec.Level.AC480.label, kind == GridKind.SOLAR ? labels(Elec.Level.AC480, Elec.Level.AC240, Elec.Level.DC48, Elec.Level.DC600, Elec.Level.DC1500) : labels(Elec.Level.AC480, Elec.Level.MV4160, Elec.Level.MV13800)));
                 break;
             case TRANSFORMER: case TRACTION: case RECTIFIER: case INVERTER: case DCDC: {
                 l.add(Setting.choice(el, "sides", "Connections", "Real: the BACK is the primary (input), every other face the secondary (output) - two networks at two voltages. Legacy: the old pass-through", REAL, REAL, LEGACY));
@@ -1208,6 +1602,15 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
                 net.minecraftforge.fluids.FluidStack in = tank.getFluid();
                 l.add(Setting.info(st, kind == GridKind.DIESEL ? "Fuel" : "Steam", in == null ? "empty - pipe it in from any mod" : String.format(Locale.ROOT, "%,d / 16,000 mB %s", in.amount, in.getLocalizedName())));
             }
+            if (kind == GridKind.TRANSFORMER || kind == GridKind.TRACTION || kind.electronic())
+                l.add(Setting.info(st, "Thermal", Thermal.describe(n)));
+            if (kind == GridKind.BREAKER && hasIed(d, pos)) l.add(Setting.info(st, "Overcurrent", "timed by the IED in real amps (the FE/t trip rating sets its rated current)"));
+            String hs = "History";
+            l.add(Setting.info(hs, "Counters", History.counters(n)));
+            if (net != null && net.level != null) l.add(Setting.info(hs, "Megger test", Insulation.megohms(n) + (Insulation.passes(n, net.level.volts) ? " - PASS" : " - FAIL (needs " + Math.round(net.level.volts / 1000 + 1) + " MΩ)")));
+            int i = 0;
+            for (String e : History.recent(n, 20)) l.add(Setting.info(hs, "#" + (++i), e));
+            if (i == 0) l.add(Setting.info(hs, "Log", "nothing recorded yet"));
             if (kind == GridKind.SCADA) {
                 for (GridData.Net nn : d.nets())
                     l.add(Setting.info(st, "Network #" + nn.id, nn.nodes.size() + " parts · " + (nn.problem.isEmpty() ? "LIVE" : nn.problem)
@@ -1227,8 +1630,9 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
     public NBTTagCompound writeToNBT(NBTTagCompound t) {
         super.writeToNBT(t);
         t.setString("kind", kind.name());
-        t.setInteger("trips", trips);
+        t.setInteger("trips", trips); t.setInteger("ops", ops);
         t.setBoolean("running", running);
+        t.setBoolean("remoteRun", remoteRun);
         t.setTag("tank", tank.writeToNBT(new NBTTagCompound()));
         NBTTagCompound pc = new NBTTagCompound();
         for (java.util.Map.Entry<String, Integer> e : ps.entrySet()) pc.setInteger(e.getKey(), e.getValue());
@@ -1240,7 +1644,8 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
         t.setBoolean("estop", estop); t.setBoolean("estopFault", estopFault); t.setBoolean("windStopped", windStopped);
         t.setInteger("spring", spring); t.setBoolean("locked", locked); t.setLong("peak", peak); t.setInteger("page", page);
         t.setString("rectFault", rectFault); t.setBoolean("txAlarm", txAlarm); t.setInteger("ackHash", ackHash);
-        t.setFloat("speed", speed); t.setFloat("speedSet", speedSet); t.setInteger("motorState", motorState); t.setString("loto", loto); t.setDouble("peakW", peakW);
+        t.setFloat("speed", speed); t.setFloat("speedSet", speedSet); t.setInteger("motorState", motorState); t.setString("loto", loto); t.setDouble("peakW", peakW); t.setInteger("ctlWire", ctlWire);
+        if (world != null && !world.isRemote) t.setBoolean("burnt", isBurnt());
         cfg.write(t);
         return t;
     }
@@ -1249,8 +1654,9 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
     public void readFromNBT(NBTTagCompound t) {
         super.readFromNBT(t);
         try { kind = GridKind.valueOf(t.getString("kind")); } catch (IllegalArgumentException e) { /* keep */ }
-        trips = t.getInteger("trips");
+        trips = t.getInteger("trips"); ops = t.getInteger("ops");
         running = t.getBoolean("running");
+        remoteRun = t.getBoolean("remoteRun");
         tank.readFromNBT(t.getCompoundTag("tank"));
         NBTTagCompound pc = t.getCompoundTag("ps");
         for (String k : pc.getKeySet()) ps.put(k, pc.getInteger(k));
@@ -1263,6 +1669,8 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
         rectFault = t.getString("rectFault"); txAlarm = t.getBoolean("txAlarm"); ackHash = t.getInteger("ackHash");
         speed = t.getFloat("speed"); speedSet = t.hasKey("speedSet") ? t.getFloat("speedSet") : 1f; motorState = t.getInteger("motorState") == 1 ? 0 : t.getInteger("motorState");
         loto = t.getString("loto"); peakW = t.getDouble("peakW");
+        ctlWire = t.hasKey("ctlWire") ? t.getInteger("ctlWire") : -1;
+        burntClient = t.getBoolean("burnt");
         cfg.read(t);
     }
 
@@ -1280,5 +1688,266 @@ public class TileGrid extends TileEntity implements ITickable, com.dogpound.rail
     @Override
     public void onDataPacket(net.minecraft.network.NetworkManager net, net.minecraft.network.play.server.SPacketUpdateTileEntity pkt) {
         readFromNBT(pkt.getNbtCompound());
+    }
+
+    // ---- SCADA: remote control from OpenComputers (Data Link) and the Auto Controller --------------------------
+    private boolean remoteRun;   // a motor in AUTO runs on a remote command as well as on redstone
+
+    /** the controls a computer may name for this machine (its panel's buttons and selectors) */
+    public List<String> remoteControls() {
+        List<String> l = new ArrayList<>();
+        Panel pn = Panel.of(kind);
+        if (pn == null && getBlockType() != null && !layout().isEmpty()) pn = layout().all;   // model-only controls (IED, ATS, UPS...)
+        if (pn != null) for (Panel.C c : pn.cs) if (c.id != null && !c.id.isEmpty() && c.t != Panel.T.LAMP && c.t != Panel.T.GAUGE && c.t != Panel.T.DIGITS && c.t != Panel.T.TILE && c.t != Panel.T.LABEL) l.add(c.id);
+        if (kind == GridKind.BREAKER) { l.remove("lr"); l.remove("handle"); if (!l.contains("open")) l.add("open"); if (!l.contains("close")) l.add("close"); if (!l.contains("reset")) l.add("reset"); }
+        return l;
+    }
+
+    /**
+     * A remote command: the same interlocks as the panel. Breakers obey only with their key in REMOTE (a real
+     * LOCAL / REMOTE switch); disconnectors and earthing switches are manual-only; a motor takes start / stop in AUTO.
+     * Returns "ok" or the reason it was refused / what the panel said.
+     */
+    public String remote(String id, String who) {
+        if (!loto.isEmpty()) return "LOCKED OUT by " + loto + " - only they can remove the padlock";
+        GridData d = GridData.get(world);
+        GridData.Node n = node();
+        if (n == null) return "not on a network";
+        switch (kind) {
+            case BREAKER: {
+                if (pv("lr") != 1) return "breaker key is in LOCAL - turn it to REMOTE for SCADA control";
+                switch (id) {
+                    case "open": case "trip":
+                        if (n.breaker != 0) return "already open";
+                        setBreaker((byte) 1, "opened by SCADA (" + who + ")"); sync(); return "ok";
+                    case "close":
+                        if (n.breaker == 2) return "TRIPPED - lockout: reset first";
+                        if (n.breaker == 0) return "already closed";
+                        if (spring < 100) return "closing spring still charging (" + spring + "%)";
+                        if (!hasRelay()) return "no Protection Relay touching it";
+                        if (!earthedBothSides(d)) return "network not earthed";
+                        { String il = GridGear.interlock(world, pos); if (!il.isEmpty()) return il; }
+                        { String pw = Permits.closeBlocked(world, pos); if (!pw.isEmpty()) return pw; }
+                        setBreaker((byte) 0, "closed by SCADA (" + who + ")"); spring = 0; sync(); return "ok";
+                    case "reset":
+                        if (n.breaker != 2) return "nothing to reset";
+                        setBreaker((byte) 1, "lockout reset by SCADA (" + who + ")"); sync(); return "ok";
+                    default: return "a breaker takes: open, close, reset";
+                }
+            }
+            case ISOLATOR: case EARTHING: return "manual-only device - operate it at the switch itself";
+            case MOTOR:
+                if (id.equals("start") || id.equals("stop")) {
+                    if (pv("hoa") != 2) return "selector is in " + (pv("hoa") == 0 ? "HAND" : "OFF") + " - remote control needs AUTO";
+                    remoteRun = id.equals("start"); markDirty();
+                    if (!remoteRun && (motorState == 1 || motorState == 2)) motorState = 0;
+                    return "ok";
+                }
+                break;
+            case RELAY: if (id.equals("test")) return "relay test is local-only"; break;
+            default: break;
+        }
+        if (!remoteControls().contains(id)) return "no control '" + id + "' on this " + kind.label + " (has: " + String.join(", ", remoteControls()) + ")";
+        String r = press(id, null);
+        if (r == null || r.equals("ok")) return "ok";
+        boolean refused = r.startsWith("§c") || r.startsWith("§e") || r.startsWith("§6") || r.startsWith("§7Already") || r.startsWith("§7Nothing");
+        return (refused ? "" : "ok: ") + r.replaceAll("§.", "");
+    }
+
+    // ---- next-48 #44: chaos scenarios trip a breaker and put it back exactly as it was (test mode only) -------------
+    public byte breakerState() { GridData.Node n = node(); return n == null ? -1 : n.breaker; }
+    public void chaosTrip(String why) { if (kind == GridKind.BREAKER && node() != null && node().breaker == 0) { setBreaker((byte) 2, "TRIPPED: " + why); sync(); } }
+    public void chaosRestore(byte was, String why) { if (kind == GridKind.BREAKER && node() != null && node().breaker != was) { setBreaker(was, why); sync(); } }
+
+    private static final String[] BREAKER_STATE = {"closed", "open", "tripped"}, MOTOR_STATE = {"stopped", "starting", "running", "overload tripped"};
+
+    /** everything a computer can read about this machine */
+    public java.util.Map<String, Object> remoteInfo() {
+        java.util.Map<String, Object> m = new java.util.LinkedHashMap<>();
+        GridData d = GridData.get(world);
+        GridData.Node n = node();
+        GridData.Net net = d.netOf(pos);
+        m.put("x", pos.getX()); m.put("y", pos.getY()); m.put("z", pos.getZ());
+        m.put("kind", kind.id.replace("grid_", "")); m.put("name", kind.label);
+        if (n == null) return m;
+        m.put("network", n.net);
+        if (net != null) {
+            m.put("live", net.problem.isEmpty()); m.put("problem", net.problem);
+            if (net.level != null) {
+                m.put("level", net.level.label);
+                m.put("volts", Math.round(net.level.volts * (n.pu > 0 ? n.pu : net.puSource)));
+                m.put("hz", net.level.ac ? Math.round(net.level.hz * net.hzPu * 100) / 100.0 : 0);
+            }
+        }
+        m.put("amps", Math.round(n.amps * 10) / 10.0);
+        m.put("locked", !loto.isEmpty());
+        switch (kind) {
+            case BREAKER: m.put("state", BREAKER_STATE[Math.max(0, Math.min(2, n.breaker))]); m.put("remote", pv("lr") == 1); break;
+            case ISOLATOR: m.put("state", n.breaker == 0 ? "closed" : "open"); break;
+            case EARTHING: m.put("earthed", n.earthOn); break;
+            case DIESEL: case TURBINE:
+                m.put("running", running); m.put("breakerClosed", n.gcb); m.put("mode", new String[]{"off", "manual", "auto"}[Math.max(0, Math.min(2, pv("mode")))]);
+                m.put("genHz", Math.round(n.speed * 600) / 10.0); m.put("loadPct", Math.round(n.genLoad * 100)); m.put("fault", fault);
+                m.put("fuel", n.energy); break;
+            case MOTOR: m.put("state", MOTOR_STATE[Math.max(0, Math.min(3, motorState))]); m.put("selector", new String[]{"hand", "off", "auto"}[Math.max(0, Math.min(2, pv("hoa")))]); m.put("kw", motorKw()); break;
+            case BATTERY: m.put("on", n.batOn); m.put("energy", n.energy); m.put("capacity", kind.capacity); break;
+            case INTAKE: m.put("on", n.mainOn); m.put("energy", n.energy); m.put("capacity", kind.capacity); break;
+            case RECTIFIER: case INVERTER: case DCDC: m.put("on", n.dcOn); m.put("fault", rectFault); break;
+            case SOLAR: case WIND: m.put("energy", n.energy);
+                if (kind == GridKind.WIND && towerSections() > 0) {
+                    m.put("wind", Math.round(Wind.at(world, hubHeightM()) * 10) / 10.0); m.put("windFrom", Wind.compass(Wind.from(world)));
+                    m.put("rpm", Math.round(rotorRpm() * 10) / 10.0); m.put("hubM", Math.round(hubHeightM())); m.put("rotor", ROTORS[rotorSize()]);
+                }
+                break;
+            default: break;
+        }
+        GridGear.info(this, n, m);
+        m.put("controls", remoteControls());
+        return m;
+    }
+
+    // ---- Auto Controller: the default program (no computer needed) ------------------------------------------
+    private final java.util.Map<Long, long[]> arTrips = new java.util.HashMap<>();   // breaker -> {reclose attempts, tick of the last attempt}
+    private final java.util.Deque<Long> shedList = new java.util.ArrayDeque<>();      // breakers we opened to shed load (last first)
+    private String autoEvent = "standing by";
+    private int arDone, genDone, autoHash, autoAck;
+    private long lastShed, calmSince;
+    private boolean autoAlarm, genRunning;
+
+    private void autoLog(String s) {
+        autoEvent = s;
+        GridTicker.alarm(world, pos.toLong(), "§b⚙ Auto Controller: §7" + s);
+    }
+
+    private static String at(BlockPos p) { return p.getX() + " " + p.getY() + " " + p.getZ(); }
+
+    private TileGrid tileAt(BlockPos p) { return world.isBlockLoaded(p) && world.getTileEntity(p) instanceof TileGrid g ? g : null; }
+
+    public boolean autoAlarmOut() { return autoAlarm && pv("mcb") == 0; }
+
+    private void autoControl() {
+        GridData d = GridData.get(world);
+        long now = world.getTotalWorldTime();
+        java.util.List<String> alarms = GridRemote.alarms(world);
+        autoHash = alarms.isEmpty() ? 0 : alarms.hashCode();
+        boolean was = autoAlarm;
+        autoAlarm = autoHash != 0 && autoHash != autoAck;
+        if (autoAlarm && now % 40 < 20) world.playSound(null, pos, com.dogpound.railmap.ModSounds.BUZZER, SoundCategory.BLOCKS, 1f, 1.0f);
+        if (was != autoAlarm) world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
+        if (pv("master") != 1) return;
+
+        boolean stressed = false;
+        int hotNet = -1;
+        genRunning = false;
+        for (java.util.Map.Entry<Long, GridData.Node> e : new java.util.ArrayList<>(d.nodes().entrySet())) {
+            BlockPos p = BlockPos.fromLong(e.getKey());
+            GridData.Node n = e.getValue();
+            // 1) auto-reclose: a tripped breaker gets reset + closed after 5 s dead time, three tries, then lockout
+            if (n.kind == GridKind.BREAKER && pv("ar") == 1) {
+                long[] s = arTrips.get(e.getKey());
+                if (n.breaker == 2) {
+                    if (s == null) { s = new long[]{0, now}; arTrips.put(e.getKey(), s); autoLog("breaker " + at(p) + " TRIPPED - reclosing in 5 s"); }
+                    if (s[0] < 3 && now - s[1] >= 100) {
+                        TileGrid g = tileAt(p);
+                        if (g != null) {
+                            g.remote("reset", "auto-reclose");
+                            String r = g.remote("close", "auto-reclose");
+                            s[0]++; s[1] = now; arDone++;
+                            if (s[0] >= 3 && !r.startsWith("ok")) autoLog("LOCKOUT: breaker " + at(p) + " - " + r);
+                            else autoLog(r.startsWith("ok") ? "reclosed " + at(p) + " (try " + s[0] + "/3)" : "reclose " + at(p) + " refused: " + r);
+                        }
+                    } else if (s[0] >= 3 && s[1] > 0) { autoLog("LOCKOUT: breaker " + at(p) + " tripped 3 times - fix the fault, then RESET LOCKOUT"); s[1] = -1; }
+                } else if (s != null && n.breaker == 0 && s[1] > 0 && now - s[1] > 600) arTrips.remove(e.getKey());   // held 30 s: count cleared
+            }
+            // a transformer about to overheat (derated by heat / failed fans): shed what it feeds before it trips (#40 + #42)
+            if ((n.kind == GridKind.TRANSFORMER || n.kind == GridKind.TRACTION) && n.heat > 85 && !n.hot) { stressed = true; hotNet = n.net; }
+            // generators: overloaded = stress; note any running
+            if (n.kind == GridKind.DIESEL || n.kind == GridKind.TURBINE) {
+                TileGrid g = tileAt(p);
+                if (g != null && g.running) genRunning = true;
+                if (n.gcb && n.genLoad > 1.0) stressed = true;
+            }
+        }
+        // 2) load shedding: low frequency or an overloaded generator -> open the heaviest REMOTE breaker on that network
+        GridData.Net worst = null;
+        for (GridData.Net net : d.nets()) {
+            if (net.level == null || !net.level.ac || !net.problem.isEmpty() || net.utility) continue;
+            if (net.hzPu < 0.985) { stressed = true; worst = net; }
+        }
+        if (pv("shed") == 1) {
+            if (stressed) {
+                calmSince = now;
+                if (now - lastShed >= 40) {
+                    // priority order (#40): non-essential first (heaviest of them first), then essential; critical never
+                    BlockPos best = null; double amps = -1; int bestPrio = -1;
+                    for (java.util.Map.Entry<Long, GridData.Node> e : d.nodes().entrySet()) {
+                        GridData.Node n = e.getValue();
+                        if (n.kind != GridKind.BREAKER || n.breaker != 0 || shedList.contains(e.getKey())) continue;
+                        int prio = n.get("prio", 2);
+                        if (prio == 0) continue;                                               // critical: signalling, control, safety
+                        if (worst != null && n.net != worst.id) continue;
+                        if (worst == null && hotNet >= 0 && n.net != hotNet) continue;
+                        TileGrid g = tileAt(BlockPos.fromLong(e.getKey()));
+                        if (g == null || g.pv("lr") != 1) continue;
+                        if (prio > bestPrio || prio == bestPrio && n.amps > amps) { amps = n.amps; bestPrio = prio; best = BlockPos.fromLong(e.getKey()); }
+                    }
+                    if (best != null) {
+                        String r = tileAt(best).remote("open", "load shedding");
+                        if (r.startsWith("ok")) { shedList.push(best.toLong()); autoLog("SHED " + (bestPrio == 2 ? "non-essential" : "ESSENTIAL") + " load: opened " + at(best) + String.format(java.util.Locale.ROOT, " (%.0f A)", amps));
+                            History.log(world, best, "SHED", (bestPrio == 2 ? "non-essential" : "essential") + String.format(java.util.Locale.ROOT, " load shed by the Auto Controller (%.0f A)", amps)); }
+                        lastShed = now;
+                    }
+                }
+            } else if (!shedList.isEmpty() && now - calmSince > 600 && now - lastShed > 200 && headroom(d)) {   // 30 s steady + spare capacity: restore one at a time, essential first
+                BlockPos p = BlockPos.fromLong(shedList.pop());
+                TileGrid g = tileAt(p);
+                String r = g == null ? "unloaded" : g.remote("close", "load restore");
+                autoLog(r.startsWith("ok") ? "restored load: closed " + at(p) : "restore " + at(p) + " refused: " + r);
+                lastShed = now;
+            }
+        }
+        // 3) standby generator start: a dead / sagging network -> crank the gensets (MAN mode) and sync them on
+        if (pv("gen") == 1) {
+            boolean need = stressed;
+            for (GridData.Net net : d.nets()) if (net.problem.startsWith("No energy")) need = true;
+            for (java.util.Map.Entry<Long, GridData.Node> e : d.nodes().entrySet()) {
+                GridData.Node n = e.getValue();
+                if (n.kind != GridKind.DIESEL && n.kind != GridKind.TURBINE) continue;
+                BlockPos p = BlockPos.fromLong(e.getKey());
+                TileGrid g = tileAt(p);
+                if (g == null || g.pv("mode") == 0) continue;
+                if (need && !g.running) {
+                    String r = g.remote("start", "standby start");
+                    if (r.startsWith("ok")) { genDone++; autoLog("standby start: " + n.kind.label + " " + at(p)); }
+                } else if (g.running && !n.gcb && g.pv("mode") == 1) {
+                    String r = g.remote("gcbclose", "standby start");
+                    if (r.startsWith("ok")) autoLog("generator " + at(p) + " synchronised and on the bus");
+                }
+            }
+        }
+    }
+
+    /** room to pick load back up: no generator above 80 %, no island below 59.8 Hz, no transformer above 70 °C rise */
+    private static boolean headroom(GridData d) {
+        for (GridData.Node n : d.nodes().values()) {
+            if ((n.kind == GridKind.DIESEL || n.kind == GridKind.TURBINE) && n.feeding() && (n.genLoad > 0.8 || n.speed < 0.997)) return false;
+            if ((n.kind == GridKind.TRANSFORMER || n.kind == GridKind.TRACTION) && n.heat > 70) return false;
+        }
+        return true;
+    }
+
+    // ---- solar tracking -------------------------------------------------------------------------------------------
+    /** where the sun is: degrees from overhead, negative = east (morning), positive = west (afternoon); |x| > 90 = night */
+    public static double sunAngle(net.minecraft.world.World w, float pt) {
+        double a = w.getCelestialAngle(pt) * 360.0;
+        return a > 180 ? a - 360 : a;
+    }
+
+    /** the tracker deck's tilt about its north-south axis (degrees, same sign as the sun) */
+    public double solarTilt(net.minecraft.world.World w, float pt) {
+        if (pv("track") != 1 || pv("stow") == 1 || pv("dc") == 0 || w.isThundering()) return 0;
+        double sd = sunAngle(w, pt);
+        if (Math.abs(sd) >= 90) return 0;                              // night: back to flat
+        return Math.max(-60, Math.min(60, sd));                        // ±60° drive limit, like a real single-axis tracker
     }
 }

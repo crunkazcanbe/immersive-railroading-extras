@@ -1,0 +1,4 @@
+{"type": "minecraft:crafting_shaped", "pattern": ["GRG", "IDI", "INI"],
+ "key": {"G": {"item": "minecraft:glowstone_dust"}, "R": {"item": "minecraft:redstone"}, "I": {"item": "minecraft:iron_ingot"},
+         "D": {"item": "minecraft:noteblock"}, "N": {"item": "minecraft:redstone_lamp"}},
+ "result": {"item": "irextras:annunciator"}}

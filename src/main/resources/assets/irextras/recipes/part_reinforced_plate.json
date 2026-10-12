@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "IOI",
+  "OBO",
+  "IOI"
+ ],
+ "key": {
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "O": {
+   "item": "minecraft:obsidian"
+  },
+  "B": {
+   "type": "forge:ore_dict",
+   "ore": "blockIron"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 0,
+  "count": 2
+ }
+}

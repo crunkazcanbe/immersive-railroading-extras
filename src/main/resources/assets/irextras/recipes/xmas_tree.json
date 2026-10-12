@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " G ",
+  "LSL",
+  " W "
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:gold_nugget"
+  },
+  "L": {
+   "item": "minecraft:leaves",
+   "data": 1
+  },
+  "S": {
+   "item": "minecraft:sapling",
+   "data": 1
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:xmas_tree"
+ }
+}

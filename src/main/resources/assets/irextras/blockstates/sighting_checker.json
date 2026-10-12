@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:sighting_checker"
+  },
+  "facing=east": {
+   "model": "irextras:sighting_checker",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:sighting_checker",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:sighting_checker",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GGG",
+  "CRC",
+  "PPP"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "R": {
+   "item": "minecraft:repeater"
+  },
+  "P": {
+   "item": "minecraft:planks",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:ropeway_desk",
+  "count": 1
+ }
+}

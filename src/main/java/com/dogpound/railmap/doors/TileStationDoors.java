@@ -23,7 +23,85 @@ import java.util.List;
  * platform), dwell, closing chime + warning beeps, doors close, the platform screen doors follow, the train is held
  * until every door is shut, and a redstone signal tells you what's happening. Everything is programmable.
  */
-public class TileStationDoors extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileStationDoors extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.wire.IWiredGear, com.dogpound.railmap.controls.IControlled {
+    // ---- working controls (requested feature): OPEN / CLOSE work the real doors, the MODE key picks AUTO (doors run
+    // themselves), MAN (they open and close only on the buttons) or LOCK (kept shut); the E-stop freezes the sequence and
+    // holds the train; lamps, beacon and screen show the real phase.
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { gearChanged(); }
+    private int mode() { return ctl.get("mode"); }
+    private boolean estop() { return ctl.get("estop") == 1; }
+
+    @Override
+    public String controlPress(String id, net.minecraft.entity.player.EntityPlayer who) {
+        switch (id) {
+            case "estop":
+                ctl.set(id, estop() ? 0 : 1);
+                return estop() ? "§cPLATFORM EMERGENCY STOP - doors and train held" : "§aE-stop released";
+            case "mode":
+                ctl.set(id, (mode() + 1) % 3);
+                if (mode() == 2) shutSoon();
+                return "§eDoor mode: " + new String[]{"AUTO - doors open for every train", "MANUAL - OPEN / CLOSE buttons only", "LOCKED - doors kept shut"}[mode()];
+            case "open": {
+                if (!term.powered()) return "§cNo 12 V - the door controller is dead";
+                if (estop()) return "§cE-stop is in - twist it out first";
+                if (mode() == 2) return "§cDoors are LOCKED - turn the key to AUTO or MAN";
+                if (!IR) return "§7Needs Immersive Railroading";
+                switch (phase) {
+                    case OPEN: case WARNING: phase = Phase.OPEN; timer = cfg.num("dwell") * 20; closeAsked = false; return "§aDoors held open";
+                    case CLOSING: phase = Phase.OPENING; timer = 0; return "§aDoors re-opening";
+                    case STOPPING: case OPENING: return "§7Doors are already opening";
+                    default:
+                        if (carsAlongside().isEmpty()) return "§7No train at the platform";
+                        phase = Phase.STOPPING;
+                        return "§aOpening the doors";
+                }
+            }
+            case "close":
+                if (!term.powered()) return "§cNo 12 V - the door controller is dead";
+                if (phase == Phase.OPEN) { shutSoon(); return "§eClosing - warning beeps then doors shut"; }
+                if (phase == Phase.STOPPING || phase == Phase.OPENING) { phase = Phase.DEPARTING; return "§eOpening cancelled - doors stay shut"; }
+                return "§7Doors are already shut";
+            default:
+                return null;
+        }
+    }
+
+    /** start the closing warning now */
+    private void shutSoon() { if (phase == Phase.OPEN) { timer = Math.min(timer, cfg.num("warn") * 20); closeAsked = true; } }
+    private boolean closeAsked;
+
+    /** lamps, beacon and screen from the real phase */
+    private void showPhase() {
+        boolean pw = term.powered(), open = phase == Phase.OPEN || phase == Phase.WARNING;
+        boolean moving = phase == Phase.OPENING || phase == Phase.WARNING || phase == Phase.CLOSING;
+        com.dogpound.railmap.controls.ControlState c = ctl;
+        boolean ch = com.dogpound.railmap.block.StationControls.put(c, "lopen", pw && open)
+                | com.dogpound.railmap.block.StationControls.put(c, "lshut", pw && !open && phase != Phase.CLOSING)
+                | com.dogpound.railmap.block.StationControls.put(c, "llock", pw && (mode() == 2 || phase == Phase.DEPARTING))
+                | com.dogpound.railmap.block.StationControls.put(c, "beacon", pw && moving);
+        String info = estop() ? "E-STOP" : mode() == 2 ? "LOCKED" : phase == Phase.OPEN ? (mode() == 1 ? "MANUAL" : "CLOSE IN " + Math.max(0, timer / 20 - cfg.num("warn")) + "s")
+                : lastTrain.isEmpty() ? (mode() == 1 ? "MANUAL" : "AUTO") : lastTrain;
+        ch |= com.dogpound.railmap.block.StationControls.text(c, "phase", pw ? (phase == Phase.IDLE ? "READY" : phase.name()) : "")
+                | com.dogpound.railmap.block.StationControls.text(c, "info", pw ? info : "");
+        if (ch) controlsChanged();
+    }
+
+    @Override public com.dogpound.railmap.grid.Panel wiredPanel() { return layout().all; }
+    @Override public String wiredPress(String id, String who) { return com.dogpound.railmap.controls.IControlled.operate(this, id, null); }
+    @Override public int wiredState(String id) { return controlValue(id); }
+    @Override public NBTTagCompound getUpdateTag() { return writeToNBT(new NBTTagCompound()); }
+    @Override public net.minecraft.network.play.server.SPacketUpdateTileEntity getUpdatePacket() { return new net.minecraft.network.play.server.SPacketUpdateTileEntity(pos, 0, getUpdateTag()); }
+    @Override public void onDataPacket(net.minecraft.network.NetworkManager net, net.minecraft.network.play.server.SPacketUpdateTileEntity pkt) { readFromNBT(pkt.getNbtCompound()); }
+
+    // ---- 12 V terminal (requested feature): needs 12 V DC instrument power; with none it is stopped - hand-operated only
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); if (world != null && !world.isRemote) { net.minecraft.block.state.IBlockState gs = world.getBlockState(pos); world.notifyBlockUpdate(pos, gs, gs, 3); } }
+    @Override public String wiredName() { return "Station doors"; }
+    @Override public String gearState() { return term.powered() ? phase.name().toLowerCase(java.util.Locale.ROOT) + " · " + served + " trains" : "NO 12 V - stopped - hand-operated only"; }
+
     private static final boolean IR = Loader.isModLoaded("immersiverailroading");
     public enum Phase { IDLE, STOPPING, OPENING, OPEN, WARNING, CLOSING, DEPARTING }
 
@@ -38,7 +116,9 @@ public class TileStationDoors extends TileEntity implements ITickable, com.dogpo
 
     @Override
     public void update() {
+        if (world != null && !world.isRemote) { if (term.tick(world, pos, wiredName())) gearChanged(); if (world.getTotalWorldTime() % 4 == 0) showPhase(); if (!term.powered()) return; }
         if (world == null || world.isRemote || !IR || world.getTotalWorldTime() % 2 != 0) return;
+        if (estop()) { hold(carsAlongside()); return; }                    // E-stop: everything frozen, train held
         boolean power = world.isBlockPowered(pos);
         boolean pulse = power && !lastRedstone;
         lastRedstone = power;
@@ -48,7 +128,7 @@ public class TileStationDoors extends TileEntity implements ITickable, com.dogpo
         if (timer > 0) timer -= 2;
         switch (phase) {
             case IDLE:
-                if (cfg.bool("enabled") && stopped && (!rs.equals("Only when powered") || power) && allowed(here)) {
+                if (cfg.bool("enabled") && mode() == 0 && stopped && (!rs.equals("Only when powered") || power) && allowed(here)) {
                     still += 2;
                     if (still >= cfg.num("settle") * 20) { phase = Phase.STOPPING; timer = 0; }
                 } else {
@@ -66,7 +146,7 @@ public class TileStationDoors extends TileEntity implements ITickable, com.dogpo
                 break;
             case OPENING:
                 if (timer <= 0) {
-                    for (EntityRollingStock c : here) for (String side : sides(c)) TrainDoors.move(world, c, side, true, cfg.num("stroke") / 10f);
+                    for (EntityRollingStock c : here) if (com.dogpound.railmap.station.PlatformOps.doorsMayOpen(world, pos, c)) for (String side : sides(c)) TrainDoors.move(world, c, side, true, cfg.num("stroke") / 10f);   // door safety / SDO (batch 3 #32)
                     platformDoors(true);
                     served++;
                     timer = cfg.num("dwell") * 20;
@@ -77,12 +157,13 @@ public class TileStationDoors extends TileEntity implements ITickable, com.dogpo
                 break;
             case OPEN:
                 hold(here);
-                boolean keep = rs.equals("Hold open while powered") && power;
+                boolean keep = (rs.equals("Hold open while powered") && power || mode() == 1) && !closeAsked;   // MAN: open until CLOSE
                 if (keep) timer = Math.max(timer, 20);
                 if (timer <= cfg.num("warn") * 20 && !keep) {
                     if (cfg.bool("chimeClose")) chime();
                     if (cfg.bool("beeps")) for (EntityRollingStock c : here) TrainDoors.sound(world, c, ModSounds.DOOR_WARN, cfg.num("volume") / 100f);
                     phase = Phase.WARNING;
+                    closeAsked = false;
                 }
                 if (here.isEmpty()) phase = Phase.CLOSING;
                 break;
@@ -250,6 +331,7 @@ public class TileStationDoors extends TileEntity implements ITickable, com.dogpo
         l.add(Setting.info(st, "Now", phase.name().toLowerCase(java.util.Locale.ROOT)));
         l.add(Setting.info(st, "Trains served", String.valueOf(served)));
         l.add(Setting.info(st, "Last train", lastTrain.isEmpty() ? "-" : lastTrain));
+        com.dogpound.railmap.wire.IWiredGear.settings(l, st, this);
         return l;
     }
 
@@ -259,7 +341,9 @@ public class TileStationDoors extends TileEntity implements ITickable, com.dogpo
         t.setString("phase", phase.name());
         t.setInteger("served", served);
         t.setString("lastTrain", lastTrain);
+        term.write(t);
         cfg.write(t);
+        ctl.write(t);
         return t;
     }
 
@@ -269,6 +353,8 @@ public class TileStationDoors extends TileEntity implements ITickable, com.dogpo
         try { phase = Phase.valueOf(t.getString("phase")); } catch (IllegalArgumentException e) { phase = Phase.IDLE; }
         served = t.getInteger("served");
         lastTrain = t.getString("lastTrain");
+        term.read(t);
         cfg.read(t);
+        ctl.read(t);
     }
 }

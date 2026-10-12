@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ambulance_station"
+  },
+  "facing=east": {
+   "model": "irextras:ambulance_station",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ambulance_station",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ambulance_station",
+   "y": 270
+  }
+ }
+}

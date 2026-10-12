@@ -1,0 +1,115 @@
+{
+ "title": "evac_sign",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 12.7,
+   "title": "SIGN",
+   "controls": [
+    {
+     "id": "exit",
+     "t": "digits",
+     "u": 6.6,
+     "v": 12.9,
+     "w": 8.6,
+     "h": 2.2,
+     "col": "30ff60",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 12.35,
+   "title": "SPOTS",
+   "controls": [
+    {
+     "id": "spotl",
+     "t": "lamp",
+     "u": 14.0,
+     "v": 8.8,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "fff6d8",
+     "label": ""
+    },
+    {
+     "id": "spotr",
+     "t": "lamp",
+     "u": 2.0,
+     "v": 8.8,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "fff6d8",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 12.5,
+   "title": "LEDS",
+   "controls": [
+    {
+     "id": "charge",
+     "t": "lamp",
+     "u": 8.4,
+     "v": 8.2,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 7.7,
+     "v": 8.2,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": ""
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 8.05,
+     "v": 9.1,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": ""
+    },
+    {
+     "id": "battp",
+     "t": "digits",
+     "u": 4.8,
+     "v": 9.05,
+     "w": 1.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d%%"
+    },
+    {
+     "id": "s_arrow",
+     "t": "selector",
+     "u": 11.4,
+     "v": 6.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "-",
+      "<",
+      ">",
+      "^",
+      "V"
+     ]
+    }
+   ]
+  }
+ ]
+}

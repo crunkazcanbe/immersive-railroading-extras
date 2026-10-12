@@ -1,0 +1,41 @@
+{
+ "block": "field_rtu",
+ "title": "FIELD RTU",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "field_rtu_door1",
+   "hinge": [
+    13.15,
+    14.22
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "field_rtu_door2",
+   "hinge": [
+    2.85,
+    14.22
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "scr",
+   "label": "SCREENS"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

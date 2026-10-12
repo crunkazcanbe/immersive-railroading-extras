@@ -1,0 +1,21 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "LLL",
+  "WWW",
+  "LLL"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:leather"
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  }
+ },
+ "result": {
+  "item": "irextras:grid_cable",
+  "count": 8
+ }
+}

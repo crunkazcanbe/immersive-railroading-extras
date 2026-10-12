@@ -1,0 +1,102 @@
+{
+ "title": "radio_mast",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.48,
+   "title": "RADIO MAST",
+   "controls": [
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 11.2,
+     "v": 6.7,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "tx",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 6.7,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30a0ff",
+     "label": "TX",
+     "blink": true
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 8.4,
+     "v": 6.7,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "FLT",
+     "blink": true
+    },
+    {
+     "id": "links",
+     "t": "digits",
+     "u": 5.6,
+     "v": 6.7,
+     "w": 2.6,
+     "h": 0.9,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d TRN"
+    },
+    {
+     "id": "cell",
+     "t": "digits",
+     "u": 9.4,
+     "v": 4.9,
+     "w": 4.8,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rssi",
+     "t": "digits",
+     "u": 5.6,
+     "v": 4.9,
+     "w": 2.6,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s_power",
+     "t": "selector",
+     "u": 10.4,
+     "v": 3.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "1W",
+      "5W",
+      "25W"
+     ]
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 5.0,
+     "v": 3.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

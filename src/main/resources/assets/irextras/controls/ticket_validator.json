@@ -1,0 +1,53 @@
+{
+ "title": "ticket_validator",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 6.28,
+   "title": "VALIDATOR",
+   "controls": [
+    {
+     "id": "reader",
+     "t": "zone",
+     "u": 8.0,
+     "v": 19.8,
+     "w": 4.0,
+     "h": 5.0,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "ok",
+     "t": "lamp",
+     "u": 9.4,
+     "v": 22.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "OK"
+    },
+    {
+     "id": "no",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 22.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "NO"
+    },
+    {
+     "id": "msg",
+     "t": "digits",
+     "u": 8.0,
+     "v": 24.2,
+     "w": 4.4,
+     "h": 1.4,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

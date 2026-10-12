@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GCG",
+  "RKR",
+  "ISI"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "K": {
+   "item": "minecraft:tripwire_hook"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:rack_panel",
+  "count": 1
+ }
+}

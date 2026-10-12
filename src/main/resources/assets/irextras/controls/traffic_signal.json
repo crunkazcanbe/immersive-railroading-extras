@@ -1,0 +1,75 @@
+{
+ "title": "traffic_signal",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 6.2,
+   "title": "SIGNAL",
+   "controls": [
+    {
+     "id": "r",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 28.4,
+     "w": 3.6,
+     "h": 3.6,
+     "col": "ff2a20",
+     "label": "RED"
+    },
+    {
+     "id": "a",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 23.2,
+     "w": 3.6,
+     "h": 3.6,
+     "col": "ffa018",
+     "label": "AMBER"
+    },
+    {
+     "id": "g",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 18.0,
+     "w": 3.6,
+     "h": 3.6,
+     "col": "30ff70",
+     "label": "GREEN"
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": 5.38,
+   "title": "HEAD",
+   "controls": [
+    {
+     "id": "s_grp",
+     "t": "selector",
+     "u": 8.0,
+     "v": 23.0,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "202020",
+     "label": "GROUP",
+     "pos": [
+      "A",
+      "B",
+      "C",
+      "D"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 21.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PHASE GROUP"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "B B",
+  "BPB",
+  "IRI"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:iron_bars"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "R": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:boarding_lift",
+  "count": 1
+ }
+}

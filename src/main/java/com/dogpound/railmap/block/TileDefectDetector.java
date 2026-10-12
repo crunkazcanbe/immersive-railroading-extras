@@ -42,7 +42,28 @@ import java.util.HashMap;
  * <p>
  * Redstone: a pulse while it reports, strength 15 on a defect, 8 on a clean train.
  */
-public class TileDefectDetector extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileDefectDetector extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.wire.IWiredGear, com.dogpound.railmap.controls.IControlled {
+    // ---- the amber warning lamp on the roof, live (requested feature): flashes for a minute after a train with a
+    // defect (12 V; dark without it). Real detectors have no outside buttons, so there are none. Also on the WIRED page.
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    private long alarmUntil;
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { gearChanged(); }
+    @Override public com.dogpound.railmap.grid.Panel wiredPanel() { return layout().isEmpty() ? null : layout().all; }
+    @Override public int wiredState(String id) { return controlValue(id); }
+
+    private void readings() {
+        int w = term.powered() && world.getTotalWorldTime() < alarmUntil ? 1 : 0;
+        if (ctl.get("warn") != w) { ctl.set("warn", w); gearChanged(); }
+    }
+
+    // ---- 12 V terminal (requested feature): needs 12 V DC instrument power; with none it is INTEGRITY FAILURE - not detecting
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); if (world != null && !world.isRemote) { net.minecraft.block.state.IBlockState gs = world.getBlockState(pos); world.notifyBlockUpdate(pos, gs, gs, 3); } }
+    @Override public String wiredName() { return "Defect detector"; }
+    @Override public String gearState() { return term.powered() ? lastReport.isEmpty() ? trainsMeasured + " trains measured" : lastReport : "NO 12 V - INTEGRITY FAILURE - not detecting"; }
+
     private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
     private int trainsMeasured, defects;
     private String lastReport = "";
@@ -80,6 +101,7 @@ public class TileDefectDetector extends TileEntity implements ITickable, com.dog
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Defects found", String.valueOf(defects)));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Milepost", milepost()));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Last report", lastReport.isEmpty() ? "-" : lastReport));
+        com.dogpound.railmap.wire.IWiredGear.settings(l, st, this);
         return l;
     }
 
@@ -132,6 +154,11 @@ public class TileDefectDetector extends TileEntity implements ITickable, com.dog
 
     @Override
     public void update() {
+        if (world != null && !world.isRemote) {
+            if (term.tick(world, pos, wiredName())) gearChanged();
+            if (world.getTotalWorldTime() % 10 == 4) readings();
+            if (!term.powered()) return;
+        }
         if (world.isRemote) return;
         if (outputTicks > 0 && --outputTicks == 0) {
             output = 0;
@@ -200,7 +227,7 @@ public class TileDefectDetector extends TileEntity implements ITickable, com.dog
         int temp = temperatureF();
         if (metric) temp = Math.round((temp - 32) * 5 / 9f);
         trainsMeasured++;
-        if (defect != null) defects++;
+        if (defect != null) { defects++; alarmUntil = world.getTotalWorldTime() + 1200; }
 
         String detail = cfg.text("detail");
         StringBuilder sb = new StringBuilder();
@@ -225,13 +252,14 @@ public class TileDefectDetector extends TileEntity implements ITickable, com.dog
                 p.sendMessage(msg);
                 if (cfg.bool("actionbar")) p.sendStatusMessage(new TextComponentString((defect == null ? TextFormatting.AQUA : TextFormatting.GOLD) + "[RADIO] " + (defect == null ? "No defects" : "DEFECT: " + defect)), true);
             }
-            net.minecraft.util.SoundEvent tone = switch (cfg.text("tone")) {
-                case "Chime" -> SoundEvents.BLOCK_NOTE_CHIME;
-                case "Bell" -> SoundEvents.BLOCK_NOTE_BELL;
+            String tone = switch (cfg.text("tone")) {
+                case "Chime" -> "station.chime_pling";
+                case "Bell" -> "cab.aws_bell";
                 case "None" -> null;
-                default -> SoundEvents.BLOCK_NOTE_PLING;
+                default -> "cab.radio";
             };
-            if (tone != null) world.playSound(null, pos, tone, SoundCategory.BLOCKS, 1.0f, 1.5f);
+            if (tone != null) world.playSound(null, pos, com.dogpound.railmap.sound.PackSounds.ev(tone), SoundCategory.BLOCKS, 1.0f, 1.0f);
+            if (defect != null) world.playSound(null, pos, com.dogpound.railmap.sound.PackSounds.ev("cab.aws_horn"), SoundCategory.BLOCKS, 0.6f, 1.0f);
         }
 
         output = defect == null ? cfg.num("cleanLevel") : cfg.num("defectLevel");
@@ -278,7 +306,9 @@ public class TileDefectDetector extends TileEntity implements ITickable, com.dog
         t.setInteger("measured", trainsMeasured);
         t.setInteger("defects", defects);
         t.setString("last", lastReport);
+        term.write(t);
         cfg.write(t);
+        ctl.write(t);
         return t;
     }
 
@@ -290,7 +320,9 @@ public class TileDefectDetector extends TileEntity implements ITickable, com.dog
         trainsMeasured = t.getInteger("measured");
         defects = t.getInteger("defects");
         lastReport = t.getString("last");
+        term.read(t);
         cfg.read(t);
+        ctl.read(t);
     }
 
     @Override

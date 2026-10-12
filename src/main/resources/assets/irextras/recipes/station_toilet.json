@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "QDQ",
+  "QCQ",
+  "QBQ"
+ ],
+ "key": {
+  "Q": {
+   "item": "minecraft:quartz_block",
+   "data": 0
+  },
+  "D": {
+   "item": "minecraft:iron_door"
+  },
+  "C": {
+   "item": "minecraft:cauldron"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  }
+ },
+ "result": {
+  "item": "irextras:station_toilet",
+  "count": 1
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "WBW",
+  "WSW",
+  "WCW"
+ ],
+ "key": {
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "B": {
+   "item": "minecraft:bed",
+   "data": 0
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:hotel_reception",
+  "count": 1
+ }
+}

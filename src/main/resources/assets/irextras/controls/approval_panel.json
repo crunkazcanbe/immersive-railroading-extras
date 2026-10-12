@@ -1,0 +1,253 @@
+{
+ "title": "approval_panel",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 10.35,
+   "title": "TRAY",
+   "controls": [
+    {
+     "id": "tray",
+     "t": "zone",
+     "u": 8.0,
+     "v": 2.5,
+     "w": 11.6,
+     "h": 2.2,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.73,
+   "title": "REQUEST",
+   "controls": [
+    {
+     "id": "r1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.4,
+     "w": 11.6,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "r2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.6,
+     "w": 11.6,
+     "h": 0.6,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "r3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.8,
+     "w": 11.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "r4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.0,
+     "w": 11.6,
+     "h": 0.6,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.6,
+     "w": 11.6,
+     "h": 0.5,
+     "col": "8ac8a0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.9,
+     "w": 11.6,
+     "h": 0.5,
+     "col": "8ac8a0",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.73,
+   "title": "AUTHORISE",
+   "controls": [
+    {
+     "id": "k_a",
+     "t": "key",
+     "u": 12.0,
+     "v": 8.6,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "c0a040",
+     "label": "KEY A",
+     "pos": [
+      "OFF",
+      "AUTH"
+     ]
+    },
+    {
+     "id": "k_b",
+     "t": "key",
+     "u": 4.0,
+     "v": 8.6,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "c0a040",
+     "label": "KEY B",
+     "pos": [
+      "OFF",
+      "AUTH"
+     ]
+    },
+    {
+     "id": "ka",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 10.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "kb",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 10.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "prev",
+     "t": "push",
+     "u": 9.6,
+     "v": 8.6,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "1a1a1a",
+     "label": "<"
+    },
+    {
+     "id": "next",
+     "t": "push",
+     "u": 8.4,
+     "v": 8.6,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "1a1a1a",
+     "label": ">"
+    },
+    {
+     "id": "reject",
+     "t": "push",
+     "u": 6.8,
+     "v": 8.6,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "d02020",
+     "label": "REJECT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 6.8,
+     "v": 6.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "LAMP"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 13.6,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "pend",
+     "t": "lamp",
+     "u": 11.6,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "PENDING",
+     "blink": true
+    },
+    {
+     "id": "appr",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "APPROVED"
+    },
+    {
+     "id": "dual",
+     "t": "lamp",
+     "u": 7.6,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30a0ff",
+     "label": "DUAL"
+    },
+    {
+     "id": "nopen",
+     "t": "digits",
+     "u": 4.4,
+     "v": 13.4,
+     "w": 3.2,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d OPEN"
+    },
+    {
+     "id": "pg",
+     "t": "digits",
+     "u": 2.2,
+     "v": 13.4,
+     "w": 1.8,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

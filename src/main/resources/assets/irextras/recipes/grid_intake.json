@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PCP",
+  "XFX",
+  "PRP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "blockRedstone"
+  }
+ },
+ "result": {
+  "item": "irextras:grid_intake",
+  "count": 1
+ }
+}

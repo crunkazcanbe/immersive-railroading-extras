@@ -1,0 +1,63 @@
+{
+ "title": "tunnel_light",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 11.98,
+   "title": "TUNNEL LIGHT",
+   "controls": [
+    {
+     "id": "lens",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 8.0,
+     "w": 13.4,
+     "h": 3.9,
+     "col": "fff6e0",
+     "label": ""
+    },
+    {
+     "id": "batt",
+     "t": "lamp",
+     "u": 3.2,
+     "v": 4.8,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "chg",
+     "t": "lamp",
+     "u": 2.4,
+     "v": 4.8,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ffb020",
+     "label": ""
+    },
+    {
+     "id": "pct",
+     "t": "digits",
+     "u": 5.2,
+     "v": 4.8,
+     "w": 1.6,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 1.4,
+     "v": 4.8,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

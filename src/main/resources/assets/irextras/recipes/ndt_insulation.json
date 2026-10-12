@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "MD ",
+  "CB "
+ ],
+ "key": {
+  "M": {
+   "item": "irextras:part",
+   "data": 21
+  },
+  "D": {
+   "item": "minecraft:gold_ingot"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 22
+  }
+ },
+ "result": {
+  "item": "irextras:ndt_tool",
+  "data": 3
+ }
+}

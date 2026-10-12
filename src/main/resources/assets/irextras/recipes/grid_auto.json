@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "VCV",
+  "CFC",
+  "PEP"
+ ],
+ "key": {
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  }
+ },
+ "result": {
+  "item": "irextras:grid_auto",
+  "count": 1
+ }
+}

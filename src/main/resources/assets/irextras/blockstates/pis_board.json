@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:pis_board"
+  },
+  "facing=east": {
+   "model": "irextras:pis_board",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:pis_board",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:pis_board",
+   "y": 270
+  }
+ }
+}

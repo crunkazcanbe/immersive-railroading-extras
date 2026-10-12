@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IFI",
+  "BCB",
+  "IGI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "F": {
+   "item": "minecraft:furnace"
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 6
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:station_power",
+  "count": 1
+ }
+}

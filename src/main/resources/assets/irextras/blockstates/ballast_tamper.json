@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ballast_tamper"
+  },
+  "facing=east": {
+   "model": "irextras:ballast_tamper",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ballast_tamper",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ballast_tamper",
+   "y": 270
+  }
+ }
+}

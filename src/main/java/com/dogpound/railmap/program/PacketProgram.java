@@ -17,7 +17,8 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
  */
 public class PacketProgram implements IMessage {
     public static final byte REQUEST = 0, SYNC = 1, SAVE_RULE = 2, DELETE_RULE = 3, TOGGLE_RULE = 4,
-            MOVE_RULE = 5, CHANNEL = 6, CHANNEL_NAME = 7, CLEAR_ALARMS = 8;
+            MOVE_RULE = 5, CHANNEL = 6, CHANNEL_NAME = 7, CLEAR_ALARMS = 8,
+            RESET_WATCHDOG = 9, CLEAR_VARS = 10;
 
     public byte op;
     public NBTTagCompound data = new NBTTagCompound();
@@ -96,12 +97,14 @@ public class PacketProgram implements IMessage {
                                 }
                             }
                         }
+                        com.dogpound.railmap.api.Audit.log(player.world, com.dogpound.railmap.api.Audit.Src.PLAYER, player.getName(), box, "rule #" + r.id, "save rule", "", r.summary(), "ok");
                         d.changed();
                         break;
                     }
                     case DELETE_RULE: {
                         int id = msg.data.getInteger("id");
                         d.rules.removeIf(r -> r.id == id);
+                        com.dogpound.railmap.api.Audit.log(player.world, com.dogpound.railmap.api.Audit.Src.PLAYER, player.getName(), box, "rule #" + id, "delete rule", "", "", "ok");
                         d.changed();
                         break;
                     }
@@ -131,7 +134,9 @@ public class PacketProgram implements IMessage {
                     case CHANNEL: {
                         int n = msg.data.getInteger("n");
                         boolean v = msg.data.getBoolean("v");
+                        boolean was = d.ch(n);
                         d.setChannel(n, v);
+                        if (was != d.ch(n)) com.dogpound.railmap.api.Audit.log(player.world, com.dogpound.railmap.api.Audit.Src.PLAYER, player.getName(), box, "channel " + n, "switch", was ? "on" : "off", v ? "on" : "off", "ok");
                         break;
                     }
                     case CHANNEL_NAME: {
@@ -146,6 +151,17 @@ public class PacketProgram implements IMessage {
                     }
                     case CLEAR_ALARMS: {
                         d.alarms.clear();
+                        d.changed();
+                        break;
+                    }
+                    case RESET_WATCHDOG: {
+                        player.sendStatusMessage(new net.minecraft.util.text.TextComponentString("§e" + d.resetWatchdog(player.world, player.getName())), true);
+                        break;
+                    }
+                    case CLEAR_VARS: {
+                        d.vars.clear();
+                        d.timers.clear();
+                        com.dogpound.railmap.api.Audit.log(player.world, com.dogpound.railmap.api.Audit.Src.PLAYER, player.getName(), box, "signal box program", "clear variables + timers", "", "", "ok");
                         d.changed();
                         break;
                     }

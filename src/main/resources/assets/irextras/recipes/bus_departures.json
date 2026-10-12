@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SLS",
+  "CFC",
+  "I I"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:bus_departures",
+  "count": 1
+ }
+}

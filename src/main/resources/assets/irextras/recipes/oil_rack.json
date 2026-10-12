@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IRI",
+  "MCM",
+  "ILI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:ladder"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "L": {
+   "item": "minecraft:lever"
+  }
+ },
+ "result": {
+  "item": "irextras:oil_rack"
+ }
+}

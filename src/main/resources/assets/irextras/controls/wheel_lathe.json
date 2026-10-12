@@ -1,0 +1,392 @@
+{
+ "title": "wheel_lathe",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.58,
+   "title": "LATHE",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 10.0,
+     "v": 15.0,
+     "w": 9.6,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 10.0,
+     "v": 14.2,
+     "w": 9.6,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rpm",
+     "t": "gauge",
+     "u": 13.2,
+     "v": 12.2,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "SPINDLE RPM",
+     "max": 100
+    },
+    {
+     "id": "feed",
+     "t": "gauge",
+     "u": 10.4,
+     "v": 12.2,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "FEED %",
+     "max": 100
+    },
+    {
+     "id": "prog",
+     "t": "gauge",
+     "u": 7.6,
+     "v": 12.2,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "CUT %",
+     "max": 100
+    },
+    {
+     "id": "dia",
+     "t": "digits",
+     "u": 13.0,
+     "v": 10.4,
+     "w": 2.4,
+     "h": 0.7,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s MM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.0,
+     "v": 9.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TREAD DIA"
+    },
+    {
+     "id": "flg",
+     "t": "digits",
+     "u": 10.0,
+     "v": 10.4,
+     "w": 2.4,
+     "h": 0.7,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s MM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 9.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLANGE"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 14.4,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 15.75,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.75,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "clampl",
+     "t": "lamp",
+     "u": 17.1,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "CLAMP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.1,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLAMP"
+    },
+    {
+     "id": "ready",
+     "t": "lamp",
+     "u": 18.45,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "READY"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.45,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "READY"
+    },
+    {
+     "id": "cutting",
+     "t": "lamp",
+     "u": 19.8,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "CUT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.8,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CUT"
+    },
+    {
+     "id": "cool",
+     "t": "lamp",
+     "u": 21.15,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "8ad4ff",
+     "label": "COOL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 21.15,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "COOL"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 22.5,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.5,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FAULT"
+    },
+    {
+     "id": "clamp",
+     "t": "push",
+     "u": 14.2,
+     "v": 6.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "1fa34a",
+     "label": "CLAMP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.2,
+     "v": 5.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLAMP"
+    },
+    {
+     "id": "unclamp",
+     "t": "push",
+     "u": 15.8,
+     "v": 6.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "f0d020",
+     "label": "UNCLAMP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.8,
+     "v": 5.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "UNCLAMP"
+    },
+    {
+     "id": "measure",
+     "t": "push",
+     "u": 17.4,
+     "v": 6.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "2050d0",
+     "label": "MEASURE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.4,
+     "v": 5.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MEASURE"
+    },
+    {
+     "id": "cut",
+     "t": "push",
+     "u": 19.0,
+     "v": 6.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "f0f0f0",
+     "label": "CUT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.0,
+     "v": 5.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CUT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 20.6,
+     "v": 6.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 20.6,
+     "v": 5.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "s_axle",
+     "t": "selector",
+     "u": 13.6,
+     "v": 3.6,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "AXLE",
+     "pos": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "ALL"
+     ]
+    },
+    {
+     "id": "s_cool",
+     "t": "selector",
+     "u": 10.8,
+     "v": 3.6,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "COOLANT",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 7.4,
+     "v": 3.6,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d02020",
+     "label": "E-STOP"
+    }
+   ]
+  }
+ ]
+}

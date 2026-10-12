@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:holiday_lights"
+  },
+  "facing=east": {
+   "model": "irextras:holiday_lights",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:holiday_lights",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:holiday_lights",
+   "y": 270
+  }
+ }
+}

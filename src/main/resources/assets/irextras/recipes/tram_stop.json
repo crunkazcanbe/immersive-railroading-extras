@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PPP",
+  "GSG",
+  "WCW"
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:iron_ingot"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "S": {
+   "item": "minecraft:sign"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "C": {
+   "item": "minecraft:redstone_lamp"
+  }
+ },
+ "result": {
+  "item": "irextras:tram_stop",
+  "count": 1
+ }
+}

@@ -1,0 +1,306 @@
+{
+ "title": "taxi_rank",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.9,
+   "title": "METER",
+   "controls": [
+    {
+     "id": "sign",
+     "t": "digits",
+     "u": 8.0,
+     "v": 23.917,
+     "w": 7.6,
+     "h": 1.1753333333333338,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "dest",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.55,
+     "w": 7.6,
+     "h": 1.1753333333333338,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "meter",
+     "t": "digits",
+     "u": 8.0,
+     "v": 21.183,
+     "w": 7.6,
+     "h": 1.1753333333333338,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "status",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.817,
+     "w": 7.6,
+     "h": 1.1753333333333338,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "takings",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.45,
+     "w": 7.6,
+     "h": 1.1753333333333338,
+     "col": "8a94a0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "last",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.083,
+     "w": 7.6,
+     "h": 1.1753333333333338,
+     "col": "8a94a0",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 4.9,
+   "title": "CALL POINT",
+   "controls": [
+    {
+     "id": "dprev",
+     "t": "push",
+     "u": 4.6,
+     "v": 14.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "e0e0e0",
+     "label": "DEST <"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DEST <"
+    },
+    {
+     "id": "dnext",
+     "t": "push",
+     "u": 6.2,
+     "v": 14.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "e0e0e0",
+     "label": "DEST >"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.2,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DEST >"
+    },
+    {
+     "id": "call",
+     "t": "push",
+     "u": 8.0,
+     "v": 14.6,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "30a040",
+     "label": "CALL TAXI"
+    },
+    {
+     "id": "cancel",
+     "t": "push",
+     "u": 10.8,
+     "v": 14.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d03030",
+     "label": "CANCEL"
+    },
+    {
+     "id": "s_tariff",
+     "t": "selector",
+     "u": 4.8,
+     "v": 12.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "TARIFF",
+     "pos": [
+      "1 DAY",
+      "2 NIGHT",
+      "3 HOLIDAY"
+     ]
+    },
+    {
+     "id": "k_rank",
+     "t": "key",
+     "u": 6.6,
+     "v": 12.2,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "RANK",
+     "pos": [
+      "CLOSED",
+      "OPEN"
+     ]
+    },
+    {
+     "id": "g_eta",
+     "t": "gauge",
+     "u": 10.0,
+     "v": 12.2,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "TAXI DIST",
+     "max": 100
+    },
+    {
+     "id": "l_avail",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "FOR HIRE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": 10.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FOR HIRE"
+    },
+    {
+     "id": "l_coming",
+     "t": "lamp",
+     "u": 5.8,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "COMING",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.8,
+     "v": 10.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "COMING"
+    },
+    {
+     "id": "l_hire",
+     "t": "lamp",
+     "u": 7.2,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "ON HIRE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.2,
+     "v": 10.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ON HIRE"
+    },
+    {
+     "id": "l_closed",
+     "t": "lamp",
+     "u": 8.6,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "CLOSED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.6,
+     "v": 10.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLOSED"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 10.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 10.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    }
+   ]
+  }
+ ]
+}

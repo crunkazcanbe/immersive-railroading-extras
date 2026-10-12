@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:parcels_office"
+  },
+  "facing=east": {
+   "model": "irextras:parcels_office",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:parcels_office",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:parcels_office",
+   "y": 270
+  }
+ }
+}

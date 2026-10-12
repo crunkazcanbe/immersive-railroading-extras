@@ -1,0 +1,183 @@
+{
+ "title": "data_link",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -0.16,
+   "title": "LCD",
+   "controls": [
+    {
+     "id": "lcd1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.4,
+     "w": 8.2,
+     "h": 1.4,
+     "col": "3cdc78",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "lcd2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 10.6,
+     "w": 8.2,
+     "h": 1.4,
+     "col": "3cdc78",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "port1",
+     "t": "lamp",
+     "u": 12.32,
+     "v": 5.62,
+     "w": 0.25,
+     "h": 0.2,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "port2",
+     "t": "lamp",
+     "u": 10.92,
+     "v": 5.62,
+     "w": 0.25,
+     "h": 0.2,
+     "col": "ffb02e",
+     "label": ""
+    },
+    {
+     "id": "port3",
+     "t": "lamp",
+     "u": 9.52,
+     "v": 5.62,
+     "w": 0.25,
+     "h": 0.2,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "port4",
+     "t": "lamp",
+     "u": 8.12,
+     "v": 5.62,
+     "w": 0.25,
+     "h": 0.2,
+     "col": "ffb02e",
+     "label": ""
+    },
+    {
+     "id": "port5",
+     "t": "lamp",
+     "u": 6.72,
+     "v": 5.62,
+     "w": 0.25,
+     "h": 0.2,
+     "col": "30e060",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": -0.01,
+   "title": "LINK",
+   "controls": [
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 12.2,
+     "v": 8.1,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "",
+     "blink": false
+    },
+    {
+     "id": "tx",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 8.1,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb02e",
+     "label": "",
+     "blink": false
+    },
+    {
+     "id": "rx",
+     "t": "lamp",
+     "u": 8.6,
+     "v": 8.1,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "",
+     "blink": false
+    },
+    {
+     "id": "link",
+     "t": "lamp",
+     "u": 6.8,
+     "v": 8.1,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "5bcefa",
+     "label": "",
+     "blink": false
+    },
+    {
+     "id": "err",
+     "t": "lamp",
+     "u": 5.0,
+     "v": 8.1,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff3030",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 12.4,
+     "v": 3.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "d8322c",
+     "label": ""
+    },
+    {
+     "id": "mode",
+     "t": "push",
+     "u": 11.2,
+     "v": 3.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "e8e8e8",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": -6.61,
+   "title": "AERIAL",
+   "controls": [
+    {
+     "id": "tip",
+     "t": "lamp",
+     "u": 3.0,
+     "v": 13.0,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "ffb02e",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

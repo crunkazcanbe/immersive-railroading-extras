@@ -1,0 +1,135 @@
+{
+ "title": "possession_switch",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 5.48,
+   "title": "TRACK BLOCKING SWITCH",
+   "controls": [
+    {
+     "id": "k_poss",
+     "t": "key",
+     "u": 6.5,
+     "v": 12.0,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "c0a040",
+     "label": "",
+     "pos": [
+      "NORMAL",
+      "BLOCK"
+     ]
+    },
+    {
+     "id": "blocked",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 13.7,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "ff2020",
+     "label": "BLOCKED"
+    },
+    {
+     "id": "req",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 12.1,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "ffb020",
+     "label": "REQ",
+     "blink": true
+    },
+    {
+     "id": "clear",
+     "t": "lamp",
+     "u": 9.1,
+     "v": 13.7,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "30e060",
+     "label": "CLEAR"
+    },
+    {
+     "id": "train",
+     "t": "lamp",
+     "u": 9.1,
+     "v": 12.1,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "ffb020",
+     "label": "TRAIN"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 5.1,
+     "v": 14.3,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "holder",
+     "t": "digits",
+     "u": 8.6,
+     "v": 10.3,
+     "w": 5.2,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "mins",
+     "t": "digits",
+     "u": 10.0,
+     "v": 9.2,
+     "w": 2.2,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d MIN"
+    },
+    {
+     "id": "zone",
+     "t": "digits",
+     "u": 7.0,
+     "v": 9.2,
+     "w": 2.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s_zone",
+     "t": "selector",
+     "u": 5.1,
+     "v": 9.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "32",
+      "64",
+      "128"
+     ]
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.1,
+     "v": 9.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

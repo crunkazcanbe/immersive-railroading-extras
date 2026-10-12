@@ -1,0 +1,703 @@
+{
+ "title": "reman_bench",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 2.38,
+   "title": "BINS",
+   "controls": [
+    {
+     "id": "bin_in",
+     "t": "zone",
+     "u": 12.75,
+     "v": 3.5,
+     "w": 4.6,
+     "h": 6.2,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "bin_out",
+     "t": "zone",
+     "u": 3.0,
+     "v": 3.6,
+     "w": 4.6,
+     "h": 6.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "bin_scrap",
+     "t": "zone",
+     "u": 7.9,
+     "v": 2.0,
+     "w": 4.2,
+     "h": 3.4,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 1.98,
+   "title": "REMAN BENCH",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 8.1,
+     "v": 20.4,
+     "w": 8.2,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 8.1,
+     "v": 19.6,
+     "w": 8.2,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line3",
+     "t": "digits",
+     "u": 8.1,
+     "v": 18.8,
+     "w": 8.2,
+     "h": 0.6,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "wtemp",
+     "t": "gauge",
+     "u": 11.0,
+     "v": 16.6,
+     "w": 2.3,
+     "h": 2.3,
+     "col": "f2f0e6",
+     "label": "WASH C",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.0,
+     "v": 15.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WASH C"
+    },
+    {
+     "id": "press",
+     "t": "gauge",
+     "u": 8.1,
+     "v": 16.6,
+     "w": 2.3,
+     "h": 2.3,
+     "col": "f2f0e6",
+     "label": "PRESS KN",
+     "max": 200
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.1,
+     "v": 15.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRESS KN"
+    },
+    {
+     "id": "prog",
+     "t": "gauge",
+     "u": 5.2,
+     "v": 16.6,
+     "w": 2.3,
+     "h": 2.3,
+     "col": "f2f0e6",
+     "label": "CYCLE %",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.2,
+     "v": 15.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CYCLE %"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 14.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 13.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mains",
+     "t": "lamp",
+     "u": 13.55,
+     "v": 14.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.55,
+     "v": 13.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "run",
+     "t": "lamp",
+     "u": 15.1,
+     "v": 14.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "RUN",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.1,
+     "v": 13.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RUN"
+    },
+    {
+     "id": "lwash",
+     "t": "lamp",
+     "u": 16.65,
+     "v": 14.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "8ad4ff",
+     "label": "WASH"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.65,
+     "v": 13.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WASH"
+    },
+    {
+     "id": "lstrip",
+     "t": "lamp",
+     "u": 18.2,
+     "v": 14.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "STRIP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.2,
+     "v": 13.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STRIP"
+    },
+    {
+     "id": "linsp",
+     "t": "lamp",
+     "u": 19.75,
+     "v": 14.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "8a5aff",
+     "label": "INSP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.75,
+     "v": 13.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "INSP"
+    },
+    {
+     "id": "ga",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 12.9,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "A"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 12.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "A"
+    },
+    {
+     "id": "gb",
+     "t": "lamp",
+     "u": 13.55,
+     "v": 12.9,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "b8e86a",
+     "label": "B"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.55,
+     "v": 12.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "B"
+    },
+    {
+     "id": "gc",
+     "t": "lamp",
+     "u": 15.1,
+     "v": 12.9,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "C"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.1,
+     "v": 12.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "C"
+    },
+    {
+     "id": "gs",
+     "t": "lamp",
+     "u": 16.65,
+     "v": 12.9,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "SCRAP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.65,
+     "v": 12.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SCRAP"
+    },
+    {
+     "id": "kit",
+     "t": "lamp",
+     "u": 18.2,
+     "v": 12.9,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "8ad4ff",
+     "label": "KIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.2,
+     "v": 12.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "KIT"
+    },
+    {
+     "id": "full",
+     "t": "lamp",
+     "u": 19.75,
+     "v": 12.9,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "FULL",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.75,
+     "v": 12.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FULL"
+    },
+    {
+     "id": "nin",
+     "t": "digits",
+     "u": 12.0,
+     "v": 11.7,
+     "w": 1.2,
+     "h": 0.55,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 11.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CORES"
+    },
+    {
+     "id": "ndone",
+     "t": "digits",
+     "u": 10.45,
+     "v": 11.7,
+     "w": 1.2,
+     "h": 0.55,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.45,
+     "v": 11.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DONE"
+    },
+    {
+     "id": "na",
+     "t": "digits",
+     "u": 8.9,
+     "v": 11.7,
+     "w": 1.2,
+     "h": 0.55,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.9,
+     "v": 11.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "A"
+    },
+    {
+     "id": "nb",
+     "t": "digits",
+     "u": 7.35,
+     "v": 11.7,
+     "w": 1.2,
+     "h": 0.55,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.35,
+     "v": 11.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "B"
+    },
+    {
+     "id": "nc",
+     "t": "digits",
+     "u": 5.8,
+     "v": 11.7,
+     "w": 1.2,
+     "h": 0.55,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.8,
+     "v": 11.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "C"
+    },
+    {
+     "id": "ns",
+     "t": "digits",
+     "u": 4.25,
+     "v": 11.7,
+     "w": 1.2,
+     "h": 0.55,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.25,
+     "v": 11.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SCRAP"
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 12.0,
+     "v": 10.2,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "1fa34a",
+     "label": "START"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 9.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "START"
+    },
+    {
+     "id": "abort",
+     "t": "push",
+     "u": 13.6,
+     "v": 10.2,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "d02020",
+     "label": "ABORT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.6,
+     "v": 9.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ABORT"
+    },
+    {
+     "id": "count",
+     "t": "push",
+     "u": 15.2,
+     "v": 10.2,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "2050d0",
+     "label": "CORES"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.2,
+     "v": 9.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CORES"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 16.8,
+     "v": 10.2,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "f0f0f0",
+     "label": "PRINT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.8,
+     "v": 9.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRINT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 18.4,
+     "v": 10.2,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.4,
+     "v": 9.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 6.8,
+   "title": "SELECTORS",
+   "controls": [
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 11.6,
+     "v": 1.5,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "SINGLE",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.6,
+     "v": 0.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MODE"
+    },
+    {
+     "id": "s_wash",
+     "t": "selector",
+     "u": 9.4,
+     "v": 1.5,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "WASH C",
+     "pos": [
+      "40",
+      "60",
+      "80"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.4,
+     "v": 0.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WASH C"
+    },
+    {
+     "id": "s_kit",
+     "t": "selector",
+     "u": 7.2,
+     "v": 1.5,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "KITS",
+     "pos": [
+      "ON",
+      "OFF"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.2,
+     "v": 0.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "KITS"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 4.6,
+     "v": 1.3,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "d02020",
+     "label": "E-STOP"
+    }
+   ]
+  }
+ ]
+}

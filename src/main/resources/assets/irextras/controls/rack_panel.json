@@ -1,0 +1,342 @@
+{
+ "title": "rack_panel",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.85,
+   "title": "RACK PANEL",
+   "controls": [
+    {
+     "id": "d1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.7,
+     "w": 9.4,
+     "h": 0.72,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 21.72,
+     "w": 9.4,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.74,
+     "w": 9.4,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.76,
+     "w": 9.4,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d5",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.78,
+     "w": 9.4,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d6",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.8,
+     "w": 9.4,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_spd",
+     "t": "gauge",
+     "u": 11.6,
+     "v": 14.6,
+     "w": 2.8,
+     "h": 2.8,
+     "col": "f2f0e6",
+     "label": "KM/H %",
+     "max": 100
+    },
+    {
+     "id": "g_grade",
+     "t": "gauge",
+     "u": 8.0,
+     "v": 14.6,
+     "w": 2.8,
+     "h": 2.8,
+     "col": "f2f0e6",
+     "label": "GRADE",
+     "max": 100
+    },
+    {
+     "id": "g_lube",
+     "t": "gauge",
+     "u": 4.4,
+     "v": 14.6,
+     "w": 2.8,
+     "h": 2.8,
+     "col": "f2f0e6",
+     "label": "LUBE BAR",
+     "max": 100
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 12.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "l_lube",
+     "t": "lamp",
+     "u": 9.5,
+     "v": 12.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "LUBE"
+    },
+    {
+     "id": "l_on",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 12.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "ON RACK"
+    },
+    {
+     "id": "l_ovs",
+     "t": "lamp",
+     "u": 3.7,
+     "v": 12.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "OVERSPEED"
+    },
+    {
+     "id": "l_non",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 11.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "NON-RACK"
+    },
+    {
+     "id": "l_entry",
+     "t": "lamp",
+     "u": 9.5,
+     "v": 11.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff8020",
+     "label": "ENTRY"
+    },
+    {
+     "id": "l_wear",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 11.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "WEAR"
+    },
+    {
+     "id": "l_estop",
+     "t": "lamp",
+     "u": 3.7,
+     "v": 11.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff2020",
+     "label": "E-STOP"
+    },
+    {
+     "id": "k_en",
+     "t": "key",
+     "u": 12.6,
+     "v": 8.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "ENABLE",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "s_vmax",
+     "t": "selector",
+     "u": 10.4,
+     "v": 8.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "RACK KM/H",
+     "pos": [
+      "10",
+      "15",
+      "20",
+      "25",
+      "30"
+     ]
+    },
+    {
+     "id": "s_entry",
+     "t": "selector",
+     "u": 8.2,
+     "v": 8.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "ENTRY KM/H",
+     "pos": [
+      "5",
+      "8",
+      "10",
+      "15"
+     ]
+    },
+    {
+     "id": "s_act",
+     "t": "selector",
+     "u": 6.0,
+     "v": 8.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "OVERSPEED",
+     "pos": [
+      "ALARM",
+      "BRAKE"
+     ]
+    },
+    {
+     "id": "s_lube",
+     "t": "selector",
+     "u": 3.6,
+     "v": 8.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "LUBRICATOR",
+     "pos": [
+      "OFF",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "tag",
+     "t": "push",
+     "u": 12.6,
+     "v": 6.2,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "30c040",
+     "label": "TAG COG"
+    },
+    {
+     "id": "untag",
+     "t": "push",
+     "u": 10.6,
+     "v": 6.2,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "808080",
+     "label": "UNTAG"
+    },
+    {
+     "id": "renew",
+     "t": "push",
+     "u": 8.6,
+     "v": 6.2,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "2050d0",
+     "label": "RENEW PINION"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 6.6,
+     "v": 6.2,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "f0d020",
+     "label": "ACK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 4.6,
+     "v": 6.2,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0f0f0",
+     "label": "LAMP TEST"
+    },
+    {
+     "id": "s_page",
+     "t": "selector",
+     "u": 3.2,
+     "v": 4.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "PAGE",
+     "pos": [
+      "OVERVIEW",
+      "LOCOS",
+      "SECTION",
+      "EVENTS"
+     ]
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 10.0,
+     "v": 4.3,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "d01818",
+     "label": "E-STOP"
+    }
+   ]
+  }
+ ]
+}

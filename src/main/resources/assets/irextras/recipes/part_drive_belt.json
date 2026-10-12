@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "LLL",
+  "LSL",
+  "LLL"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:leather"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 8,
+  "count": 2
+ }
+}

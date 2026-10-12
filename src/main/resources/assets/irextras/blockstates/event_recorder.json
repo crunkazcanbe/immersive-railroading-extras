@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:event_recorder"
+  },
+  "facing=east": {
+   "model": "irextras:event_recorder",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:event_recorder",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:event_recorder",
+   "y": 270
+  }
+ }
+}

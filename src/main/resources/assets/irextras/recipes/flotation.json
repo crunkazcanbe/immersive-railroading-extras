@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "ACA",
+  "MFM",
+  "VDV"
+ ],
+ "key": {
+  "A": {
+   "item": "irextras:part",
+   "data": 7
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "V": {
+   "item": "irextras:gate_valve"
+  },
+  "D": {
+   "type": "forge:ore_dict",
+   "ore": "gemDiamond"
+  }
+ },
+ "result": {
+  "item": "irextras:flotation",
+  "count": 1
+ }
+}

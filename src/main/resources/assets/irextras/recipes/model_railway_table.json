@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GGG",
+  "PPP",
+  "S S"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:carpet",
+   "data": 13
+  },
+  "P": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "S": {
+   "item": "minecraft:stick"
+  }
+ },
+ "result": {
+  "item": "irextras:model_railway_table",
+  "count": 1
+ }
+}

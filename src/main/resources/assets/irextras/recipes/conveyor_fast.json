@@ -1,0 +1,21 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XMX",
+  "XXX"
+ ],
+ "key": {
+  "X": {
+   "item": "irextras:conveyor"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:conveyor_fast",
+  "count": 8
+ }
+}

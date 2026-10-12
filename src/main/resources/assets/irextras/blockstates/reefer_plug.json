@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:reefer_plug"
+  },
+  "facing=east": {
+   "model": "irextras:reefer_plug",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:reefer_plug",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:reefer_plug",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,41 @@
+{
+ "block": "tbm",
+ "title": "MV PANEL TBM 11KV",
+ "hv": true,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "tbm_door1",
+   "hinge": [
+    -5.55,
+    -14.22
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "tbm_door2",
+   "hinge": [
+    0.55,
+    -14.22
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

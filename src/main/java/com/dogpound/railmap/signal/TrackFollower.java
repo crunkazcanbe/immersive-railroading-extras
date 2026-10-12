@@ -221,6 +221,22 @@ public final class TrackFollower {
     /** Fallback for point-only pieces (crossings, tables): look at the six neighbours. */
     private TileRail probeAround(TileRail rail, Vec3i cameFrom) {
         Vec3i c = rail.getPos();
+        if (rail.info != null && rail.info.settings.type == cam72cam.immersiverailroading.library.TrackItems.CROSSING) {
+            // batch-3 #6: a diamond (IR crossing, 3x3, its own gags all round) is crossed STRAIGHT over - the next piece
+            // starts 2 blocks out on the far side from where we came in, never round the corner onto the other road
+            int[][] dirs = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
+            if (cameFrom != null) {
+                int dx = c.x - cameFrom.x, dz = c.z - cameFrom.z;
+                dirs = Math.abs(dx) >= Math.abs(dz) ? new int[][]{ {Integer.signum(dx == 0 ? 1 : dx), 0} } : new int[][]{ {0, Integer.signum(dz)} };
+            }
+            for (int[] o : dirs)
+                for (int step = 2; step <= 3; step++)
+                    for (int dy : PROBE_DY) {
+                        TileRail t = railAt(new Vec3i(c.x + o[0] * step, c.y + dy, c.z + o[1] * step), rail, cameFrom);
+                        if (t != null) return t;
+                    }
+            return null;
+        }
         int[][] d = { {1,0,0}, {-1,0,0}, {0,0,1}, {0,0,-1} };
         for (int[] o : d) {
             for (int dy : PROBE_DY) {

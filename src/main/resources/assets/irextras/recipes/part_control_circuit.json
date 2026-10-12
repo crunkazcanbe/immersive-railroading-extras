@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "RQR",
+  "GXG",
+  "RQR"
+ ],
+ "key": {
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "blockRedstone"
+  },
+  "Q": {
+   "type": "forge:ore_dict",
+   "ore": "gemQuartz"
+  },
+  "G": {
+   "type": "forge:ore_dict",
+   "ore": "ingotGold"
+  },
+  "X": {
+   "item": "minecraft:comparator"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 2,
+  "count": 1
+ }
+}

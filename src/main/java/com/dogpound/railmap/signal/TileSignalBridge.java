@@ -26,7 +26,20 @@ import java.util.List;
  * one. Each head is its own signal: it walks its own track, sees its own block, and shows its
  * own aspect, exactly like a mast standing beside that rail would.
  */
-public class TileSignalBridge extends TileEntity implements ITickable, IScalable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileSignalBridge extends TileEntity implements ITickable, IScalable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.wire.IWiredGear {
+    // ---- 12 V terminal (on the controller post): no power = every head dark, which the railway treats as STOP
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); sync(); }
+    @Override public String wiredName() { return "Signal bridge (" + heads.size() + " heads)"; }
+    @Override public String gearState() {
+        if (!term.powered()) return "DARK - no 12 V";
+        StringBuilder b = new StringBuilder();
+        for (Head h : heads) b.append(b.length() == 0 ? "" : " / ").append(h.aspect.label);
+        return b.length() == 0 ? "no heads" : b.toString();
+    }
+    @Override public int wiredLamp() { return term.burnt || !term.powered() ? 3 : heads.stream().anyMatch(h -> h.aspect.isStop()) ? 2 : 1; }
+
     /** Widest span the two posts will bridge. */
     public static final int MAX_SPAN = 24;
     /** How far under the span we look for track. */
@@ -91,7 +104,9 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
 
     @Override
     public void update() {
-        if (world.isRemote || ++ticks % 20 != 0) return;
+        if (world.isRemote) return;
+        if (controller && term.tick(world, pos, wiredName())) gearChanged();
+        if (++ticks % 20 != 0) return;
         long now = world.getTotalWorldTime();
         if (rescanAt == Long.MIN_VALUE || now >= rescanAt) {
             rescanAt = now + 20L * Math.max(1, cfg.num("rescan"));   // re-measure; cheap and self-healing
@@ -223,7 +238,9 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
     }
 
     /** maintenance hold from the console: every head shows Stop */
-    public boolean heldAtStop() { return cfg.bool("hold"); }
+    public boolean heldAtStop() { return cfg.bool("hold") || !term.powered(); }
+    /** what a head's lamps show: dark with no 12 V */
+    public Aspect shown(Head h) { return term.powered() ? h.aspect : Aspect.DARK; }
 
     public int redstoneOutput() {
         String how = cfg.text("output");
@@ -292,6 +309,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         t.setIntArray("h_at", along);
         t.setByteArray("h_as", asp);
         if (scale != 1f) t.setFloat("scale", scale);
+        term.write(t);
         cfg.write(t);
         return t;
     }
@@ -302,6 +320,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         span = t.getInteger("span");
         controller = t.getBoolean("ctrl");
         scale = t.hasKey("scale") ? IScalable.clamp(t.getFloat("scale")) : 1f;
+        term.read(t);
         cfg.read(t);
         int[] along = t.getIntArray("h_at");
         byte[] asp = t.getByteArray("h_as");
@@ -337,6 +356,9 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         return oldState.getBlock() != newState.getBlock();
     }
 
+    /** night lighting: a lit aspect is drawn (with its halo) much further than the 64-block default (config irextras_lighting) */
+    @Override public double getMaxRenderDistanceSquared() { return com.dogpound.railmap.light.LightConfig.signalRenderSq(); }
+
     /** The controller draws the whole span, so its render box has to cover it. */
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
@@ -370,6 +392,7 @@ public class TileSignalBridge extends TileEntity implements ITickable, IScalable
         if (world != null) {
             l.add(com.dogpound.railmap.settings.Setting.info("Status", "Paired", isPaired() ? "yes, span " + span + " blocks" : "no (place a matching post across the track)"));
             l.add(com.dogpound.railmap.settings.Setting.info("Status", "This post", controller ? "controller (draws the span)" : "far post"));
+            if (controller) com.dogpound.railmap.wire.IWiredGear.settings(l, "Status", this);
             for (int i = 0; i < heads.size(); i++) {
                 Head h = heads.get(i);
                 l.add(com.dogpound.railmap.settings.Setting.info("Status", "Track " + (i + 1), h.aspect.label + " · " + h.clearBlocks + " blocks clear"));

@@ -1,0 +1,116 @@
+{
+ "title": "escalator",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -0.65,
+   "title": "ESCALATOR",
+   "controls": [
+    {
+     "id": "start",
+     "t": "push",
+     "u": 0.75,
+     "v": 9.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "2fa84a",
+     "label": "START"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 0.75,
+     "v": 8.4,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "202020",
+     "label": "STOP"
+    },
+    {
+     "id": "k_dir",
+     "t": "key",
+     "u": 0.75,
+     "v": 7.0,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "DIR",
+     "pos": [
+      "UP",
+      "DOWN"
+     ]
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 0.75,
+     "v": 5.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "runl",
+     "t": "lamp",
+     "u": 0.4,
+     "v": 3.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "RUN"
+    },
+    {
+     "id": "upl",
+     "t": "lamp",
+     "u": 1.1,
+     "v": 3.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "f0f0e0",
+     "label": "UP"
+    },
+    {
+     "id": "dnl",
+     "t": "lamp",
+     "u": 0.4,
+     "v": 3.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "DN"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 1.1,
+     "v": 3.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 0.4,
+     "v": 2.2,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 1.1,
+     "v": 2.2,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

@@ -24,7 +24,10 @@ public final class Panel {
         LEVER,      // big operating handle that swings between positions
         FLAG,       // mechanical ON / OFF indicator window
         SYNCHRO,    // synchroscope: a pointer that turns with the phase difference; 12 o'clock = in phase
-        LABEL       // engraved label plate
+        LABEL,      // engraved label plate
+        TILE,       // annunciator window: backlit, lettered (label, | = new line); 0 off, 1 fast flash (new), 2 steady (acked), 3 slow flash (cleared)
+        ZONE,       // an invisible clickable area on a model (drawer fronts, shelf spots): nothing drawn
+        PULL        // lever-frame lever: pivot at (u, v), stands h tall, tips toward you when pulled (0 normal, 1 reverse)
     }
 
     /** one control */
@@ -40,15 +43,16 @@ public final class Panel {
         public int max = 100;          // gauge full scale
         public boolean blink;          // lamp flashes when lit
 
-        C(String id, T t, double u, double v, double w, double h, int colour, String label, String... positions) {
+        public C(String id, T t, double u, double v, double w, double h, int colour, String label, String... positions) {
             this.id = id; this.t = t; this.u = u; this.v = v; this.w = w; this.h = h;
             this.colour = colour; this.label = label; this.positions = positions;
         }
 
-        public boolean clickable() { return t == T.PUSH || t == T.MUSHROOM || t == T.SELECTOR || t == T.KEY || t == T.LEVER; }
+        public boolean clickable() { return t == T.PUSH || t == T.MUSHROOM || t == T.SELECTOR || t == T.KEY || t == T.LEVER || t == T.PULL || t == T.ZONE; }
 
         public boolean hit(double hu, double hv) {
             double hw = w / 2 + 0.25, hh = h / 2 + 0.25;             // a little slack: these are small targets
+            if (t == T.PULL) return Math.abs(hu - u) <= w / 2 + 0.35 && hv >= v - 0.3 && hv <= v + h + 0.5;
             if (t == T.LEVER) return Math.abs(hu - u) <= hw + 1 && hv >= v - h - 1 && hv <= v + h + 1;
             return Math.abs(hu - u) <= hw && Math.abs(hv - v) <= hh;
         }
@@ -60,18 +64,18 @@ public final class Panel {
     public final String title;
     public final List<C> cs = new ArrayList<>();
 
-    private Panel(String title, double u0, double v0, double u1, double v1, double face, int plate) {
+    public Panel(String title, double u0, double v0, double u1, double v1, double face, int plate) {
         this.title = title; this.u0 = u0; this.v0 = v0; this.u1 = u1; this.v1 = v1; this.face = face; this.plate = plate;
     }
 
-    private C add(C c) { cs.add(c); return c; }
-    private C push(String id, double u, double v, int col, String label) { return add(new C(id, T.PUSH, u, v, 1.6, 1.6, col, label)); }
-    private C lamp(String id, double u, double v, int col, String label) { return add(new C(id, T.LAMP, u, v, 1.1, 1.1, col, label)); }
-    private C sel(String id, double u, double v, String label, String... pos) { return add(new C(id, T.SELECTOR, u, v, 1.9, 1.9, 0x202020, label, pos)); }
-    private C key(String id, double u, double v, String label, String... pos) { return add(new C(id, T.KEY, u, v, 1.7, 1.7, 0xC0A040, label, pos)); }
-    private C gauge(String id, double u, double v, double r, String label, int max) { C c = add(new C(id, T.GAUGE, u, v, r * 2, r * 2, 0xF2F0E6, label)); c.max = max; return c; }
-    private C digits(String id, double u, double v, double w, int col, String fmt, double scale) { C c = add(new C(id, T.DIGITS, u, v, w, 1.4, col, "")); c.fmt = fmt; c.scale = scale; return c; }
-    private C label(double u, double v, String text) { return add(new C("", T.LABEL, u, v, 0, 0, 0x101010, text)); }
+    public C add(C c) { cs.add(c); return c; }
+    public C push(String id, double u, double v, int col, String label) { return add(new C(id, T.PUSH, u, v, 1.6, 1.6, col, label)); }
+    public C lamp(String id, double u, double v, int col, String label) { return add(new C(id, T.LAMP, u, v, 1.1, 1.1, col, label)); }
+    public C sel(String id, double u, double v, String label, String... pos) { return add(new C(id, T.SELECTOR, u, v, 1.9, 1.9, 0x202020, label, pos)); }
+    public C key(String id, double u, double v, String label, String... pos) { return add(new C(id, T.KEY, u, v, 1.7, 1.7, 0xC0A040, label, pos)); }
+    public C gauge(String id, double u, double v, double r, String label, int max) { C c = add(new C(id, T.GAUGE, u, v, r * 2, r * 2, 0xF2F0E6, label)); c.max = max; return c; }
+    public C digits(String id, double u, double v, double w, int col, String fmt, double scale) { C c = add(new C(id, T.DIGITS, u, v, w, 1.4, col, "")); c.fmt = fmt; c.scale = scale; return c; }
+    public C label(double u, double v, String text) { return add(new C("", T.LABEL, u, v, 0, 0, 0x101010, text)); }
 
     public static final int GREEN = 0x1FA34A, RED = 0xD02020, AMBER = 0xF0A020, WHITE = 0xF0F0F0, BLUE = 0x2050D0, BLACK = 0x1A1A1A, YELLOW = 0xF0D020;
     private static final int GREY_7035 = 0xC5C7C4, GREY_DARK = 0x4A4F54, CREAM = 0xE4DCC4, GENSET = 0x2F3A33;
@@ -79,6 +83,12 @@ public final class Panel {
     private static final Map<GridKind, Panel> PANELS = new EnumMap<>(GridKind.class);
 
     public static Panel of(GridKind k) { return PANELS.get(k); }
+
+    /** the clickable control at face pixel (u from the viewer's left, v up), or null */
+    public C hitAt(double u, double v) {
+        for (C c : cs) if (c.clickable() && c.hit(u, v)) return c;
+        return null;
+    }
 
     /** the control at face pixel (u, v), or null */
     public static C hit(GridKind k, double u, double v) {
@@ -251,6 +261,26 @@ public final class Panel {
             p.push("lamptest", 11.4, 3.6, WHITE, "LAMP TEST");
             PANELS.put(GridKind.SCADA, p);
         }
+        // ---- Auto Controller (PLC cabinet): master AUTO, one selector per function, event + stats screens, alarm handling
+        {
+            Panel p = new Panel("AUTO", 2.0, 1.0, 14.0, 13.6, -1.0, 0x3A4048);
+            p.label(8, 12.9, "AUTO CONTROLLER");
+            p.digits("events", 8, 11.3, 11.2, 0x50FF70, "%s", 1);
+            p.digits("stats", 8, 9.7, 11.2, 0xFFB040, "%s", 1);
+            p.sel("master", 3.6, 7.2, "AUTO", "OFF", "ON");
+            p.sel("ar", 6.4, 7.2, "RECLOSE", "OFF", "ON");
+            p.sel("shed", 9.2, 7.2, "SHED", "OFF", "ON");
+            p.sel("gen", 12.0, 7.2, "GEN START", "OFF", "ON");
+            p.lamp("lar", 3.4, 4.8, AMBER, "RECLOSE");
+            p.lamp("lshed", 5.6, 4.8, AMBER, "SHEDDING");
+            p.lamp("lgen", 7.8, 4.8, GREEN, "GEN RUN");
+            p.lamp("lalarm", 10.0, 4.8, RED, "ALARM").blink = true;
+            p.lamp("healthy", 12.2, 4.8, GREEN, "ALL LIVE");
+            p.push("ack", 3.6, 2.4, AMBER, "ACK");
+            p.push("reset", 6.0, 2.4, BLUE, "RESET LOCKOUT");
+            p.push("lamptest", 8.4, 2.4, WHITE, "LAMP TEST");
+            PANELS.put(GridKind.AUTO, p);
+        }
         // ---- Diesel Generator / Steam Turbine: the genset controller (AMF style), replaces the old 4-button plate
         for (GridKind k : new GridKind[]{GridKind.DIESEL, GridKind.TURBINE}) {
             Panel p = new Panel(k == GridKind.DIESEL ? "GENSET CONTROLLER" : "TURBINE CONTROL", 1.6, 3.6, 14.4, 15.6, -1.0, GENSET);
@@ -277,11 +307,22 @@ public final class Panel {
         }
         // ---- Solar Array: the string inverter's rotary DC isolator + its display button
         {
-            Panel p = new Panel("INVERTER", 9.5, 1.2, 15.2, 6.4, -0.6, 0xE6E6E6);
-            p.digits("out", 12.35, 5.4, 5.0, 0x40FF60, "%dFE/t", 1);
-            p.sel("dc", 11.0, 3.0, "DC ISOL", "OFF", "ON");
-            p.lamp("grid", 13.6, 3.6, GREEN, "GRID");
-            p.lamp("fault", 13.6, 2.0, RED, "FAULT");
+            Panel p = new Panel("SOLAR", 1.0, 0.6, 15.0, 9.4, -0.6, 0xE6E6E6);
+            p.label(8, 8.9, "SOLAR TRACKER");
+            p.digits("kw", 4.6, 7.6, 6.0, 0x40FF60, "%d kW", 1);
+            p.digits("irr", 11.4, 7.6, 6.0, 0xFFB040, "%d W/m2", 1);
+            p.digits("lvl", 8, 6.2, 12.0, 0x40C8FF, "%s", 1);
+            p.gauge("sunang", 2.8, 4.0, 1.1, "SUN", 90);
+            p.gauge("tiltg", 5.4, 4.0, 1.1, "TILT", 60);
+            p.sel("track", 8.2, 4.1, "MODE", "FIXED", "TRACK");
+            p.sel("dc", 10.8, 4.1, "DC ISOL", "OFF", "ON");
+            p.push("volt", 13.4, 4.1, BLUE, "VOLTS");
+            p.lamp("grid", 2.4, 1.6, GREEN, "GRID");
+            p.lamp("ltrack", 4.5, 1.6, GREEN, "TRACKING");
+            p.lamp("lstow", 6.6, 1.6, AMBER, "STOWED");
+            p.lamp("lnight", 8.7, 1.6, BLUE, "NIGHT");
+            p.lamp("fault", 10.8, 1.6, RED, "FAULT");
+            p.push("stow", 13.4, 1.6, AMBER, "STOW");
             PANELS.put(GridKind.SOLAR, p);
         }
         // ---- Wind Turbine: the tower-base controller cabinet

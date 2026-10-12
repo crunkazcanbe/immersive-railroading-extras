@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PBP",
+  "B B",
+  "PBP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "B": {
+   "item": "minecraft:iron_bars"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 1,
+  "count": 1
+ }
+}

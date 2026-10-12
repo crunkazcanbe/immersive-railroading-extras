@@ -1,0 +1,758 @@
+{
+ "title": "container_terminal",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 9.4,
+   "title": "LOCKER",
+   "controls": [
+    {
+     "id": "locker",
+     "t": "zone",
+     "u": 26.2,
+     "v": 7.2,
+     "w": 5.8,
+     "h": 12.6,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 7.05,
+   "title": "CRANE DESK",
+   "controls": [
+    {
+     "id": "tl",
+     "t": "push",
+     "u": 4.6,
+     "v": 5.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "IN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "IN"
+    },
+    {
+     "id": "tr",
+     "t": "push",
+     "u": 4.6,
+     "v": 7.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "OUT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 6.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OUT"
+    },
+    {
+     "id": "hu",
+     "t": "push",
+     "u": 11.4,
+     "v": 5.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "UP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "UP"
+    },
+    {
+     "id": "hd",
+     "t": "push",
+     "u": 11.4,
+     "v": 7.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "DOWN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 6.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DOWN"
+    },
+    {
+     "id": "lock",
+     "t": "push",
+     "u": 5.9,
+     "v": 4.3,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1fa34a",
+     "label": "LOCK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.9,
+     "v": 3.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOCK"
+    },
+    {
+     "id": "unlock",
+     "t": "push",
+     "u": 7.2,
+     "v": 4.3,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d02020",
+     "label": "UNLOCK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.2,
+     "v": 3.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "UNLOCK"
+    },
+    {
+     "id": "pick",
+     "t": "push",
+     "u": 8.5,
+     "v": 4.3,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "PICK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.5,
+     "v": 3.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PICK"
+    },
+    {
+     "id": "drop",
+     "t": "push",
+     "u": 9.8,
+     "v": 4.3,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "DROP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.8,
+     "v": 3.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DROP"
+    },
+    {
+     "id": "from",
+     "t": "selector",
+     "u": 6.3,
+     "v": 6.1,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "FROM",
+     "pos": [
+      "APRON",
+      "RAIL",
+      "ROW A",
+      "ROW B"
+     ]
+    },
+    {
+     "id": "to",
+     "t": "selector",
+     "u": 7.9,
+     "v": 6.1,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "TO",
+     "pos": [
+      "APRON",
+      "RAIL",
+      "ROW A",
+      "ROW B"
+     ]
+    },
+    {
+     "id": "go",
+     "t": "push",
+     "u": 9.6,
+     "v": 6.1,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0f0f0",
+     "label": "GO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.6,
+     "v": 5.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GO"
+    },
+    {
+     "id": "auto",
+     "t": "push",
+     "u": 8.0,
+     "v": 8.1,
+     "w": 1.5,
+     "h": 0.9,
+     "col": "f0d020",
+     "label": "MOVE BOX"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 7.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MOVE BOX"
+    },
+    {
+     "id": "estop",
+     "t": "mushroom",
+     "u": 1.4,
+     "v": 4.3,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "d02020",
+     "label": "E-STOP"
+    },
+    {
+     "id": "power",
+     "t": "key",
+     "u": 14.6,
+     "v": 4.3,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "c0a040",
+     "label": "CRANE",
+     "pos": [
+      "ON",
+      "OFF"
+     ]
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 7.6,
+   "title": "GATE",
+   "controls": [
+    {
+     "id": "gatein",
+     "t": "push",
+     "u": 22.0,
+     "v": 5.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "1fa34a",
+     "label": "GATE IN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.0,
+     "v": 4.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GATE IN"
+    },
+    {
+     "id": "gateout",
+     "t": "push",
+     "u": 21.1,
+     "v": 5.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "e08020",
+     "label": "GATE OUT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 21.1,
+     "v": 6.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GATE OUT"
+    },
+    {
+     "id": "stuff",
+     "t": "push",
+     "u": 20.2,
+     "v": 5.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2050d0",
+     "label": "STUFF"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 20.2,
+     "v": 4.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STUFF"
+    },
+    {
+     "id": "strip",
+     "t": "push",
+     "u": 19.3,
+     "v": 5.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "20a0a0",
+     "label": "STRIP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.3,
+     "v": 6.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STRIP"
+    },
+    {
+     "id": "dest",
+     "t": "push",
+     "u": 18.4,
+     "v": 5.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0d020",
+     "label": "SEAL/DEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.4,
+     "v": 4.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SEAL/DEST"
+    },
+    {
+     "id": "appt",
+     "t": "push",
+     "u": 17.5,
+     "v": 5.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "b0b0b0",
+     "label": "APPT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.5,
+     "v": 6.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "APPT"
+    },
+    {
+     "id": "wash",
+     "t": "push",
+     "u": 16.6,
+     "v": 5.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "40c0e0",
+     "label": "WASH"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.6,
+     "v": 4.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WASH"
+    },
+    {
+     "id": "fees",
+     "t": "digits",
+     "u": 19.6,
+     "v": 8.0,
+     "w": 4.6,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.38,
+   "title": "HOOD",
+   "controls": [
+    {
+     "id": "pw",
+     "t": "lamp",
+     "u": 1.2,
+     "v": 11.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.2,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "on",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 11.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "CRANE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.6,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CRANE"
+    },
+    {
+     "id": "locked",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 11.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "LOCKED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.0,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOCKED"
+    },
+    {
+     "id": "moving",
+     "t": "lamp",
+     "u": 5.4,
+     "v": 11.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "MOVING",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.4,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MOVING"
+    },
+    {
+     "id": "car",
+     "t": "lamp",
+     "u": 6.8,
+     "v": 11.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "CAR"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.8,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CAR"
+    },
+    {
+     "id": "wh",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 11.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "WHSE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.2,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WHSE"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 11.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.6,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FAULT"
+    },
+    {
+     "id": "overdue",
+     "t": "lamp",
+     "u": 11.0,
+     "v": 11.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "OVERDUE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.0,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OVERDUE"
+    },
+    {
+     "id": "box",
+     "t": "digits",
+     "u": 2.4,
+     "v": 9.9,
+     "w": 3.3,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "wt",
+     "t": "digits",
+     "u": 6.0,
+     "v": 9.9,
+     "w": 3.3,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "dst",
+     "t": "digits",
+     "u": 9.6,
+     "v": 9.9,
+     "w": 3.3,
+     "h": 0.8,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "load",
+     "t": "gauge",
+     "u": 13.8,
+     "v": 10.4,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "LOAD T",
+     "max": 40
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.9,
+   "title": "MONITOR",
+   "controls": [
+    {
+     "id": "stat",
+     "t": "digits",
+     "u": 11.0,
+     "v": 16.125,
+     "w": 6.8,
+     "h": 0.855,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "pos",
+     "t": "digits",
+     "u": 11.0,
+     "v": 15.175,
+     "w": 6.8,
+     "h": 0.855,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "fromto",
+     "t": "digits",
+     "u": 11.0,
+     "v": 14.225,
+     "w": 6.8,
+     "h": 0.855,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cnt",
+     "t": "digits",
+     "u": 11.0,
+     "v": 13.275,
+     "w": 6.8,
+     "h": 0.855,
+     "col": "b0b0b0",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.9,
+   "title": "MONITOR",
+   "controls": [
+    {
+     "id": "m1",
+     "t": "digits",
+     "u": 3.5,
+     "v": 16.125,
+     "w": 4.999999999999999,
+     "h": 0.855,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m2",
+     "t": "digits",
+     "u": 3.5,
+     "v": 15.175,
+     "w": 4.999999999999999,
+     "h": 0.855,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m3",
+     "t": "digits",
+     "u": 3.5,
+     "v": 14.225,
+     "w": 4.999999999999999,
+     "h": 0.855,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m4",
+     "t": "digits",
+     "u": 3.5,
+     "v": 13.275,
+     "w": 4.999999999999999,
+     "h": 0.855,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

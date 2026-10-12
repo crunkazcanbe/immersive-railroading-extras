@@ -1,0 +1,36 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "pCp",
+  "KFK",
+  "VAV"
+ ],
+ "key": {
+  "p": {
+   "item": "irextras:pipe"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 6
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "V": {
+   "item": "irextras:gate_valve"
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 7
+  }
+ },
+ "result": {
+  "item": "irextras:refinery",
+  "count": 1
+ }
+}

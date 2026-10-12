@@ -1,0 +1,338 @@
+{
+ "title": "turnback_panel",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 7.88,
+   "title": "AUTO TURNBACK",
+   "controls": [
+    {
+     "id": "d_stage",
+     "t": "digits",
+     "u": 6.6,
+     "v": 12.4,
+     "w": 7.4,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_count",
+     "t": "digits",
+     "u": 12.6,
+     "v": 12.4,
+     "w": 2.8,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "d_train",
+     "t": "digits",
+     "u": 5.0,
+     "v": 11.4,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "TRAIN",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_timer",
+     "t": "digits",
+     "u": 11.2,
+     "v": 11.4,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "ffd020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_turn",
+     "t": "digits",
+     "u": 5.0,
+     "v": 10.4,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_cab",
+     "t": "digits",
+     "u": 11.2,
+     "v": 10.4,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "CAB",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_route",
+     "t": "digits",
+     "u": 5.0,
+     "v": 9.4,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "ROUTE",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_late",
+     "t": "digits",
+     "u": 11.2,
+     "v": 9.4,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "ff6040",
+     "label": "",
+     "fmt": "%d LATE"
+    },
+    {
+     "id": "l_arr",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 8.0,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "ARRIVED"
+    },
+    {
+     "id": "l_walk",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 8.0,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ffb020",
+     "label": "WALKING",
+     "blink": true
+    },
+    {
+     "id": "l_cab",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 8.0,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "CAB"
+    },
+    {
+     "id": "l_pp",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 8.0,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ffd020",
+     "label": "PROPEL"
+    },
+    {
+     "id": "l_rte",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 8.0,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "ROUTE"
+    },
+    {
+     "id": "l_rtef",
+     "t": "lamp",
+     "u": 11.6,
+     "v": 8.0,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ff3030",
+     "label": "NO ROUTE",
+     "blink": true
+    },
+    {
+     "id": "l_brk",
+     "t": "lamp",
+     "u": 13.4,
+     "v": 8.0,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "BRAKE"
+    },
+    {
+     "id": "l_brkf",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "BRK FAIL",
+     "blink": true
+    },
+    {
+     "id": "l_go",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "RIGHT AWAY"
+    },
+    {
+     "id": "l_late",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff8020",
+     "label": "LATE"
+    },
+    {
+     "id": "l_flt",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff2020",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "g_turn",
+     "t": "gauge",
+     "u": 12.2,
+     "v": 5.6,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "PLAN %",
+     "max": 100
+    },
+    {
+     "id": "s_on",
+     "t": "selector",
+     "u": 2.8,
+     "v": 4.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "AUTO",
+     "pos": [
+      "OFF",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 5.0,
+     "v": 4.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "PUSH-PULL",
+      "CAB ONLY"
+     ]
+    },
+    {
+     "id": "s_plan",
+     "t": "selector",
+     "u": 7.2,
+     "v": 4.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "PLAN MIN",
+     "pos": [
+      "2",
+      "3",
+      "5",
+      "8"
+     ]
+    },
+    {
+     "id": "s_range",
+     "t": "selector",
+     "u": 9.4,
+     "v": 4.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "RANGE M",
+     "pos": [
+      "40",
+      "80",
+      "120"
+     ]
+    },
+    {
+     "id": "k_bypass",
+     "t": "key",
+     "u": 2.8,
+     "v": 2.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "BRAKE TEST",
+     "pos": [
+      "NORMAL",
+      "BYPASS"
+     ]
+    },
+    {
+     "id": "p_now",
+     "t": "push",
+     "u": 6.0,
+     "v": 2.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d8b020",
+     "label": "SKIP WALK"
+    },
+    {
+     "id": "p_reset",
+     "t": "push",
+     "u": 8.4,
+     "v": 2.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.4,
+     "v": 13.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

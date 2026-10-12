@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "  L",
+  "PRI",
+  "SSS"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:lever"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:train_stop"
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PTP",
+  "P P",
+  "R R"
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "T": {
+   "item": "minecraft:redstone_torch"
+  },
+  "R": {
+   "item": "minecraft:rail"
+  }
+ },
+ "result": {
+  "item": "irextras:mini_stock",
+  "count": 1,
+  "data": 6
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " E ",
+  " I ",
+  "III"
+ ],
+ "key": {
+  "E": {
+   "item": "minecraft:ender_pearl"
+  },
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 25,
+  "count": 1
+ }
+}

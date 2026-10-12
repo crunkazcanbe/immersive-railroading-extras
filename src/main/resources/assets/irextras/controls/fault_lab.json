@@ -1,0 +1,360 @@
+{
+ "title": "fault_lab",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 7.0,
+   "title": "TEST PANEL",
+   "controls": [
+    {
+     "id": "k_test",
+     "t": "key",
+     "u": 2.0,
+     "v": 4.9,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "c0a040",
+     "label": "",
+     "pos": [
+      "NORMAL",
+      "TEST"
+     ]
+    },
+    {
+     "id": "s_fault",
+     "t": "selector",
+     "u": 5.6,
+     "v": 4.8,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "TC",
+      "LAMP",
+      "PTS",
+      "OCC",
+      "RADIO",
+      "AXLE",
+      "12V"
+     ]
+    },
+    {
+     "id": "s_zone",
+     "t": "selector",
+     "u": 9.0,
+     "v": 4.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "32",
+      "64",
+      "128"
+     ]
+    },
+    {
+     "id": "s_guard",
+     "t": "selector",
+     "u": 11.6,
+     "v": 4.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "ISOL",
+      "TRAINS"
+     ]
+    },
+    {
+     "id": "inject",
+     "t": "push",
+     "u": 1.8,
+     "v": 2.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "f08020",
+     "label": "INJECT"
+    },
+    {
+     "id": "clear",
+     "t": "push",
+     "u": 3.6,
+     "v": 2.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "1fa34a",
+     "label": "CLEAR"
+    },
+    {
+     "id": "run",
+     "t": "push",
+     "u": 5.4,
+     "v": 2.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "2050d0",
+     "label": "RUN"
+    },
+    {
+     "id": "abort",
+     "t": "push",
+     "u": 7.2,
+     "v": 2.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "d02020",
+     "label": "ABORT"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 9.0,
+     "v": 2.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "f0f0f0",
+     "label": "PRINT"
+    },
+    {
+     "id": "selftest",
+     "t": "push",
+     "u": 10.8,
+     "v": 2.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "f0d020",
+     "label": "SELF"
+    },
+    {
+     "id": "lamptest",
+     "t": "push",
+     "u": 12.4,
+     "v": 2.9,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "f0f0f0",
+     "label": "LAMP"
+    },
+    {
+     "id": "test",
+     "t": "lamp",
+     "u": 14.0,
+     "v": 5.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "TEST",
+     "blink": true
+    },
+    {
+     "id": "busy",
+     "t": "lamp",
+     "u": 14.0,
+     "v": 4.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30a0ff",
+     "label": "RUN",
+     "blink": true
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 14.0,
+     "v": 2.9,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 8.82,
+   "title": "TEST RACK",
+   "controls": [
+    {
+     "id": "step",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.3,
+     "w": 13.0,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.4,
+     "w": 13.0,
+     "h": 0.7,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.6,
+     "w": 13.0,
+     "h": 0.7,
+     "col": "8ac8a0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "fault",
+     "t": "digits",
+     "u": 11.4,
+     "v": 10.9,
+     "w": 6.0,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "target",
+     "t": "digits",
+     "u": 11.4,
+     "v": 9.9,
+     "w": 6.0,
+     "h": 0.8,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "nfault",
+     "t": "digits",
+     "u": 6.6,
+     "v": 10.9,
+     "w": 2.2,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d FLT"
+    },
+    {
+     "id": "npass",
+     "t": "digits",
+     "u": 6.6,
+     "v": 9.9,
+     "w": 2.2,
+     "h": 0.8,
+     "col": "30e060",
+     "label": "",
+     "fmt": "%d OK"
+    },
+    {
+     "id": "nfail",
+     "t": "digits",
+     "u": 4.2,
+     "v": 9.9,
+     "w": 2.2,
+     "h": 0.8,
+     "col": "ff4040",
+     "label": "",
+     "fmt": "%d NG"
+    },
+    {
+     "id": "pass",
+     "t": "lamp",
+     "u": 2.4,
+     "v": 10.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "fail",
+     "t": "lamp",
+     "u": 1.4,
+     "v": 10.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "faults",
+     "t": "lamp",
+     "u": 4.2,
+     "v": 10.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "scn",
+     "t": "digits",
+     "u": 8.0,
+     "v": 11.75,
+     "w": 13.0,
+     "h": 0.55,
+     "col": "ff8060",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 7.1,
+   "title": "CHAOS",
+   "controls": [
+    {
+     "id": "s_scn",
+     "t": "selector",
+     "u": 10.6,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "SCENARIO",
+     "pos": [
+      "TRIP",
+      "PART",
+      "RTU",
+      "FIBRE",
+      "FIRE",
+      "FILTER",
+      "PIS"
+     ]
+    },
+    {
+     "id": "chaos",
+     "t": "push",
+     "u": 8.6,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f08020",
+     "label": "CHAOS"
+    },
+    {
+     "id": "chabort",
+     "t": "push",
+     "u": 7.0,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d02020",
+     "label": "STOP"
+    }
+   ]
+  }
+ ]
+}

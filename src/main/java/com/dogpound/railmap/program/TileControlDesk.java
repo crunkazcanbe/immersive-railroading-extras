@@ -25,7 +25,44 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TileControlDesk extends TileEntity implements ITickable, ISettingsHolder {
+public class TileControlDesk extends TileEntity implements ITickable, ISettingsHolder, com.dogpound.railmap.wire.IWiredGear, com.dogpound.railmap.controls.IControlled {
+    // ---- the upstand's working controls (requested feature): 12 V DC meter = the real supply, LOAD A = what the desk
+    // draws (electronics + lit lamps), LAMP TEST lights all 12 lamps for 3 s, the buzzer sounds for new alarms until
+    // ALARM ACK, the desk key in LOCK refuses the 12 buttons.
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { sync(); }
+    @Override public com.dogpound.railmap.grid.Panel wiredPanel() { return layout().all; }
+    @Override public String wiredPress(String id, String who) { return com.dogpound.railmap.controls.IControlled.operate(this, id, null); }
+    @Override public int wiredState(String id) { return controlValue(id); }
+
+    @Override
+    public int controlValue(String id) {
+        switch (id) {
+            case "volts": return term.supply == 1 && !term.burnt ? 12 : 0;
+            case "load": return term.powered() ? 6 + Integer.bitCount(lampBits()) : 0;   // tenths of an amp
+            default: return ctl.get(id);
+        }
+    }
+
+    @Override
+    public String controlPress(String id, EntityPlayer who) {
+        if (!id.equals("lamptest") && !id.equals("ack")) return null;
+        if (!term.powered()) return "§cNo 12 V - the desk is dark";
+        if (id.equals("lamptest")) return "§7Lamp test";
+        ctl.set("acked", alarmCount);
+        return alarmCount == 0 ? "§7No alarms" : "§eAlarms acknowledged (" + alarmCount + ")";
+    }
+
+    private boolean lampTest() { return world != null && "lamptest".equals(ctl.pressId) && world.getTotalWorldTime() - ctl.pressAt < 60; }
+
+    // ---- 12 V terminal (requested feature): needs 12 V DC instrument power; with none it is desk dark
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); if (world != null && !world.isRemote) { net.minecraft.block.state.IBlockState gs = world.getBlockState(pos); world.notifyBlockUpdate(pos, gs, gs, 3); } }
+    @Override public String wiredName() { return "Control desk"; }
+    @Override public String gearState() { return term.powered() ? "ready" : "NO 12 V - desk dark"; }
+
     private static final String[] DOES = {"Nothing", "Toggle channel", "Pulse channel (1 s)", "Set route", "Cancel route",
             "Throw switch Straight", "Throw switch Turn", "Switch to automatic", "Hold signal at Stop", "Release signal"};
     private static final String[] COLOURS = {"Red", "Green", "Yellow", "Blue", "White", "Black"};
@@ -47,6 +84,7 @@ public class TileControlDesk extends TileEntity implements ITickable, ISettingsH
 
     @Override
     public void update() {
+        if (world != null && !world.isRemote) { if (term.tick(world, pos, wiredName())) gearChanged(); if (!term.powered()) return; }
         if (world == null || world.isRemote) return;
         if (++ticks % 10 != 0) return;
         int now = (int) world.getWorldTime();
@@ -62,6 +100,8 @@ public class TileControlDesk extends TileEntity implements ITickable, ISettingsH
         for (int i = 1; i <= 12; i++) if (lamp(i)) nl |= 1 << (i - 1);
         for (int c = 1; c <= 16; c++) if (d.ch(c)) nc |= 1 << (c - 1);
         int na = d.alarms.size();
+        if (ticks % 40 == 0 && na > ctl.get("acked")) world.playSound(null, pos, com.dogpound.railmap.ModSounds.BUZZER, SoundCategory.BLOCKS, 0.8f, 1.0f);   // alarm buzzer
+        if (na < ctl.get("acked")) ctl.set("acked", na);
         if (nl != lamps || nc != ch16 || na != alarmCount) {
             lamps = nl;
             ch16 = nc;
@@ -72,6 +112,7 @@ public class TileControlDesk extends TileEntity implements ITickable, ISettingsH
 
     public void press(int i, EntityPlayer p) {
         if (world == null || world.isRemote || i < 1 || i > 12) return;
+        if (ctl.get("deskkey") == 1) { p.sendStatusMessage(new TextComponentString("§cThe desk is locked - turn the desk key to ON"), true); return; }
         String do_ = cfg.text("b" + i + "do");
         int ch = cfg.num("b" + i + "ch");
         BlockPos a = parse(cfg.text("b" + i + "a"));
@@ -134,7 +175,7 @@ public class TileControlDesk extends TileEntity implements ITickable, ISettingsH
             default:
                 res = "no action";
         }
-        world.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundCategory.BLOCKS, 0.5f, 1f);
+        world.playSound(null, pos, com.dogpound.railmap.ModSounds.CTL_PUSH, SoundCategory.BLOCKS, 0.5f, 1.0f);
         log.add(0, stamp() + " B" + i + " " + cfg.text("b" + i + "label") + ": " + res);
         while (log.size() > 6) log.remove(log.size() - 1);
         p.sendMessage(new TextComponentString("§7" + res));
@@ -193,7 +234,7 @@ public class TileControlDesk extends TileEntity implements ITickable, ISettingsH
 
     public String label(int i) { return cfg.text("b" + i + "label"); }
     public String colour(int i) { return cfg.text("b" + i + "col"); }
-    public int lampBits() { return lamps; }
+    public int lampBits() { return lampTest() ? 0xFFF : lamps; }
 
     private String stamp() {
         long t = (world.getWorldTime() + 6000) % 24000;
@@ -234,6 +275,8 @@ public class TileControlDesk extends TileEntity implements ITickable, ISettingsH
     }
 
     private void writeSync(NBTTagCompound t) {
+        term.write(t);
+        ctl.write(t);
         cfg.write(t);
         t.setInteger("lamps", lamps);
         t.setInteger("ch16", ch16);
@@ -244,6 +287,8 @@ public class TileControlDesk extends TileEntity implements ITickable, ISettingsH
     }
 
     private void readSync(NBTTagCompound t) {
+        term.read(t);
+        ctl.read(t);
         cfg.read(t);
         lamps = t.getInteger("lamps");
         ch16 = t.getInteger("ch16");

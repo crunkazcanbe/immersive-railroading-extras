@@ -1,0 +1,25 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XDX",
+  "XCX",
+  "XDX"
+ ],
+ "key": {
+  "X": {
+   "item": "irextras:conveyor_fast"
+  },
+  "D": {
+   "type": "forge:ore_dict",
+   "ore": "gemDiamond"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:conveyor_express",
+  "count": 6
+ }
+}

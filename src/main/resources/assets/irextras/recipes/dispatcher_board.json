@@ -1,11 +1,34 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [ "III", "GRG", "ICI" ],
-  "key": {
-    "I": { "item": "minecraft:iron_ingot" },
-    "G": { "item": "minecraft:glass_pane" },
-    "R": { "item": "minecraft:redstone_block" },
-    "C": { "item": "minecraft:comparator" }
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "SSS",
+  "CFC",
+  "PXP"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
   },
-  "result": { "item": "irextras:dispatcher_board", "count": 1 }
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "X": {
+   "item": "irextras:part",
+   "data": 18
+  }
+ },
+ "result": {
+  "item": "irextras:dispatcher_board",
+  "count": 1
+ }
 }

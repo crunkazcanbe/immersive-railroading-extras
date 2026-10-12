@@ -1,0 +1,215 @@
+{
+ "title": "flood_sensor",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.33,
+   "title": "FLOOD WARNING",
+   "controls": [
+    {
+     "id": "lvl",
+     "t": "digits",
+     "u": 8.0,
+     "v": 9.6,
+     "w": 7.4,
+     "h": 0.55,
+     "col": "30a0ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rate",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.95,
+     "w": 7.4,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "eta",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.35,
+     "w": 7.4,
+     "h": 0.5,
+     "col": "ff8040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cell",
+     "t": "digits",
+     "u": 8.0,
+     "v": 7.75,
+     "w": 7.4,
+     "h": 0.45,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "state",
+     "t": "digits",
+     "u": 8.0,
+     "v": 7.2,
+     "w": 7.4,
+     "h": 0.45,
+     "col": "ffffff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_lvl",
+     "t": "gauge",
+     "u": 5.0,
+     "v": 5.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "LEVEL",
+     "max": 100
+    },
+    {
+     "id": "alert",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 6.3,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ffb020",
+     "label": "ALERT"
+    },
+    {
+     "id": "alarm",
+     "t": "lamp",
+     "u": 7.5,
+     "v": 6.3,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ff3030",
+     "label": "ALARM",
+     "blink": true
+    },
+    {
+     "id": "flood",
+     "t": "lamp",
+     "u": 8.4,
+     "v": 6.3,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ff3030",
+     "label": "FLOOD",
+     "blink": true
+    },
+    {
+     "id": "pump",
+     "t": "lamp",
+     "u": 9.3,
+     "v": 6.3,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": "PUMPS"
+    },
+    {
+     "id": "tsrl",
+     "t": "lamp",
+     "u": 10.2,
+     "v": 6.3,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ffb020",
+     "label": "TSR"
+    },
+    {
+     "id": "mute",
+     "t": "lamp",
+     "u": 11.1,
+     "v": 6.3,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ffb020",
+     "label": "MUTE"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 6.3,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "s_siren",
+     "t": "selector",
+     "u": 11.3,
+     "v": 4.9,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "202020",
+     "label": "SIREN",
+     "pos": [
+      "ON",
+      "MUTE"
+     ]
+    },
+    {
+     "id": "tsr",
+     "t": "push",
+     "u": 6.8,
+     "v": 4.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0d020",
+     "label": "TSR"
+    },
+    {
+     "id": "pumps",
+     "t": "push",
+     "u": 8.2,
+     "v": 4.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2050d0",
+     "label": "PUMPS"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 9.6,
+     "v": 4.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "ACK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 12.2,
+     "v": 6.3,
+     "w": 0.3,
+     "h": 0.3,
+     "col": "f0f0f0",
+     "label": ""
+    },
+    {
+     "id": "bcn",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 28.4,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "ff3020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

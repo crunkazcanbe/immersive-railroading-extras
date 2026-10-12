@@ -1,0 +1,164 @@
+{
+ "title": "ropeway_station",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.75,
+   "title": "STATION",
+   "controls": [
+    {
+     "id": "d_line",
+     "t": "digits",
+     "u": 2.4,
+     "v": 14.2,
+     "w": 3.9,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_dep",
+     "t": "digits",
+     "u": 2.4,
+     "v": 13.2,
+     "w": 3.9,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "l_closed",
+     "t": "lamp",
+     "u": 3.8,
+     "v": 12.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "GATES SHUT"
+    },
+    {
+     "id": "l_open",
+     "t": "lamp",
+     "u": 2.85,
+     "v": 12.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "GATES OPEN"
+    },
+    {
+     "id": "l_car",
+     "t": "lamp",
+     "u": 1.9,
+     "v": 12.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": "CAR IN"
+    },
+    {
+     "id": "l_run",
+     "t": "lamp",
+     "u": 0.95,
+     "v": 12.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "LINE RUN"
+    },
+    {
+     "id": "l_flt",
+     "t": "lamp",
+     "u": 3.8,
+     "v": 11.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "FAULT"
+    },
+    {
+     "id": "l_ready",
+     "t": "lamp",
+     "u": 2.85,
+     "v": 11.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": "READY"
+    },
+    {
+     "id": "l_hold",
+     "t": "lamp",
+     "u": 1.9,
+     "v": 11.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "HOLD"
+    },
+    {
+     "id": "dopen",
+     "t": "push",
+     "u": 3.6,
+     "v": 9.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "30c040",
+     "label": "GATES OPEN"
+    },
+    {
+     "id": "dclose",
+     "t": "push",
+     "u": 2.4,
+     "v": 9.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d02020",
+     "label": "GATES CLOSE"
+    },
+    {
+     "id": "ready",
+     "t": "push",
+     "u": 1.2,
+     "v": 9.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0f0f0",
+     "label": "READY"
+    },
+    {
+     "id": "hold",
+     "t": "push",
+     "u": 3.6,
+     "v": 8.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "ffb020",
+     "label": "HOLD"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 2.4,
+     "v": 8.0,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 2.4,
+     "v": 5.6,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "d01818",
+     "label": "STOP"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "title": "grid_breaker",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.5,
+   "title": "",
+   "controls": [
+    {
+     "id": "rly",
+     "t": "digits",
+     "u": 10.3,
+     "v": 22.3,
+     "w": 3.4,
+     "h": 1.2,
+     "col": "40ff60",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "target",
+     "t": "flag",
+     "u": 8.9,
+     "v": 20.5,
+     "w": 1.0,
+     "h": 0.7,
+     "col": "000000",
+     "label": "TRIP TARGET"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.7,
+   "title": "",
+   "controls": [
+    {
+     "id": "amps",
+     "t": "gauge",
+     "u": 5.1,
+     "v": 21.7,
+     "w": 2.8,
+     "h": 2.8,
+     "col": "f2f0e6",
+     "label": "AMPS",
+     "max": 100
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.62,
+   "title": "",
+   "controls": [
+    {
+     "id": "mclosed",
+     "t": "lamp",
+     "u": 11.5,
+     "v": 24.8,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "ff3020",
+     "label": "CLOSED"
+    },
+    {
+     "id": "mopen",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 24.8,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "30ff50",
+     "label": "OPEN"
+    },
+    {
+     "id": "mtrip",
+     "t": "lamp",
+     "u": 4.5,
+     "v": 24.8,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "ffa020",
+     "label": "TRIPPED",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": 0.9,
+   "title": "",
+   "controls": [
+    {
+     "id": "flag",
+     "t": "flag",
+     "u": 10.0,
+     "v": 11.9,
+     "w": 2.0,
+     "h": 1.1,
+     "col": "000000",
+     "label": "POSITION"
+    },
+    {
+     "id": "springf",
+     "t": "flag",
+     "u": 10.0,
+     "v": 10.2,
+     "w": 2.0,
+     "h": 1.0,
+     "col": "000000",
+     "label": "SPRING"
+    },
+    {
+     "id": "ops",
+     "t": "digits",
+     "u": 9.0,
+     "v": 8.85,
+     "w": 1.5,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%05d"
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": 1.0,
+   "title": "",
+   "controls": [
+    {
+     "id": "sf6",
+     "t": "gauge",
+     "u": 9.0,
+     "v": 19.8,
+     "w": 1.9,
+     "h": 1.9,
+     "col": "f2f0e6",
+     "label": "",
+     "max": 100
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.6,
+   "title": "",
+   "controls": [
+    {
+     "id": "flag",
+     "t": "flag",
+     "u": 5.5,
+     "v": 17.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "000000",
+     "label": "MIMIC"
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": 3.35,
+   "title": "",
+   "controls": [
+    {
+     "id": "vpis1",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 9.4,
+     "w": 0.6,
+     "h": 0.4,
+     "col": "ff5a28",
+     "label": ""
+    },
+    {
+     "id": "vpis2",
+     "t": "lamp",
+     "u": 11.0,
+     "v": 9.4,
+     "w": 0.6,
+     "h": 0.4,
+     "col": "ff5a28",
+     "label": ""
+    },
+    {
+     "id": "vpis3",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 9.4,
+     "w": 0.6,
+     "h": 0.4,
+     "col": "ff5a28",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

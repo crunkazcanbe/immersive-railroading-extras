@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ISI",
+  "GLG"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  }
+ },
+ "result": {
+  "item": "irextras:canopy_light",
+  "count": 1
+ }
+}

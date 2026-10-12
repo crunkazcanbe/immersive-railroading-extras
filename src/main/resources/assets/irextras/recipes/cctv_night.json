@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IRI",
+  "RER",
+  "IGI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone_torch"
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  }
+ },
+ "result": {
+  "item": "irextras:cctv_night",
+  "count": 1
+ }
+}

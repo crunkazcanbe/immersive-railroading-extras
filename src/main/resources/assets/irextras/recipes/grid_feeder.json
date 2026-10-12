@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XPX",
+  "WFW",
+  "XCX"
+ ],
+ "key": {
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:grid_feeder",
+  "count": 1
+ }
+}

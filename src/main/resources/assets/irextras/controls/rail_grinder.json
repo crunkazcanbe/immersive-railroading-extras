@@ -1,0 +1,353 @@
+{
+ "title": "rail_grinder",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -6.67,
+   "title": "RAIL GRINDER",
+   "controls": [
+    {
+     "id": "state",
+     "t": "digits",
+     "u": 5.0,
+     "v": 5.5,
+     "w": 9.4,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "spd",
+     "t": "digits",
+     "u": 12.8,
+     "v": 5.5,
+     "w": 4.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "stone",
+     "t": "digits",
+     "u": 3.4,
+     "v": 4.8,
+     "w": 5.4,
+     "h": 0.5,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "done",
+     "t": "digits",
+     "u": 8.4,
+     "v": 4.8,
+     "w": 4.2,
+     "h": 0.5,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "prof",
+     "t": "digits",
+     "u": 13.0,
+     "v": 4.8,
+     "w": 5.0,
+     "h": 0.5,
+     "col": "30a0ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_fuel",
+     "t": "gauge",
+     "u": 1.4,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "FUEL",
+     "max": 100
+    },
+    {
+     "id": "g_stone",
+     "t": "gauge",
+     "u": 3.1,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "STONE",
+     "max": 100
+    },
+    {
+     "id": "g_water",
+     "t": "gauge",
+     "u": 4.8,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "WATER",
+     "max": 100
+    },
+    {
+     "id": "g_batt",
+     "t": "gauge",
+     "u": 6.5,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "BATT",
+     "max": 100
+    },
+    {
+     "id": "fuel",
+     "t": "digits",
+     "u": 11.2,
+     "v": 3.9,
+     "w": 4.6,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "eng",
+     "t": "lamp",
+     "u": 0.9,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "ENG"
+    },
+    {
+     "id": "heads",
+     "t": "lamp",
+     "u": 2.5,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ffb020",
+     "label": "HEADS"
+    },
+    {
+     "id": "spark",
+     "t": "lamp",
+     "u": 4.1,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff8020",
+     "label": "GRIND",
+     "blink": true
+    },
+    {
+     "id": "wet",
+     "t": "lamp",
+     "u": 5.7,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "3080ff",
+     "label": "SPRAY"
+    },
+    {
+     "id": "move",
+     "t": "lamp",
+     "u": 7.3,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "MOVE",
+     "blink": true
+    },
+    {
+     "id": "end",
+     "t": "lamp",
+     "u": 8.9,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "STOP",
+     "blink": true
+    },
+    {
+     "id": "worn",
+     "t": "lamp",
+     "u": 10.5,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ffb020",
+     "label": "STONES"
+    },
+    {
+     "id": "nopos",
+     "t": "lamp",
+     "u": 12.1,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "NO POSS",
+     "blink": true
+    },
+    {
+     "id": "poss",
+     "t": "lamp",
+     "u": 13.7,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "POSS"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 15.3,
+     "v": 2.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "s_dir",
+     "t": "selector",
+     "u": 1.2,
+     "v": -0.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "DIR",
+     "pos": [
+      "FWD",
+      "REV"
+     ]
+    },
+    {
+     "id": "s_spd",
+     "t": "selector",
+     "u": 2.9,
+     "v": -0.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "SPEED",
+     "pos": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    {
+     "id": "s_water",
+     "t": "selector",
+     "u": 4.6,
+     "v": -0.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "SPRAY",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "m_heads",
+     "t": "lever",
+     "u": 6.6,
+     "v": -0.3,
+     "w": 0.7,
+     "h": 1.5,
+     "col": "d02020",
+     "label": "HEADS",
+     "pos": [
+      "UP",
+      "DOWN"
+     ]
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 8.6,
+     "v": -0.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "30c050",
+     "label": "ENGINE"
+    },
+    {
+     "id": "go",
+     "t": "push",
+     "u": 10.4,
+     "v": -0.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "DRIVE"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.9,
+     "v": -0.4,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "f0f0f0",
+     "label": ""
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 14.4,
+     "v": -0.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "d01010",
+     "label": "E-STOP"
+    },
+    {
+     "id": "z_fuel",
+     "t": "zone",
+     "u": 2.9,
+     "v": -2.55,
+     "w": 5.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "FUEL"
+    },
+    {
+     "id": "z_water",
+     "t": "zone",
+     "u": 7.2,
+     "v": -2.55,
+     "w": 3.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "WATER"
+    },
+    {
+     "id": "z_stones",
+     "t": "zone",
+     "u": 12.1,
+     "v": -2.55,
+     "w": 5.4,
+     "h": 1.0,
+     "col": "202020",
+     "label": "STONES"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:wayside_ess"
+  },
+  "facing=east": {
+   "model": "irextras:wayside_ess",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:wayside_ess",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:wayside_ess",
+   "y": 270
+  }
+ }
+}

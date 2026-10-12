@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:port_berth"
+  },
+  "facing=east": {
+   "model": "irextras:port_berth",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:port_berth",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:port_berth",
+   "y": 270
+  }
+ }
+}

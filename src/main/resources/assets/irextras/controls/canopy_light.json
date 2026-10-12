@@ -1,0 +1,199 @@
+{
+ "title": "canopy_light",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 6.35,
+   "title": "CANOPY",
+   "controls": [
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 4.4,
+     "v": 12.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "ON",
+      "OFF"
+     ]
+    },
+    {
+     "id": "s_circ",
+     "t": "selector",
+     "u": 6.0,
+     "v": 12.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "CIRC",
+     "pos": [
+      "C1",
+      "C2",
+      "C3",
+      "C4"
+     ]
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 7.4,
+     "v": 13.1,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.4,
+     "v": 12.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 8.15,
+     "v": 13.1,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.15,
+     "v": 12.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "litl",
+     "t": "lamp",
+     "u": 8.9,
+     "v": 13.1,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "f0f0e0",
+     "label": "LIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.9,
+     "v": 12.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LIT"
+    },
+    {
+     "id": "flt",
+     "t": "lamp",
+     "u": 9.65,
+     "v": 13.1,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "ff3030",
+     "label": "FLT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.65,
+     "v": 12.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLT"
+    },
+    {
+     "id": "ctrl",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 13.1,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "4080ff",
+     "label": "LCP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 12.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LCP"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.8,
+     "v": 12.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "circ",
+     "t": "digits",
+     "u": 10.0,
+     "v": 12.1,
+     "w": 1.4,
+     "h": 0.5,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 5.55,
+   "title": "DIFFUSER",
+   "controls": [
+    {
+     "id": "lens",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 9.8,
+     "w": 13.6,
+     "h": 0.7,
+     "col": "fff1d8",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": 5.55,
+   "title": "DIFFUSER",
+   "controls": [
+    {
+     "id": "lens",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 9.8,
+     "w": 13.6,
+     "h": 0.7,
+     "col": "fff1d8",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,3 @@
+newmtl assembly_line
+Kd 1 1 1
+map_Kd irextras:blocks/machines/assembly_line

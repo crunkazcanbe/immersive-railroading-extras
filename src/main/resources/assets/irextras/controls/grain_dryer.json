@@ -1,0 +1,541 @@
+{
+ "title": "grain_dryer",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.58,
+   "title": "DRYER PANEL",
+   "controls": [
+    {
+     "id": "moist",
+     "t": "digits",
+     "u": 13.4,
+     "v": 10.0,
+     "w": 2.6,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "MOISTURE",
+     "fmt": "%s %%"
+    },
+    {
+     "id": "plen",
+     "t": "digits",
+     "u": 10.0,
+     "v": 10.0,
+     "w": 2.6,
+     "h": 1.0,
+     "col": "ff8040",
+     "label": "PLENUM",
+     "fmt": "%s C"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.4,
+     "v": 9.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MOISTURE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 9.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PLENUM C"
+    },
+    {
+     "id": "garnerg",
+     "t": "gauge",
+     "u": 14.4,
+     "v": 7.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "GARNER",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 6.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GARNER"
+    },
+    {
+     "id": "plenumg",
+     "t": "gauge",
+     "u": 16.2,
+     "v": 7.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "PLENUM",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.2,
+     "v": 6.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PLENUM"
+    },
+    {
+     "id": "moistg",
+     "t": "gauge",
+     "u": 18.0,
+     "v": 7.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "H2O",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.0,
+     "v": 6.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "H2O"
+    },
+    {
+     "id": "fuelg",
+     "t": "gauge",
+     "u": 19.8,
+     "v": 7.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "FUEL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.8,
+     "v": 6.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FUEL"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 14.6,
+     "v": 5.4,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.6,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 16.0,
+     "v": 5.4,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.0,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "burnl",
+     "t": "lamp",
+     "u": 17.4,
+     "v": 5.4,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ffb020",
+     "label": "BURN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.4,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BURN"
+    },
+    {
+     "id": "flame",
+     "t": "lamp",
+     "u": 18.8,
+     "v": 5.4,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff6010",
+     "label": "FLAME",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.8,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLAME"
+    },
+    {
+     "id": "trip",
+     "t": "lamp",
+     "u": 20.2,
+     "v": 5.4,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "TRIP",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 20.2,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TRIP"
+    },
+    {
+     "id": "dryl",
+     "t": "lamp",
+     "u": 14.6,
+     "v": 4.2,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "DRY"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.6,
+     "v": 3.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DRY"
+    },
+    {
+     "id": "wetl",
+     "t": "lamp",
+     "u": 16.0,
+     "v": 4.2,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ffb020",
+     "label": "WET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.0,
+     "v": 3.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WET"
+    },
+    {
+     "id": "discl",
+     "t": "lamp",
+     "u": 17.4,
+     "v": 4.2,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "8ad4ff",
+     "label": "DISCH"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.4,
+     "v": 3.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DISCH"
+    },
+    {
+     "id": "fuell",
+     "t": "lamp",
+     "u": 18.8,
+     "v": 4.2,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "LOW FUEL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.8,
+     "v": 3.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOW FUEL"
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 14.4,
+     "v": 2.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "1fa34a",
+     "label": "START"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 1.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "START"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 16.0,
+     "v": 2.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.0,
+     "v": 1.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 17.6,
+     "v": 2.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "505860",
+     "label": "RESET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.6,
+     "v": 1.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 19.2,
+     "v": 2.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.2,
+     "v": 1.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.35,
+   "title": "DRYER SCREEN",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 11.8,
+     "v": 12.85,
+     "w": 6.199999999999999,
+     "h": 0.8800000000000004,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 11.8,
+     "v": 11.75,
+     "w": 6.199999999999999,
+     "h": 0.8800000000000004,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.58,
+   "title": "DRYER WING",
+   "controls": [
+    {
+     "id": "k_burner",
+     "t": "key",
+     "u": 6.8,
+     "v": 5.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "BURNER",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.8,
+     "v": 5.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BURNER"
+    },
+    {
+     "id": "s_target",
+     "t": "selector",
+     "u": 4.6,
+     "v": 5.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "TARGET",
+     "pos": [
+      "12 %",
+      "13 %",
+      "14 %",
+      "15 %"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 4.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TARGET"
+    },
+    {
+     "id": "s_bin",
+     "t": "selector",
+     "u": 6.8,
+     "v": 3.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "DISCHARGE TO",
+     "pos": [
+      "BIN 1",
+      "BIN 2",
+      "BIN 3",
+      "BIN 4",
+      "BIN 5",
+      "BIN 6"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.8,
+     "v": 2.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TO BIN"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 4.4,
+     "v": 2.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d02020",
+     "label": "E-STOP"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 8.98,
+   "title": "FUEL HOPPER",
+   "controls": [
+    {
+     "id": "fuel",
+     "t": "zone",
+     "u": 14.5,
+     "v": 9.0,
+     "w": 2.8,
+     "h": 5.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

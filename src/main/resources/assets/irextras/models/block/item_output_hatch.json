@@ -1,0 +1,12 @@
+{
+ "parent": "block/cube",
+ "textures": {
+  "particle": "irextras:blocks/machine_casing",
+  "down": "irextras:blocks/machine_casing",
+  "up": "irextras:blocks/item_output_hatch",
+  "north": "irextras:blocks/item_output_hatch",
+  "south": "irextras:blocks/item_output_hatch",
+  "east": "irextras:blocks/item_output_hatch",
+  "west": "irextras:blocks/item_output_hatch"
+ }
+}

@@ -1,0 +1,439 @@
+{
+ "title": "flange_lubricator",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.58,
+   "title": "LUBRICATOR",
+   "controls": [
+    {
+     "id": "axles",
+     "t": "digits",
+     "u": 13.2,
+     "v": 8.2,
+     "w": 3.0,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s AXLES"
+    },
+    {
+     "id": "used",
+     "t": "digits",
+     "u": 9.6,
+     "v": 8.2,
+     "w": 3.0,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s G"
+    },
+    {
+     "id": "line",
+     "t": "digits",
+     "u": 11.4,
+     "v": 7.3,
+     "w": 6.8,
+     "h": 0.5,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tankg",
+     "t": "gauge",
+     "u": 13.8,
+     "v": 5.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "TANK",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.8,
+     "v": 4.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TANK"
+    },
+    {
+     "id": "filmg",
+     "t": "gauge",
+     "u": 11.8,
+     "v": 5.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "FILM",
+     "max": 150
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.8,
+     "v": 4.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FILM"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 10.2,
+     "v": 6.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.2,
+     "v": 5.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "sup",
+     "t": "lamp",
+     "u": 9.2,
+     "v": 6.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "SUPPLY"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.2,
+     "v": 5.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SUPPLY"
+    },
+    {
+     "id": "pumpl",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 6.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "PUMP",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.2,
+     "v": 5.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PUMP"
+    },
+    {
+     "id": "auto",
+     "t": "lamp",
+     "u": 10.2,
+     "v": 4.9,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "AUTO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.2,
+     "v": 4.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTO"
+    },
+    {
+     "id": "det",
+     "t": "lamp",
+     "u": 9.2,
+     "v": 4.9,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "8ad4ff",
+     "label": "AXLE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.2,
+     "v": 4.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AXLE"
+    },
+    {
+     "id": "low",
+     "t": "lamp",
+     "u": 14.4,
+     "v": 3.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "LOW"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOW"
+    },
+    {
+     "id": "empty",
+     "t": "lamp",
+     "u": 13.3,
+     "v": 3.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff2020",
+     "label": "EMPTY"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.3,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "EMPTY"
+    },
+    {
+     "id": "filmok",
+     "t": "lamp",
+     "u": 12.2,
+     "v": 3.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "FILM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.2,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FILM"
+    },
+    {
+     "id": "over",
+     "t": "lamp",
+     "u": 11.1,
+     "v": 3.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff2020",
+     "label": "OVER",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.1,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OVER"
+    },
+    {
+     "id": "wet",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 3.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "8ad4ff",
+     "label": "RAIN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RAIN"
+    },
+    {
+     "id": "k_on",
+     "t": "key",
+     "u": 8.6,
+     "v": 3.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "c0a040",
+     "label": "MODE",
+     "pos": [
+      "OFF",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.6,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MODE"
+    },
+    {
+     "id": "s_dose",
+     "t": "selector",
+     "u": 8.6,
+     "v": 2.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "202020",
+     "label": "DOSE",
+     "pos": [
+      "LOW",
+      "MED",
+      "HIGH"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.6,
+     "v": 1.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DOSE"
+    },
+    {
+     "id": "prime",
+     "t": "push",
+     "u": 14.6,
+     "v": 2.0,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "2050d0",
+     "label": "PRIME"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.6,
+     "v": 1.275,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRIME"
+    },
+    {
+     "id": "fill",
+     "t": "push",
+     "u": 13.45,
+     "v": 2.0,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "1fa34a",
+     "label": "FILL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.45,
+     "v": 1.275,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FILL"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 12.3,
+     "v": 2.0,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "505860",
+     "label": "RESET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.3,
+     "v": 1.275,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.15,
+     "v": 2.0,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "e0e0e0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.15,
+     "v": 1.275,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "screen",
+     "t": "push",
+     "u": 10.0,
+     "v": 2.0,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "303a48",
+     "label": "SCREEN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 1.275,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SCREEN"
+    }
+   ]
+  }
+ ]
+}

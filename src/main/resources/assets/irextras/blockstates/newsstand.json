@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:newsstand"
+  },
+  "facing=east": {
+   "model": "irextras:newsstand",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:newsstand",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:newsstand",
+   "y": 270
+  }
+ }
+}

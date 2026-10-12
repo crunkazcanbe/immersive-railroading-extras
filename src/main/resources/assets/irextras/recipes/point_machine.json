@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IRI",
+  "PCP",
+  "III"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  }
+ },
+ "result": {
+  "item": "irextras:point_machine",
+  "count": 1
+ }
+}

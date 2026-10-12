@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PWP",
+  "BDB",
+  "WCW"
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "W": {
+   "item": "minecraft:writable_book"
+  },
+  "B": {
+   "item": "minecraft:book"
+  },
+  "D": {
+   "item": "irextras:freight_office"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:insurance_desk"
+ }
+}

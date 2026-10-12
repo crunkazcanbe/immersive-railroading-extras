@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:flood_sensor"
+  },
+  "facing=east": {
+   "model": "irextras:flood_sensor",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:flood_sensor",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:flood_sensor",
+   "y": 270
+  }
+ }
+}

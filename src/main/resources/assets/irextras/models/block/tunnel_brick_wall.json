@@ -1,0 +1,122 @@
+{
+"credit": "IR Extras tunnel lining (tools/gen_bb_track.py)",
+"ambientocclusion": true,
+"textures": {
+"m": "minecraft:blocks/brick",
+"j": "minecraft:blocks/concrete_gray",
+"particle": "minecraft:blocks/brick"
+},
+"elements": [
+{
+"__comment": "wall body",
+"from": [
+0,
+0,
+6
+],
+"to": [
+16,
+16,
+16
+],
+"faces": {
+"north": {
+"uv": [
+0,
+0,
+16,
+16
+],
+"texture": "#m"
+},
+"south": {
+"uv": [
+0,
+0,
+16,
+16
+],
+"texture": "#m"
+},
+"east": {
+"uv": [
+6,
+0,
+16,
+16
+],
+"texture": "#m"
+},
+"west": {
+"uv": [
+6,
+0,
+16,
+16
+],
+"texture": "#m"
+},
+"up": {
+"uv": [
+0,
+6,
+16,
+16
+],
+"texture": "#m"
+},
+"down": {
+"uv": [
+0,
+6,
+16,
+16
+],
+"texture": "#m"
+}
+}
+},
+{
+"__comment": "plinth course",
+"from": [
+0,
+0,
+5.6
+],
+"to": [
+16,
+0.6,
+6
+],
+"faces": {
+"north": {
+"uv": [
+0,
+15.4,
+16,
+16
+],
+"texture": "#m"
+},
+"up": {
+"uv": [
+0,
+5.6,
+16,
+6
+],
+"texture": "#m"
+},
+"down": {
+"uv": [
+0,
+5.6,
+16,
+6
+],
+"texture": "#m"
+}
+}
+}
+]
+}

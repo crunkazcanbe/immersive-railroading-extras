@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ticket_validator"
+  },
+  "facing=east": {
+   "model": "irextras:ticket_validator",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ticket_validator",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ticket_validator",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,421 @@
+{
+ "title": "bag_checkin",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 11.95,
+   "title": "BAG DROP",
+   "controls": [
+    {
+     "id": "drop",
+     "t": "zone",
+     "u": 24.0,
+     "v": 7.5,
+     "w": 12.8,
+     "h": 10.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.35,
+   "title": "SCALE",
+   "controls": [
+    {
+     "id": "kgv",
+     "t": "digits",
+     "u": 18.75,
+     "v": 12.15,
+     "w": 2.9,
+     "h": 0.9,
+     "col": "ff3030",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "scale",
+     "t": "gauge",
+     "u": 17.4,
+     "v": 10.8,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f2f0e6",
+     "label": "KG",
+     "max": 32
+    },
+    {
+     "id": "heavy",
+     "t": "lamp",
+     "u": 19.6,
+     "v": 10.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "HEAVY",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.5,
+   "title": "DESK DRAWERS",
+   "controls": []
+  },
+  {
+   "side": "up",
+   "face": 6.85,
+   "title": "DESK",
+   "controls": [
+    {
+     "id": "dprev",
+     "t": "push",
+     "u": 1.6,
+     "v": 4.6,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "505860",
+     "label": "DEST <"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.6,
+     "v": 3.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DEST <"
+    },
+    {
+     "id": "dnext",
+     "t": "push",
+     "u": 4.2,
+     "v": 4.6,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "505860",
+     "label": "DEST >"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.2,
+     "v": 3.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DEST >"
+    },
+    {
+     "id": "weigh",
+     "t": "push",
+     "u": 6.8,
+     "v": 4.6,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "30a0e0",
+     "label": "WEIGH"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.8,
+     "v": 3.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WEIGH"
+    },
+    {
+     "id": "tag",
+     "t": "push",
+     "u": 9.4,
+     "v": 4.6,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "1fa34a",
+     "label": "TAG"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.4,
+     "v": 3.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TAG"
+    },
+    {
+     "id": "send",
+     "t": "push",
+     "u": 1.6,
+     "v": 6.8,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "2050d0",
+     "label": "TO BELT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.6,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TO BELT"
+    },
+    {
+     "id": "claim",
+     "t": "push",
+     "u": 4.2,
+     "v": 6.8,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "f0d020",
+     "label": "CLAIM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.2,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLAIM"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 6.8,
+     "v": 6.8,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.8,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.78,
+   "title": "HOOD",
+   "controls": [
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 1.2,
+     "v": 11.1,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.2,
+     "v": 10.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 2.8,
+     "v": 11.1,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.8,
+     "v": 10.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "beltl",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 11.1,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "BELT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": 10.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BELT"
+    },
+    {
+     "id": "holdl",
+     "t": "lamp",
+     "u": 6.0,
+     "v": 11.1,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "HOLD"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.0,
+     "v": 10.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "HOLD"
+    },
+    {
+     "id": "nhold",
+     "t": "digits",
+     "u": 9.8,
+     "v": 11.1,
+     "w": 2.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d IN HOLD"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 10.5,
+   "title": "MONITOR",
+   "controls": [
+    {
+     "id": "s1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.733,
+     "w": 10.8,
+     "h": 0.8400000000000003,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.8,
+     "w": 10.8,
+     "h": 0.8400000000000003,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.867,
+     "w": 10.8,
+     "h": 0.8400000000000003,
+     "col": "f0f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.933,
+     "w": 10.8,
+     "h": 0.8400000000000003,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s5",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.0,
+     "w": 10.8,
+     "h": 0.8400000000000003,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s6",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.067,
+     "w": 10.8,
+     "h": 0.8400000000000003,
+     "col": "8a94a0",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 10.5,
+   "title": "STATUS",
+   "controls": [
+    {
+     "id": "msg",
+     "t": "digits",
+     "u": 8,
+     "v": 12.0,
+     "w": 11.0,
+     "h": 0.35,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 5.7,
+   "title": "BAG HOLD",
+   "controls": [
+    {
+     "id": "hold",
+     "t": "zone",
+     "u": -7.5,
+     "v": 7.0,
+     "w": 12.6,
+     "h": 13.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

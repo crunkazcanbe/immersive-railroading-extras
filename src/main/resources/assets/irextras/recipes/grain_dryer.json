@@ -1,0 +1,35 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PHP",
+  "FAF",
+  "MCM"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "F": {
+   "item": "minecraft:furnace"
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 7
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:grain_dryer"
+ }
+}

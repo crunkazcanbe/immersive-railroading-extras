@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:halloween_display"
+  },
+  "facing=east": {
+   "model": "irextras:halloween_display",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:halloween_display",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:halloween_display",
+   "y": 270
+  }
+ }
+}

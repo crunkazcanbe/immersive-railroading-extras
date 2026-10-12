@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "NRN",
+  "IJI",
+  " I "
+ ],
+ "key": {
+  "N": {
+   "item": "minecraft:noteblock"
+  },
+  "R": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "J": {
+   "item": "minecraft:jukebox"
+  }
+ },
+ "result": {
+  "item": "irextras:announce_unit"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PCP",
+  "TFT",
+  "SXS"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "T": {
+   "item": "irextras:part",
+   "data": 18
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 11
+  },
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  }
+ },
+ "result": {
+  "item": "irextras:grid_breaker",
+  "count": 1
+ }
+}

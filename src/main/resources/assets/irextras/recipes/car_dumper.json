@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "GCG",
+  "HFH",
+  "MPM"
+ ],
+ "key": {
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:car_dumper",
+  "count": 1
+ }
+}

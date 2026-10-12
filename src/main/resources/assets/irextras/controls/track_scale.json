@@ -1,0 +1,40 @@
+{
+ "title": "track_scale",
+ "surfaces": [
+  {
+   "side": "east",
+   "face": 16.6,
+   "title": "SCALE",
+   "controls": [
+    {
+     "id": "weight",
+     "t": "digits",
+     "u": 8.0,
+     "v": 6.7,
+     "w": 2.8,
+     "h": 1.4,
+     "col": "ff3020",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": 17.5,
+   "title": "WEIGH COMPLETE",
+   "controls": [
+    {
+     "id": "done",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 9.2,
+     "w": 1.0,
+     "h": 0.8,
+     "col": "30d050",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

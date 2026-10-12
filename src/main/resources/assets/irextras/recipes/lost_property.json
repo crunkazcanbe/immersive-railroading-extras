@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "WCW",
+  "WSW",
+  "WPW"
+ ],
+ "key": {
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "P": {
+   "item": "minecraft:paper"
+  }
+ },
+ "result": {
+  "item": "irextras:lost_property",
+  "count": 1
+ }
+}

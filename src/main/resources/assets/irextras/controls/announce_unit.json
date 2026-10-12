@@ -1,0 +1,230 @@
+{
+ "title": "announce_unit",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 9.78,
+   "title": "LED",
+   "controls": [
+    {
+     "id": "l1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.65,
+     "w": 12.0,
+     "h": 0.85,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "l2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.6,
+     "w": 12.0,
+     "h": 0.85,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "stn",
+     "t": "digits",
+     "u": 11.4,
+     "v": 12.2,
+     "w": 5.6,
+     "h": 0.75,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "train",
+     "t": "digits",
+     "u": 4.8,
+     "v": 12.2,
+     "w": 6.2,
+     "h": 0.75,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 5.0,
+   "title": "DECK",
+   "controls": [
+    {
+     "id": "s_tpl",
+     "t": "selector",
+     "u": 3.0,
+     "v": 4.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "TEMPLATE",
+     "pos": [
+      "DELAY",
+      "PLAT",
+      "CANCEL",
+      "CONN",
+      "NEXT",
+      "EMERG",
+      "EVAC",
+      "CLEAR"
+     ]
+    },
+    {
+     "id": "s_plat",
+     "t": "selector",
+     "u": 6.4,
+     "v": 4.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "PLAT",
+     "pos": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+     ]
+    },
+    {
+     "id": "k_auto",
+     "t": "key",
+     "u": 13.4,
+     "v": 4.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "c0a040",
+     "label": "MODE",
+     "pos": [
+      "MANUAL",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "tprev",
+     "t": "push",
+     "u": 2.4,
+     "v": 7.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "TRAIN <"
+    },
+    {
+     "id": "tnext",
+     "t": "push",
+     "u": 5.2,
+     "v": 7.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "TRAIN >"
+    },
+    {
+     "id": "preview",
+     "t": "push",
+     "u": 8.0,
+     "v": 7.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0d020",
+     "label": "PREVIEW"
+    },
+    {
+     "id": "announce",
+     "t": "push",
+     "u": 10.8,
+     "v": 7.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": "ANNOUNCE"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.6,
+     "v": 7.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "power",
+     "t": "lamp",
+     "u": 2.4,
+     "v": 9.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "onair",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 9.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff2020",
+     "label": "ON AIR",
+     "blink": true
+    },
+    {
+     "id": "auto",
+     "t": "lamp",
+     "u": 6.4,
+     "v": 9.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "AUTO"
+    },
+    {
+     "id": "delay",
+     "t": "lamp",
+     "u": 8.4,
+     "v": 9.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "DELAYS"
+    },
+    {
+     "id": "cnt",
+     "t": "digits",
+     "u": 11.0,
+     "v": 9.2,
+     "w": 1.8,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "due",
+     "t": "digits",
+     "u": 13.4,
+     "v": 9.2,
+     "w": 1.8,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d DUE"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:zone_marker"
+  },
+  "facing=east": {
+   "model": "irextras:zone_marker",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:zone_marker",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:zone_marker",
+   "y": 270
+  }
+ }
+}

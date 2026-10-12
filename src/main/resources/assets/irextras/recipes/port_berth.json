@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ICI",
+  "PDP",
+  "IBI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "C": {
+   "item": "irextras:shipping_container"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "D": {
+   "item": "irextras:container_terminal"
+  },
+  "B": {
+   "item": "minecraft:boat"
+  }
+ },
+ "result": {
+  "item": "irextras:port_berth"
+ }
+}

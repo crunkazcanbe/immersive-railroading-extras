@@ -1,0 +1,77 @@
+{
+ "title": "grid_scada",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 6.6,
+   "title": "",
+   "controls": [
+    {
+     "id": "pwr1",
+     "t": "lamp",
+     "u": 10.98,
+     "v": 11.77,
+     "w": 0.22,
+     "h": 0.14,
+     "col": "30a0ff",
+     "label": ""
+    },
+    {
+     "id": "pwr2",
+     "t": "lamp",
+     "u": 6.18,
+     "v": 11.77,
+     "w": 0.22,
+     "h": 0.14,
+     "col": "30a0ff",
+     "label": ""
+    },
+    {
+     "id": "pwr3",
+     "t": "lamp",
+     "u": 1.38,
+     "v": 11.77,
+     "w": 0.22,
+     "h": 0.14,
+     "col": "30a0ff",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 7.6,
+   "title": "",
+   "controls": [
+    {
+     "id": "clock",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.3,
+     "w": 5.4,
+     "h": 1.1,
+     "col": "ff3020",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 1.2,
+   "title": "",
+   "controls": [
+    {
+     "id": "lprn",
+     "t": "lamp",
+     "u": 13.05,
+     "v": 12.3,
+     "w": 0.25,
+     "h": 0.18,
+     "col": "30ff50",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

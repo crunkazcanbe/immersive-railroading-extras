@@ -1,0 +1,329 @@
+{
+ "title": "point_machine",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.88,
+   "title": "POINTS LOCAL CONTROL",
+   "controls": [
+    {
+     "id": "pos",
+     "t": "digits",
+     "u": 8.0,
+     "v": 11.7,
+     "w": 7.4,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "nor",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 10.4,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "NOR"
+    },
+    {
+     "id": "rev",
+     "t": "lamp",
+     "u": 5.25,
+     "v": 10.4,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ffd020",
+     "label": "REV"
+    },
+    {
+     "id": "nodet",
+     "t": "lamp",
+     "u": 7.1,
+     "v": 10.4,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ff3030",
+     "label": "NO DET",
+     "blink": true
+    },
+    {
+     "id": "run",
+     "t": "lamp",
+     "u": 8.95,
+     "v": 10.4,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ffb020",
+     "label": "MOTOR"
+    },
+    {
+     "id": "fail",
+     "t": "lamp",
+     "u": 10.8,
+     "v": 10.4,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ff2020",
+     "label": "FAIL",
+     "blink": true
+    },
+    {
+     "id": "obs",
+     "t": "lamp",
+     "u": 12.65,
+     "v": 10.4,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ff6020",
+     "label": "OBSTR"
+    },
+    {
+     "id": "ice",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 9.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "9ad8ff",
+     "label": "FROST"
+    },
+    {
+     "id": "heat",
+     "t": "lamp",
+     "u": 5.25,
+     "v": 9.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff8040",
+     "label": "RAIL HOT"
+    },
+    {
+     "id": "crank",
+     "t": "lamp",
+     "u": 7.1,
+     "v": 9.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "CRANK"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 8.95,
+     "v": 9.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "m1",
+     "t": "lamp",
+     "u": 10.8,
+     "v": 9.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "M1"
+    },
+    {
+     "id": "m2",
+     "t": "lamp",
+     "u": 12.65,
+     "v": 9.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "M2"
+    },
+    {
+     "id": "sw",
+     "t": "digits",
+     "u": 5.2,
+     "v": 7.7,
+     "w": 4.4,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "throws",
+     "t": "digits",
+     "u": 11.0,
+     "v": 7.7,
+     "w": 3.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d THR"
+    },
+    {
+     "id": "amps",
+     "t": "digits",
+     "u": 4.6,
+     "v": 6.6,
+     "w": 3.2,
+     "h": 0.7,
+     "col": "ff6040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "temp",
+     "t": "digits",
+     "u": 10.4,
+     "v": 6.6,
+     "w": 6.4,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_amps",
+     "t": "gauge",
+     "u": 4.0,
+     "v": 4.6,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "MOTOR A",
+     "max": 12
+    },
+    {
+     "id": "g_press",
+     "t": "gauge",
+     "u": 7.0,
+     "v": 4.6,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "PRESS %",
+     "max": 100
+    },
+    {
+     "id": "strk",
+     "t": "digits",
+     "u": 11.2,
+     "v": 5.0,
+     "w": 4.0,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s_type",
+     "t": "selector",
+     "u": 10.0,
+     "v": 3.6,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "DRIVE",
+     "pos": [
+      "ELEC",
+      "HYD",
+      "PNEU"
+     ]
+    },
+    {
+     "id": "s_motors",
+     "t": "selector",
+     "u": 12.4,
+     "v": 3.6,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "MOTORS",
+     "pos": [
+      "SINGLE",
+      "DUAL"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 3.6,
+     "v": 2.0,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "REMOTE",
+      "LOCAL"
+     ]
+    },
+    {
+     "id": "k_crank",
+     "t": "key",
+     "u": 5.8,
+     "v": 2.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "c0a040",
+     "label": "CRANK",
+     "pos": [
+      "OUT",
+      "IN"
+     ]
+    },
+    {
+     "id": "p_nor",
+     "t": "push",
+     "u": 7.8,
+     "v": 2.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1fa34a",
+     "label": "NOR"
+    },
+    {
+     "id": "p_rev",
+     "t": "push",
+     "u": 9.5,
+     "v": 2.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d8b020",
+     "label": "REV"
+    },
+    {
+     "id": "p_crank",
+     "t": "push",
+     "u": 11.2,
+     "v": 2.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "606060",
+     "label": "TURN"
+    },
+    {
+     "id": "p_reset",
+     "t": "push",
+     "u": 12.9,
+     "v": 2.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 12.9,
+     "v": 12.3,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "title": "culvert",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.5,
+   "title": "CULVERT",
+   "controls": [
+    {
+     "id": "screen",
+     "t": "zone",
+     "u": 8.0,
+     "v": 4.0,
+     "w": 11.0,
+     "h": 5.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "flow",
+     "t": "flag",
+     "u": 3.0,
+     "v": 8.4,
+     "w": 1.6,
+     "h": 0.9,
+     "col": "30a0ff",
+     "label": "FLOW"
+    },
+    {
+     "id": "level",
+     "t": "gauge",
+     "u": 13.0,
+     "v": 8.4,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "LEVEL",
+     "max": 100
+    },
+    {
+     "id": "block",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.4,
+     "w": 4.4,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d%% BLOCKED"
+    }
+   ]
+  }
+ ]
+}

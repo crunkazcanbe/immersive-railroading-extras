@@ -1,0 +1,36 @@
+{
+ "title": "crossing_gate",
+ "surfaces": [
+  {
+   "side": "south",
+   "face": 0.4,
+   "title": "CROSSING CONTROL",
+   "controls": [
+    {
+     "id": "test",
+     "t": "push",
+     "u": 6.4,
+     "v": 3.9,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "TEST"
+    },
+    {
+     "id": "bell",
+     "t": "key",
+     "u": 8.7,
+     "v": 3.9,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "BELL",
+     "pos": [
+      "ON",
+      "CUT"
+     ]
+    }
+   ]
+  }
+ ]
+}

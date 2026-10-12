@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:turntable_control"
+  },
+  "facing=east": {
+   "model": "irextras:turntable_control",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:turntable_control",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:turntable_control",
+   "y": 270
+  }
+ }
+}

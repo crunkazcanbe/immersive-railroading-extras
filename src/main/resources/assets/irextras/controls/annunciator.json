@@ -1,0 +1,296 @@
+{
+ "title": "annunciator",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": -13.45,
+   "title": "STROBE",
+   "controls": [
+    {
+     "id": "strobe",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 8.0,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "ff2020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 1.9,
+   "title": "ANNUNCIATOR",
+   "controls": [
+    {
+     "id": "tpower",
+     "t": "tile",
+     "u": 2.9,
+     "v": 23.0,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ff3a2a",
+     "label": "POWER TRIP"
+    },
+    {
+     "id": "tfault",
+     "t": "tile",
+     "u": 6.3,
+     "v": 23.0,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ff3a2a",
+     "label": "SHORT / EARTH|FAULT"
+    },
+    {
+     "id": "tfire",
+     "t": "tile",
+     "u": 9.7,
+     "v": 23.0,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ff3a2a",
+     "label": "FIRE /|BURN-OUT"
+    },
+    {
+     "id": "tmachine",
+     "t": "tile",
+     "u": 13.1,
+     "v": 23.0,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ffb020",
+     "label": "MOTOR / GEN|FAULT"
+    },
+    {
+     "id": "tauto",
+     "t": "tile",
+     "u": 2.9,
+     "v": 20.25,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "f0f0e0",
+     "label": "AUTO|CONTROL"
+    },
+    {
+     "id": "twired",
+     "t": "tile",
+     "u": 6.3,
+     "v": 20.25,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ffb020",
+     "label": "12 V /|WIRED FAULT"
+    },
+    {
+     "id": "tsignal",
+     "t": "tile",
+     "u": 9.7,
+     "v": 20.25,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ffb020",
+     "label": "SIGNAL|FAULT"
+    },
+    {
+     "id": "tincident",
+     "t": "tile",
+     "u": 13.1,
+     "v": 20.25,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ff3a2a",
+     "label": "TRAIN|INCIDENT"
+    },
+    {
+     "id": "tallstop",
+     "t": "tile",
+     "u": 2.9,
+     "v": 17.5,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ff3a2a",
+     "label": "ALL STOP"
+    },
+    {
+     "id": "tfreight",
+     "t": "tile",
+     "u": 6.3,
+     "v": 17.5,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "f0f0e0",
+     "label": "FREIGHT"
+    },
+    {
+     "id": "tconsole",
+     "t": "tile",
+     "u": 9.7,
+     "v": 17.5,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "ff3a2a",
+     "label": "CONTROL|ROOM"
+    },
+    {
+     "id": "tgeneral",
+     "t": "tile",
+     "u": 13.1,
+     "v": 17.5,
+     "w": 3.1,
+     "h": 2.45,
+     "col": "f0f0e0",
+     "label": "GENERAL"
+    },
+    {
+     "id": "msg1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.35,
+     "w": 13.2,
+     "h": 0.85,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "msg2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.45,
+     "w": 13.2,
+     "h": 0.85,
+     "col": "ffd27a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "nnew",
+     "t": "digits",
+     "u": 3.3,
+     "v": 12.9,
+     "w": 3.2,
+     "h": 1.0,
+     "col": "ff4040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.3,
+     "v": 12.05,
+     "w": 0,
+     "h": 0,
+     "col": "e0e0e0",
+     "label": "NEW"
+    },
+    {
+     "id": "nack",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.9,
+     "w": 3.2,
+     "h": 1.0,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 12.05,
+     "w": 0,
+     "h": 0,
+     "col": "e0e0e0",
+     "label": "STANDING"
+    },
+    {
+     "id": "nclr",
+     "t": "digits",
+     "u": 12.7,
+     "v": 12.9,
+     "w": 3.2,
+     "h": 1.0,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.7,
+     "v": 12.05,
+     "w": 0,
+     "h": 0,
+     "col": "e0e0e0",
+     "label": "CLEARED"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 2.9,
+     "v": 9.8,
+     "w": 1.7,
+     "h": 1.7,
+     "col": "1a1a1a",
+     "label": "ACK"
+    },
+    {
+     "id": "silence",
+     "t": "push",
+     "u": 6.3,
+     "v": 9.8,
+     "w": 1.7,
+     "h": 1.7,
+     "col": "f0d020",
+     "label": "SILENCE"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 9.7,
+     "v": 9.8,
+     "w": 1.7,
+     "h": 1.7,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.1,
+     "v": 9.8,
+     "w": 1.7,
+     "h": 1.7,
+     "col": "f0f0f0",
+     "label": "LAMP TEST"
+    },
+    {
+     "id": "power",
+     "t": "lamp",
+     "u": 2.4,
+     "v": 6.7,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "horn",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 6.7,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ff3030",
+     "label": "HORN",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:possession_switch"
+  },
+  "facing=east": {
+   "model": "irextras:possession_switch",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:possession_switch",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:possession_switch",
+   "y": 270
+  }
+ }
+}

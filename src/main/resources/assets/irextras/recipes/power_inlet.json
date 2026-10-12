@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PIP",
+  "WRW",
+  "PIP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "I": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "R": {
+   "item": "irextras:part",
+   "data": 18
+  }
+ },
+ "result": {
+  "item": "irextras:power_inlet",
+  "count": 1
+ }
+}

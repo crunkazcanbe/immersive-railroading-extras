@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ohle_diagram"
+  },
+  "facing=east": {
+   "model": "irextras:ohle_diagram",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ohle_diagram",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ohle_diagram",
+   "y": 270
+  }
+ }
+}

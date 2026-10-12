@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:coal_bunker"
+  },
+  "facing=east": {
+   "model": "irextras:coal_bunker",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:coal_bunker",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:coal_bunker",
+   "y": 270
+  }
+ }
+}

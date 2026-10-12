@@ -1,0 +1,45 @@
+{
+ "block": "h2_dispenser",
+ "title": "PRECOOLER -40 C",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "h2_dispenser_door1",
+   "hinge": [
+    12.35,
+    1.02
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "h2_dispenser_door2",
+   "hinge": [
+    3.65,
+    1.02
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "main",
+   "label": "COMPR"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

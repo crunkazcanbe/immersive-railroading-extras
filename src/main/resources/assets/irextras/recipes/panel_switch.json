@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "INI",
+  "ILI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "N": {
+   "item": "minecraft:redstone"
+  },
+  "L": {
+   "item": "minecraft:lever"
+  }
+ },
+ "result": {
+  "item": "irextras:panel_switch",
+  "count": 4
+ }
+}

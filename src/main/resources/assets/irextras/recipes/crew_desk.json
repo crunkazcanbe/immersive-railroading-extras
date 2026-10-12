@@ -1,0 +1,34 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SLS",
+  "PCP",
+  "WBW"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "L": {
+   "item": "minecraft:clock"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "B": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:crew_desk"
+ }
+}

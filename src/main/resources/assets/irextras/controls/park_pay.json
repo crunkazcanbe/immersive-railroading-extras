@@ -1,0 +1,383 @@
+{
+ "title": "park_pay",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.3,
+   "title": "PAY HERE",
+   "controls": [
+    {
+     "id": "slot",
+     "t": "zone",
+     "u": 10.3,
+     "v": 11.0,
+     "w": 3.8,
+     "h": 1.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "tktl",
+     "t": "lamp",
+     "u": 10.3,
+     "v": 9.7,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": "TICKET IN"
+    },
+    {
+     "id": "pad",
+     "t": "zone",
+     "u": 5.5,
+     "v": 10.6,
+     "w": 2.6,
+     "h": 2.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "pay",
+     "t": "push",
+     "u": 11.4,
+     "v": 7.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "1fa34a",
+     "label": "PAY"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 6.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PAY"
+    },
+    {
+     "id": "ret",
+     "t": "push",
+     "u": 13.5,
+     "v": 7.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "909090",
+     "label": "RETURN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.5,
+     "v": 6.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RETURN"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 15.6,
+     "v": 7.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "f0f0f0",
+     "label": "LOG"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.6,
+     "v": 6.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOG"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 4.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.0,
+     "v": 4.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "paidl",
+     "t": "lamp",
+     "u": 14.6,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "PAID"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.6,
+     "v": 4.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PAID"
+    },
+    {
+     "id": "occ",
+     "t": "gauge",
+     "u": 4.8,
+     "v": 4.4,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "FULL %",
+     "max": 100
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.8,
+   "title": "SCREEN",
+   "controls": [
+    {
+     "id": "s1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.0,
+     "w": 7.8,
+     "h": 0.62,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.22,
+     "w": 7.8,
+     "h": 0.62,
+     "col": "f0f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.44,
+     "w": 7.8,
+     "h": 0.62,
+     "col": "f0f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.66,
+     "w": 7.8,
+     "h": 0.62,
+     "col": "f0f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "msg",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.2,
+     "w": 7.8,
+     "h": 0.45,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": 2.95,
+   "title": "SERVICE",
+   "controls": [
+    {
+     "id": "k_svc",
+     "t": "key",
+     "u": 9.6,
+     "v": 11.0,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "SERVICE",
+     "pos": [
+      "LOCKED",
+      "OPEN"
+     ]
+    },
+    {
+     "id": "svcl",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 9.8,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ffb020",
+     "label": "SVC"
+    },
+    {
+     "id": "capdn",
+     "t": "push",
+     "u": 7.8,
+     "v": 11.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "c8ccd0",
+     "label": "BAYS -"
+    },
+    {
+     "id": "capup",
+     "t": "push",
+     "u": 6.4,
+     "v": 11.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "c8ccd0",
+     "label": "BAYS +"
+    },
+    {
+     "id": "baysv",
+     "t": "digits",
+     "u": 7.1,
+     "v": 9.8,
+     "w": 2.4,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s_rad",
+     "t": "selector",
+     "u": 8.4,
+     "v": 7.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "GARAGE",
+     "pos": [
+      "8",
+      "16",
+      "24",
+      "32"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.4,
+     "v": 6.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GARAGE M"
+    },
+    {
+     "id": "radv",
+     "t": "digits",
+     "u": 6.2,
+     "v": 7.4,
+     "w": 1.6,
+     "h": 0.5,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 9.8,
+     "v": 5.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.45,
+   "title": "SPACES FREE",
+   "controls": [
+    {
+     "id": "free",
+     "t": "digits",
+     "u": 6.0,
+     "v": 26.6,
+     "w": 5.6,
+     "h": 3.2,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "freel",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 27.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "SPACES"
+    },
+    {
+     "id": "fulll",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 25.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "FULL",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

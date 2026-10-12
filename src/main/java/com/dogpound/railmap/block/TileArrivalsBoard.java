@@ -33,7 +33,20 @@ import java.util.Map;
  * join into one wide board; the left-most one (as you look at it) does the work and draws the
  * whole thing. When a train pulls in, the board chimes and flashes "NOW ARRIVING".
  */
-public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.wire.IWiredGear, com.dogpound.railmap.controls.IControlled {
+    // ---- working status LED (requested feature): lit on 12 V once the board has found its station (it has no buttons)
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { gearChanged(); }
+    @Override public int controlValue(String id) { return id.equals("status") ? term.powered() && station != Long.MIN_VALUE ? 1 : 0 : ctl.get(id); }
+
+    // ---- 12 V terminal (requested feature): needs 12 V DC instrument power; with none it is screen dark
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); if (world != null && !world.isRemote) { net.minecraft.block.state.IBlockState gs = world.getBlockState(pos); world.notifyBlockUpdate(pos, gs, gs, 3); } }
+    @Override public String wiredName() { return "Arrivals board"; }
+    @Override public String gearState() { return term.powered() ? stationName.isEmpty() ? "no station" : stationName + " · " + rows.size() + " trains" : "NO 12 V - screen dark"; }
+
     private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
     public static final String[] THEMES = {"Amber LED", "Green LED", "White", "Blue LCD", "Pride"};
 
@@ -65,6 +78,7 @@ public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogp
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Trains on the board", String.valueOf(rows.size())));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Passengers waiting", String.valueOf(waiting)));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Joined boards", isController() ? width() + " wide (this one draws)" : "part of a wider board"));
+        com.dogpound.railmap.wire.IWiredGear.settings(l, st, this);
         return l;
     }
 
@@ -85,6 +99,9 @@ public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogp
     public String stationName() { String t = cfg.text("title").trim(); return t.isEmpty() ? stationName : t; }
     public List<String[]> rows() { return rows; }
     public int waiting() { return waiting; }
+    /** "SERVICE GOOD 82% · ON TIME 95%" from the passenger model, or "" */
+    public String service() { return service; }
+    private String service = "";
 
     public String arriving() {
         return world != null && world.getTotalWorldTime() < arrivingUntil ? arriving : "";
@@ -120,22 +137,21 @@ public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogp
 
     @Override
     public void update() {
+        if (world != null && !world.isRemote) { if (term.tick(world, pos, wiredName())) gearChanged(); if (!term.powered()) return; }
         if (world.isRemote) return;
         ticks++;
         if (chimeStep >= 0) {
             // Ding... dong.
-            net.minecraft.util.SoundEvent snd = switch (cfg.text("chimeSound")) {
-                case "Bell" -> SoundEvents.BLOCK_NOTE_BELL;
-                case "Chime" -> SoundEvents.BLOCK_NOTE_CHIME;
-                case "Pling" -> SoundEvents.BLOCK_NOTE_PLING;
-                case "Flute" -> SoundEvents.BLOCK_NOTE_FLUTE;
-                default -> SoundEvents.BLOCK_NOTE_HARP;
+            String snd = switch (cfg.text("chimeSound")) {
+                case "Bell" -> "station.chime_bell";
+                case "Chime" -> "station.chime_dingdong";
+                case "Pling" -> "station.chime_pling";
+                case "Flute" -> "station.chime_airport";
+                default -> "station.chime_two_tone";
             };
             float vol = cfg.num("chimeVol") / 100f;
-            if (cfg.bool("chime") && vol > 0) {
-                if (chimeStep == 0) world.playSound(null, pos, snd, SoundCategory.BLOCKS, vol, 1.19f);
-                if (chimeStep == 9) world.playSound(null, pos, snd, SoundCategory.BLOCKS, vol, 0.94f);
-            }
+            if (cfg.bool("chime") && vol > 0 && chimeStep == 0)
+                world.playSound(null, pos, com.dogpound.railmap.sound.PackSounds.ev(snd), SoundCategory.BLOCKS, vol, 1.0f);
             if (++chimeStep > 12) chimeStep = -1;
         }
         if (ticks % Math.max(20, cfg.num("refresh") * 20) != 0 || !isController()) return;
@@ -182,6 +198,12 @@ public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogp
                     when = "LATER";
                     sortKey = 1e9;
                 }
+                // disruption recovery: held behind a wreck / failed train, or running late after one
+                if (com.dogpound.railmap.auto.Disruptions.isHeld(world.provider.getDimension(), a.loco) && !"BOARDING".equals(when)) when = "DELAYED";
+                else {
+                    int late = com.dogpound.railmap.auto.Disruptions.delaySeconds(a.loco) / 60;
+                    if (late >= 2 && !"BOARDING".equals(when)) when = when + " +" + late;
+                }
                 found.add(new Object[]{ sortKey, new String[]{ name, dest, when } });
             }
             found.sort((x, y) -> Double.compare((double) x[0], (double) y[0]));
@@ -190,7 +212,12 @@ public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogp
                 rows.add((String[]) o[1]);
             }
             waiting = data.waitingAt(best);
+            com.dogpound.railmap.economy.PassengerData.Stn px = com.dogpound.railmap.economy.PassengerData.get(world).stn(best);
+            if (px != null) waiting += (int) Math.round(px.waitingTotal());          // simulated passengers on the platform too
+            service = px == null ? "" : String.format(java.util.Locale.ROOT, "SERVICE %s %.0f%% · ON TIME %.0f%%", px.rating(), px.sat, px.punct);
         }
+        String pis = com.dogpound.railmap.station.Pis.headline(world, pos, stationName());   // next-48 #30: the shared PIS feed (fallback when unreachable)
+        if (!pis.isEmpty()) service = pis;
         sync();
     }
 
@@ -253,8 +280,10 @@ public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogp
         }
         t.setTag("rows", l);
         t.setInteger("wait", waiting);
+        t.setString("svc", service);
         t.setString("arr", arriving);
         t.setLong("arrU", arrivingUntil);
+        term.write(t);
         cfg.write(t);
         return t;
     }
@@ -271,8 +300,10 @@ public class TileArrivalsBoard extends TileEntity implements ITickable, com.dogp
             if (parts.length == 3) rows.add(parts);
         }
         waiting = t.getInteger("wait");
+        service = t.getString("svc");
         arriving = t.getString("arr");
         arrivingUntil = t.getLong("arrU");
+        term.read(t);
         cfg.read(t);
     }
 

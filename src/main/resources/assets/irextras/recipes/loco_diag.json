@@ -1,0 +1,4 @@
+{"type": "minecraft:crafting_shaped", "pattern": ["CGC", "IRI", " I "],
+ "key": {"C": {"item": "minecraft:clock"}, "G": {"item": "minecraft:glass_pane"}, "I": {"item": "minecraft:iron_ingot"},
+         "R": {"item": "minecraft:comparator"}},
+ "result": {"item": "irextras:loco_diag"}}

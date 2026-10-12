@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:revenue_office"
+  },
+  "facing=east": {
+   "model": "irextras:revenue_office",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:revenue_office",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:revenue_office",
+   "y": 270
+  }
+ }
+}

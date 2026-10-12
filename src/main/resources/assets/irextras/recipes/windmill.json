@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "WGW",
+  "BFB",
+  "SAS"
+ ],
+ "key": {
+  "W": {
+   "type": "forge:ore_dict",
+   "ore": "blockWool"
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 9
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 10
+  }
+ },
+ "result": {
+  "item": "irextras:windmill",
+  "count": 1
+ }
+}

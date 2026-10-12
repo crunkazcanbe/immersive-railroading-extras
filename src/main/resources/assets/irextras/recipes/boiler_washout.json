@@ -1,0 +1,35 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "TBT",
+  "MCM",
+  "PFP"
+ ],
+ "key": {
+  "T": {
+   "item": "minecraft:cauldron"
+  },
+  "B": {
+   "item": "minecraft:bucket"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:boiler_washout"
+ }
+}

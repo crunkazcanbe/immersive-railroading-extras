@@ -1,0 +1,36 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "SCS",
+  "XTX",
+  "FRF"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "T": {
+   "item": "irextras:part",
+   "data": 18
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "X": {
+   "item": "minecraft:comparator"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:logic_gate",
+  "count": 1
+ }
+}

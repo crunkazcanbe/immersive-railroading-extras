@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SSS",
+  "CFC",
+  "IPI"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  }
+ },
+ "result": {
+  "item": "irextras:facilities_panel",
+  "count": 1
+ }
+}

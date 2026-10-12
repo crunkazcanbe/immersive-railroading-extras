@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "INI",
+  "IBI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "N": {
+   "item": "minecraft:redstone"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  }
+ },
+ "result": {
+  "item": "irextras:panel_button",
+  "count": 4
+ }
+}

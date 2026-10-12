@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:driver_sim"
+  },
+  "facing=east": {
+   "model": "irextras:driver_sim",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:driver_sim",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:driver_sim",
+   "y": 270
+  }
+ }
+}

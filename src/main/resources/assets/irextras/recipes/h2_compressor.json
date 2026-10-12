@@ -1,0 +1,37 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SHS",
+  "MFM",
+  "PCP"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 19
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:h2_compressor"
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "title": "help_point",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.85,
+   "title": "HELP POINT",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.4,
+     "w": 4.8,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.2,
+     "w": 4.8,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "help",
+     "t": "push",
+     "u": 9.4,
+     "v": 9.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "2fa84a",
+     "label": "HELP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.4,
+     "v": 8.6,
+     "w": 0,
+     "h": 0,
+     "col": "1a1a1a",
+     "label": "HELP"
+    },
+    {
+     "id": "info",
+     "t": "push",
+     "u": 6.6,
+     "v": 9.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "2050d0",
+     "label": "INFO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.6,
+     "v": 8.6,
+     "w": 0,
+     "h": 0,
+     "col": "1a1a1a",
+     "label": "INFO"
+    },
+    {
+     "id": "cancel",
+     "t": "push",
+     "u": 8.0,
+     "v": 7.4,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "202020",
+     "label": "CANCEL"
+    },
+    {
+     "id": "call",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 17.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "CALLING",
+     "blink": true
+    },
+    {
+     "id": "loop",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 17.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "4080ff",
+     "label": "LOOP"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 17.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "gap",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 2.4,
+     "w": 3.8,
+     "h": 0.6,
+     "col": "ffd020",
+     "label": "MIND THE GAP",
+     "blink": true
+    },
+    {
+     "id": "k_gap",
+     "t": "key",
+     "u": 9.9,
+     "v": 6.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "c0a040",
+     "label": "GAP",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 6.1,
+     "v": 6.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

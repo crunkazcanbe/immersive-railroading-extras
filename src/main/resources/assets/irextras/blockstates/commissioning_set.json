@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:commissioning_set"
+  },
+  "facing=east": {
+   "model": "irextras:commissioning_set",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:commissioning_set",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:commissioning_set",
+   "y": 270
+  }
+ }
+}

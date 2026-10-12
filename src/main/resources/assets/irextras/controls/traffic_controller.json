@@ -1,0 +1,606 @@
+{
+ "title": "traffic_controller",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.48,
+   "title": "TRAFFIC SIGNAL CONTROLLER",
+   "controls": [
+    {
+     "id": "stage",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.5,
+     "w": 9.8,
+     "h": 0.85,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tleft",
+     "t": "digits",
+     "u": 8.0,
+     "v": 21.5,
+     "w": 9.8,
+     "h": 0.85,
+     "col": "ffffff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tim1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.5,
+     "w": 9.8,
+     "h": 0.85,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tim2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.5,
+     "w": 9.8,
+     "h": 0.85,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tim3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.5,
+     "w": 9.8,
+     "h": 0.85,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cnt",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.5,
+     "w": 9.8,
+     "h": 0.85,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tram",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.5,
+     "w": 9.8,
+     "h": 0.85,
+     "col": "ff9ad0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "gA",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 14.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "A"
+    },
+    {
+     "id": "dA",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "DEM A",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.4,
+     "v": 12.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "A"
+    },
+    {
+     "id": "gB",
+     "t": "lamp",
+     "u": 10.65,
+     "v": 14.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "B"
+    },
+    {
+     "id": "dB",
+     "t": "lamp",
+     "u": 10.65,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "DEM B",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.65,
+     "v": 12.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "B"
+    },
+    {
+     "id": "gC",
+     "t": "lamp",
+     "u": 8.9,
+     "v": 14.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "C"
+    },
+    {
+     "id": "dC",
+     "t": "lamp",
+     "u": 8.9,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "DEM C",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.9,
+     "v": 12.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "C"
+    },
+    {
+     "id": "gD",
+     "t": "lamp",
+     "u": 7.15,
+     "v": 14.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "D"
+    },
+    {
+     "id": "dD",
+     "t": "lamp",
+     "u": 7.15,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "DEM D",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.15,
+     "v": 12.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "D"
+    },
+    {
+     "id": "gP",
+     "t": "lamp",
+     "u": 5.4,
+     "v": 14.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "P"
+    },
+    {
+     "id": "dP",
+     "t": "lamp",
+     "u": 5.4,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "DEM P",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.4,
+     "v": 12.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PED"
+    },
+    {
+     "id": "gT",
+     "t": "lamp",
+     "u": 3.65,
+     "v": 14.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "T"
+    },
+    {
+     "id": "dT",
+     "t": "lamp",
+     "u": 3.65,
+     "v": 13.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "DEM T",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.65,
+     "v": 12.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TRAM"
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 12.0,
+     "v": 10.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "FIXED",
+      "MANUAL",
+      "FLASH",
+      "OFF"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 9.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MODE"
+    },
+    {
+     "id": "s_tsel",
+     "t": "selector",
+     "u": 9.0,
+     "v": 10.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "TIMING",
+     "pos": [
+      "MIN GRN",
+      "MAX GRN",
+      "AMBER",
+      "ALL RED",
+      "PED",
+      "TRAM"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.0,
+     "v": 9.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TIMING"
+    },
+    {
+     "id": "tdn",
+     "t": "push",
+     "u": 6.8,
+     "v": 10.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d8d8d0",
+     "label": "-"
+    },
+    {
+     "id": "tup",
+     "t": "push",
+     "u": 5.4,
+     "v": 10.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d8d8d0",
+     "label": "+"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.1,
+     "v": 9.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SET"
+    },
+    {
+     "id": "k_police",
+     "t": "key",
+     "u": 3.6,
+     "v": 10.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c0a040",
+     "label": "POLICE",
+     "pos": [
+      "OFF",
+      "MANUAL"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.6,
+     "v": 9.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "POLICE"
+    },
+    {
+     "id": "adv",
+     "t": "push",
+     "u": 12.6,
+     "v": 7.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "30a040",
+     "label": "ADV"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.6,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ADV"
+    },
+    {
+     "id": "allred",
+     "t": "push",
+     "u": 11.0,
+     "v": 7.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "d02020",
+     "label": "ALL RED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.0,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ALL RED"
+    },
+    {
+     "id": "pedtest",
+     "t": "push",
+     "u": 9.4,
+     "v": 7.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "e0e0e0",
+     "label": "PED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.4,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PED"
+    },
+    {
+     "id": "tramtest",
+     "t": "push",
+     "u": 7.8,
+     "v": 7.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "e0e0e0",
+     "label": "TRAM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.8,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TRAM"
+    },
+    {
+     "id": "log",
+     "t": "push",
+     "u": 6.2,
+     "v": 7.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "e0e0e0",
+     "label": "LOG"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.2,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOG"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 4.6,
+     "v": 7.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 5.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 10.1,
+     "v": 5.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.1,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "flt",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 5.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.2,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FAULT"
+    },
+    {
+     "id": "allr",
+     "t": "lamp",
+     "u": 6.3,
+     "v": 5.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "ALL RED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.3,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ALL RED"
+    },
+    {
+     "id": "pol",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 5.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "POLICE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "POLICE"
+    }
+   ]
+  }
+ ]
+}

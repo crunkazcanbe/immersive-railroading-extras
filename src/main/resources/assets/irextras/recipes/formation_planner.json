@@ -1,0 +1,35 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SGS",
+  "CFC",
+  "IRI"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "G": {
+   "item": "minecraft:clock"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:formation_planner",
+  "count": 1
+ }
+}

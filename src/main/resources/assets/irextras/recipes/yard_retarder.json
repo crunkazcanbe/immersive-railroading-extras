@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "PCP",
+  "IRI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "P": {
+   "item": "minecraft:sticky_piston"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:yard_retarder",
+  "count": 1
+ }
+}

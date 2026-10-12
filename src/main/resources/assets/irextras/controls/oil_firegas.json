@@ -1,0 +1,734 @@
+{
+ "title": "oil_firegas",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.58,
+   "title": "FIRE + GAS",
+   "controls": [
+    {
+     "id": "pageno",
+     "t": "digits",
+     "u": 10.0,
+     "v": 9.2,
+     "w": 1.0,
+     "h": 0.4,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "lel",
+     "t": "digits",
+     "u": 7.6,
+     "v": 11.6,
+     "w": 2.6,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "GAS",
+     "fmt": "%s %%LEL"
+    },
+    {
+     "id": "lelg",
+     "t": "gauge",
+     "u": 8.4,
+     "v": 9.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "LEL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.4,
+     "v": 8.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LEL"
+    },
+    {
+     "id": "waterg",
+     "t": "gauge",
+     "u": 10.0,
+     "v": 9.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "WATER",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 8.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WATER"
+    },
+    {
+     "id": "foamg",
+     "t": "gauge",
+     "u": 11.6,
+     "v": 9.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "FOAM",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.6,
+     "v": 8.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FOAM"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 7.4,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.8,
+     "v": 7.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 9.55,
+     "v": 7.4,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.55,
+     "v": 7.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "fire",
+     "t": "lamp",
+     "u": 10.3,
+     "v": 7.4,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "ff3030",
+     "label": "FIRE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.3,
+     "v": 7.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FIRE"
+    },
+    {
+     "id": "gaslo",
+     "t": "lamp",
+     "u": 11.05,
+     "v": 7.4,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "ffb020",
+     "label": "GAS LO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.05,
+     "v": 7.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GAS LO"
+    },
+    {
+     "id": "gashi",
+     "t": "lamp",
+     "u": 11.8,
+     "v": 7.4,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "ff3030",
+     "label": "GAS HI",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.8,
+     "v": 7.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GAS HI"
+    },
+    {
+     "id": "esdl",
+     "t": "lamp",
+     "u": 12.55,
+     "v": 7.4,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "ff3030",
+     "label": "ESD"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.55,
+     "v": 7.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ESD"
+    },
+    {
+     "id": "delugel",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 6.2,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "4080ff",
+     "label": "DELUGE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.8,
+     "v": 5.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DELUGE"
+    },
+    {
+     "id": "autol",
+     "t": "lamp",
+     "u": 9.55,
+     "v": 6.2,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "30e060",
+     "label": "AUTO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.55,
+     "v": 5.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTO"
+    },
+    {
+     "id": "beacon",
+     "t": "lamp",
+     "u": 10.3,
+     "v": 6.2,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "ff3030",
+     "label": "ALARM",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.3,
+     "v": 5.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ALARM"
+    },
+    {
+     "id": "silencel",
+     "t": "lamp",
+     "u": 11.05,
+     "v": 6.2,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "b0b0b0",
+     "label": "SIL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.05,
+     "v": 5.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SIL"
+    },
+    {
+     "id": "foaml",
+     "t": "lamp",
+     "u": 11.8,
+     "v": 6.2,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "ffb020",
+     "label": "FOAM LO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.8,
+     "v": 5.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FOAM LO"
+    },
+    {
+     "id": "waterl",
+     "t": "lamp",
+     "u": 12.55,
+     "v": 6.2,
+     "w": 0.32,
+     "h": 0.32,
+     "col": "ffb020",
+     "label": "WATER LO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.55,
+     "v": 5.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WATER LO"
+    },
+    {
+     "id": "deluge",
+     "t": "push",
+     "u": 14.6,
+     "v": 3.6,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "d02020",
+     "label": "DELUGE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.6,
+     "v": 2.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DELUGE"
+    },
+    {
+     "id": "dstop",
+     "t": "push",
+     "u": 16.2,
+     "v": 3.6,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "505860",
+     "label": "SHUT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.2,
+     "v": 2.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SHUT"
+    },
+    {
+     "id": "esd",
+     "t": "push",
+     "u": 17.8,
+     "v": 3.6,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "d02020",
+     "label": "ESD"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.8,
+     "v": 2.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ESD"
+    },
+    {
+     "id": "silence",
+     "t": "push",
+     "u": 19.4,
+     "v": 3.6,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "2050d0",
+     "label": "SILENCE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.4,
+     "v": 2.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SILENCE"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 14.6,
+     "v": 1.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "1fa34a",
+     "label": "RESET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.6,
+     "v": 1.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RESET"
+    },
+    {
+     "id": "page",
+     "t": "push",
+     "u": 16.2,
+     "v": 1.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2050d0",
+     "label": "PAGE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.2,
+     "v": 1.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PAGE"
+    },
+    {
+     "id": "fill",
+     "t": "push",
+     "u": 17.8,
+     "v": 1.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "505860",
+     "label": "FILL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.8,
+     "v": 1.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FILL"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 19.4,
+     "v": 1.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.4,
+     "v": 1.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "k_auto",
+     "t": "key",
+     "u": 6.4,
+     "v": 3.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "DELUGE MODE",
+     "pos": [
+      "MAN",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 2.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTO"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.35,
+   "title": "F+G SCREEN",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 12.25,
+     "v": 11.767,
+     "w": 5.299999999999999,
+     "h": 0.6933333333333334,
+     "col": "ff6060",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 12.25,
+     "v": 10.9,
+     "w": 5.299999999999999,
+     "h": 0.6933333333333334,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line3",
+     "t": "digits",
+     "u": 12.25,
+     "v": 10.033,
+     "w": 5.299999999999999,
+     "h": 0.6933333333333334,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.48,
+   "title": "ZONE MIMIC",
+   "controls": [
+    {
+     "id": "z0",
+     "t": "lamp",
+     "u": 14.4,
+     "v": 7.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "TANK 1 FIRE",
+     "blink": true
+    },
+    {
+     "id": "r0",
+     "t": "tile",
+     "u": 14.4,
+     "v": 6.2,
+     "w": 0.7,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "RACK 1 GAS"
+    },
+    {
+     "id": "z1",
+     "t": "lamp",
+     "u": 13.5,
+     "v": 7.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "TANK 2 FIRE",
+     "blink": true
+    },
+    {
+     "id": "r1",
+     "t": "tile",
+     "u": 13.5,
+     "v": 6.2,
+     "w": 0.7,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "RACK 2 GAS"
+    },
+    {
+     "id": "z2",
+     "t": "lamp",
+     "u": 12.6,
+     "v": 7.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "TANK 3 FIRE",
+     "blink": true
+    },
+    {
+     "id": "r2",
+     "t": "tile",
+     "u": 12.6,
+     "v": 6.2,
+     "w": 0.7,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "RACK 3 GAS"
+    },
+    {
+     "id": "z3",
+     "t": "lamp",
+     "u": 11.7,
+     "v": 7.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "TANK 4 FIRE",
+     "blink": true
+    },
+    {
+     "id": "r3",
+     "t": "tile",
+     "u": 11.7,
+     "v": 6.2,
+     "w": 0.7,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "RACK 4 GAS"
+    },
+    {
+     "id": "z4",
+     "t": "lamp",
+     "u": 10.8,
+     "v": 7.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "TANK 5 FIRE",
+     "blink": true
+    },
+    {
+     "id": "r4",
+     "t": "tile",
+     "u": 10.8,
+     "v": 6.2,
+     "w": 0.7,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "RACK 5 GAS"
+    },
+    {
+     "id": "z5",
+     "t": "lamp",
+     "u": 9.9,
+     "v": 7.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "TANK 6 FIRE",
+     "blink": true
+    },
+    {
+     "id": "r5",
+     "t": "tile",
+     "u": 9.9,
+     "v": 6.2,
+     "w": 0.7,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "RACK 6 GAS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.2,
+     "v": 8.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TANK ZONES"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.2,
+     "v": 5.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RACK GAS"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 6.98,
+   "title": "FOAM DRUMS",
+   "controls": [
+    {
+     "id": "foam",
+     "t": "zone",
+     "u": 10.0,
+     "v": 2.4,
+     "w": 4.0,
+     "h": 3.4,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

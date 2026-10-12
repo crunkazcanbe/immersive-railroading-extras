@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "SCS",
+  "TFT",
+  "CWC"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "T": {
+   "item": "irextras:part",
+   "data": 18
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  }
+ },
+ "result": {
+  "item": "irextras:grid_ats",
+  "count": 1
+ }
+}

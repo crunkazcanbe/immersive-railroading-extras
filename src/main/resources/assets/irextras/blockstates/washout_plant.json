@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:washout_plant"
+  },
+  "facing=east": {
+   "model": "irextras:washout_plant",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:washout_plant",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:washout_plant",
+   "y": 270
+  }
+ }
+}

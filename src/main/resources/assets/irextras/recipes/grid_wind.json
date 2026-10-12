@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "BBB",
+  "MFG",
+  "PSP"
+ ],
+ "key": {
+  "B": {
+   "item": "irextras:part",
+   "data": 24
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  }
+ },
+ "result": {
+  "item": "irextras:grid_wind",
+  "count": 1
+ }
+}

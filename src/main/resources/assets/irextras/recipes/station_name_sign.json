@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LLL",
+  "SBS",
+  "I I"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "S": {
+   "item": "minecraft:sign"
+  },
+  "B": {
+   "item": "minecraft:lapis_block"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:station_name_sign",
+  "count": 1
+ }
+}

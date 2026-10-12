@@ -1,0 +1,66 @@
+{
+ "title": "ohle_magnet",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 9.28,
+   "title": "PANTOGRAPH SIGN",
+   "controls": [
+    {
+     "id": "legend",
+     "t": "digits",
+     "u": 8.0,
+     "v": 11.4,
+     "w": 8.4,
+     "h": 1.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "lit",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 15.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "fff0b0",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": 2.58,
+   "title": "MAGNET",
+   "controls": [
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 8.0,
+     "v": 6.2,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "LOWER",
+      "RAISE",
+      "COAST"
+     ]
+    },
+    {
+     "id": "count",
+     "t": "digits",
+     "u": 8.0,
+     "v": 4.6,
+     "w": 2.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d"
+    }
+   ]
+  }
+ ]
+}

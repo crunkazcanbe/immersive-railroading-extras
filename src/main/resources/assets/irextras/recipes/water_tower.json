@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PCP",
+  "PFP",
+  "VEV"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "V": {
+   "item": "irextras:gate_valve"
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:water_tower",
+  "count": 1
+ }
+}

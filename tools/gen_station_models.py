@@ -63,6 +63,8 @@ def el(a, b, t, name=None):
 
 
 def model(name, els, tx, particle='psd_alu'):
+    if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'blockbench/models', name + '.bbmodel')):
+        return   # replaced by a detailed bbkit model (gen_bb_station.py)
     d = {'textures': dict({'particle': MOD + ':blocks/' + particle}, **{k: MOD + ':blocks/' + v for k, v in tx.items()}), 'elements': els}
     json.dump(d, open(os.path.join(ROOT, 'models/block', name + '.json'), 'w'), indent=1)
 

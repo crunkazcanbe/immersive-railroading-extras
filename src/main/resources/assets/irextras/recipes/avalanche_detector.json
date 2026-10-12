@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ECE",
+  "GRG",
+  "ISI"
+ ],
+ "key": {
+  "E": {
+   "item": "minecraft:ender_eye"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:avalanche_detector",
+  "count": 1
+ }
+}

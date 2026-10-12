@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:boiler_washout"
+  },
+  "facing=east": {
+   "model": "irextras:boiler_washout",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:boiler_washout",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:boiler_washout",
+   "y": 270
+  }
+ }
+}

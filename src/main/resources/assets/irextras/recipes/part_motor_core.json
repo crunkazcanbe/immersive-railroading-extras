@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PWP",
+  "WSW",
+  "PBP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 9
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 3,
+  "count": 1
+ }
+}

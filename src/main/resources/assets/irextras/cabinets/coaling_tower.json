@@ -1,0 +1,45 @@
+{
+ "block": "coaling_tower",
+ "title": "HOIST MCC 55 KW",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "coaling_tower_door1",
+   "hinge": [
+    0.85,
+    0.58
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "coaling_tower_door2",
+   "hinge": [
+    5.35,
+    0.58
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "main",
+   "label": "MAINS"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

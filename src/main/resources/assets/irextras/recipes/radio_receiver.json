@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "AYA",
+  "CXC",
+  "PCP"
+ ],
+ "key": {
+  "A": {
+   "item": "irextras:part",
+   "data": 25
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "X": {
+   "item": "minecraft:comparator"
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "Y": {
+   "item": "irextras:part",
+   "data": 22
+  }
+ },
+ "result": {
+  "item": "irextras:radio_receiver",
+  "count": 1
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:parcel_lockers"
+  },
+  "facing=east": {
+   "model": "irextras:parcel_lockers",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:parcel_lockers",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:parcel_lockers",
+   "y": 270
+  }
+ }
+}

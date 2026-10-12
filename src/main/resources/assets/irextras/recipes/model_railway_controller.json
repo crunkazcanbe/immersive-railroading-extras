@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RLR",
+  "PCP",
+  "WTW"
+ ],
+ "key": {
+  "R": {
+   "item": "irextras:instrument_wire"
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "P": {
+   "item": "minecraft:stone_button"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "T": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:model_railway_controller",
+  "count": 1
+ }
+}

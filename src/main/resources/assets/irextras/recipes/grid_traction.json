@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XCX",
+  "WKW",
+  "PFP"
+ ],
+ "key": {
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 14
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:grid_traction",
+  "count": 1
+ }
+}

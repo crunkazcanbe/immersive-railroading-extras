@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "INI",
+  "ICI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "N": {
+   "item": "minecraft:redstone"
+  },
+  "C": {
+   "item": "minecraft:compass"
+  }
+ },
+ "result": {
+  "item": "irextras:panel_gauge",
+  "count": 4
+ }
+}

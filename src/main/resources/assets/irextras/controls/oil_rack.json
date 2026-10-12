@@ -1,0 +1,677 @@
+{
+ "title": "oil_rack",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -0.02,
+   "title": "BATCH CONTROLLER",
+   "controls": [
+    {
+     "id": "litres",
+     "t": "digits",
+     "u": 13.4,
+     "v": 9.4,
+     "w": 3.0,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "METERED",
+     "fmt": "%s L"
+    },
+    {
+     "id": "preset",
+     "t": "digits",
+     "u": 10.4,
+     "v": 9.4,
+     "w": 2.6,
+     "h": 1.0,
+     "col": "8ad4ff",
+     "label": "PRESET",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.4,
+     "v": 8.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "METERED L"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 8.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRESET L"
+    },
+    {
+     "id": "p_up",
+     "t": "push",
+     "u": 14.4,
+     "v": 7.2,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "505860",
+     "label": "P +"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 6.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "P +"
+    },
+    {
+     "id": "p_dn",
+     "t": "push",
+     "u": 16.3,
+     "v": 7.2,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "505860",
+     "label": "P -"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.3,
+     "v": 6.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "P -"
+    },
+    {
+     "id": "p_full",
+     "t": "push",
+     "u": 18.2,
+     "v": 7.2,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "505860",
+     "label": "FULL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.2,
+     "v": 6.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FULL"
+    },
+    {
+     "id": "carg",
+     "t": "gauge",
+     "u": 14.4,
+     "v": 4.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "CAR %",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 3.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CAR %"
+    },
+    {
+     "id": "tankg",
+     "t": "gauge",
+     "u": 16.0,
+     "v": 4.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "TANK",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.0,
+     "v": 3.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TANK"
+    },
+    {
+     "id": "lelg",
+     "t": "gauge",
+     "u": 17.6,
+     "v": 4.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "LEL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.6,
+     "v": 3.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LEL"
+    },
+    {
+     "id": "flowg",
+     "t": "gauge",
+     "u": 19.2,
+     "v": 4.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "FLOW",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.2,
+     "v": 3.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLOW"
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 14.2,
+     "v": 2.0,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "1fa34a",
+     "label": "START"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.2,
+     "v": 1.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "START"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 16.1,
+     "v": 2.0,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.1,
+     "v": 1.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 18.0,
+     "v": 2.0,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.0,
+     "v": 1.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": -0.25,
+   "title": "BATCH SCREEN",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 12.0,
+     "v": 12.933,
+     "w": 5.6,
+     "h": 0.7466666666666669,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 12.0,
+     "v": 12.0,
+     "w": 5.6,
+     "h": 0.7466666666666669,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line3",
+     "t": "digits",
+     "u": 12.0,
+     "v": 11.067,
+     "w": 5.6,
+     "h": 0.7466666666666669,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": -0.02,
+   "title": "RACK STATION",
+   "controls": [
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 7.4,
+     "v": 8.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.4,
+     "v": 7.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 8.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.8,
+     "v": 7.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "runl",
+     "t": "lamp",
+     "u": 10.2,
+     "v": 8.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "PUMP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.2,
+     "v": 7.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PUMP"
+    },
+    {
+     "id": "perm",
+     "t": "lamp",
+     "u": 11.6,
+     "v": 8.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "PERMIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.6,
+     "v": 7.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PERMIT"
+    },
+    {
+     "id": "groundl",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 8.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "GROUND"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.0,
+     "v": 7.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GROUND"
+    },
+    {
+     "id": "arml",
+     "t": "lamp",
+     "u": 7.4,
+     "v": 6.7,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "ARM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.4,
+     "v": 6.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ARM"
+    },
+    {
+     "id": "carl",
+     "t": "lamp",
+     "u": 8.7,
+     "v": 6.7,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "8ad4ff",
+     "label": "CAR"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.7,
+     "v": 6.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CAR"
+    },
+    {
+     "id": "esdl",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 6.7,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "ESD",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 6.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ESD"
+    },
+    {
+     "id": "vrul",
+     "t": "lamp",
+     "u": 11.3,
+     "v": 6.7,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "VRU"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.3,
+     "v": 6.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "VRU"
+    },
+    {
+     "id": "ofl",
+     "t": "lamp",
+     "u": 12.6,
+     "v": 6.7,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "OVERFILL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.6,
+     "v": 6.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OVERFILL"
+    },
+    {
+     "id": "gasl",
+     "t": "lamp",
+     "u": 13.9,
+     "v": 6.7,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "GAS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.9,
+     "v": 6.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GAS"
+    },
+    {
+     "id": "s_tank",
+     "t": "selector",
+     "u": 7.0,
+     "v": 4.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "FROM TANK",
+     "pos": [
+      "TANK 1",
+      "TANK 2",
+      "TANK 3",
+      "TANK 4",
+      "TANK 5",
+      "TANK 6"
+     ]
+    },
+    {
+     "id": "k_mode",
+     "t": "key",
+     "u": 5.0,
+     "v": 4.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "MODE",
+     "pos": [
+      "LOAD",
+      "UNLOAD"
+     ]
+    },
+    {
+     "id": "k_vru",
+     "t": "key",
+     "u": 3.2,
+     "v": 4.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "VAPOUR RECOVERY",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.0,
+     "v": 3.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TANK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.0,
+     "v": 3.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MODE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.2,
+     "v": 3.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "VRU"
+    },
+    {
+     "id": "m_ground",
+     "t": "lever",
+     "u": 6.6,
+     "v": 1.8,
+     "w": 0.6,
+     "h": 1.6,
+     "col": "30a030",
+     "label": "GROUND CLAMP",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "m_arm",
+     "t": "lever",
+     "u": 4.8,
+     "v": 1.8,
+     "w": 0.6,
+     "h": 1.6,
+     "col": "e8c020",
+     "label": "LOADING ARM",
+     "pos": [
+      "UP",
+      "DOWN"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.6,
+     "v": 0.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GROUND"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.8,
+     "v": 0.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ARM"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 2.0,
+     "v": 2.2,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d02020",
+     "label": "E-STOP"
+    }
+   ]
+  },
+  {
+   "side": "west",
+   "face": -0.42,
+   "title": "PPE LOCKER",
+   "controls": [
+    {
+     "id": "ppe",
+     "t": "zone",
+     "u": 13.5,
+     "v": 4.0,
+     "w": 3.0,
+     "h": 6.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

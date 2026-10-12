@@ -1,0 +1,23 @@
+{
+ "title": "grid_traction",
+ "surfaces": [
+  {
+   "side": "east",
+   "face": 3.3,
+   "title": "",
+   "controls": [
+    {
+     "id": "oillvl",
+     "t": "gauge",
+     "u": 3.6,
+     "v": 19.6,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "f2f0e6",
+     "label": "OIL",
+     "max": 100
+    }
+   ]
+  }
+ ]
+}

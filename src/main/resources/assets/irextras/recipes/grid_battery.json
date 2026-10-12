@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "YYY",
+  "CFC",
+  "YYY"
+ ],
+ "key": {
+  "Y": {
+   "item": "irextras:part",
+   "data": 22
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:grid_battery",
+  "count": 1
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SHS",
+  "TMT",
+  "PCP"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:sand",
+   "data": 0
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "T": {
+   "item": "minecraft:cauldron"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:fuel_point"
+ }
+}

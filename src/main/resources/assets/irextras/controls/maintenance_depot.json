@@ -1,0 +1,175 @@
+{
+ "title": "maintenance_depot",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.59,
+   "title": "PIT",
+   "controls": [
+    {
+     "id": "pitlamp",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 1.15,
+     "w": 1.0,
+     "h": 0.55,
+     "col": "fff0c0",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 5.59,
+   "title": "JACK",
+   "controls": [
+    {
+     "id": "jackup",
+     "t": "push",
+     "u": 10.9,
+     "v": 6.7,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "2fcb5a",
+     "label": ""
+    },
+    {
+     "id": "jackdown",
+     "t": "push",
+     "u": 10.9,
+     "v": 5.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "26282c",
+     "label": ""
+    },
+    {
+     "id": "jackstop",
+     "t": "mushroom",
+     "u": 10.9,
+     "v": 4.8,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c81e1e",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 2.94,
+   "title": "DEPOT",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 7.7,
+     "v": 9.15,
+     "w": 1.9,
+     "h": 0.6,
+     "col": "ffb02e",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 7.7,
+     "v": 8.4,
+     "w": 1.9,
+     "h": 0.6,
+     "col": "ffb02e",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line3",
+     "t": "digits",
+     "u": 7.7,
+     "v": 7.65,
+     "w": 1.9,
+     "h": 0.6,
+     "col": "ffb02e",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 8.4,
+     "v": 6.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "2fcb5a",
+     "label": ""
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 7.1,
+     "v": 6.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "d8322c",
+     "label": ""
+    },
+    {
+     "id": "stock",
+     "t": "lamp",
+     "u": 8.4,
+     "v": 5.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb02e",
+     "label": ""
+    },
+    {
+     "id": "ready",
+     "t": "lamp",
+     "u": 7.1,
+     "v": 5.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.138,
+   "title": "BEACON",
+   "controls": [
+    {
+     "id": "beacon",
+     "t": "lamp",
+     "u": 2.5,
+     "v": 22.4,
+     "w": 0.9,
+     "h": 0.6,
+     "col": "ff9a20",
+     "label": "",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": 1.69,
+   "title": "AIR",
+   "controls": [
+    {
+     "id": "air",
+     "t": "gauge",
+     "u": 7.6,
+     "v": 4.0,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f2f0e6",
+     "label": "",
+     "max": 100
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GCG",
+  "BRB",
+  "BBB"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "B": {
+   "item": "minecraft:brick_block"
+  }
+ },
+ "result": {
+  "item": "irextras:garden_station",
+  "count": 1
+ }
+}

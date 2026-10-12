@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "CEC",
+  "RGR"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  }
+ },
+ "result": {
+  "item": "irextras:cctv_ptz",
+  "count": 1
+ }
+}

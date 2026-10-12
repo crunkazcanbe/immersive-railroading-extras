@@ -1,0 +1,258 @@
+{
+ "title": "filter_bank",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.75,
+   "title": "FILTER CONTROL",
+   "controls": [
+    {
+     "id": "s_tune",
+     "t": "selector",
+     "u": 13.8,
+     "v": 7.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "TUNING",
+     "pos": [
+      "5",
+      "7",
+      "11",
+      "13",
+      "HP"
+     ]
+    },
+    {
+     "id": "s_size",
+     "t": "selector",
+     "u": 11.4,
+     "v": 7.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "KVAR",
+     "pos": [
+      "250",
+      "500",
+      "1000",
+      "2000"
+     ]
+    },
+    {
+     "id": "k_lr",
+     "t": "key",
+     "u": 9.0,
+     "v": 7.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c0a040",
+     "label": "",
+     "pos": [
+      "LOCAL",
+      "REMOTE"
+     ]
+    },
+    {
+     "id": "g_ih",
+     "t": "gauge",
+     "u": 5.6,
+     "v": 7.3,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "DUTY %",
+     "max": 150
+    },
+    {
+     "id": "g_temp",
+     "t": "gauge",
+     "u": 2.6,
+     "v": 7.3,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "TEMP C",
+     "max": 120
+    },
+    {
+     "id": "close",
+     "t": "push",
+     "u": 14.0,
+     "v": 4.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1fa34a",
+     "label": "CLOSE"
+    },
+    {
+     "id": "open",
+     "t": "push",
+     "u": 12.4,
+     "v": 4.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": "OPEN"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 10.8,
+     "v": 4.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "recan",
+     "t": "push",
+     "u": 9.2,
+     "v": 4.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0f0f0",
+     "label": "CANS"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 7.8,
+     "v": 4.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "LAMP"
+    },
+    {
+     "id": "closed",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 4.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "IN"
+    },
+    {
+     "id": "openl",
+     "t": "lamp",
+     "u": 5.6,
+     "v": 4.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "OUT"
+    },
+    {
+     "id": "trip",
+     "t": "lamp",
+     "u": 4.6,
+     "v": 4.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "TRIP",
+     "blink": true
+    },
+    {
+     "id": "ovl",
+     "t": "lamp",
+     "u": 3.6,
+     "v": 4.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "OVL",
+     "blink": true
+    },
+    {
+     "id": "detune",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 4.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "DETUNE"
+    },
+    {
+     "id": "live",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 4.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30a0ff",
+     "label": "BUS"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 3.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "kvar",
+     "t": "digits",
+     "u": 11.0,
+     "v": 2.8,
+     "w": 7.0,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tune",
+     "t": "digits",
+     "u": 11.0,
+     "v": 2.1,
+     "w": 7.0,
+     "h": 0.55,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "ih",
+     "t": "digits",
+     "u": 4.6,
+     "v": 2.8,
+     "w": 6.4,
+     "h": 0.6,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cap",
+     "t": "digits",
+     "u": 4.6,
+     "v": 2.1,
+     "w": 6.4,
+     "h": 0.55,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "state",
+     "t": "digits",
+     "u": 8.0,
+     "v": 1.6,
+     "w": 13.0,
+     "h": 0.45,
+     "col": "ff8060",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

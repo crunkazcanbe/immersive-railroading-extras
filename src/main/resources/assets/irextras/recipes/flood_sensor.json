@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " L ",
+  "ICI",
+  " I "
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  }
+ },
+ "result": {
+  "item": "irextras:flood_sensor",
+  "count": 1
+ }
+}

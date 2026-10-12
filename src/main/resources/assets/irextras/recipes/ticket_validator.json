@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " P ",
+  "IRI",
+  " I "
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:ticket_validator",
+  "count": 1
+ }
+}

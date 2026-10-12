@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:sand_tower"
+  },
+  "facing=east": {
+   "model": "irextras:sand_tower",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:sand_tower",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:sand_tower",
+   "y": 270
+  }
+ }
+}

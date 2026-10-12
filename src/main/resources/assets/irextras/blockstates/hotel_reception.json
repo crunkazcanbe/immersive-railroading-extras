@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:hotel_reception"
+  },
+  "facing=east": {
+   "model": "irextras:hotel_reception",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:hotel_reception",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:hotel_reception",
+   "y": 270
+  }
+ }
+}

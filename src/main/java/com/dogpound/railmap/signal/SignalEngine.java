@@ -48,7 +48,7 @@ public final class SignalEngine {
         List<TileSignalBridge> bridges = SignalRegistry.bridges(dim);
         if (masts.isEmpty() && crossings.isEmpty() && bridges.isEmpty()) return;
 
-        List<TrainNode> trains = TrainTracker.latest(world);
+        List<TrainNode> trains = com.dogpound.railmap.safety.FaultLab.withPhantoms(world, TrainTracker.latest(world));   // + fault-lab phantoms
         try {
             for (TileSignalMast mast : masts) {
                 if (mast.isInvalid()) continue;
@@ -62,7 +62,7 @@ public final class SignalEngine {
                 if (b.isInvalid() || !b.isController()) continue;
                 boolean changed = false;
                 for (TileSignalBridge.Head h : b.heads()) {
-                    Result r = compute(world, h.rail, b.facing(), trains, 1);
+                    Result r = compute(world, h.rail, b.facing(), trains, 1, b.getPos());
                     Aspect a = b.heldAtStop() ? Aspect.STOP : r.aspect;
                     if (a != h.aspect) changed = true;
                     h.aspect = a;
@@ -94,6 +94,15 @@ public final class SignalEngine {
      * aspect — a one-head signal has no way to say it.
      */
     public static Result compute(World world, BlockPos railPos, EnumFacing facing, List<TrainNode> trains, int heads) {
+        return compute(world, railPos, facing, trains, heads, null);
+    }
+
+    /**
+     * {@code self} = the signal asking (null = nobody): the safety systems may hold its block (plunger / possession
+     * zones, divided trains - SafetyHolds.spanReason) and lamp proving holds it at Stop when the next signal's lamp
+     * has failed (fail-safe LAMP_FAILURE).
+     */
+    public static Result compute(World world, BlockPos railPos, EnumFacing facing, List<TrainNode> trains, int heads, BlockPos self) {
         cam72cam.mod.world.World umc = cam72cam.mod.world.World.get(world);
         Vec3i v = new Vec3i(railPos.getX(), railPos.getY(), railPos.getZ());
         TileRail start = umc.getBlockEntity(v, TileRail.class);
@@ -103,9 +112,21 @@ public final class SignalEngine {
         TrackFollower follower = new TrackFollower(umc, RailMapConfig.maxBlockLength);
         TrackFollower.Span first = follower.follow(start, behind);
         if (occupied(first, trains)) return new Result(Aspect.STOP, 0, first.length);
+        String held = com.dogpound.railmap.safety.SafetyHolds.spanReason(world, first);
+        if (self != null) com.dogpound.railmap.safety.SafetyHolds.spanHold(world, self, held);
+        if (held != null) return new Result(Aspect.STOP, 0, first.length);
 
         int clear = 1;
         TrackFollower.Span second = follower.continueFrom(first);
+        TileSignalMast next = second == null || second.pieces.isEmpty() ? null : SignalRegistry.mastAt(world.provider.getDimension(), second.pieces.get(0));
+        if (next == null && first.endRail != null) next = SignalRegistry.mastAt(world.provider.getDimension(), first.endRail.getPos());
+        if (next != null && self != null && !next.getPos().equals(self) && next.facing() != facing.getOpposite()) {
+            com.dogpound.railmap.safety.SafetyHolds.rear(world, next.getPos(), self);
+            if (next.lampFailed() && com.dogpound.railmap.safety.FailSafe.safe(world, com.dogpound.railmap.safety.FailSafe.LAMP_FAILURE)) {
+                com.dogpound.railmap.safety.SafetyHolds.spanHold(world, self, "lamp proving: the next signal's lamp has failed");
+                return new Result(Aspect.STOP, 0, first.length);
+            }
+        }
         if (second != null && !occupied(second, trains)) {
             clear = 2;
             TrackFollower.Span third = follower.continueFrom(second);
@@ -126,7 +147,7 @@ public final class SignalEngine {
             return;
         }
         Result r = compute(world, new BlockPos(governed.x, governed.y, governed.z),
-                mast.facing(), trains, mast.heads());
+                mast.facing(), trains, mast.heads(), mast.getPos());
         if (r.aspect == Aspect.DARK) mast.forgetGovernedRail();
         mast.setComputed(r.aspect, r.clear, r.length);
     }

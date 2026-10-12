@@ -1,0 +1,21 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "BQB",
+  "BQB"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:brick"
+  },
+  "Q": {
+   "type": "forge:ore_dict",
+   "ore": "gemQuartz"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 15,
+  "count": 2
+ }
+}

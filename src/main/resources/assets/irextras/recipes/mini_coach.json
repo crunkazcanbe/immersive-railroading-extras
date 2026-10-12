@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GGG",
+  "PPP",
+  "R R"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "P": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "R": {
+   "item": "minecraft:rail"
+  }
+ },
+ "result": {
+  "item": "irextras:mini_stock",
+  "count": 1,
+  "data": 3
+ }
+}

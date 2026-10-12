@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XKX",
+  "WCW",
+  "XIX"
+ ],
+ "key": {
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 14
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  }
+ },
+ "result": {
+  "item": "irextras:grid_tap",
+  "count": 1
+ }
+}

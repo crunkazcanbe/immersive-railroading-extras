@@ -74,6 +74,8 @@ public class NXDeskRenderer extends TileEntitySpecialRenderer<TileNXDesk> {
                 boolean ent = te.entrance() == s.pos.toLong();
                 if (ent && (now / 5) % 2 == 0) col = 0xFFFFFF;
                 if (routed.contains(s.pos.toLong())) col = 0xF0F0FF;
+                if (te.lampTest()) col = 0xFFFFFF;                          // LAMP TEST on the fascia
+                if (te.dimmed()) col = Prims.shade(col, 0.5f);              // DAY / NIGHT
                 double h = 0.022;
                 Prims.box(p[0] - h - 0.006, top, p[1] - h - 0.006, p[0] + h + 0.006, top + 0.008, p[1] + h + 0.006, 0x202326, 1f);
                 Prims.box(p[0] - h, top, p[1] - h, p[0] + h, top + 0.02, p[1] + h, col, 1f);

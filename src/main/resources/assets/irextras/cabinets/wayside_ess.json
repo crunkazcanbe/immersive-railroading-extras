@@ -1,0 +1,45 @@
+{
+ "block": "wayside_ess",
+ "title": "WAYSIDE ESS BESS",
+ "hv": true,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "wayside_ess_door1",
+   "hinge": [
+    14.65,
+    15.97
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "wayside_ess_door2",
+   "hinge": [
+    1.35,
+    15.97
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "main",
+   "label": "MAINS"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

@@ -55,6 +55,7 @@ public class TileTrackCircuit extends TileEntity implements ITickable, com.dogpo
         l.add(com.dogpound.railmap.settings.Setting.num(o, "pulse", "Pulse length", "", 10, 2, 100, 2, "ticks"));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Occupied", occupied ? "YES" : "no"));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Trains detected", String.valueOf(trainsSeen)));
+        if (this instanceof com.dogpound.railmap.wire.IWiredGear g) com.dogpound.railmap.wire.IWiredGear.settings(l, st, g);
         return l;
     }
     /** Detection radius in blocks; right-click cycles it. */
@@ -64,6 +65,15 @@ public class TileTrackCircuit extends TileEntity implements ITickable, com.dogpo
     private int rangeIndex = 1;
     private boolean occupied;
     private int ticks;
+
+    // ---- 12 V terminal (the detector only; an insulated joint is just a gap in the rail): no power = shows OCCUPIED
+    protected final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    public com.dogpound.railmap.wire.Terminal term() { return term; }
+    public void gearChanged() { markDirty(); sync(); }
+    public String wiredName() { return "Track circuit"; }
+    public String gearState() { return !term.powered() ? "NO 12 V - shows occupied" : com.dogpound.railmap.safety.FaultLab.has(world, com.dogpound.railmap.safety.FaultLab.Kind.TC_DROP, pos) ? "RELAY DROPPED (fault lab) - shows occupied" : occupied ? "OCCUPIED" : "clear"; }
+    public int wiredLamp() { return term.burnt ? 3 : !term.powered() ? 3 : occupied ? 2 : 1; }
+    public void gearInfo(java.util.Map<String, Object> m) { m.put("occupied", occupied); m.put("trainsDetected", trainsSeen); m.put("range", range()); }
 
     /** Forge needs a no-arg constructor per registered tile type; see the two subclasses. */
     protected TileTrackCircuit(boolean joint) {
@@ -96,10 +106,11 @@ public class TileTrackCircuit extends TileEntity implements ITickable, com.dogpo
     @Override
     public void update() {
         if (world.isRemote) return;
+        if (!joint && term.tick(world, pos, wiredName())) gearChanged();
         if (pulseLeft > 0 && --pulseLeft == 0) world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
         int every = Math.max(1, cfg.num("check"));
         if (++ticks % every != 0) return;
-        List<TrainNode> trains = TrainTracker.latest(world);
+        List<TrainNode> trains = com.dogpound.railmap.safety.FaultLab.withPhantoms(world, TrainTracker.latest(world));   // + fault-lab phantoms
         double r = range(), h = cfg.num("height"), minKmh = cfg.num("minKmh");
         String which = cfg.text("which");
         boolean now = false;
@@ -113,6 +124,8 @@ public class TileTrackCircuit extends TileEntity implements ITickable, com.dogpo
             if (Math.abs(t.speedKmh) < minKmh) continue;
             if (dx * dx + dz * dz <= r * r) { now = true; break; }
         }
+        if (!joint && !term.powered()) now = true;                     // a dead track circuit fails to "occupied"
+        if (!joint && com.dogpound.railmap.safety.FaultLab.has(world, com.dogpound.railmap.safety.FaultLab.Kind.TC_DROP, pos)) now = true;   // fault lab: relay dropped
         if (now) holdLeft = cfg.num("hold") * 20;
         else if (holdLeft > 0) { holdLeft -= every; if (holdLeft > 0) now = true; }
         if (now != raw) {
@@ -176,6 +189,7 @@ public class TileTrackCircuit extends TileEntity implements ITickable, com.dogpo
         t.setByte("range", (byte) rangeIndex);
         t.setBoolean("occ", occupied);
         t.setInteger("seen", trainsSeen);
+        term.write(t);
         cfg.write(t);
         return t;
     }
@@ -186,6 +200,7 @@ public class TileTrackCircuit extends TileEntity implements ITickable, com.dogpo
         rangeIndex = Math.max(0, Math.min(RANGES.length - 1, t.getByte("range")));
         occupied = t.getBoolean("occ");
         trainsSeen = t.getInteger("seen");
+        term.read(t);
         cfg.read(t);
     }
 
@@ -215,7 +230,7 @@ public class TileTrackCircuit extends TileEntity implements ITickable, com.dogpo
     }
 
     /** Registered tile type for the detector variant. */
-    public static class Circuit extends TileTrackCircuit {
+    public static class Circuit extends TileTrackCircuit implements com.dogpound.railmap.wire.IWiredGear {
         public Circuit() { super(false); }
     }
 }

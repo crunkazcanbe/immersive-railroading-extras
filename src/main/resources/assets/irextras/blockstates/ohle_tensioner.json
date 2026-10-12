@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ohle_tensioner"
+  },
+  "facing=east": {
+   "model": "irextras:ohle_tensioner",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ohle_tensioner",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ohle_tensioner",
+   "y": 270
+  }
+ }
+}

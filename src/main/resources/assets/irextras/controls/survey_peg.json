@@ -1,0 +1,45 @@
+{
+ "title": "survey_peg",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 6.84,
+   "title": "PEG",
+   "controls": [
+    {
+     "id": "ch",
+     "t": "digits",
+     "u": 8.0,
+     "v": 6.4,
+     "w": 8.2,
+     "h": 0.9,
+     "col": "101010",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "lev",
+     "t": "digits",
+     "u": 8.0,
+     "v": 5.0,
+     "w": 8.2,
+     "h": 0.9,
+     "col": "c81e1e",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "info",
+     "t": "digits",
+     "u": 8.0,
+     "v": 3.6,
+     "w": 8.2,
+     "h": 0.8,
+     "col": "202060",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

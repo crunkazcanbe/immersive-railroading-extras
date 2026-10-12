@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "   ",
+  "SRR",
+  "P  "
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "R": {
+   "item": "minecraft:stick"
+  },
+  "P": {
+   "item": "minecraft:iron_block"
+  }
+ },
+ "result": {
+  "item": "irextras:park_barrier",
+  "count": 1
+ }
+}

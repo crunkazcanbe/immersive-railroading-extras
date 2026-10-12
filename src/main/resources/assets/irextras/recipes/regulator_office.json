@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "BSB",
+  "PDP",
+  "WCW"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:book"
+  },
+  "S": {
+   "item": "minecraft:sign"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "D": {
+   "item": "irextras:company_hq"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:regulator_office"
+ }
+}

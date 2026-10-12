@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "GGG",
+  "LDL",
+  "PPP"
+ ],
+ "key": {
+  "G": {
+   "type": "forge:ore_dict",
+   "ore": "paneGlass"
+  },
+  "L": {
+   "type": "forge:ore_dict",
+   "ore": "gemLapis"
+  },
+  "D": {
+   "item": "minecraft:daylight_detector"
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 23,
+  "count": 2
+ }
+}

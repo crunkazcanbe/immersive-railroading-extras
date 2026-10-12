@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:park_arm"
+  },
+  "facing=east": {
+   "model": "irextras:park_arm"
+  },
+  "facing=south": {
+   "model": "irextras:park_arm"
+  },
+  "facing=west": {
+   "model": "irextras:park_arm"
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PPP",
+  "WMW",
+  "FCF"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "W": {
+   "item": "minecraft:wool",
+   "data": 0
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:train_wash"
+ }
+}

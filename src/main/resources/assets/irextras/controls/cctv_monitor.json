@@ -1,0 +1,94 @@
+{
+ "title": "cctv_monitor",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 12.45,
+   "title": "MONITOR",
+   "controls": [
+    {
+     "id": "chdn",
+     "t": "push",
+     "u": 6.5,
+     "v": 1.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "303438",
+     "label": "CH-"
+    },
+    {
+     "id": "chup",
+     "t": "push",
+     "u": 4.8,
+     "v": 1.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "303438",
+     "label": "CH+"
+    },
+    {
+     "id": "split",
+     "t": "push",
+     "u": 3.1,
+     "v": 1.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "303438",
+     "label": "SPLIT"
+    },
+    {
+     "id": "menu",
+     "t": "push",
+     "u": 1.4,
+     "v": 1.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "303438",
+     "label": "MENU"
+    },
+    {
+     "id": "led_pwr",
+     "t": "lamp",
+     "u": 14.8,
+     "v": 1.1,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "led_rec",
+     "t": "lamp",
+     "u": 13.6,
+     "v": 1.1,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff2020",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "led_sig",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 1.1,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": ""
+    },
+    {
+     "id": "ch",
+     "t": "digits",
+     "u": 10.0,
+     "v": 1.1,
+     "w": 3.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

@@ -25,7 +25,15 @@ public enum GridKind {
     EARTHING("grid_earthing", "Earthing Switch", "Every network needs an earth: without one protection can't see faults and breakers refuse to close", 0),
     RELAY("grid_relay", "Protection Relay", "Place one touching each breaker: a breaker with no relay is blind and will not close", 0),
     ARRESTER("grid_arrester", "Surge Arrester", "Sends lightning to earth: without one, thunderstorms flash over and trip the network", 0),
-    ISOLATOR("grid_isolator", "Disconnector", "Manual isolating switch for maintenance. NOT for breaking load: open it while current flows and it arcs! Open the breaker first", 0);
+    ISOLATOR("grid_isolator", "Disconnector", "Manual isolating switch for maintenance. NOT for breaking load: open it while current flows and it arcs! Open the breaker first", 0),
+    // ---- SCADA automation (requested feature)
+    AUTO("grid_auto", "Auto Controller", "Runs the grid by itself: auto-reclose (3 tries then lockout), load shedding on low frequency / overload, standby generator start, alarm horn + redstone. Breakers it works must have their key in REMOTE", 0),
+    // ---- protection + grid automation (her ChatGPT list section 6, 2026-10-10) ----------------------------------------
+    IED("grid_ied", "Protection IED", "Numerical multifunction relay: 50/51 overcurrent curves, 87T differential, 50N/51N earth fault, 27/59 voltage, 81 frequency, 50BF. Place it touching the breaker it trips (and the transformer it guards). Needs 12 V DC aux", 0),
+    ATS("grid_ats", "Transfer Switch Controller", "Automatic transfer switch: place it touching two incoming breakers (normal + standby) that feed one bus. Watches both sources, transfers on loss with delays and interlocks, starts the standby generator", 0),
+    PQA("grid_pqa", "Power Quality Analyzer", "Measures the network it touches: voltage, frequency, unbalance, harmonics (THD), power factor, sags / swells - with alarms", 0),
+    UPS("grid_ups", "12 V Battery Charger / UPS", "AC in at the back, 12 V DC out of the other faces from a real battery: signals, crossings, lights and relays keep working through a power cut while the battery lasts", 0),
+    RESTORE("grid_restore", "Black Start Panel", "Restores a dead grid in stages: black-start gensets, auxiliaries, transformers, feeders, traction last. Breakers it works need their key in REMOTE", 0);
 
     public final String id, label, tip;
     public final int capacity;
@@ -43,13 +51,19 @@ public enum GridKind {
     public boolean source() { return this == INTAKE || generator(); }
 
     /** a two-sided machine: back = primary network, other faces = secondary network */
-    public boolean converter() { return this == TRANSFORMER || this == TRACTION || this == RECTIFIER || this == INVERTER || this == DCDC; }
+    public boolean converter() { return this == TRANSFORMER || this == TRACTION || this == RECTIFIER || this == INVERTER || this == DCDC || this == UPS; }
 
     /** power electronics: an output breaker (dcOn) cuts the secondary off; a DC primary */
-    public boolean electronic() { return this == RECTIFIER || this == INVERTER || this == DCDC; }
+    public boolean electronic() { return this == RECTIFIER || this == INVERTER || this == DCDC || this == UPS; }
 
     /** draws from the grid (counted as load by the electrical solve) */
     public boolean load() { return this == FEEDER || this == MOTOR; }
+
+    /** control / measuring gear: takes its readings from the plant it touches but never carries power through itself */
+    public boolean control() { return this == IED || this == ATS || this == PQA || this == RESTORE; }
+
+    /** protection that lets a breaker close (old plain relay or the IED) */
+    public boolean relay() { return this == RELAY || this == IED; }
 
     /** has START / STOP / power buttons on its front panel */
     public boolean buttons() { return this == DIESEL || this == TURBINE; }

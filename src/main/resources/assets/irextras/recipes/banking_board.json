@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IGI",
+  "CBC",
+  "ILI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "B": {
+   "item": "minecraft:noteblock"
+  },
+  "L": {
+   "item": "minecraft:lever"
+  }
+ },
+ "result": {
+  "item": "irextras:banking_board",
+  "count": 1
+ }
+}

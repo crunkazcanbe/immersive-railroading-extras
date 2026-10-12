@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PGP",
+  "SKS",
+  "PBP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  },
+  "K": {
+   "item": "irextras:machine_casing"
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 9
+  }
+ },
+ "result": {
+  "item": "irextras:drive_coupling",
+  "count": 1
+ }
+}

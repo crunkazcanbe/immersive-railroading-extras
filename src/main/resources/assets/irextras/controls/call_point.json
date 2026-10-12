@@ -1,0 +1,84 @@
+{
+ "title": "call_point",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 5.78,
+   "title": "EMERGENCY TELEPHONE",
+   "controls": [
+    {
+     "id": "call",
+     "t": "push",
+     "u": 6.4,
+     "v": 11.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "1fa34a",
+     "label": "CALL"
+    },
+    {
+     "id": "cancel",
+     "t": "push",
+     "u": 6.4,
+     "v": 9.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": ""
+    },
+    {
+     "id": "calling",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 13.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "CALLING",
+     "blink": true
+    },
+    {
+     "id": "answered",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 12.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "ANSWERED"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 10.4,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "id",
+     "t": "digits",
+     "u": 9.8,
+     "v": 8.6,
+     "w": 2.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 10.8,
+     "v": 7.9,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

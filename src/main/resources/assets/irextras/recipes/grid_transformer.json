@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XAX",
+  "WKW",
+  "PFP"
+ ],
+ "key": {
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 7
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 14
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:grid_transformer",
+  "count": 1
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " I ",
+  "I I",
+  "ISI"
+ ],
+ "key": {
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 11
+  }
+ },
+ "result": {
+  "item": "irextras:lockout_padlock",
+  "count": 1
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "MSM",
+  "PDP",
+  "WCW"
+ ],
+ "key": {
+  "M": {
+   "item": "minecraft:map"
+  },
+  "S": {
+   "item": "minecraft:sign"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "D": {
+   "item": "irextras:freight_office"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:planning_board"
+ }
+}

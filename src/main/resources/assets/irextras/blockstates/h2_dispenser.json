@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:h2_dispenser"
+  },
+  "facing=east": {
+   "model": "irextras:h2_dispenser",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:h2_dispenser",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:h2_dispenser",
+   "y": 270
+  }
+ }
+}

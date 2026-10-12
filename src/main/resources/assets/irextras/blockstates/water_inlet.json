@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "formed=false": {
+   "model": "irextras:water_inlet"
+  },
+  "formed=true": {
+   "model": "irextras:water_inlet"
+  }
+ }
+}

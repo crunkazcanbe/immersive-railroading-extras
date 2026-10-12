@@ -1,0 +1,130 @@
+{
+ "title": "pis_board",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 6.28,
+   "title": "PIS SIGN",
+   "controls": [
+    {
+     "id": "l1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 10.4,
+     "w": 14.4,
+     "h": 0.65,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "l2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 9.55,
+     "w": 14.4,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "l3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.7,
+     "w": 14.4,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tick",
+     "t": "digits",
+     "u": 8.0,
+     "v": 7.9,
+     "w": 14.4,
+     "h": 0.55,
+     "col": "ff8020",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 6.3,
+   "title": "SERVICE STRIP",
+   "controls": [
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 14.4,
+     "v": 6.9,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "FEED",
+      "TRAINS",
+      "BOTH"
+     ]
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.2,
+     "v": 6.9,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": ""
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 6.9,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "online",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 6.9,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "fallback",
+     "t": "lamp",
+     "u": 2.4,
+     "v": 6.9,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "evac",
+     "t": "lamp",
+     "u": 1.4,
+     "v": 6.9,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

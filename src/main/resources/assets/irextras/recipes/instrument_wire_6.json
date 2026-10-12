@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "dyePink"
+  },
+  {
+   "type": "forge:ore_dict",
+   "ore": "slimeball"
+  }
+ ],
+ "result": {
+  "item": "irextras:instrument_wire",
+  "data": 6,
+  "count": 16
+ }
+}

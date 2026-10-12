@@ -1,0 +1,23 @@
+{
+ "title": "defect_detector",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.7,
+   "title": "DEFECT ALARM",
+   "controls": [
+    {
+     "id": "warn",
+     "t": "lamp",
+     "u": 11.7,
+     "v": 13.55,
+     "w": 1.2,
+     "h": 1.3,
+     "col": "ffb020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:safety_supervisor"
+  },
+  "facing=east": {
+   "model": "irextras:safety_supervisor",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:safety_supervisor",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:safety_supervisor",
+   "y": 270
+  }
+ }
+}

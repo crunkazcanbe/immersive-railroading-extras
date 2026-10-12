@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ICI",
+  "CBC",
+  "ICI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 20
+  }
+ },
+ "result": {
+  "item": "irextras:depot_stores"
+ }
+}

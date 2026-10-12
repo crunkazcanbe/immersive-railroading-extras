@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "CVC",
+  "TFT",
+  "WKW"
+ ],
+ "key": {
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "T": {
+   "item": "irextras:part",
+   "data": 14
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "K": {
+   "item": "minecraft:cauldron"
+  }
+ },
+ "result": {
+  "item": "irextras:arc_furnace",
+  "count": 1
+ }
+}

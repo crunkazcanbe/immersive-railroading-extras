@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IRI",
+  "IFI",
+  "ICI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "F": {
+   "item": "minecraft:furnace"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  }
+ },
+ "result": {
+  "item": "irextras:points_heater",
+  "count": 1
+ }
+}

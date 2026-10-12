@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:crossing_predictor"
+  },
+  "facing=east": {
+   "model": "irextras:crossing_predictor",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:crossing_predictor",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:crossing_predictor",
+   "y": 270
+  }
+ }
+}

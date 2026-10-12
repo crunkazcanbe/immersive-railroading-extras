@@ -1,0 +1,120 @@
+{
+ "title": "charging_station",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.46,
+   "title": "CHARGER DISPLAY",
+   "controls": [
+    {
+     "id": "disp1",
+     "t": "digits",
+     "u": 9.4,
+     "v": 14.3,
+     "w": 3.3,
+     "h": 0.9,
+     "col": "3ad0ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "disp2",
+     "t": "digits",
+     "u": 9.4,
+     "v": 13.25,
+     "w": 3.3,
+     "h": 0.9,
+     "col": "3ad0ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 4.66,
+   "title": "CHARGER",
+   "controls": [
+    {
+     "id": "ready",
+     "t": "lamp",
+     "u": 6.0,
+     "v": 14.45,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30d050",
+     "label": ""
+    },
+    {
+     "id": "charging",
+     "t": "lamp",
+     "u": 5.2,
+     "v": 14.45,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "3a8aff",
+     "label": ""
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 14.45,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "e03020",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "close",
+     "t": "push",
+     "u": 6.0,
+     "v": 11.4,
+     "w": 0.64,
+     "h": 0.64,
+     "col": "2aa040",
+     "label": "START"
+    },
+    {
+     "id": "trip",
+     "t": "push",
+     "u": 4.4,
+     "v": 11.4,
+     "w": 0.64,
+     "h": 0.64,
+     "col": "3a3c40",
+     "label": "STOP"
+    },
+    {
+     "id": "estop",
+     "t": "mushroom",
+     "u": 5.2,
+     "v": 9.7,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "d02020",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 7.1,
+   "title": "BEACON",
+   "controls": [
+    {
+     "id": "beacon",
+     "t": "lamp",
+     "u": 9.2,
+     "v": 19.8,
+     "w": 1.0,
+     "h": 1.2,
+     "col": "30a0ff",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

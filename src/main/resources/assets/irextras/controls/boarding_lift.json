@@ -1,0 +1,418 @@
+{
+ "title": "boarding_lift",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -0.1,
+   "title": "LIFT",
+   "controls": [
+    {
+     "id": "ht",
+     "t": "digits",
+     "u": 3.75,
+     "v": 15.1,
+     "w": 4.7,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tr",
+     "t": "digits",
+     "u": 3.75,
+     "v": 14.2,
+     "w": 4.7,
+     "h": 0.7,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "msg",
+     "t": "digits",
+     "u": 3.75,
+     "v": 13.3,
+     "w": 4.7,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "l_up",
+     "t": "lamp",
+     "u": 5.8,
+     "v": 12.0,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "UP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.8,
+     "v": 11.58,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "UP"
+    },
+    {
+     "id": "l_dn",
+     "t": "lamp",
+     "u": 4.75,
+     "v": 12.0,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "DN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.75,
+     "v": 11.58,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DN"
+    },
+    {
+     "id": "l_gate",
+     "t": "lamp",
+     "u": 3.7,
+     "v": 12.0,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ffb020",
+     "label": "GATE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.7,
+     "v": 11.58,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GATE"
+    },
+    {
+     "id": "l_train",
+     "t": "lamp",
+     "u": 2.65,
+     "v": 12.0,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "4080ff",
+     "label": "TRAIN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.65,
+     "v": 11.58,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TRAIN"
+    },
+    {
+     "id": "l_ready",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 12.0,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "LEVEL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.6,
+     "v": 11.58,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LEVEL"
+    },
+    {
+     "id": "l_over",
+     "t": "lamp",
+     "u": 5.8,
+     "v": 10.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "OVLD",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.8,
+     "v": 10.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OVLD"
+    },
+    {
+     "id": "l_gap",
+     "t": "lamp",
+     "u": 4.75,
+     "v": 10.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "GAP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.75,
+     "v": 10.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GAP"
+    },
+    {
+     "id": "l_fault",
+     "t": "lamp",
+     "u": 3.7,
+     "v": 10.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "FLT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.7,
+     "v": 10.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLT"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 2.65,
+     "v": 10.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.65,
+     "v": 10.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 10.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "MAIN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.6,
+     "v": 10.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAIN"
+    },
+    {
+     "id": "up",
+     "t": "push",
+     "u": 5.7,
+     "v": 9.1,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "30a040",
+     "label": "UP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.7,
+     "v": 8.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "UP"
+    },
+    {
+     "id": "down",
+     "t": "push",
+     "u": 4.4,
+     "v": 9.1,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "30a040",
+     "label": "DOWN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": 8.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DOWN"
+    },
+    {
+     "id": "gate",
+     "t": "push",
+     "u": 3.1,
+     "v": 9.1,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f0d020",
+     "label": "GATE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.1,
+     "v": 8.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GATE"
+    },
+    {
+     "id": "call",
+     "t": "push",
+     "u": 1.8,
+     "v": 9.1,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "e0e0e0",
+     "label": "CALL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 8.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CALL"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 5.4,
+     "v": 7.0,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "e02020",
+     "label": "E-STOP"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 3.7,
+     "v": 7.0,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "k_staff",
+     "t": "key",
+     "u": 2.1,
+     "v": 7.0,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "STAFF",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 5.4,
+     "v": 5.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "MANUAL"
+     ]
+    },
+    {
+     "id": "s_trim",
+     "t": "selector",
+     "u": 3.7,
+     "v": 5.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "202020",
+     "label": "TRIM",
+     "pos": [
+      "-2",
+      "-1",
+      "0",
+      "+1",
+      "+2"
+     ]
+    },
+    {
+     "id": "k_hand",
+     "t": "key",
+     "u": 2.1,
+     "v": 5.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c03030",
+     "label": "HAND LWR",
+     "pos": [
+      "OFF",
+      "BRAKE OFF"
+     ]
+    },
+    {
+     "id": "g_ht",
+     "t": "gauge",
+     "u": 3.75,
+     "v": 2.6,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "DECK PX",
+     "max": 12
+    }
+   ]
+  }
+ ]
+}

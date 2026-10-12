@@ -1,0 +1,20 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PEP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:pipe",
+  "count": 4
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "title": "ohle_tensioner",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.9,
+   "title": "TENSIONER",
+   "controls": [
+    {
+     "id": "pos",
+     "t": "gauge",
+     "u": 3.6,
+     "v": 21.0,
+     "w": 2.6,
+     "h": 2.6,
+     "col": "f2f0e6",
+     "label": "WEIGHT %",
+     "max": 100
+    },
+    {
+     "id": "kn",
+     "t": "gauge",
+     "u": 3.6,
+     "v": 16.6,
+     "w": 2.6,
+     "h": 2.6,
+     "col": "f2f0e6",
+     "label": "KN",
+     "max": 25
+    },
+    {
+     "id": "temp",
+     "t": "gauge",
+     "u": 3.6,
+     "v": 12.2,
+     "w": 2.6,
+     "h": 2.6,
+     "col": "f2f0e6",
+     "label": "C +20",
+     "max": 80
+    },
+    {
+     "id": "flag",
+     "t": "flag",
+     "u": 3.6,
+     "v": 8.8,
+     "w": 1.6,
+     "h": 1.0,
+     "col": "ff2020",
+     "label": "RANGE"
+    },
+    {
+     "id": "state",
+     "t": "digits",
+     "u": 3.6,
+     "v": 7.2,
+     "w": 3.6,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "k_lock",
+     "t": "key",
+     "u": 3.6,
+     "v": 5.2,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "c0a040",
+     "label": "LOCK",
+     "pos": [
+      "FREE",
+      "LOCK"
+     ]
+    }
+   ]
+  }
+ ]
+}

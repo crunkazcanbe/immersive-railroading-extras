@@ -1,0 +1,9 @@
+{
+ "parent": "irextras:block/conveyor_base_straight",
+ "textures": {
+  "frame": "irextras:blocks/conveyor_frame_fast",
+  "belt": "irextras:blocks/belt_strip",
+  "roller": "irextras:blocks/conveyor_roller",
+  "particle": "irextras:blocks/conveyor_frame_fast"
+ }
+}

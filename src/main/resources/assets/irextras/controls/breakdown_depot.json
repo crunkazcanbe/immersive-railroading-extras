@@ -1,0 +1,282 @@
+{
+ "title": "breakdown_depot",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.7,
+   "title": "LOCKERS",
+   "controls": [
+    {
+     "id": "jacks",
+     "t": "zone",
+     "u": 12.9,
+     "v": 5.5,
+     "w": 4.4,
+     "h": 8.2,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "pack",
+     "t": "zone",
+     "u": 7.9,
+     "v": 5.5,
+     "w": 4.4,
+     "h": 8.2,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "slings",
+     "t": "zone",
+     "u": 2.9,
+     "v": 5.5,
+     "w": 4.4,
+     "h": 8.2,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 1.7,
+   "title": "CREW BOARD",
+   "controls": [
+    {
+     "id": "stat",
+     "t": "digits",
+     "u": 5.0,
+     "v": 15.35,
+     "w": 7.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "eta",
+     "t": "digits",
+     "u": 11.4,
+     "v": 15.35,
+     "w": 5.0,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "job",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.45,
+     "w": 13.2,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "ready",
+     "t": "lamp",
+     "u": 1.8,
+     "v": 13.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "READY"
+    },
+    {
+     "id": "out",
+     "t": "lamp",
+     "u": 3.5,
+     "v": 13.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "OUT"
+    },
+    {
+     "id": "onsite",
+     "t": "lamp",
+     "u": 5.2,
+     "v": 13.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "SITE"
+    },
+    {
+     "id": "returning",
+     "t": "lamp",
+     "u": 6.9,
+     "v": 13.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30a0ff",
+     "label": "RTN"
+    },
+    {
+     "id": "power",
+     "t": "lamp",
+     "u": 8.6,
+     "v": 13.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "kjack",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 11.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "JACK"
+    },
+    {
+     "id": "kpack",
+     "t": "lamp",
+     "u": 3.2,
+     "v": 11.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "PACK"
+    },
+    {
+     "id": "ksling",
+     "t": "lamp",
+     "u": 4.8,
+     "v": 11.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "SLING"
+    },
+    {
+     "id": "jacks",
+     "t": "digits",
+     "u": 1.6,
+     "v": 10.6,
+     "w": 1.2,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "packs",
+     "t": "digits",
+     "u": 3.2,
+     "v": 10.6,
+     "w": 1.2,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "slingn",
+     "t": "digits",
+     "u": 4.8,
+     "v": 10.6,
+     "w": 1.2,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "kit",
+     "t": "gauge",
+     "u": 7.4,
+     "v": 11.5,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "KIT %",
+     "max": 100
+    },
+    {
+     "id": "turnout",
+     "t": "push",
+     "u": 9.6,
+     "v": 12.1,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d02020",
+     "label": "TURN OUT"
+    },
+    {
+     "id": "standdown",
+     "t": "push",
+     "u": 11.2,
+     "v": 12.1,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1fa34a",
+     "label": "STAND DN"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 12.8,
+     "v": 12.1,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "k_avail",
+     "t": "key",
+     "u": 14.4,
+     "v": 12.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "AVAIL",
+     "pos": [
+      "ON CALL",
+      "STOOD DN"
+     ]
+    },
+    {
+     "id": "s_crews",
+     "t": "selector",
+     "u": 10.4,
+     "v": 10.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "1 GANG",
+      "2 GANGS"
+     ]
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": -5.05,
+   "title": "BEACON",
+   "controls": [
+    {
+     "id": "bell",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 8.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "ffa020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

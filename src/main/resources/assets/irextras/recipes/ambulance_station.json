@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RBR",
+  "ICI",
+  "IAI"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "B": {
+   "item": "minecraft:noteblock"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "A": {
+   "item": "minecraft:golden_apple",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:ambulance_station",
+  "count": 1
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "IMI",
+  " I "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:daylight_detector"
+  },
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 21
+  }
+ },
+ "result": {
+  "item": "irextras:grid_inst_wattmeter",
+  "count": 1
+ }
+}

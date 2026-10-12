@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PTP",
+  "HHH"
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:lit_pumpkin"
+  },
+  "T": {
+   "item": "minecraft:torch"
+  },
+  "H": {
+   "item": "minecraft:hay_block"
+  }
+ },
+ "result": {
+  "item": "irextras:halloween_display"
+ }
+}

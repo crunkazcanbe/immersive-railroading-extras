@@ -1,0 +1,802 @@
+{
+ "title": "commissioning_set",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.2,
+   "title": "DRAWERS",
+   "controls": [
+    {
+     "id": "leads",
+     "t": "zone",
+     "u": 11.15,
+     "v": 6.15,
+     "w": 5.9,
+     "h": 5.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "certs",
+     "t": "zone",
+     "u": 4.85,
+     "v": 6.15,
+     "w": 5.8999999999999995,
+     "h": 5.8,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 4.38,
+   "title": "COMMISSIONING",
+   "controls": [
+    {
+     "id": "title",
+     "t": "digits",
+     "u": 8.0,
+     "v": 21.3,
+     "w": 11.0,
+     "h": 0.65,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.5,
+     "w": 11.0,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.78,
+     "w": 11.0,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.06,
+     "w": 11.0,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.34,
+     "w": 11.0,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d5",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.62,
+     "w": 11.0,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d6",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.9,
+     "w": 11.0,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "status",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.35,
+     "w": 11.0,
+     "h": 0.5,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 13.2,
+     "v": 15.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.2,
+     "v": 14.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "lscan",
+     "t": "lamp",
+     "u": 14.7,
+     "v": 15.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "SCAN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.7,
+     "v": 14.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SCAN"
+    },
+    {
+     "id": "lrun",
+     "t": "lamp",
+     "u": 16.2,
+     "v": 15.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "RUN",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.2,
+     "v": 14.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RUN"
+    },
+    {
+     "id": "lpass",
+     "t": "lamp",
+     "u": 17.7,
+     "v": 15.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "PASS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.7,
+     "v": 14.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PASS"
+    },
+    {
+     "id": "lfail",
+     "t": "lamp",
+     "u": 19.2,
+     "v": 15.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "FAIL",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.2,
+     "v": 14.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FAIL"
+    },
+    {
+     "id": "lwarn",
+     "t": "lamp",
+     "u": 20.7,
+     "v": 15.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "NEW"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 20.7,
+     "v": 14.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NEW"
+    },
+    {
+     "id": "lauth",
+     "t": "lamp",
+     "u": 22.2,
+     "v": 15.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8a8aff",
+     "label": "AUTH"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.2,
+     "v": 14.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTH"
+    },
+    {
+     "id": "ltgt",
+     "t": "lamp",
+     "u": 23.7,
+     "v": 15.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "f0f0f0",
+     "label": "IED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 23.7,
+     "v": 14.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "IED"
+    },
+    {
+     "id": "nass",
+     "t": "digits",
+     "u": 13.1,
+     "v": 13.5,
+     "w": 1.4,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.1,
+     "v": 12.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ASSETS"
+    },
+    {
+     "id": "nnew",
+     "t": "digits",
+     "u": 11.4,
+     "v": 13.5,
+     "w": 1.4,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 12.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NEW"
+    },
+    {
+     "id": "nconn",
+     "t": "digits",
+     "u": 9.7,
+     "v": 13.5,
+     "w": 1.4,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.7,
+     "v": 12.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LINKS"
+    },
+    {
+     "id": "nver",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.5,
+     "w": 1.4,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 12.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "VERIF"
+    },
+    {
+     "id": "ntest",
+     "t": "digits",
+     "u": 6.3,
+     "v": 13.5,
+     "w": 1.4,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.3,
+     "v": 12.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TESTS"
+    },
+    {
+     "id": "npass",
+     "t": "digits",
+     "u": 4.6,
+     "v": 13.5,
+     "w": 1.4,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 12.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PASS"
+    },
+    {
+     "id": "nfail",
+     "t": "digits",
+     "u": 2.9,
+     "v": 13.5,
+     "w": 1.4,
+     "h": 0.6,
+     "col": "ff6040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.9,
+     "v": 12.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FAIL"
+    },
+    {
+     "id": "scan",
+     "t": "push",
+     "u": 13.2,
+     "v": 11.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "2050d0",
+     "label": "SCAN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.2,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SCAN"
+    },
+    {
+     "id": "plan",
+     "t": "push",
+     "u": 14.7,
+     "v": 11.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "20a0a0",
+     "label": "PLAN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.7,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PLAN"
+    },
+    {
+     "id": "run",
+     "t": "push",
+     "u": 16.2,
+     "v": 11.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "1fa34a",
+     "label": "RUN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.2,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RUN"
+    },
+    {
+     "id": "abort",
+     "t": "push",
+     "u": 17.7,
+     "v": 11.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "d02020",
+     "label": "ABORT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.7,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ABORT"
+    },
+    {
+     "id": "prev",
+     "t": "push",
+     "u": 19.2,
+     "v": 11.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "505860",
+     "label": "PREV"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.2,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PREV"
+    },
+    {
+     "id": "next",
+     "t": "push",
+     "u": 20.7,
+     "v": 11.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "505860",
+     "label": "NEXT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 20.7,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NEXT"
+    },
+    {
+     "id": "sign",
+     "t": "push",
+     "u": 22.2,
+     "v": 11.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "f0d020",
+     "label": "SIGN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.2,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SIGN"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 23.7,
+     "v": 11.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "f0f0f0",
+     "label": "PRINT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 23.7,
+     "v": 10.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRINT"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 6.2,
+   "title": "LEDGE",
+   "controls": [
+    {
+     "id": "s_rad",
+     "t": "selector",
+     "u": 13.2,
+     "v": 3.0,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "RADIUS",
+     "pos": [
+      "16M",
+      "32M",
+      "64M"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.2,
+     "v": 1.9,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RADIUS"
+    },
+    {
+     "id": "s_scope",
+     "t": "selector",
+     "u": 10.9,
+     "v": 3.0,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "SCOPE",
+     "pos": [
+      "NEW",
+      "ALL"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.9,
+     "v": 1.9,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SCOPE"
+    },
+    {
+     "id": "s_page",
+     "t": "selector",
+     "u": 8.6,
+     "v": 3.0,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "PAGE",
+     "pos": [
+      "ASSETS",
+      "TESTS",
+      "LINKS",
+      "BENCH",
+      "CERTS"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.6,
+     "v": 1.9,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PAGE"
+    },
+    {
+     "id": "k_auth",
+     "t": "key",
+     "u": 6.0,
+     "v": 3.0,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c0a040",
+     "label": "AUTHORISED",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.0,
+     "v": 1.9,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTHORISED"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 4.2,
+     "v": 3.0,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "b0b0b0",
+     "label": "LAMP TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.2,
+     "v": 1.9,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 2.6,
+     "v": 3.0,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d02020",
+     "label": "E-STOP"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 4.98,
+   "title": "INJECTION SET",
+   "controls": [
+    {
+     "id": "prog",
+     "t": "gauge",
+     "u": 11.4,
+     "v": 25.0,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "PLAN %",
+     "max": 100
+    },
+    {
+     "id": "tgt",
+     "t": "digits",
+     "u": 7.2,
+     "v": 25.8,
+     "w": 4.6,
+     "h": 0.6,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "target",
+     "t": "zone",
+     "u": 7.2,
+     "v": 25.8,
+     "w": 4.8,
+     "h": 0.8,
+     "col": "000000",
+     "label": "TARGET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.2,
+     "v": 25.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TARGET IED"
+    },
+    {
+     "id": "inject",
+     "t": "push",
+     "u": 4.4,
+     "v": 24.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "e08020",
+     "label": "INJECT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": 23.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "INJECT"
+    }
+   ]
+  }
+ ]
+}

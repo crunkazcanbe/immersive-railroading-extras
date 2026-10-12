@@ -1,0 +1,36 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "CSC",
+  "HFH",
+  "PKP"
+ ],
+ "key": {
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "H": {
+   "item": "minecraft:leather"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 16
+  }
+ },
+ "result": {
+  "item": "irextras:h2_dispenser"
+ }
+}

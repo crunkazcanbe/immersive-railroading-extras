@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:radio_desk"
+  },
+  "facing=east": {
+   "model": "irextras:radio_desk",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:radio_desk",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:radio_desk",
+   "y": 270
+  }
+ }
+}

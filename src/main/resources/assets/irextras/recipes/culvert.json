@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SSS",
+  "B B",
+  "SSS"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  },
+  "B": {
+   "item": "minecraft:iron_bars"
+  }
+ },
+ "result": {
+  "item": "irextras:culvert",
+  "count": 2
+ }
+}

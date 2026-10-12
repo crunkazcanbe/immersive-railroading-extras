@@ -1,0 +1,415 @@
+{
+ "title": "bag_hall",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 10.0,
+   "title": "CAROUSEL",
+   "controls": [
+    {
+     "id": "reclaim",
+     "t": "zone",
+     "u": 8.0,
+     "v": 6.5,
+     "w": 38.4,
+     "h": 10.8,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 5.98,
+   "title": "ARRIVALS",
+   "controls": [
+    {
+     "id": "hdr",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.0,
+     "w": 14.6,
+     "h": 0.7,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "b1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.0,
+     "w": 14.6,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "b2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.15,
+     "w": 14.6,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "b3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.3,
+     "w": 14.6,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "b4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.45,
+     "w": 14.6,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "non",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.9,
+     "w": 6.0,
+     "h": 0.4,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d ON CAROUSEL"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 5.65,
+   "title": "BEACON",
+   "controls": [
+    {
+     "id": "beacon",
+     "t": "lamp",
+     "u": -4.0,
+     "v": 13.3,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "ffb020",
+     "label": "BAGS",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.35,
+   "title": "MAKE-UP",
+   "controls": [
+    {
+     "id": "makeup",
+     "t": "zone",
+     "u": 28.5,
+     "v": 9.5,
+     "w": 6.4,
+     "h": 5.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 14.98,
+   "title": "MAKE-UP SCREEN",
+   "controls": [
+    {
+     "id": "mk1",
+     "t": "digits",
+     "u": 28.5,
+     "v": 16.8,
+     "w": 6.2,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "mk2",
+     "t": "digits",
+     "u": 28.5,
+     "v": 15.4,
+     "w": 6.2,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "mk3",
+     "t": "digits",
+     "u": 28.5,
+     "v": 14.0,
+     "w": 6.2,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "nmk",
+     "t": "digits",
+     "u": 28.5,
+     "v": 12.9,
+     "w": 6.0,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d TO LOAD"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.5,
+   "title": "CAROUSEL CONTROL",
+   "controls": [
+    {
+     "id": "start",
+     "t": "push",
+     "u": -15.0,
+     "v": 8.0,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "1fa34a",
+     "label": "START"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -15.0,
+     "v": 7.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "START"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": -13.6,
+     "v": 8.0,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -13.6,
+     "v": 7.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": -12.2,
+     "v": 7.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d02020",
+     "label": "E-STOP"
+    },
+    {
+     "id": "msg",
+     "t": "digits",
+     "u": -13.4,
+     "v": 9.0,
+     "w": 4.6,
+     "h": 0.4,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "runl",
+     "t": "lamp",
+     "u": -15.2,
+     "v": 5.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "RUN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -15.2,
+     "v": 5.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RUN"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": -14.15,
+     "v": 5.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -14.15,
+     "v": 5.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": -13.1,
+     "v": 5.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -13.1,
+     "v": 5.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "fulll",
+     "t": "lamp",
+     "u": -12.05,
+     "v": 5.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "FULL",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -12.05,
+     "v": 5.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FULL"
+    },
+    {
+     "id": "amps",
+     "t": "gauge",
+     "u": -14.6,
+     "v": 3.6,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "f2f0e6",
+     "label": "DRIVE %",
+     "max": 100
+    },
+    {
+     "id": "claim",
+     "t": "push",
+     "u": -13.0,
+     "v": 3.9,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "f0d020",
+     "label": "CLAIM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -13.0,
+     "v": 3.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLAIM"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": -11.7,
+     "v": 3.9,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "f0f0f0",
+     "label": "PRINT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -11.7,
+     "v": 3.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRINT"
+    },
+    {
+     "id": "k_staff",
+     "t": "key",
+     "u": -12.0,
+     "v": 1.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "STAFF",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "stfl",
+     "t": "lamp",
+     "u": -13.4,
+     "v": 1.6,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ffb020",
+     "label": "STAFF"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": -15.0,
+     "v": 1.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

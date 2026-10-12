@@ -1,0 +1,18 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:catenary_section_insulator"
+  },
+  "facing=south": {
+   "model": "irextras:catenary_section_insulator"
+  },
+  "facing=east": {
+   "model": "irextras:catenary_section_insulator",
+   "y": 90
+  },
+  "facing=west": {
+   "model": "irextras:catenary_section_insulator",
+   "y": 90
+  }
+ }
+}

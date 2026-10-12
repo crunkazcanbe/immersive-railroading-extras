@@ -1,0 +1,29 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " R ",
+  "pSp",
+  " E "
+ ],
+ "key": {
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "dyeRed"
+  },
+  "p": {
+   "item": "irextras:pipe"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 11
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:gate_valve",
+  "count": 1
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "S",
+  "I",
+  "R"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:sign"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:ohle_magnet",
+  "count": 1
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:rail_welder"
+  },
+  "facing=east": {
+   "model": "irextras:rail_welder",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:rail_welder",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:rail_welder",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,406 @@
+{
+ "title": "container_tracker",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 5.9,
+   "title": "TRACKING",
+   "controls": [
+    {
+     "id": "id",
+     "t": "digits",
+     "u": 8.0,
+     "v": 25.2,
+     "w": 8.4,
+     "h": 0.75,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "st",
+     "t": "digits",
+     "u": 8.0,
+     "v": 24.05,
+     "w": 8.4,
+     "h": 0.75,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "loc",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.9,
+     "w": 8.4,
+     "h": 0.75,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "who",
+     "t": "digits",
+     "u": 8.0,
+     "v": 21.75,
+     "w": 8.4,
+     "h": 0.75,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cond",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.6,
+     "w": 8.4,
+     "h": 0.75,
+     "col": "60c0ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "last",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.45,
+     "w": 8.4,
+     "h": 0.75,
+     "col": "e0e0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cnt",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.6,
+     "w": 6.0,
+     "h": 0.6,
+     "col": "ff8030",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "valid",
+     "t": "lamp",
+     "u": 4.3,
+     "v": 16.5,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "CHK OK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.3,
+     "v": 16.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CHK OK"
+    },
+    {
+     "id": "bad",
+     "t": "lamp",
+     "u": 5.35,
+     "v": 16.5,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "CHK BAD",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.35,
+     "v": 16.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CHK BAD"
+    },
+    {
+     "id": "flag",
+     "t": "lamp",
+     "u": 6.4,
+     "v": 16.5,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ffb020",
+     "label": "FLAG",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 16.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLAG"
+    },
+    {
+     "id": "sealed",
+     "t": "lamp",
+     "u": 7.45,
+     "v": 16.5,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "SEALED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.45,
+     "v": 16.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SEALED"
+    },
+    {
+     "id": "reeferl",
+     "t": "lamp",
+     "u": 8.5,
+     "v": 16.5,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "4080ff",
+     "label": "REEFER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.5,
+     "v": 16.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "REEFER"
+    },
+    {
+     "id": "contam",
+     "t": "lamp",
+     "u": 9.55,
+     "v": 16.5,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "CONTAM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.55,
+     "v": 16.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CONTAM"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 10.6,
+     "v": 16.5,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.6,
+     "v": 16.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 11.65,
+     "v": 16.5,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.65,
+     "v": 16.0,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.95,
+   "title": "TERMINAL",
+   "controls": [
+    {
+     "id": "scan",
+     "t": "push",
+     "u": 4.4,
+     "v": 9.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "30a050",
+     "label": "SCAN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": 8.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SCAN"
+    },
+    {
+     "id": "find",
+     "t": "push",
+     "u": 5.85,
+     "v": 9.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "FIND"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.85,
+     "v": 8.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FIND"
+    },
+    {
+     "id": "prev",
+     "t": "push",
+     "u": 7.3,
+     "v": 9.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "e0e0e0",
+     "label": "PREV"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.3,
+     "v": 8.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PREV"
+    },
+    {
+     "id": "next",
+     "t": "push",
+     "u": 8.75,
+     "v": 9.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "e0e0e0",
+     "label": "NEXT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.75,
+     "v": 8.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NEXT"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 10.2,
+     "v": 9.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0d020",
+     "label": "PRINT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.2,
+     "v": 8.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRINT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.65,
+     "v": 9.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.65,
+     "v": 8.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "s_filter",
+     "t": "selector",
+     "u": 8.0,
+     "v": 7.4,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "FILTER",
+     "pos": [
+      "ALL",
+      "MOVING",
+      "FLAGGED",
+      "SEALED",
+      "REEFER",
+      "DIRTY"
+     ]
+    },
+    {
+     "id": "scan",
+     "t": "zone",
+     "u": 8.0,
+     "v": 5.0,
+     "w": 8.0,
+     "h": 2.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

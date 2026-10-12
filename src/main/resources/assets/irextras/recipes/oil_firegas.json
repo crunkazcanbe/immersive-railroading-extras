@@ -1,0 +1,34 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RBR",
+  "CWC",
+  "PFP"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:redstone_block"
+  },
+  "B": {
+   "item": "minecraft:bucket"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "W": {
+   "item": "minecraft:water_bucket"
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:oil_firegas"
+ }
+}

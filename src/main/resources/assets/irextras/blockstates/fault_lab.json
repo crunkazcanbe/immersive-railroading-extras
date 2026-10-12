@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:fault_lab"
+  },
+  "facing=east": {
+   "model": "irextras:fault_lab",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:fault_lab",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:fault_lab",
+   "y": 270
+  }
+ }
+}

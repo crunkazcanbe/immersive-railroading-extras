@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IRI",
+  "CGC"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "G": {
+   "item": "minecraft:gold_nugget"
+  }
+ },
+ "result": {
+  "item": "irextras:axle_counter_head",
+  "count": 2
+ }
+}

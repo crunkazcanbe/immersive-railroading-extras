@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:cctv_nvr"
+  },
+  "facing=east": {
+   "model": "irextras:cctv_nvr",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:cctv_nvr",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:cctv_nvr",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,362 @@
+{
+ "title": "yard_retarder",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.88,
+   "title": "RETARDER",
+   "controls": [
+    {
+     "id": "id",
+     "t": "digits",
+     "u": 3.0,
+     "v": 10.6,
+     "w": 3.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rail",
+     "t": "digits",
+     "u": 7.8,
+     "v": 10.6,
+     "w": 4.6,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "bar",
+     "t": "digits",
+     "u": 12.6,
+     "v": 10.6,
+     "w": 4.0,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "car",
+     "t": "lamp",
+     "u": 2.0,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "ffd020",
+     "label": "CAR"
+    },
+    {
+     "id": "brk",
+     "t": "lamp",
+     "u": 3.25,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "ff8020",
+     "label": "BRAKE"
+    },
+    {
+     "id": "air",
+     "t": "lamp",
+     "u": 4.5,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "30e060",
+     "label": "AIR"
+    },
+    {
+     "id": "lowair",
+     "t": "lamp",
+     "u": 5.75,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "ff2020",
+     "label": "LO AIR",
+     "blink": true
+    },
+    {
+     "id": "comp",
+     "t": "lamp",
+     "u": 7.0,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "9ad8ff",
+     "label": "COMP"
+    },
+    {
+     "id": "shoe",
+     "t": "lamp",
+     "u": 8.25,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "ffb020",
+     "label": "SHOES"
+    },
+    {
+     "id": "fast",
+     "t": "lamp",
+     "u": 9.5,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "ff3030",
+     "label": "FAST",
+     "blink": true
+    },
+    {
+     "id": "closed",
+     "t": "lamp",
+     "u": 10.75,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "ff3030",
+     "label": "CLOSED"
+    },
+    {
+     "id": "open",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "30e060",
+     "label": "OPEN"
+    },
+    {
+     "id": "sup",
+     "t": "lamp",
+     "u": 13.25,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "30e060",
+     "label": "400V"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 14.5,
+     "v": 9.4,
+     "w": 0.52,
+     "h": 0.52,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "in",
+     "t": "digits",
+     "u": 4.4,
+     "v": 8.1,
+     "w": 5.6,
+     "h": 0.7,
+     "col": "f2f0e6",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "out",
+     "t": "digits",
+     "u": 11.4,
+     "v": 8.1,
+     "w": 5.6,
+     "h": 0.7,
+     "col": "f2f0e6",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tgt",
+     "t": "digits",
+     "u": 4.4,
+     "v": 7.0,
+     "w": 5.6,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "wim",
+     "t": "digits",
+     "u": 11.4,
+     "v": 7.0,
+     "w": 5.6,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "free",
+     "t": "digits",
+     "u": 4.4,
+     "v": 5.9,
+     "w": 5.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "shoes",
+     "t": "digits",
+     "u": 11.4,
+     "v": 5.9,
+     "w": 5.6,
+     "h": 0.7,
+     "col": "ff8040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_bar",
+     "t": "gauge",
+     "u": 2.6,
+     "v": 3.6,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "AIR BAR",
+     "max": 100
+    },
+    {
+     "id": "g_beam",
+     "t": "gauge",
+     "u": 5.2,
+     "v": 3.6,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "BEAM %",
+     "max": 100
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 8.0,
+     "v": 4.0,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "MAN",
+      "OPEN",
+      "CLOSE"
+     ]
+    },
+    {
+     "id": "s_target",
+     "t": "selector",
+     "u": 10.4,
+     "v": 4.0,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "202020",
+     "label": "TARGET",
+     "pos": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12",
+      "15",
+      "CALC"
+     ]
+    },
+    {
+     "id": "s_type",
+     "t": "selector",
+     "u": 12.8,
+     "v": 4.0,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "202020",
+     "label": "TYPE",
+     "pos": [
+      "BEAM",
+      "CLASP"
+     ]
+    },
+    {
+     "id": "s_step",
+     "t": "selector",
+     "u": 2.6,
+     "v": 1.4,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "202020",
+     "label": "STEP",
+     "pos": [
+      "OFF",
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "id": "p_ack",
+     "t": "push",
+     "u": 5.0,
+     "v": 1.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d8b020",
+     "label": "ACK"
+    },
+    {
+     "id": "p_shoes",
+     "t": "push",
+     "u": 7.1,
+     "v": 1.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "606060",
+     "label": "SHOES"
+    },
+    {
+     "id": "p_drain",
+     "t": "push",
+     "u": 9.2,
+     "v": 1.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "DRAIN"
+    },
+    {
+     "id": "cars",
+     "t": "digits",
+     "u": 12.0,
+     "v": 1.4,
+     "w": 3.4,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d CARS"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 14.4,
+     "v": 2.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

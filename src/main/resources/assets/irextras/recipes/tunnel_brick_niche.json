@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "MMM",
+  "M M",
+  "MMM"
+ ],
+ "key": {
+  "M": {
+   "item": "minecraft:brick_block"
+  }
+ },
+ "result": {
+  "item": "irextras:tunnel_brick_niche",
+  "count": 4
+ }
+}

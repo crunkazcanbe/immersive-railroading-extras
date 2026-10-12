@@ -1,0 +1,601 @@
+{
+ "title": "insurance_desk",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 14.42,
+   "title": "CLAIMS BOARD",
+   "controls": [
+    {
+     "id": "cl1",
+     "t": "digits",
+     "u": 17.0,
+     "v": 27.6,
+     "w": 24.6,
+     "h": 1.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cl2",
+     "t": "digits",
+     "u": 17.0,
+     "v": 25.6,
+     "w": 24.6,
+     "h": 1.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cl3",
+     "t": "digits",
+     "u": 17.0,
+     "v": 23.6,
+     "w": 24.6,
+     "h": 1.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cl4",
+     "t": "digits",
+     "u": 17.0,
+     "v": 21.6,
+     "w": 24.6,
+     "h": 1.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m1",
+     "t": "digits",
+     "u": -7.0,
+     "v": 27.6,
+     "w": 13.4,
+     "h": 1.5,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m2",
+     "t": "digits",
+     "u": -7.0,
+     "v": 25.6,
+     "w": 13.4,
+     "h": 1.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m3",
+     "t": "digits",
+     "u": -7.0,
+     "v": 23.6,
+     "w": 13.4,
+     "h": 1.5,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m4",
+     "t": "digits",
+     "u": -7.0,
+     "v": 21.6,
+     "w": 13.4,
+     "h": 1.5,
+     "col": "b0b0b0",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.4,
+   "title": "CUPBOARD",
+   "controls": [
+    {
+     "id": "pol",
+     "t": "zone",
+     "u": -7.95,
+     "v": 3.3,
+     "w": 10.0,
+     "h": 5.3999999999999995,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 9.0,
+   "title": "POLICY SHELF",
+   "controls": [
+    {
+     "id": "sh1",
+     "t": "zone",
+     "u": -4.35,
+     "v": 13.4,
+     "w": 2.45,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh2",
+     "t": "zone",
+     "u": -6.85,
+     "v": 13.4,
+     "w": 2.45,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh3",
+     "t": "zone",
+     "u": -9.35,
+     "v": 13.4,
+     "w": 2.45,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh4",
+     "t": "zone",
+     "u": -11.85,
+     "v": 13.4,
+     "w": 2.45,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.5,
+   "title": "DESK DRAWERS",
+   "controls": [
+    {
+     "id": "evid",
+     "t": "zone",
+     "u": 3.0,
+     "v": 1.95,
+     "w": 4.6,
+     "h": 2.1,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "dl",
+     "t": "zone",
+     "u": 3.0,
+     "v": 4.35,
+     "w": 4.6,
+     "h": 2.1,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "dr",
+     "t": "zone",
+     "u": 13.0,
+     "v": 1.95,
+     "w": 4.6,
+     "h": 2.1,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 6.85,
+   "title": "DESK",
+   "controls": [
+    {
+     "id": "prev",
+     "t": "push",
+     "u": 0.9,
+     "v": 4.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "CO<"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.9,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CO<"
+    },
+    {
+     "id": "next",
+     "t": "push",
+     "u": 2.25,
+     "v": 4.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "CO>"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.25,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CO>"
+    },
+    {
+     "id": "cover",
+     "t": "push",
+     "u": 3.6,
+     "v": 4.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "COVER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.6,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "COVER"
+    },
+    {
+     "id": "excess",
+     "t": "push",
+     "u": 4.95,
+     "v": 4.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "EXCESS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.95,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "EXCESS"
+    },
+    {
+     "id": "quote",
+     "t": "push",
+     "u": 6.3,
+     "v": 4.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0f0f0",
+     "label": "QUOTE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.3,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "QUOTE"
+    },
+    {
+     "id": "sign",
+     "t": "push",
+     "u": 7.65,
+     "v": 4.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1fa34a",
+     "label": "SIGN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.65,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SIGN"
+    },
+    {
+     "id": "cprev",
+     "t": "push",
+     "u": 0.9,
+     "v": 7.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "CLM<"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.9,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLM<"
+    },
+    {
+     "id": "cnext",
+     "t": "push",
+     "u": 2.25,
+     "v": 7.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1a1a1a",
+     "label": "CLM>"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.25,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLM>"
+    },
+    {
+     "id": "assess",
+     "t": "push",
+     "u": 3.6,
+     "v": 7.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "e08020",
+     "label": "ASSESS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.6,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ASSESS"
+    },
+    {
+     "id": "endorse",
+     "t": "push",
+     "u": 4.95,
+     "v": 7.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "8040c0",
+     "label": "ENDORSE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.95,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ENDORSE"
+    },
+    {
+     "id": "sel",
+     "t": "digits",
+     "u": 11.8,
+     "v": 4.6,
+     "w": 6.6,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "docs",
+     "t": "digits",
+     "u": 11.8,
+     "v": 7.4,
+     "w": 6.6,
+     "h": 0.9,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.48,
+   "title": "ROLL TOP",
+   "controls": [
+    {
+     "id": "pw",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 14.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.6,
+     "v": 13.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "ins",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 14.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "INSURED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.0,
+     "v": 13.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "INSURED"
+    },
+    {
+     "id": "lapse",
+     "t": "lamp",
+     "u": 6.4,
+     "v": 14.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "UNINSURED",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 13.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "UNINSURED"
+    },
+    {
+     "id": "neg",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 14.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "NEGLIGENCE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.8,
+     "v": 13.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NEGLIGENCE"
+    },
+    {
+     "id": "filed",
+     "t": "lamp",
+     "u": 11.2,
+     "v": 14.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "CLAIMS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.2,
+     "v": 13.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLAIMS"
+    },
+    {
+     "id": "compg",
+     "t": "gauge",
+     "u": 13.8,
+     "v": 11.4,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "COMPLY %",
+     "max": 100
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 10.5,
+   "title": "MONITOR",
+   "controls": [
+    {
+     "id": "co",
+     "t": "digits",
+     "u": 10.0,
+     "v": 17.55,
+     "w": 8.8,
+     "h": 0.44999999999999973,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cover",
+     "t": "digits",
+     "u": 10.0,
+     "v": 17.05,
+     "w": 8.8,
+     "h": 0.44999999999999973,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "prem",
+     "t": "digits",
+     "u": 10.0,
+     "v": 16.55,
+     "w": 8.8,
+     "h": 0.44999999999999973,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "comp",
+     "t": "digits",
+     "u": 10.0,
+     "v": 16.05,
+     "w": 8.8,
+     "h": 0.44999999999999973,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

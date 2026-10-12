@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PIP",
+  "PSP",
+  "PEP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "S": {
+   "item": "minecraft:sticky_piston"
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 4,
+  "count": 1
+ }
+}

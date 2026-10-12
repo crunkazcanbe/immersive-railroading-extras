@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:rail_crane_250"
+  },
+  "facing=east": {
+   "model": "irextras:rail_crane_250",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:rail_crane_250",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:rail_crane_250",
+   "y": 270
+  }
+ }
+}

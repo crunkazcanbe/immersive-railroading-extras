@@ -1,0 +1,31 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GBG",
+  "WSW",
+  "WCW"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_bottle"
+  },
+  "B": {
+   "item": "minecraft:brewing_stand"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:pub_bar",
+  "count": 1
+ }
+}

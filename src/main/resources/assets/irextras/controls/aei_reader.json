@@ -1,0 +1,40 @@
+{
+ "title": "aei_reader",
+ "surfaces": [
+  {
+   "side": "east",
+   "face": 16.2,
+   "title": "AEI READER",
+   "controls": [
+    {
+     "id": "disp",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.25,
+     "w": 2.8,
+     "h": 1.2,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "west",
+   "face": 17.85,
+   "title": "READING",
+   "controls": [
+    {
+     "id": "beacon",
+     "t": "lamp",
+     "u": 7.9,
+     "v": 8.9,
+     "w": 0.5,
+     "h": 1.0,
+     "col": "f0b020",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

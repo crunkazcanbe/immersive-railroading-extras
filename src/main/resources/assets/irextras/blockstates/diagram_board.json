@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:diagram_board"
+  },
+  "facing=east": {
+   "model": "irextras:diagram_board",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:diagram_board",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:diagram_board",
+   "y": 270
+  }
+ }
+}

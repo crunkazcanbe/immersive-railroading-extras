@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "KCK",
+  "DFD",
+  "KAK"
+ ],
+ "key": {
+  "K": {
+   "item": "irextras:part",
+   "data": 6
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "D": {
+   "type": "forge:ore_dict",
+   "ore": "gemDiamond"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 7
+  }
+ },
+ "result": {
+  "item": "irextras:smelter",
+  "count": 1
+ }
+}

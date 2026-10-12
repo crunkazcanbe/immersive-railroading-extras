@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:coaling_tower"
+  },
+  "facing=east": {
+   "model": "irextras:coaling_tower",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:coaling_tower",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:coaling_tower",
+   "y": 270
+  }
+ }
+}

@@ -165,7 +165,7 @@ public class GuiTicketMachine extends GuiScreen {
 
     private void click() {
         mc.getSoundHandler().playSound(net.minecraft.client.audio.PositionedSoundRecord.getMasterRecord(
-                net.minecraft.init.SoundEvents.UI_BUTTON_CLICK, 1.4f));
+                com.dogpound.railmap.sound.PackSounds.ev("ui.keypad"), 1.0f));
     }
 
     private void center(String s, int y, int color) {

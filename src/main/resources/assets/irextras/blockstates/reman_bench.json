@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:reman_bench"
+  },
+  "facing=east": {
+   "model": "irextras:reman_bench",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:reman_bench",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:reman_bench",
+   "y": 270
+  }
+ }
+}

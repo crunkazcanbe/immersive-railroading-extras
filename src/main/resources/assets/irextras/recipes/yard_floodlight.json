@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LIL",
+  "GSG",
+  " I "
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:yard_floodlight",
+  "count": 1
+ }
+}

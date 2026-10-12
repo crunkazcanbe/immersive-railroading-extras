@@ -1,0 +1,64 @@
+{
+ "title": "exit_sign",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 13.26,
+   "title": "EXIT",
+   "controls": [
+    {
+     "id": "man",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 8.4,
+     "w": 3.4,
+     "h": 3.4,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "arl",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 9.6,
+     "w": 1.8,
+     "h": 1.4,
+     "col": "e0ffe0",
+     "label": "<"
+    },
+    {
+     "id": "arr",
+     "t": "lamp",
+     "u": 13.4,
+     "v": 9.6,
+     "w": 1.8,
+     "h": 1.4,
+     "col": "e0ffe0",
+     "label": ">"
+    },
+    {
+     "id": "left",
+     "t": "digits",
+     "u": 3.8,
+     "v": 5.6,
+     "w": 5.4,
+     "h": 0.8,
+     "col": "ffffff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "right",
+     "t": "digits",
+     "u": 12.2,
+     "v": 5.6,
+     "w": 5.4,
+     "h": 0.8,
+     "col": "ffffff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

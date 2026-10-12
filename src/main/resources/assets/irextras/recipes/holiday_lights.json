@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GGG",
+  "LRL"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glowstone_dust"
+  },
+  "L": {
+   "item": "minecraft:leaves",
+   "data": 1
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:holiday_lights"
+ }
+}

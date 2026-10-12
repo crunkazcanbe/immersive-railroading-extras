@@ -1,0 +1,154 @@
+{
+ "variants": {
+  "facing=north,level=0": {
+   "model": "irextras:boarding_lift_l0"
+  },
+  "facing=east,level=0": {
+   "model": "irextras:boarding_lift_l0",
+   "y": 90
+  },
+  "facing=south,level=0": {
+   "model": "irextras:boarding_lift_l0",
+   "y": 180
+  },
+  "facing=west,level=0": {
+   "model": "irextras:boarding_lift_l0",
+   "y": 270
+  },
+  "facing=north,level=1": {
+   "model": "irextras:boarding_lift_l1"
+  },
+  "facing=east,level=1": {
+   "model": "irextras:boarding_lift_l1",
+   "y": 90
+  },
+  "facing=south,level=1": {
+   "model": "irextras:boarding_lift_l1",
+   "y": 180
+  },
+  "facing=west,level=1": {
+   "model": "irextras:boarding_lift_l1",
+   "y": 270
+  },
+  "facing=north,level=2": {
+   "model": "irextras:boarding_lift_l2"
+  },
+  "facing=east,level=2": {
+   "model": "irextras:boarding_lift_l2",
+   "y": 90
+  },
+  "facing=south,level=2": {
+   "model": "irextras:boarding_lift_l2",
+   "y": 180
+  },
+  "facing=west,level=2": {
+   "model": "irextras:boarding_lift_l2",
+   "y": 270
+  },
+  "facing=north,level=3": {
+   "model": "irextras:boarding_lift_l3"
+  },
+  "facing=east,level=3": {
+   "model": "irextras:boarding_lift_l3",
+   "y": 90
+  },
+  "facing=south,level=3": {
+   "model": "irextras:boarding_lift_l3",
+   "y": 180
+  },
+  "facing=west,level=3": {
+   "model": "irextras:boarding_lift_l3",
+   "y": 270
+  },
+  "facing=north,level=4": {
+   "model": "irextras:boarding_lift_l4"
+  },
+  "facing=east,level=4": {
+   "model": "irextras:boarding_lift_l4",
+   "y": 90
+  },
+  "facing=south,level=4": {
+   "model": "irextras:boarding_lift_l4",
+   "y": 180
+  },
+  "facing=west,level=4": {
+   "model": "irextras:boarding_lift_l4",
+   "y": 270
+  },
+  "facing=north,level=5": {
+   "model": "irextras:boarding_lift_l0_open"
+  },
+  "facing=east,level=5": {
+   "model": "irextras:boarding_lift_l0_open",
+   "y": 90
+  },
+  "facing=south,level=5": {
+   "model": "irextras:boarding_lift_l0_open",
+   "y": 180
+  },
+  "facing=west,level=5": {
+   "model": "irextras:boarding_lift_l0_open",
+   "y": 270
+  },
+  "facing=north,level=6": {
+   "model": "irextras:boarding_lift_l1_open"
+  },
+  "facing=east,level=6": {
+   "model": "irextras:boarding_lift_l1_open",
+   "y": 90
+  },
+  "facing=south,level=6": {
+   "model": "irextras:boarding_lift_l1_open",
+   "y": 180
+  },
+  "facing=west,level=6": {
+   "model": "irextras:boarding_lift_l1_open",
+   "y": 270
+  },
+  "facing=north,level=7": {
+   "model": "irextras:boarding_lift_l2_open"
+  },
+  "facing=east,level=7": {
+   "model": "irextras:boarding_lift_l2_open",
+   "y": 90
+  },
+  "facing=south,level=7": {
+   "model": "irextras:boarding_lift_l2_open",
+   "y": 180
+  },
+  "facing=west,level=7": {
+   "model": "irextras:boarding_lift_l2_open",
+   "y": 270
+  },
+  "facing=north,level=8": {
+   "model": "irextras:boarding_lift_l3_open"
+  },
+  "facing=east,level=8": {
+   "model": "irextras:boarding_lift_l3_open",
+   "y": 90
+  },
+  "facing=south,level=8": {
+   "model": "irextras:boarding_lift_l3_open",
+   "y": 180
+  },
+  "facing=west,level=8": {
+   "model": "irextras:boarding_lift_l3_open",
+   "y": 270
+  },
+  "facing=north,level=9": {
+   "model": "irextras:boarding_lift_l4_open"
+  },
+  "facing=east,level=9": {
+   "model": "irextras:boarding_lift_l4_open",
+   "y": 90
+  },
+  "facing=south,level=9": {
+   "model": "irextras:boarding_lift_l4_open",
+   "y": 180
+  },
+  "facing=west,level=9": {
+   "model": "irextras:boarding_lift_l4_open",
+   "y": 270
+  }
+ }
+}

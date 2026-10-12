@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PI ",
+  "IM ",
+  "I  "
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:iron_trapdoor"
+  },
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "M": {
+   "item": "irextras:catenary_mast"
+  }
+ },
+ "result": {
+  "item": "irextras:ohle_tensioner",
+  "count": 1
+ }
+}

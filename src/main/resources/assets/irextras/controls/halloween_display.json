@@ -1,0 +1,113 @@
+{
+ "title": "halloween_display",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.98,
+   "title": "CANDLES",
+   "controls": [
+    {
+     "id": "k_on",
+     "t": "key",
+     "u": 3.6,
+     "v": 2.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "c0a040",
+     "label": "CANDLES",
+     "pos": [
+      "ON",
+      "OFF"
+     ]
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 2.8,
+     "v": 2.8,
+     "w": 0.22,
+     "h": 0.22,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.8,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "lit",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 2.8,
+     "w": 0.22,
+     "h": 0.22,
+     "col": "ff9020",
+     "label": "LIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.4,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LIT"
+    },
+    {
+     "id": "bowll",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 2.8,
+     "w": 0.22,
+     "h": 0.22,
+     "col": "a030b0",
+     "label": "TREATS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.0,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TREATS"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 1.6,
+     "v": 1.2,
+     "w": 0.3,
+     "h": 0.3,
+     "col": "b0b0b0",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.98,
+   "title": "TREAT BOWL",
+   "controls": [
+    {
+     "id": "bowl",
+     "t": "zone",
+     "u": 8.0,
+     "v": 1.0,
+     "w": 4.0,
+     "h": 2.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

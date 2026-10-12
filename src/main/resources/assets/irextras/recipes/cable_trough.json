@@ -1,0 +1,20 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "C C",
+  "CRC"
+ ],
+ "key": {
+  "C": {
+   "item": "minecraft:stone_slab",
+   "data": 0
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:cable_trough",
+  "count": 8
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "CMC",
+  " S "
+ ],
+ "key": {
+  "C": {
+   "item": "irextras:part",
+   "data": 18
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 12,
+  "count": 1
+ }
+}

@@ -30,7 +30,45 @@ import java.util.Set;
  * covered since the last sample rather than where it happens to be right now — otherwise a fast
  * train steps straight over the sensor without ever being seen.
  */
-public class TileWayside extends TileEntity implements ITickable, com.dogpound.railmap.signal.IScalable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileWayside extends TileEntity implements ITickable, com.dogpound.railmap.signal.IScalable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.wire.IWiredGear, com.dogpound.railmap.controls.IControlled {
+    // ---- the modelled readouts, live (requested feature): the scale's weight display and WEIGH COMPLETE lamp, the AEI
+    // reader's display and reading beacon. All on the 12 V instrument supply: dark without it. Also on the WIRED page.
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    private long doneUntil;
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { gearChanged(); }
+    /** resized: the renderer draws it scaled, so the controls would float - none then */
+    @Override public com.dogpound.railmap.controls.Layout layout() { return scale != 1f ? com.dogpound.railmap.controls.Layout.NONE : com.dogpound.railmap.controls.IControlled.super.layout(); }
+    @Override public com.dogpound.railmap.grid.Panel wiredPanel() { return layout().isEmpty() ? null : layout().all; }
+    @Override public int wiredState(String id) { return controlValue(id); }
+
+    private void readings() {
+        boolean p = term.powered(), ch = false;
+        String shown;
+        if (kind == Kind.SCALE) {
+            shown = !p ? "" : passing ? tonnes(totalKg) + " " + unit() : lastShown;
+            int done = p && world.getTotalWorldTime() < doneUntil ? 1 : 0;
+            if (ctl.get("done") != done) { ctl.set("done", done); ch = true; }
+        } else {
+            shown = !p ? "" : passing ? "READING " + units : lastShown;
+            int b = p && passing ? 1 : 0;
+            if (ctl.get("beacon") != b) { ctl.set("beacon", b); ch = true; }
+        }
+        String id = kind == Kind.SCALE ? "weight" : "disp";
+        if (!ctl.text(id).equals(shown)) { ctl.texts.put(id, shown); ch = true; }
+        if (ch) gearChanged();
+    }
+
+    /** what the display holds between trains */
+    private String lastShown = "";
+
+    // ---- 12 V terminal (requested feature): needs 12 V DC instrument power; with none it is not reading trains
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); if (world != null && !world.isRemote) { net.minecraft.block.state.IBlockState gs = world.getBlockState(pos); world.notifyBlockUpdate(pos, gs, gs, 3); } }
+    @Override public String wiredName() { return "Wayside reader"; }
+    @Override public String gearState() { return term.powered() ? trains + " trains seen" : "NO 12 V - not reading trains"; }
+
 
     /** one tonne of IR weight — IR reports in kg */
     private static final double KG_PER_TONNE = 1000.0D;
@@ -80,6 +118,11 @@ public class TileWayside extends TileEntity implements ITickable, com.dogpound.r
 
     @Override
     public void update() {
+        if (world != null && !world.isRemote) {
+            if (term.tick(world, pos, wiredName())) gearChanged();
+            if (world.getTotalWorldTime() % 10 == 3) readings();
+            if (!term.powered()) return;
+        }
         if (world == null || world.isRemote) {
             return;
         }
@@ -163,6 +206,9 @@ public class TileWayside extends TileEntity implements ITickable, com.dogpound.r
     private void file() {
         if (units > 0) {
             report = kind == Kind.SCALE ? scaleReport() : aeiReport();
+            if (kind == Kind.SCALE) lastShown = tonnes(totalKg) + " " + unit() + (overloaded > 0 ? " OVER" : "");
+            else lastShown = units + "U" + (topKmh > 0 ? " " + Math.round(cfg.text("speed").equals("mph") ? topKmh / 1.609344D : topKmh) + (cfg.text("speed").equals("mph") ? "MPH" : "KMH") : "");
+            doneUntil = world.getTotalWorldTime() + 600;
             comparator = outputFor();
             if (cfg.text("output").startsWith("Pulse")) pulseLeft = cfg.num("pulse");
             world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
@@ -359,6 +405,7 @@ public class TileWayside extends TileEntity implements ITickable, com.dogpound.r
         if (world != null) {
             l.add(com.dogpound.railmap.settings.Setting.info("Reports", "Trains seen", String.valueOf(trains)));
             l.add(com.dogpound.railmap.settings.Setting.info("Reports", "Size", Math.round(scale * 100) + "% (Signal Wrench scale screen)"));
+        com.dogpound.railmap.wire.IWiredGear.settings(l, "Reports", this);
             for (int i = 0; i < history.size(); i++) l.add(com.dogpound.railmap.settings.Setting.info("Reports", i == 0 ? "Last" : "#" + (i + 1), history.get(i)));
         }
         return l;
@@ -392,7 +439,10 @@ public class TileWayside extends TileEntity implements ITickable, com.dogpound.r
         net.minecraft.nbt.NBTTagList h = new net.minecraft.nbt.NBTTagList();
         for (String r : history) h.appendTag(new net.minecraft.nbt.NBTTagString(r));
         t.setTag("history", h);
+        term.write(t);
         cfg.write(t);
+        ctl.write(t);
+        t.setString("shown", lastShown);
         return t;
     }
 
@@ -406,6 +456,9 @@ public class TileWayside extends TileEntity implements ITickable, com.dogpound.r
         history.clear();
         net.minecraft.nbt.NBTTagList h = t.getTagList("history", 8);
         for (int i = 0; i < h.tagCount(); i++) history.add(h.getStringTagAt(i));
+        term.read(t);
         cfg.read(t);
+        ctl.read(t);
+        lastShown = t.getString("shown");
     }
 }

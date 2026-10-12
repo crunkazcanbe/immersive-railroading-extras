@@ -1,0 +1,14 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " N ",
+  "GRG",
+  " N "
+ ],
+ "key": {
+  "N": {"type": "forge:ore_dict", "ore": "nuggetIron"},
+  "G": {"type": "forge:ore_dict", "ore": "paneGlass"},
+  "R": {"type": "forge:ore_dict", "ore": "dustRedstone"}
+ },
+ "result": {"item": "irextras:cartridge_fuse", "data": 0, "count": 4}
+}

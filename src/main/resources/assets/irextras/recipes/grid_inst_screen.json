@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "IVI",
+  " I "
+ ],
+ "key": {
+  "X": {
+   "type": "forge:ore_dict",
+   "ore": "dustGlowstone"
+  },
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  }
+ },
+ "result": {
+  "item": "irextras:grid_inst_screen",
+  "count": 1
+ }
+}

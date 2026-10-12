@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:wheel_lathe"
+  },
+  "facing=east": {
+   "model": "irextras:wheel_lathe",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:wheel_lathe",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:wheel_lathe",
+   "y": 270
+  }
+ }
+}

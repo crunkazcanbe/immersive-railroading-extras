@@ -1,0 +1,134 @@
+{
+ "title": "room_wardrobe",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.85,
+   "title": "WARDROBE",
+   "controls": [
+    {
+     "id": "hang",
+     "t": "zone",
+     "u": 8.0,
+     "v": 10.7,
+     "w": 13.0,
+     "h": 8.2,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.4,
+   "title": "SAFE",
+   "controls": [
+    {
+     "id": "sd",
+     "t": "digits",
+     "u": 10.3,
+     "v": 4.7,
+     "w": 3.4,
+     "h": 0.86,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.4,
+   "title": "SAFE",
+   "controls": [
+    {
+     "id": "safe",
+     "t": "zone",
+     "u": 7.0,
+     "v": 3.4,
+     "w": 3.2,
+     "h": 3.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "l_safe",
+     "t": "lamp",
+     "u": 6.0,
+     "v": 5.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "LOCKED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.0,
+     "v": 5.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOCKED"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 7.2,
+     "v": 5.6,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.2,
+     "v": 5.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 0.0,
+   "title": "HAT SHELF",
+   "controls": [
+    {
+     "id": "sh1",
+     "t": "zone",
+     "u": 13.0,
+     "v": 10.0,
+     "w": 4.6,
+     "h": 8.0,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh2",
+     "t": "zone",
+     "u": 8.0,
+     "v": 10.0,
+     "w": 4.6,
+     "h": 8.0,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh3",
+     "t": "zone",
+     "u": 3.0,
+     "v": 10.0,
+     "w": 4.6,
+     "h": 8.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:tram_loop"
+  },
+  "facing=east": {
+   "model": "irextras:tram_loop",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:tram_loop",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:tram_loop",
+   "y": 270
+  }
+ }
+}

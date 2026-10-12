@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ropeway_tension"
+  },
+  "facing=east": {
+   "model": "irextras:ropeway_tension",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ropeway_tension",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ropeway_tension",
+   "y": 270
+  }
+ }
+}

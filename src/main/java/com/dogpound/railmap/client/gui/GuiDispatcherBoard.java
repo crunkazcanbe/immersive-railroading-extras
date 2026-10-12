@@ -50,7 +50,9 @@ public class GuiDispatcherBoard extends GuiScreen {
             BTN_MODE_LINE = 30, BTN_MODE_SHUTTLE = 31, BTN_MODE_ONCALL = 32, BTN_LINE_CYCLE = 33,
             BTN_SPEED_DN = 34, BTN_SPEED_UP = 35, BTN_DWELL_DN = 36, BTN_DWELL_UP = 37,
             BTN_START = 38, BTN_OFF = 39, BTN_SEND = 40, BTN_BACK = 41,
-            BTN_LINE_NEW = 50, BTN_LINE_UNDO = 51, BTN_LINE_SAVE = 52, BTN_LINE_DELETE = 53, BTN_LINE_CANCEL = 54;
+            BTN_LINE_NEW = 50, BTN_LINE_UNDO = 51, BTN_LINE_SAVE = 52, BTN_LINE_DELETE = 53, BTN_LINE_CANCEL = 54, BTN_LINE_CBTC = 56;
+    /** the line being edited runs on moving block (CBTC) */
+    private boolean lineCbtc;
     /** Existing lines in the Lines panel start here. */
     private static final int BTN_LINE_PICK = 60;
     /** Train controls start here; the offset from this id is the {@link TrainControl.Cmd} ordinal. */
@@ -117,6 +119,7 @@ public class GuiDispatcherBoard extends GuiScreen {
 
     public GuiDispatcherBoard(TileRailDisplay tile) {
         this.tile = tile;
+        if (tile instanceof com.dogpound.railmap.block.TileDispatcherBoard db && db.isConsole()) cc.board = tile.getPos();
         // `mc` is only set once the screen is shown, so the constructor has to ask for the client.
         net.minecraft.client.entity.EntityPlayerSP me = net.minecraft.client.Minecraft.getMinecraft().player;
         this.origin = tile != null ? tile.origin() : me != null ? me.getPosition() : BlockPos.ORIGIN;
@@ -249,7 +252,7 @@ public class GuiDispatcherBoard extends GuiScreen {
             int y = vy + 24;
             for (int i = panelScroll; i < lines.size() && y + 22 < vy + vh - 50; i++, y += 22) {
                 buttonList.add(new PrideButton(BTN_LINE_PICK + i, px + 4, y, PANEL_W - 8, 20,
-                        fontRenderer.trimStringToWidth(lines.get(i).name + " (" + lines.get(i).stations.size() + ")", PANEL_W - 20)));
+                        fontRenderer.trimStringToWidth(lines.get(i).name + " (" + lines.get(i).stations.size() + ")" + (lines.get(i).movingBlock ? " CBTC" : ""), PANEL_W - 20)));
             }
             buttonList.add(new PrideButton(BTN_LINE_NEW, px + 4, vy + vh - 48, PANEL_W - 8, 20, "New line"));
             buttonList.add(new PrideButton(BTN_LINE_CANCEL, px + 4, vy + vh - 24, PANEL_W - 8, 20, "Close"));
@@ -262,6 +265,8 @@ public class GuiDispatcherBoard extends GuiScreen {
         int half = (PANEL_W - 12) / 2;
         buttonList.add(new PrideButton(BTN_LINE_UNDO, px + 4, vy + vh - 72, half, 20, "Undo stop"));
         buttonList.add(new PrideButton(BTN_LINE_DELETE, px + 8 + half, vy + vh - 72, half, 20, "Delete"));
+        buttonList.add(new PrideButton(BTN_LINE_CBTC, px + 4, vy + vh - 96, PANEL_W - 8, 20,
+                lineCbtc ? "Signalling: MOVING BLOCK (CBTC)" : "Signalling: fixed block"));
         buttonList.add(new PrideButton(BTN_LINE_SAVE, px + 4, vy + vh - 48, PANEL_W - 8, 20, "Save line"));
         buttonList.add(new PrideButton(BTN_LINE_CANCEL, px + 4, vy + vh - 24, PANEL_W - 8, 20, "Cancel"));
     }
@@ -341,11 +346,12 @@ public class GuiDispatcherBoard extends GuiScreen {
             case BTN_OFF -> { RailMap.NETWORK.sendToServer(PacketRailOps.autopilotOff(boardPos(), selectedTrain)); setPanel(Panel.TRAIN); }
             case BTN_SEND -> { sendPick = !sendPick; routeMode = false; layout(); }
             case BTN_BACK -> { sendPick = false; setPanel(Panel.TRAIN); }
-            case BTN_LINE_NEW -> { editingLine = true; lineName = ""; lineStations.clear(); lineOrders.clear(); layout(); }
+            case BTN_LINE_CBTC -> { lineCbtc = !lineCbtc; layout(); }
+            case BTN_LINE_NEW -> { editingLine = true; lineCbtc = false; lineName = ""; lineStations.clear(); lineOrders.clear(); layout(); }
             case BTN_LINE_UNDO -> { if (!lineStations.isEmpty()) { lineStations.remove(lineStations.size() - 1); if (!lineOrders.isEmpty()) lineOrders.remove(lineOrders.size() - 1); } }
             case BTN_LINE_SAVE -> {
                 if (lineField != null) lineName = lineField.getText().trim();
-                RailMap.NETWORK.sendToServer(PacketRailOps.saveLine(boardPos(), lineName, lineStations, lineOrders));
+                RailMap.NETWORK.sendToServer(PacketRailOps.saveLine(boardPos(), lineName, lineStations, lineOrders, lineCbtc));
                 editingLine = false;
                 layout();
             }
@@ -364,6 +370,7 @@ public class GuiDispatcherBoard extends GuiScreen {
                     PacketRailState.LineInfo li = lines.get(b.id - BTN_LINE_PICK);
                     editingLine = true;
                     lineName = li.name;
+                    lineCbtc = li.movingBlock;
                     lineStations.clear();
                     lineStations.addAll(li.stations);
                     lineOrders.clear();
@@ -401,6 +408,7 @@ public class GuiDispatcherBoard extends GuiScreen {
             nameField.textboxKeyTyped(c, key);
             return;
         }
+        if (cc.keyTyped(c, key)) return;                                   // console PLAN tab command line
         if (key == mc.gameSettings.keyBindInventory.getKeyCode()) {
             mc.displayGuiScreen(null);
             return;
@@ -447,6 +455,7 @@ public class GuiDispatcherBoard extends GuiScreen {
     @Override
     protected void mouseReleased(int mx, int my, int state) {
         super.mouseReleased(mx, my, state);
+        if (cc.tab != ControlCenter.Tab.MAP && state == 0) cc.release(mx, my);   // CTRL tab drag-and-drop
         if (dragging && !moved && state == 0) click();
         dragging = false;
     }
@@ -701,6 +710,44 @@ public class GuiDispatcherBoard extends GuiScreen {
         GlStateManager.enableBlend();
         Tessellator tess = Tessellator.getInstance();
         BufferBuilder buf = tess.getBuffer();
+        // moving block: each train's authority, head to end of authority (green clear, amber following, red closing in)
+        GL11.glLineWidth(7f);
+        for (PacketRailState.Envelope ev : st.envelopes) {
+            int c = ev.color == 0 ? 0x7043A047 : ev.color == 1 ? 0x90FFB300 : 0xB0E53935;
+            for (double[] pts : ev.points) {
+                buf.begin(GL11.GL_LINE_STRIP, DefaultVertexFormats.POSITION_COLOR);
+                for (int i = 0; i + 2 < pts.length; i += 3) {
+                    buf.pos(map.toScreenX(pts[i]), map.toScreenY(pts[i + 2]), 0)
+                            .color((c >> 16) & 255, (c >> 8) & 255, c & 255, (c >>> 24) & 255).endVertex();
+                }
+                tess.draw();
+            }
+        }
+        // #63-66 weather speed restrictions: amber cells (red = line closed), as the dispatcher sees them
+        for (String[] r : st.env) {
+            if (r.length < 7 || !r[0].equals("R")) continue;
+            double x0 = Double.parseDouble(r[1]), z0 = Double.parseDouble(r[2]), sz = Double.parseDouble(r[3]);
+            int c = r[4].equals("0") ? 0x55E53935 : 0x40FFB300;
+            buf.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
+            buf.pos(map.toScreenX(x0), map.toScreenY(z0 + sz), 0).color((c >> 16) & 255, (c >> 8) & 255, c & 255, (c >>> 24) & 255).endVertex();
+            buf.pos(map.toScreenX(x0 + sz), map.toScreenY(z0 + sz), 0).color((c >> 16) & 255, (c >> 8) & 255, c & 255, (c >>> 24) & 255).endVertex();
+            buf.pos(map.toScreenX(x0 + sz), map.toScreenY(z0), 0).color((c >> 16) & 255, (c >> 8) & 255, c & 255, (c >>> 24) & 255).endVertex();
+            buf.pos(map.toScreenX(x0), map.toScreenY(z0), 0).color((c >> 16) & 255, (c >> 8) & 255, c & 255, (c >>> 24) & 255).endVertex();
+            tess.draw();
+        }
+        // infra #36 neutral sections (magenta bars; phase breaks double), #39 fault-locator estimates (red ring, crew = amber)
+        for (String[] r : st.env) {
+            try {
+                if (r.length >= 7 && r[0].equals("NS")) {
+                    double sx = map.toScreenX(Double.parseDouble(r[1]) + 0.5), sy = map.toScreenY(Double.parseDouble(r[3]) + 0.5);
+                    map.rect(sx - 4, sy - 1.5, sx + 4, sy + 1.5, 0xFFD040E0);
+                    if (r[6].startsWith("PHASE")) map.rect(sx - 1.5, sy - 4, sx + 1.5, sy + 4, 0xFFD040E0);
+                } else if (r.length >= 6 && r[0].equals("FLM")) {
+                    BlockPos p = new BlockPos(Integer.parseInt(r[1]), 64, Integer.parseInt(r[2]));
+                    ring(p.toLong(), 5 + Math.min(12, Integer.parseInt(r[3]) / 8), r[4].equals("1") ? 0xFFFFB300 : 0xFFFF3030);
+                }
+            } catch (RuntimeException ignored) { }
+        }
         GL11.glLineWidth(4f);
         for (PacketRailState.RouteInfo r : st.routes) {
             int c = r.entered ? 0xAA3A7A4A : 0xFF3BFF6E;
@@ -722,6 +769,7 @@ public class GuiDispatcherBoard extends GuiScreen {
         }
         if (routeStart != null) ring(routeStart.toLong(), 8, 0xFF3BFF6E);
         if (panel == Panel.PROGRAM && program != null) for (long k : program.highlighted()) ring(k, 10, 0xFFF5A9B8);
+        ConflictMimic.onMap(map, fontRenderer);                              // batch-3 #15: what blocks the last refused route
         GlStateManager.enableTexture2D();
     }
 

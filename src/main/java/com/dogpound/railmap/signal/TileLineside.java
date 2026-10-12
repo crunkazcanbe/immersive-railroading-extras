@@ -15,8 +15,36 @@ import net.minecraft.world.World;
  * speed sign, which extends it. Holds only the size, so the piece can be scaled to sit right next
  * to full-size Immersive Railroading stock; it is drawn by {@code LinesideRenderer}.
  */
-public class TileLineside extends TileEntity implements IScalable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileLineside extends TileEntity implements IScalable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.controls.IControlled {
     private float scale = 1f;
+
+    // ---- working controls (requested feature): the switch stand's hand lever really throws the points beside it.
+    // Mechanical, like the real thing: no power needed. Other pieces have no layout, so no controls.
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { markDirty(); if (world != null && !world.isRemote) { IBlockState st = world.getBlockState(pos); world.notifyBlockUpdate(pos, st, st, 3); } }
+    /** resized / moved: the renderer draws the piece elsewhere, so the controls would float - none then */
+    @Override public com.dogpound.railmap.controls.Layout layout() { return scale != 1f || moved() ? com.dogpound.railmap.controls.Layout.NONE : com.dogpound.railmap.controls.IControlled.super.layout(); }
+
+    @Override
+    public String controlPress(String id, net.minecraft.entity.player.EntityPlayer who) {
+        if (!id.equals("lever")) return null;
+        boolean reverse = ctl.get("lever") == 0;
+        ctl.set("lever", reverse ? 1 : 0);
+        BlockPos sw = throwSwitch(reverse);
+        return sw == null ? "§eLever " + (reverse ? "REVERSE" : "NORMAL") + " §7- no switch within 4 blocks to throw (stand it beside the points)"
+                : "§eSwitch thrown " + (reverse ? "REVERSE (turnout)" : "NORMAL (straight)") + " §7at " + sw.getX() + ", " + sw.getY() + ", " + sw.getZ();
+    }
+
+    /** the nearest IR switch within 4 blocks, forced to the lever's side; null = none */
+    private BlockPos throwSwitch(boolean reverse) {
+        java.util.List<BlockPos> near = new java.util.ArrayList<>();
+        for (BlockPos p : BlockPos.getAllInBox(pos.add(-4, -1, -4), pos.add(4, 1, 4))) near.add(p.toImmutable());
+        near.sort(java.util.Comparator.comparingDouble(p -> p.distanceSq(pos)));
+        for (BlockPos p : near)
+            if (world.isBlockLoaded(p) && com.dogpound.railmap.scan.SwitchControl.isRail(world, p) && com.dogpound.railmap.scan.SwitchControl.set(world, p, reverse)) return p;
+        return null;
+    }
 
     // ---- Settings Console (sneak-right-click with the Signal Wrench): fine placement ----
     protected final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
@@ -72,6 +100,7 @@ public class TileLineside extends TileEntity implements IScalable, com.dogpound.
         super.writeToNBT(t);
         if (scale != 1f) t.setFloat("scale", scale);
         cfg.write(t);
+        ctl.write(t);
         return t;
     }
 
@@ -80,6 +109,7 @@ public class TileLineside extends TileEntity implements IScalable, com.dogpound.
         super.readFromNBT(t);
         scale = t.hasKey("scale") ? IScalable.clamp(t.getFloat("scale")) : 1f;
         cfg.read(t);
+        ctl.read(t);
     }
 
     @Override

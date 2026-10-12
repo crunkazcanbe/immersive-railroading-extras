@@ -1,0 +1,3 @@
+newmtl bulk_loader
+Kd 1 1 1
+map_Kd irextras:blocks/machines/bulk_loader

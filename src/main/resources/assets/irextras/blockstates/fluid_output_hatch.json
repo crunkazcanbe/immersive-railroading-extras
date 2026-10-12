@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "formed=false": {
+   "model": "irextras:fluid_output_hatch"
+  },
+  "formed=true": {
+   "model": "irextras:fluid_output_hatch"
+  }
+ }
+}

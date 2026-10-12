@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:floodlight_mast"
+  },
+  "facing=east": {
+   "model": "irextras:floodlight_mast",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:floodlight_mast",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:floodlight_mast",
+   "y": 270
+  }
+ }
+}

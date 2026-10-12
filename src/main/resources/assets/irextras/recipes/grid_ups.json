@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "CSC",
+  "BDB",
+  "BFB"
+ ],
+ "key": {
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 22
+  },
+  "D": {
+   "item": "irextras:part",
+   "data": 17
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:grid_ups",
+  "count": 1
+ }
+}

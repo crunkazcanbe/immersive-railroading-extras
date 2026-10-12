@@ -1,0 +1,41 @@
+{
+ "block": "grid_ups",
+ "title": "12V UPS CHARGER",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "grid_ups_door1",
+   "hinge": [
+    0.78,
+    14.15
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "grid_ups_door2",
+   "hinge": [
+    0.78,
+    3.85
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V AUX"
+  },
+  {
+   "id": "out",
+   "label": "DC OUT"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

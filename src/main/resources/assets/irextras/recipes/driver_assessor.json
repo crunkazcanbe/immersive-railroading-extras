@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GCG",
+  "BRB",
+  "PIP"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "B": {
+   "item": "minecraft:book"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "P": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:driver_assessor",
+  "count": 1
+ }
+}

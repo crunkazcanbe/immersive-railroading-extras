@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PCP",
+  "TFT",
+  "GMG"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "T": {
+   "item": "minecraft:cauldron"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:tie_plant",
+  "count": 1
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:camera_tripod"
+  },
+  "facing=east": {
+   "model": "irextras:camera_tripod",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:camera_tripod",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:camera_tripod",
+   "y": 270
+  }
+ }
+}

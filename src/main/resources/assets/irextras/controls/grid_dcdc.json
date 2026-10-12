@@ -1,0 +1,33 @@
+{
+ "title": "grid_dcdc",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": -1.15,
+   "title": "",
+   "controls": [
+    {
+     "id": "brun",
+     "t": "lamp",
+     "u": 3.72,
+     "v": 9.8,
+     "w": 0.5,
+     "h": 0.9,
+     "col": "30ff50",
+     "label": ""
+    },
+    {
+     "id": "bflt",
+     "t": "lamp",
+     "u": 3.08,
+     "v": 9.8,
+     "w": 0.5,
+     "h": 0.9,
+     "col": "ff3020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

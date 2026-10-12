@@ -13,4 +13,7 @@ public interface ISettingsHolder {
 
     /** after a player changed something (save, resync, react) */
     default void onSettingsChanged(String key) { }
+
+    /** may this player change the settings? null = yes, else the reason shown to them (permits to work on HV plant) */
+    default String denySettings(net.minecraft.entity.player.EntityPlayer p) { return null; }
 }

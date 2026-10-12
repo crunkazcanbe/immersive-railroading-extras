@@ -1,0 +1,360 @@
+{
+ "title": "signal_box",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 9.23,
+   "title": "LEVER FRAME",
+   "controls": [
+    {
+     "id": "lever1",
+     "t": "pull",
+     "u": 14.7,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "f0c418",
+     "label": "",
+     "kind": "distant"
+    },
+    {
+     "id": "lever2",
+     "t": "pull",
+     "u": 13.48,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "aa1e1a",
+     "label": "",
+     "kind": "home"
+    },
+    {
+     "id": "lever3",
+     "t": "pull",
+     "u": 12.26,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "aa1e1a",
+     "label": "",
+     "kind": "starter"
+    },
+    {
+     "id": "lever4",
+     "t": "pull",
+     "u": 11.04,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "16427c",
+     "label": "",
+     "kind": "facing point lock"
+    },
+    {
+     "id": "lever5",
+     "t": "pull",
+     "u": 9.82,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "161618",
+     "label": "",
+     "kind": "points"
+    },
+    {
+     "id": "lever6",
+     "t": "pull",
+     "u": 8.6,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "ececec",
+     "label": "",
+     "kind": "spare"
+    },
+    {
+     "id": "lever7",
+     "t": "pull",
+     "u": 7.38,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "161618",
+     "label": "",
+     "kind": "points"
+    },
+    {
+     "id": "lever8",
+     "t": "pull",
+     "u": 6.16,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "16427c",
+     "label": "",
+     "kind": "facing point lock"
+    },
+    {
+     "id": "lever9",
+     "t": "pull",
+     "u": 4.94,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "aa1e1a",
+     "label": "",
+     "kind": "starter"
+    },
+    {
+     "id": "lever10",
+     "t": "pull",
+     "u": 3.72,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "aa1e1a",
+     "label": "",
+     "kind": "home"
+    },
+    {
+     "id": "lever11",
+     "t": "pull",
+     "u": 2.5,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "aa1e1a",
+     "label": "",
+     "kind": "shunt"
+    },
+    {
+     "id": "lever12",
+     "t": "pull",
+     "u": 1.28,
+     "v": 3.2,
+     "w": 0.46,
+     "h": 10.4,
+     "col": "f0c418",
+     "label": "",
+     "kind": "distant"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 15.28,
+   "title": "DIAGRAM",
+   "controls": [
+    {
+     "id": "sig2",
+     "t": "lamp",
+     "u": 13.35,
+     "v": 20.05,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "sig1",
+     "t": "lamp",
+     "u": 11.15,
+     "v": 22.45,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "sig3",
+     "t": "lamp",
+     "u": 6.55,
+     "v": 20.05,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "sig10",
+     "t": "lamp",
+     "u": 2.95,
+     "v": 22.45,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "sig9",
+     "t": "lamp",
+     "u": 7.15,
+     "v": 22.45,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "tc1",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 18.725,
+     "w": 1.2,
+     "h": 0.3,
+     "col": "ff5030",
+     "label": ""
+    },
+    {
+     "id": "tc2",
+     "t": "lamp",
+     "u": 7.6,
+     "v": 18.725,
+     "w": 1.2,
+     "h": 0.3,
+     "col": "ff5030",
+     "label": ""
+    },
+    {
+     "id": "tc3",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 21.125,
+     "w": 1.2,
+     "h": 0.3,
+     "col": "ff5030",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 13.48,
+   "title": "BLOCK A",
+   "controls": [
+    {
+     "id": "inda",
+     "t": "gauge",
+     "u": 13.4,
+     "v": 15.7,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "FROM A",
+     "max": 2
+    },
+    {
+     "id": "bella",
+     "t": "push",
+     "u": 11.8,
+     "v": 13.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "c8a040",
+     "label": "BELL"
+    },
+    {
+     "id": "coma",
+     "t": "selector",
+     "u": 15.0,
+     "v": 15.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c8a040",
+     "label": "",
+     "pos": [
+      "BLOCKED",
+      "CLEAR",
+      "TOL"
+     ]
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 13.48,
+   "title": "BLOCK B",
+   "controls": [
+    {
+     "id": "indb",
+     "t": "gauge",
+     "u": 8.0,
+     "v": 15.7,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "FROM B",
+     "max": 2
+    },
+    {
+     "id": "bellb",
+     "t": "push",
+     "u": 6.4,
+     "v": 13.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "c8a040",
+     "label": "BELL"
+    },
+    {
+     "id": "comb",
+     "t": "selector",
+     "u": 9.6,
+     "v": 15.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c8a040",
+     "label": "",
+     "pos": [
+      "BLOCKED",
+      "CLEAR",
+      "TOL"
+     ]
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 13.48,
+   "title": "BLOCK C",
+   "controls": [
+    {
+     "id": "indc",
+     "t": "gauge",
+     "u": 2.6,
+     "v": 15.7,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "FROM C",
+     "max": 2
+    },
+    {
+     "id": "bellc",
+     "t": "push",
+     "u": 1.0,
+     "v": 13.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "c8a040",
+     "label": "BELL"
+    },
+    {
+     "id": "comc",
+     "t": "selector",
+     "u": 4.2,
+     "v": 15.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c8a040",
+     "label": "",
+     "pos": [
+      "BLOCKED",
+      "CLEAR",
+      "TOL"
+     ]
+    }
+   ]
+  }
+ ]
+}

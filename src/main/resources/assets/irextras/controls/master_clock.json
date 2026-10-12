@@ -1,0 +1,485 @@
+{
+ "title": "master_clock",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 2.83,
+   "title": "MASTER CLOCK",
+   "controls": [
+    {
+     "id": "time",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.5,
+     "w": 9.4,
+     "h": 1.5,
+     "col": "ff5030",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "date",
+     "t": "digits",
+     "u": 10.8,
+     "v": 11.0,
+     "w": 4.0,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "err",
+     "t": "digits",
+     "u": 5.2,
+     "v": 11.0,
+     "w": 4.0,
+     "h": 0.6,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "srcl",
+     "t": "digits",
+     "u": 8.0,
+     "v": 9.6,
+     "w": 9.4,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "slv",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.4,
+     "w": 9.4,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_sig",
+     "t": "gauge",
+     "u": 12.0,
+     "v": 6.0,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "f2f0e6",
+     "label": "SIGNAL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SIGNAL"
+    },
+    {
+     "id": "g_osc",
+     "t": "gauge",
+     "u": 10.0,
+     "v": 6.0,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "f2f0e6",
+     "label": "XTAL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "XTAL"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 6.6,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.2,
+     "v": 6.04,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "sup",
+     "t": "lamp",
+     "u": 6.95,
+     "v": 6.6,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.95,
+     "v": 6.04,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "gps",
+     "t": "lamp",
+     "u": 5.7,
+     "v": 6.6,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "GPS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.7,
+     "v": 6.04,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GPS"
+    },
+    {
+     "id": "radio",
+     "t": "lamp",
+     "u": 4.45,
+     "v": 6.6,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "RADIO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.45,
+     "v": 6.04,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RADIO"
+    },
+    {
+     "id": "lock",
+     "t": "lamp",
+     "u": 3.2,
+     "v": 6.6,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "LOCK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.2,
+     "v": 6.04,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOCK"
+    },
+    {
+     "id": "hold",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 5.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ffb020",
+     "label": "HOLD",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.2,
+     "v": 4.74,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "HOLD"
+    },
+    {
+     "id": "int",
+     "t": "lamp",
+     "u": 6.95,
+     "v": 5.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "8ad4ff",
+     "label": "XTAL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.95,
+     "v": 4.74,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "XTAL"
+    },
+    {
+     "id": "out",
+     "t": "lamp",
+     "u": 5.7,
+     "v": 5.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "PULSE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.7,
+     "v": 4.74,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PULSE"
+    },
+    {
+     "id": "flt",
+     "t": "lamp",
+     "u": 4.45,
+     "v": 5.3,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff2020",
+     "label": "SLAVE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.45,
+     "v": 4.74,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SLAVE"
+    },
+    {
+     "id": "s_src",
+     "t": "selector",
+     "u": 12.2,
+     "v": 3.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "SOURCE",
+     "pos": [
+      "GPS",
+      "RADIO",
+      "INTERNAL"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.2,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SOURCE"
+    },
+    {
+     "id": "s_pulse",
+     "t": "selector",
+     "u": 10.4,
+     "v": 3.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "PULSE",
+     "pos": [
+      "SEC",
+      "30S",
+      "MIN"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PULSE"
+    },
+    {
+     "id": "k_run",
+     "t": "key",
+     "u": 8.7,
+     "v": 3.4,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "OUTPUT",
+     "pos": [
+      "OFF",
+      "RUN"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.7,
+     "v": 2.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OUTPUT"
+    },
+    {
+     "id": "sync",
+     "t": "push",
+     "u": 7.0,
+     "v": 3.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "1fa34a",
+     "label": "SYNC"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.0,
+     "v": 2.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SYNC"
+    },
+    {
+     "id": "adv",
+     "t": "push",
+     "u": 5.8,
+     "v": 3.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2050d0",
+     "label": "ADV"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.8,
+     "v": 2.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ADV"
+    },
+    {
+     "id": "ret",
+     "t": "push",
+     "u": 4.6,
+     "v": 3.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2050d0",
+     "label": "RET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 2.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RET"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 3.4,
+     "v": 3.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0d020",
+     "label": "ACK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.4,
+     "v": 2.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ACK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 6.4,
+     "v": 2.0,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "e0e0e0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 1.25,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "screen",
+     "t": "push",
+     "u": 4.6,
+     "v": 2.0,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "303a48",
+     "label": "SCREEN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 1.25,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SCREEN"
+    }
+   ]
+  }
+ ]
+}

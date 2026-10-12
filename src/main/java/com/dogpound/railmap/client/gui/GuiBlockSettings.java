@@ -241,7 +241,7 @@ public class GuiBlockSettings extends GuiScreen {
             Object[] h = hits.get(i);
             if (in(mx, my, (Integer) h[0], (Integer) h[1], (Integer) h[2], (Integer) h[3])) {
                 ((Runnable) h[4]).run();
-                mc.getSoundHandler().playSound(net.minecraft.client.audio.PositionedSoundRecord.getMasterRecord(net.minecraft.init.SoundEvents.UI_BUTTON_CLICK, 1.2F));
+                mc.getSoundHandler().playSound(net.minecraft.client.audio.PositionedSoundRecord.getMasterRecord(com.dogpound.railmap.sound.PackSounds.ev("ui.click"), 1.0F));
                 return;
             }
         }

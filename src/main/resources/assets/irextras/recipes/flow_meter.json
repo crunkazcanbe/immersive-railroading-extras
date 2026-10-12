@@ -1,0 +1,29 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " V ",
+  "pMp",
+  " C "
+ ],
+ "key": {
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "p": {
+   "item": "irextras:pipe"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 21
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:flow_meter",
+  "count": 1
+ }
+}

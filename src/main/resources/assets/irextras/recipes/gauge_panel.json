@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PGP",
+  "GFG",
+  "PGP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "G": {
+   "type": "forge:ore_dict",
+   "ore": "paneGlass"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:gauge_panel",
+  "count": 1
+ }
+}

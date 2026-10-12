@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:h2_storage"
+  },
+  "facing=east": {
+   "model": "irextras:h2_storage",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:h2_storage",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:h2_storage",
+   "y": 270
+  }
+ }
+}

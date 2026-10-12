@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:travel_centre"
+  },
+  "facing=east": {
+   "model": "irextras:travel_centre",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:travel_centre",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:travel_centre",
+   "y": 270
+  }
+ }
+}

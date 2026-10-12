@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:tunnel_fan"
+  },
+  "facing=east": {
+   "model": "irextras:tunnel_fan",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:tunnel_fan",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:tunnel_fan",
+   "y": 270
+  }
+ }
+}

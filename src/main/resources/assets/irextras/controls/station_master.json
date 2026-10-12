@@ -1,0 +1,83 @@
+{
+ "title": "station_master",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 7.99,
+   "title": "PC",
+   "controls": [
+    {
+     "id": "pc",
+     "t": "lamp",
+     "u": 12.6,
+     "v": 4.2,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "5bcefa",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.94,
+   "title": "MAP",
+   "controls": [
+    {
+     "id": "map",
+     "t": "lamp",
+     "u": 6.0,
+     "v": 14.72,
+     "w": 0.3,
+     "h": 0.2,
+     "col": "30e060",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 2.79,
+   "title": "MONITORS",
+   "controls": [
+    {
+     "id": "timetable",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 9.6,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "cctv",
+     "t": "lamp",
+     "u": 3.0,
+     "v": 9.6,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 2.69,
+   "title": "PA",
+   "controls": [
+    {
+     "id": "talk",
+     "t": "push",
+     "u": 14.5,
+     "v": 5.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "d8322c",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

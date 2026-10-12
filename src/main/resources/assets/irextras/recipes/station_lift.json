@@ -1,0 +1,31 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IGI",
+  "MDM",
+  "ICI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "D": {
+   "item": "minecraft:iron_door"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:station_lift",
+  "count": 1
+ }
+}

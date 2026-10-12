@@ -1,0 +1,45 @@
+{
+ "block": "drone_dock",
+ "title": "DOCK CHARGER 240V AC",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "drone_dock_door1",
+   "hinge": [
+    14.15,
+    15.72
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "drone_dock_door2",
+   "hinge": [
+    3.25,
+    15.72
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "main",
+   "label": "MAINS"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "B B",
+  "BHB",
+  "SMS"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:iron_bars"
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:grain_pit"
+ }
+}

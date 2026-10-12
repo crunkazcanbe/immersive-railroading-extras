@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " T ",
+  "IGI",
+  "BRB"
+ ],
+ "key": {
+  "T": {
+   "item": "minecraft:redstone_torch"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:drone_controller",
+  "count": 1
+ }
+}

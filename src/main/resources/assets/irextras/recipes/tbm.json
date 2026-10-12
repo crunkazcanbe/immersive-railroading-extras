@@ -1,0 +1,37 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GPG",
+  "HFH",
+  "MCM"
+ ],
+ "key": {
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:tbm"
+ }
+}

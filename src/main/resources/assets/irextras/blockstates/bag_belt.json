@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:bag_belt"
+  },
+  "facing=east": {
+   "model": "irextras:bag_belt",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:bag_belt",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:bag_belt",
+   "y": 270
+  }
+ }
+}

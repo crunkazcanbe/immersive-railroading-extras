@@ -1,0 +1,53 @@
+{
+ "title": "cctv_thermal",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.85,
+   "title": "THERMAL",
+   "controls": [
+    {
+     "id": "led_pwr",
+     "t": "lamp",
+     "u": 9.32,
+     "v": 5.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "led_net",
+     "t": "lamp",
+     "u": 8.6,
+     "v": 5.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "NET"
+    },
+    {
+     "id": "led_rec",
+     "t": "lamp",
+     "u": 7.88,
+     "v": 5.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff2020",
+     "label": "REC",
+     "blink": true
+    },
+    {
+     "id": "led_cal",
+     "t": "lamp",
+     "u": 7.16,
+     "v": 5.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "3090ff",
+     "label": "NUC"
+    }
+   ]
+  }
+ ]
+}

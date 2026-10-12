@@ -1,0 +1,52 @@
+{
+ "title": "cctv_doorbell",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 14.4,
+   "title": "DOORBELL",
+   "controls": [
+    {
+     "id": "ring",
+     "t": "lamp",
+     "u": 8,
+     "v": 7.6,
+     "w": 2.0,
+     "h": 0.4,
+     "col": "3090ff",
+     "label": ""
+    },
+    {
+     "id": "bell",
+     "t": "push",
+     "u": 8,
+     "v": 5.5,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "e0e0e0",
+     "label": "PUSH"
+    },
+    {
+     "id": "led_pwr",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 12.2,
+     "w": 0.3,
+     "h": 0.3,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "led_net",
+     "t": "lamp",
+     "u": 7.2,
+     "v": 12.2,
+     "w": 0.3,
+     "h": 0.3,
+     "col": "ffb020",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "IQI",
+  "IRI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "Q": {
+   "item": "minecraft:quartz"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:cctv_drive",
+  "count": 1,
+  "data": 0
+ }
+}

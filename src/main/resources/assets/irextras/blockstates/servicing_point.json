@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:servicing_point"
+  },
+  "facing=east": {
+   "model": "irextras:servicing_point",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:servicing_point",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:servicing_point",
+   "y": 270
+  }
+ }
+}

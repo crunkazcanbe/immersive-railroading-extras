@@ -1,0 +1,35 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SMS",
+  "CIC",
+  "FBF"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 21
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "I": {
+   "item": "irextras:multimeter"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "B": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:commissioning_set"
+ }
+}

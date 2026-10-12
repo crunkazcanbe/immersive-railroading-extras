@@ -1,0 +1,34 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SGS",
+  "PDP",
+  "WCW"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "D": {
+   "item": "minecraft:heavy_weighted_pressure_plate"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:bag_checkin",
+  "count": 1
+ }
+}

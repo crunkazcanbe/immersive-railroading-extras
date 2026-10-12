@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IBI",
+  "PCP",
+  "ILI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "B": {
+   "item": "minecraft:noteblock"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "L": {
+   "item": "minecraft:lead"
+  }
+ },
+ "result": {
+  "item": "irextras:breakdown_depot"
+ }
+}

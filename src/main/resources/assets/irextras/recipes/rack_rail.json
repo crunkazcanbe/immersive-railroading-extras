@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IBI",
+  "IBI",
+  "SSS"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "B": {
+   "item": "minecraft:iron_bars"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:rack_rail",
+  "count": 8
+ }
+}

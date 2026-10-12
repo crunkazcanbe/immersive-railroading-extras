@@ -1,0 +1,42 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PAP",
+  "MFH",
+  "GEG"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 7
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:grid_diesel",
+  "count": 1
+ }
+}

@@ -152,10 +152,28 @@ public final class TrackPath {
             if (n.dist > budget) continue;
             List<TileRail> next = f.candidatesAhead(n.rail, n.from);
             for (TileRail t : next) {
+                if (Disruptions.blocked(t)) continue;           // blocked by a wreck / failed train (only when routing around it)
                 open.add(new Node(t, n.rail.getPos(), n, n.dist + pieceLength(t)));
             }
         }
         return null;
+    }
+
+    /**
+     * "Came from" for a walk that sets off along (dx, dz) from a train at (px, py, pz) on {@code rail}: just past the BACK
+     * end of that piece. (A point a few metres behind the train is still inside a long piece, near whichever end it is
+     * closer to, so the walk could set off the wrong way.)
+     */
+    public static Vec3i behind(TileRail rail, double px, double py, double pz, double dx, double dz) {
+        Vec3i from = new Vec3i(Math.floor(px - dx * 2.5), Math.floor(py), Math.floor(pz - dz * 2.5));
+        double[] wp = TrackFollower.worldPath(rail);
+        if (wp != null && wp.length >= 6) {
+            double ax = wp[0], az = wp[2], bx = wp[wp.length - 3], bz = wp[wp.length - 1];
+            boolean aBehind = (ax - px) * dx + (az - pz) * dz < (bx - px) * dx + (bz - pz) * dz;
+            double ex = aBehind ? ax : bx, ez = aBehind ? az : bz;
+            from = new Vec3i(Math.floor(ex - dx * 1.5), Math.floor(py), Math.floor(ez - dz * 1.5));
+        }
+        return from;
     }
 
     /** What a route is looking for. */

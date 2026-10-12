@@ -1,0 +1,170 @@
+{
+ "title": "zone_marker",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 7.38,
+   "title": "ZONE",
+   "controls": [
+    {
+     "id": "zone",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.4,
+     "w": 6.0,
+     "h": 5.6,
+     "col": "1d4f9a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "info",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.0,
+     "w": 9.0,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "here",
+     "t": "lamp",
+     "u": 11.8,
+     "v": 14.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "COACH"
+    },
+    {
+     "id": "short",
+     "t": "lamp",
+     "u": 4.2,
+     "v": 14.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "SHORT",
+     "blink": true
+    },
+    {
+     "id": "accl",
+     "t": "lamp",
+     "u": 11.2,
+     "v": 13.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "4080ff",
+     "label": "ACCESS"
+    },
+    {
+     "id": "stopl",
+     "t": "lamp",
+     "u": 4.8,
+     "v": 13.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "STOP"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 4.45,
+   "title": "ZONE CONTROLS",
+   "controls": [
+    {
+     "id": "s_zone",
+     "t": "selector",
+     "u": 9.0,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "ZONE",
+     "pos": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H"
+     ]
+    },
+    {
+     "id": "k_acc",
+     "t": "key",
+     "u": 7.0,
+     "v": 7.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "ACCESS",
+     "pos": [
+      "NO",
+      "YES"
+     ]
+    },
+    {
+     "id": "k_stop",
+     "t": "key",
+     "u": 7.0,
+     "v": 5.8,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "STOP END",
+     "pos": [
+      "NO",
+      "YES"
+     ]
+    },
+    {
+     "id": "ann",
+     "t": "push",
+     "u": 9.0,
+     "v": 5.8,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "2050d0",
+     "label": "ANNOUNCE"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 9.0,
+     "v": 4.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 7.6,
+     "v": 4.2,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 6.7,
+     "v": 4.2,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "MAINS"
+    }
+   ]
+  }
+ ]
+}

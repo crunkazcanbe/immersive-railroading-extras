@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ropeway_pylon"
+  },
+  "facing=east": {
+   "model": "irextras:ropeway_pylon",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ropeway_pylon",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ropeway_pylon",
+   "y": 270
+  }
+ }
+}

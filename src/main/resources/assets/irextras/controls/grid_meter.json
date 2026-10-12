@@ -1,0 +1,40 @@
+{
+ "title": "grid_meter",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 7.4,
+   "title": "",
+   "controls": [
+    {
+     "id": "oillvl",
+     "t": "gauge",
+     "u": 8.8,
+     "v": 13.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f2f0e6",
+     "label": "",
+     "max": 100
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 7.0,
+   "title": "",
+   "controls": [
+    {
+     "id": "modem",
+     "t": "lamp",
+     "u": 5.1,
+     "v": 16.3,
+     "w": 0.45,
+     "h": 0.3,
+     "col": "30ff50",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

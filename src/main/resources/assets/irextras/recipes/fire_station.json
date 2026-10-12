@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RBR",
+  "ICI",
+  "IWI"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:redstone_block"
+  },
+  "B": {
+   "item": "minecraft:noteblock"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "W": {
+   "item": "minecraft:water_bucket"
+  }
+ },
+ "result": {
+  "item": "irextras:fire_station",
+  "count": 1
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GCG",
+  "RPR",
+  "IBI"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "P": {
+   "item": "minecraft:sticky_piston"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "B": {
+   "item": "minecraft:boat"
+  }
+ },
+ "result": {
+  "item": "irextras:bridge_control",
+  "count": 1
+ }
+}

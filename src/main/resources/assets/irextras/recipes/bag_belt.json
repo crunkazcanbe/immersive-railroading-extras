@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LLL",
+  "IRI"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:leather"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:bag_belt",
+  "count": 1
+ }
+}

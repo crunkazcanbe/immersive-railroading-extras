@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "CVC",
+  "DFD",
+  "EGE"
+ ],
+ "key": {
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "D": {
+   "item": "irextras:part",
+   "data": 17
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "G": {
+   "type": "forge:ore_dict",
+   "ore": "blockGlass"
+  }
+ },
+ "result": {
+  "item": "irextras:electrolyser",
+  "count": 1
+ }
+}

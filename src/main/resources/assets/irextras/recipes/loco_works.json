@@ -1,0 +1,36 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SCS",
+  "PFP",
+  "KBK"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 18
+  },
+  "B": {
+   "item": "minecraft:bookshelf"
+  }
+ },
+ "result": {
+  "item": "irextras:loco_works"
+ }
+}

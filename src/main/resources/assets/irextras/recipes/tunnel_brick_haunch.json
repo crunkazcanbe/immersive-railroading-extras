@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "M  ",
+  "MM ",
+  "MMM"
+ ],
+ "key": {
+  "M": {
+   "item": "minecraft:brick_block"
+  }
+ },
+ "result": {
+  "item": "irextras:tunnel_brick_haunch",
+  "count": 8
+ }
+}

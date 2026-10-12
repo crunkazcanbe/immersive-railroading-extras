@@ -1,0 +1,21 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "SSS",
+  "SBS",
+  "SSS"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:stonebrick",
+   "data": 0
+  },
+  "B": {
+   "item": "irextras:bundled_cable"
+  }
+ },
+ "result": {
+  "item": "irextras:wire_chase",
+  "count": 8
+ }
+}

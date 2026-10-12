@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "EIE",
+  "IRI",
+  "ICI"
+ ],
+ "key": {
+  "E": {
+   "item": "minecraft:ender_pearl"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:repeater"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  }
+ },
+ "result": {
+  "item": "irextras:field_rtu"
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PCP",
+  "DFD",
+  "PEP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "D": {
+   "item": "irextras:part",
+   "data": 17
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 16
+  }
+ },
+ "result": {
+  "item": "irextras:grid_inverter",
+  "count": 1
+ }
+}

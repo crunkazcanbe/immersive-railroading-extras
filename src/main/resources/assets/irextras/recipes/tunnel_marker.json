@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "QQQ",
+  "QIQ"
+ ],
+ "key": {
+  "Q": {
+   "item": "minecraft:quartz"
+  },
+  "I": {
+   "item": "minecraft:iron_nugget"
+  }
+ },
+ "result": {
+  "item": "irextras:tunnel_marker",
+  "count": 4
+ }
+}

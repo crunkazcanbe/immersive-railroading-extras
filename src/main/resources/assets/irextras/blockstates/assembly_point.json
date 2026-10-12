@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:assembly_point"
+  },
+  "facing=east": {
+   "model": "irextras:assembly_point",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:assembly_point",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:assembly_point",
+   "y": 270
+  }
+ }
+}

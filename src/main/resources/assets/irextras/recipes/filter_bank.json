@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ICI",
+  "CRC",
+  "IGI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:repeater"
+  },
+  "R": {
+   "item": "minecraft:redstone_block"
+  },
+  "G": {
+   "item": "minecraft:gold_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:filter_bank"
+ }
+}

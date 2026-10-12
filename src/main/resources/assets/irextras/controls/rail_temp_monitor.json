@@ -1,0 +1,199 @@
+{
+ "title": "rail_temp_monitor",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.55,
+   "title": "RAIL TEMPERATURE",
+   "controls": [
+    {
+     "id": "railg",
+     "t": "gauge",
+     "u": 4.4,
+     "v": 9.0,
+     "w": 2.8,
+     "h": 2.8,
+     "col": "f2f0e6",
+     "label": "RAIL C",
+     "max": 80
+    },
+    {
+     "id": "rail",
+     "t": "digits",
+     "u": 9.8,
+     "v": 10.4,
+     "w": 3.8,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "air",
+     "t": "digits",
+     "u": 9.8,
+     "v": 9.5,
+     "w": 3.8,
+     "h": 0.7,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "sft",
+     "t": "digits",
+     "u": 9.8,
+     "v": 8.6,
+     "w": 3.8,
+     "h": 0.7,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "lim",
+     "t": "digits",
+     "u": 9.8,
+     "v": 7.7,
+     "w": 3.8,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cond",
+     "t": "digits",
+     "u": 4.4,
+     "v": 6.6,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "lwatch",
+     "t": "lamp",
+     "u": 7.6,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "WATCH"
+    },
+    {
+     "id": "lesr",
+     "t": "lamp",
+     "u": 9.0,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff7020",
+     "label": "ESR"
+    },
+    {
+     "id": "lbuckle",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "BUCKLE",
+     "blink": true
+    },
+    {
+     "id": "lpatrol",
+     "t": "lamp",
+     "u": 11.8,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "PATROL"
+    },
+    {
+     "id": "patrol",
+     "t": "push",
+     "u": 4.6,
+     "v": 5.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1fa34a",
+     "label": ""
+    },
+    {
+     "id": "ballast",
+     "t": "push",
+     "u": 7.0,
+     "v": 5.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "8a7a5a",
+     "label": ""
+    },
+    {
+     "id": "repair",
+     "t": "push",
+     "u": 9.4,
+     "v": 5.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c81e1e",
+     "label": ""
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.6,
+     "v": 5.0,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "PATROL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.0,
+     "v": 5.0,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "BALLAST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.4,
+     "v": 5.0,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "REPAIR"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 5.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.4,
+     "v": 5.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

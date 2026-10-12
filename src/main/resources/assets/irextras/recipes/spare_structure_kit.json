@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SIS",
+  "SBS"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:sand",
+   "data": 0
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "B": {
+   "item": "minecraft:slime_ball"
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 18,
+  "count": 2
+ }
+}

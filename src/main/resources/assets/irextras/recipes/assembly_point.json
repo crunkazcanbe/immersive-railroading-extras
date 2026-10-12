@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " G ",
+  " I ",
+  " S "
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:green_glazed_terracotta"
+  },
+  "I": {
+   "item": "minecraft:iron_bars"
+  },
+  "S": {
+   "item": "minecraft:stone_slab",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:assembly_point"
+ }
+}

@@ -1,0 +1,495 @@
+{
+ "title": "ropeway_desk",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 4.0,
+   "title": "ROPEWAY DESK",
+   "controls": [
+    {
+     "id": "k_en",
+     "t": "key",
+     "u": 29.0,
+     "v": 2.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "ENABLE",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 26.0,
+     "v": 2.4,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "30c040",
+     "label": "START"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 23.4,
+     "v": 2.4,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "202020",
+     "label": "STOP"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 20.8,
+     "v": 2.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 17.4,
+     "v": 2.6,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "d01818",
+     "label": "E-STOP"
+    },
+    {
+     "id": "horn",
+     "t": "push",
+     "u": 14.0,
+     "v": 2.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "303438",
+     "label": "HORN"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 11.6,
+     "v": 2.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "f0d020",
+     "label": "ACK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 9.2,
+     "v": 2.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "f0f0f0",
+     "label": "LAMP TEST"
+    },
+    {
+     "id": "s_spd",
+     "t": "selector",
+     "u": 28.4,
+     "v": 6.0,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "SPEED M/S",
+     "pos": [
+      "0.5",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ]
+    },
+    {
+     "id": "s_wlim",
+     "t": "selector",
+     "u": 24.4,
+     "v": 6.0,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "WIND LIMIT",
+     "pos": [
+      "10",
+      "12",
+      "15",
+      "18",
+      "22"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 20.4,
+     "v": 6.0,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "MANUAL",
+      "EVAC"
+     ]
+    },
+    {
+     "id": "s_cab",
+     "t": "selector",
+     "u": 16.4,
+     "v": 6.0,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "CABINS",
+     "pos": [
+      "4",
+      "6",
+      "8",
+      "12",
+      "16",
+      "24"
+     ]
+    },
+    {
+     "id": "doors",
+     "t": "push",
+     "u": 12.6,
+     "v": 6.0,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "e0a020",
+     "label": "GATES"
+    },
+    {
+     "id": "brel",
+     "t": "push",
+     "u": 9.6,
+     "v": 6.0,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c06010",
+     "label": "BRAKE REL"
+    },
+    {
+     "id": "l_run",
+     "t": "lamp",
+     "u": 29.0,
+     "v": 8.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "RUN"
+    },
+    {
+     "id": "l_stop",
+     "t": "lamp",
+     "u": 26.6,
+     "v": 8.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "STOP"
+    },
+    {
+     "id": "l_eb",
+     "t": "lamp",
+     "u": 24.2,
+     "v": 8.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff2020",
+     "label": "E-BRAKE"
+    },
+    {
+     "id": "l_sb",
+     "t": "lamp",
+     "u": 21.8,
+     "v": 8.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "BRAKE"
+    },
+    {
+     "id": "l_doors",
+     "t": "lamp",
+     "u": 19.4,
+     "v": 8.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "GATES"
+    },
+    {
+     "id": "l_brel",
+     "t": "lamp",
+     "u": 17.0,
+     "v": 8.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff8020",
+     "label": "REL"
+    },
+    {
+     "id": "l_restr",
+     "t": "lamp",
+     "u": 14.6,
+     "v": 8.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "WIND RESTR"
+    },
+    {
+     "id": "t_estop",
+     "t": "tile",
+     "u": -3.0,
+     "v": 2.0,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "E-STOP"
+    },
+    {
+     "id": "t_wind",
+     "t": "tile",
+     "u": -6.8,
+     "v": 2.0,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "WIND"
+    },
+    {
+     "id": "t_rpd",
+     "t": "tile",
+     "u": -10.6,
+     "v": 2.0,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "ROPE POS"
+    },
+    {
+     "id": "t_sup",
+     "t": "tile",
+     "u": -3.0,
+     "v": 3.9,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "SUPPLY"
+    },
+    {
+     "id": "t_doors",
+     "t": "tile",
+     "u": -6.8,
+     "v": 3.9,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "DOORS"
+    },
+    {
+     "id": "t_ovs",
+     "t": "tile",
+     "u": -10.6,
+     "v": 3.9,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "OVERSPEED"
+    },
+    {
+     "id": "t_tens",
+     "t": "tile",
+     "u": -3.0,
+     "v": 5.8,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "TENSION"
+    },
+    {
+     "id": "t_motor",
+     "t": "tile",
+     "u": -6.8,
+     "v": 5.8,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "MOTOR"
+    },
+    {
+     "id": "t_drive",
+     "t": "tile",
+     "u": -10.6,
+     "v": 5.8,
+     "w": 3.2,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "DRIVE"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.28,
+   "title": "ROPEWAY BRIDGE",
+   "controls": [
+    {
+     "id": "g_spd",
+     "t": "gauge",
+     "u": 27.0,
+     "v": 15.0,
+     "w": 3.2,
+     "h": 3.2,
+     "col": "f2f0e6",
+     "label": "M/S",
+     "max": 100
+    },
+    {
+     "id": "g_wind",
+     "t": "gauge",
+     "u": 21.0,
+     "v": 15.0,
+     "w": 3.2,
+     "h": 3.2,
+     "col": "f2f0e6",
+     "label": "WIND",
+     "max": 100
+    },
+    {
+     "id": "g_kw",
+     "t": "gauge",
+     "u": 15.0,
+     "v": 15.0,
+     "w": 3.2,
+     "h": 3.2,
+     "col": "f2f0e6",
+     "label": "KW %",
+     "max": 100
+    },
+    {
+     "id": "d_name",
+     "t": "digits",
+     "u": -8.5,
+     "v": 28.6,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_state",
+     "t": "digits",
+     "u": -8.5,
+     "v": 27.05,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_speed",
+     "t": "digits",
+     "u": -8.5,
+     "v": 25.5,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_rope",
+     "t": "digits",
+     "u": -8.5,
+     "v": 23.95,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_rpd",
+     "t": "digits",
+     "u": -8.5,
+     "v": 22.4,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_wind",
+     "t": "digits",
+     "u": -8.5,
+     "v": 20.85,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_motor",
+     "t": "digits",
+     "u": -8.5,
+     "v": 19.3,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_cars",
+     "t": "digits",
+     "u": -8.5,
+     "v": 17.75,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_next",
+     "t": "digits",
+     "u": -8.5,
+     "v": 16.2,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_tens",
+     "t": "digits",
+     "u": -8.5,
+     "v": 14.65,
+     "w": 12.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

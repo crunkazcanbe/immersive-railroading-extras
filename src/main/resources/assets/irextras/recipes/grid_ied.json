@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "SCS",
+  "CRC",
+  "TFT"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "R": {
+   "item": "irextras:grid_relay"
+  },
+  "T": {
+   "item": "irextras:part",
+   "data": 18
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:grid_ied",
+  "count": 1
+ }
+}

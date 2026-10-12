@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:logic_latch"
+  },
+  "facing=east": {
+   "model": "irextras:logic_latch",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:logic_latch",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:logic_latch",
+   "y": 270
+  }
+ }
+}

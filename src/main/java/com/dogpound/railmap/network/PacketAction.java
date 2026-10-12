@@ -101,6 +101,7 @@ public class PacketAction implements IMessage {
                 Viewers.mark(player);
                 return;
             }
+            if (com.dogpound.railmap.admin.Access.denyAction(player, msg.action, msg.target, msg.entityId)) return;   // #111 access + #115 desk locks
             if (msg.action == TRAIN_CMD) {
                 // Reach is checked by the board below for block targets; a train may be far away
                 // by design — that is the whole point of a dispatcher's remote control — but the

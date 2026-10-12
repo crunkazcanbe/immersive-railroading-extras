@@ -1,0 +1,32 @@
+{
+ "title": "grid_earthing",
+ "surfaces": [
+  {
+   "side": "east",
+   "face": 3.6,
+   "title": "",
+   "controls": [
+    {
+     "id": "vpis1",
+     "t": "lamp",
+     "u": 14.7,
+     "v": 7.3,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3020",
+     "label": ""
+    },
+    {
+     "id": "vpis2",
+     "t": "lamp",
+     "u": 13.9,
+     "v": 7.3,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3020",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

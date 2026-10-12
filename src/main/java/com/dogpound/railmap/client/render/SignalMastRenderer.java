@@ -27,7 +27,7 @@ public class SignalMastRenderer extends TileEntitySpecialRenderer<TileSignalMast
     public void render(TileSignalMast te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         if (te.getWorld() == null) return;
         SignalStyle style = te.style();
-        Aspect aspect = te.aspect();
+        Aspect aspect = te.shownAspect();
         long ticks = te.getWorld().getTotalWorldTime();
         EnumFacing f = te.facing();
 
@@ -37,6 +37,8 @@ public class SignalMastRenderer extends TileEntitySpecialRenderer<TileSignalMast
         GlStateManager.scale(te.scale(), te.scale(), te.scale());
         GlStateManager.disableCull();
         Prims.begin();
+        float keepBoost = Prims.glowBoost;
+        Prims.glowBoost = com.dogpound.railmap.light.NightGlow.signalBoost(x, y, z);   // night lighting: aspects read far down the line
 
         float mastTop = style.isDwarf() ? 0.55f : style.mastHeight;
         if (!style.isDwarf()) {
@@ -66,6 +68,7 @@ public class SignalMastRenderer extends TileEntitySpecialRenderer<TileSignalMast
         }
 
         Prims.emissive(false);
+        Prims.glowBoost = keepBoost;
         GlStateManager.enableLighting();
         GlStateManager.enableCull();
         Prims.end();

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:stock_exchange"
+  },
+  "facing=east": {
+   "model": "irextras:stock_exchange",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:stock_exchange",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:stock_exchange",
+   "y": 270
+  }
+ }
+}

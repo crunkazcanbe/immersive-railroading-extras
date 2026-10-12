@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IEI",
+  "INI",
+  "IBI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  },
+  "N": {
+   "item": "minecraft:noteblock"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  }
+ },
+ "result": {
+  "item": "irextras:cctv_doorbell",
+  "count": 1
+ }
+}

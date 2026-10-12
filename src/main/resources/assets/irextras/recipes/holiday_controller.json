@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GCG",
+  "RTR",
+  "SSS"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glowstone_dust"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "T": {
+   "item": "minecraft:clock"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:holiday_controller"
+ }
+}

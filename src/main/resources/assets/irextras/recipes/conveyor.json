@@ -1,0 +1,25 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "BBB",
+  "SGS"
+ ],
+ "key": {
+  "B": {
+   "item": "irextras:part",
+   "data": 8
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  }
+ },
+ "result": {
+  "item": "irextras:conveyor",
+  "count": 6
+ }
+}

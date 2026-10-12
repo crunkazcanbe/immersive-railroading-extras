@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:card_reader"
+  },
+  "facing=east": {
+   "model": "irextras:card_reader",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:card_reader",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:card_reader",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:track_layer"
+  },
+  "facing=east": {
+   "model": "irextras:track_layer",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:track_layer",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:track_layer",
+   "y": 270
+  }
+ }
+}

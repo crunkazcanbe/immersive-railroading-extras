@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:tunnel_brick_crown"
+  },
+  "facing=east": {
+   "model": "irextras:tunnel_brick_crown",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:tunnel_brick_crown",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:tunnel_brick_crown",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IGI",
+  "RPR",
+  "IBI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "P": {
+   "item": "minecraft:glowstone_dust"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  }
+ },
+ "result": {
+  "item": "irextras:cctv_configurator",
+  "count": 1,
+  "data": 0
+ }
+}

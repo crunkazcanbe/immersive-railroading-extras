@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:charge_post"
+  },
+  "facing=east": {
+   "model": "irextras:charge_post",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:charge_post",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:charge_post",
+   "y": 270
+  }
+ }
+}

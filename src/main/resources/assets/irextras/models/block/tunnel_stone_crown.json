@@ -1,0 +1,140 @@
+{
+"credit": "IR Extras tunnel lining (tools/gen_bb_track.py)",
+"ambientocclusion": true,
+"textures": {
+"m": "minecraft:blocks/stonebrick",
+"j": "minecraft:blocks/concrete_gray",
+"particle": "minecraft:blocks/stonebrick"
+},
+"elements": [
+{
+"__comment": "crown slab",
+"from": [
+0,
+0,
+0
+],
+"to": [
+16,
+10,
+16
+],
+"faces": {
+"north": {
+"uv": [
+0,
+6,
+16,
+16
+],
+"texture": "#m"
+},
+"south": {
+"uv": [
+0,
+6,
+16,
+16
+],
+"texture": "#m"
+},
+"east": {
+"uv": [
+0,
+6,
+16,
+16
+],
+"texture": "#m"
+},
+"west": {
+"uv": [
+0,
+6,
+16,
+16
+],
+"texture": "#m"
+},
+"up": {
+"uv": [
+0,
+0,
+16,
+16
+],
+"texture": "#m"
+},
+"down": {
+"uv": [
+0,
+0,
+16,
+16
+],
+"texture": "#m"
+}
+}
+},
+{
+"__comment": "keystone course",
+"from": [
+6.5,
+-0.4,
+0
+],
+"to": [
+9.5,
+0,
+16
+],
+"faces": {
+"north": {
+"uv": [
+6.5,
+16,
+9.5,
+16
+],
+"texture": "#m"
+},
+"south": {
+"uv": [
+6.5,
+16,
+9.5,
+16
+],
+"texture": "#m"
+},
+"east": {
+"uv": [
+0,
+16,
+16,
+16
+],
+"texture": "#m"
+},
+"west": {
+"uv": [
+0,
+16,
+16,
+16
+],
+"texture": "#m"
+},
+"down": {
+"uv": [
+6.5,
+0,
+9.5,
+16
+],
+"texture": "#m"
+}
+}
+}
+]
+}

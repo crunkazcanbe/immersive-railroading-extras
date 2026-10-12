@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:cctv_fisheye"
+  },
+  "facing=east": {
+   "model": "irextras:cctv_fisheye",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:cctv_fisheye",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:cctv_fisheye",
+   "y": 270
+  }
+ }
+}

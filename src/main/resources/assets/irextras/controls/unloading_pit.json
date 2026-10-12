@@ -1,0 +1,52 @@
+{
+ "title": "unloading_pit",
+ "surfaces": [
+  {
+   "side": "west",
+   "face": 16.39,
+   "title": "PIT",
+   "controls": [
+    {
+     "id": "start",
+     "t": "push",
+     "u": 12.7,
+     "v": 20.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "2fcb5a",
+     "label": ""
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 13.7,
+     "v": 20.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "26282c",
+     "label": ""
+    },
+    {
+     "id": "run",
+     "t": "lamp",
+     "u": 13.2,
+     "v": 19.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "estop",
+     "t": "mushroom",
+     "u": 13.2,
+     "v": 17.8,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c81e1e",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,3 @@
+newmtl crate_packer
+Kd 1 1 1
+map_Kd irextras:blocks/machines/crate_packer

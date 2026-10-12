@@ -1,0 +1,113 @@
+{
+ "title": "xmas_tree",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.98,
+   "title": "LED BOX",
+   "controls": [
+    {
+     "id": "k_on",
+     "t": "key",
+     "u": 3.0,
+     "v": 2.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "c0a040",
+     "label": "TREE LIGHTS",
+     "pos": [
+      "ON",
+      "OFF"
+     ]
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 2.2,
+     "v": 2.6,
+     "w": 0.22,
+     "h": 0.22,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.2,
+     "v": 2.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "lit",
+     "t": "lamp",
+     "u": 2.8,
+     "v": 2.6,
+     "w": 0.22,
+     "h": 0.22,
+     "col": "ffe060",
+     "label": "LIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.8,
+     "v": 2.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LIT"
+    },
+    {
+     "id": "presl",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 2.6,
+     "w": 0.22,
+     "h": 0.22,
+     "col": "e02020",
+     "label": "GIFTS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.4,
+     "v": 2.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GIFTS"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 1.0,
+     "v": 1.2,
+     "w": 0.3,
+     "h": 0.3,
+     "col": "b0b0b0",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.78,
+   "title": "PRESENTS",
+   "controls": [
+    {
+     "id": "presents",
+     "t": "zone",
+     "u": 8.0,
+     "v": 2.0,
+     "w": 8.0,
+     "h": 4.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

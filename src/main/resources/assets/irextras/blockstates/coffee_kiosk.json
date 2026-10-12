@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:coffee_kiosk"
+  },
+  "facing=east": {
+   "model": "irextras:coffee_kiosk",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:coffee_kiosk",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:coffee_kiosk",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "title": "coal_pit",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -0.02,
+   "title": "PIT LEVEL",
+   "controls": [
+    {
+     "id": "pitg",
+     "t": "gauge",
+     "u": 12.4,
+     "v": 10.0,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "PIT %",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.4,
+     "v": 8.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PIT %"
+    },
+    {
+     "id": "coal",
+     "t": "digits",
+     "u": 9.2,
+     "v": 11.2,
+     "w": 3.6,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s COAL"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 9.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 8.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "formed",
+     "t": "lamp",
+     "u": 11.6,
+     "v": 9.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "FORMED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.6,
+     "v": 8.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FORMED"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 8.97,
+   "title": "GRATING",
+   "controls": [
+    {
+     "id": "pit",
+     "t": "zone",
+     "u": 8.0,
+     "v": 8.0,
+     "w": 13.0,
+     "h": 13.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

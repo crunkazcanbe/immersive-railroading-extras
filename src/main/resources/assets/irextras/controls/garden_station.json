@@ -1,0 +1,309 @@
+{
+ "title": "garden_station",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.9,
+   "title": "GARDEN STATION",
+   "controls": [
+    {
+     "id": "d1",
+     "t": "digits",
+     "u": 3.5,
+     "v": 16.8,
+     "w": 5.2,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d2",
+     "t": "digits",
+     "u": 3.5,
+     "v": 16.18,
+     "w": 5.2,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d3",
+     "t": "digits",
+     "u": 3.5,
+     "v": 15.56,
+     "w": 5.2,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d4",
+     "t": "digits",
+     "u": 3.5,
+     "v": 14.94,
+     "w": 5.2,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d5",
+     "t": "digits",
+     "u": 3.5,
+     "v": 14.32,
+     "w": 5.2,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d6",
+     "t": "digits",
+     "u": 3.5,
+     "v": 13.7,
+     "w": 5.2,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_spd",
+     "t": "gauge",
+     "u": 4.8,
+     "v": 11.8,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "M/S",
+     "max": 100
+    },
+    {
+     "id": "g_dwell",
+     "t": "gauge",
+     "u": 2.2,
+     "v": 11.8,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "DWELL",
+     "max": 100
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 5.4,
+     "v": 10.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "l_in",
+     "t": "lamp",
+     "u": 3.5,
+     "v": 10.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": "TRAIN IN"
+    },
+    {
+     "id": "l_hold",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 10.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "HOLD"
+    },
+    {
+     "id": "l_estop",
+     "t": "lamp",
+     "u": 5.4,
+     "v": 9.3,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff2020",
+     "label": "E-STOP"
+    },
+    {
+     "id": "l_lights",
+     "t": "lamp",
+     "u": 3.5,
+     "v": 9.3,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "fff0c0",
+     "label": "LIGHTS"
+    },
+    {
+     "id": "l_auto",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 9.3,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "40a0ff",
+     "label": "AUTO"
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 5.7,
+     "v": 7.9,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "MANUAL",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "s_dwell",
+     "t": "selector",
+     "u": 4.3,
+     "v": 7.9,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "202020",
+     "label": "DWELL S",
+     "pos": [
+      "10",
+      "20",
+      "30",
+      "60"
+     ]
+    },
+    {
+     "id": "s_vline",
+     "t": "selector",
+     "u": 2.9,
+     "v": 7.9,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "202020",
+     "label": "LINE M/S",
+     "pos": [
+      "1",
+      "1.5",
+      "2",
+      "3"
+     ]
+    },
+    {
+     "id": "s_page",
+     "t": "selector",
+     "u": 1.5,
+     "v": 7.9,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "202020",
+     "label": "PAGE",
+     "pos": [
+      "OVERVIEW",
+      "TRAINS",
+      "TIMES",
+      "EVENTS"
+     ]
+    },
+    {
+     "id": "dispatch",
+     "t": "push",
+     "u": 5.5,
+     "v": 6.2,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "30c040",
+     "label": "DISPATCH"
+    },
+    {
+     "id": "hold",
+     "t": "push",
+     "u": 4.0,
+     "v": 6.2,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "e0a020",
+     "label": "HOLD"
+    },
+    {
+     "id": "bell",
+     "t": "push",
+     "u": 2.7,
+     "v": 6.2,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "BELL"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 1.4,
+     "v": 6.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 1.4,
+     "v": 5.0,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 4.2,
+     "v": 4.9,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d01818",
+     "label": "STOP"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.95,
+   "title": "STARTER",
+   "controls": [
+    {
+     "id": "sig_r",
+     "t": "lamp",
+     "u": 14.9,
+     "v": 24.0,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "ff2020",
+     "label": "DANGER"
+    },
+    {
+     "id": "sig_g",
+     "t": "lamp",
+     "u": 14.9,
+     "v": 21.2,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "30ff60",
+     "label": "CLEAR"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " G ",
+  "RSR",
+  " P "
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glowstone_dust"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "S": {
+   "item": "minecraft:string"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  }
+ },
+ "result": {
+  "item": "irextras:holiday_kit",
+  "data": 0
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "DSD",
+  " I ",
+  " B "
+ ],
+ "key": {
+  "D": {
+   "item": "minecraft:dye",
+   "data": 4
+  },
+  "S": {
+   "item": "minecraft:sign"
+  },
+  "I": {
+   "item": "minecraft:iron_bars"
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:zone_marker",
+  "count": 4
+ }
+}

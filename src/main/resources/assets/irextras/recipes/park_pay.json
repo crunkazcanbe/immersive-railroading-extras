@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GSG",
+  "BPB",
+  " I "
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "G": {
+   "item": "minecraft:glowstone_dust"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:park_pay",
+  "count": 1
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " G ",
+  "GLG",
+  " R "
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:green_glazed_terracotta"
+  },
+  "L": {
+   "item": "minecraft:glowstone"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:evac_sign"
+ }
+}

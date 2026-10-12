@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:door_controller"
+  },
+  "facing=east": {
+   "model": "irextras:door_controller",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:door_controller",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:door_controller",
+   "y": 270
+  }
+ }
+}

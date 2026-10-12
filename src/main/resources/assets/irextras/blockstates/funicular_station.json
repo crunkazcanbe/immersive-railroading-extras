@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:funicular_station"
+  },
+  "facing=east": {
+   "model": "irextras:funicular_station",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:funicular_station",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:funicular_station",
+   "y": 270
+  }
+ }
+}

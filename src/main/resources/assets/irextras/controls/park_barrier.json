@@ -1,0 +1,222 @@
+{
+ "title": "park_barrier",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.85,
+   "title": "BARRIER",
+   "controls": [
+    {
+     "id": "l1",
+     "t": "digits",
+     "u": 2.5,
+     "v": 12.8,
+     "w": 3.9,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "l2",
+     "t": "digits",
+     "u": 2.5,
+     "v": 12.0,
+     "w": 3.9,
+     "h": 0.55,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "go",
+     "t": "lamp",
+     "u": 3.8,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "GO"
+    },
+    {
+     "id": "stop",
+     "t": "lamp",
+     "u": 2.5,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "STOP"
+    },
+    {
+     "id": "fulll",
+     "t": "lamp",
+     "u": 1.2,
+     "v": 10.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "FULL",
+     "blink": true
+    },
+    {
+     "id": "tkt",
+     "t": "push",
+     "u": 3.6,
+     "v": 7.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "2050d0",
+     "label": "TICKET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.6,
+     "v": 6.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TICKET"
+    },
+    {
+     "id": "help",
+     "t": "push",
+     "u": 1.2,
+     "v": 7.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f0d020",
+     "label": "HELP"
+    },
+    {
+     "id": "pad",
+     "t": "zone",
+     "u": 1.5,
+     "v": 3.5,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "nin",
+     "t": "digits",
+     "u": 3.6,
+     "v": 2.9,
+     "w": 1.4,
+     "h": 0.4,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d IN"
+    },
+    {
+     "id": "nout",
+     "t": "digits",
+     "u": 3.6,
+     "v": 2.3,
+     "w": 1.4,
+     "h": 0.4,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%d OUT"
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": 3.95,
+   "title": "SERVICE",
+   "controls": [
+    {
+     "id": "k_mode",
+     "t": "key",
+     "u": 12.4,
+     "v": 11.0,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "MODE",
+     "pos": [
+      "ENTRY",
+      "EXIT"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.4,
+     "v": 10.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MODE"
+    },
+    {
+     "id": "k_up",
+     "t": "key",
+     "u": 14.6,
+     "v": 11.0,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "BOOM",
+     "pos": [
+      "AUTO",
+      "UP"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.6,
+     "v": 10.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BOOM UP"
+    },
+    {
+     "id": "upl",
+     "t": "lamp",
+     "u": 14.6,
+     "v": 8.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "HELD UP"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 8.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 13.5,
+     "v": 8.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.5,
+     "v": 7.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

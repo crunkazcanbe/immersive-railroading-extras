@@ -1,0 +1,316 @@
+{
+ "title": "weather_station",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.75,
+   "title": "WEATHER STATION",
+   "controls": [
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 10.4,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "AIR"
+    },
+    {
+     "id": "air",
+     "t": "digits",
+     "u": 4.7,
+     "v": 10.4,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 10.4,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "RAIL"
+    },
+    {
+     "id": "rail",
+     "t": "digits",
+     "u": 9.3,
+     "v": 10.4,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 9.25,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "WIND"
+    },
+    {
+     "id": "wind",
+     "t": "digits",
+     "u": 4.7,
+     "v": 9.25,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 9.25,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "VIS"
+    },
+    {
+     "id": "vis",
+     "t": "digits",
+     "u": 9.3,
+     "v": 9.25,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 8.1,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "RAIN"
+    },
+    {
+     "id": "rain",
+     "t": "digits",
+     "u": 4.7,
+     "v": 8.1,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 8.1,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "SNOW"
+    },
+    {
+     "id": "snow",
+     "t": "digits",
+     "u": 9.3,
+     "v": 8.1,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "f0f0ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 6.95,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "ICE"
+    },
+    {
+     "id": "ice",
+     "t": "digits",
+     "u": 4.7,
+     "v": 6.95,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 6.95,
+     "w": 0,
+     "h": 0,
+     "col": "202020",
+     "label": "WATER"
+    },
+    {
+     "id": "flood",
+     "t": "digits",
+     "u": 9.3,
+     "v": 6.95,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "30a0ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "windg",
+     "t": "gauge",
+     "u": 12.6,
+     "v": 9.4,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "M/S",
+     "max": 40
+    },
+    {
+     "id": "esr",
+     "t": "digits",
+     "u": 7.0,
+     "v": 5.6,
+     "w": 9.6,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "lfrost",
+     "t": "lamp",
+     "u": 3.0,
+     "v": 4.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "5bcefa",
+     "label": "FROST"
+    },
+    {
+     "id": "lfog",
+     "t": "lamp",
+     "u": 4.6,
+     "v": 4.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "f0f0f0",
+     "label": "FOG"
+    },
+    {
+     "id": "lheat",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 4.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff7020",
+     "label": "HEAT"
+    },
+    {
+     "id": "lflood",
+     "t": "lamp",
+     "u": 7.8,
+     "v": 4.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30a0ff",
+     "label": "FLOOD"
+    },
+    {
+     "id": "lsnow",
+     "t": "lamp",
+     "u": 9.4,
+     "v": 4.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "f0f0ff",
+     "label": "SNOW"
+    },
+    {
+     "id": "lice",
+     "t": "lamp",
+     "u": 11.0,
+     "v": 4.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "9ad8ff",
+     "label": "ICE"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 13.2,
+     "v": 4.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "w2",
+     "t": "lamp",
+     "u": 14.4,
+     "v": 4.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "5bcefa",
+     "label": "W2"
+    },
+    {
+     "id": "s_alarm",
+     "t": "selector",
+     "u": 12.4,
+     "v": 6.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "ALARMS",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "report",
+     "t": "push",
+     "u": 14.4,
+     "v": 6.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "REPORT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 14.4,
+     "v": 5.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

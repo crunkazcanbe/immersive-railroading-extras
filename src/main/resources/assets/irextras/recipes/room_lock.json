@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " S ",
+  "IRI",
+  " T "
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "T": {
+   "item": "minecraft:tripwire_hook"
+  }
+ },
+ "result": {
+  "item": "irextras:room_lock",
+  "count": 1
+ }
+}

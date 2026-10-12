@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GLG",
+  "CPC",
+  "IBI"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  }
+ },
+ "result": {
+  "item": "irextras:container_tracker",
+  "count": 1
+ }
+}

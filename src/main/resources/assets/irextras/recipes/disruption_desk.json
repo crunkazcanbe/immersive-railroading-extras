@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SLS",
+  "CFC",
+  "WWW"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:disruption_desk",
+  "count": 1
+ }
+}

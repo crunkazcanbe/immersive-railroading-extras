@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IHI",
+  "FSF",
+  "ICI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "F": {
+   "item": "minecraft:furnace"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:pub_kitchen",
+  "count": 1
+ }
+}

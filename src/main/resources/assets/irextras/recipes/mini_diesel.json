@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "YYY",
+  "III",
+  "R R"
+ ],
+ "key": {
+  "Y": {
+   "item": "minecraft:dye",
+   "data": 11
+  },
+  "I": {
+   "item": "minecraft:iron_nugget"
+  },
+  "R": {
+   "item": "minecraft:rail"
+  }
+ },
+ "result": {
+  "item": "irextras:mini_stock",
+  "count": 1,
+  "data": 1
+ }
+}

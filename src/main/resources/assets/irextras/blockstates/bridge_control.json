@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:bridge_control"
+  },
+  "facing=east": {
+   "model": "irextras:bridge_control",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:bridge_control",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:bridge_control",
+   "y": 270
+  }
+ }
+}

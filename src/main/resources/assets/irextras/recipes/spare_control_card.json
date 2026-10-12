@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RCR",
+  "GQG"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "G": {
+   "item": "minecraft:gold_nugget"
+  },
+  "Q": {
+   "item": "minecraft:quartz"
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 5,
+  "count": 2
+ }
+}

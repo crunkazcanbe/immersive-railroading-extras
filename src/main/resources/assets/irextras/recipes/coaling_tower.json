@@ -1,0 +1,31 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "CHC",
+  "MBM",
+  "CFC"
+ ],
+ "key": {
+  "C": {
+   "item": "minecraft:stone",
+   "data": 0
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "B": {
+   "item": "minecraft:iron_block"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:coaling_tower"
+ }
+}

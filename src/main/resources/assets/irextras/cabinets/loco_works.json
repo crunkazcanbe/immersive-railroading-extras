@@ -1,0 +1,45 @@
+{
+ "block": "loco_works",
+ "title": "SHOP MCC 480V",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "loco_works_door1",
+   "hinge": [
+    23.85,
+    5.78
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "loco_works_door2",
+   "hinge": [
+    26.55,
+    5.78
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "main",
+   "label": "MAINS"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

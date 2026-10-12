@@ -1,0 +1,45 @@
+{
+ "block": "h2_compressor",
+ "title": "COMPRESSOR VFD 75 KW",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "h2_compressor_door1",
+   "hinge": [
+    14.75,
+    -1.78
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "h2_compressor_door2",
+   "hinge": [
+    7.25,
+    -1.78
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "main",
+   "label": "MAINS"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

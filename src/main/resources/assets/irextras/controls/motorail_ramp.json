@@ -1,0 +1,299 @@
+{
+ "title": "motorail_ramp",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -8.1,
+   "title": "MOTORAIL",
+   "controls": [
+    {
+     "id": "d1",
+     "t": "digits",
+     "u": 28.5,
+     "v": 19.2,
+     "w": 5.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d2",
+     "t": "digits",
+     "u": 28.5,
+     "v": 18.3,
+     "w": 5.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d3",
+     "t": "digits",
+     "u": 28.5,
+     "v": 17.4,
+     "w": 5.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d4",
+     "t": "digits",
+     "u": 28.5,
+     "v": 16.5,
+     "w": 5.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d5",
+     "t": "digits",
+     "u": 28.5,
+     "v": 15.6,
+     "w": 5.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d6",
+     "t": "digits",
+     "u": 28.5,
+     "v": 14.7,
+     "w": 5.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_plate",
+     "t": "gauge",
+     "u": 30.0,
+     "v": 12.2,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "PLATE %",
+     "max": 100
+    },
+    {
+     "id": "g_level",
+     "t": "gauge",
+     "u": 27.0,
+     "v": 12.2,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "LEVEL",
+     "max": 100
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 30.7,
+     "v": 10.2,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "l_main",
+     "t": "lamp",
+     "u": 29.6,
+     "v": 10.2,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "l_plate",
+     "t": "lamp",
+     "u": 28.5,
+     "v": 10.2,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "f0f0f0",
+     "label": "PLATE DN"
+    },
+    {
+     "id": "l_up",
+     "t": "lamp",
+     "u": 27.4,
+     "v": 10.2,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "f0f0f0",
+     "label": "PLATE UP"
+    },
+    {
+     "id": "l_chock",
+     "t": "lamp",
+     "u": 26.3,
+     "v": 10.2,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "ffb020",
+     "label": "CHOCKS"
+    },
+    {
+     "id": "l_veh",
+     "t": "lamp",
+     "u": 30.7,
+     "v": 9.4,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "40a0ff",
+     "label": "VEHICLE"
+    },
+    {
+     "id": "l_car",
+     "t": "lamp",
+     "u": 29.6,
+     "v": 9.4,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "40a0ff",
+     "label": "WAGON"
+    },
+    {
+     "id": "l_busy",
+     "t": "lamp",
+     "u": 28.5,
+     "v": 9.4,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "30e060",
+     "label": "PUMP"
+    },
+    {
+     "id": "l_flt",
+     "t": "lamp",
+     "u": 27.4,
+     "v": 9.4,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "ff3030",
+     "label": "FAULT"
+    },
+    {
+     "id": "l_iv",
+     "t": "lamp",
+     "u": 26.3,
+     "v": 9.4,
+     "w": 0.48,
+     "h": 0.48,
+     "col": "f0f0f0",
+     "label": "IV LINK"
+    },
+    {
+     "id": "k_en",
+     "t": "key",
+     "u": 30.1,
+     "v": 7.6,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "ENABLE",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "s_page",
+     "t": "selector",
+     "u": 26.9,
+     "v": 7.6,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "PAGE",
+     "pos": [
+      "OVERVIEW",
+      "WAGONS",
+      "EVENTS"
+     ]
+    },
+    {
+     "id": "plate",
+     "t": "push",
+     "u": 30.7,
+     "v": 5.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0f0f0",
+     "label": "PLATE"
+    },
+    {
+     "id": "chock",
+     "t": "push",
+     "u": 29.25,
+     "v": 5.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "e0a020",
+     "label": "CHOCKS"
+    },
+    {
+     "id": "load",
+     "t": "push",
+     "u": 27.75,
+     "v": 5.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "30c040",
+     "label": "LOAD"
+    },
+    {
+     "id": "unload",
+     "t": "push",
+     "u": 26.3,
+     "v": 5.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "2050d0",
+     "label": "UNLOAD"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 30.5,
+     "v": 4.1,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0d020",
+     "label": "ACK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 29.1,
+     "v": 4.1,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 27.1,
+     "v": 2.6,
+     "w": 1.7,
+     "h": 1.7,
+     "col": "d01818",
+     "label": "E-STOP"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "CSC",
+  "GMG",
+  "FFF"
+ ],
+ "key": {
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:wheel_lathe"
+ }
+}

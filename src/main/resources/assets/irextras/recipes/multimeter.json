@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " V ",
+  "MCM",
+  "PYP"
+ ],
+ "key": {
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 21
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "Y": {
+   "item": "irextras:part",
+   "data": 22
+  }
+ },
+ "result": {
+  "item": "irextras:multimeter",
+  "count": 1
+ }
+}

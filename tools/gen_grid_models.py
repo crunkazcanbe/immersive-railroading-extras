@@ -155,6 +155,8 @@ T = {'tank': 'grid_tank', 'fins': 'grid_fins', 'cab': 'grid_cabinet', 'lv': 'gri
 
 
 def model(name, els, particle='grid_cabinet'):
+    if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'blockbench/models', name + '.bbmodel')):
+        return   # replaced by a detailed bbkit model (gen_bb_grid.py)
     d = {'textures': dict({'particle': MOD + ':blocks/' + particle}, **{k: MOD + ':blocks/' + v for k, v in T.items()}), 'elements': els}
     json.dump(d, open(os.path.join(ROOT, 'models/block', name + '.json'), 'w'), indent=1)
 
@@ -275,6 +277,14 @@ def main():
             el((10.3, 12.4, 8.9), (14.7, 16.6, 9), 'scada' if st else 'dark'),
             el((4, 12, 4.5), (12, 12.4, 7), 'plate', 'keyboard'), el((13, 12, 5), (15, 12.6, 7), on),
         ])
+        # ---- Auto Controller: PLC cabinet (the panel covers its door), vents, cable gland plate, beacon + alarm horn
+        model('grid_auto_%d' % st, [
+            el((1, 0, 1), (15, 15, 15), 'cab', 'cabinet'), el((0.5, 15, 0.5), (15.5, 16, 15.5), 'dark', 'roof'),
+            el((15, 3, 4), (15.4, 11, 12), 'lv', 'vent'), el((0.6, 3, 4), (1, 11, 12), 'lv', 'vent'),
+            el((3, 0, 15), (13, 2, 15.6), 'dark', 'gland plate'),
+            el((6.5, 16, 6.5), (9.5, 18.5, 9.5), 'lr' if st else 'lo', 'beacon'), el((6, 18.5, 6), (10, 19, 10), 'dark'),
+            el((11, 16, 10), (14, 17.6, 13), 'dark', 'horn'), el((11.5, 16.3, 9.4), (13.5, 17.3, 10), 'plate', 'horn mouth'),
+        ])
         # ---- track feeder: post + riser cable + clamp arm reaching to the line (north = -z) + insulator
         model('grid_feeder_%d' % st, [
             el((5, 0, 5), (11, 1, 11), 'con'), el((6.5, 1, 6.5), (9.5, 22, 9.5), 'galv', 'post'),
@@ -392,7 +402,7 @@ def main():
     # blockstates
     rot = {'north': 0, 'east': 90, 'south': 180, 'west': 270}
     for kind in ('intake', 'transformer', 'traction', 'rectifier', 'breaker', 'feeder', 'meter', 'battery', 'scada', 'diesel', 'turbine', 'solar', 'wind',
-                 'capacitor', 'earthing', 'relay', 'arrester', 'isolator'):
+                 'capacitor', 'earthing', 'relay', 'arrester', 'isolator', 'auto'):
         v = {}
         three = kind in ('breaker', 'diesel', 'turbine', 'solar', 'wind')
         for f, y in rot.items():

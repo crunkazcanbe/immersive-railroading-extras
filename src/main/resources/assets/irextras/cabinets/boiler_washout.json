@@ -1,0 +1,45 @@
+{
+ "block": "boiler_washout",
+ "title": "WASHOUT PUMP 37 KW",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "boiler_washout_door1",
+   "hinge": [
+    9.25,
+    0.78
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "boiler_washout_door2",
+   "hinge": [
+    14.75,
+    0.78
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "main",
+   "label": "MAINS"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

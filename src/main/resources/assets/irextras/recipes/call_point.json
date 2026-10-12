@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "YNY",
+  " I ",
+  " I "
+ ],
+ "key": {
+  "Y": {
+   "item": "minecraft:gold_ingot"
+  },
+  "N": {
+   "item": "minecraft:noteblock"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:call_point",
+  "count": 1
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " F ",
+  "GCG",
+  " I "
+ ],
+ "key": {
+  "F": {
+   "item": "minecraft:feather"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:compass"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:weather_station",
+  "count": 1
+ }
+}

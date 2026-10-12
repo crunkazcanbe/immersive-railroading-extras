@@ -1,0 +1,33 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "BKB",
+  "CFC",
+  "BAB"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:nether_brick"
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 6
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 7
+  }
+ },
+ "result": {
+  "item": "irextras:blast_furnace",
+  "count": 1
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:filter_bank"
+  },
+  "facing=east": {
+   "model": "irextras:filter_bank",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:filter_bank",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:filter_bank",
+   "y": 270
+  }
+ }
+}

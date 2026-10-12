@@ -1,0 +1,34 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LSL",
+  "CKC",
+  "IRI"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "K": {
+   "item": "minecraft:clock"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:station_security",
+  "count": 1
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:driver_assessor"
+  },
+  "facing=east": {
+   "model": "irextras:driver_assessor",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:driver_assessor",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:driver_assessor",
+   "y": 270
+  }
+ }
+}

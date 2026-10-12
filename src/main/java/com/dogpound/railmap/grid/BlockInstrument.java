@@ -41,11 +41,12 @@ public class BlockInstrument extends Block {
         FREQ("hz_meter", "Frequency Meter", "Hz - sags a little under heavy load"),
         TEMP("thermometer", "Temperature Gauge", "Cable conductor / transformer winding temperature"),
         SCREEN("screen", "Readout Screen", "Little screen: voltage level, volts, amps, kW, PF, status"),
-        LAMP("lamp", "Status Lamp", "Green live · red dead · flashing amber tripped");
+        LAMP("lamp", "Status Lamp", "Green live · red dead · flashing amber tripped"),
+        BUTTON("button", "Control Button", "Does what one of the machine's own panel buttons does - wire it to the machine");
 
         public final String id, label, tip;
         Inst(String id, String label, String tip) { this.id = id; this.label = label; this.tip = tip; }
-        public boolean analogue() { return this != SCREEN && this != LAMP; }
+        public boolean analogue() { return this != SCREEN && this != LAMP && this != BUTTON; }
     }
 
     public final Inst inst;
@@ -74,7 +75,12 @@ public class BlockInstrument extends Block {
     @Override
     public void addInformation(ItemStack stack, World world, List<String> tip, ITooltipFlag flag) {
         tip.add("§7" + inst.tip);
-        tip.add("§8Signal Wrench: right-click a grid machine or cable, then this");
+        tip.add("§cNeeds 12 V DC: lay 12 V DC Power Wire to it from a 12 V supply");
+        if (inst == Inst.BUTTON) {
+            tip.add("§7Right-click it with Instrument Wire, and land the same colour on a machine");
+            tip.add("§7Screwdriver: pick which of the machine's buttons it copies (sneak = back)");
+            tip.add("§7Mounts in a Gauge Panel hole too - four little buttons on one block");
+        } else tip.add("§8Signal Wrench: right-click a grid machine or cable, then this");
     }
 
     @Override public boolean hasTileEntity(IBlockState state) { return true; }
@@ -82,10 +88,47 @@ public class BlockInstrument extends Block {
 
     @Override
     public boolean onBlockActivated(World w, BlockPos pos, IBlockState s, EntityPlayer p, EnumHand hand, EnumFacing f, float hx, float hy, float hz) {
-        if (w.isRemote) return true;
-        if (w.getTileEntity(pos) instanceof TileInstrument t)
-            p.sendStatusMessage(new TextComponentString("§7" + inst.label + " · " + (t.target() == null ? "not linked - use the Signal Wrench" : t.line2 + " · " + t.status)), true);
+        if (w.isRemote) {                                                       // the cap goes in under your finger
+            if (inst == Inst.BUTTON && p.getHeldItem(hand).isEmpty() && !p.isSneaking() && w.getTileEntity(pos) instanceof TileInstrument t0) t0.pressedAt = w.getTotalWorldTime();
+            return true;
+        }
+        if (!(w.getTileEntity(pos) instanceof TileInstrument t)) return true;
+        net.minecraft.item.ItemStack h = p.getHeldItem(hand);
+        if (h.getItem() instanceof ItemScrewdriver && t.burnt) { p.sendStatusMessage(new TextComponentString(t.repair()), true); return true; }
+        if (com.dogpound.railmap.wire.ItemWire.isPower(h)) {
+            p.sendStatusMessage(new TextComponentString("§7Lay the 12 V power wire on the floor under it (or beside it) - it plugs itself in. Supply: " + com.dogpound.railmap.wire.WireNet.power(w, pos).what), true);
+            return true;
+        }
+        if (h.getItem() instanceof com.dogpound.railmap.wire.ItemWire) {
+            t.setWire(h.getMetadata() & 15);
+            p.sendStatusMessage(new TextComponentString("§a" + com.dogpound.railmap.wire.WireNet.NAMES[t.wire] + " wire run through the hole in the bottom of the " + inst.label), true);
+            return true;
+        }
+        if (h.isEmpty() && p.isSneaking() && t.wire >= 0) { t.setWire(-1); p.sendStatusMessage(new TextComponentString("§7Wire pulled out of the " + inst.label), true); return true; }
+        if (inst == Inst.BUTTON && h.getItem() instanceof ItemScrewdriver) {
+            p.sendStatusMessage(new TextComponentString(t.cycle(p.isSneaking() ? -1 : 1)), true);
+            return true;
+        }
+        if (inst == Inst.BUTTON && h.isEmpty() && !p.isSneaking()) {
+            w.playSound(null, pos, com.dogpound.railmap.ModSounds.CTL_PUSH, net.minecraft.util.SoundCategory.BLOCKS, 0.5f, 1.0f);
+            t.pressedAt = w.getTotalWorldTime();
+            p.sendStatusMessage(new TextComponentString(t.press(p.getName() + " (wall button)")), true);
+            return true;
+        }
+        if (!h.isEmpty()) return false;
+        t.resetPeak();
+        String in = t.wire >= 0 ? com.dogpound.railmap.wire.WireNet.NAMES[t.wire] + " wire" : t.target() != null ? "wrench link" : "not connected - wire it or use the Signal Wrench";
+        p.sendStatusMessage(new TextComponentString("§7" + inst.label + " · " + in + " · " + t.r.line2 + " · " + t.r.status + (t.r.alarm ? " §c§lALARM" : "")), true);
         return true;
+    }
+
+    /** a burnt-out instrument keeps smoking a little */
+    @Override
+    public void randomDisplayTick(IBlockState s, World w, BlockPos p, java.util.Random rnd) {
+        if (!(w.getTileEntity(p) instanceof TileInstrument t) || !t.burnt || rnd.nextInt(3) != 0) return;
+        EnumFacing f = s.getValue(FACING);
+        double x = p.getX() + 0.5 + f.getXOffset() * -0.25 + (rnd.nextDouble() - 0.5) * 0.5, z = p.getZ() + 0.5 + f.getZOffset() * -0.25 + (rnd.nextDouble() - 0.5) * 0.5;
+        w.spawnParticle(net.minecraft.util.EnumParticleTypes.SMOKE_NORMAL, x, p.getY() + 0.85, z, 0, 0.02, 0);
     }
 
     // a plate on the wall behind it: 3 px deep
@@ -99,6 +142,9 @@ public class BlockInstrument extends Block {
         }
     }
 
+    @Override @SuppressWarnings("deprecation") public boolean canProvidePower(IBlockState s) { return true; }
+    @Override @SuppressWarnings("deprecation")
+    public int getWeakPower(IBlockState s, IBlockAccess w, BlockPos p, EnumFacing side) { return w.getTileEntity(p) instanceof TileInstrument t && t.alarmOut() ? 15 : 0; }
     @Override @SuppressWarnings("deprecation") public boolean isOpaqueCube(IBlockState s) { return false; }
     @Override @SuppressWarnings("deprecation") public boolean isFullCube(IBlockState s) { return false; }
     @Override public BlockRenderLayer getRenderLayer() { return BlockRenderLayer.CUTOUT; }

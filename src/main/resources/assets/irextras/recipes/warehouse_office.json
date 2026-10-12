@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GGG",
+  "CRC",
+  "WWW"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "R": {
+   "item": "minecraft:repeater"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:warehouse_office"
+ }
+}

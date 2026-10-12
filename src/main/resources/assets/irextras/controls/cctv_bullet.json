@@ -1,0 +1,43 @@
+{
+ "title": "cctv_bullet",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.15,
+   "title": "BULLET",
+   "controls": [
+    {
+     "id": "led_pwr",
+     "t": "lamp",
+     "u": 8.72,
+     "v": 7.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "led_net",
+     "t": "lamp",
+     "u": 8,
+     "v": 7.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "NET"
+    },
+    {
+     "id": "led_rec",
+     "t": "lamp",
+     "u": 7.28,
+     "v": 7.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff2020",
+     "label": "REC",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

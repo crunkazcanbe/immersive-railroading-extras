@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "WGW",
+  "III"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "W": {
+   "item": "minecraft:dye",
+   "data": 15
+  },
+  "G": {
+   "item": "minecraft:glowstone_dust"
+  }
+ },
+ "result": {
+  "item": "irextras:tram_signal",
+  "count": 1
+ }
+}

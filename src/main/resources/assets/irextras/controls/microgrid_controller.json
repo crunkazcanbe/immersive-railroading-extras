@@ -1,0 +1,408 @@
+{
+ "title": "microgrid_controller",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.45,
+   "title": "DRAWERS",
+   "controls": [
+    {
+     "id": "dr1",
+     "t": "zone",
+     "u": 14.1,
+     "v": 3.9,
+     "w": 2.6,
+     "h": 7.0,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "dr2",
+     "t": "zone",
+     "u": 1.9,
+     "v": 3.9,
+     "w": 2.6,
+     "h": 7.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 8.85,
+   "title": "MIMIC",
+   "controls": [
+    {
+     "id": "util",
+     "t": "lamp",
+     "u": 5.4,
+     "v": 22.15,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "poi",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 20.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "ff3030",
+     "label": "POI"
+    },
+    {
+     "id": "lgen",
+     "t": "lamp",
+     "u": 12.3,
+     "v": 20.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "lbat",
+     "t": "lamp",
+     "u": 3.7,
+     "v": 20.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "shedA",
+     "t": "lamp",
+     "u": 13.4,
+     "v": 14.4,
+     "w": 1.4,
+     "h": 0.9,
+     "col": "ffb020",
+     "label": "SHED A"
+    },
+    {
+     "id": "shedB",
+     "t": "lamp",
+     "u": 11.0,
+     "v": 14.4,
+     "w": 1.4,
+     "h": 0.9,
+     "col": "ffb020",
+     "label": "SHED B"
+    },
+    {
+     "id": "shedC",
+     "t": "lamp",
+     "u": 5.0,
+     "v": 14.4,
+     "w": 1.4,
+     "h": 0.9,
+     "col": "ffb020",
+     "label": "SHED C"
+    },
+    {
+     "id": "tied",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 14.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "TIED"
+    },
+    {
+     "id": "sync",
+     "t": "synchro",
+     "u": 8.0,
+     "v": 16.4,
+     "w": 2.6,
+     "h": 2.6,
+     "col": "f2f0e6",
+     "label": "SYNC"
+    },
+    {
+     "id": "g_hz",
+     "t": "gauge",
+     "u": 13.0,
+     "v": 11.6,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "FREQ",
+     "max": 100
+    },
+    {
+     "id": "g_load",
+     "t": "gauge",
+     "u": 9.8,
+     "v": 11.6,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "GEN %",
+     "max": 150
+    },
+    {
+     "id": "g_soc",
+     "t": "gauge",
+     "u": 6.6,
+     "v": 11.6,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "SOC %",
+     "max": 100
+    },
+    {
+     "id": "lisl",
+     "t": "lamp",
+     "u": 4.2,
+     "v": 12.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "ISLAND"
+    },
+    {
+     "id": "resync",
+     "t": "lamp",
+     "u": 3.2,
+     "v": 12.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30a0ff",
+     "label": "SYNC",
+     "blink": true
+    },
+    {
+     "id": "blackout",
+     "t": "lamp",
+     "u": 2.2,
+     "v": 12.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "BLACK",
+     "blink": true
+    },
+    {
+     "id": "lock",
+     "t": "lamp",
+     "u": 1.2,
+     "v": 12.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "LOCK"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 1.2,
+     "v": 10.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "12V"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 8.85,
+   "title": "STATUS",
+   "controls": [
+    {
+     "id": "st",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.5,
+     "w": 6.0,
+     "h": 0.45,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "hz",
+     "t": "digits",
+     "u": 12.6,
+     "v": 9.9,
+     "w": 4.8,
+     "h": 0.55,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "kv",
+     "t": "digits",
+     "u": 7.6,
+     "v": 9.9,
+     "w": 4.8,
+     "h": 0.55,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "poikw",
+     "t": "digits",
+     "u": 3.4,
+     "v": 9.9,
+     "w": 5.4,
+     "h": 0.55,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 7.0,
+   "title": "MICROGRID DESK",
+   "controls": [
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 14.0,
+     "v": 5.0,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "OFF",
+      "TIED",
+      "AUTO",
+      "ISL"
+     ]
+    },
+    {
+     "id": "s_lim",
+     "t": "selector",
+     "u": 11.6,
+     "v": 5.0,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "OFF",
+      "250",
+      "500",
+      "1K",
+      "2K"
+     ]
+    },
+    {
+     "id": "island",
+     "t": "push",
+     "u": 14.2,
+     "v": 2.6,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "f08020",
+     "label": "ISLAND"
+    },
+    {
+     "id": "dosync",
+     "t": "push",
+     "u": 12.5,
+     "v": 2.6,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "2050d0",
+     "label": "SYNC"
+    },
+    {
+     "id": "shed",
+     "t": "push",
+     "u": 10.8,
+     "v": 2.6,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "f0d020",
+     "label": "SHED"
+    },
+    {
+     "id": "restore",
+     "t": "push",
+     "u": 9.1,
+     "v": 2.6,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "1fa34a",
+     "label": "RESTR"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 7.4,
+     "v": 2.6,
+     "w": 1.05,
+     "h": 1.05,
+     "col": "f0f0f0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 6.0,
+     "v": 2.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "LAMP"
+    },
+    {
+     "id": "m_trip",
+     "t": "mushroom",
+     "u": 3.0,
+     "v": 4.2,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "d01818",
+     "label": "INTERTIE TRIP"
+    },
+    {
+     "id": "gen",
+     "t": "digits",
+     "u": 7.6,
+     "v": 5.6,
+     "w": 5.6,
+     "h": 0.55,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "shed",
+     "t": "digits",
+     "u": 7.6,
+     "v": 4.8,
+     "w": 5.6,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "why",
+     "t": "digits",
+     "u": 8.0,
+     "v": 1.5,
+     "w": 14.0,
+     "h": 0.45,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

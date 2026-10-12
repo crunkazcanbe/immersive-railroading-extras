@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:rack_rail"
+  },
+  "facing=east": {
+   "model": "irextras:rack_rail",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:rack_rail",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:rack_rail",
+   "y": 270
+  }
+ }
+}

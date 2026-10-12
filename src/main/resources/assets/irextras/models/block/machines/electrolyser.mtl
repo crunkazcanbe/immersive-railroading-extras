@@ -1,0 +1,3 @@
+newmtl electrolyser
+Kd 1 1 1
+map_Kd irextras:blocks/machines/electrolyser

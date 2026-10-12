@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RGR",
+  "CDC",
+  "III"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "D": {
+   "item": "minecraft:dispenser"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:drone_dock",
+  "count": 1
+ }
+}

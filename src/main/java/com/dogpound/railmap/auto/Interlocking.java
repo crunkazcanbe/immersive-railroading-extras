@@ -69,6 +69,7 @@ public final class Interlocking {
     public static void clear() {
         LOCKS.clear();
         ROUTES.clear();
+        Diamonds.clear();
     }
 
     // ---- switch locks --------------------------------------------------------------------
@@ -98,6 +99,8 @@ public final class Interlocking {
         SwitchState cur = safeState(sw);
         if (cur != want) {
             if (occupied(world, pos, 4)) return false;   // never throw points under a train
+            if (com.dogpound.railmap.safety.FaultLab.stuck(world, new BlockPos(pos.x, pos.y, pos.z))) return false;   // jammed points (fault lab)
+            if (com.dogpound.railmap.track.TrackHooks.throwVeto(world, new BlockPos(pos.x, pos.y, pos.z), want, true) != null) return false;   // #14 point machine refuses / failed
             sw.setSwitchForced(want);
             sw.markDirty();
         }
@@ -112,6 +115,7 @@ public final class Interlocking {
 
     /** Release every switch {@code owner} holds (a train that finished, a cancelled route). */
     public static void releaseAll(World world, String owner) {
+        Diamonds.releaseAll(world, owner);                               // batch-3 #6: diamond locks go with the switch locks
         Map<Vec3i, Lock> locks = LOCKS.get(world.provider.getDimension());
         if (locks == null) return;
         Iterator<Map.Entry<Vec3i, Lock>> it = locks.entrySet().iterator();
@@ -139,6 +143,16 @@ public final class Interlocking {
         sw.setSwitchForced(SwitchState.NONE);
         sw.markDirty();
         return true;
+    }
+
+    /** batch-3 #15: who holds the switch at pos locked the other way from `want` (null = free, or locked the same way) */
+    public static String lockedAgainst(World world, Vec3i pos, SwitchState want) {
+        Map<Vec3i, Lock> locks = LOCKS.get(world.provider.getDimension());
+        Lock l = locks == null ? null : locks.get(pos);
+        if (l == null || l.state == want) return null;
+        long now = world.getTotalWorldTime();
+        for (Map.Entry<String, Long> e : l.owners.entrySet()) if (now - e.getValue() <= LOCK_TTL) return e.getKey();
+        return null;
     }
 
     /** True when the board may not throw this switch by hand: something has it locked. */
@@ -184,6 +198,8 @@ public final class Interlocking {
         Vec3i behind = new Vec3i(g.x - f.getXOffset(), g.y, g.z - f.getZOffset());
         TrackPath path = TrackPath.find(umc, rail, behind, RailMapConfig.routeSearchBlocks, TrackPath.piece(h));
         if (path == null) return "No way along the track from that signal to the other one";
+        String unsafe = com.dogpound.railmap.safety.RouteCheck.check(world, from, to, path);   // the safety case (#28): why a route is refused
+        if (unsafe != null) return unsafe;
 
         Route route = new Route(start, end, path);
         // Every switch first; if any refuses, undo so a half-lined route never exists.
@@ -192,6 +208,11 @@ public final class Interlocking {
                 releaseAll(world, route.owner);
                 return "Conflict: a switch on that route is locked or occupied";
             }
+        }
+        String dia = Diamonds.claimRoute(world, path, route.owner);      // batch-3 #6: diamond crossings on the route
+        if (dia != null) {
+            releaseAll(world, route.owner);
+            return "Conflict: " + dia;
         }
         for (TrainNode t : TrainTracker.latest(world)) {
             if (onRoute(path, t, 1)) {
@@ -202,6 +223,7 @@ public final class Interlocking {
         ROUTES.computeIfAbsent(world.provider.getDimension(), d -> new ArrayList<>()).add(route);
         if (from.mode() != TileSignalMast.Mode.CTC) from.cycleModeTo(TileSignalMast.Mode.CTC);
         from.setRoute(true);
+        com.dogpound.railmap.safety.SigHooks.routeSet(world, start, end);          // batch-3 #19 route macro recording
         return "Route set: " + Math.round(path.length) + " m, " + path.switches.size() + " switch(es) locked";
     }
 
@@ -239,6 +261,7 @@ public final class Interlocking {
             for (TrainNode t : trains) if (onRoute(r.path, t, 2.5)) { any = true; break; }
             // Keep the locks alive while the route stands.
             for (Map.Entry<Vec3i, SwitchState> e : r.path.switches.entrySet()) touch(world, e.getKey(), r.owner, now);
+            Diamonds.touch(world, r.path, r.owner);
             if (any) {
                 r.lastOccupied = now;
                 if (!r.entered) {

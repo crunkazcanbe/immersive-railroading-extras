@@ -1,0 +1,455 @@
+{
+ "title": "coupling_point",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 7.88,
+   "title": "AUTO COUPLING POINT",
+   "controls": [
+    {
+     "id": "d_stage",
+     "t": "digits",
+     "u": 6.6,
+     "v": 13.0,
+     "w": 7.6,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_timer",
+     "t": "digits",
+     "u": 12.4,
+     "v": 13.0,
+     "w": 3.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_wait",
+     "t": "digits",
+     "u": 5.0,
+     "v": 12.0,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "WAITING",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_arr",
+     "t": "digits",
+     "u": 11.2,
+     "v": 12.0,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "PORTION",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_len",
+     "t": "digits",
+     "u": 5.0,
+     "v": 11.0,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_why",
+     "t": "digits",
+     "u": 11.2,
+     "v": 11.0,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "ff9040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_pa",
+     "t": "digits",
+     "u": 5.0,
+     "v": 10.0,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "ffd020",
+     "label": "END A",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_pb",
+     "t": "digits",
+     "u": 11.2,
+     "v": 10.0,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "ffd020",
+     "label": "END B",
+     "fmt": "%s"
+    },
+    {
+     "id": "l_cmp",
+     "t": "lamp",
+     "u": 2.35,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "COMPAT"
+    },
+    {
+     "id": "l_cmpf",
+     "t": "lamp",
+     "u": 3.25,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "l_len",
+     "t": "lamp",
+     "u": 4.95,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "LENGTH"
+    },
+    {
+     "id": "l_lenf",
+     "t": "lamp",
+     "u": 5.85,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "l_brk",
+     "t": "lamp",
+     "u": 7.55,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "BRAKE"
+    },
+    {
+     "id": "l_brkf",
+     "t": "lamp",
+     "u": 8.45,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "l_ord",
+     "t": "lamp",
+     "u": 10.15,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "ORDER"
+    },
+    {
+     "id": "l_ordf",
+     "t": "lamp",
+     "u": 11.05,
+     "v": 8.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "l_wait",
+     "t": "lamp",
+     "u": 2.4,
+     "v": 7.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "WAITING"
+    },
+    {
+     "id": "l_arr",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 7.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "PORTION"
+    },
+    {
+     "id": "l_cpl",
+     "t": "lamp",
+     "u": 5.6,
+     "v": 7.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "COUPLING",
+     "blink": true
+    },
+    {
+     "id": "l_done",
+     "t": "lamp",
+     "u": 7.2,
+     "v": 7.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "DONE"
+    },
+    {
+     "id": "l_flt",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 7.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff2020",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "l_air",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 7.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "AIR"
+    },
+    {
+     "id": "l_sup",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 7.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "400V"
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 13.6,
+     "v": 7.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "g_air",
+     "t": "gauge",
+     "u": 12.4,
+     "v": 5.2,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "AIR X10",
+     "max": 100
+    },
+    {
+     "id": "d_air",
+     "t": "digits",
+     "u": 12.4,
+     "v": 3.6,
+     "w": 3.6,
+     "h": 0.6,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_joins",
+     "t": "digits",
+     "u": 3.2,
+     "v": 5.8,
+     "w": 2.4,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d J"
+    },
+    {
+     "id": "d_splits",
+     "t": "digits",
+     "u": 5.8,
+     "v": 5.8,
+     "w": 2.4,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d S"
+    },
+    {
+     "id": "s_on",
+     "t": "selector",
+     "u": 2.4,
+     "v": 4.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "AUTO",
+     "pos": [
+      "OFF",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "s_rule",
+     "t": "selector",
+     "u": 4.4,
+     "v": 4.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "RULE",
+     "pos": [
+      "JOIN",
+      "SPLIT"
+     ]
+    },
+    {
+     "id": "s_order",
+     "t": "selector",
+     "u": 6.4,
+     "v": 4.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "ORDER",
+     "pos": [
+      "REAR",
+      "FRONT"
+     ]
+    },
+    {
+     "id": "s_cars",
+     "t": "selector",
+     "u": 8.4,
+     "v": 4.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "SPLIT N",
+     "pos": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    {
+     "id": "s_plat",
+     "t": "selector",
+     "u": 2.4,
+     "v": 2.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "PLATFORM M",
+     "pos": [
+      "60",
+      "120",
+      "180",
+      "240",
+      "320"
+     ]
+    },
+    {
+     "id": "s_wait",
+     "t": "selector",
+     "u": 4.4,
+     "v": 2.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "WAIT MIN",
+     "pos": [
+      "2",
+      "5",
+      "10"
+     ]
+    },
+    {
+     "id": "s_range",
+     "t": "selector",
+     "u": 6.4,
+     "v": 2.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "RANGE M",
+     "pos": [
+      "40",
+      "80",
+      "120"
+     ]
+    },
+    {
+     "id": "k_bypass",
+     "t": "key",
+     "u": 8.4,
+     "v": 2.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "BRAKE TEST",
+     "pos": [
+      "NORMAL",
+      "BYPASS"
+     ]
+    },
+    {
+     "id": "p_now",
+     "t": "push",
+     "u": 10.4,
+     "v": 1.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d8b020",
+     "label": "NOW"
+    },
+    {
+     "id": "p_reset",
+     "t": "push",
+     "u": 12.4,
+     "v": 1.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.6,
+     "v": 14.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

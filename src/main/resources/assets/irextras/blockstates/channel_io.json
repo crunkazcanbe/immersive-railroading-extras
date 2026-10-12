@@ -1,1 +1,19 @@
-{"variants": {"facing=north": {"model": "irextras:channel_io"}, "facing=south": {"model": "irextras:channel_io"}, "facing=east": {"model": "irextras:channel_io"}, "facing=west": {"model": "irextras:channel_io"}}}
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:channel_io"
+  },
+  "facing=east": {
+   "model": "irextras:channel_io",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:channel_io",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:channel_io",
+   "y": 270
+  }
+ }
+}

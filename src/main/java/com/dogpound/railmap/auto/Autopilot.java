@@ -87,6 +87,10 @@ public final class Autopilot {
         public double metresToStop = -1;
         public double speedKmh;
         public int entityId = -1;
+        /** batch-3 #20: the last tick this train's control cycle ran (the safety supervisor's watchdog) */
+        public long beat;
+        /** the blocked-line version this route was planned against (disruption recovery) */
+        int disruptVersion = -1;
     }
 
     private static final Map<UUID, Run> RUNS = new HashMap<>();
@@ -94,6 +98,17 @@ public final class Autopilot {
     public static Run run(UUID loco) {
         return RUNS.get(loco);
     }
+
+    /** planning (next-48 #46 dispatchers, #9 split/join): stretch (+) or cut (-) the stop a train is dwelling at, never below 5 s from now. false = not dwelling */
+    public static boolean adjustDwell(UUID loco, long now, int seconds) {
+        Run r = RUNS.get(loco);
+        if (r == null || !r.dwelling) return false;
+        r.dwellUntil = Math.max(now + 100, r.dwellUntil + seconds * 20L);
+        return true;
+    }
+
+    /** ticks left of the current dwell (-1 = not dwelling) */
+    public static long dwellLeft(UUID loco, long now) { Run r = RUNS.get(loco); return r == null || !r.dwelling ? -1 : Math.max(0, r.dwellUntil - now); }
 
     public static void clear() {
         RUNS.clear();
@@ -121,8 +136,10 @@ public final class Autopilot {
         World world = e.world;
         long now = world.getTotalWorldTime();
         if (now % PERIOD != 0) return;
+        if (now % 100 == 0) MovingBlock.prune(now);
         RailwayData data = RailwayData.get(world);
         if (now % 20 == 0) {
+            Disruptions.tick(world, data, now);
             Interlocking.tick(world);
             Dispatcher.tick(world, data);
             java.util.List<net.minecraft.entity.player.EntityPlayerMP> viewers = com.dogpound.railmap.server.Viewers.active(world);
@@ -160,9 +177,20 @@ public final class Autopilot {
                               Run r, Locomotive loco, long now) {
         double speed = Math.abs(loco.getCurrentSpeed().metric());
         r.speedKmh = speed;
+        r.beat = now;
         Long stop = Dispatcher.nextStop(data, a);
         r.nextStopName = stop == null ? "" : nameOf(stations, stop);
 
+        if (ConsoleControl.held(world.provider.getDimension(), a.loco)) {   // the Control Center console holds it
+            hold(loco);
+            r.status = ConsoleControl.allStop(world.provider.getDimension()) ? "ALL STOP from the control center" : "Held by the control center";
+            return;
+        }
+        if (com.dogpound.railmap.sim.ConsistSim.holding(a.loco, now)) {           // the train parted: brake pipe vented
+            hold(loco);
+            r.status = "TRAIN PARTED - emergency brake, waiting for the crew";
+            return;
+        }
         if (r.dwelling) {
             hold(loco);
             long left = (r.dwellUntil - now) / 20;
@@ -175,7 +203,13 @@ public final class Autopilot {
                     return;
                 }
             }
-            if (now >= r.dwellUntil) depart(world, data, stations, a, r, loco);
+            if (now >= r.dwellUntil) {
+                String eh = com.dogpound.railmap.depot.DepotHolds.departure(world, a, loco);   // failed in service / brake test / crew (her list 8, #84)
+                if (eh == null) eh = com.dogpound.railmap.ohle.EnergyDispatch.hold(world, a.loco, loco, r.order == RailwayData.Order.FULL_LOAD, now);   // #33 energy-aware dispatch
+                if (eh == null) eh = com.dogpound.railmap.planning.OpsGear.departure(world, a, loco, now);   // batch-3 #1 #2 #4 #5: changeover / banking / coupling / turnback work in progress
+                if (eh == null) depart(world, data, stations, a, r, loco);
+                else r.status = "At " + nameOf(stations, r.dwellStation) + " — " + eh;
+            }
             return;
         }
         if (stop == null) {
@@ -184,7 +218,7 @@ public final class Autopilot {
                     ? "No home station set" : "No stops — give it a line";
             return;
         }
-        BlockPos sp = BlockPos.fromLong(stop);
+        BlockPos sp = BlockPos.fromLong(com.dogpound.railmap.station.Platforms.resolve(world, a, stop));   // platform allocation (her list #82)
         Vec3d pos = loco.getPosition();
 
         // Nothing to do but wait at home for a ticket.
@@ -204,7 +238,7 @@ public final class Autopilot {
 
         cam72cam.mod.world.World umc = cam72cam.mod.world.World.get(world);
         double cur = r.path == null ? -1 : r.path.distanceTo(pos.x, pos.y, pos.z, 3.5);
-        if (r.path == null || r.pathTarget != stop || cur < 0 || now - r.planTick > 200) {
+        if (r.path == null || r.pathTarget != stop || cur < 0 || now - r.planTick > 200 || r.disruptVersion != Disruptions.version()) {
             if (now - r.planTick < 40 && r.path == null && r.pathTarget == stop) {
                 hold(loco);      // a failed search: don't hammer the track every tick
                 return;
@@ -274,6 +308,20 @@ public final class Autopilot {
             }
         }
 
+        double dia = Diamonds.line(world, r.path, cur, lookahead, me);   // batch-3 #6: diamond crossings ahead, locked for our road
+        if (dia < blockedAt) { blockedAt = dia; blockedWhy = "Waiting for a diamond crossing (" + Diamonds.why(me) + ")"; }
+
+        // disruption recovery: queued behind a blocked line, and once it's clear wait our turn to restart
+        int dim = world.provider.getDimension();
+        Object[] hit = Disruptions.onPath(dim, r.path);
+        Disruptions.Incident held = Disruptions.holding(dim, a.loco,
+                hit != null && (double) hit[0] - cur < Math.max(400, lookahead + 200) ? (Disruptions.Incident) hit[1] : null);
+        if (held != null && held.phase == Disruptions.Phase.CLEAR) {
+            hold(loco);
+            r.status = "Line clear after incident #" + held.id + " - waiting to restart in turn" + late(a);
+            return;
+        }
+
         if (now - r.limitsTick >= 20) {
             r.limits = Wayside.read(world, r.path);
             r.limitsTick = now;
@@ -281,12 +329,14 @@ public final class Autopilot {
         }
 
         // Speed target from every restriction ahead.
+        boolean cbtc = MovingBlock.onCbtcLine(data, a);
         double target = Math.min(a.maxKmh, r.signKmh);
         String why = null;
         for (Wayside.Limit l : r.limits) {
             double dd = l.distance - cur;
             if (!l.stop && l.kmh < 1e6 && dd <= 0.5 && dd > -4) r.signKmh = l.kmh;   // passing a speed sign
             if (dd <= 0.5) continue;
+            if (cbtc && l.signal) continue;      // a moving-block train runs on its authority, not the block signals
             double allow = l.stop ? Wayside.allowed(dd - 5 - lag, 0, decel) : Wayside.allowed(dd - lag, l.kmh, decel);
             if (allow < target) {
                 target = allow;
@@ -297,22 +347,51 @@ public final class Autopilot {
             double allow = Wayside.allowed(blockedAt - cur - lag, 0, decel);
             if (allow < target) { target = allow; why = blockedWhy; }
         }
+        // Moving block: never closer than its braking curve to the tail of whatever is ahead (every driverless train
+        // gets this safety net; on a CBTC line it is what keeps trains apart instead of the block signals)
+        MovingBlock.Auth auth = MovingBlock.compute(world, umc, loco, r.path, cur, speed, decel, lag, false, r.path.length, now);
+        auth.cbtc = cbtc;
+        if (auth.permittedKmh < target) {
+            target = auth.permittedKmh;
+            why = "moving block - " + auth.limitedBy;
+        }
         double atStation = Wayside.allowed(remaining - 1.0 - lag, 0, decel);
         if (atStation < target) target = atStation;
+        Object[] tram = com.dogpound.railmap.road.TramMode.limit(world, loco, r.path, cur, speed, decel, lag, sp, now);   // batch 5 #4: tram mode (sight, tram signals, tram stops, dead OHLE)
+        if (tram != null && (double) tram[0] < target) { target = (double) tram[0]; why = (String) tram[1]; }
 
         control(loco, r, speed, target);
+        com.dogpound.railmap.sim.CabData.plan(loco.getUUID(), r.limits, cur, r.path, r.nextStopName, remaining);   // driver's display planning area
+        if (RailMapConfig.cabDisplay)
+            MovingBlock.sendCab(loco, auth, cbtc ? "CBTC \u00b7 ATO" : "ATO", speed, target, Math.min(a.maxKmh, r.signKmh),
+                    r.nextStopName, remaining, why != null ? why : com.dogpound.railmap.safety.SigHooks.cabNote(loco.getUUID(), now));   // batch-3 #12: last balise telegram
 
         if (target < 1 && speed < 1 && why != null) {
-            r.status = "Stopped: " + why;
+            r.status = "Stopped: " + why + late(a);
         } else {
             r.status = String.format("To %s · %d m · %d km/h (target %d)", r.nextStopName,
-                    Math.round(remaining), Math.round(speed), Math.round(Math.min(target, 999)));
+                    Math.round(remaining), Math.round(speed), Math.round(Math.min(target, 999))) + late(a);
         }
+    }
+
+    /** " (+N min late)" once a train has been held for disruptions a while */
+    private static String late(RailwayData.AutoTrain a) {
+        int s = Disruptions.delaySeconds(a.loco);
+        return s < 60 ? "" : " (+" + Math.round(s / 60.0) + " min late)";
     }
 
     /** Find the way to the stop, trying the direction we're already going first. */
     private static void plan(World world, cam72cam.mod.world.World umc, RailwayData.AutoTrain a, Run r,
                              Locomotive loco, BlockPos stop, double speed, long now) {
+        r.disruptVersion = Disruptions.version();
+        // a way round any blocked line first; if there is none, the normal route (the train holds at the last signal)
+        Disruptions.avoiding(world, () -> { planOnce(world, umc, a, r, loco, stop, speed, now); return null; });
+        if (r.path == null && !Disruptions.incidents(world.provider.getDimension()).isEmpty())
+            planOnce(world, umc, a, r, loco, stop, speed, now);
+    }
+
+    private static void planOnce(World world, cam72cam.mod.world.World umc, RailwayData.AutoTrain a, Run r,
+                                 Locomotive loco, BlockPos stop, double speed, long now) {
         r.planTick = now;
         r.path = null;
         Vec3d p = loco.getPosition();
@@ -326,12 +405,15 @@ public final class Autopilot {
         int first = moving != 0 ? moving : loco.getReverser() < -0.05 ? -1 : r.sign;
         TrackPath.Goal goal = TrackPath.near(stop.getX() + 0.5, stop.getY(), stop.getZ() + 0.5, 3.0);
         for (int s : new int[]{ first, -first }) {
-            Vec3i from = new Vec3i(Math.floor(p.x - fx * s * 2.5), Math.floor(p.y), Math.floor(p.z - fz * s * 2.5));
+            // just past the back end of the piece we're on (a point 2.5 m behind is still inside a long piece, and the
+            // search then set off the wrong way: the train drove away from its stop and off the end of the track)
+            Vec3i from = TrackPath.behind(rail, p.x, p.y, p.z, fx * s, fz * s);
             TrackPath path = TrackPath.find(umc, rail, from, RailMapConfig.routeSearchBlocks, goal);
             if (path == null) continue;
             double at = path.distanceTo(stop.getX() + 0.5, stop.getY(), stop.getZ() + 0.5, 3.0);
             if (at < 0) at = path.length;
             // Changing direction releases whatever was lined the other way.
+            if (s != r.sign && com.dogpound.railmap.planning.OpsGear.vetoReversal(world, a, loco, now)) { r.status = "Turnback: changing ends"; return; }   // batch-3 #5 automatic turnback
             if (s != r.sign) Interlocking.releaseAll(world, owner(a.loco));
             r.path = path;
             r.sign = s;
@@ -408,6 +490,7 @@ public final class Autopilot {
         boolean load = r.order != RailwayData.Order.UNLOAD, unload = r.order != RailwayData.Order.LOAD && r.order != RailwayData.Order.FULL_LOAD;
         setAugmentsNear(world, r, BlockPos.fromLong(station), load, unload);
         String here = nameOf(stations, station);
+        com.dogpound.railmap.program.ProgramData.post(world, "arrive:" + here);   // program EVENT conditions (her list #98)
         String label = label(a, loco);
         Dispatcher.arrived(world, data, a, station, label, here);
         ArrivalEvents.arrived(world, station, label);
@@ -508,7 +591,7 @@ public final class Autopilot {
         if (now > Math.max(0, r.cargoAtArrive - Math.max(0, dropped))) a.loadedAt = r.dwellStation;
     }
 
-    private static List<Entity> consist(Locomotive loco) {
+    public static List<Entity> consist(Locomotive loco) {
         List<Entity> out = new ArrayList<>();
         try {
             for (EntityCoupleableRollingStock c : loco.getTrain()) out.add(c.internal);
@@ -519,7 +602,7 @@ public final class Autopilot {
     }
 
     /** Items aboard + fluid buckets aboard, over the whole consist. */
-    static int cargoUnits(Locomotive loco) {
+    public static int cargoUnits(Locomotive loco) {
         int n = 0;
         for (Entity e : consist(loco)) {
             if (e == null) continue;
@@ -536,7 +619,7 @@ public final class Autopilot {
     }
 
     /** How full the emptiest cargo car is (100 when the train carries no cargo cars at all). */
-    static int fillPercent(Locomotive loco) {
+    public static int fillPercent(Locomotive loco) {
         int worst = 100;
         for (Entity e : consist(loco)) {
             if (e == null || e == loco.internal) continue;

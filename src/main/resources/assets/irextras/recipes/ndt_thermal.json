@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GDC",
+  " I "
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass"
+  },
+  "D": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:ndt_tool",
+  "data": 2
+ }
+}

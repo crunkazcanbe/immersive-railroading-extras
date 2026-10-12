@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:axle_weighbridge"
+  },
+  "facing=east": {
+   "model": "irextras:axle_weighbridge",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:axle_weighbridge",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:axle_weighbridge",
+   "y": 270
+  }
+ }
+}

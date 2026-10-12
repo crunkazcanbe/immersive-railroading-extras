@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:crowd_monitor"
+  },
+  "facing=east": {
+   "model": "irextras:crowd_monitor",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:crowd_monitor",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:crowd_monitor",
+   "y": 270
+  }
+ }
+}

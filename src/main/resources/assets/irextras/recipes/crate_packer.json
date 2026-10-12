@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "HCH",
+  "BFB",
+  "PMP"
+ ],
+ "key": {
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 8
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:crate_packer",
+  "count": 1
+ }
+}

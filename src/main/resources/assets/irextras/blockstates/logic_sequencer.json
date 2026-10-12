@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:logic_sequencer"
+  },
+  "facing=east": {
+   "model": "irextras:logic_sequencer",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:logic_sequencer",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:logic_sequencer",
+   "y": 270
+  }
+ }
+}

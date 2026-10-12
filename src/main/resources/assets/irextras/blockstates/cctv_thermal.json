@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:cctv_thermal"
+  },
+  "facing=east": {
+   "model": "irextras:cctv_thermal",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:cctv_thermal",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:cctv_thermal",
+   "y": 270
+  }
+ }
+}

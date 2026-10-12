@@ -1,0 +1,425 @@
+{
+ "title": "grain_pit",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.18,
+   "title": "PIT POST",
+   "controls": [
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 12.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "T THIS CAR"
+    },
+    {
+     "id": "pitg",
+     "t": "gauge",
+     "u": 9.1,
+     "v": 11.0,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "PIT",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.1,
+     "v": 9.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PIT"
+    },
+    {
+     "id": "carg",
+     "t": "gauge",
+     "u": 11.3,
+     "v": 11.0,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "CAR",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.3,
+     "v": 9.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CAR"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 8.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 8.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "gatel",
+     "t": "lamp",
+     "u": 12.8,
+     "v": 8.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "GATE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.8,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GATE"
+    },
+    {
+     "id": "carl",
+     "t": "lamp",
+     "u": 14.2,
+     "v": 8.6,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "8ad4ff",
+     "label": "CAR"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.2,
+     "v": 8.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CAR"
+    },
+    {
+     "id": "dustl",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 7.4,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "DUST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DUST"
+    },
+    {
+     "id": "dusty",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 7.4,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff3030",
+     "label": "DUSTY",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DUSTY"
+    },
+    {
+     "id": "wetl",
+     "t": "lamp",
+     "u": 12.8,
+     "v": 7.4,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "WET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.8,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WET"
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 9.8,
+     "v": 5.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "1fa34a",
+     "label": "START"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.8,
+     "v": 4.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "START"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 11.6,
+     "v": 5.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.6,
+     "v": 4.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "probe",
+     "t": "push",
+     "u": 13.4,
+     "v": 5.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "2050d0",
+     "label": "PROBE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.4,
+     "v": 4.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PROBE"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 9.8,
+     "v": 3.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "505860",
+     "label": "RESET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.8,
+     "v": 3.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.6,
+     "v": 3.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.6,
+     "v": 3.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "k_dust",
+     "t": "key",
+     "u": 6.2,
+     "v": 3.9,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "DUST COLL",
+     "pos": [
+      "OFF",
+      "RUN"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.2,
+     "v": 3.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DUST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.95,
+   "title": "PIT SCREEN",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.867,
+     "w": 3.9999999999999996,
+     "h": 0.8533333333333332,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.8,
+     "w": 3.9999999999999996,
+     "h": 0.8533333333333332,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tons",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.733,
+     "w": 3.9999999999999996,
+     "h": 0.8533333333333332,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": 5.38,
+   "title": "POST SIDE",
+   "controls": [
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 13.5,
+     "v": 14.0,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "d02020",
+     "label": "E-STOP"
+    },
+    {
+     "id": "probe",
+     "t": "digits",
+     "u": 13.5,
+     "v": 11.5,
+     "w": 2.2,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "MOISTURE",
+     "fmt": "%s %%"
+    },
+    {
+     "id": "total",
+     "t": "digits",
+     "u": 13.5,
+     "v": 10.2,
+     "w": 2.2,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "TOTAL",
+     "fmt": "%s T"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 14.05,
+   "title": "GRATE",
+   "controls": [
+    {
+     "id": "pit",
+     "t": "zone",
+     "u": 8.0,
+     "v": 10.0,
+     "w": 12.0,
+     "h": 8.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

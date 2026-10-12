@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "DCD",
+  "SFS",
+  "BMB"
+ ],
+ "key": {
+  "D": {
+   "type": "forge:ore_dict",
+   "ore": "gemDiamond"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 8
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:sawmill",
+  "count": 1
+ }
+}

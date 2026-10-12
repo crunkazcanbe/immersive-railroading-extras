@@ -1,0 +1,159 @@
+{
+ "title": "tram_stop",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 8.45,
+   "title": "PASSENGER INFORMATION",
+   "controls": [
+    {
+     "id": "name",
+     "t": "digits",
+     "u": 8.0,
+     "v": 26.32,
+     "w": 14.2,
+     "h": 0.816,
+     "col": "ffffff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "p1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 25.36,
+     "w": 14.2,
+     "h": 0.816,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "p2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 24.4,
+     "w": 14.2,
+     "h": 0.816,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "p3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 23.44,
+     "w": 14.2,
+     "h": 0.816,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "pmsg",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.48,
+     "w": 14.2,
+     "h": 0.816,
+     "col": "ff6060",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 12.92,
+   "title": "HELP POINT",
+   "controls": [
+    {
+     "id": "info",
+     "t": "push",
+     "u": 22.0,
+     "v": 13.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f0f0f0",
+     "label": "INFO"
+    },
+    {
+     "id": "appr",
+     "t": "lamp",
+     "u": 22.0,
+     "v": 9.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "TRAM DUE",
+     "blink": true
+    },
+    {
+     "id": "k_req",
+     "t": "key",
+     "u": 20.8,
+     "v": 9.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "STOP",
+     "pos": [
+      "ALL STOP",
+      "REQUEST"
+     ]
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 23.2,
+     "v": 9.2,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 23.4,
+     "v": 8.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 23.4,
+     "v": 7.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 22.0,
+     "v": 8.0,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.0,
+     "v": 7.55,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    }
+   ]
+  }
+ ]
+}

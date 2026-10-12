@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ITI",
+  "WWW",
+  "ITI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "T": {
+   "item": "minecraft:rail"
+  },
+  "W": {
+   "item": "minecraft:wooden_slab",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:funicular_track",
+  "count": 8
+ }
+}

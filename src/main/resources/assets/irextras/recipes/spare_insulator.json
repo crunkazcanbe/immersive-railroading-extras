@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " I ",
+  " I ",
+  " I "
+ ],
+ "key": {
+  "I": {
+   "item": "irextras:part",
+   "data": 15
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 14,
+  "count": 2
+ }
+}

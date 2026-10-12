@@ -1,0 +1,574 @@
+{
+ "title": "warehouse_office",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 5.98,
+   "title": "WMS",
+   "controls": [
+    {
+     "id": "pageno",
+     "t": "digits",
+     "u": 7.8,
+     "v": 13.6,
+     "w": 1.2,
+     "h": 0.5,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "moved",
+     "t": "digits",
+     "u": 4.2,
+     "v": 16.6,
+     "w": 3.6,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "MOVED",
+     "fmt": "%s ITEMS"
+    },
+    {
+     "id": "rackg",
+     "t": "gauge",
+     "u": 5.0,
+     "v": 14.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "RACKS FULL",
+     "max": 100
+    },
+    {
+     "id": "d0",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 14.8,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": "DOCK 1 SECURED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.4,
+     "v": 14.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "D1"
+    },
+    {
+     "id": "d1",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 14.8,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": "DOCK 2 SECURED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.6,
+     "v": 14.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "D2"
+    },
+    {
+     "id": "d2",
+     "t": "lamp",
+     "u": 1.8,
+     "v": 14.8,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": "DOCK 3 SECURED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 14.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "D3"
+    },
+    {
+     "id": "d3",
+     "t": "lamp",
+     "u": 1.0,
+     "v": 14.8,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": "DOCK 4 SECURED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.0,
+     "v": 14.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "D4"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 14.6,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.6,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "jobl",
+     "t": "lamp",
+     "u": 15.9,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "30e060",
+     "label": "JOB"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.9,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "JOB"
+    },
+    {
+     "id": "unl",
+     "t": "lamp",
+     "u": 17.2,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "8ad4ff",
+     "label": "UNLOAD"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.2,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "UNLOAD"
+    },
+    {
+     "id": "ldl",
+     "t": "lamp",
+     "u": 18.5,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "ffb020",
+     "label": "LOAD"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.5,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOAD"
+    },
+    {
+     "id": "autol",
+     "t": "lamp",
+     "u": 19.8,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "8ad4ff",
+     "label": "AUTO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.8,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTO"
+    },
+    {
+     "id": "fulll",
+     "t": "lamp",
+     "u": 21.1,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "ff3030",
+     "label": "FULL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 21.1,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FULL"
+    },
+    {
+     "id": "w1",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "ffb020",
+     "label": "FLT1"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.6,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLT1"
+    },
+    {
+     "id": "w2",
+     "t": "lamp",
+     "u": 7.9,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "ffb020",
+     "label": "FLT2"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.9,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLT2"
+    },
+    {
+     "id": "w3",
+     "t": "lamp",
+     "u": 9.2,
+     "v": 12.4,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "ffb020",
+     "label": "FLT3"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.2,
+     "v": 11.95,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLT3"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 5.75,
+   "title": "WMS SCREEN",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 11.0,
+     "v": 16.833,
+     "w": 7.6,
+     "h": 0.9066666666666663,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 11.0,
+     "v": 15.7,
+     "w": 7.6,
+     "h": 0.9066666666666663,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line3",
+     "t": "digits",
+     "u": 11.0,
+     "v": 14.567,
+     "w": 7.6,
+     "h": 0.9066666666666663,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.98,
+   "title": "WMS DESK",
+   "controls": [
+    {
+     "id": "unload",
+     "t": "push",
+     "u": 14.4,
+     "v": 7.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "2050d0",
+     "label": "UNLOAD"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "UNLOAD"
+    },
+    {
+     "id": "load",
+     "t": "push",
+     "u": 16.0,
+     "v": 7.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "e08020",
+     "label": "LOAD"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.0,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOAD"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 17.6,
+     "v": 7.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.6,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "page",
+     "t": "push",
+     "u": 19.2,
+     "v": 7.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "505860",
+     "label": "PAGE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.2,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PAGE"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 20.8,
+     "v": 7.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "505860",
+     "label": "PRINT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 20.8,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRINT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 22.4,
+     "v": 7.4,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.4,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "s_dock",
+     "t": "selector",
+     "u": 14.0,
+     "v": 4.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "DOCK",
+     "pos": [
+      "DOCK 1",
+      "DOCK 2",
+      "DOCK 3",
+      "DOCK 4"
+     ]
+    },
+    {
+     "id": "s_workers",
+     "t": "selector",
+     "u": 11.4,
+     "v": 4.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "WORKERS",
+     "pos": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    {
+     "id": "k_auto",
+     "t": "key",
+     "u": 9.0,
+     "v": 4.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "AUTO UNLOAD",
+     "pos": [
+      "MAN",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.0,
+     "v": 3.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DOCK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.4,
+     "v": 3.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DRIVERS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.0,
+     "v": 3.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTO"
+    },
+    {
+     "id": "labels",
+     "t": "zone",
+     "u": 2.3,
+     "v": 4.5,
+     "w": 3.4,
+     "h": 7.4,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 5.58,
+   "title": "PICK TRAY",
+   "controls": [
+    {
+     "id": "picklist",
+     "t": "zone",
+     "u": 13.5,
+     "v": 2.0,
+     "w": 3.0,
+     "h": 1.6,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

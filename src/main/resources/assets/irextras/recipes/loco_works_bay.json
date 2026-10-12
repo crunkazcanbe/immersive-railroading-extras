@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PHP",
+  "I I",
+  "FFF"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "F": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:loco_works_bay"
+ }
+}

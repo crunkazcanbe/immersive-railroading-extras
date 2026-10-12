@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "INI",
+  "IRI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "N": {
+   "item": "minecraft:redstone"
+  },
+  "R": {
+   "item": "minecraft:rail"
+  }
+ },
+ "result": {
+  "item": "irextras:panel_mimic",
+  "count": 4
+ }
+}

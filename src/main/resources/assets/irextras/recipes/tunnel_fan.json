@@ -1,0 +1,20 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "IPI",
+  "III"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_bars"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  }
+ },
+ "result": {
+  "item": "irextras:tunnel_fan",
+  "count": 1
+ }
+}

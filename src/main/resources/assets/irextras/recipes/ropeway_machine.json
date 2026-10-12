@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IPI",
+  "BRB",
+  "III"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "B": {
+   "item": "minecraft:iron_block"
+  },
+  "R": {
+   "item": "minecraft:redstone_block"
+  }
+ },
+ "result": {
+  "item": "irextras:ropeway_machine",
+  "count": 1
+ }
+}

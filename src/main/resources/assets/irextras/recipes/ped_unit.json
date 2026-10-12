@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IRI",
+  "IBI",
+  "IGI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:dye",
+   "data": 1
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "G": {
+   "item": "minecraft:dye",
+   "data": 10
+  }
+ },
+ "result": {
+  "item": "irextras:ped_unit",
+  "count": 1
+ }
+}

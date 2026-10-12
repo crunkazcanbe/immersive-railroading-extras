@@ -171,6 +171,7 @@ processResources {
     // once landed in assets/ and bloated the jar from 0.5MB to 3.3MB — and it would have
     // carried a full conversation transcript onto CurseForge.
     exclude '**/.recall/**', '**/.git/**', '**/*.bak', '**/*~'
+    from('web/trainmap') { include '*.html', '*.js', '*.css'; into 'assets/irextras/web/trainmap' }   // live train map page (served by web/TrainMapServer)
 
     inputs.property 'mod_id', propertyString('mod_id')
     inputs.property 'mod_name', propertyString('mod_name')

@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "I I",
+  "SSS",
+  "I I"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "S": {
+   "item": "minecraft:wooden_slab",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:garden_track",
+  "count": 16
+ }
+}

@@ -72,6 +72,20 @@ public class ItemSignalWrench extends Item {
             }
             return EnumActionResult.SUCCESS;
         }
+        // signalling-safety gear: pick an axle head / radio mast (then click a section on an evaluator, the lab's target...)
+        if (peek instanceof com.dogpound.railmap.safety.IPickable pk) {
+            if (!world.isRemote) { setPick(player.getHeldItem(hand), pos); say(player, "§b" + pk.pickName() + " picked - now right-click an axle evaluator section / the fault lab's TARGET window"); }
+            return EnumActionResult.SUCCESS;
+        }
+        // lever frames: pick a switch track, a track circuit or another signal box (then right-click a lever / lamp / dial)
+        if (com.dogpound.railmap.scan.SwitchControl.isRail(world, pos) || peek instanceof com.dogpound.railmap.signal.TileTrackCircuit
+                || peek instanceof com.dogpound.railmap.block.TileSignalBox) {
+            if (world.isRemote) return EnumActionResult.SUCCESS;
+            setPick(player.getHeldItem(hand), pos);
+            say(player, "§b" + (peek instanceof com.dogpound.railmap.block.TileSignalBox ? "Signal box" : peek instanceof com.dogpound.railmap.signal.TileTrackCircuit ? "Track circuit" : "Track")
+                    + " picked - now right-click a lever / diagram lamp / block instrument on a signal box");
+            return EnumActionResult.SUCCESS;
+        }
         boolean ours = peek instanceof TileSignalMast || peek instanceof TileSignalBridge || peek instanceof TileRelayCase
                 || peek instanceof com.dogpound.railmap.signal.TileRailSign
                 || peek instanceof com.dogpound.railmap.block.TileTicketMachine
@@ -154,7 +168,7 @@ public class ItemSignalWrench extends Item {
         stack.setTagCompound(tag);
     }
 
-    private static BlockPos getPick(ItemStack stack) {
+    public static BlockPos getPick(ItemStack stack) {
         NBTTagCompound tag = stack.getTagCompound();
         return tag != null && tag.hasKey(TAG_POS) ? BlockPos.fromLong(tag.getLong(TAG_POS)) : null;
     }

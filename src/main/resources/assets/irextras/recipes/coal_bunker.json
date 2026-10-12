@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SSS",
+  "SHS",
+  "B B"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "B": {
+   "item": "minecraft:iron_bars"
+  }
+ },
+ "result": {
+  "item": "irextras:coal_bunker"
+ }
+}

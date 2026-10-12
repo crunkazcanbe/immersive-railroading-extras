@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IKI",
+  "LRL",
+  "IPI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "K": {
+   "item": "minecraft:tripwire_hook"
+  },
+  "L": {
+   "item": "minecraft:lever"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "P": {
+   "item": "minecraft:planks",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:signal_isolation"
+ }
+}

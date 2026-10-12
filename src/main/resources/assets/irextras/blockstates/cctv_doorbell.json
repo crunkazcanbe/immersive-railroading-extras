@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:cctv_doorbell"
+  },
+  "facing=east": {
+   "model": "irextras:cctv_doorbell",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:cctv_doorbell",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:cctv_doorbell",
+   "y": 270
+  }
+ }
+}

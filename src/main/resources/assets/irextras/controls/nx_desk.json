@@ -1,0 +1,72 @@
+{
+ "title": "nx_desk",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.59,
+   "title": "FUNCTIONS",
+   "controls": [
+    {
+     "id": "allsig",
+     "t": "push",
+     "u": 20.6,
+     "v": 10.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "d8322c",
+     "label": ""
+    },
+    {
+     "id": "emerg",
+     "t": "push",
+     "u": 15.8,
+     "v": 10.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "d8322c",
+     "label": ""
+    },
+    {
+     "id": "cancel",
+     "t": "push",
+     "u": 11.0,
+     "v": 10.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "e8e8e8",
+     "label": ""
+    },
+    {
+     "id": "lamptest",
+     "t": "push",
+     "u": 6.2,
+     "v": 10.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "e8e8e8",
+     "label": ""
+    },
+    {
+     "id": "night",
+     "t": "push",
+     "u": 1.4,
+     "v": 10.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2f7ce0",
+     "label": ""
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": -3.4,
+     "v": 10.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f2c318",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

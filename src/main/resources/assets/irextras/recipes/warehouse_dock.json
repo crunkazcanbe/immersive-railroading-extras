@@ -1,0 +1,31 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IDI",
+  "IMI",
+  "SCS"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "D": {
+   "item": "minecraft:iron_door"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:warehouse_dock"
+ }
+}

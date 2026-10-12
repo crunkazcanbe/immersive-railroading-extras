@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RBR",
+  " I ",
+  " I "
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:emergency_plunger",
+  "count": 1
+ }
+}

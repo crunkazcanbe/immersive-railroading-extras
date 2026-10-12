@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " PI",
+  " I ",
+  "CBV"
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:iron_ingot"
+  },
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "B": {
+   "item": "minecraft:bucket"
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:water_column"
+ }
+}

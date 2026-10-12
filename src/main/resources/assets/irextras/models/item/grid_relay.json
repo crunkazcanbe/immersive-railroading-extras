@@ -1,1 +1,3 @@
-{"parent": "irextras:block/grid_relay_1"}
+{
+ "parent": "irextras:block/grid_relay_1_full"
+}

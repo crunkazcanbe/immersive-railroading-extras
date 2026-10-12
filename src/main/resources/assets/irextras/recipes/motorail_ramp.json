@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "  C",
+  " II",
+  "PII"
+ ],
+ "key": {
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  }
+ },
+ "result": {
+  "item": "irextras:motorail_ramp",
+  "count": 1
+ }
+}

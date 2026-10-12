@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LBL",
+  "ICI",
+  "IFI"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:lapis_block"
+  },
+  "B": {
+   "item": "minecraft:noteblock"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "F": {
+   "item": "minecraft:iron_bars"
+  }
+ },
+ "result": {
+  "item": "irextras:police_station",
+  "count": 1
+ }
+}

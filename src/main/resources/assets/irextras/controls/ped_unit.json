@@ -1,0 +1,62 @@
+{
+ "title": "ped_unit",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 7.58,
+   "title": "PEDESTRIANS",
+   "controls": [
+    {
+     "id": "ped",
+     "t": "push",
+     "u": 8.0,
+     "v": 15.4,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "202020",
+     "label": "PUSH"
+    },
+    {
+     "id": "wait",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 17.3,
+     "w": 3.2,
+     "h": 0.8,
+     "col": "ff7a20",
+     "label": "WAIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 17.3,
+     "w": 0,
+     "h": 0,
+     "col": "303030",
+     "label": "WAIT"
+    },
+    {
+     "id": "rman",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 28.4,
+     "w": 3.0,
+     "h": 3.6,
+     "col": "ff2a20",
+     "label": "DON'T WALK"
+    },
+    {
+     "id": "gman",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 23.4,
+     "w": 3.0,
+     "h": 3.6,
+     "col": "30ff70",
+     "label": "WALK"
+    }
+   ]
+  }
+ ]
+}

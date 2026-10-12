@@ -1,0 +1,134 @@
+{
+ "title": "platform_lamp",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.85,
+   "title": "LAMP",
+   "controls": [
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 8.0,
+     "v": 4.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "ON",
+      "OFF"
+     ]
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 2.8,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.2,
+     "v": 2.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 7.4,
+     "v": 2.8,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.4,
+     "v": 2.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "litl",
+     "t": "lamp",
+     "u": 8.6,
+     "v": 2.8,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0e0",
+     "label": "LIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.6,
+     "v": 2.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LIT"
+    },
+    {
+     "id": "cell",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 2.8,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "DARK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.8,
+     "v": 2.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DARK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 10.0,
+     "v": 4.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": -9.85,
+   "title": "LANTERN",
+   "controls": [
+    {
+     "id": "litl",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 8.0,
+     "w": 3.0,
+     "h": 3.0,
+     "col": "fff0b0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "NWN",
+  " S "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:clock"
+  },
+  "N": {
+   "type": "forge:ore_dict",
+   "ore": "nuggetGold"
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 11
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 21,
+  "count": 2
+ }
+}

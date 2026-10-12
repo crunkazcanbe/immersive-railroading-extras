@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IGI",
+  "RCR",
+  "IDI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "G": {
+   "item": "minecraft:glowstone_dust"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "D": {
+   "item": "minecraft:diamond"
+  }
+ },
+ "result": {
+  "item": "irextras:pis_server"
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PPP",
+  "PCP",
+  "IHI"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  }
+ },
+ "result": {
+  "item": "irextras:grain_silo"
+ }
+}

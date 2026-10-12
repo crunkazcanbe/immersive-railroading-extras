@@ -30,7 +30,36 @@ import net.minecraft.world.World;
  *       aspect from the input strength: 0 Stop, 1-5 Restricting, 6-10 Approach, 11+ Clear.</li>
  * </ul>
  */
-public class TileSignalMast extends TileEntity implements ITickable, IScalable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileSignalMast extends TileEntity implements ITickable, IScalable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.wire.IWiredGear {
+    // ---- 12 V terminal: no power = lamps dark, which the railway treats as STOP
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); sync(); }
+    @Override public String wiredName() { String pl = cfg.text("plate").trim(); String n = style.label.toLowerCase(java.util.Locale.ROOT).contains("signal") ? style.label : style.label + " signal"; return pl.isEmpty() ? n : n + " " + pl; }
+    @Override public String gearState() { return lampOut ? "LAMP FAILED - dark, held at STOP" : term.powered() ? aspect.label + (relayHold ? " (held)" : "") + (safetyHold.isEmpty() ? "" : " - held: " + safetyHold) : batteryRed ? "NO 12 V - red lamp on battery" : "DARK - no 12 V"; }
+    @Override public int wiredLamp() { return term.burnt || !term.powered() ? 3 : aspect.isStop() ? 2 : 1; }
+    @Override public void gearInfo(java.util.Map<String, Object> m) { m.put("aspect", aspect.label); m.put("mode", mode.label); m.put("clearBlocks", clearBlocks); m.put("held", relayHold); m.put("aspectChanges", changes); m.put("lampFailed", lampOut); m.put("safetyHold", safetyHold); if (world != null && !world.isRemote) { com.dogpound.railmap.safety.SignalSighting.Result sr = com.dogpound.railmap.safety.SignalSighting.get(world, pos); if (sr != null) { m.put("sightingM", Math.round(com.dogpound.railmap.safety.SignalSighting.sightNow(world, sr))); m.put("sightingShortM", Math.round(com.dogpound.railmap.safety.SignalSighting.deficit(world, pos))); } } }
+    /** what the lamps show: dark with no 12 V (the server holds STOP for the trains) */
+    public Aspect shownAspect() { return lampOut ? Aspect.DARK : term.powered() ? aspect : batteryRed ? Aspect.STOP : Aspect.DARK; }
+
+    // ---- signalling safety (her ChatGPT list #22-28): lamp failure, battery red, holds from axle counters / plungers /
+    // possessions / integrity / radio (com.dogpound.railmap.safety). Synced so the head draws what really happens.
+    private boolean lampOut, batteryRed;
+    private String safetyHold = "";
+    public boolean lampFailed() { return lampOut; }
+    public String safetyHold() { return safetyHold; }
+
+    /** server, once a second: refresh the safety state; true when it changed */
+    private boolean refreshSafety() {
+        boolean lo = com.dogpound.railmap.safety.FaultLab.has(world, com.dogpound.railmap.safety.FaultLab.Kind.LAMP, pos);
+        boolean br = !com.dogpound.railmap.safety.FailSafe.safe(world, com.dogpound.railmap.safety.FailSafe.SIGNAL_POWER);
+        String h = com.dogpound.railmap.safety.SafetyHolds.reason(world, pos);
+        if (h == null) h = "";
+        boolean ch = lo != lampOut || br != batteryRed || !h.equals(safetyHold);
+        lampOut = lo; batteryRed = br; safetyHold = h;
+        return ch;
+    }
+
     private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
     private int changes;
 
@@ -65,6 +94,13 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Relay case", relayHold ? "HOLDING at Stop" : relayAspect != null ? "driving " + relayAspect.label : "not wired"));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "CTC route", mode == Mode.CTC ? (routeSet ? "SET" : "none") : "-"));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Aspect changes", String.valueOf(changes)));
+        l.add(com.dogpound.railmap.settings.Setting.info(st, "Safety hold", lampOut ? "LAMP FAILED (lamp proving holds the signal in rear)" : safetyHold.isEmpty() ? "none" : safetyHold));
+        if (world != null && !world.isRemote) {
+            com.dogpound.railmap.safety.SignalSighting.Result sr = com.dogpound.railmap.safety.SignalSighting.get(world, pos);
+            l.add(com.dogpound.railmap.settings.Setting.info(st, "Sighting", sr == null ? "not surveyed yet" : Math.round(com.dogpound.railmap.safety.SignalSighting.sightNow(world, sr)) + " m of "
+                    + Math.round(com.dogpound.railmap.safety.SignalSighting.required(world)) + " m needed - " + sr.obstruction + (sr.banner > 0 ? " · banner repeater " + Math.round(sr.banner) + " m" : "")));
+        }
+        com.dogpound.railmap.wire.IWiredGear.settings(l, st, this);
         return l;
     }
 
@@ -226,7 +262,11 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
 
     @Override
     public void update() {
-        if (world.isRemote || ++ticks % 20 != 0) return;
+        if (world.isRemote) return;
+        if (term.tick(world, pos, wiredName())) gearChanged();
+        if (++ticks % 20 != 0) return;
+        if (refreshSafety()) sync();
+        if (!term.powered()) { applyAspect(Aspect.STOP); return; }       // a dark signal is a stop signal
         // The engine drives AUTO masts in one pass; redstone/manual masts settle themselves.
         if (relayHold) { applyAspect(Aspect.STOP); return; }
         if (relayAspect != null) { applyAspect(relayAspect); return; }
@@ -254,7 +294,7 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
         relayHold = hold;
         relayAspect = driven;
         if (!changed) return;
-        if (relayHold) applyAspect(Aspect.STOP);
+        if (relayHold || !term.powered()) applyAspect(Aspect.STOP);
         else if (relayAspect != null) applyAspect(relayAspect);
         markDirty();
     }
@@ -267,6 +307,7 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
     public void setComputed(Aspect a, int clear, double length) {
         clearBlocks = clear;
         blockLength = length;
+        if (!term.powered()) { applyAspect(Aspect.STOP); return; }
         // A relay case outranks the track: that is the point of wiring one in.
         if (relayHold) { applyAspect(Aspect.STOP); return; }
         if (relayAspect != null) { applyAspect(relayAspect); return; }
@@ -278,6 +319,7 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
     }
 
     private void applyAspect(Aspect a) {
+        if (world != null && !world.isRemote && !a.isStop() && (lampOut || !safetyHold.isEmpty())) a = Aspect.STOP;   // safety holds only ever restrict
         if (a == aspect) return;
         aspect = a;
         changes++;
@@ -347,6 +389,10 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
         t.setInteger("clear", clearBlocks);
         t.setBoolean("route", routeSet);
         t.setInteger("changes", changes);
+        if (lampOut) t.setBoolean("lampOut", true);
+        if (batteryRed) t.setBoolean("batRed", true);
+        if (!safetyHold.isEmpty()) t.setString("shold", safetyHold);
+        term.write(t);
         cfg.write(t);
         return t;
     }
@@ -369,6 +415,10 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
         clearBlocks = t.getInteger("clear");
         routeSet = t.getBoolean("route");
         changes = t.getInteger("changes");
+        lampOut = t.getBoolean("lampOut");
+        batteryRed = t.getBoolean("batRed");
+        safetyHold = t.getString("shold");
+        term.read(t);
         cfg.read(t);
     }
 
@@ -392,6 +442,9 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
         return oldState.getBlock() != newState.getBlock();
     }
 
+    /** night lighting: a lit aspect is drawn (with its halo) much further than the 64-block default (config irextras_lighting) */
+    @Override public double getMaxRenderDistanceSquared() { return com.dogpound.railmap.light.LightConfig.signalRenderSq(); }
+
     /** Lamps glow, so the whole mast must stay rendered while any part of it is on screen. */
     @Override
     public net.minecraft.util.math.AxisAlignedBB getRenderBoundingBox() {
@@ -406,7 +459,8 @@ public class TileSignalMast extends TileEntity implements ITickable, IScalable, 
         if (permissive) sb.append(" · permissive");
         if (relayHold) sb.append(" · HELD by a relay case");
         else if (relayAspect != null) sb.append(" · driven by a relay case");
-        sb.append(" · showing ").append(aspect.label);
+        sb.append(" · showing ").append(term.powered() ? aspect.label : "DARK (no 12 V - trains treat it as STOP)");
+        sb.append(" · ").append(term.status()).append("§r");
         if (mode == Mode.CTC) sb.append(routeSet ? " · ROUTE SET" : " · no route (set one from the board)");
         if (mode == Mode.AUTO || mode == Mode.CTC) {
             sb.append(" · ").append(clearBlocks).append(" block(s) clear");

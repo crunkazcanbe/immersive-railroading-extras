@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ICI",
+  "ROR",
+  "ICI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "O": {
+   "item": "minecraft:observer"
+  }
+ },
+ "result": {
+  "item": "irextras:safety_supervisor"
+ }
+}

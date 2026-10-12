@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "IXI",
+  "IXI",
+  "PPP"
+ ],
+ "key": {
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "X": {
+   "item": "minecraft:iron_bars"
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 19,
+  "count": 1
+ }
+}

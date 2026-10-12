@@ -1,0 +1,18 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "WSW"
+ ],
+ "key": {
+  "W": {
+   "item": "irextras:catenary_wire"
+  },
+  "S": {
+   "item": "irextras:catenary_section_insulator"
+  }
+ },
+ "result": {
+  "item": "irextras:catenary_neutral_section",
+  "count": 1
+ }
+}

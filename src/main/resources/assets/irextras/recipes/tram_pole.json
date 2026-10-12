@@ -1,0 +1,20 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " C ",
+  "III",
+  " I "
+ ],
+ "key": {
+  "C": {
+   "item": "minecraft:iron_bars"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:tram_pole",
+  "count": 1
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LCL",
+  "IFI",
+  "PPP"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "minecraft:heavy_weighted_pressure_plate"
+  }
+ },
+ "result": {
+  "item": "irextras:axle_weighbridge",
+  "count": 1
+ }
+}

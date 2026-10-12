@@ -81,6 +81,8 @@ public class PacketSettings implements IMessage {
                 if (player.getDistanceSq(msg.pos) > 24 * 24 || !player.world.isBlockLoaded(msg.pos)) return;
                 TileEntity te = player.world.getTileEntity(msg.pos);
                 if (!(te instanceof ISettingsHolder h)) return;
+                String deny = msg.op == SET || msg.op == RESET ? h.denySettings(player) : null;
+                if (deny != null) { player.sendStatusMessage(new net.minecraft.util.text.TextComponentString(deny), true); RailMap.NETWORK.sendTo(data(te), player); return; }
                 if (msg.op == SET && h.settings().set(msg.key, msg.value)) {
                     te.markDirty();
                     h.onSettingsChanged(msg.key);

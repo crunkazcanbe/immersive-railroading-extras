@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:tram_signal"
+  },
+  "facing=east": {
+   "model": "irextras:tram_signal",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:tram_signal",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:tram_signal",
+   "y": 270
+  }
+ }
+}

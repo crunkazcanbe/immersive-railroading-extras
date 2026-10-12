@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "MMM",
+  "MMM"
+ ],
+ "key": {
+  "M": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:tunnel_stone_crown",
+  "count": 8
+ }
+}

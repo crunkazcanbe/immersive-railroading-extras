@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PCP",
+  "BFB",
+  "HXH"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 8
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "X": {
+   "item": "minecraft:hopper"
+  }
+ },
+ "result": {
+  "item": "irextras:unloader",
+  "count": 1
+ }
+}

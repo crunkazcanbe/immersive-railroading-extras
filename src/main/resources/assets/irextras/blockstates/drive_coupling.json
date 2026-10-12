@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "formed=false": {
+   "model": "irextras:drive_coupling"
+  },
+  "formed=true": {
+   "model": "irextras:drive_coupling"
+  }
+ }
+}

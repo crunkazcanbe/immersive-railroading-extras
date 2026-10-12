@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PMP",
+  "BFB",
+  "PSP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 9
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  }
+ },
+ "result": {
+  "item": "irextras:grid_motor",
+  "count": 1
+ }
+}

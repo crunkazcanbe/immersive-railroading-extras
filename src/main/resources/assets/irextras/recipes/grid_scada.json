@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "VVV",
+  "CFC",
+  "PDP"
+ ],
+ "key": {
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "D": {
+   "type": "forge:ore_dict",
+   "ore": "gemDiamond"
+  }
+ },
+ "result": {
+  "item": "irextras:grid_scada",
+  "count": 1
+ }
+}

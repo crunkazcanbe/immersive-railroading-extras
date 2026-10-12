@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "VCV",
+  "HFH",
+  "PMP"
+ ],
+ "key": {
+  "V": {
+   "item": "irextras:gate_valve"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:tank_loader",
+  "count": 1
+ }
+}

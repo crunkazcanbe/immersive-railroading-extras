@@ -1,22 +1,30 @@
 {
- "type": "minecraft:crafting_shaped",
+ "type": "forge:ore_shaped",
  "pattern": [
-  "IQI",
-  "RCR",
-  "III"
+  "PAP",
+  "CVC",
+  "PFP"
  ],
  "key": {
-  "I": {
-   "item": "minecraft:iron_ingot"
+  "P": {
+   "item": "irextras:part",
+   "data": 0
   },
-  "Q": {
-   "item": "minecraft:quartz"
-  },
-  "R": {
-   "item": "minecraft:redstone"
+  "A": {
+   "item": "irextras:part",
+   "data": 25
   },
   "C": {
-   "item": "minecraft:comparator"
+   "item": "irextras:part",
+   "data": 2
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
   }
  },
  "result": {

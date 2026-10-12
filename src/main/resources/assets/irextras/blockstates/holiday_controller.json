@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:holiday_controller"
+  },
+  "facing=east": {
+   "model": "irextras:holiday_controller",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:holiday_controller",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:holiday_controller",
+   "y": 270
+  }
+ }
+}

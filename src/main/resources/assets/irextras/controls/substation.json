@@ -1,0 +1,148 @@
+{
+ "title": "substation",
+ "surfaces": [
+  {
+   "side": "east",
+   "face": 9.2,
+   "title": "TRANSFORMER",
+   "controls": [
+    {
+     "id": "temp",
+     "t": "gauge",
+     "u": 8.3,
+     "v": 2.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "OIL C",
+     "max": 120
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 2.06,
+   "title": "FEEDER CB",
+   "controls": [
+    {
+     "id": "volts",
+     "t": "gauge",
+     "u": 5.75,
+     "v": 10.1,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "LINE V %",
+     "max": 125
+    },
+    {
+     "id": "amps",
+     "t": "gauge",
+     "u": 5.75,
+     "v": 8.1,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "DC A",
+     "max": 4000
+    },
+    {
+     "id": "store",
+     "t": "gauge",
+     "u": 6.1,
+     "v": 5.3,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "STORE %",
+     "max": 100
+    },
+    {
+     "id": "closed",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 9.22,
+     "w": 0.44,
+     "h": 0.44,
+     "col": "30d050",
+     "label": ""
+    },
+    {
+     "id": "opened",
+     "t": "lamp",
+     "u": 2.8,
+     "v": 9.22,
+     "w": 0.44,
+     "h": 0.44,
+     "col": "e03020",
+     "label": ""
+    },
+    {
+     "id": "tripped",
+     "t": "lamp",
+     "u": 2.2,
+     "v": 9.22,
+     "w": 0.44,
+     "h": 0.44,
+     "col": "f0b020",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "grid",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 11.4,
+     "w": 0.44,
+     "h": 0.44,
+     "col": "f0f0f0",
+     "label": "HV IN"
+    },
+    {
+     "id": "close",
+     "t": "push",
+     "u": 3.4,
+     "v": 8.0,
+     "w": 0.46,
+     "h": 0.46,
+     "col": "2aa040",
+     "label": "CLOSE"
+    },
+    {
+     "id": "trip",
+     "t": "push",
+     "u": 2.8,
+     "v": 8.0,
+     "w": 0.46,
+     "h": 0.46,
+     "col": "d02a20",
+     "label": "TRIP"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 2.2,
+     "v": 8.0,
+     "w": 0.46,
+     "h": 0.46,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "mode",
+     "t": "selector",
+     "u": 2.8,
+     "v": 6.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2a2c30",
+     "label": "CONTROL",
+     "pos": [
+      "REMOTE",
+      "LOCAL"
+     ]
+    }
+   ]
+  }
+ ]
+}

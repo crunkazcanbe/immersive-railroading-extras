@@ -1,0 +1,368 @@
+{
+ "title": "oil_tank",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 0.38,
+   "title": "TANK BOX",
+   "controls": [
+    {
+     "id": "tankno",
+     "t": "digits",
+     "u": 9.4,
+     "v": 9.2,
+     "w": 1.8,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "TANK",
+     "fmt": "TANK %s"
+    },
+    {
+     "id": "litres",
+     "t": "digits",
+     "u": 6.7,
+     "v": 9.2,
+     "w": 1.8,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "M3",
+     "fmt": "%s M3"
+    },
+    {
+     "id": "levelg",
+     "t": "gauge",
+     "u": 9.2,
+     "v": 5.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "f2f0e6",
+     "label": "LEVEL",
+     "max": 100
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 10.1,
+     "v": 4.2,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.1,
+     "v": 3.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "high",
+     "t": "lamp",
+     "u": 11.3,
+     "v": 4.2,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "ffb020",
+     "label": "H"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.3,
+     "v": 3.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "H"
+    },
+    {
+     "id": "hh",
+     "t": "lamp",
+     "u": 12.5,
+     "v": 4.2,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "ff3030",
+     "label": "HH",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.5,
+     "v": 3.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "HH"
+    },
+    {
+     "id": "low",
+     "t": "lamp",
+     "u": 13.7,
+     "v": 4.2,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "8ad4ff",
+     "label": "L"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.7,
+     "v": 3.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "L"
+    },
+    {
+     "id": "inl",
+     "t": "lamp",
+     "u": 7.6,
+     "v": 6.2,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "2050d0",
+     "label": "IN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.6,
+     "v": 5.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "IN"
+    },
+    {
+     "id": "outl",
+     "t": "lamp",
+     "u": 8.6,
+     "v": 6.2,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "c82020",
+     "label": "OUT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.6,
+     "v": 5.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OUT"
+    },
+    {
+     "id": "firel",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 6.2,
+     "w": 0.38,
+     "h": 0.38,
+     "col": "ff3030",
+     "label": "FIRE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.6,
+     "v": 5.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FIRE"
+    },
+    {
+     "id": "dip",
+     "t": "push",
+     "u": 9.8,
+     "v": 3.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "2050d0",
+     "label": "DIP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.8,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DIP"
+    },
+    {
+     "id": "fill",
+     "t": "push",
+     "u": 11.0,
+     "v": 3.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "1fa34a",
+     "label": "FILL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.0,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FILL"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 12.2,
+     "v": 3.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "505860",
+     "label": "RST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.2,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RST"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.4,
+     "v": 3.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.4,
+     "v": 2.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.15,
+   "title": "TANK SCREEN",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.2,
+     "w": 3.7999999999999994,
+     "h": 0.6399999999999999,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 7.4,
+     "w": 3.7999999999999994,
+     "h": 0.6399999999999999,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": -0.02,
+   "title": "VALVES",
+   "controls": [
+    {
+     "id": "m_in",
+     "t": "lever",
+     "u": 11.0,
+     "v": 2.6,
+     "w": 0.6,
+     "h": 1.8,
+     "col": "2050d0",
+     "label": "INLET VALVE",
+     "pos": [
+      "OPEN",
+      "SHUT"
+     ]
+    },
+    {
+     "id": "m_out",
+     "t": "lever",
+     "u": 5.0,
+     "v": 2.6,
+     "w": 0.6,
+     "h": 1.8,
+     "col": "c82020",
+     "label": "OUTLET VALVE",
+     "pos": [
+      "OPEN",
+      "SHUT"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.0,
+     "v": 1.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "INLET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.0,
+     "v": 1.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OUTLET"
+    }
+   ]
+  },
+  {
+   "side": "west",
+   "face": -0.02,
+   "title": "KIT BOX",
+   "controls": [
+    {
+     "id": "kit",
+     "t": "zone",
+     "u": 11.5,
+     "v": 8.5,
+     "w": 3.0,
+     "h": 3.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

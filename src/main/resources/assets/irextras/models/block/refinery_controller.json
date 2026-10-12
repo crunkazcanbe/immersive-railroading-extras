@@ -1,0 +1,8 @@
+{
+ "parent": "block/orientable",
+ "textures": {
+  "top": "irextras:blocks/machine_casing",
+  "front": "irextras:blocks/controller_refinery",
+  "side": "irextras:blocks/machine_casing"
+ }
+}

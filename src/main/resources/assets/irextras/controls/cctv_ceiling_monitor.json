@@ -1,0 +1,84 @@
+{
+ "title": "cctv_ceiling_monitor",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 6.95,
+   "title": "PLATFORM MONITOR",
+   "controls": [
+    {
+     "id": "chdn",
+     "t": "push",
+     "u": 5.5,
+     "v": 4.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "303438",
+     "label": "CH-"
+    },
+    {
+     "id": "chup",
+     "t": "push",
+     "u": 3.8,
+     "v": 4.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "303438",
+     "label": "CH+"
+    },
+    {
+     "id": "split",
+     "t": "push",
+     "u": 2.1,
+     "v": 4.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "303438",
+     "label": "SPLIT"
+    },
+    {
+     "id": "led_pwr",
+     "t": "lamp",
+     "u": 14.0,
+     "v": 4.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "led_rec",
+     "t": "lamp",
+     "u": 12.8,
+     "v": 4.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff2020",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "led_sig",
+     "t": "lamp",
+     "u": 11.6,
+     "v": 4.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": ""
+    },
+    {
+     "id": "ch",
+     "t": "digits",
+     "u": 9.0,
+     "v": 4.0,
+     "w": 3.0,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

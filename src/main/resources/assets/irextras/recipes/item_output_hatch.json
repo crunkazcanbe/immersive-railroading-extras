@@ -1,0 +1,28 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "PKP",
+  " G "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:dropper"
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "K": {
+   "item": "irextras:machine_casing"
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  }
+ },
+ "result": {
+  "item": "irextras:item_output_hatch",
+  "count": 1
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PHP",
+  "SFS",
+  "GMG"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:oil_press",
+  "count": 1
+ }
+}

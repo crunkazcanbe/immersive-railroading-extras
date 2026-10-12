@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "GCG",
+  "SFS",
+  "MDM"
+ ],
+ "key": {
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "D": {
+   "type": "forge:ore_dict",
+   "ore": "gemDiamond"
+  }
+ },
+ "result": {
+  "item": "irextras:rolling_mill",
+  "count": 1
+ }
+}

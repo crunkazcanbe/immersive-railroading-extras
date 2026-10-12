@@ -1,0 +1,37 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "HSH",
+  "MFM",
+  "PCP"
+ ],
+ "key": {
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:ballast_tamper"
+ }
+}

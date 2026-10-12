@@ -1,0 +1,33 @@
+{
+ "title": "grid_wind",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 5.45,
+   "title": "",
+   "controls": [
+    {
+     "id": "brun",
+     "t": "lamp",
+     "u": 8.32,
+     "v": 1.5,
+     "w": 0.5,
+     "h": 0.9,
+     "col": "30ff50",
+     "label": ""
+    },
+    {
+     "id": "bflt",
+     "t": "lamp",
+     "u": 7.68,
+     "v": 1.5,
+     "w": 0.5,
+     "h": 0.9,
+     "col": "ff3020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

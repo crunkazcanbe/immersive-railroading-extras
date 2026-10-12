@@ -1,0 +1,4 @@
+{"type": "minecraft:crafting_shaped", "pattern": ["PMP", "RDR", "WWW"],
+ "key": {"P": {"item": "minecraft:paper"}, "M": {"item": "minecraft:map", "data": 0}, "R": {"item": "minecraft:redstone"},
+         "D": {"item": "irextras:dispatcher_board"}, "W": {"item": "minecraft:planks", "data": 0}},
+ "result": {"item": "irextras:freight_office"}}

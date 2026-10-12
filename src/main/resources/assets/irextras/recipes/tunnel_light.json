@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "GTG"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "T": {
+   "item": "minecraft:glowstone_dust"
+  }
+ },
+ "result": {
+  "item": "irextras:tunnel_light",
+  "count": 4
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "title": "grid_diesel",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 14.38,
+   "title": "",
+   "controls": [
+    {
+     "id": "fuel",
+     "t": "gauge",
+     "u": 11.4,
+     "v": 14.0,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f2f0e6",
+     "label": "",
+     "max": 100
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": -0.7,
+   "title": "",
+   "controls": [
+    {
+     "id": "brun",
+     "t": "lamp",
+     "u": 3.72,
+     "v": 1.0,
+     "w": 0.5,
+     "h": 0.9,
+     "col": "30ff50",
+     "label": ""
+    },
+    {
+     "id": "bflt",
+     "t": "lamp",
+     "u": 3.08,
+     "v": 1.0,
+     "w": 0.5,
+     "h": 0.9,
+     "col": "ff3020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": 0.4,
+   "title": "",
+   "controls": [
+    {
+     "id": "batiso",
+     "t": "key",
+     "u": 8.1,
+     "v": 2.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "c81e1e",
+     "label": "",
+     "pos": [
+      "ON",
+      "OFF"
+     ]
+    }
+   ]
+  }
+ ]
+}

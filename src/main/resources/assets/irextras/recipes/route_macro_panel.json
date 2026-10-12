@@ -1,0 +1,31 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GLG",
+  "BRB",
+  "ICI"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "R": {
+   "item": "minecraft:repeater"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  }
+ },
+ "result": {
+  "item": "irextras:route_macro_panel"
+ }
+}

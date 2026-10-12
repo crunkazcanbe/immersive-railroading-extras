@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:banking_board"
+  },
+  "facing=east": {
+   "model": "irextras:banking_board",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:banking_board",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:banking_board",
+   "y": 270
+  }
+ }
+}

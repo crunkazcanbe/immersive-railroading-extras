@@ -1,0 +1,43 @@
+{
+ "title": "cctv_dome",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.718,
+   "title": "DOME",
+   "controls": [
+    {
+     "id": "led_pwr",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 14.05,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "led_net",
+     "t": "lamp",
+     "u": 8,
+     "v": 14.05,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "NET"
+    },
+    {
+     "id": "led_rec",
+     "t": "lamp",
+     "u": 7.2,
+     "v": 14.05,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff2020",
+     "label": "REC",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

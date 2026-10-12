@@ -1,0 +1,95 @@
+{
+ "title": "ropeway_tension",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -1.45,
+   "title": "TENSION",
+   "controls": [
+    {
+     "id": "d_kn",
+     "t": "digits",
+     "u": 11.5,
+     "v": 15.6,
+     "w": 4.8,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_pos",
+     "t": "digits",
+     "u": 11.5,
+     "v": 14.6,
+     "w": 4.8,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_pos",
+     "t": "gauge",
+     "u": 11.5,
+     "v": 11.6,
+     "w": 2.6,
+     "h": 2.6,
+     "col": "f2f0e6",
+     "label": "CARR %",
+     "max": 100
+    },
+    {
+     "id": "l_hi",
+     "t": "lamp",
+     "u": 13.4,
+     "v": 9.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "HIGH"
+    },
+    {
+     "id": "l_ok",
+     "t": "lamp",
+     "u": 12.2,
+     "v": 9.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "OK"
+    },
+    {
+     "id": "l_lo",
+     "t": "lamp",
+     "u": 11.0,
+     "v": 9.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "LOW"
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 9.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 9.4,
+     "v": 15.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

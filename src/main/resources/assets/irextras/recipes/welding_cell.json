@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "CVC",
+  "HFH",
+  "WMW"
+ ],
+ "key": {
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:welding_cell",
+  "count": 1
+ }
+}

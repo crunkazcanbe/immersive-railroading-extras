@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "SMS",
+  "CFC",
+  "WAW"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 21
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 25
+  }
+ },
+ "result": {
+  "item": "irextras:grid_pqa",
+  "count": 1
+ }
+}

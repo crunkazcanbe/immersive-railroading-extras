@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "YCY",
+  "IRI",
+  "ICI"
+ ],
+ "key": {
+  "Y": {
+   "item": "minecraft:dye",
+   "data": 11
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:balise"
+ }
+}

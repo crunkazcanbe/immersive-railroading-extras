@@ -1,0 +1,145 @@
+{
+ "textures": {
+  "pipe": "irextras:blocks/pipe_iron",
+  "flange": "irextras:blocks/pipe_flange",
+  "particle": "irextras:blocks/pipe_iron"
+ },
+ "elements": [
+  {
+   "from": [
+    5,
+    5,
+    0
+   ],
+   "to": [
+    11,
+    11,
+    5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#pipe"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#pipe"
+    },
+    "east": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#pipe"
+    },
+    "west": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#pipe"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#pipe"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#pipe"
+    }
+   }
+  },
+  {
+   "from": [
+    4,
+    4,
+    0
+   ],
+   "to": [
+    12,
+    12,
+    1
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "texture": "#flange"
+    },
+    "south": {
+     "uv": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "texture": "#flange"
+    },
+    "east": {
+     "uv": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "texture": "#flange"
+    },
+    "west": {
+     "uv": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "texture": "#flange"
+    },
+    "up": {
+     "uv": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "texture": "#flange"
+    },
+    "down": {
+     "uv": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "texture": "#flange"
+    }
+   }
+  }
+ ]
+}

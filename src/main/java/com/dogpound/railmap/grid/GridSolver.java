@@ -24,19 +24,20 @@ public final class GridSolver {
 
     public static void solve(World w, GridData d) {
         try { solve0(w, d); }
-        finally { for (Runnable r : AFTER) r.run(); AFTER.clear(); }
+        finally { for (Runnable r : AFTER) r.run(); AFTER.clear(); Protection.flush(); }
     }
 
     private static void solve0(World w, GridData d) {
         List<GridData.Net> nets = d.nets();
         Map<Long, GridData.Node> nodes = d.nodes();
+        for (GridData.Node nd : nodes.values()) nd.par = Long.MIN_VALUE;
 
         // 1. demand of each network in watts, bottom-up through the converters (a few passes settle any chain)
         double[] demand = new double[nets.size()];
         for (int pass = 0; pass < 6; pass++) {
             for (GridData.Net n : nets) {
                 double p = 0;
-                for (long pos : n.nodes) { GridData.Node nd = nodes.get(pos); if (nd.kind.load()) p += nd.drawLast * Elec.W_PER_FE_T / 20.0; }
+                for (long pos : n.nodes) { GridData.Node nd = nodes.get(pos); if (nd.kind.load()) p += nd.drawLast * Elec.W_PER_FE_T / 20.0; else if (nd.kind == GridKind.UPS) p += nd.loadVA; }
                 for (long c : n.outs) { GridData.Node cv = nodes.get(c); if (cv != null && cv.net >= 0 && cv.net < nets.size()) p += demand[cv.net] / 0.98; }
                 demand[n.id] = p;
             }
@@ -120,11 +121,12 @@ public final class GridSolver {
             // power electronics have no thermal margin: past 150 % of rating their output trips at once
             for (long c : n.ins) {
                 GridData.Node cv = nodes.get(c);
-                if (cv == null || !cv.kind.electronic() || !cv.dcOn || n.sVA <= cv.kva * 1500.0) continue;
+                if (cv == null || !cv.kind.electronic() || !cv.dcOn || n.sVA <= cv.kva * 1500.0 * cv.derate) continue;
                 cv.dcOn = false;
                 d.touch();
                 BlockPos bp = BlockPos.fromLong(c);
-                String why = String.format(Locale.ROOT, "OVERLOAD %s on a %d kVA unit", Elec.si(n.sVA, "VA"), cv.kva);
+                String why = String.format(Locale.ROOT, "OVERLOAD %s on a %d kVA unit%s", Elec.si(n.sVA, "VA"), cv.kva, cv.derate < 0.999 ? String.format(Locale.ROOT, " (derated to %.0f%% at %.0f °C)", cv.derate * 100, cv.ambient) : "");
+                History.log(w, c, "TRIP", why);
                 if (w.isBlockLoaded(bp) && w.getTileEntity(bp) instanceof TileGrid t) t.rectifierTripped(why);
                 GridTicker.alarm(w, c, "§c⚡ " + cv.kind.label + " tripped at " + bp.getX() + " " + bp.getY() + " " + bp.getZ() + ": " + why);
             }
@@ -134,7 +136,7 @@ public final class GridSolver {
             ArrayDeque<Long> q = new ArrayDeque<>();
             for (long pos : n.nodes) {
                 GridData.Node nd = nodes.get(pos);
-                if ((nd.kind.source() && nd.feeding()) || nd.sided() || nd.kind == GridKind.BATTERY) { parent.put(pos, pos); q.add(pos); nd.pu = pu; }
+                if ((nd.kind.source() && nd.feeding()) || nd.sided() || nd.kind == GridKind.BATTERY) { parent.put(pos, pos); q.add(pos); nd.pu = pu; nd.par = pos; }
             }
             List<Long> visit = new ArrayList<>();
             Set<Long> inNet = new HashSet<>(n.nodes);
@@ -142,6 +144,7 @@ public final class GridSolver {
                 long cur = q.poll();
                 visit.add(cur);
                 GridData.Node cn = nodes.get(cur);
+                if (cn.kind.control()) continue;                                   // relays / analysers measure, they don't carry power
                 BlockPos bp = BlockPos.fromLong(cur);
                 for (EnumFacing f : EnumFacing.values()) {
                     if (cn.sided() && f == cn.back()) continue;
@@ -150,6 +153,7 @@ public final class GridSolver {
                     GridData.Node nn = nodes.get(nb);
                     if (GridData.opens(cn) && cn.breaker != 0) continue;
                     parent.put(nb, cur);
+                    nn.par = cur;
                     q.add(nb);
                 }
             }
@@ -194,7 +198,7 @@ public final class GridSolver {
                     double r = sp.ohmsPerM(cn.temp), x = sp.reactancePerM();
                     loss += Elec.lossW(lv, cn.amps, r);
                     cn.pu = upPu - Elec.dropV(lv, cn.amps, r, x, n.pf) / lv.volts;
-                    double frac = cn.amps / Math.max(1, sp.ampacity());
+                    double frac = (cn.amps + (cn.efault != 0 && n.efAmps > 0 ? n.efAmps : 0)) / Math.max(1, sp.ampacity());   // a standing earth fault arcs here
                     double steady = Elec.steadyTemp(AMBIENT, sp.ins, frac);
                     cn.temp += (float) ((steady - cn.temp) * 0.08);                       // ~12 s thermal time constant
                     if (cn.temp > sp.ins.maxTemp + 60) { fault(w, d, n, cur, parent, "cable burnt through"); burn(w, d, cur, cn, lv); }
@@ -238,34 +242,7 @@ public final class GridSolver {
     /** a short circuit at `at`: the nearest closed breaker between it and the source trips (selective protection).
      *  If the fault current is more than that breaker can break, it can't clear it - it fails violently. */
     private static void fault(World w, GridData d, GridData.Net n, long at, Map<Long, Long> parent, String what) {
-        Map<Long, GridData.Node> nodes = d.nodes();
-        Long cur = at;
-        for (int guard = 0; cur != null && guard < 100_000; guard++) {
-            GridData.Node nd = nodes.get(cur);
-            if (nd != null && nd.kind == GridKind.BREAKER && nd.breaker == 0) {
-                BlockPos bp = BlockPos.fromLong(cur);
-                if (n.isc > nd.kA * 1000.0) {
-                    GridTicker.alarm(w, cur, String.format(Locale.ROOT, "§4💥 BREAKER FAILED at %d %d %d: %s fault current, it is only rated %d kA - fit a 40 / 63 kA breaker",
-                            bp.getX(), bp.getY(), bp.getZ(), Elec.si(n.isc, "A"), nd.kA));
-                    nd.breaker = 2;                                                    // stops conducting now; the block goes after the solve
-                    AFTER.add(() -> {
-                        if (w.isBlockLoaded(bp)) {
-                            w.setBlockToAir(bp);
-                            w.newExplosion(null, bp.getX() + 0.5, bp.getY() + 0.5, bp.getZ() + 0.5, 2.0f, true, false);   // arc flash: fire, no crater
-                        }
-                        d.remove(bp);
-                    });
-                } else {
-                    GridTicker.alarm(w, cur, String.format(Locale.ROOT, "§c⚡ Short circuit (%s): breaker at %d %d %d cleared %s", what, bp.getX(), bp.getY(), bp.getZ(), Elec.si(n.isc, "A")));
-                    if (w.isBlockLoaded(bp) && w.getTileEntity(bp) instanceof TileGrid t) t.setBreaker((byte) 2, "tripped: short circuit " + Elec.si(n.isc, "A"));
-                    else { nd.breaker = 2; d.touch(); }
-                }
-                return;
-            }
-            Long par = parent.get(cur);
-            if (par == null || par.equals(cur)) return;
-            cur = par;
-        }
+        Protection.clear(w, d, n, at, n.isc, false, what);                   // every relay on the way to the source; the fastest trips
     }
 
     /** a cable far past its insulation temperature burns out: the block goes, a fire starts, the network splits */
@@ -277,6 +254,7 @@ public final class GridSolver {
             if (w.isBlockLoaded(bp)) {
                 w.setBlockToAir(bp);
                 if (w.isAirBlock(bp)) w.setBlockState(bp, Blocks.FIRE.getDefaultState());
+            w.playSound(null, bp, com.dogpound.railmap.ModSounds.CABLE_SIZZLE, net.minecraft.util.SoundCategory.BLOCKS, 2f, 1f);
             }
             d.remove(bp);
         });

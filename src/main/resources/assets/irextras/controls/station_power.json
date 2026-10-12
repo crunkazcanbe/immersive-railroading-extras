@@ -1,0 +1,949 @@
+{
+ "title": "station_power",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 2.07,
+   "title": "EMERGENCY POWER",
+   "controls": [
+    {
+     "id": "stn",
+     "t": "digits",
+     "u": 8.0,
+     "v": 21.8,
+     "w": 8.0,
+     "h": 0.75,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.9,
+     "w": 8.0,
+     "h": 0.75,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.0,
+     "w": 8.0,
+     "h": 0.75,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rt",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.1,
+     "w": 8.0,
+     "h": 0.75,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "lvl",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.2,
+     "w": 8.0,
+     "h": 0.75,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "gridl",
+     "t": "lamp",
+     "u": 1.8,
+     "v": 24.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "MAINS IN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 23.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS IN"
+    },
+    {
+     "id": "atsn",
+     "t": "lamp",
+     "u": 4.3,
+     "v": 24.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "NORMAL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.3,
+     "v": 23.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NORMAL"
+    },
+    {
+     "id": "atse",
+     "t": "lamp",
+     "u": 6.8,
+     "v": 24.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "EMERG"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.8,
+     "v": 23.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "EMERG"
+    },
+    {
+     "id": "battl",
+     "t": "lamp",
+     "u": 9.3,
+     "v": 24.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "ON BATT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.3,
+     "v": 23.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ON BATT"
+    },
+    {
+     "id": "genl",
+     "t": "lamp",
+     "u": 11.8,
+     "v": 24.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "GEN RUN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.8,
+     "v": 23.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GEN RUN"
+    },
+    {
+     "id": "crankl",
+     "t": "lamp",
+     "u": 14.3,
+     "v": 24.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "CRANK",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.3,
+     "v": 23.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CRANK"
+    },
+    {
+     "id": "socg",
+     "t": "gauge",
+     "u": 13.8,
+     "v": 20.2,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "BATT %",
+     "max": 100
+    },
+    {
+     "id": "healthg",
+     "t": "gauge",
+     "u": 13.8,
+     "v": 17.6,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "HEALTH",
+     "max": 100
+    },
+    {
+     "id": "fuelg",
+     "t": "gauge",
+     "u": 2.2,
+     "v": 20.2,
+     "w": 2.0,
+     "h": 2.0,
+     "col": "f2f0e6",
+     "label": "FUEL %",
+     "max": 100
+    },
+    {
+     "id": "loadg",
+     "t": "gauge",
+     "u": 2.2,
+     "v": 17.6,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "GEN LOAD",
+     "max": 150
+    },
+    {
+     "id": "faill",
+     "t": "lamp",
+     "u": 1.6,
+     "v": 16.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "GEN FAIL",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.6,
+     "v": 15.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GEN FAIL"
+    },
+    {
+     "id": "lowb",
+     "t": "lamp",
+     "u": 3.7,
+     "v": 16.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "BATT LOW"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.7,
+     "v": 15.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BATT LOW"
+    },
+    {
+     "id": "shedl",
+     "t": "lamp",
+     "u": 5.8,
+     "v": 16.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "SHED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.8,
+     "v": 15.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SHED"
+    },
+    {
+     "id": "maintl",
+     "t": "lamp",
+     "u": 7.9,
+     "v": 16.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "4080ff",
+     "label": "BYPASS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.9,
+     "v": 15.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BYPASS"
+    },
+    {
+     "id": "estopl",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 16.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "E-STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 15.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "E-STOP"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 12.1,
+     "v": 16.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.1,
+     "v": 15.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 14.2,
+     "v": 16.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "SUPPLY"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.2,
+     "v": 15.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SUPPLY"
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 2.0,
+     "v": 26.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "MANUAL",
+      "OFF"
+     ]
+    },
+    {
+     "id": "s_shed",
+     "t": "selector",
+     "u": 4.6,
+     "v": 26.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "SHED LEVEL",
+     "pos": [
+      "LIFE SAFETY",
+      "+LIFTS",
+      "+ESCAL",
+      "ALL STN"
+     ]
+    },
+    {
+     "id": "s_delay",
+     "t": "selector",
+     "u": 7.2,
+     "v": 26.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "START DELAY",
+     "pos": [
+      "5 S",
+      "10 S",
+      "30 S"
+     ]
+    },
+    {
+     "id": "k_maint",
+     "t": "key",
+     "u": 9.8,
+     "v": 26.2,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c0a040",
+     "label": "MAINT",
+     "pos": [
+      "NORMAL",
+      "BYPASS"
+     ]
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 13.6,
+     "v": 26.2,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "d02020",
+     "label": "GEN E-STOP"
+    },
+    {
+     "id": "gstart",
+     "t": "push",
+     "u": 1.5,
+     "v": 14.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "30a040",
+     "label": "START"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.5,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "START"
+    },
+    {
+     "id": "gstop",
+     "t": "push",
+     "u": 3.65,
+     "v": 14.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.65,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "xfer",
+     "t": "push",
+     "u": 5.8,
+     "v": 14.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f0d020",
+     "label": "TRANSFER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.8,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TRANSFER"
+    },
+    {
+     "id": "gtest",
+     "t": "push",
+     "u": 7.95,
+     "v": 14.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "2050d0",
+     "label": "GEN TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.95,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GEN TEST"
+    },
+    {
+     "id": "btest",
+     "t": "push",
+     "u": 10.1,
+     "v": 14.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "2050d0",
+     "label": "BATT TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.1,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BATT TEST"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 12.25,
+     "v": 14.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f0f0f0",
+     "label": "RESET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.25,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 14.4,
+     "v": 14.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f0f0f0",
+     "label": "LAMPS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 13.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LAMPS"
+    },
+    {
+     "id": "fuel",
+     "t": "zone",
+     "u": 12.7,
+     "v": 10.8,
+     "w": 4.4,
+     "h": 3.4,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": 2.15,
+   "title": "CABINET",
+   "controls": [
+    {
+     "id": "cab_light",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 27.82,
+     "w": 4.0,
+     "h": 0.16,
+     "col": "fff4d0",
+     "label": "CABINET LIGHT"
+    },
+    {
+     "id": "cab_lt",
+     "t": "push",
+     "u": 8.9,
+     "v": 27.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "LAMP TEST"
+    },
+    {
+     "id": "m_cab_mcb_ctl",
+     "t": "lever",
+     "u": 2.7,
+     "v": 24.7,
+     "w": 0.26,
+     "h": 0.38,
+     "col": "f4f4f4",
+     "label": "F1 12V CTL"
+    },
+    {
+     "id": "m_cab_mcb_main",
+     "t": "lever",
+     "u": 3.75,
+     "v": 24.7,
+     "w": 0.26,
+     "h": 0.38,
+     "col": "f4f4f4",
+     "label": "F2 MAINS"
+    },
+    {
+     "id": "m_cab_mcb_scr",
+     "t": "lever",
+     "u": 4.8,
+     "v": 24.7,
+     "w": 0.26,
+     "h": 0.38,
+     "col": "f4f4f4",
+     "label": "F3 SCREEN"
+    },
+    {
+     "id": "cab_k1",
+     "t": "flag",
+     "u": 2.725,
+     "v": 21.942,
+     "w": 0.6,
+     "h": 0.45,
+     "col": "202020",
+     "label": "K1 12V"
+    },
+    {
+     "id": "cab_kl1",
+     "t": "lamp",
+     "u": 2.725,
+     "v": 21.078,
+     "w": 0.24,
+     "h": 0.24,
+     "col": "ff3020",
+     "label": ""
+    },
+    {
+     "id": "cab_k2",
+     "t": "flag",
+     "u": 3.955,
+     "v": 21.942,
+     "w": 0.6,
+     "h": 0.45,
+     "col": "202020",
+     "label": "K2 MAINS"
+    },
+    {
+     "id": "cab_kl2",
+     "t": "lamp",
+     "u": 3.955,
+     "v": 21.078,
+     "w": 0.24,
+     "h": 0.24,
+     "col": "ff3020",
+     "label": ""
+    },
+    {
+     "id": "cab_k3",
+     "t": "flag",
+     "u": 5.185,
+     "v": 21.942,
+     "w": 0.6,
+     "h": 0.45,
+     "col": "202020",
+     "label": "K3 FAULT"
+    },
+    {
+     "id": "cab_kl3",
+     "t": "lamp",
+     "u": 5.185,
+     "v": 21.078,
+     "w": 0.24,
+     "h": 0.24,
+     "col": "ff3020",
+     "label": ""
+    },
+    {
+     "id": "cab_k4",
+     "t": "flag",
+     "u": 6.415,
+     "v": 21.942,
+     "w": 0.6,
+     "h": 0.45,
+     "col": "202020",
+     "label": "K4 DOOR"
+    },
+    {
+     "id": "cab_kl4",
+     "t": "lamp",
+     "u": 6.415,
+     "v": 21.078,
+     "w": 0.24,
+     "h": 0.24,
+     "col": "ff3020",
+     "label": ""
+    },
+    {
+     "id": "cab_run",
+     "t": "lamp",
+     "u": 7.76,
+     "v": 22.086,
+     "w": 0.24,
+     "h": 0.24,
+     "col": "30ff50",
+     "label": "PLC RUN",
+     "blink": true
+    },
+    {
+     "id": "cab_err",
+     "t": "lamp",
+     "u": 7.76,
+     "v": 21.558,
+     "w": 0.24,
+     "h": 0.24,
+     "col": "ff2a2a",
+     "label": "PLC ERR"
+    },
+    {
+     "id": "cab_i0",
+     "t": "lamp",
+     "u": 8.444,
+     "v": 22.086,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "40ff40",
+     "label": "I0"
+    },
+    {
+     "id": "cab_i1",
+     "t": "lamp",
+     "u": 8.912,
+     "v": 22.086,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "40ff40",
+     "label": "I1"
+    },
+    {
+     "id": "cab_i2",
+     "t": "lamp",
+     "u": 9.38,
+     "v": 22.086,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "40ff40",
+     "label": "I2"
+    },
+    {
+     "id": "cab_i3",
+     "t": "lamp",
+     "u": 8.444,
+     "v": 21.558,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "40ff40",
+     "label": "I3"
+    },
+    {
+     "id": "cab_i4",
+     "t": "lamp",
+     "u": 8.912,
+     "v": 21.558,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "40ff40",
+     "label": "I4"
+    },
+    {
+     "id": "cab_i5",
+     "t": "lamp",
+     "u": 9.38,
+     "v": 21.558,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "40ff40",
+     "label": "I5"
+    },
+    {
+     "id": "cab_q0",
+     "t": "lamp",
+     "u": 9.884,
+     "v": 22.086,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "ffb020",
+     "label": "Q0"
+    },
+    {
+     "id": "cab_q1",
+     "t": "lamp",
+     "u": 10.352,
+     "v": 22.086,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "ffb020",
+     "label": "Q1"
+    },
+    {
+     "id": "cab_q2",
+     "t": "lamp",
+     "u": 9.884,
+     "v": 21.558,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "ffb020",
+     "label": "Q2"
+    },
+    {
+     "id": "cab_q3",
+     "t": "lamp",
+     "u": 10.352,
+     "v": 21.558,
+     "w": 0.2,
+     "h": 0.2,
+     "col": "ffb020",
+     "label": "Q3"
+    },
+    {
+     "id": "cab_plc",
+     "t": "digits",
+     "u": 9.02,
+     "v": 21.03,
+     "w": 3.0599999999999996,
+     "h": 0.4,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m_cab_fuse_ctl",
+     "t": "zone",
+     "u": 2.7,
+     "v": 18.915,
+     "w": 0.8,
+     "h": 1.19,
+     "col": "202020",
+     "label": "FU1 12V CTL fuse"
+    },
+    {
+     "id": "cab_fb_ctl",
+     "t": "lamp",
+     "u": 2.7,
+     "v": 18.286,
+     "w": 0.2,
+     "h": 0.16,
+     "col": "ff5010",
+     "label": ""
+    },
+    {
+     "id": "m_cab_fuse_main",
+     "t": "zone",
+     "u": 3.75,
+     "v": 18.915,
+     "w": 0.8,
+     "h": 1.19,
+     "col": "202020",
+     "label": "FU2 MAINS fuse"
+    },
+    {
+     "id": "cab_fb_main",
+     "t": "lamp",
+     "u": 3.75,
+     "v": 18.286,
+     "w": 0.2,
+     "h": 0.16,
+     "col": "ff5010",
+     "label": ""
+    },
+    {
+     "id": "m_cab_fuse_scr",
+     "t": "zone",
+     "u": 4.8,
+     "v": 18.915,
+     "w": 0.8,
+     "h": 1.19,
+     "col": "202020",
+     "label": "FU3 SCREEN fuse"
+    },
+    {
+     "id": "cab_fb_scr",
+     "t": "lamp",
+     "u": 4.8,
+     "v": 18.286,
+     "w": 0.2,
+     "h": 0.16,
+     "col": "ff5010",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": -0.75,
+   "title": "DOORS",
+   "controls": [
+    {
+     "id": "m_cab_door1",
+     "t": "zone",
+     "u": 11.34,
+     "v": 21.5,
+     "w": 6.619999999999999,
+     "h": 13.299999999999999,
+     "col": "202020",
+     "label": "door 1"
+    },
+    {
+     "id": "m_cab_door2",
+     "t": "zone",
+     "u": 4.66,
+     "v": 21.5,
+     "w": 6.620000000000001,
+     "h": 13.299999999999999,
+     "col": "202020",
+     "label": "door 2"
+    }
+   ]
+  }
+ ]
+}

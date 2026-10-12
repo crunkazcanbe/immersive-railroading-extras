@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:yard_panel"
+  },
+  "facing=east": {
+   "model": "irextras:yard_panel",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:yard_panel",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:yard_panel",
+   "y": 270
+  }
+ }
+}

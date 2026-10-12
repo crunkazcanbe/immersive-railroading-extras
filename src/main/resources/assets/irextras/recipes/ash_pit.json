@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RHR",
+  "BMB",
+  "SSS"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:iron_bars"
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "B": {
+   "item": "minecraft:brick_block"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:ash_pit"
+ }
+}

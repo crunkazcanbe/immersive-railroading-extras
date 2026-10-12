@@ -1,0 +1,25 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "IMI",
+  " I "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:clock"
+  },
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 21
+  }
+ },
+ "result": {
+  "item": "irextras:grid_inst_ammeter",
+  "count": 1
+ }
+}

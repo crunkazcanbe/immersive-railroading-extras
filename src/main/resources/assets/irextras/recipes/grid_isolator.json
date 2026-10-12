@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XPX",
+  "SFS",
+  "PXP"
+ ],
+ "key": {
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 11
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:grid_isolator",
+  "count": 1
+ }
+}

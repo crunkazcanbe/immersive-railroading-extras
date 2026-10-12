@@ -49,7 +49,9 @@ public class ItemPadlock extends Item {
         }
         t.setLoto(p.getName());
         if (!p.capabilities.isCreativeMode) p.getHeldItem(hand).shrink(1);
-        p.sendMessage(new TextComponentString("§a🔒 Locked out and tagged: DANGER - DO NOT OPERATE (" + p.getName() + "). Safe to work on."));
+        if (!p.addItemStackToInventory(ItemLotoKey.forDevice(pos, p.getName(), t.kind().label))) p.dropItem(ItemLotoKey.forDevice(pos, p.getName(), t.kind().label), false);
+        History.log(w, pos, "LOTO", "padlocked + tagged by " + p.getName());
+        p.sendMessage(new TextComponentString("§a🔒 Locked out and tagged: DANGER - DO NOT OPERATE (" + p.getName() + "). §7You have its key: for a permit to work, hang it in a Permit Board's key safe."));
         return EnumActionResult.SUCCESS;
     }
 
@@ -60,7 +62,14 @@ public class ItemPadlock extends Item {
             p.sendStatusMessage(new TextComponentString("§c🔒 That's " + t.loto() + "'s padlock - only they can remove it"), true);
             return true;
         }
+        String held = Permits.lockHeld(t.getWorld(), t.getPos());
+        if (!held.isEmpty()) { p.sendStatusMessage(new TextComponentString("§c" + held), true); return true; }
+        String ap = com.dogpound.railmap.admin.Approvals.blocked(t.getWorld(), "padlock", t.getPos(), p);   // next-48 #43
+        if (ap != null) { p.sendStatusMessage(new TextComponentString(ap), false); return true; }
+        History.log(t.getWorld(), t.getPos(), "LOTO", "padlock removed by " + p.getName());
         t.setLoto("");
+        for (int i = 0; i < p.inventory.getSizeInventory(); i++)                     // its key goes back on the padlock
+            if (ItemLotoKey.device(p.inventory.getStackInSlot(i)) == t.getPos().toLong()) { p.inventory.setInventorySlotContents(i, ItemStack.EMPTY); break; }
         if (!p.capabilities.isCreativeMode) p.addItemStackToInventory(new ItemStack(com.dogpound.railmap.proxy.CommonProxy.padlock));
         p.sendStatusMessage(new TextComponentString("§a🔓 Padlock removed - the equipment can be operated again"), true);
         return true;

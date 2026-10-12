@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:disruption_desk"
+  },
+  "facing=east": {
+   "model": "irextras:disruption_desk",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:disruption_desk",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:disruption_desk",
+   "y": 270
+  }
+ }
+}

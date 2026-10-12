@@ -1,0 +1,32 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "BCB",
+  "KFK",
+  "BVB"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:brick_block"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 6
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "V": {
+   "item": "irextras:gate_valve"
+  }
+ },
+ "result": {
+  "item": "irextras:coke_oven",
+  "count": 1
+ }
+}

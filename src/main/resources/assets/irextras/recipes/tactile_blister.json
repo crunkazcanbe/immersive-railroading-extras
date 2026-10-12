@@ -1,0 +1,20 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "BBB",
+  "SSS"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:tactile_blister",
+  "count": 4
+ }
+}

@@ -31,7 +31,55 @@ import java.util.List;
  * It reports what it's doing on a comparator: the signal is the served car's fill level, 0–15,
  * so "stop the train when the hopper is full" is just a comparator and a redstone line.
  */
-public class TileFreightTerminal extends TileEntity implements ITickable, com.dogpound.railmap.signal.IScalable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileFreightTerminal extends TileEntity implements ITickable, com.dogpound.railmap.signal.IScalable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.wire.IWiredGear, com.dogpound.railmap.controls.IControlled {
+    // ---- working controls (requested feature): the silo's chute station opens / shuts the slide gate, the pit's post
+    // starts / stops the conveyor; both have a latching E-stop. Shut / stopped / E-stopped = no loading or unloading.
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { gearChanged(); }
+    /** resized gantries are drawn by the renderer at another size: their controls would float, so they have none */
+    @Override public com.dogpound.railmap.controls.Layout layout() { return scale == 1f ? com.dogpound.railmap.controls.IControlled.super.layout() : com.dogpound.railmap.controls.Layout.NONE; }
+    private boolean estop() { return ctl.get("estop") == 1; }
+    /** silo: slide gate open; pit: conveyor running (and no E-stop) */
+    private boolean released() { return !estop() && ctl.get(loader ? "shut" : "stopped") == 0; }
+
+    @Override
+    public int controlValue(String id) {
+        boolean pw = term.powered();
+        switch (id) {
+            case "lopen": return pw && released() ? 1 : 0;
+            case "lshut": return pw && !released() ? 1 : 0;
+            case "run": return pw && released() && cfg.bool("on") ? 1 : 0;
+            default: return ctl.get(id);
+        }
+    }
+
+    @Override
+    public String controlPress(String id, net.minecraft.entity.player.EntityPlayer who) {
+        String what = loader ? "slide gate" : "conveyor";
+        if (id.equals("estop")) {
+            ctl.set(id, estop() ? 0 : 1);
+            return estop() ? "§cEMERGENCY STOP - " + what + " halted" : "§aE-stop released - press " + (loader ? "OPEN" : "START") + " to carry on";
+        }
+        boolean go = id.equals("open") || id.equals("start");
+        if (!go && !id.equals("close") && !id.equals("stop")) return null;
+        if (go && estop()) return "§cE-stop is in - twist it out first";
+        if (!term.powered()) return "§cNo 12 V - the " + what + " controls are dead";
+        ctl.set(loader ? "shut" : "stopped", go ? 0 : 1);
+        return go ? (loader ? "§aSlide gate OPEN - loading" : "§aConveyor STARTED - unloading") : (loader ? "§eSlide gate SHUT" : "§eConveyor STOPPED");
+    }
+
+    @Override public com.dogpound.railmap.grid.Panel wiredPanel() { return layout().all; }
+    @Override public String wiredPress(String id, String who) { return com.dogpound.railmap.controls.IControlled.operate(this, id, null); }
+    @Override public int wiredState(String id) { return controlValue(id); }
+
+    // ---- 12 V terminal (requested feature): needs 12 V DC instrument power; with none it is loader stopped
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); if (world != null && !world.isRemote) { net.minecraft.block.state.IBlockState gs = world.getBlockState(pos); world.notifyBlockUpdate(pos, gs, gs, 3); } }
+    @Override public String wiredName() { return "Freight terminal"; }
+    @Override public String gearState() { return term.powered() ? servedCar.isEmpty() ? "idle" : servedCar + (fillPct < 0 ? "" : " " + fillPct + "%") : "NO 12 V - loader stopped"; }
+
     private final com.dogpound.railmap.settings.SettingsStore cfg = new com.dogpound.railmap.settings.SettingsStore(this);
     private long totalMoved;
     private int carsServed;
@@ -67,6 +115,8 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Rate now", movedLastCycle * 20 / Math.max(1, cfg.num("period")) + " items/s"));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Items moved (total)", String.valueOf(totalMoved)));
         l.add(com.dogpound.railmap.settings.Setting.info(st, "Cars served", String.valueOf(carsServed)));
+        if (!cargoRefused.isEmpty()) l.add(com.dogpound.railmap.settings.Setting.info(st, "Refused", cargoRefused));
+        com.dogpound.railmap.wire.IWiredGear.settings(l, st, this);
         return l;
     }
 
@@ -125,6 +175,7 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
 
     @Override
     public void update() {
+        if (world != null && !world.isRemote) { if (term.tick(world, pos, wiredName())) gearChanged(); if (!term.powered()) return; }
         if (world == null || world.isRemote) {
             return;
         }
@@ -135,7 +186,7 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         int oldOut = redstoneOutput();
         boolean powered = world.isBlockPowered(pos);
         String rsMode = cfg.text("rsMode");
-        boolean run = cfg.bool("on") && !("Only when powered".equals(rsMode) && !powered) && !("Only when unpowered".equals(rsMode) && powered);
+        boolean run = cfg.bool("on") && released() && !("Only when powered".equals(rsMode) && !powered) && !("Only when unpowered".equals(rsMode) && powered);
 
         Car car = findCar();
         if (car == null) {
@@ -158,7 +209,13 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
             budget = Math.min(budget, Math.max(0, count(car.inv) - cfg.num("keep")));
             if (cfg.num("keepYard") > 0) budget = Math.min(budget, Math.max(0, cfg.num("keepYard") - count(yard)));
         }
+        movedStacks.clear();
+        cargoCar = loader ? car.name : null; cargoFill = car.fillPct;        // her list #90: what this wagon may take
         movedLastCycle = budget <= 0 ? 0 : loader ? move(yard, car.inv, budget) : move(car.inv, yard, budget);
+        if (movedLastCycle > 0 && car.id != null) {
+            net.minecraft.util.math.BlockPos yp = yardPos();
+            if (yp != null) com.dogpound.railmap.freight.ContractData.get(world).onMoved(world, loader, yp, car.id, movedStacks);
+        }
         totalMoved += movedLastCycle;
         if (oldOut != redstoneOutput()) world.notifyNeighborsOfStateChange(pos, getBlockType(), false);
     }
@@ -168,6 +225,7 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         final IItemHandler inv;
         final String name;
         final int fillPct;
+        java.util.UUID id;                  // IR stock id: freight contracts bill this car
 
         Car(IItemHandler inv, String name, int fillPct) {
             this.inv = inv;
@@ -177,12 +235,33 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
     }
 
     /** Moves up to {@code rate} allowed items from one inventory to the other. Returns how many moved. */
+    /** the wagon being loaded (null when unloading) and why the last item was refused (wagon cargo rules) */
+    private String cargoCar, cargoRefused = "";
+    private int cargoFill;
+    /** what the last move() carried, item by item (freight contracts) */
+    private final List<ItemStack> movedStacks = new java.util.ArrayList<>();
+
+    /** the industry (or other stockpile block) this terminal works from */
+    private net.minecraft.util.math.BlockPos yardPos() {
+        for (EnumFacing dir : EnumFacing.values()) {
+            TileEntity te = world.getTileEntity(pos.offset(dir));
+            if (te != null && te.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, dir.getOpposite())) return pos.offset(dir);
+        }
+        return null;
+    }
+
     private int move(IItemHandler from, IItemHandler to, int rate) {
         int budget = rate;
         for (int slot = 0; slot < from.getSlots() && budget > 0; slot++) {
             ItemStack peek = from.extractItem(slot, budget, true);
             if (peek.isEmpty() || !allowed(peek)) {
                 continue;
+            }
+            if (cargoCar != null) {
+                String no = com.dogpound.railmap.freight.CargoRules.refuse(cargoCar, peek);
+                if (no == null && cargoFill >= com.dogpound.railmap.freight.CargoRules.limitPct(cargoCar, peek)) no = "the car is at its axle-load limit for " + peek.getDisplayName();
+                if (no != null) { cargoRefused = no; continue; }
+                cargoRefused = "";
             }
             ItemStack left = ItemHandlerHelper.insertItem(to, peek.copy(), true);
             int fits = peek.getCount() - left.getCount();
@@ -193,6 +272,7 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
             if (taken.isEmpty()) {
                 continue;
             }
+            movedStacks.add(taken.copy());
             ItemHandlerHelper.insertItem(to, taken, false);
             budget -= taken.getCount();
         }
@@ -260,7 +340,9 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         }
         int fill = best instanceof FreightTank ft ? ft.getPercentLiquidFull() : best.getPercentCargoFull();
         IItemHandler inv = best.cargoItems == null ? null : best.cargoItems.internal;
-        return new Car(inv, nameOf(best), fill);
+        Car c = new Car(inv, nameOf(best), fill);
+        c.id = best.getUUID();
+        return c;
     }
 
     private Car findGenericCar() {
@@ -339,7 +421,7 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
     }
 
     public String statusLine() {
-        String job = loader ? "Loading silo" : "Unloading pit";
+        String job = (loader ? "Loading silo" : "Unloading pit") + (released() ? "" : estop() ? " (E-STOP)" : loader ? " (gate shut)" : " (conveyor stopped)");
         if (servedCar.isEmpty()) {
             return job + " — no car in range (park a freight car within " + cfg.num("reach") + " blocks)";
         }
@@ -396,7 +478,9 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         if (scale != 1f) tag.setFloat("scale", scale);
         tag.setLong("moved", totalMoved);
         tag.setInteger("cars", carsServed);
+        term.write(tag);
         cfg.write(tag);
+        ctl.write(tag);
         return tag;
     }
 
@@ -407,6 +491,8 @@ public class TileFreightTerminal extends TileEntity implements ITickable, com.do
         scale = tag.hasKey("scale") ? com.dogpound.railmap.signal.IScalable.clamp(tag.getFloat("scale")) : 1f;
         totalMoved = tag.getLong("moved");
         carsServed = tag.getInteger("cars");
+        term.read(tag);
         cfg.read(tag);
+        ctl.read(tag);
     }
 }

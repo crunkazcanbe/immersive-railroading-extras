@@ -1,0 +1,491 @@
+{
+ "title": "crowd_monitor",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 9.27,
+   "title": "CROWDS",
+   "controls": [
+    {
+     "id": "losd",
+     "t": "digits",
+     "u": 1.7,
+     "v": 25.2,
+     "w": 1.6,
+     "h": 1.4,
+     "col": "ff4040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "losa",
+     "t": "lamp",
+     "u": 1.7,
+     "v": 23.6,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "A"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.6,
+     "v": 23.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "A"
+    },
+    {
+     "id": "losb",
+     "t": "lamp",
+     "u": 1.7,
+     "v": 22.5,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "80e040",
+     "label": "B"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.6,
+     "v": 22.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "B"
+    },
+    {
+     "id": "losc",
+     "t": "lamp",
+     "u": 1.7,
+     "v": 21.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "c0e030",
+     "label": "C"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.6,
+     "v": 21.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "C"
+    },
+    {
+     "id": "losd",
+     "t": "lamp",
+     "u": 1.7,
+     "v": 20.3,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "ffd020",
+     "label": "D"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.6,
+     "v": 20.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "D"
+    },
+    {
+     "id": "lose",
+     "t": "lamp",
+     "u": 1.7,
+     "v": 19.2,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "ff8020",
+     "label": "E"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.6,
+     "v": 19.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "E"
+    },
+    {
+     "id": "losf",
+     "t": "lamp",
+     "u": 1.7,
+     "v": 18.1,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "ff3030",
+     "label": "F",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.6,
+     "v": 18.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "F"
+    },
+    {
+     "id": "densg",
+     "t": "gauge",
+     "u": 1.7,
+     "v": 14.6,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "P/M2",
+     "max": 100
+    },
+    {
+     "id": "dens",
+     "t": "digits",
+     "u": 9.6,
+     "v": 15.8,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "waitn",
+     "t": "digits",
+     "u": 9.6,
+     "v": 14.8,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "inflow",
+     "t": "digits",
+     "u": 9.6,
+     "v": 13.8,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "gateq",
+     "t": "digits",
+     "u": 9.6,
+     "v": 12.8,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tvmq",
+     "t": "digits",
+     "u": 9.6,
+     "v": 11.8,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "area",
+     "t": "digits",
+     "u": 9.6,
+     "v": 10.8,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "e8e8e8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line",
+     "t": "digits",
+     "u": 8.0,
+     "v": 26.4,
+     "w": 13.0,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s_len",
+     "t": "selector",
+     "u": 13.8,
+     "v": 8.2,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "LENGTH",
+     "pos": [
+      "120M",
+      "160M",
+      "240M",
+      "320M",
+      "40M",
+      "80M"
+     ]
+    },
+    {
+     "id": "s_wid",
+     "t": "selector",
+     "u": 11.4,
+     "v": 8.2,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "WIDTH",
+     "pos": [
+      "4M",
+      "5M",
+      "6M",
+      "8M",
+      "3M"
+     ]
+    },
+    {
+     "id": "s_meter",
+     "t": "selector",
+     "u": 9.0,
+     "v": 8.2,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "202020",
+     "label": "METERING",
+     "pos": [
+      "OFF",
+      "AUTO",
+      "ON"
+     ]
+    },
+    {
+     "id": "k_close",
+     "t": "key",
+     "u": 6.4,
+     "v": 8.2,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "c0a040",
+     "label": "ENTRANCE",
+     "pos": [
+      "OPEN",
+      "CLOSED"
+     ]
+    },
+    {
+     "id": "k_dwell",
+     "t": "key",
+     "u": 4.0,
+     "v": 8.2,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "c0a040",
+     "label": "DWELL",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "pa",
+     "t": "push",
+     "u": 13.6,
+     "v": 5.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "2050d0",
+     "label": "PA"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.6,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PA"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 12.0,
+     "v": 5.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0d020",
+     "label": "RESET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 10.4,
+     "v": 5.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 5.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 5.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 5.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.6,
+     "v": 5.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "meterl",
+     "t": "lamp",
+     "u": 5.2,
+     "v": 5.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "METER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.2,
+     "v": 5.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "METER"
+    },
+    {
+     "id": "closedl",
+     "t": "lamp",
+     "u": 3.8,
+     "v": 5.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "CLOSED"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.8,
+     "v": 5.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLOSED"
+    },
+    {
+     "id": "dwelll",
+     "t": "lamp",
+     "u": 2.4,
+     "v": 5.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "4080ff",
+     "label": "DWELL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.4,
+     "v": 5.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DWELL"
+    },
+    {
+     "id": "alarml",
+     "t": "lamp",
+     "u": 1.0,
+     "v": 5.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "ALARM",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.0,
+     "v": 5.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ALARM"
+    }
+   ]
+  }
+ ]
+}

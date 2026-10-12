@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:master_clock"
+  },
+  "facing=east": {
+   "model": "irextras:master_clock",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:master_clock",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:master_clock",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "title": "tram_pole",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 5.9,
+   "title": "TRAMWAY SECTION",
+   "controls": [
+    {
+     "id": "live",
+     "t": "lamp",
+     "u": 5.0,
+     "v": 16.6,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "30e060",
+     "label": "LIVE"
+    },
+    {
+     "id": "dead",
+     "t": "lamp",
+     "u": 5.0,
+     "v": 14.4,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "ff3030",
+     "label": "DEAD",
+     "blink": true
+    },
+    {
+     "id": "sec",
+     "t": "digits",
+     "u": 5.0,
+     "v": 12.8,
+     "w": 3.6,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

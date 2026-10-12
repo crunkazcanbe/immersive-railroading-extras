@@ -1,0 +1,31 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GLG",
+  "RDR",
+  "PCP"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:gold_ingot"
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "D": {
+   "item": "irextras:commodity_exchange"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:stock_exchange"
+ }
+}

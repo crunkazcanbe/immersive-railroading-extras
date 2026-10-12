@@ -1,0 +1,36 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "BCB",
+  "HMH",
+  "PFP"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:bucket"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:servicing_point"
+ }
+}

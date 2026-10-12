@@ -1,0 +1,62 @@
+{
+ "title": "loading_silo",
+ "surfaces": [
+  {
+   "side": "west",
+   "face": 17.99,
+   "title": "CHUTE",
+   "controls": [
+    {
+     "id": "open",
+     "t": "push",
+     "u": 10.4,
+     "v": -5.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "2fcb5a",
+     "label": ""
+    },
+    {
+     "id": "close",
+     "t": "push",
+     "u": 11.6,
+     "v": -5.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "26282c",
+     "label": ""
+    },
+    {
+     "id": "lopen",
+     "t": "lamp",
+     "u": 10.4,
+     "v": -7.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "lshut",
+     "t": "lamp",
+     "u": 11.6,
+     "v": -7.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "estop",
+     "t": "mushroom",
+     "u": 11.0,
+     "v": -8.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c81e1e",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

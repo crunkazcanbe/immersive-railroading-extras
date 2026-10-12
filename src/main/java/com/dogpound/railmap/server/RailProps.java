@@ -27,6 +27,13 @@ public final class RailProps extends WorldSavedData {
         public float battery = 1f;
         /** Last power source seen: 0 none, 1 wire/third rail, 2 battery, 3 charger, 4 flat battery. */
         public transient byte source;
+        /** traction load flow (her ChatGPT list): electrical draw and regen this second (kW), the share of its power the
+         *  line gave it (0..1), where its regen went ("trains", "battery", "grid", "resistors"), and whether IR Extras
+         *  blended the dynamic brake into the train brake */
+        public transient int kwDraw, kwRegen;
+        public transient float supplied = 1f;
+        public transient String regenTo = "";
+        public transient boolean blended;
         /** Destination signs: 0 automatic (route / next stop), 1 custom text, 2 off. */
         public byte signMode;
         public String signText = "";

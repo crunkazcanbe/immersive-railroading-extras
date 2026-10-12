@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IBI",
+  "QEQ",
+  "IGI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "B": {
+   "item": "minecraft:blaze_powder"
+  },
+  "Q": {
+   "item": "minecraft:quartz"
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  }
+ },
+ "result": {
+  "item": "irextras:cctv_thermal",
+  "count": 1
+ }
+}

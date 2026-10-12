@@ -1,0 +1,35 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "HSH",
+  "FMF",
+  "PCP"
+ ],
+ "key": {
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "S": {
+   "item": "minecraft:sand",
+   "data": 0
+  },
+  "F": {
+   "item": "minecraft:furnace"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:sand_tower"
+ }
+}

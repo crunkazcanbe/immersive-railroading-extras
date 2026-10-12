@@ -1,0 +1,12 @@
+{
+ "parent": "block/cube",
+ "textures": {
+  "particle": "irextras:blocks/machine_casing",
+  "down": "irextras:blocks/machine_casing",
+  "up": "irextras:blocks/drive_coupling",
+  "north": "irextras:blocks/drive_coupling",
+  "south": "irextras:blocks/drive_coupling",
+  "east": "irextras:blocks/drive_coupling",
+  "west": "irextras:blocks/drive_coupling"
+ }
+}

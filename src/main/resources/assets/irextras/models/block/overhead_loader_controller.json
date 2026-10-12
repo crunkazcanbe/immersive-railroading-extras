@@ -1,0 +1,8 @@
+{
+ "parent": "block/orientable",
+ "textures": {
+  "top": "irextras:blocks/machine_casing",
+  "front": "irextras:blocks/controller_overhead_loader",
+  "side": "irextras:blocks/machine_casing"
+ }
+}

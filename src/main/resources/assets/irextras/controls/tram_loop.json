@@ -1,0 +1,61 @@
+{
+ "title": "tram_loop",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 15.05,
+   "title": "LOOP DETECTOR",
+   "controls": [
+    {
+     "id": "det",
+     "t": "lamp",
+     "u": 4.6,
+     "v": 11.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "DET"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 11.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "PWR"
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 2.2,
+     "v": 14.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "LOOP",
+     "pos": [
+      "TRAM CALL",
+      "TRAM CANCEL",
+      "VEH A",
+      "VEH B",
+      "VEH C",
+      "VEH D"
+     ]
+    },
+    {
+     "id": "cnt",
+     "t": "digits",
+     "u": 3.4,
+     "v": 14.2,
+     "w": 1.4,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "HCH",
+  "GFG",
+  "PDP"
+ ],
+ "key": {
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "D": {
+   "type": "forge:ore_dict",
+   "ore": "gemDiamond"
+  }
+ },
+ "result": {
+  "item": "irextras:jaw_crusher",
+  "count": 1
+ }
+}

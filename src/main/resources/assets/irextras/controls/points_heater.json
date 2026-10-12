@@ -1,0 +1,163 @@
+{
+ "title": "points_heater",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.9,
+   "title": "POINTS HEATING",
+   "controls": [
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 4.2,
+     "v": 9.6,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "ON",
+      "OFF"
+     ]
+    },
+    {
+     "id": "kw",
+     "t": "gauge",
+     "u": 8.0,
+     "v": 9.6,
+     "w": 2.8,
+     "h": 2.8,
+     "col": "f2f0e6",
+     "label": "KW",
+     "max": 15
+    },
+    {
+     "id": "air",
+     "t": "digits",
+     "u": 11.6,
+     "v": 10.8,
+     "w": 3.6,
+     "h": 0.75,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rail",
+     "t": "digits",
+     "u": 11.6,
+     "v": 9.8,
+     "w": 3.6,
+     "h": 0.75,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "src",
+     "t": "digits",
+     "u": 11.6,
+     "v": 8.8,
+     "w": 3.6,
+     "h": 0.75,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "heat",
+     "t": "lamp",
+     "u": 3.4,
+     "v": 6.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "ff7020",
+     "label": "HEAT"
+    },
+    {
+     "id": "frost",
+     "t": "lamp",
+     "u": 5.0,
+     "v": 6.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "5bcefa",
+     "label": "FROST"
+    },
+    {
+     "id": "snow",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 6.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0ff",
+     "label": "SNOW"
+    },
+    {
+     "id": "supply",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 6.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": "SUPPLY"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 6.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "ff3030",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 6.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "kwh",
+     "t": "digits",
+     "u": 5.6,
+     "v": 4.4,
+     "w": 4.0,
+     "h": 0.75,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rcd",
+     "t": "push",
+     "u": 9.6,
+     "v": 4.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "2050d0",
+     "label": "RCD RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.8,
+     "v": 4.4,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

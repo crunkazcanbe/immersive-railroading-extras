@@ -1,0 +1,785 @@
+{
+ "title": "ballast_tamper",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -15.62,
+   "title": "TAMPER DESK",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 17.2,
+     "v": -2.925,
+     "w": 11.0,
+     "h": 0.8399999999999999,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 17.2,
+     "v": -3.975,
+     "w": 11.0,
+     "h": 0.8399999999999999,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line3",
+     "t": "digits",
+     "u": 17.2,
+     "v": -5.025,
+     "w": 11.0,
+     "h": 0.8399999999999999,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line4",
+     "t": "digits",
+     "u": 17.2,
+     "v": -6.075,
+     "w": 11.0,
+     "h": 0.8399999999999999,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "page",
+     "t": "selector",
+     "u": 24.6,
+     "v": -4.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "PAGE",
+     "pos": [
+      "STATUS",
+      "BEFORE/AFTER",
+      "WORST",
+      "ENGINE"
+     ]
+    },
+    {
+     "id": "tqib",
+     "t": "digits",
+     "u": 8.0,
+     "v": -3.2,
+     "w": 2.4,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": -4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TQI BEFORE"
+    },
+    {
+     "id": "tqia",
+     "t": "digits",
+     "u": 4.4,
+     "v": -3.2,
+     "w": 2.4,
+     "h": 1.0,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": -4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TQI AFTER"
+    },
+    {
+     "id": "pieces",
+     "t": "digits",
+     "u": 0.8,
+     "v": -3.2,
+     "w": 2.4,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.8,
+     "v": -4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PIECES"
+    },
+    {
+     "id": "fuelg",
+     "t": "gauge",
+     "u": 23.0,
+     "v": -8.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "DIESEL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 23.0,
+     "v": -10.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DIESEL"
+    },
+    {
+     "id": "batg",
+     "t": "gauge",
+     "u": 20.6,
+     "v": -8.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "BATT",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 20.6,
+     "v": -10.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BATT"
+    },
+    {
+     "id": "rpmg",
+     "t": "gauge",
+     "u": 18.2,
+     "v": -8.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "RPM",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 18.2,
+     "v": -10.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RPM"
+    },
+    {
+     "id": "vibg",
+     "t": "gauge",
+     "u": 15.8,
+     "v": -8.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "VIBRATION",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.8,
+     "v": -10.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "VIBRATION"
+    },
+    {
+     "id": "ballg",
+     "t": "gauge",
+     "u": 13.4,
+     "v": -8.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "BALLAST",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.4,
+     "v": -10.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BALLAST"
+    },
+    {
+     "id": "progg",
+     "t": "gauge",
+     "u": 11.0,
+     "v": -8.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "WORK",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.0,
+     "v": -10.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WORK"
+    },
+    {
+     "id": "tqibg",
+     "t": "gauge",
+     "u": 8.6,
+     "v": -8.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "TQI BEFORE",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.6,
+     "v": -10.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TQI BEFORE"
+    },
+    {
+     "id": "tqiag",
+     "t": "gauge",
+     "u": 6.2,
+     "v": -8.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "TQI AFTER",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.2,
+     "v": -10.15,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TQI AFTER"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 3.0,
+     "v": -6.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.0,
+     "v": -6.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "eng",
+     "t": "lamp",
+     "u": 1.0,
+     "v": -6.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "ENGINE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.0,
+     "v": -6.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ENGINE"
+    },
+    {
+     "id": "batl",
+     "t": "lamp",
+     "u": -1.0,
+     "v": -6.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "BATT LOW"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -1.0,
+     "v": -6.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BATT LOW"
+    },
+    {
+     "id": "fuell",
+     "t": "lamp",
+     "u": -3.0,
+     "v": -6.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "FUEL LOW"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -3.0,
+     "v": -6.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FUEL LOW"
+    },
+    {
+     "id": "heads",
+     "t": "lamp",
+     "u": -5.0,
+     "v": -6.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "HEADS DN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -5.0,
+     "v": -6.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "HEADS DN"
+    },
+    {
+     "id": "ball",
+     "t": "lamp",
+     "u": -7.0,
+     "v": -6.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "BALLAST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -7.0,
+     "v": -6.75,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BALLAST"
+    },
+    {
+     "id": "meas",
+     "t": "lamp",
+     "u": 3.0,
+     "v": -7.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "MEASURE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.0,
+     "v": -8.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MEASURE"
+    },
+    {
+     "id": "work",
+     "t": "lamp",
+     "u": 1.0,
+     "v": -7.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "TAMPING",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.0,
+     "v": -8.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TAMPING"
+    },
+    {
+     "id": "done",
+     "t": "lamp",
+     "u": -1.0,
+     "v": -7.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "DONE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -1.0,
+     "v": -8.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DONE"
+    },
+    {
+     "id": "train",
+     "t": "lamp",
+     "u": -3.0,
+     "v": -7.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "TRAIN",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -3.0,
+     "v": -8.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TRAIN"
+    },
+    {
+     "id": "tsr",
+     "t": "lamp",
+     "u": -5.0,
+     "v": -7.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "TSR"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -5.0,
+     "v": -8.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TSR"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": -7.0,
+     "v": -7.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "FAULT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -7.0,
+     "v": -8.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FAULT"
+    },
+    {
+     "id": "measure",
+     "t": "push",
+     "u": 3.0,
+     "v": -10.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "2a6ad0",
+     "label": "MEASURE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.0,
+     "v": -11.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MEASURE"
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 0.4,
+     "v": -10.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1fa34a",
+     "label": "START"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.4,
+     "v": -11.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "START"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": -2.2,
+     "v": -10.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -2.2,
+     "v": -11.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": -4.8,
+     "v": -10.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "e0c020",
+     "label": "RESET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -4.8,
+     "v": -11.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": -7.4,
+     "v": -10.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -7.4,
+     "v": -11.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": -14.02,
+   "title": "TAMPER UPSTAND",
+   "controls": [
+    {
+     "id": "k_batt",
+     "t": "key",
+     "u": 23.0,
+     "v": 0.8,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c02020",
+     "label": "BATTERY",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "k_engine",
+     "t": "key",
+     "u": 20.0,
+     "v": 0.8,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c0a040",
+     "label": "ENGINE",
+     "pos": [
+      "OFF",
+      "RUN"
+     ]
+    },
+    {
+     "id": "s_range",
+     "t": "selector",
+     "u": 16.0,
+     "v": 0.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "SECTION",
+     "pos": [
+      "32M",
+      "16M",
+      "64M",
+      "128M"
+     ]
+    },
+    {
+     "id": "s_lift",
+     "t": "selector",
+     "u": 12.0,
+     "v": 0.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "LIFT",
+     "pos": [
+      "20MM",
+      "10MM",
+      "30MM",
+      "40MM"
+     ]
+    },
+    {
+     "id": "s_squeeze",
+     "t": "selector",
+     "u": 8.0,
+     "v": 0.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "SQUEEZE",
+     "pos": [
+      "0.8S",
+      "0.6S",
+      "1.0S",
+      "1.2S"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 4.0,
+     "v": 0.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "2a4a8a",
+     "label": "MODE",
+     "pos": [
+      "TAMP",
+      "T+LINE",
+      "FULL"
+     ]
+    },
+    {
+     "id": "m_heads",
+     "t": "lever",
+     "u": 0.0,
+     "v": -0.2,
+     "w": 0.8,
+     "h": 2.4,
+     "col": "e8c020",
+     "label": "HEADS",
+     "pos": [
+      "UP",
+      "DOWN"
+     ]
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": -4.0,
+     "v": 0.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d02020",
+     "label": "E-STOP"
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": -10.02,
+   "title": "BALLAST",
+   "controls": [
+    {
+     "id": "ballast",
+     "t": "zone",
+     "u": -7.5,
+     "v": -2.0,
+     "w": 7.0,
+     "h": 9.6,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

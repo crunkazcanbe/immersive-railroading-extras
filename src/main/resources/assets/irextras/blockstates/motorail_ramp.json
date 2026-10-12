@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:motorail_ramp"
+  },
+  "facing=east": {
+   "model": "irextras:motorail_ramp",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:motorail_ramp",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:motorail_ramp",
+   "y": 270
+  }
+ }
+}

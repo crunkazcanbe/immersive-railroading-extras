@@ -1,0 +1,251 @@
+{
+ "title": "safety_supervisor",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.5,
+   "title": "SUPERVISOR",
+   "controls": [
+    {
+     "id": "mains",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 12.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 11.8,
+     "v": 12.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "ok",
+     "t": "lamp",
+     "u": 10.6,
+     "v": 12.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "HLTHY"
+    },
+    {
+     "id": "cha",
+     "t": "lamp",
+     "u": 9.4,
+     "v": 12.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30a0ff",
+     "label": "CH A"
+    },
+    {
+     "id": "chb",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 12.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30a0ff",
+     "label": "CH B"
+    },
+    {
+     "id": "mode",
+     "t": "digits",
+     "u": 10.6,
+     "v": 10.9,
+     "w": 6.0,
+     "h": 0.6,
+     "col": "ffd27a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "wd",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 8.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "WDOG",
+     "blink": true
+    },
+    {
+     "id": "xc",
+     "t": "lamp",
+     "u": 11.8,
+     "v": 8.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "XC OK"
+    },
+    {
+     "id": "xcf",
+     "t": "lamp",
+     "u": 10.6,
+     "v": 8.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "XC !",
+     "blink": true
+    },
+    {
+     "id": "vio",
+     "t": "lamp",
+     "u": 9.4,
+     "v": 8.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "VIOL",
+     "blink": true
+    },
+    {
+     "id": "enf",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 8.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff8020",
+     "label": "ENF"
+    },
+    {
+     "id": "held",
+     "t": "lamp",
+     "u": 7.0,
+     "v": 8.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "HELD",
+     "blink": true
+    },
+    {
+     "id": "n",
+     "t": "digits",
+     "u": 5.0,
+     "v": 8.6,
+     "w": 2.6,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d TRN"
+    },
+    {
+     "id": "last",
+     "t": "digits",
+     "u": 8.0,
+     "v": 6.6,
+     "w": 11.0,
+     "h": 0.6,
+     "col": "ff8060",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "iv",
+     "t": "digits",
+     "u": 12.4,
+     "v": 5.6,
+     "w": 2.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d INTV"
+    },
+    {
+     "id": "margin",
+     "t": "gauge",
+     "u": 8.2,
+     "v": 5.9,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "V/ENV %",
+     "max": 150
+    },
+    {
+     "id": "cyc",
+     "t": "gauge",
+     "u": 6.0,
+     "v": 5.9,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "CYCLE",
+     "max": 100
+    },
+    {
+     "id": "k_mode",
+     "t": "key",
+     "u": 12.8,
+     "v": 3.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "c0a040",
+     "label": "MODE",
+     "pos": [
+      "MONITOR",
+      "ENFORCE"
+     ]
+    },
+    {
+     "id": "s_cov",
+     "t": "selector",
+     "u": 10.4,
+     "v": 3.2,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "COVER",
+     "pos": [
+      "256",
+      "1024",
+      "ALL"
+     ]
+    },
+    {
+     "id": "rst",
+     "t": "push",
+     "u": 8.0,
+     "v": 3.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": "RESET"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 6.0,
+     "v": 3.2,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0d020",
+     "label": "ACK"
+    },
+    {
+     "id": "lamptest",
+     "t": "push",
+     "u": 4.0,
+     "v": 3.2,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f0f0f0",
+     "label": "LAMP"
+    }
+   ]
+  }
+ ]
+}

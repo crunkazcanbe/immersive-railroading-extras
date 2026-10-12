@@ -1,0 +1,84 @@
+{
+ "variants": {
+  "facing=north,shape=straight": {
+   "model": "irextras:conveyor_express",
+   "y": 0
+  },
+  "facing=north,shape=left": {
+   "model": "irextras:conveyor_express_left",
+   "y": 0
+  },
+  "facing=north,shape=right": {
+   "model": "irextras:conveyor_express_right",
+   "y": 0
+  },
+  "facing=north,shape=up": {
+   "model": "irextras:conveyor_express_ramp",
+   "y": 0
+  },
+  "facing=north,shape=down": {
+   "model": "irextras:conveyor_express_ramp",
+   "y": 180
+  },
+  "facing=east,shape=straight": {
+   "model": "irextras:conveyor_express",
+   "y": 90
+  },
+  "facing=east,shape=left": {
+   "model": "irextras:conveyor_express_left",
+   "y": 90
+  },
+  "facing=east,shape=right": {
+   "model": "irextras:conveyor_express_right",
+   "y": 90
+  },
+  "facing=east,shape=up": {
+   "model": "irextras:conveyor_express_ramp",
+   "y": 90
+  },
+  "facing=east,shape=down": {
+   "model": "irextras:conveyor_express_ramp",
+   "y": 270
+  },
+  "facing=south,shape=straight": {
+   "model": "irextras:conveyor_express",
+   "y": 180
+  },
+  "facing=south,shape=left": {
+   "model": "irextras:conveyor_express_left",
+   "y": 180
+  },
+  "facing=south,shape=right": {
+   "model": "irextras:conveyor_express_right",
+   "y": 180
+  },
+  "facing=south,shape=up": {
+   "model": "irextras:conveyor_express_ramp",
+   "y": 180
+  },
+  "facing=south,shape=down": {
+   "model": "irextras:conveyor_express_ramp",
+   "y": 0
+  },
+  "facing=west,shape=straight": {
+   "model": "irextras:conveyor_express",
+   "y": 270
+  },
+  "facing=west,shape=left": {
+   "model": "irextras:conveyor_express_left",
+   "y": 270
+  },
+  "facing=west,shape=right": {
+   "model": "irextras:conveyor_express_right",
+   "y": 270
+  },
+  "facing=west,shape=up": {
+   "model": "irextras:conveyor_express_ramp",
+   "y": 270
+  },
+  "facing=west,shape=down": {
+   "model": "irextras:conveyor_express_ramp",
+   "y": 90
+  }
+ }
+}

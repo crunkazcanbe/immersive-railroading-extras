@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PCP",
+  "EFE",
+  "DHD"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 16
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "D": {
+   "item": "irextras:part",
+   "data": 17
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 19
+  }
+ },
+ "result": {
+  "item": "irextras:grid_dcdc",
+  "count": 1
+ }
+}

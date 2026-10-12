@@ -1,0 +1,590 @@
+{
+ "title": "washout_plant",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.85,
+   "title": "WASHOUT",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 6.0,
+     "v": 17.6,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 6.0,
+     "v": 16.6,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line3",
+     "t": "digits",
+     "u": 6.0,
+     "v": 15.6,
+     "w": 10.0,
+     "h": 0.8,
+     "col": "60c0ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "water",
+     "t": "gauge",
+     "u": 1.8,
+     "v": 13.0,
+     "w": 2.1,
+     "h": 2.1,
+     "col": "f2f0e6",
+     "label": "WATER %",
+     "max": 100
+    },
+    {
+     "id": "efflg",
+     "t": "gauge",
+     "u": 4.5,
+     "v": 13.0,
+     "w": 2.1,
+     "h": 2.1,
+     "col": "f2f0e6",
+     "label": "EFFLUENT %",
+     "max": 100
+    },
+    {
+     "id": "prog",
+     "t": "gauge",
+     "u": 7.2,
+     "v": 13.0,
+     "w": 2.1,
+     "h": 2.1,
+     "col": "f2f0e6",
+     "label": "PROGRESS",
+     "max": 100
+    },
+    {
+     "id": "heat",
+     "t": "gauge",
+     "u": 9.9,
+     "v": 13.0,
+     "w": 2.1,
+     "h": 2.1,
+     "col": "f2f0e6",
+     "label": "BOILER",
+     "max": 100
+    },
+    {
+     "id": "s_prog",
+     "t": "selector",
+     "u": 1.8,
+     "v": 10.2,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "202020",
+     "label": "PROGRAM",
+     "pos": [
+      "RINSE",
+      "DETERGENT",
+      "STEAM"
+     ]
+    },
+    {
+     "id": "s_main",
+     "t": "selector",
+     "u": 4.5,
+     "v": 10.2,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "2050d0",
+     "label": "WATER MAIN",
+     "pos": [
+      "SHUT",
+      "OPEN"
+     ]
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 10.0,
+     "v": 10.2,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "d02020",
+     "label": "E-STOP"
+    },
+    {
+     "id": "wash",
+     "t": "push",
+     "u": 1.4,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "30a050",
+     "label": "WASH"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.4,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WASH"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 3.2,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.2,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "drain",
+     "t": "push",
+     "u": 5.0,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "806040",
+     "label": "DRAIN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.0,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DRAIN"
+    },
+    {
+     "id": "fill",
+     "t": "push",
+     "u": 6.8,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "2050d0",
+     "label": "FILL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.8,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FILL"
+    },
+    {
+     "id": "cert",
+     "t": "push",
+     "u": 8.6,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0f0f0",
+     "label": "CERT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.6,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CERT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 10.4,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 1.4,
+     "v": 5.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.4,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 2.9,
+     "v": 5.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.9,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "run",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 5.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "RUN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RUN"
+    },
+    {
+     "id": "done",
+     "t": "lamp",
+     "u": 5.9,
+     "v": 5.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "4080ff",
+     "label": "DONE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.9,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DONE"
+    },
+    {
+     "id": "carl",
+     "t": "lamp",
+     "u": 7.4,
+     "v": 5.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0e0",
+     "label": "WAGON"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.4,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WAGON"
+    },
+    {
+     "id": "boxl",
+     "t": "lamp",
+     "u": 8.9,
+     "v": 5.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0e0",
+     "label": "BOXES"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.9,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BOXES"
+    },
+    {
+     "id": "drainl",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 5.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "DRAIN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 4.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DRAIN"
+    },
+    {
+     "id": "effl",
+     "t": "lamp",
+     "u": 1.4,
+     "v": 3.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "EFFL FULL",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.4,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "EFFL FULL"
+    },
+    {
+     "id": "loww",
+     "t": "lamp",
+     "u": 3.1,
+     "v": 3.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "LOW H2O"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.1,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LOW H2O"
+    },
+    {
+     "id": "nochem",
+     "t": "lamp",
+     "u": 4.8,
+     "v": 3.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "NO CHEM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.8,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NO CHEM"
+    },
+    {
+     "id": "nofuel",
+     "t": "lamp",
+     "u": 6.5,
+     "v": 3.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "NO FUEL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.5,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NO FUEL"
+    },
+    {
+     "id": "haz",
+     "t": "lamp",
+     "u": 8.2,
+     "v": 3.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "HAZ LAST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.2,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "HAZ LAST"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 9.9,
+     "v": 3.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.9,
+     "v": 3.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FAULT"
+    },
+    {
+     "id": "chem",
+     "t": "zone",
+     "u": 1.8,
+     "v": 1.6,
+     "w": 2.2,
+     "h": 1.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 2.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DETERGENT"
+    },
+    {
+     "id": "fuel",
+     "t": "zone",
+     "u": 4.5,
+     "v": 1.6,
+     "w": 2.2,
+     "h": 1.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.5,
+     "v": 2.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "COAL"
+    },
+    {
+     "id": "bay",
+     "t": "zone",
+     "u": 7.2,
+     "v": 1.6,
+     "w": 2.2,
+     "h": 1.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.2,
+     "v": 2.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BOX BAY"
+    },
+    {
+     "id": "tray",
+     "t": "zone",
+     "u": 9.9,
+     "v": 1.6,
+     "w": 2.2,
+     "h": 1.6,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.9,
+     "v": 2.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CERTS"
+    }
+   ]
+  }
+ ]
+}

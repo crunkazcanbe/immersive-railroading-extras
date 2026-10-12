@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:canopy_light"
+  },
+  "facing=east": {
+   "model": "irextras:canopy_light",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:canopy_light",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:canopy_light",
+   "y": 270
+  }
+ }
+}

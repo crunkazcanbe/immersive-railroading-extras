@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IRI",
+  "ICI",
+  "IBI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:repeater"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "B": {
+   "item": "minecraft:noteblock"
+  }
+ },
+ "result": {
+  "item": "irextras:crossing_predictor",
+  "count": 1
+ }
+}

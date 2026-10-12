@@ -1,0 +1,430 @@
+{
+ "title": "servicing_point",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.18,
+   "title": "SERVICING",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.8,
+     "w": 6.8,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "unit",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.0,
+     "w": 6.8,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cetg",
+     "t": "gauge",
+     "u": 10.2,
+     "v": 19.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "CET TANK",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.2,
+     "v": 18.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CET TANK"
+    },
+    {
+     "id": "foodg",
+     "t": "gauge",
+     "u": 8.0,
+     "v": 19.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "CATERING",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 18.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CATERING"
+    },
+    {
+     "id": "needg",
+     "t": "gauge",
+     "u": 5.8,
+     "v": 19.8,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "NEED %",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.8,
+     "v": 18.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NEED %"
+    },
+    {
+     "id": "ntoday",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.8,
+     "w": 4.0,
+     "h": 0.6,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%d TODAY"
+    },
+    {
+     "id": "l_water",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 16.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "WATER"
+    },
+    {
+     "id": "water",
+     "t": "push",
+     "u": 10.4,
+     "v": 15.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "2050d0",
+     "label": "WATER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 14.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WATER"
+    },
+    {
+     "id": "l_cetp",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 16.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "CET"
+    },
+    {
+     "id": "cetp",
+     "t": "push",
+     "u": 8.8,
+     "v": 15.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "8a6a3a",
+     "label": "CET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.8,
+     "v": 14.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CET"
+    },
+    {
+     "id": "l_clean",
+     "t": "lamp",
+     "u": 7.2,
+     "v": 16.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "CLEAN"
+    },
+    {
+     "id": "clean",
+     "t": "push",
+     "u": 7.2,
+     "v": 15.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "30c060",
+     "label": "CLEAN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.2,
+     "v": 14.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLEAN"
+    },
+    {
+     "id": "l_cater",
+     "t": "lamp",
+     "u": 5.6,
+     "v": 16.6,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "CATER"
+    },
+    {
+     "id": "cater",
+     "t": "push",
+     "u": 5.6,
+     "v": 15.4,
+     "w": 0.95,
+     "h": 0.95,
+     "col": "f0d020",
+     "label": "CATER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.6,
+     "v": 14.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CATER"
+    },
+    {
+     "id": "all",
+     "t": "push",
+     "u": 10.4,
+     "v": 13.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "1fa34a",
+     "label": "ALL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 12.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ALL"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 12.0,
+     "v": 13.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.0,
+     "v": 12.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "discharge",
+     "t": "push",
+     "u": 13.6,
+     "v": 13.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "6a4a2a",
+     "label": "DISCH"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.6,
+     "v": 12.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DISCH"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 15.2,
+     "v": 13.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.2,
+     "v": 12.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "s_auto",
+     "t": "selector",
+     "u": 9.6,
+     "v": 10.6,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "MANUAL",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.6,
+     "v": 9.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LAYOVER"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 7.4,
+     "v": 10.8,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.4,
+     "v": 10.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 8.4,
+     "v": 10.8,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.4,
+     "v": 10.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "main",
+     "t": "lamp",
+     "u": 9.4,
+     "v": 10.8,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "2a8aff",
+     "label": "H2O MAIN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.4,
+     "v": 10.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "H2O MAIN"
+    },
+    {
+     "id": "full",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 10.8,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff3030",
+     "label": "CET FULL",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 10.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CET FULL"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.95,
+   "title": "CATERING",
+   "controls": [
+    {
+     "id": "stock",
+     "t": "zone",
+     "u": 14.2,
+     "v": 6.0,
+     "w": 2.6,
+     "h": 7.6,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

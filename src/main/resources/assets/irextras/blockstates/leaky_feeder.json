@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:leaky_feeder"
+  },
+  "facing=east": {
+   "model": "irextras:leaky_feeder",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:leaky_feeder",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:leaky_feeder",
+   "y": 270
+  }
+ }
+}

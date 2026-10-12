@@ -1,0 +1,73 @@
+{
+ "multipart": [
+  {
+   "when": {
+    "open": "true"
+   },
+   "apply": {
+    "model": "irextras:gate_valve_open"
+   }
+  },
+  {
+   "when": {
+    "open": "false"
+   },
+   "apply": {
+    "model": "irextras:gate_valve_shut"
+   }
+  },
+  {
+   "when": {
+    "north": "true"
+   },
+   "apply": {
+    "model": "irextras:pipe_arm"
+   }
+  },
+  {
+   "when": {
+    "east": "true"
+   },
+   "apply": {
+    "model": "irextras:pipe_arm",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "south": "true"
+   },
+   "apply": {
+    "model": "irextras:pipe_arm",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "west": "true"
+   },
+   "apply": {
+    "model": "irextras:pipe_arm",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "up": "true"
+   },
+   "apply": {
+    "model": "irextras:pipe_arm",
+    "x": 270
+   }
+  },
+  {
+   "when": {
+    "down": "true"
+   },
+   "apply": {
+    "model": "irextras:pipe_arm",
+    "x": 90
+   }
+  }
+ ]
+}

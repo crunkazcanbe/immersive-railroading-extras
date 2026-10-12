@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "ingredients": [
+  {
+   "item": "minecraft:paper"
+  },
+  {
+   "item": "minecraft:paper"
+  },
+  {
+   "item": "minecraft:feather"
+  },
+  {
+   "item": "minecraft:dye",
+   "data": 0
+  }
+ ],
+ "result": {
+  "item": "irextras:mail",
+  "count": 4,
+  "data": 0
+ }
+}

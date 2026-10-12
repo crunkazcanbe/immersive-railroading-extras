@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ILI",
+  " T ",
+  " I "
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "L": {
+   "item": "minecraft:lever"
+  },
+  "T": {
+   "item": "minecraft:redstone_torch"
+  }
+ },
+ "result": {
+  "item": "irextras:possession_switch",
+  "count": 1
+ }
+}

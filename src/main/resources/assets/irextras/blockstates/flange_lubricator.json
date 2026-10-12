@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:flange_lubricator"
+  },
+  "facing=east": {
+   "model": "irextras:flange_lubricator",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:flange_lubricator",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:flange_lubricator",
+   "y": 270
+  }
+ }
+}

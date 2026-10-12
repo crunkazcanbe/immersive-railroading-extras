@@ -1,0 +1,52 @@
+{
+ "variants": {
+  "level=0": {
+   "model": "irextras:light_helper"
+  },
+  "level=1": {
+   "model": "irextras:light_helper"
+  },
+  "level=2": {
+   "model": "irextras:light_helper"
+  },
+  "level=3": {
+   "model": "irextras:light_helper"
+  },
+  "level=4": {
+   "model": "irextras:light_helper"
+  },
+  "level=5": {
+   "model": "irextras:light_helper"
+  },
+  "level=6": {
+   "model": "irextras:light_helper"
+  },
+  "level=7": {
+   "model": "irextras:light_helper"
+  },
+  "level=8": {
+   "model": "irextras:light_helper"
+  },
+  "level=9": {
+   "model": "irextras:light_helper"
+  },
+  "level=10": {
+   "model": "irextras:light_helper"
+  },
+  "level=11": {
+   "model": "irextras:light_helper"
+  },
+  "level=12": {
+   "model": "irextras:light_helper"
+  },
+  "level=13": {
+   "model": "irextras:light_helper"
+  },
+  "level=14": {
+   "model": "irextras:light_helper"
+  },
+  "level=15": {
+   "model": "irextras:light_helper"
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PHP",
+  "PCP",
+  "MFM"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:grain_leg"
+ }
+}

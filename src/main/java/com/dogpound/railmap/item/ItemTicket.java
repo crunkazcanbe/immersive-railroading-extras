@@ -45,6 +45,40 @@ public class ItemTicket extends Item {
         return s;
     }
 
+    // ---- travel passes (her ChatGPT list #48): day / 7-day / 28-day passes for a range of fare zones -----------------
+    private static final String PASS = "pass", ZLO = "zlo", ZHI = "zhi", EXP = "expires", CONC = "conc", PAID = "paid", RIDES = "rides", AT = "issuedAt";
+
+    /** type 0 day, 1 seven-day, 2 twenty-eight-day; expires = world total time; paid in cents (refunds) */
+    public static ItemStack makePass(Item item, int type, int zlo, int zhi, long expires, int conc, int serial, long paid, String at) {
+        ItemStack s = new ItemStack(item);
+        NBTTagCompound t = new NBTTagCompound();
+        t.setInteger(PASS, type + 1);
+        t.setInteger(ZLO, Math.min(zlo, zhi)); t.setInteger(ZHI, Math.max(zlo, zhi));
+        t.setLong(EXP, expires); t.setInteger(CONC, conc); t.setInteger(SERIAL, serial); t.setLong(PAID, paid); t.setString(AT, at);
+        s.setTagCompound(t);
+        return s;
+    }
+
+    public static boolean isPass(ItemStack s) { return s.getItem() instanceof ItemTicket && s.hasTagCompound() && s.getTagCompound().getInteger(PASS) > 0; }
+    public static int passType(ItemStack s) { return s.getTagCompound().getInteger(PASS) - 1; }
+    public static int zoneLo(ItemStack s) { return s.getTagCompound().getInteger(ZLO); }
+    public static int zoneHi(ItemStack s) { return s.getTagCompound().getInteger(ZHI); }
+    public static long expires(ItemStack s) { return s.getTagCompound().getLong(EXP); }
+    public static long paid(ItemStack s) { return s.getTagCompound().getLong(PAID); }
+    public static int rides(ItemStack s) { return s.getTagCompound().getInteger(RIDES); }
+
+    /** null if the pass is good in this zone now, else why not */
+    public static String passRefused(ItemStack s, long now, int zone) {
+        if (now > expires(s)) return "That pass has expired";
+        if (zone < zoneLo(s) || zone > zoneHi(s)) return "That pass covers zones " + zoneLo(s) + "-" + zoneHi(s) + ", this station is zone " + zone;
+        return null;
+    }
+
+    public static void ride(ItemStack s) { s.getTagCompound().setInteger(RIDES, rides(s) + 1); }
+
+    private static final String[] PASS_NAMES = {"Day Pass", "7-Day Season Ticket", "28-Day Season Ticket"};
+    private static final String[] CONC_NAMES = {"Adult", "Child", "Senior"};
+
     public static boolean valid(ItemStack s) {
         return s.getItem() instanceof ItemTicket && s.hasTagCompound() && s.getTagCompound().hasKey(FROM);
     }
@@ -60,7 +94,7 @@ public class ItemTicket extends Item {
     }
 
     public static boolean isSpent(ItemStack s) {
-        if (!s.hasTagCompound()) return false;
+        if (!s.hasTagCompound() || isPass(s)) return false;
         int u = used(s);
         return s.getTagCompound().getBoolean(ROUND) ? u >= 2 : u >= 1;
     }
@@ -82,12 +116,24 @@ public class ItemTicket extends Item {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
+        if (isPass(stack)) return PASS_NAMES[Math.max(0, Math.min(2, passType(stack)))] + " · Zones " + zoneLo(stack) + "-" + zoneHi(stack);
         if (!valid(stack)) return "Blank Ticket";
         return (isSpent(stack) ? "Used Ticket: " : "Ticket: ") + fromName(stack) + " → " + toName(stack);
     }
 
     @Override
     public void addInformation(ItemStack stack, World world, List<String> tip, ITooltipFlag flag) {
+        if (isPass(stack)) {
+            NBTTagCompound p = stack.getTagCompound();
+            tip.add("§f" + CONC_NAMES[Math.max(0, Math.min(2, p.getInteger(CONC)))] + " · zones " + zoneLo(stack) + " to " + zoneHi(stack) + " · any line, any operator");
+            tip.add("§7No. " + p.getInteger(SERIAL) + " · issued at " + p.getString(AT) + " · " + rides(stack) + " rides");
+            if (world != null) {
+                long left = expires(stack) - world.getTotalWorldTime();
+                tip.add(left > 0 ? "§aValid for " + (left / 24000) + "d " + (left % 24000) / 1000 + "h more" : "§8Expired");
+            }
+            tip.add("§8Show it at the fare gates. Unused passes can be refunded at a Travel Centre.");
+            return;
+        }
         if (!valid(stack)) {
             tip.add("§7Buy one from a ticket machine at a station.");
             return;

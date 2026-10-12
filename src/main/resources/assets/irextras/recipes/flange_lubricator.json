@@ -1,0 +1,34 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SHS",
+  "MCM",
+  "PRP"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:slime_ball"
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "R": {
+   "item": "minecraft:rail"
+  }
+ },
+ "result": {
+  "item": "irextras:flange_lubricator"
+ }
+}

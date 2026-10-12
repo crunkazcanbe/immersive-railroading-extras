@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "WCW",
+  "GFG",
+  "PMP"
+ ],
+ "key": {
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:wire_drawer",
+  "count": 1
+ }
+}

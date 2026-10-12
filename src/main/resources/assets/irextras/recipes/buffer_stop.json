@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RLR",
+  "IPI",
+  "III"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:wool",
+   "data": 14
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  }
+ },
+ "result": {
+  "item": "irextras:buffer_stop",
+  "count": 1
+ }
+}

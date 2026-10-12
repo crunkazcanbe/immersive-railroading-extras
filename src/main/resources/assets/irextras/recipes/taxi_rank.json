@@ -1,0 +1,35 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "YLY",
+  "SCS",
+  "IRI"
+ ],
+ "key": {
+  "Y": {
+   "item": "minecraft:dye",
+   "data": 11
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:taxi_rank",
+  "count": 1
+ }
+}

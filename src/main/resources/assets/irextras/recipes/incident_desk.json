@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LRL",
+  "PDP",
+  "WCW"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "R": {
+   "item": "minecraft:redstone_block"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "D": {
+   "item": "irextras:freight_office"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:incident_desk"
+ }
+}

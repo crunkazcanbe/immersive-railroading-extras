@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "PPP",
+  "PBP",
+  "SVS"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "B": {
+   "item": "minecraft:bucket"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:oil_tank"
+ }
+}

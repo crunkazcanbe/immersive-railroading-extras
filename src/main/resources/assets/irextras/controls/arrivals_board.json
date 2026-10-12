@@ -1,0 +1,22 @@
+{
+ "title": "arrivals_board",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 9.79,
+   "title": "STATUS",
+   "controls": [
+    {
+     "id": "status",
+     "t": "lamp",
+     "u": 1.7,
+     "v": 3.65,
+     "w": 0.8,
+     "h": 0.4,
+     "col": "30e060",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

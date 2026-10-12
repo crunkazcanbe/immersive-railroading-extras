@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:loco_diag"
+  },
+  "facing=east": {
+   "model": "irextras:loco_diag",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:loco_diag",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:loco_diag",
+   "y": 270
+  }
+ }
+}

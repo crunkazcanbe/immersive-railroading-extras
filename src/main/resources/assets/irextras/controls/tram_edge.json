@@ -1,0 +1,78 @@
+{
+ "title": "tram_edge",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 14.87,
+   "title": "EDGE LIGHTS",
+   "controls": [
+    {
+     "id": "led1",
+     "t": "lamp",
+     "u": 14.2,
+     "v": 1.5,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "EDGE",
+     "blink": true
+    },
+    {
+     "id": "led2",
+     "t": "lamp",
+     "u": 11.6,
+     "v": 1.5,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "EDGE",
+     "blink": true
+    },
+    {
+     "id": "led3",
+     "t": "lamp",
+     "u": 9.0,
+     "v": 1.5,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "EDGE",
+     "blink": true
+    },
+    {
+     "id": "led4",
+     "t": "lamp",
+     "u": 6.4,
+     "v": 1.5,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "EDGE",
+     "blink": true
+    },
+    {
+     "id": "led5",
+     "t": "lamp",
+     "u": 3.8,
+     "v": 1.5,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "EDGE",
+     "blink": true
+    },
+    {
+     "id": "led6",
+     "t": "lamp",
+     "u": 1.2,
+     "v": 1.5,
+     "w": 1.2,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "EDGE",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

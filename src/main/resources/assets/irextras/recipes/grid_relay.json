@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " V ",
+  "CTC",
+  " M "
+ ],
+ "key": {
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "T": {
+   "item": "irextras:part",
+   "data": 18
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 21
+  }
+ },
+ "result": {
+  "item": "irextras:grid_relay",
+  "count": 1
+ }
+}

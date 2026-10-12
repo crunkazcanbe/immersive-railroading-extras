@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:cable_trough"
+  },
+  "facing=east": {
+   "model": "irextras:cable_trough",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:cable_trough",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:cable_trough",
+   "y": 270
+  }
+ }
+}

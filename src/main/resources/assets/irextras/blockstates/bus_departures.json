@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:bus_departures"
+  },
+  "facing=east": {
+   "model": "irextras:bus_departures",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:bus_departures",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:bus_departures",
+   "y": 270
+  }
+ }
+}

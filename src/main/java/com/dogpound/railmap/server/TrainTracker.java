@@ -156,6 +156,10 @@ public final class TrainTracker {
                     name, stock.tag, cargo, pax, consist, lead, th, rv, br, heading);
             node.wear = Wear.worst(mcWorld, stock.getUUID());
             if (stock instanceof LocomotiveDiesel) node.power = Electric.status(mcWorld, stock);
+            if (stock instanceof EntityMoveableRollingStock ms) {          // engine management, slip / slide, flats, knuckles
+                String sim = com.dogpound.railmap.sim.TrainSim.status(mcWorld, ms);
+                if (!sim.isEmpty()) node.power = node.power.isEmpty() ? sim : node.power + " · " + sim;
+            }
             out.add(node);
 
             // Timetable: judged once per train, by its lead loco (a handcar counts).
@@ -219,11 +223,24 @@ public final class TrainTracker {
         if (here != null && !moving && (was == null || !was.equals(here))) {
             atStation.put(loco.getId(), here);
             stations.addLog(new LogEntry(now, label, hereName, true));
+            if (com.dogpound.railmap.api.QuestEvents.active()) questStop(loco, here, hereName, Math.sqrt(bd));
         } else if (was != null && (here == null || !was.equals(here)) && moving) {
             String from = stations.names().get(was);
             atStation.remove(loco.getId());
             if (from != null) stations.addLog(new LogEntry(now, label, from, false));
         }
+    }
+
+    /** quest hook: a train came to a stand at a named station; dist = loco to the station marker, metres */
+    private static void questStop(EntityRollingStock loco, long station, String name, double dist) {
+        try {
+            World mc = loco.getWorld().internal;
+            net.minecraft.entity.player.EntityPlayer driver = null;
+            for (cam72cam.mod.entity.Entity e : loco.getPassengers()) if (e.internal instanceof net.minecraft.entity.player.EntityPlayer pl) { driver = pl; break; }
+            boolean auto = com.dogpound.railmap.auto.RailwayData.get(mc).train(loco.getUUID()) != null;
+            com.dogpound.railmap.api.QuestEvents.fire(mc, driver, BlockPos.fromLong(station), "station_stop", "station", name,
+                    "dist", Math.round(dist * 10) / 10.0, "auto", auto ? 1 : 0, "driven", driver != null ? 1 : 0);
+        } catch (RuntimeException | LinkageError ex) { RailMap.LOG.debug("[IR Extras] station quest hook: {}", ex.toString()); }
     }
 
     private static TrainNode.Kind kindOf(EntityRollingStock s) {

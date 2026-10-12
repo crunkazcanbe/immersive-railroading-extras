@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IHI",
+  "CPC",
+  "I I"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "P": {
+   "item": "minecraft:heavy_weighted_pressure_plate"
+  }
+ },
+ "result": {
+  "item": "irextras:grain_loadout"
+ }
+}

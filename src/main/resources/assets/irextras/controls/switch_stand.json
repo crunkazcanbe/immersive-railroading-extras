@@ -1,0 +1,22 @@
+{
+ "title": "switch_stand",
+ "surfaces": [
+  {
+   "side": "east",
+   "face": 5.4,
+   "title": "SWITCH STAND",
+   "controls": [
+    {
+     "id": "lever",
+     "t": "lever",
+     "u": 8.0,
+     "v": 4.1,
+     "w": 0.6,
+     "h": 2.6,
+     "col": "2c2c2e",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

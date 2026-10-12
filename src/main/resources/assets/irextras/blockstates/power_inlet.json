@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "formed=false": {
+   "model": "irextras:power_inlet"
+  },
+  "formed=true": {
+   "model": "irextras:power_inlet"
+  }
+ }
+}

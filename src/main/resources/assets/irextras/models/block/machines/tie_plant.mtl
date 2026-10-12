@@ -1,0 +1,3 @@
+newmtl tie_plant
+Kd 1 1 1
+map_Kd irextras:blocks/machines/tie_plant

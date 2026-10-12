@@ -1,0 +1,23 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "  I",
+  " B ",
+  "I  "
+ ],
+ "key": {
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "B": {
+   "type": "forge:ore_dict",
+   "ore": "blockIron"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 10,
+  "count": 2
+ }
+}

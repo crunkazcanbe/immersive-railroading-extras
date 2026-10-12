@@ -1,0 +1,32 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "GSG",
+  "PFP",
+  "GCG"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:permit_board",
+  "count": 1
+ }
+}

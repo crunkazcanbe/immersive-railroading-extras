@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:grain_leg"
+  },
+  "facing=east": {
+   "model": "irextras:grain_leg",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:grain_leg",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:grain_leg",
+   "y": 270
+  }
+ }
+}

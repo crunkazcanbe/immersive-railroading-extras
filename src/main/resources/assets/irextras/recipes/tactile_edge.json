@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "DDD",
+  "BBB",
+  "SSS"
+ ],
+ "key": {
+  "D": {
+   "item": "minecraft:dye",
+   "data": 11
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:tactile_edge",
+  "count": 4
+ }
+}

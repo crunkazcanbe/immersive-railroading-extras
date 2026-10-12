@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "PDP",
+  "ICI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "D": {
+   "item": "irextras:freight_office"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:container_terminal"
+ }
+}

@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
  * car's position, which misses our Pride tracks (stock rides a little higher on them) and stopped after car 1. This
  * one walks the track itself: each car starts where the last one's coupler ended, found by searching a few heights.
  */
-final class ConsistPlacer {
+public final class ConsistPlacer {
     private ConsistPlacer() {}
 
     /** track at (or just under) a point */
@@ -42,6 +42,92 @@ final class ConsistPlacer {
         Vec3d d = a.getUMCPos().subtract(at);
         if (d.lengthSquared() < 1e-4) { t.getNextPosition(b2, VecUtil.fromWrongYaw(2.0, lookYaw + 90), gauge); d = b2.getUMCPos().subtract(at); }
         return VecUtil.toWrongYaw(d);
+    }
+
+    /** test helper (/irextras stock ...): place these definitions in a row, uncoupled, all facing the same way */
+    static int placeDefs(World w, BlockPos look, float lookYaw, java.util.List<String> ids) {
+        Vec3d spawnPos = new Vec3d(look.getX() + 0.5, look.getY() + 0.1, look.getZ() + 0.5);
+        ITrack first = track(w, spawnPos);
+        if (first == null) return 0;
+        Gauge gauge = Gauge.from(first.getTrackGauges()[0]);
+        float originalRot = alongTrack(first, spawnPos, lookYaw, gauge.value());
+        Vec3d lookDir = VecUtil.fromWrongYaw(1, lookYaw), dir = VecUtil.fromWrongYaw(1, originalRot);
+        if (lookDir.x * dir.x + lookDir.z * dir.z < 0) originalRot = (originalRot + 180F) % 360F;
+        int n = 0;
+        for (String id : ids) {
+            if (!id.startsWith("rolling_stock/")) id = "rolling_stock/" + id;
+            if (!id.endsWith(".json")) id += ".json";
+            EntityRollingStockDefinition def = cam72cam.immersiverailroading.registry.DefinitionManager.getDefinition(id);
+            if (def == null) return n;
+            Vec3d p = placeCar(w, spawnPos, originalRot, gauge, def, false, null, null);
+            if (p == null) return n;
+            n++;
+            spawnPos = p;
+        }
+        return n;
+    }
+
+    /** the Formation & Livery Desk (vehicle/): place a planned formation coupled up, each car its own way round and paint */
+    public static int placeFormation(World w, BlockPos look, float lookYaw, java.util.List<String> ids, java.util.List<Boolean> flips, java.util.List<String> textures) {
+        Vec3d spawnPos = new Vec3d(look.getX() + 0.5, look.getY() + 0.1, look.getZ() + 0.5);
+        ITrack first = track(w, spawnPos);
+        if (first == null) return 0;
+        Gauge gauge = Gauge.from(first.getTrackGauges()[0]);
+        float originalRot = alongTrack(first, spawnPos, lookYaw, gauge.value());
+        Vec3d lookDir = VecUtil.fromWrongYaw(1, lookYaw), dir = VecUtil.fromWrongYaw(1, originalRot);
+        if (lookDir.x * dir.x + lookDir.z * dir.z < 0) originalRot = (originalRot + 180F) % 360F;
+        int n = 0;
+        for (int i = 0; i < ids.size(); i++) {
+            EntityRollingStockDefinition def = cam72cam.immersiverailroading.registry.DefinitionManager.getDefinition(ids.get(i));
+            if (def == null) return n;
+            String tex = textures.get(i) == null || textures.get(i).isEmpty() ? null : textures.get(i);
+            Vec3d p = placeCar(w, spawnPos, originalRot, gauge, def, flips.get(i), tex, null, 0);
+            if (p == null) return n;
+            n++;
+            spawnPos = p;
+        }
+        return n;
+    }
+
+    private static Vec3d placeCar(World w, Vec3d spawnPos, float originalRot, Gauge gauge, EntityRollingStockDefinition def, boolean flipped,
+                                  String texture, java.util.Map<String, Float> controls) {
+        return placeCar(w, spawnPos, originalRot, gauge, def, flipped, texture, controls, 4);
+    }
+
+    /** one car with its back coupler at spawnPos; returns where the next car's back goes (gap 4 = they don't couple, 0 = coupled) */
+    private static Vec3d placeCar(World w, Vec3d spawnPos, float originalRot, Gauge gauge, EntityRollingStockDefinition def, boolean flipped,
+                                  String texture, java.util.Map<String, Float> controls, double gap) {
+        ITrack initte = track(w, spawnPos);
+        if (initte == null) return null;
+        double offset = def.getCouplerPosition(flipped ? CouplerType.FRONT : CouplerType.BACK, gauge) - cam72cam.immersiverailroading.Config.ConfigDebug.couplerRange;
+        float yaw = originalRot + (flipped ? 180F : 0F);
+        EntityRollingStock stock = def.spawn(w, spawnPos, yaw, gauge, texture);
+        IRPathingData center = new IRPathingData(stock.getPosition(), 0.0);
+        initte.getNextPosition(center, VecUtil.fromWrongYaw(-0.1, originalRot), gauge.value());
+        initte.getNextPosition(center, VecUtil.fromWrongYaw(0.1, originalRot), gauge.value());
+        initte.getNextPosition(center, VecUtil.fromWrongYaw(offset, originalRot), gauge.value());
+        stock.setPosition(center.getUMCPos());
+        if (stock instanceof EntityMoveableRollingStock) {
+            EntityMoveableRollingStock mv = (EntityMoveableRollingStock) stock;
+            ITrack c = track(w, center.getUMCPos());
+            if (c != null) {
+                float fd = mv.getDefinition().getBogeyFront(gauge), rd = mv.getDefinition().getBogeyRear(gauge);
+                IRPathingData f = center.clone(), r = center.clone();
+                c.getNextPosition(f, VecUtil.fromWrongYaw(fd, yaw), gauge.value());
+                c.getNextPosition(r, VecUtil.fromWrongYaw(rd, yaw), gauge.value());
+                Vec3d front = f.getUMCPos(), rear = r.getUMCPos();
+                mv.setRotationYaw(VecUtil.toWrongYaw(front.subtract(rear)));
+                mv.setPosition(rear.add(front.subtract(rear).scale(fd / (fd - rd))));
+                mv.setFrontYaw(mv.getRotationYaw());
+                mv.setRearYaw(mv.getRotationYaw());
+            }
+            mv.newlyPlaced = true;
+        }
+        if (stock instanceof EntityBuildableRollingStock) ((EntityBuildableRollingStock) stock).setComponents(def.getItemComponents());
+        w.spawnEntity(stock);
+        Vec3d length = VecUtil.fromWrongYaw(def.getCouplerPosition(flipped ? CouplerType.BACK : CouplerType.FRONT, stock.gauge) + gap, originalRot);
+        Vec3d next = stock.getPosition().add(length);
+        return new Vec3d(next.x, Math.floor(next.y) + 0.1, next.z);
     }
 
     static int place(World w, BlockPos look, float lookYaw, UnitDefinition unit) {

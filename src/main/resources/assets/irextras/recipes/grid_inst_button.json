@@ -1,0 +1,24 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " B ",
+  "IRI"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "dustRedstone"
+  }
+ },
+ "result": {
+  "item": "irextras:grid_inst_button",
+  "count": 2
+ }
+}

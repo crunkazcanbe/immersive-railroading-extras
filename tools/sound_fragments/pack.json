@@ -1,0 +1,2473 @@
+{
+ "grid.relay_click": {
+  "subtitle": "irextras.sub.grid.relay_click",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_relay_click_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_relay_click_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_relay_click_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_relay_click_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_relay_click_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_relay_click_6",
+    "stream": false
+   }
+  ]
+ },
+ "grid.relay_clunk": {
+  "subtitle": "irextras.sub.grid.relay_clunk",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_relay_clunk_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_relay_clunk_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_relay_clunk_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_relay_clunk_4",
+    "stream": false
+   }
+  ]
+ },
+ "grid.contactor_close": {
+  "subtitle": "irextras.sub.grid.contactor_close",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_contactor_close_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_contactor_close_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_contactor_close_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_contactor_close_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_contactor_close_5",
+    "stream": false
+   }
+  ]
+ },
+ "grid.contactor_open": {
+  "subtitle": "irextras.sub.grid.contactor_open",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_contactor_open_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_contactor_open_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_contactor_open_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_contactor_open_4",
+    "stream": false
+   }
+  ]
+ },
+ "grid.breaker_close": {
+  "subtitle": "irextras.sub.grid.breaker_close",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_breaker_close_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_breaker_close_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_breaker_close_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_breaker_close_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_breaker_close_5",
+    "stream": false
+   }
+  ]
+ },
+ "grid.breaker_trip": {
+  "subtitle": "irextras.sub.grid.breaker_trip",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_breaker_trip_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_breaker_trip_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_breaker_trip_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_breaker_trip_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_breaker_trip_5",
+    "stream": false
+   }
+  ]
+ },
+ "grid.spring_charge": {
+  "subtitle": "irextras.sub.grid.spring_charge",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_spring_charge_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_spring_charge_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_spring_charge_3",
+    "stream": false
+   }
+  ]
+ },
+ "grid.arc_crack": {
+  "subtitle": "irextras.sub.grid.arc_crack",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_arc_crack_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_arc_crack_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_arc_crack_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_arc_crack_4",
+    "stream": false
+   }
+  ]
+ },
+ "grid.tap_change": {
+  "subtitle": "irextras.sub.grid.tap_change",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_tap_change_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_tap_change_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_tap_change_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_tap_change_4",
+    "stream": false
+   }
+  ]
+ },
+ "grid.hum_light": {
+  "subtitle": "irextras.sub.grid.hum_light",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_hum_light_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_hum_light_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_hum_light_3",
+    "stream": false
+   }
+  ]
+ },
+ "grid.hum_medium": {
+  "subtitle": "irextras.sub.grid.hum_medium",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_hum_medium_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_hum_medium_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_hum_medium_3",
+    "stream": false
+   }
+  ]
+ },
+ "grid.hum_heavy": {
+  "subtitle": "irextras.sub.grid.hum_heavy",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_hum_heavy_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_hum_heavy_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_hum_heavy_3",
+    "stream": false
+   }
+  ]
+ },
+ "grid.rectifier": {
+  "subtitle": "irextras.sub.grid.rectifier",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_rectifier_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_rectifier_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_rectifier_3",
+    "stream": false
+   }
+  ]
+ },
+ "grid.motor_start": {
+  "subtitle": "irextras.sub.grid.motor_start",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_motor_start_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_motor_start_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_motor_start_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_motor_start_4",
+    "stream": false
+   }
+  ]
+ },
+ "grid.motor_stop": {
+  "subtitle": "irextras.sub.grid.motor_stop",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_motor_stop_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_motor_stop_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_motor_stop_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_motor_stop_4",
+    "stream": false
+   }
+  ]
+ },
+ "grid.motor_run": {
+  "subtitle": "irextras.sub.grid.motor_run",
+  "sounds": [
+   {
+    "name": "irextras:pack/grid_motor_run_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_motor_run_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/grid_motor_run_3",
+    "stream": false
+   }
+  ]
+ },
+ "signal.points": {
+  "subtitle": "irextras.sub.signal.points",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_points_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_5",
+    "stream": false
+   }
+  ]
+ },
+ "signal.points_air": {
+  "subtitle": "irextras.sub.signal.points_air",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_points_air_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_air_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_air_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_air_4",
+    "stream": false
+   }
+  ]
+ },
+ "signal.lever_reverse": {
+  "subtitle": "irextras.sub.signal.lever_reverse",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_lever_reverse_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_reverse_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_reverse_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_reverse_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_reverse_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_reverse_6",
+    "stream": false
+   }
+  ]
+ },
+ "signal.lever_normal": {
+  "subtitle": "irextras.sub.signal.lever_normal",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_lever_normal_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_normal_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_normal_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_normal_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_lever_normal_5",
+    "stream": false
+   }
+  ]
+ },
+ "signal.frame_clank": {
+  "subtitle": "irextras.sub.signal.frame_clank",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_frame_clank_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_frame_clank_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_frame_clank_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_frame_clank_4",
+    "stream": false
+   }
+  ]
+ },
+ "signal.block_bell": {
+  "subtitle": "irextras.sub.signal.block_bell",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_block_bell_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_block_bell_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_block_bell_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_block_bell_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_block_bell_5",
+    "stream": false
+   }
+  ]
+ },
+ "signal.block_needle": {
+  "subtitle": "irextras.sub.signal.block_needle",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_block_needle_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_block_needle_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_block_needle_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_block_needle_4",
+    "stream": false
+   }
+  ]
+ },
+ "signal.crossing_gong": {
+  "subtitle": "irextras.sub.signal.crossing_gong",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_crossing_gong_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_gong_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_gong_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_gong_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_gong_5",
+    "stream": false
+   }
+  ]
+ },
+ "signal.crossing_ebell": {
+  "subtitle": "irextras.sub.signal.crossing_ebell",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_crossing_ebell_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_ebell_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_ebell_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_ebell_4",
+    "stream": false
+   }
+  ]
+ },
+ "signal.crossing_yodel": {
+  "subtitle": "irextras.sub.signal.crossing_yodel",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_crossing_yodel_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_yodel_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_yodel_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_yodel_4",
+    "stream": false
+   }
+  ]
+ },
+ "signal.crossing_euro": {
+  "subtitle": "irextras.sub.signal.crossing_euro",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_crossing_euro_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_euro_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_euro_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_crossing_euro_4",
+    "stream": false
+   }
+  ]
+ },
+ "signal.barrier_down": {
+  "subtitle": "irextras.sub.signal.barrier_down",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_barrier_down_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_barrier_down_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_barrier_down_3",
+    "stream": false
+   }
+  ]
+ },
+ "signal.barrier_up": {
+  "subtitle": "irextras.sub.signal.barrier_up",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_barrier_up_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_barrier_up_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_barrier_up_3",
+    "stream": false
+   }
+  ]
+ },
+ "alarm.annunciator": {
+  "subtitle": "irextras.sub.alarm.annunciator",
+  "sounds": [
+   {
+    "name": "irextras:pack/alarm_annunciator_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_annunciator_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_annunciator_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_annunciator_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_annunciator_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_annunciator_6",
+    "stream": false
+   }
+  ]
+ },
+ "alarm.klaxon": {
+  "subtitle": "irextras.sub.alarm.klaxon",
+  "sounds": [
+   {
+    "name": "irextras:pack/alarm_klaxon_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_klaxon_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_klaxon_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_klaxon_4",
+    "stream": false
+   }
+  ]
+ },
+ "alarm.fire_bell": {
+  "subtitle": "irextras.sub.alarm.fire_bell",
+  "sounds": [
+   {
+    "name": "irextras:pack/alarm_fire_bell_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_fire_bell_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_fire_bell_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_fire_bell_4",
+    "stream": false
+   }
+  ]
+ },
+ "alarm.evac": {
+  "subtitle": "irextras.sub.alarm.evac",
+  "sounds": [
+   {
+    "name": "irextras:pack/alarm_evac_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_evac_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_evac_3",
+    "stream": false
+   }
+  ]
+ },
+ "alarm.teleprinter": {
+  "subtitle": "irextras.sub.alarm.teleprinter",
+  "sounds": [
+   {
+    "name": "irextras:pack/alarm_teleprinter_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_teleprinter_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_teleprinter_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_teleprinter_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_teleprinter_5",
+    "stream": false
+   }
+  ]
+ },
+ "alarm.recorder": {
+  "subtitle": "irextras.sub.alarm.recorder",
+  "sounds": [
+   {
+    "name": "irextras:pack/alarm_recorder_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_recorder_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_recorder_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_recorder_4",
+    "stream": false
+   }
+  ]
+ },
+ "alarm.phone": {
+  "subtitle": "irextras.sub.alarm.phone",
+  "sounds": [
+   {
+    "name": "irextras:pack/alarm_phone_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_phone_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_phone_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_phone_4",
+    "stream": false
+   }
+  ]
+ },
+ "cab.horn": {
+  "subtitle": "irextras.sub.cab.horn",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_horn_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_horn_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_horn_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_horn_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_horn_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_horn_6",
+    "stream": false
+   }
+  ]
+ },
+ "cab.whistle": {
+  "subtitle": "irextras.sub.cab.whistle",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_whistle_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_whistle_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_whistle_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_whistle_4",
+    "stream": false
+   }
+  ]
+ },
+ "cab.bell": {
+  "subtitle": "irextras.sub.cab.bell",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_bell_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_bell_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_bell_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_bell_4",
+    "stream": false
+   }
+  ]
+ },
+ "cab.brake_apply": {
+  "subtitle": "irextras.sub.cab.brake_apply",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_brake_apply_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_apply_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_apply_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_apply_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_apply_5",
+    "stream": false
+   }
+  ]
+ },
+ "cab.brake_release": {
+  "subtitle": "irextras.sub.cab.brake_release",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_brake_release_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_release_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_release_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_release_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_release_5",
+    "stream": false
+   }
+  ]
+ },
+ "cab.notch": {
+  "subtitle": "irextras.sub.cab.notch",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_notch_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_notch_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_notch_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_notch_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_notch_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_notch_6",
+    "stream": false
+   }
+  ]
+ },
+ "cab.switch": {
+  "subtitle": "irextras.sub.cab.switch",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_switch_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_switch_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_switch_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_switch_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_switch_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_switch_6",
+    "stream": false
+   }
+  ]
+ },
+ "cab.radio": {
+  "subtitle": "irextras.sub.cab.radio",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_radio_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_radio_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_radio_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_radio_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_radio_5",
+    "stream": false
+   }
+  ]
+ },
+ "cab.aws_horn": {
+  "subtitle": "irextras.sub.cab.aws_horn",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_aws_horn_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_aws_horn_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_aws_horn_3",
+    "stream": false
+   }
+  ]
+ },
+ "cab.aws_bell": {
+  "subtitle": "irextras.sub.cab.aws_bell",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_aws_bell_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_aws_bell_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_aws_bell_3",
+    "stream": false
+   }
+  ]
+ },
+ "cab.compressor": {
+  "subtitle": "irextras.sub.cab.compressor",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_compressor_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_compressor_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_compressor_3",
+    "stream": false
+   }
+  ]
+ },
+ "cab.brake_emergency": {
+  "subtitle": "irextras.sub.cab.brake_emergency",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_brake_emergency_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_emergency_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_emergency_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_brake_emergency_4",
+    "stream": false
+   }
+  ]
+ },
+ "cab.button": {
+  "subtitle": "irextras.sub.cab.button",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_button_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_button_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_button_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_button_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_button_5",
+    "stream": false
+   }
+  ]
+ },
+ "cab.key": {
+  "subtitle": "irextras.sub.cab.key",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_key_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_key_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_key_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_key_4",
+    "stream": false
+   }
+  ]
+ },
+ "cab.lever": {
+  "subtitle": "irextras.sub.cab.lever",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_lever_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_lever_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_lever_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_lever_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_lever_5",
+    "stream": false
+   }
+  ]
+ },
+ "cab.reverser": {
+  "subtitle": "irextras.sub.cab.reverser",
+  "sounds": [
+   {
+    "name": "irextras:pack/cab_reverser_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_reverser_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_reverser_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/cab_reverser_4",
+    "stream": false
+   }
+  ]
+ },
+ "train.flange_squeal": {
+  "subtitle": "irextras.sub.train.flange_squeal",
+  "sounds": [
+   {
+    "name": "irextras:pack/train_flange_squeal_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_flange_squeal_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_flange_squeal_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_flange_squeal_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_flange_squeal_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_flange_squeal_6",
+    "stream": false
+   }
+  ]
+ },
+ "train.rail_joint": {
+  "subtitle": "irextras.sub.train.rail_joint",
+  "sounds": [
+   {
+    "name": "irextras:pack/train_rail_joint_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_rail_joint_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_rail_joint_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_rail_joint_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_rail_joint_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_rail_joint_6",
+    "stream": false
+   }
+  ]
+ },
+ "station.chime_two_tone": {
+  "subtitle": "irextras.sub.station.chime_two_tone",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_chime_two_tone_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_two_tone_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_two_tone_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.chime_bell": {
+  "subtitle": "irextras.sub.station.chime_bell",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_chime_bell_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_bell_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_bell_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.chime_dingdong": {
+  "subtitle": "irextras.sub.station.chime_dingdong",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_chime_dingdong_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_dingdong_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_dingdong_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.chime_airport": {
+  "subtitle": "irextras.sub.station.chime_airport",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_chime_airport_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_airport_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_airport_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.chime_pling": {
+  "subtitle": "irextras.sub.station.chime_pling",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_chime_pling_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_pling_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_chime_pling_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.wind": {
+  "subtitle": "irextras.sub.station.wind",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_wind_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_wind_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_wind_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.rain": {
+  "subtitle": "irextras.sub.station.rain",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_rain_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_rain_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_rain_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.gate_open": {
+  "subtitle": "irextras.sub.station.gate_open",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_gate_open_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_gate_open_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_gate_open_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_gate_open_4",
+    "stream": false
+   }
+  ]
+ },
+ "station.lift_ding": {
+  "subtitle": "irextras.sub.station.lift_ding",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_lift_ding_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_lift_ding_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_lift_ding_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.lift_run": {
+  "subtitle": "irextras.sub.station.lift_run",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_lift_run_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_lift_run_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_lift_run_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.flush": {
+  "subtitle": "irextras.sub.station.flush",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_flush_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_flush_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_flush_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.tap": {
+  "subtitle": "irextras.sub.station.tap",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_tap_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_tap_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_tap_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.vend": {
+  "subtitle": "irextras.sub.station.vend",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_vend_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_vend_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_vend_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.shutter": {
+  "subtitle": "irextras.sub.station.shutter",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_shutter_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_shutter_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_shutter_3",
+    "stream": false
+   }
+  ]
+ },
+ "station.door_open": {
+  "subtitle": "irextras.sub.station.door_open",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_door_open_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_door_open_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_door_open_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_door_open_4",
+    "stream": false
+   }
+  ]
+ },
+ "station.door_close": {
+  "subtitle": "irextras.sub.station.door_close",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_door_close_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_door_close_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_door_close_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_door_close_4",
+    "stream": false
+   }
+  ]
+ },
+ "ui.keypad": {
+  "subtitle": "irextras.sub.ui.keypad",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_keypad_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_keypad_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_keypad_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_keypad_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_keypad_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_keypad_6",
+    "stream": false
+   }
+  ]
+ },
+ "ui.beep_ok": {
+  "subtitle": "irextras.sub.ui.beep_ok",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_beep_ok_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_beep_ok_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_beep_ok_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_beep_ok_4",
+    "stream": false
+   }
+  ]
+ },
+ "ui.beep_error": {
+  "subtitle": "irextras.sub.ui.beep_error",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_beep_error_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_beep_error_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_beep_error_3",
+    "stream": false
+   }
+  ]
+ },
+ "ui.click": {
+  "subtitle": "irextras.sub.ui.click",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_click_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_click_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_click_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_click_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_click_5",
+    "stream": false
+   }
+  ]
+ },
+ "ui.robot": {
+  "subtitle": "irextras.sub.ui.robot",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_robot_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_robot_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_robot_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_robot_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_robot_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_robot_6",
+    "stream": false
+   }
+  ]
+ },
+ "ui.stamp": {
+  "subtitle": "irextras.sub.ui.stamp",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_stamp_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_stamp_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_stamp_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_stamp_4",
+    "stream": false
+   }
+  ]
+ },
+ "ui.paper": {
+  "subtitle": "irextras.sub.ui.paper",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_paper_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_paper_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_paper_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_paper_4",
+    "stream": false
+   }
+  ]
+ },
+ "ui.drawer_open": {
+  "subtitle": "irextras.sub.ui.drawer_open",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_drawer_open_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_drawer_open_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_drawer_open_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_drawer_open_4",
+    "stream": false
+   }
+  ]
+ },
+ "ui.cash": {
+  "subtitle": "irextras.sub.ui.cash",
+  "sounds": [
+   {
+    "name": "irextras:pack/ui_cash_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_cash_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ui_cash_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.crusher": {
+  "subtitle": "irextras.sub.machine.crusher",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_crusher_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_crusher_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_crusher_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.conveyor": {
+  "subtitle": "irextras.sub.machine.conveyor",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_conveyor_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_conveyor_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_conveyor_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.arc_furnace": {
+  "subtitle": "irextras.sub.machine.arc_furnace",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_arc_furnace_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_arc_furnace_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_arc_furnace_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.furnace": {
+  "subtitle": "irextras.sub.machine.furnace",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_furnace_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_furnace_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_furnace_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.pump": {
+  "subtitle": "irextras.sub.machine.pump",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_pump_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_pump_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_pump_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.fan": {
+  "subtitle": "irextras.sub.machine.fan",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_fan_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_fan_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_fan_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.saw": {
+  "subtitle": "irextras.sub.machine.saw",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_saw_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_saw_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_saw_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.bubbles": {
+  "subtitle": "irextras.sub.machine.bubbles",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_bubbles_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_bubbles_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_bubbles_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.welding": {
+  "subtitle": "irextras.sub.machine.welding",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_welding_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_welding_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_welding_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.windmill": {
+  "subtitle": "irextras.sub.machine.windmill",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_windmill_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_windmill_2",
+    "stream": false
+   }
+  ]
+ },
+ "machine.lathe": {
+  "subtitle": "irextras.sub.machine.lathe",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_lathe_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_lathe_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_lathe_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.wash": {
+  "subtitle": "irextras.sub.machine.wash",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_wash_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_wash_2",
+    "stream": false
+   }
+  ]
+ },
+ "machine.fuel_pump": {
+  "subtitle": "irextras.sub.machine.fuel_pump",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_fuel_pump_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_fuel_pump_2",
+    "stream": false
+   }
+  ]
+ },
+ "machine.mill_bang": {
+  "subtitle": "irextras.sub.machine.mill_bang",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_mill_bang_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_mill_bang_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_mill_bang_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_mill_bang_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_mill_bang_5",
+    "stream": false
+   }
+  ]
+ },
+ "machine.steam_hammer": {
+  "subtitle": "irextras.sub.machine.steam_hammer",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_steam_hammer_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_steam_hammer_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_steam_hammer_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_steam_hammer_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_steam_hammer_5",
+    "stream": false
+   }
+  ]
+ },
+ "machine.press": {
+  "subtitle": "irextras.sub.machine.press",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_press_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_press_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_press_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_press_4",
+    "stream": false
+   }
+  ]
+ },
+ "machine.clunk": {
+  "subtitle": "irextras.sub.machine.clunk",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_clunk_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_clunk_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_clunk_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_clunk_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_clunk_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_clunk_6",
+    "stream": false
+   }
+  ]
+ },
+ "machine.door_open": {
+  "subtitle": "irextras.sub.machine.door_open",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_door_open_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_door_open_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_door_open_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_door_open_4",
+    "stream": false
+   }
+  ]
+ },
+ "machine.door_close": {
+  "subtitle": "irextras.sub.machine.door_close",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_door_close_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_door_close_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_door_close_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_door_close_4",
+    "stream": false
+   }
+  ]
+ },
+ "machine.explosion": {
+  "subtitle": "irextras.sub.machine.explosion",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_explosion_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_explosion_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_explosion_3",
+    "stream": false
+   }
+  ]
+ },
+ "machine.servo": {
+  "subtitle": "irextras.sub.machine.servo",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_servo_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_servo_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_servo_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_servo_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_servo_5",
+    "stream": false
+   }
+  ]
+ },
+ "machine.jack": {
+  "subtitle": "irextras.sub.machine.jack",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_jack_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_jack_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_jack_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_jack_4",
+    "stream": false
+   }
+  ]
+ },
+ "machine.air_tool": {
+  "subtitle": "irextras.sub.machine.air_tool",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_air_tool_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_air_tool_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_air_tool_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_air_tool_4",
+    "stream": false
+   }
+  ]
+ },
+ "machine.construction": {
+  "subtitle": "irextras.sub.machine.construction",
+  "sounds": [
+   {
+    "name": "irextras:pack/machine_construction_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_construction_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_construction_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/machine_construction_4",
+    "stream": false
+   }
+  ]
+ },
+ "track.jet_fan": {
+  "subtitle": "irextras.sub.track.jet_fan",
+  "sounds": [
+   {
+    "name": "irextras:pack/track_jet_fan_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/track_jet_fan_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/track_jet_fan_3",
+    "stream": false
+   }
+  ]
+ },
+ "signal.points_hyd": {
+  "subtitle": "irextras.sub.signal.points_hyd",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_points_hyd_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_hyd_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_hyd_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_hyd_4",
+    "stream": false
+   }
+  ]
+ },
+ "signal.points_lock": {
+  "subtitle": "irextras.sub.signal.points_lock",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_points_lock_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_lock_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_lock_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_lock_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_lock_5",
+    "stream": false
+   }
+  ]
+ },
+ "signal.points_crank": {
+  "subtitle": "irextras.sub.signal.points_crank",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_points_crank_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_crank_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_crank_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_points_crank_4",
+    "stream": false
+   }
+  ]
+ },
+ "alarm.gas_release": {
+  "subtitle": "irextras.sub.alarm.gas_release",
+  "sounds": [
+   {
+    "name": "irextras:pack/alarm_gas_release_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_gas_release_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/alarm_gas_release_3",
+    "stream": false
+   }
+  ]
+ },
+ "train.pantograph_up": {
+  "subtitle": "irextras.sub.train.pantograph_up",
+  "sounds": [
+   {
+    "name": "irextras:pack/train_pantograph_up_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_pantograph_up_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_pantograph_up_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_pantograph_up_4",
+    "stream": false
+   }
+  ]
+ },
+ "train.pantograph_down": {
+  "subtitle": "irextras.sub.train.pantograph_down",
+  "sounds": [
+   {
+    "name": "irextras:pack/train_pantograph_down_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_pantograph_down_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_pantograph_down_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/train_pantograph_down_4",
+    "stream": false
+   }
+  ]
+ },
+ "station.ship_horn": {
+  "subtitle": "irextras.sub.station.ship_horn",
+  "sounds": [
+   {
+    "name": "irextras:pack/station_ship_horn_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_ship_horn_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/station_ship_horn_3",
+    "stream": false
+   }
+  ]
+ },
+ "ctl.push": {
+  "subtitle": "irextras.sub.ctl.push",
+  "sounds": [
+   {
+    "name": "irextras:pack/ctl_push_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_push_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_push_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_push_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_push_5",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_push_6",
+    "stream": false
+   }
+  ]
+ },
+ "ctl.mushroom": {
+  "subtitle": "irextras.sub.ctl.mushroom",
+  "sounds": [
+   {
+    "name": "irextras:pack/ctl_mushroom_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_mushroom_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_mushroom_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_mushroom_4",
+    "stream": false
+   }
+  ]
+ },
+ "ctl.selector": {
+  "subtitle": "irextras.sub.ctl.selector",
+  "sounds": [
+   {
+    "name": "irextras:pack/ctl_selector_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_selector_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_selector_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_selector_4",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_selector_5",
+    "stream": false
+   }
+  ]
+ },
+ "ctl.key": {
+  "subtitle": "irextras.sub.ctl.key",
+  "sounds": [
+   {
+    "name": "irextras:pack/ctl_key_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_key_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_key_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_key_4",
+    "stream": false
+   }
+  ]
+ },
+ "ctl.lever": {
+  "subtitle": "irextras.sub.ctl.lever",
+  "sounds": [
+   {
+    "name": "irextras:pack/ctl_lever_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_lever_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_lever_3",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/ctl_lever_4",
+    "stream": false
+   }
+  ]
+ },
+ "signal.bellcode.is_line_clear": {
+  "subtitle": "irextras.sub.signal.bellcode.is_line_clear",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_bellcode_is_line_clear_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_bellcode_is_line_clear_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_bellcode_is_line_clear_3",
+    "stream": false
+   }
+  ]
+ },
+ "signal.bellcode.train_entering": {
+  "subtitle": "irextras.sub.signal.bellcode.train_entering",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_bellcode_train_entering_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_bellcode_train_entering_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_bellcode_train_entering_3",
+    "stream": false
+   }
+  ]
+ },
+ "signal.bellcode.train_out": {
+  "subtitle": "irextras.sub.signal.bellcode.train_out",
+  "sounds": [
+   {
+    "name": "irextras:pack/signal_bellcode_train_out_1",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_bellcode_train_out_2",
+    "stream": false
+   },
+   {
+    "name": "irextras:pack/signal_bellcode_train_out_3",
+    "stream": false
+   }
+  ]
+ }
+}

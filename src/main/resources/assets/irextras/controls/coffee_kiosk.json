@@ -1,0 +1,791 @@
+{
+ "title": "coffee_kiosk",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 14.78,
+   "title": "MENU",
+   "controls": [
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 24.4,
+     "w": 0,
+     "h": 0,
+     "col": "f4f0e0",
+     "label": "MENU"
+    },
+    {
+     "id": "m1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 23.0,
+     "w": 14.0,
+     "h": 1.0,
+     "col": "f4f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 21.7,
+     "w": 14.0,
+     "h": 1.0,
+     "col": "f4f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.4,
+     "w": 14.0,
+     "h": 1.0,
+     "col": "f4f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 19.1,
+     "w": 14.0,
+     "h": 1.0,
+     "col": "f4f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m5",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.8,
+     "w": 14.0,
+     "h": 1.0,
+     "col": "f4f0e0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "order",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.8,
+     "w": 14.0,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 8.78,
+   "title": "FRIDGE",
+   "controls": [
+    {
+     "id": "fridge",
+     "t": "zone",
+     "u": 26.2,
+     "v": 4.3,
+     "w": 5.4,
+     "h": 7.2,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 10.38,
+   "title": "ESPRESSO",
+   "controls": [
+    {
+     "id": "espresso",
+     "t": "push",
+     "u": 28.2,
+     "v": 14.75,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "e8e0d0",
+     "label": "ESPRESSO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 28.2,
+     "v": 14.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ESPRESSO"
+    },
+    {
+     "id": "americano",
+     "t": "push",
+     "u": 26.45,
+     "v": 14.75,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "e8e0d0",
+     "label": "AMERICANO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 26.45,
+     "v": 14.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AMERICANO"
+    },
+    {
+     "id": "latte",
+     "t": "push",
+     "u": 24.7,
+     "v": 14.75,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "e8e0d0",
+     "label": "LATTE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 24.7,
+     "v": 14.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LATTE"
+    },
+    {
+     "id": "cappuccino",
+     "t": "push",
+     "u": 22.95,
+     "v": 14.75,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "e8e0d0",
+     "label": "CAPPUCC."
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.95,
+     "v": 14.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CAPPUCC."
+    },
+    {
+     "id": "mocha",
+     "t": "push",
+     "u": 21.2,
+     "v": 14.75,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "e8e0d0",
+     "label": "MOCHA"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 21.2,
+     "v": 14.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MOCHA"
+    },
+    {
+     "id": "gpress",
+     "t": "gauge",
+     "u": 24.3,
+     "v": 12.9,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f2f0e6",
+     "label": "BAR",
+     "max": 100
+    },
+    {
+     "id": "gtemp",
+     "t": "gauge",
+     "u": 24.3,
+     "v": 11.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f2f0e6",
+     "label": "C",
+     "max": 100
+    },
+    {
+     "id": "heat",
+     "t": "lamp",
+     "u": 20.4,
+     "v": 13.3,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff8a20",
+     "label": "HEAT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 21.4,
+     "v": 13.3,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "HEAT"
+    },
+    {
+     "id": "ready",
+     "t": "lamp",
+     "u": 20.4,
+     "v": 12.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "READY"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 21.4,
+     "v": 12.5,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "READY"
+    },
+    {
+     "id": "brew",
+     "t": "lamp",
+     "u": 20.4,
+     "v": 11.7,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "4080ff",
+     "label": "BREW",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 21.4,
+     "v": 11.7,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BREW"
+    },
+    {
+     "id": "cleanl",
+     "t": "lamp",
+     "u": 20.4,
+     "v": 10.9,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff3030",
+     "label": "CLEAN",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 21.4,
+     "v": 10.9,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLEAN"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.5,
+   "title": "DESK DRAWERS",
+   "controls": [
+    {
+     "id": "cups",
+     "t": "zone",
+     "u": 3.0,
+     "v": 4.35,
+     "w": 4.6,
+     "h": 2.1,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 6.85,
+   "title": "DESK",
+   "controls": [
+    {
+     "id": "grind",
+     "t": "push",
+     "u": 14.4,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "GRIND"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.4,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GRIND"
+    },
+    {
+     "id": "steam",
+     "t": "push",
+     "u": 11.8,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "e0e0e0",
+     "label": "STEAM"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.8,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STEAM"
+    },
+    {
+     "id": "clean",
+     "t": "push",
+     "u": 9.2,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "CLEAN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.2,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CLEAN"
+    },
+    {
+     "id": "sugar",
+     "t": "push",
+     "u": 6.6,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0f0f0",
+     "label": "SUGAR"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.6,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SUGAR"
+    },
+    {
+     "id": "bell",
+     "t": "push",
+     "u": 4.0,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "BELL"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.0,
+     "v": 6.85,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BELL"
+    },
+    {
+     "id": "k_open",
+     "t": "key",
+     "u": 14.4,
+     "v": 5.2,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "SHUTTER",
+     "pos": [
+      "CLOSED",
+      "OPEN"
+     ]
+    },
+    {
+     "id": "k_boiler",
+     "t": "key",
+     "u": 12.4,
+     "v": 5.2,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d04020",
+     "label": "BOILER",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "s_size",
+     "t": "selector",
+     "u": 10.2,
+     "v": 5.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "SIZE",
+     "pos": [
+      "SMALL",
+      "REG",
+      "LARGE"
+     ]
+    },
+    {
+     "id": "s_shots",
+     "t": "selector",
+     "u": 8.2,
+     "v": 5.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "SHOTS",
+     "pos": [
+      "SINGLE",
+      "DOUBLE"
+     ]
+    },
+    {
+     "id": "openl",
+     "t": "lamp",
+     "u": 6.4,
+     "v": 5.2,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "OPEN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OPEN"
+    },
+    {
+     "id": "beanlow",
+     "t": "lamp",
+     "u": 5.25,
+     "v": 5.2,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "BEANS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.25,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BEANS"
+    },
+    {
+     "id": "milklow",
+     "t": "lamp",
+     "u": 4.1,
+     "v": 5.2,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "MILK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.1,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MILK"
+    },
+    {
+     "id": "cuplow",
+     "t": "lamp",
+     "u": 2.95,
+     "v": 5.2,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "CUPS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.95,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "CUPS"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 1.8,
+     "v": 5.2,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.8,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 0.65,
+     "v": 5.2,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.65,
+     "v": 4.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 10.9,
+   "title": "MONITOR",
+   "controls": [
+    {
+     "id": "status",
+     "t": "digits",
+     "u": 7.7,
+     "v": 15.85,
+     "w": 6.999999999999999,
+     "h": 0.6300000000000002,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "press",
+     "t": "digits",
+     "u": 7.7,
+     "v": 15.15,
+     "w": 6.999999999999999,
+     "h": 0.6300000000000002,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "stock",
+     "t": "digits",
+     "u": 7.7,
+     "v": 14.45,
+     "w": 6.999999999999999,
+     "h": 0.6300000000000002,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "sold",
+     "t": "digits",
+     "u": 7.7,
+     "v": 13.75,
+     "w": 6.999999999999999,
+     "h": 0.6300000000000002,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "dirty",
+     "t": "digits",
+     "u": 7.7,
+     "v": 13.05,
+     "w": 6.999999999999999,
+     "h": 0.6300000000000002,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "last",
+     "t": "digits",
+     "u": 7.7,
+     "v": 12.35,
+     "w": 6.999999999999999,
+     "h": 0.6300000000000002,
+     "col": "8a94a0",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.58,
+   "title": "HOPPER",
+   "controls": [
+    {
+     "id": "beans",
+     "t": "zone",
+     "u": 14.0,
+     "v": 14.8,
+     "w": 2.4,
+     "h": 2.8,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.4,
+   "title": "CUPBOARD",
+   "controls": [
+    {
+     "id": "cups",
+     "t": "zone",
+     "u": -7.95,
+     "v": 3.3,
+     "w": 10.0,
+     "h": 5.3999999999999995,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 9.0,
+   "title": "PASTRY CASE",
+   "controls": [
+    {
+     "id": "sh1",
+     "t": "zone",
+     "u": -3.933,
+     "v": 13.4,
+     "w": 1.6166666666666667,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh2",
+     "t": "zone",
+     "u": -5.6,
+     "v": 13.4,
+     "w": 1.6166666666666667,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh3",
+     "t": "zone",
+     "u": -7.267,
+     "v": 13.4,
+     "w": 1.6166666666666667,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh4",
+     "t": "zone",
+     "u": -8.933,
+     "v": 13.4,
+     "w": 1.6166666666666667,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh5",
+     "t": "zone",
+     "u": -10.6,
+     "v": 13.4,
+     "w": 1.6166666666666667,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh6",
+     "t": "zone",
+     "u": -12.267,
+     "v": 13.4,
+     "w": 1.6166666666666667,
+     "h": 3.8,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

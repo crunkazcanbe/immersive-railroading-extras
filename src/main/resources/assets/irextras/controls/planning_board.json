@@ -1,0 +1,694 @@
+{
+ "title": "planning_board",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 14.72,
+   "title": "TOWN MAP",
+   "controls": [
+    {
+     "id": "pw",
+     "t": "lamp",
+     "u": 28.6,
+     "v": 25.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 28.6,
+     "v": 25.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "grow",
+     "t": "lamp",
+     "u": 25.5,
+     "v": 25.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "GROWING"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 25.5,
+     "v": 25.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GROWING"
+    },
+    {
+     "id": "shrink",
+     "t": "lamp",
+     "u": 22.4,
+     "v": 25.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "SHRINKING"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.4,
+     "v": 25.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SHRINKING"
+    },
+    {
+     "id": "noisy",
+     "t": "lamp",
+     "u": 19.3,
+     "v": 25.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "NOISE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.3,
+     "v": 25.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NOISE"
+    },
+    {
+     "id": "tend",
+     "t": "lamp",
+     "u": 16.2,
+     "v": 25.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "8ad4ff",
+     "label": "TENDER",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 16.2,
+     "v": 25.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TENDER"
+    },
+    {
+     "id": "psoon",
+     "t": "lamp",
+     "u": 13.1,
+     "v": 25.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "PSO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.1,
+     "v": 25.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PSO"
+    },
+    {
+     "id": "accg",
+     "t": "gauge",
+     "u": 27.2,
+     "v": 13.4,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "ACCESS",
+     "max": 100
+    },
+    {
+     "id": "noiseg",
+     "t": "gauge",
+     "u": 12.8,
+     "v": 13.4,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "NOISE DB",
+     "max": 90
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 14.42,
+   "title": "STATISTICS",
+   "controls": [
+    {
+     "id": "town",
+     "t": "digits",
+     "u": -2.2,
+     "v": 28.2,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "pop",
+     "t": "digits",
+     "u": -2.2,
+     "v": 27.22,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "hist",
+     "t": "digits",
+     "u": -2.2,
+     "v": 26.24,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "acc",
+     "t": "digits",
+     "u": -2.2,
+     "v": 25.26,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "jobs",
+     "t": "digits",
+     "u": -2.2,
+     "v": 24.28,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "goods",
+     "t": "digits",
+     "u": -2.2,
+     "v": 23.3,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "noise",
+     "t": "digits",
+     "u": -2.2,
+     "v": 22.32,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "why",
+     "t": "digits",
+     "u": -2.2,
+     "v": 21.34,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "b0b0b0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "st1",
+     "t": "digits",
+     "u": -2.2,
+     "v": 20.36,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "st2",
+     "t": "digits",
+     "u": -2.2,
+     "v": 19.38,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "st3",
+     "t": "digits",
+     "u": -2.2,
+     "v": 18.4,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "st4",
+     "t": "digits",
+     "u": -2.2,
+     "v": 17.42,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "pso1",
+     "t": "digits",
+     "u": -2.2,
+     "v": 16.44,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "c080ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "pso2",
+     "t": "digits",
+     "u": -2.2,
+     "v": 15.46,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "c080ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "pso3",
+     "t": "digits",
+     "u": -2.2,
+     "v": 14.48,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "c080ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "env1",
+     "t": "digits",
+     "u": -2.2,
+     "v": 13.5,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "30e060",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "env2",
+     "t": "digits",
+     "u": -2.2,
+     "v": 12.52,
+     "w": 22.8,
+     "h": 0.86,
+     "col": "30e060",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 6.58,
+   "title": "PLAN CHEST",
+   "controls": [
+    {
+     "id": "plans",
+     "t": "zone",
+     "u": 24.3,
+     "v": 3.2,
+     "w": 10.0,
+     "h": 5.8,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 8.75,
+   "title": "APPLICATIONS",
+   "controls": [
+    {
+     "id": "apps",
+     "t": "zone",
+     "u": -7.9,
+     "v": 3.5,
+     "w": 10.0,
+     "h": 6.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.5,
+   "title": "DESK DRAWERS",
+   "controls": []
+  },
+  {
+   "side": "up",
+   "face": 6.92,
+   "title": "PLANNING TABLE",
+   "controls": [
+    {
+     "id": "sh1",
+     "t": "zone",
+     "u": 12.0,
+     "v": 11.6,
+     "w": 2.4,
+     "h": 1.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh2",
+     "t": "zone",
+     "u": 9.4,
+     "v": 11.6,
+     "w": 2.4,
+     "h": 1.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh3",
+     "t": "zone",
+     "u": 6.6,
+     "v": 11.6,
+     "w": 2.4,
+     "h": 1.8,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "sh4",
+     "t": "zone",
+     "u": 4.0,
+     "v": 11.6,
+     "w": 2.4,
+     "h": 1.8,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 6.85,
+   "title": "DESK",
+   "controls": [
+    {
+     "id": "tprev",
+     "t": "push",
+     "u": 0.9,
+     "v": 4.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "1a1a1a",
+     "label": "TOWN<"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.9,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TOWN<"
+    },
+    {
+     "id": "tnext",
+     "t": "push",
+     "u": 2.25,
+     "v": 4.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "1a1a1a",
+     "label": "TOWN>"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.25,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TOWN>"
+    },
+    {
+     "id": "report",
+     "t": "push",
+     "u": 3.6,
+     "v": 4.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "f0f0f0",
+     "label": "REPORT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.6,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "REPORT"
+    },
+    {
+     "id": "rename",
+     "t": "push",
+     "u": 4.95,
+     "v": 4.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "b0b0b0",
+     "label": "RENAME"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.95,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RENAME"
+    },
+    {
+     "id": "pxdn",
+     "t": "push",
+     "u": 6.3,
+     "v": 4.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "404040",
+     "label": "BID-"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.3,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BID-"
+    },
+    {
+     "id": "pxup",
+     "t": "push",
+     "u": 7.65,
+     "v": 4.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "404040",
+     "label": "BID+"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.65,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BID+"
+    },
+    {
+     "id": "bid",
+     "t": "push",
+     "u": 9.0,
+     "v": 4.6,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "8040c0",
+     "label": "PSO BID"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.0,
+     "v": 3.8,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PSO BID"
+    },
+    {
+     "id": "barrier",
+     "t": "push",
+     "u": 0.9,
+     "v": 7.4,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "1fa34a",
+     "label": "BARRIER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.9,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BARRIER"
+    },
+    {
+     "id": "trees",
+     "t": "push",
+     "u": 2.25,
+     "v": 7.4,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "2f7a3a",
+     "label": "TREES"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.25,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TREES"
+    },
+    {
+     "id": "solar",
+     "t": "push",
+     "u": 3.6,
+     "v": 7.4,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "f0d020",
+     "label": "SOLAR"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 3.6,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SOLAR"
+    },
+    {
+     "id": "dpf",
+     "t": "push",
+     "u": 4.95,
+     "v": 7.4,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "606060",
+     "label": "FILTER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.95,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FILTER"
+    },
+    {
+     "id": "water",
+     "t": "push",
+     "u": 6.3,
+     "v": 7.4,
+     "w": 0.85,
+     "h": 0.85,
+     "col": "2080d0",
+     "label": "WATER"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.3,
+     "v": 6.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "WATER"
+    },
+    {
+     "id": "bidpx",
+     "t": "digits",
+     "u": 12.6,
+     "v": 7.4,
+     "w": 5.4,
+     "h": 0.9,
+     "col": "c080ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

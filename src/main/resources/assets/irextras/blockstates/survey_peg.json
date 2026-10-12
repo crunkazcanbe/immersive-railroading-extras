@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:survey_peg"
+  },
+  "facing=east": {
+   "model": "irextras:survey_peg",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:survey_peg",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:survey_peg",
+   "y": 270
+  }
+ }
+}

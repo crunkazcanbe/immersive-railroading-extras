@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:oil_firegas"
+  },
+  "facing=east": {
+   "model": "irextras:oil_firegas",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:oil_firegas",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:oil_firegas",
+   "y": 270
+  }
+ }
+}

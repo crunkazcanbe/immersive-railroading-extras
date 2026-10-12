@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "QLQ",
+  " I ",
+  " I "
+ ],
+ "key": {
+  "Q": {
+   "item": "minecraft:quartz"
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:banner_repeater",
+  "count": 1
+ }
+}

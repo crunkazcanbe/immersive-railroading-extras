@@ -1,0 +1,20 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "F F",
+  " E ",
+  "F F"
+ ],
+ "key": {
+  "F": {
+   "item": "minecraft:feather"
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  }
+ },
+ "result": {
+  "item": "irextras:drone",
+  "count": 1
+ }
+}

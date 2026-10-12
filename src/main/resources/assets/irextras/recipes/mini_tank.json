@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "III",
+  "IBI",
+  "R R"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_nugget"
+  },
+  "B": {
+   "item": "minecraft:bucket"
+  },
+  "R": {
+   "item": "minecraft:rail"
+  }
+ },
+ "result": {
+  "item": "irextras:mini_stock",
+  "count": 1,
+  "data": 5
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:taxi_rank"
+  },
+  "facing=east": {
+   "model": "irextras:taxi_rank",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:taxi_rank",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:taxi_rank",
+   "y": 270
+  }
+ }
+}

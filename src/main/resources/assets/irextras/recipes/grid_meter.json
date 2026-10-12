@@ -1,0 +1,29 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PVP",
+  "CFC"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:grid_meter",
+  "count": 1
+ }
+}

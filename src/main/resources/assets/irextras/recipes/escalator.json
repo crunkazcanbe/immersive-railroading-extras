@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "  R",
+  " SM",
+  "SSI"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:rail"
+  },
+  "S": {
+   "item": "minecraft:stone_stairs"
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "I": {
+   "item": "minecraft:iron_block"
+  }
+ },
+ "result": {
+  "item": "irextras:escalator",
+  "count": 1
+ }
+}

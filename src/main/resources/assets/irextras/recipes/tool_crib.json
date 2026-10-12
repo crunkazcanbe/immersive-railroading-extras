@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "BBB",
+  "TCT",
+  "IKI"
+ ],
+ "key": {
+  "B": {
+   "item": "minecraft:iron_bars"
+  },
+  "T": {
+   "item": "minecraft:chest"
+  },
+  "C": {
+   "item": "minecraft:crafting_table"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "K": {
+   "item": "minecraft:tripwire_hook"
+  }
+ },
+ "result": {
+  "item": "irextras:tool_crib"
+ }
+}

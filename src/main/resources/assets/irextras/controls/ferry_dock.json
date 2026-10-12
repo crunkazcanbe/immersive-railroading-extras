@@ -1,0 +1,385 @@
+{
+ "title": "ferry_dock",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.45,
+   "title": "LINK SPAN",
+   "controls": [
+    {
+     "id": "d1",
+     "t": "digits",
+     "u": 10.0,
+     "v": 19.6,
+     "w": 9.0,
+     "h": 0.72,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d2",
+     "t": "digits",
+     "u": 10.0,
+     "v": 18.68,
+     "w": 9.0,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d3",
+     "t": "digits",
+     "u": 10.0,
+     "v": 17.76,
+     "w": 9.0,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d4",
+     "t": "digits",
+     "u": 10.0,
+     "v": 16.84,
+     "w": 9.0,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d5",
+     "t": "digits",
+     "u": 10.0,
+     "v": 15.92,
+     "w": 9.0,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d6",
+     "t": "digits",
+     "u": 10.0,
+     "v": 15.0,
+     "w": 9.0,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_span",
+     "t": "gauge",
+     "u": 3.2,
+     "v": 18.2,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "SPAN %",
+     "max": 100
+    },
+    {
+     "id": "g_bar",
+     "t": "gauge",
+     "u": 3.2,
+     "v": 15.4,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "HYD BAR",
+     "max": 100
+    },
+    {
+     "id": "g_deck",
+     "t": "gauge",
+     "u": 3.2,
+     "v": 12.6,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "DECK %",
+     "max": 100
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 14.1,
+     "v": 13.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "l_main",
+     "t": "lamp",
+     "u": 12.45,
+     "v": 13.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "l_up",
+     "t": "lamp",
+     "u": 10.8,
+     "v": 13.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "f0f0f0",
+     "label": "SPAN UP"
+    },
+    {
+     "id": "l_down",
+     "t": "lamp",
+     "u": 9.15,
+     "v": 13.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "f0f0f0",
+     "label": "SPAN DOWN"
+    },
+    {
+     "id": "l_seat",
+     "t": "lamp",
+     "u": 7.5,
+     "v": 13.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "SEATED"
+    },
+    {
+     "id": "l_in",
+     "t": "lamp",
+     "u": 5.85,
+     "v": 13.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "40a0ff",
+     "label": "FERRY IN"
+    },
+    {
+     "id": "l_door",
+     "t": "lamp",
+     "u": 14.1,
+     "v": 12.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "DOOR OPEN"
+    },
+    {
+     "id": "l_sail",
+     "t": "lamp",
+     "u": 12.45,
+     "v": 12.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "40a0ff",
+     "label": "AT SEA"
+    },
+    {
+     "id": "l_pump",
+     "t": "lamp",
+     "u": 10.8,
+     "v": 12.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "PUMP"
+    },
+    {
+     "id": "l_flt",
+     "t": "lamp",
+     "u": 9.15,
+     "v": 12.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "FAULT"
+    },
+    {
+     "id": "l_hold",
+     "t": "lamp",
+     "u": 7.5,
+     "v": 12.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff2020",
+     "label": "SIGNALS HELD"
+    },
+    {
+     "id": "k_en",
+     "t": "key",
+     "u": 13.8,
+     "v": 10.4,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "ENABLE",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "s_route",
+     "t": "selector",
+     "u": 11.4,
+     "v": 10.4,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "ROUTE",
+     "pos": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+     ]
+    },
+    {
+     "id": "s_what",
+     "t": "selector",
+     "u": 9.0,
+     "v": 10.4,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "LOAD",
+     "pos": [
+      "WAGONS",
+      "ALL"
+     ]
+    },
+    {
+     "id": "s_page",
+     "t": "selector",
+     "u": 6.6,
+     "v": 10.4,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "202020",
+     "label": "PAGE",
+     "pos": [
+      "OVERVIEW",
+      "DECK",
+      "VOYAGE",
+      "EVENTS"
+     ]
+    },
+    {
+     "id": "raise",
+     "t": "push",
+     "u": 13.8,
+     "v": 7.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f0f0f0",
+     "label": "SPAN RAISE"
+    },
+    {
+     "id": "lower",
+     "t": "push",
+     "u": 11.8,
+     "v": 7.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f0f0f0",
+     "label": "SPAN LOWER"
+    },
+    {
+     "id": "door",
+     "t": "push",
+     "u": 9.8,
+     "v": 7.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "e0a020",
+     "label": "STERN DOOR"
+    },
+    {
+     "id": "load",
+     "t": "push",
+     "u": 7.8,
+     "v": 7.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "30c040",
+     "label": "LOAD"
+    },
+    {
+     "id": "unload",
+     "t": "push",
+     "u": 5.8,
+     "v": 7.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "2050d0",
+     "label": "UNLOAD"
+    },
+    {
+     "id": "depart",
+     "t": "push",
+     "u": 13.8,
+     "v": 5.8,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "30c040",
+     "label": "DEPART"
+    },
+    {
+     "id": "horn",
+     "t": "push",
+     "u": 11.8,
+     "v": 5.8,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "303438",
+     "label": "HORN"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 9.8,
+     "v": 5.8,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "f0d020",
+     "label": "ACK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 7.8,
+     "v": 5.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0f0f0",
+     "label": "LAMP TEST"
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": 3.4,
+     "v": 6.2,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "d01818",
+     "label": "E-STOP"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+{
+ "parent": "item/generated",
+ "textures": {
+  "layer0": "irextras:items/cctv_drive_1tb"
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  " X ",
+  "EKE",
+  " V "
+ ],
+ "key": {
+  "X": {
+   "item": "minecraft:cauldron"
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "K": {
+   "item": "irextras:machine_casing"
+  },
+  "V": {
+   "item": "irextras:gate_valve"
+  }
+ },
+ "result": {
+  "item": "irextras:fluid_output_hatch",
+  "count": 1
+ }
+}

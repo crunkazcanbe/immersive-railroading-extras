@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LIL",
+  "RCR",
+  " D "
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "D": {
+   "item": "minecraft:daylight_detector"
+  }
+ },
+ "result": {
+  "item": "irextras:emergency_light",
+  "count": 1
+ }
+}

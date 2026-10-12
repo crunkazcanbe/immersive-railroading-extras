@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:grain_silo"
+  },
+  "facing=east": {
+   "model": "irextras:grain_silo",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:grain_silo",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:grain_silo",
+   "y": 270
+  }
+ }
+}

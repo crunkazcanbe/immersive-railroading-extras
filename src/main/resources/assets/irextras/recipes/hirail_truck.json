@@ -1,0 +1,36 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GSG",
+  "MFM",
+  "WBW"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 9
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 22
+  }
+ },
+ "result": {
+  "item": "irextras:hirail_truck"
+ }
+}

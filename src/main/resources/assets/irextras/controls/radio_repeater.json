@@ -1,0 +1,133 @@
+{
+ "title": "radio_repeater",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.14,
+   "title": "REPEATER",
+   "controls": [
+    {
+     "id": "cell",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.0,
+     "w": 6.2,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "donor",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.1,
+     "w": 6.2,
+     "h": 0.6,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rssi",
+     "t": "digits",
+     "u": 9.6,
+     "v": 12.2,
+     "w": 3.0,
+     "h": 0.55,
+     "col": "a0d8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "links",
+     "t": "digits",
+     "u": 6.4,
+     "v": 12.2,
+     "w": 2.8,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d TRN"
+    },
+    {
+     "id": "dbar",
+     "t": "gauge",
+     "u": 9.6,
+     "v": 11.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f2f0e6",
+     "label": "DONOR",
+     "max": 100
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 6.8,
+     "v": 11.4,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "tx",
+     "t": "lamp",
+     "u": 6.0,
+     "v": 11.4,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30a0ff",
+     "label": ""
+    },
+    {
+     "id": "dlink",
+     "t": "lamp",
+     "u": 5.2,
+     "v": 11.4,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 6.0,
+     "v": 10.9,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "s_power",
+     "t": "selector",
+     "u": 11.0,
+     "v": 9.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "OUT",
+     "pos": [
+      "0.5W",
+      "2W",
+      "10W"
+     ]
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 8.0,
+     "v": 9.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "LAMP"
+    }
+   ]
+  }
+ ]
+}

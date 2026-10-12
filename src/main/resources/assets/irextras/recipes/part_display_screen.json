@@ -1,0 +1,26 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "GGG",
+  "LCL"
+ ],
+ "key": {
+  "G": {
+   "type": "forge:ore_dict",
+   "ore": "paneGlass"
+  },
+  "L": {
+   "type": "forge:ore_dict",
+   "ore": "dustGlowstone"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 20,
+  "count": 2
+ }
+}

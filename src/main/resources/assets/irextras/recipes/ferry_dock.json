@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GCG",
+  "PRP",
+  "SBS"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "R": {
+   "item": "minecraft:redstone_block"
+  },
+  "S": {
+   "item": "minecraft:stone",
+   "data": 0
+  },
+  "B": {
+   "item": "minecraft:boat"
+  }
+ },
+ "result": {
+  "item": "irextras:ferry_dock",
+  "count": 1
+ }
+}

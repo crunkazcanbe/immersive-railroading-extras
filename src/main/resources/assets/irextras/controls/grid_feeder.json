@@ -1,0 +1,40 @@
+{
+ "title": "grid_feeder",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.4,
+   "title": "",
+   "controls": [
+    {
+     "id": "surges",
+     "t": "digits",
+     "u": 11.2,
+     "v": 13.2,
+     "w": 0.7,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%03d"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.5,
+   "title": "",
+   "controls": [
+    {
+     "id": "live",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 13.3,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff5a28",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "K",
+  "K",
+  "K"
+ ],
+ "key": {
+  "K": {
+   "type": "forge:ore_dict",
+   "ore": "fuelCoke"
+  }
+ },
+ "result": {
+  "item": "irextras:material",
+  "data": 5,
+  "count": 1
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "variants": {
+  "facing=north,formed=false": {
+   "model": "irextras:bulk_loader_controller",
+   "y": 0
+  },
+  "facing=north,formed=true": {
+   "model": "irextras:bulk_loader_controller",
+   "y": 0
+  },
+  "facing=east,formed=false": {
+   "model": "irextras:bulk_loader_controller",
+   "y": 90
+  },
+  "facing=east,formed=true": {
+   "model": "irextras:bulk_loader_controller",
+   "y": 90
+  },
+  "facing=south,formed=false": {
+   "model": "irextras:bulk_loader_controller",
+   "y": 180
+  },
+  "facing=south,formed=true": {
+   "model": "irextras:bulk_loader_controller",
+   "y": 180
+  },
+  "facing=west,formed=false": {
+   "model": "irextras:bulk_loader_controller",
+   "y": 270
+  },
+  "facing=west,formed=true": {
+   "model": "irextras:bulk_loader_controller",
+   "y": 270
+  }
+ }
+}

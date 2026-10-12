@@ -1,0 +1,3 @@
+newmtl welding_cell
+Kd 1 1 1
+map_Kd irextras:blocks/machines/welding_cell

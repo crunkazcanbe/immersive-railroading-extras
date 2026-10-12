@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "MCM",
+  "pFp",
+  "GEG"
+ ],
+ "key": {
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "p": {
+   "item": "irextras:pipe"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:borehole_pump",
+  "count": 1
+ }
+}

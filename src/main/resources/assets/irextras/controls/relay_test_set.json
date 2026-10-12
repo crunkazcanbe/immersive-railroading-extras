@@ -1,0 +1,262 @@
+{
+ "title": "relay_test_set",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 2.53,
+   "title": "RELAY TEST SET",
+   "controls": [
+    {
+     "id": "ied",
+     "t": "digits",
+     "u": 9.8,
+     "v": 14.0,
+     "w": 6.0,
+     "h": 0.45,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "set",
+     "t": "digits",
+     "u": 9.8,
+     "v": 13.45,
+     "w": 6.0,
+     "h": 0.45,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "inj",
+     "t": "digits",
+     "u": 9.8,
+     "v": 12.9,
+     "w": 6.0,
+     "h": 0.45,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "time",
+     "t": "digits",
+     "u": 9.8,
+     "v": 12.35,
+     "w": 6.0,
+     "h": 0.45,
+     "col": "30a0ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "err",
+     "t": "digits",
+     "u": 9.8,
+     "v": 11.85,
+     "w": 6.0,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "res",
+     "t": "digits",
+     "u": 4.5,
+     "v": 13.6,
+     "w": 3.2,
+     "h": 0.5,
+     "col": "ffffff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cal",
+     "t": "digits",
+     "u": 4.5,
+     "v": 13.0,
+     "w": 3.2,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "g_amp",
+     "t": "gauge",
+     "u": 4.5,
+     "v": 11.5,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "I x10",
+     "max": 100
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 6.1,
+     "v": 12.6,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "f0f0f0",
+     "label": ""
+    },
+    {
+     "id": "run",
+     "t": "lamp",
+     "u": 6.9,
+     "v": 11.1,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "3080ff",
+     "label": "RUN",
+     "blink": true
+    },
+    {
+     "id": "pass",
+     "t": "lamp",
+     "u": 8.05,
+     "v": 11.1,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "PASS"
+    },
+    {
+     "id": "fail",
+     "t": "lamp",
+     "u": 9.2,
+     "v": 11.1,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "FAIL"
+    },
+    {
+     "id": "op",
+     "t": "lamp",
+     "u": 10.35,
+     "v": 11.1,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff8020",
+     "label": "TRIP"
+    },
+    {
+     "id": "isol",
+     "t": "lamp",
+     "u": 6.9,
+     "v": 10.15,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "ISOL"
+    },
+    {
+     "id": "livet",
+     "t": "lamp",
+     "u": 8.05,
+     "v": 10.15,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "LIVE",
+     "blink": true
+    },
+    {
+     "id": "sup",
+     "t": "lamp",
+     "u": 9.2,
+     "v": 10.15,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 10.35,
+     "v": 10.15,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 3.4,
+     "v": 10.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "PICKUP",
+      "TIMING",
+      "FULL",
+      "CALIB"
+     ]
+    },
+    {
+     "id": "k_block",
+     "t": "key",
+     "u": 5.1,
+     "v": 10.0,
+     "w": 0.75,
+     "h": 0.75,
+     "col": "c0a040",
+     "label": "TEST BLK",
+     "pos": [
+      "LIVE",
+      "ISOL"
+     ]
+    },
+    {
+     "id": "select",
+     "t": "push",
+     "u": 11.7,
+     "v": 11.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "IED"
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 12.9,
+     "v": 11.1,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30c050",
+     "label": "START"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": 11.7,
+     "v": 10.15,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 12.9,
+     "v": 10.15,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "2050d0",
+     "label": "PRINT"
+    }
+   ]
+  }
+ ]
+}

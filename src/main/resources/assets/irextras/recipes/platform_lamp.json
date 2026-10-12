@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " L ",
+  " I ",
+  " B "
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "I": {
+   "item": "minecraft:iron_bars"
+  },
+  "B": {
+   "item": "minecraft:iron_block"
+  }
+ },
+ "result": {
+  "item": "irextras:platform_lamp",
+  "count": 1
+ }
+}

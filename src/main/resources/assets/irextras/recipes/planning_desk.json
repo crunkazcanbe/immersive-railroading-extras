@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LML",
+  "PDP",
+  "WCW"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "M": {
+   "item": "minecraft:map"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "D": {
+   "item": "irextras:incident_desk"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:planning_desk"
+ }
+}

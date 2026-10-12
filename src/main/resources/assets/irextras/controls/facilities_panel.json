@@ -1,0 +1,377 @@
+{
+ "title": "facilities_panel",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 10.5,
+   "title": "FACILITIES",
+   "controls": [
+    {
+     "id": "m1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 21.8,
+     "w": 13.4,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 20.2,
+     "w": 13.4,
+     "h": 1.0,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.6,
+     "w": 13.4,
+     "h": 1.0,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 17.0,
+     "w": 13.4,
+     "h": 1.0,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "m5",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.4,
+     "w": 13.4,
+     "h": 1.0,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rating",
+     "t": "gauge",
+     "u": 3.2,
+     "v": 11.6,
+     "w": 3.4,
+     "h": 3.4,
+     "col": "f2f0e6",
+     "label": "ACCESS",
+     "max": 100
+    },
+    {
+     "id": "grade",
+     "t": "digits",
+     "u": 3.2,
+     "v": 9.0,
+     "w": 1.6,
+     "h": 1.4,
+     "col": "30e060",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "stepf",
+     "t": "lamp",
+     "u": 6.6,
+     "v": 12.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "STEP-FREE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.6,
+     "v": 12.25,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STEP-FREE"
+    },
+    {
+     "id": "liftoos",
+     "t": "lamp",
+     "u": 8.5,
+     "v": 12.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "LIFT OOS",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.5,
+     "v": 12.25,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LIFT OOS"
+    },
+    {
+     "id": "wc",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 12.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "TOILET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 12.25,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TOILET"
+    },
+    {
+     "id": "help",
+     "t": "lamp",
+     "u": 12.3,
+     "v": 12.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "HELP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.3,
+     "v": 12.25,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "HELP"
+    },
+    {
+     "id": "gap",
+     "t": "lamp",
+     "u": 14.2,
+     "v": 12.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "GAP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.2,
+     "v": 12.25,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "GAP"
+    },
+    {
+     "id": "tact",
+     "t": "digits",
+     "u": 7.4,
+     "v": 10.0,
+     "w": 2.0,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.4,
+     "v": 9.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TACTILE"
+    },
+    {
+     "id": "cost",
+     "t": "digits",
+     "u": 10.6,
+     "v": 10.0,
+     "w": 3.0,
+     "h": 0.9,
+     "col": "ff8040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.6,
+     "v": 9.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "COST/DAY"
+    },
+    {
+     "id": "inc",
+     "t": "digits",
+     "u": 13.8,
+     "v": 10.0,
+     "w": 3.0,
+     "h": 0.9,
+     "col": "30e060",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.8,
+     "v": 9.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "INCOME"
+    },
+    {
+     "id": "audit",
+     "t": "push",
+     "u": 2.4,
+     "v": 6.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "2fa84a",
+     "label": "AUDIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.4,
+     "v": 5.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUDIT"
+    },
+    {
+     "id": "prev",
+     "t": "push",
+     "u": 4.4,
+     "v": 6.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "PREV"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.4,
+     "v": 5.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PREV"
+    },
+    {
+     "id": "next",
+     "t": "push",
+     "u": 6.4,
+     "v": 6.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "NEXT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.4,
+     "v": 5.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "NEXT"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 8.4,
+     "v": 6.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0f0f0",
+     "label": "PRINT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.4,
+     "v": 5.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PRINT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 10.4,
+     "v": 6.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.4,
+     "v": 5.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "k_level",
+     "t": "key",
+     "u": 13.4,
+     "v": 6.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "c0a040",
+     "label": "LEVEL ACCESS",
+     "pos": [
+      "STEPS",
+      "LEVEL"
+     ]
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 13.4,
+     "v": 4.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "12V"
+    }
+   ]
+  }
+ ]
+}

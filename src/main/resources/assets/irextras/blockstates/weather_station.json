@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:weather_station"
+  },
+  "facing=east": {
+   "model": "irextras:weather_station",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:weather_station",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:weather_station",
+   "y": 270
+  }
+ }
+}

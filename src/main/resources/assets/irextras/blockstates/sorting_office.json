@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:sorting_office"
+  },
+  "facing=east": {
+   "model": "irextras:sorting_office",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:sorting_office",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:sorting_office",
+   "y": 270
+  }
+ }
+}

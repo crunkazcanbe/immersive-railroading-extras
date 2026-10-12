@@ -1,0 +1,34 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PCP",
+  "DFD",
+  "PHP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "D": {
+   "item": "irextras:part",
+   "data": 17
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 19
+  }
+ },
+ "result": {
+  "item": "irextras:grid_rectifier",
+  "count": 1
+ }
+}

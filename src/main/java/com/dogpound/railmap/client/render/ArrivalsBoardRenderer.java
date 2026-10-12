@@ -63,6 +63,7 @@ public class ArrivalsBoardRenderer extends TileEntitySpecialRenderer<TileArrival
             {0xFFF5A9B8, 0xFF5BCEFA, 0xFFFFFFFF, 0xFF732982, 0xFF1C1530}};
 
     private void draw(TileArrivalsBoard te, int w, int h) {
+        if (!te.term().powered()) return;                                // no 12 V: the screen is dark
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
         com.dogpound.railmap.settings.SettingsStore cfg = te.settings();
         int ti = 0;
@@ -77,7 +78,7 @@ public class ArrivalsBoardRenderer extends TileEntitySpecialRenderer<TileArrival
         Gui.drawRect(0, 0, w, head, HEADER);
         String name = te.stationName().isEmpty() ? "NO STATION NEARBY" : upper ? te.stationName().toUpperCase() : te.stationName();
         text(font, fit(font, name, w - 44), 3, 3, WHITE);
-        long day = te.getWorld().getWorldTime() % 24000;
+        long day = Math.floorMod(te.getWorld().getWorldTime() + com.dogpound.railmap.ops6.MasterClocks.clientOffset(te.getPos()), 24000L);   // + its slave clock drift (batch 6 E #24)
         int hh = (int) ((day / 1000 + 6) % 24), mm = (int) (day % 1000 * 60 / 1000);
         String clock = cfg.bool("clock24") ? String.format("%02d:%02d", hh, mm) : String.format("%d:%02d %s", hh % 12 == 0 ? 12 : hh % 12, mm, hh < 12 ? "AM" : "PM");
         if (cfg.bool("clock")) text(font, clock, w - font.getStringWidth(clock) - 3, 3, AMBER);
@@ -121,7 +122,8 @@ public class ArrivalsBoardRenderer extends TileEntitySpecialRenderer<TileArrival
         // Footer: passengers waiting.
         Gui.drawRect(0, h - 11, w, h, 0xFF0A0C10);
         int waiting = cfg.bool("waiting") ? te.waiting() : 0;
-        String foot = waiting == 0 ? cfg.text("footer") : waiting + (waiting == 1 ? " PASSENGER WAITING" : " PASSENGERS WAITING");
+        String svc = te.service();                                                // passenger satisfaction (her list #50)
+        String foot = waiting == 0 ? (svc.isEmpty() ? cfg.text("footer") : svc) : waiting + (waiting == 1 ? " PASSENGER WAITING" : " PASSENGERS WAITING") + (svc.isEmpty() ? "" : " · " + svc);
         text(font, fit(font, foot, w - 6), 3, h - 9, waiting == 0 ? AMBER_DIM : GREEN);
     }
 

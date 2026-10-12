@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "CVC",
+  "HFH",
+  "GMG"
+ ],
+ "key": {
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "H": {
+   "item": "irextras:part",
+   "data": 4
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  }
+ },
+ "result": {
+  "item": "irextras:assembly_line",
+  "count": 1
+ }
+}

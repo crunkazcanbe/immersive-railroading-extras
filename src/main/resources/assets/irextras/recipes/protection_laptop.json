@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "SSS",
+  "CCC",
+  "LBL"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "L": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 22
+  }
+ },
+ "result": {
+  "item": "irextras:protection_laptop",
+  "count": 1
+ }
+}

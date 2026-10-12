@@ -1,0 +1,3 @@
+newmtl water_tower
+Kd 1 1 1
+map_Kd irextras:blocks/machines/water_tower

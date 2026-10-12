@@ -1,0 +1,92 @@
+{
+ "variants": {
+  "facing=north,shape=ns": {
+   "model": "irextras:garden_track"
+  },
+  "facing=north,shape=ew": {
+   "model": "irextras:garden_track",
+   "y": 90
+  },
+  "facing=north,shape=se": {
+   "model": "irextras:garden_track_curve"
+  },
+  "facing=north,shape=sw": {
+   "model": "irextras:garden_track_curve",
+   "y": 90
+  },
+  "facing=north,shape=nw": {
+   "model": "irextras:garden_track_curve",
+   "y": 180
+  },
+  "facing=north,shape=ne": {
+   "model": "irextras:garden_track_curve",
+   "y": 270
+  },
+  "facing=east,shape=ns": {
+   "model": "irextras:garden_track"
+  },
+  "facing=east,shape=ew": {
+   "model": "irextras:garden_track",
+   "y": 90
+  },
+  "facing=east,shape=se": {
+   "model": "irextras:garden_track_curve"
+  },
+  "facing=east,shape=sw": {
+   "model": "irextras:garden_track_curve",
+   "y": 90
+  },
+  "facing=east,shape=nw": {
+   "model": "irextras:garden_track_curve",
+   "y": 180
+  },
+  "facing=east,shape=ne": {
+   "model": "irextras:garden_track_curve",
+   "y": 270
+  },
+  "facing=south,shape=ns": {
+   "model": "irextras:garden_track"
+  },
+  "facing=south,shape=ew": {
+   "model": "irextras:garden_track",
+   "y": 90
+  },
+  "facing=south,shape=se": {
+   "model": "irextras:garden_track_curve"
+  },
+  "facing=south,shape=sw": {
+   "model": "irextras:garden_track_curve",
+   "y": 90
+  },
+  "facing=south,shape=nw": {
+   "model": "irextras:garden_track_curve",
+   "y": 180
+  },
+  "facing=south,shape=ne": {
+   "model": "irextras:garden_track_curve",
+   "y": 270
+  },
+  "facing=west,shape=ns": {
+   "model": "irextras:garden_track"
+  },
+  "facing=west,shape=ew": {
+   "model": "irextras:garden_track",
+   "y": 90
+  },
+  "facing=west,shape=se": {
+   "model": "irextras:garden_track_curve"
+  },
+  "facing=west,shape=sw": {
+   "model": "irextras:garden_track_curve",
+   "y": 90
+  },
+  "facing=west,shape=nw": {
+   "model": "irextras:garden_track_curve",
+   "y": 180
+  },
+  "facing=west,shape=ne": {
+   "model": "irextras:garden_track_curve",
+   "y": 270
+  }
+ }
+}

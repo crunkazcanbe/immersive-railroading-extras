@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "WGW",
+  " B "
+ ],
+ "key": {
+  "W": {
+   "item": "irextras:catenary_wire"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "B": {
+   "item": "minecraft:dye",
+   "data": 14
+  }
+ },
+ "result": {
+  "item": "irextras:catenary_section_insulator",
+  "count": 2
+ }
+}

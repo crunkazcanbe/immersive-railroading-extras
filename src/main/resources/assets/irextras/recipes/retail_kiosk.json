@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "WGW",
+  "PCP",
+  "WHW"
+ ],
+ "key": {
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "H": {
+   "item": "minecraft:iron_trapdoor"
+  }
+ },
+ "result": {
+  "item": "irextras:retail_kiosk",
+  "count": 1
+ }
+}

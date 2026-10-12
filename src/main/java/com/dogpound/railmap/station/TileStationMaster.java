@@ -28,7 +28,55 @@ import java.util.Set;
  * platforms (Platform Number Signs nearby), watches trains arrive and leave, announces them and keeps
  * the day's numbers.
  */
-public class TileStationMaster extends TileEntity implements ITickable, ISettingsHolder {
+public class TileStationMaster extends TileEntity implements ITickable, ISettingsHolder, com.dogpound.railmap.wire.IWiredGear, com.dogpound.railmap.controls.IControlled {
+    // ---- working controls (requested feature): the PC and monitor power LEDs run off the office's 12 V (timetable
+    // monitor only once the station is named); the microphone's press-to-talk speaks on every PA speaker of the station.
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { gearChanged(); }
+
+    @Override
+    public int controlValue(String id) {
+        boolean pw = term.powered();
+        switch (id) {
+            case "pc": case "map": case "cctv": return pw ? 1 : 0;
+            case "timetable": return pw && !name().isEmpty() ? 1 : 0;
+            default: return ctl.get(id);
+        }
+    }
+
+    @Override
+    public String controlPress(String id, EntityPlayer who) {
+        if (!id.equals("talk")) return null;
+        if (!term.powered()) return "§cNo 12 V - the PA microphone is dead";
+        if (name().isEmpty()) return "§7Name the station first (Settings Console)";
+        String say = "Attention please. This is the station master at " + name() + "."
+                + (standing.isEmpty() ? "" : " The train at platform " + standing.values().iterator().next() + " will depart shortly.");
+        int n = 0, r = cfg.num("reach");
+        for (TileEntity te : world.loadedTileEntityList)
+            if (te instanceof com.dogpound.railmap.block.TilePaSpeaker sp && te.getPos().distanceSq(pos) <= (double) r * r
+                    && (sp.stationName().isEmpty() || sp.stationName().equals(name())) && sp.page(say)) n++;
+        return n == 0 ? "§7No powered PA speakers at this station" : "§eAnnounced on " + n + " PA speaker" + (n == 1 ? "" : "s");
+    }
+
+    @Override public com.dogpound.railmap.grid.Panel wiredPanel() { return layout().all; }
+    @Override public String wiredPress(String id, String who) { return com.dogpound.railmap.controls.IControlled.operate(this, id, null); }
+    @Override public int wiredState(String id) { return controlValue(id); }
+    @Override public NBTTagCompound getUpdateTag() { return writeToNBT(new NBTTagCompound()); }
+    @Override public net.minecraft.network.play.server.SPacketUpdateTileEntity getUpdatePacket() { return new net.minecraft.network.play.server.SPacketUpdateTileEntity(pos, 0, getUpdateTag()); }
+    @Override public void onDataPacket(net.minecraft.network.NetworkManager net, net.minecraft.network.play.server.SPacketUpdateTileEntity pkt) { readFromNBT(pkt.getNbtCompound()); }
+
+    // ---- 12 V terminal (requested feature): needs 12 V DC instrument power; with none it is office dark
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    @Override public void gearChanged() { markDirty(); if (world != null && !world.isRemote) { net.minecraft.block.state.IBlockState gs = world.getBlockState(pos); world.notifyBlockUpdate(pos, gs, gs, 3); } }
+    @Override public String wiredName() { return "Station master's office"; }
+    @Override public String gearState() {
+        if (!term.powered()) return "NO 12 V - office dark";
+        com.dogpound.railmap.economy.PassengerData.Stn px = world == null ? null : com.dogpound.railmap.economy.PassengerData.get(world).stn(pos.toLong());
+        return arrivals + " arr / " + departures + " dep · " + standing.size() + " at platforms" + (px == null ? "" : String.format(java.util.Locale.ROOT, " · %d waiting · %.0f%% satisfied", Math.round(px.waitingTotal()), px.sat));
+    }
+
     public static final String[] TYPES = {"Through station", "Terminal (dead end)", "Multi-platform hub", "Underground", "Elevated",
             "Rural halt", "Metropolitan terminal", "Freight station", "Industrial siding"};
 
@@ -75,6 +123,9 @@ public class TileStationMaster extends TileEntity implements ITickable, ISetting
         return best;
     }
 
+    /** the kind of station (Settings Console) - the passenger model sizes its catchment by it */
+    public String type() { return cfg.text("type"); }
+
     public boolean terminal() { return cfg.text("type").startsWith("Terminal") || cfg.text("type").startsWith("Metropolitan"); }
 
     /** seconds a driverless train should stand here (0 = the train's own setting) */
@@ -91,9 +142,11 @@ public class TileStationMaster extends TileEntity implements ITickable, ISetting
 
     @Override
     public void update() {
+        if (world != null && !world.isRemote) { if (term.tick(world, pos, wiredName())) gearChanged(); if (!term.powered()) return; }
         if (world == null || world.isRemote) return;
         if (!name().equals(registered)) register();
         if (++ticks % 20 != 0) return;
+        if (ticks % 100 == 0 && !registered.isEmpty()) com.dogpound.railmap.economy.PassengerData.get(world).setZone(pos.toLong(), cfg.num("zone"));
         watchTrains();
     }
 
@@ -102,7 +155,7 @@ public class TileStationMaster extends TileEntity implements ITickable, ISetting
         if (!registered.isEmpty()) d.setName(pos, "");
         if (!name().isEmpty()) d.setName(pos, name());
         registered = name();
-        markDirty();
+        gearChanged();                                                       // the timetable monitor lights
     }
 
     void unregister() {
@@ -174,7 +227,7 @@ public class TileStationMaster extends TileEntity implements ITickable, ISetting
         double r = cfg.num("announceReach");
         for (EntityPlayer pl : world.playerEntities)
             if (pl.getDistanceSq(pos) < r * r) pl.sendMessage(new TextComponentString(chat));
-        if (cfg.bool("chime")) world.playSound(null, pos, SoundEvents.BLOCK_NOTE_CHIME, SoundCategory.BLOCKS, 2f, 1.2f);
+        if (cfg.bool("chime")) world.playSound(null, pos, com.dogpound.railmap.ModSounds.PA_CHIME, SoundCategory.BLOCKS, 2f, 1.0f);
     }
 
     public String statusLine() {
@@ -190,6 +243,7 @@ public class TileStationMaster extends TileEntity implements ITickable, ISetting
         List<Setting> l = new ArrayList<>();
         l.add(Setting.text("Station", "name", "Station name", "Registers the station: boards, tickets and driverless trains use it", "", 32));
         l.add(Setting.choice("Station", "type", "Kind of station", "", TYPES[0], TYPES));
+        l.add(Setting.num("Station", "zone", "Fare zone", "Zone fares, travel passes and fare gates count zones crossed (1 = the centre)", 1, 1, 9, 1, ""));
         l.add(Setting.num("Trains", "dwell", "Driverless trains stand for", "0 = each train's own dwell time", 0, 0, 300, 5, "s"));
         l.add(Setting.bool("Trains", "request", "Request stop (Rural halt)", "Driverless trains only stop if someone is waiting here or riding", true));
         l.add(Setting.num("Station", "reach", "Station size", "Platforms and trains within this many blocks belong to this station", 48, 8, 256, 8, "blocks"));
@@ -201,6 +255,20 @@ public class TileStationMaster extends TileEntity implements ITickable, ISetting
             l.add(Setting.info("Today", "Platforms found", plats.isEmpty() ? "none - place Platform Number Signs" : String.join(", ", new java.util.TreeSet<>(plats.keySet()))));
             l.add(Setting.info("Today", "Arrivals / departures", arrivals + " / " + departures));
             l.add(Setting.info("Today", "Trains at platforms now", String.valueOf(standing.size())));
+            com.dogpound.railmap.economy.PassengerData.Stn px = com.dogpound.railmap.economy.PassengerData.get(world).stn(pos.toLong());
+            if (px != null) {                                                    // her list #10 / #50: the passengers here
+                l.add(Setting.info("Passengers", "Satisfaction", String.format(java.util.Locale.ROOT, "%.0f%% %s", px.sat, px.rating())));
+                l.add(Setting.info("Passengers", "Punctuality / crowding / waiting", String.format(java.util.Locale.ROOT, "%.0f%% / %.0f%% / %.0f%%", px.punct, px.crowd, px.wait)));
+                l.add(Setting.info("Passengers", "Facilities / cleanliness", String.format(java.util.Locale.ROOT, "%.0f%% / %.0f%%", px.fac, px.clean)));
+                l.add(Setting.info("Passengers", "Catchment", px.pop + " people"));
+                l.add(Setting.info("Passengers", "Waiting now", String.valueOf(Math.round(px.waitingTotal()))));
+                l.add(Setting.info("Passengers", "Boarded / alighted today", Math.round(px.boardedDay) + " / " + Math.round(px.alightedDay)));
+                l.add(Setting.info("Passengers", "Left behind / walked away", Math.round(px.leftDay) + " / " + Math.round(px.walkedDay)));
+                l.add(Setting.info("Passengers", "Fare dodgers (est.)", String.valueOf(Math.round(px.evadersDay))));
+                l.add(Setting.info("Passengers", "Complaints today", Math.round(px.complaintsDay) + (px.topReason().isEmpty() ? "" : " - mostly " + px.topReason())));
+                l.add(Setting.info("Passengers", "Fares taken today", com.dogpound.railmap.economy.Coins.fmt(px.revenueDay)));
+            }
+        com.dogpound.railmap.wire.IWiredGear.settings(l, "Today", this);
             for (int i = 0; i < log.size(); i++) l.add(Setting.info("Log", i == 0 ? "Latest" : "", log.get(i)));
         }
         return l;
@@ -212,7 +280,9 @@ public class TileStationMaster extends TileEntity implements ITickable, ISetting
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound t) {
         super.writeToNBT(t);
+        term.write(t);
         cfg.write(t);
+        ctl.write(t);
         t.setString("registered", registered);
         t.setInteger("arr", arrivals);
         t.setInteger("dep", departures);
@@ -225,7 +295,9 @@ public class TileStationMaster extends TileEntity implements ITickable, ISetting
     @Override
     public void readFromNBT(NBTTagCompound t) {
         super.readFromNBT(t);
+        term.read(t);
         cfg.read(t);
+        ctl.read(t);
         registered = t.getString("registered");
         arrivals = t.getInteger("arr");
         departures = t.getInteger("dep");

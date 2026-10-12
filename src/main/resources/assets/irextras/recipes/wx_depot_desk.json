@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "LML",
+  "PCP",
+  "WSW"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "M": {
+   "item": "minecraft:map"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "S": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:wx_depot_desk",
+  "count": 1
+ }
+}

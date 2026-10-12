@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ICI",
+  "BRB",
+  "BTB"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "B": {
+   "item": "minecraft:redstone_block"
+  },
+  "R": {
+   "item": "minecraft:repeater"
+  },
+  "T": {
+   "item": "minecraft:iron_trapdoor"
+  }
+ },
+ "result": {
+  "item": "irextras:signal_battery"
+ }
+}

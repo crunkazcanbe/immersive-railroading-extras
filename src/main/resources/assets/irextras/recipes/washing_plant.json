@@ -1,0 +1,37 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "MCM",
+  "GFG",
+  "EVE"
+ ],
+ "key": {
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "E": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "V": {
+   "item": "irextras:gate_valve"
+  }
+ },
+ "result": {
+  "item": "irextras:washing_plant",
+  "count": 1
+ }
+}

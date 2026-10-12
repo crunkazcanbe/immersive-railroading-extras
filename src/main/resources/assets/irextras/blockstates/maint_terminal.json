@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:maint_terminal"
+  },
+  "facing=east": {
+   "model": "irextras:maint_terminal",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:maint_terminal",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:maint_terminal",
+   "y": 270
+  }
+ }
+}

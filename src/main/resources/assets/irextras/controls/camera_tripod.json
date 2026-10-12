@@ -1,0 +1,100 @@
+{
+ "title": "camera_tripod",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 5.85,
+   "title": "TV CAMERA",
+   "controls": [
+    {
+     "id": "d_no",
+     "t": "digits",
+     "u": 4.6,
+     "v": 12.2,
+     "w": 3.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "s_no",
+     "t": "selector",
+     "u": 5.6,
+     "v": 10.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "CAM",
+     "pos": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+     ]
+    },
+    {
+     "id": "pvw",
+     "t": "lamp",
+     "u": 3.6,
+     "v": 10.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "PVW"
+    },
+    {
+     "id": "tally_f",
+     "t": "lamp",
+     "u": 3.6,
+     "v": 9.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff2020",
+     "label": "TALLY"
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 5.6,
+     "v": 9.4,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 3.6,
+     "v": 9.0,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 6.95,
+   "title": "TALLY",
+   "controls": [
+    {
+     "id": "tally",
+     "t": "lamp",
+     "u": 2.1,
+     "v": 30.8,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "ff2020",
+     "label": "ON AIR"
+    }
+   ]
+  }
+ ]
+}

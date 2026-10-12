@@ -1,0 +1,37 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "DCD",
+  "BKB",
+  "PFP"
+ ],
+ "key": {
+  "D": {
+   "item": "irextras:part",
+   "data": 17
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 22
+  },
+  "K": {
+   "item": "irextras:part",
+   "data": 18
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:charge_post"
+ }
+}

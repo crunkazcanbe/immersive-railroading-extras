@@ -1,0 +1,241 @@
+{
+ "title": "grid_restore",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.78,
+   "title": "",
+   "controls": [
+    {
+     "id": "s1",
+     "t": "tile",
+     "u": 2.6,
+     "v": 10.8,
+     "w": 2.4,
+     "h": 1.7,
+     "col": "f0f0e0",
+     "label": "1 GENSETS"
+    },
+    {
+     "id": "s2",
+     "t": "tile",
+     "u": 5.3,
+     "v": 10.8,
+     "w": 2.4,
+     "h": 1.7,
+     "col": "f0f0e0",
+     "label": "2 AUX"
+    },
+    {
+     "id": "s3",
+     "t": "tile",
+     "u": 8.0,
+     "v": 10.8,
+     "w": 2.4,
+     "h": 1.7,
+     "col": "f0f0e0",
+     "label": "3 TRANS-|FORMERS"
+    },
+    {
+     "id": "s4",
+     "t": "tile",
+     "u": 10.7,
+     "v": 10.8,
+     "w": 2.4,
+     "h": 1.7,
+     "col": "f0f0e0",
+     "label": "4 FEEDERS"
+    },
+    {
+     "id": "s5",
+     "t": "tile",
+     "u": 13.4,
+     "v": 10.8,
+     "w": 2.4,
+     "h": 1.7,
+     "col": "ffb020",
+     "label": "5 TRACTION"
+    },
+    {
+     "id": "stage",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.6,
+     "w": 6.0,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "freq",
+     "t": "digits",
+     "u": 5.0,
+     "v": 21.5,
+     "w": 4.0,
+     "h": 0.7,
+     "col": "9cff9c",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "gen",
+     "t": "digits",
+     "u": 5.0,
+     "v": 20.6,
+     "w": 4.0,
+     "h": 0.7,
+     "col": "9cff9c",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "gload",
+     "t": "gauge",
+     "u": 2.6,
+     "v": 16.8,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "GEN %",
+     "max": 120
+    },
+    {
+     "id": "ldead",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 17.4,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ff3020",
+     "label": "DEAD GRID",
+     "blink": true
+    },
+    {
+     "id": "lhold",
+     "t": "lamp",
+     "u": 10.8,
+     "v": 17.4,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "HOLD"
+    },
+    {
+     "id": "ldone",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 15.8,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "30ff50",
+     "label": "RESTORED"
+    },
+    {
+     "id": "lfault",
+     "t": "lamp",
+     "u": 10.8,
+     "v": 15.8,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ff3020",
+     "label": "FAULT",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 3.63,
+   "title": "",
+   "controls": [
+    {
+     "id": "msg",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.5,
+     "w": 12.0,
+     "h": 0.7,
+     "col": "ffd27a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "mode",
+     "t": "selector",
+     "u": 1.6,
+     "v": 7.2,
+     "w": 1.5,
+     "h": 1.5,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "OFF",
+      "STEP",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 4.4,
+     "v": 7.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "1fa34a",
+     "label": "START"
+    },
+    {
+     "id": "next",
+     "t": "push",
+     "u": 6.6,
+     "v": 7.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f0f0f0",
+     "label": "NEXT"
+    },
+    {
+     "id": "hold",
+     "t": "push",
+     "u": 8.8,
+     "v": 7.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f0a020",
+     "label": "HOLD"
+    },
+    {
+     "id": "abort",
+     "t": "push",
+     "u": 11.0,
+     "v": 7.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "d02020",
+     "label": "ABORT"
+    },
+    {
+     "id": "lamptest",
+     "t": "push",
+     "u": 13.2,
+     "v": 7.2,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f0f0f0",
+     "label": "LAMP TEST"
+    },
+    {
+     "id": "lpwr",
+     "t": "lamp",
+     "u": 14.2,
+     "v": 6.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30ff50",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

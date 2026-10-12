@@ -35,6 +35,8 @@ public final class RailwayData extends WorldSavedData {
         public final List<Long> stations = new ArrayList<>();
         /** OpenTTD-style order for each stop (same index as {@link #stations}); see {@link Order}. */
         public final List<Integer> orders = new ArrayList<>();
+        /** moving-block signalling (CBTC): its driverless trains run on their authority, not lineside block signals */
+        public boolean movingBlock;
 
         public Order order(int i) { return Order.byCode(i >= 0 && i < orders.size() ? orders.get(i) : 0); }
 
@@ -244,6 +246,7 @@ public final class RailwayData extends WorldSavedData {
             for (int[] pair : pairs(c.getIntArray("s"))) l.stations.add(unpack(pair));
             int[] os = c.getIntArray("o");
             for (int k = 0; k < l.stations.size(); k++) l.orders.add(k < os.length ? os[k] : 0);
+            l.movingBlock = c.getBoolean("mb");
             lines.put(l.name, l);
         }
         trains.clear();
@@ -294,6 +297,7 @@ public final class RailwayData extends WorldSavedData {
             int[] os = new int[l.stations.size()];
             for (int k = 0; k < os.length; k++) os[k] = k < l.orders.size() ? l.orders.get(k) : 0;
             c.setIntArray("o", os);
+            c.setBoolean("mb", l.movingBlock);
             ls.appendTag(c);
         }
         t.setTag("lines", ls);

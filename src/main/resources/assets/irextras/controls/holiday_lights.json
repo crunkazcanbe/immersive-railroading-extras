@@ -1,0 +1,56 @@
+{
+ "title": "holiday_lights",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 14.38,
+   "title": "LIGHTS BOX",
+   "controls": [
+    {
+     "id": "k_on",
+     "t": "key",
+     "u": 1.4,
+     "v": 11.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "c0a040",
+     "label": "STRING LIGHTS",
+     "pos": [
+      "ON",
+      "OFF"
+     ]
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 0.6,
+     "v": 11.8,
+     "w": 0.25,
+     "h": 0.25,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "lit",
+     "t": "lamp",
+     "u": 0.6,
+     "v": 11.0,
+     "w": 0.25,
+     "h": 0.25,
+     "col": "ffe060",
+     "label": "LIT"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 1.4,
+     "v": 10.8,
+     "w": 0.3,
+     "h": 0.3,
+     "col": "b0b0b0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

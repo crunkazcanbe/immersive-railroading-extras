@@ -1,0 +1,31 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "WPW",
+  "CSC",
+  "WBW"
+ ],
+ "key": {
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "B": {
+   "item": "minecraft:book"
+  }
+ },
+ "result": {
+  "item": "irextras:sorting_office",
+  "count": 1
+ }
+}

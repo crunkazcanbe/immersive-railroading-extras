@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SPS",
+  "CBC",
+  "IHI"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:sign"
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "B": {
+   "item": "minecraft:chest"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "H": {
+   "item": "minecraft:iron_bars"
+  }
+ },
+ "result": {
+  "item": "irextras:construction_site"
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GCG",
+  "VRV",
+  "IFI"
+ ],
+ "key": {
+  "G": {
+   "item": "irextras:part",
+   "data": 21
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "V": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "R": {
+   "item": "minecraft:bucket"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  }
+ },
+ "result": {
+  "item": "irextras:brake_test"
+ }
+}

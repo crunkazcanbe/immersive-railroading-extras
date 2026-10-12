@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "DA ",
+  "CS "
+ ],
+ "key": {
+  "D": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 25
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "S": {
+   "item": "minecraft:stick"
+  }
+ },
+ "result": {
+  "item": "irextras:ndt_tool",
+  "data": 4
+ }
+}

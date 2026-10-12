@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RRR",
+  "RCR",
+  "SSS"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "S": {
+   "item": "minecraft:stone_slab",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:tram_loop",
+  "count": 1
+ }
+}

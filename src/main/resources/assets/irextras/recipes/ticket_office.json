@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GGG",
+  "WPW",
+  "WCW"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:ticket_office",
+  "count": 1
+ }
+}

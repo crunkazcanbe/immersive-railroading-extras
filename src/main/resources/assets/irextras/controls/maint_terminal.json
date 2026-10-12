@@ -1,0 +1,294 @@
+{
+ "title": "maint_terminal",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 2.4,
+   "title": "DRAWERS",
+   "controls": [
+    {
+     "id": "files",
+     "t": "zone",
+     "u": 3.7,
+     "v": 4.2,
+     "w": 4.6,
+     "h": 7.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 7.4,
+   "title": "SCREEN",
+   "controls": [
+    {
+     "id": "t1",
+     "t": "digits",
+     "u": 8.2,
+     "v": 16.1,
+     "w": 8.4,
+     "h": 0.85,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t2",
+     "t": "digits",
+     "u": 8.2,
+     "v": 15.12,
+     "w": 8.4,
+     "h": 0.85,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t3",
+     "t": "digits",
+     "u": 8.2,
+     "v": 14.14,
+     "w": 8.4,
+     "h": 0.85,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t4",
+     "t": "digits",
+     "u": 8.2,
+     "v": 13.16,
+     "w": 8.4,
+     "h": 0.85,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t5",
+     "t": "digits",
+     "u": 8.2,
+     "v": 12.18,
+     "w": 8.4,
+     "h": 0.85,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t6",
+     "t": "digits",
+     "u": 8.2,
+     "v": 11.2,
+     "w": 8.4,
+     "h": 0.85,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 6.25,
+   "title": "KEYPAD",
+   "controls": [
+    {
+     "id": "prev",
+     "t": "push",
+     "u": 3.5,
+     "v": 3.2,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "1a1a1a",
+     "label": "<"
+    },
+    {
+     "id": "next",
+     "t": "push",
+     "u": 2.25,
+     "v": 3.2,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "1a1a1a",
+     "label": ">"
+    },
+    {
+     "id": "cprev",
+     "t": "push",
+     "u": 1.0,
+     "v": 3.2,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "404040",
+     "label": "C<"
+    },
+    {
+     "id": "cnext",
+     "t": "push",
+     "u": 3.5,
+     "v": 4.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "404040",
+     "label": "C>"
+    },
+    {
+     "id": "ack",
+     "t": "push",
+     "u": 2.25,
+     "v": 4.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0d020",
+     "label": "ACK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 1.0,
+     "v": 4.8,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "operate",
+     "t": "push",
+     "u": 3.5,
+     "v": 6.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2050d0",
+     "label": "OPER"
+    },
+    {
+     "id": "wo",
+     "t": "push",
+     "u": 2.25,
+     "v": 6.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "e08020",
+     "label": "W/O"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 1.0,
+     "v": 6.4,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "PRINT"
+    },
+    {
+     "id": "s_filter",
+     "t": "selector",
+     "u": 6.5,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "FILTER",
+     "pos": [
+      "ALL",
+      "FAULT",
+      "NO 12V"
+     ]
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 8.3,
+   "title": "PRINTER",
+   "controls": [
+    {
+     "id": "paper",
+     "t": "zone",
+     "u": 14.6,
+     "v": 10.6,
+     "w": 2.0,
+     "h": 2.4,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.1,
+   "title": "STATUS",
+   "controls": [
+    {
+     "id": "power",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 18.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "link",
+     "t": "lamp",
+     "u": 5.3,
+     "v": 18.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "local",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 18.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff3020",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 7.1,
+     "v": 18.5,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": ""
+    },
+    {
+     "id": "count",
+     "t": "digits",
+     "u": 9.4,
+     "v": 18.5,
+     "w": 2.0,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d ON BUS"
+    },
+    {
+     "id": "filt",
+     "t": "digits",
+     "u": 11.6,
+     "v": 18.5,
+     "w": 1.6,
+     "h": 0.8,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

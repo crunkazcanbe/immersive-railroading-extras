@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ITI",
+  "IRI",
+  "III"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "T": {
+   "item": "minecraft:redstone_torch"
+  },
+  "R": {
+   "item": "minecraft:repeater"
+  }
+ },
+ "result": {
+  "item": "irextras:leaky_feeder",
+  "count": 1
+ }
+}

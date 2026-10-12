@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "XXX",
+  "XFX",
+  "PDP"
+ ],
+ "key": {
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "D": {
+   "item": "irextras:part",
+   "data": 17
+  }
+ },
+ "result": {
+  "item": "irextras:grid_arrester",
+  "count": 1
+ }
+}

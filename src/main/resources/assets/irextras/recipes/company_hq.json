@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GPG",
+  "BDB",
+  "WSW"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:gold_ingot"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "B": {
+   "item": "minecraft:bookshelf"
+  },
+  "D": {
+   "item": "irextras:freight_office"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "S": {
+   "item": "minecraft:iron_block"
+  }
+ },
+ "result": {
+  "item": "irextras:company_hq"
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:loco_works_bay"
+  },
+  "facing=east": {
+   "model": "irextras:loco_works_bay",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:loco_works_bay",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:loco_works_bay",
+   "y": 270
+  }
+ }
+}

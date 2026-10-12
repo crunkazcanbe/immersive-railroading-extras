@@ -10,6 +10,14 @@ import base64, io, json, sys
 from PIL import Image
 
 src, tex_id, out = sys.argv[1], sys.argv[2], sys.argv[3]
+import os
+_bb = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'models', os.path.basename(out)[:-5] + '.bbmodel')
+if os.path.exists(_bb) and os.path.abspath(src) != os.path.abspath(_bb):
+    sys.exit('skip: %s is now built by a bbkit generator (tools/gen_bb_*.py, e.g. gen_bb_station.py); delete %s to go back' % (out, _bb))
+import os
+_bb = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'models', os.path.splitext(os.path.basename(out))[0] + '.bbmodel')
+if os.path.exists(_bb) and os.path.abspath(src) != os.path.abspath(_bb):
+    raise SystemExit('skip ' + out + ': replaced by a detailed bbkit model (blockbench/models/, tools/gen_bb_*.py)')
 gui = float(sys.argv[5]) if len(sys.argv) > 5 and sys.argv[4] == '--item' else 0.625
 m = json.load(open(src))
 W, H = m['resolution']['width'], m['resolution']['height']

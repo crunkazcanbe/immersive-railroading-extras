@@ -1,0 +1,3 @@
+newmtl coke_oven
+Kd 1 1 1
+map_Kd irextras:blocks/machines/coke_oven

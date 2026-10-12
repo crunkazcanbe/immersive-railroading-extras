@@ -1,0 +1,34 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "SCS",
+  "LDL",
+  "WBW"
+ ],
+ "key": {
+  "S": {
+   "item": "irextras:part",
+   "data": 20
+  },
+  "C": {
+   "item": "minecraft:clock"
+  },
+  "L": {
+   "item": "minecraft:chest"
+  },
+  "D": {
+   "item": "irextras:crew_desk"
+  },
+  "W": {
+   "item": "minecraft:planks",
+   "data": 0
+  },
+  "B": {
+   "item": "minecraft:cauldron"
+  }
+ },
+ "result": {
+  "item": "irextras:crew_office",
+  "count": 1
+ }
+}

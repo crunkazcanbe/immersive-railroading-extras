@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:points_heater"
+  },
+  "facing=east": {
+   "model": "irextras:points_heater",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:points_heater",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:points_heater",
+   "y": 270
+  }
+ }
+}

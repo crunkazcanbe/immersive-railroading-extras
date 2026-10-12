@@ -1,0 +1,866 @@
+{
+ "title": "track_layer",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -15.62,
+   "title": "LAYING DESK",
+   "controls": [
+    {
+     "id": "line1",
+     "t": "digits",
+     "u": 16.2,
+     "v": 10.05,
+     "w": 11.0,
+     "h": 0.8799999999999999,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line2",
+     "t": "digits",
+     "u": 16.2,
+     "v": 8.95,
+     "w": 11.0,
+     "h": 0.8799999999999999,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line3",
+     "t": "digits",
+     "u": 16.2,
+     "v": 7.85,
+     "w": 11.0,
+     "h": 0.8799999999999999,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line4",
+     "t": "digits",
+     "u": 16.2,
+     "v": 6.75,
+     "w": 11.0,
+     "h": 0.8799999999999999,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "page",
+     "t": "selector",
+     "u": 23.6,
+     "v": 8.7,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "PAGE",
+     "pos": [
+      "STATUS",
+      "STORES",
+      "RUN",
+      "LOG"
+     ]
+    },
+    {
+     "id": "metres",
+     "t": "digits",
+     "u": 6.0,
+     "v": 9.6,
+     "w": 3.4,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s M"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.0,
+     "v": 8.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "METRES LAID"
+    },
+    {
+     "id": "panels",
+     "t": "digits",
+     "u": 1.0,
+     "v": 9.6,
+     "w": 2.6,
+     "h": 1.0,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.0,
+     "v": 8.35,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PANELS"
+    },
+    {
+     "id": "fuelg",
+     "t": "gauge",
+     "u": 22.0,
+     "v": 4.0,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "DIESEL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 22.0,
+     "v": 2.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DIESEL"
+    },
+    {
+     "id": "batg",
+     "t": "gauge",
+     "u": 19.6,
+     "v": 4.0,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "BATT",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 19.6,
+     "v": 2.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BATT"
+    },
+    {
+     "id": "rpmg",
+     "t": "gauge",
+     "u": 17.2,
+     "v": 4.0,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "RPM",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 17.2,
+     "v": 2.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RPM"
+    },
+    {
+     "id": "oilg",
+     "t": "gauge",
+     "u": 14.8,
+     "v": 4.0,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "OIL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.8,
+     "v": 2.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OIL"
+    },
+    {
+     "id": "coolg",
+     "t": "gauge",
+     "u": 12.4,
+     "v": 4.0,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "COOLANT",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 12.4,
+     "v": 2.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "COOLANT"
+    },
+    {
+     "id": "railg",
+     "t": "gauge",
+     "u": 10.0,
+     "v": 4.0,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "RAILS",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.0,
+     "v": 2.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RAILS"
+    },
+    {
+     "id": "tieg",
+     "t": "gauge",
+     "u": 7.6,
+     "v": 4.0,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "SLEEPERS",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.6,
+     "v": 2.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SLEEPERS"
+    },
+    {
+     "id": "progg",
+     "t": "gauge",
+     "u": 5.2,
+     "v": 4.0,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "f2f0e6",
+     "label": "PANEL",
+     "max": 100
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.2,
+     "v": 2.65,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "PANEL"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.0,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "eng",
+     "t": "lamp",
+     "u": 2.1,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "ENGINE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.1,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "ENGINE"
+    },
+    {
+     "id": "batl",
+     "t": "lamp",
+     "u": 0.2,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "BATT LOW"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.2,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BATT LOW"
+    },
+    {
+     "id": "fuell",
+     "t": "lamp",
+     "u": -1.7,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "FUEL LOW"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -1.7,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FUEL LOW"
+    },
+    {
+     "id": "raill",
+     "t": "lamp",
+     "u": -3.6,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "RAILS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -3.6,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RAILS"
+    },
+    {
+     "id": "tiel",
+     "t": "lamp",
+     "u": -5.5,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "SLEEPERS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -5.5,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "SLEEPERS"
+    },
+    {
+     "id": "balll",
+     "t": "lamp",
+     "u": -7.4,
+     "v": 6.6,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "BALLAST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -7.4,
+     "v": 6.05,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "BALLAST"
+    },
+    {
+     "id": "work",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 5.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "LAYING",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.0,
+     "v": 4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LAYING"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 2.1,
+     "v": 5.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 2.1,
+     "v": 4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FAULT"
+    },
+    {
+     "id": "autol",
+     "t": "lamp",
+     "u": 0.2,
+     "v": 5.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "8ad4ff",
+     "label": "AUTO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 0.2,
+     "v": 4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTO"
+    },
+    {
+     "id": "obst",
+     "t": "lamp",
+     "u": -1.7,
+     "v": 5.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "OBSTRUCT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -1.7,
+     "v": 4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OBSTRUCT"
+    },
+    {
+     "id": "form",
+     "t": "lamp",
+     "u": -3.6,
+     "v": 5.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "FORMATION"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -3.6,
+     "v": 4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FORMATION"
+    },
+    {
+     "id": "done",
+     "t": "lamp",
+     "u": -5.5,
+     "v": 5.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "DONE"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -5.5,
+     "v": 4.45,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DONE"
+    },
+    {
+     "id": "lay",
+     "t": "push",
+     "u": 4.0,
+     "v": 2.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1fa34a",
+     "label": "LAY"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 4.0,
+     "v": 1.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LAY"
+    },
+    {
+     "id": "start",
+     "t": "push",
+     "u": 1.6,
+     "v": 2.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "2a6ad0",
+     "label": "AUTO"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 1.6,
+     "v": 1.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "AUTO"
+    },
+    {
+     "id": "stop",
+     "t": "push",
+     "u": -0.8,
+     "v": 2.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": "STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -0.8,
+     "v": 1.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "STOP"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": -3.2,
+     "v": 2.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "e0c020",
+     "label": "RESET"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -3.2,
+     "v": 1.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": -5.6,
+     "v": 2.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "b0b0b0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": -5.6,
+     "v": 1.4,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": -14.42,
+   "title": "LAYING UPSTAND",
+   "controls": [
+    {
+     "id": "k_batt",
+     "t": "key",
+     "u": 22.4,
+     "v": 13.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c02020",
+     "label": "BATTERY",
+     "pos": [
+      "OFF",
+      "ON"
+     ]
+    },
+    {
+     "id": "k_engine",
+     "t": "key",
+     "u": 19.4,
+     "v": 13.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "c0a040",
+     "label": "ENGINE",
+     "pos": [
+      "OFF",
+      "RUN"
+     ]
+    },
+    {
+     "id": "s_gauge",
+     "t": "selector",
+     "u": 15.8,
+     "v": 13.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "GAUGE",
+     "pos": [
+      "STD",
+      "CAPE",
+      "3FT",
+      "MIN"
+     ]
+    },
+    {
+     "id": "s_panel",
+     "t": "selector",
+     "u": 12.2,
+     "v": 13.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "PANEL",
+     "pos": [
+      "6M",
+      "10M",
+      "16M",
+      "24M"
+     ]
+    },
+    {
+     "id": "s_curve",
+     "t": "selector",
+     "u": 8.6,
+     "v": 13.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "CURVE",
+     "pos": [
+      "STR",
+      "LEFT",
+      "RIGHT"
+     ]
+    },
+    {
+     "id": "s_radius",
+     "t": "selector",
+     "u": 5.0,
+     "v": 13.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "RADIUS",
+     "pos": [
+      "100",
+      "200",
+      "400",
+      "50",
+      "25"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 1.4,
+     "v": 13.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "MAN",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "s_target",
+     "t": "selector",
+     "u": -2.0,
+     "v": 13.4,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "202020",
+     "label": "PANELS",
+     "pos": [
+      "5",
+      "10",
+      "25",
+      "50",
+      "99"
+     ]
+    },
+    {
+     "id": "m_ballast",
+     "t": "lever",
+     "u": -5.0,
+     "v": 12.4,
+     "w": 0.8,
+     "h": 2.4,
+     "col": "e8c020",
+     "label": "BALLAST",
+     "pos": [
+      "OFF",
+      "DROP"
+     ]
+    },
+    {
+     "id": "m_estop",
+     "t": "mushroom",
+     "u": -7.4,
+     "v": 13.4,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d02020",
+     "label": "E-STOP"
+    }
+   ]
+  },
+  {
+   "side": "west",
+   "face": -8.02,
+   "title": "RAILS",
+   "controls": [
+    {
+     "id": "rails",
+     "t": "zone",
+     "u": 8.5,
+     "v": 10.0,
+     "w": 9.0,
+     "h": 7.6,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": -8.02,
+   "title": "TIES",
+   "controls": [
+    {
+     "id": "ties",
+     "t": "zone",
+     "u": 7.5,
+     "v": 10.0,
+     "w": 9.0,
+     "h": 7.6,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": 0.98,
+   "title": "BALLAST",
+   "controls": [
+    {
+     "id": "ballast",
+     "t": "zone",
+     "u": -0.5,
+     "v": 10.0,
+     "w": 5.0,
+     "h": 6.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "east",
+   "face": -1.52,
+   "title": "CLIPS",
+   "controls": [
+    {
+     "id": "clips",
+     "t": "zone",
+     "u": -6.3,
+     "v": 9.5,
+     "w": 2.6,
+     "h": 3.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

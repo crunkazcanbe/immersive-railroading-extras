@@ -1,0 +1,222 @@
+{
+ "title": "yard_floodlight",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.25,
+   "title": "FLOODLIGHT",
+   "controls": [
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 6.2,
+     "v": 7.6,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "ON",
+      "OFF"
+     ]
+    },
+    {
+     "id": "s_circ",
+     "t": "selector",
+     "u": 8.2,
+     "v": 7.6,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "CIRC",
+     "pos": [
+      "C1",
+      "C2",
+      "C3",
+      "C4"
+     ]
+    },
+    {
+     "id": "circ",
+     "t": "digits",
+     "u": 10.2,
+     "v": 7.6,
+     "w": 1.2,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 5.6,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.6,
+     "v": 4.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 6.45,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "MAINS"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.45,
+     "v": 4.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAINS"
+    },
+    {
+     "id": "litl",
+     "t": "lamp",
+     "u": 7.3,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "f0f0e0",
+     "label": "LIT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 7.3,
+     "v": 4.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LIT"
+    },
+    {
+     "id": "flt",
+     "t": "lamp",
+     "u": 8.15,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff3030",
+     "label": "FLT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.15,
+     "v": 4.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLT"
+    },
+    {
+     "id": "ctrl",
+     "t": "lamp",
+     "u": 9.0,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "4080ff",
+     "label": "LCP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.0,
+     "v": 4.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "LCP"
+    },
+    {
+     "id": "cell",
+     "t": "lamp",
+     "u": 9.85,
+     "v": 4.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "DARK"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.85,
+     "v": 4.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "DARK"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 10.4,
+     "v": 3.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 0.35,
+   "title": "PROJECTORS",
+   "controls": [
+    {
+     "id": "lens",
+     "t": "lamp",
+     "u": 12.5,
+     "v": 23.0,
+     "w": 4.4,
+     "h": 3.4,
+     "col": "f2f6ff",
+     "label": ""
+    },
+    {
+     "id": "lens",
+     "t": "lamp",
+     "u": 3.5,
+     "v": 23.0,
+     "w": 4.4,
+     "h": 3.4,
+     "col": "f2f6ff",
+     "label": ""
+    },
+    {
+     "id": "obst",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 26.9,
+     "w": 1.1,
+     "h": 0.9,
+     "col": "ff2020",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GEG",
+  " C ",
+  "S S"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "S": {
+   "item": "minecraft:stick"
+  }
+ },
+ "result": {
+  "item": "irextras:sighting_checker"
+ }
+}

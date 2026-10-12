@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:exit_sign"
+  },
+  "facing=east": {
+   "model": "irextras:exit_sign",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:exit_sign",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:exit_sign",
+   "y": 270
+  }
+ }
+}

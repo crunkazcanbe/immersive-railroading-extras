@@ -78,8 +78,9 @@ public class PacketRailOps implements IMessage {
         return p;
     }
 
-    public static PacketRailOps saveLine(BlockPos board, String name, List<Long> stations, List<Integer> orders) {
+    public static PacketRailOps saveLine(BlockPos board, String name, List<Long> stations, List<Integer> orders, boolean movingBlock) {
         PacketRailOps p = new PacketRailOps(LINE_SAVE, board);
+        p.a = movingBlock ? 1 : 0;
         p.text = name;
         p.list.addAll(stations);
         p.ints.addAll(orders);
@@ -158,6 +159,7 @@ public class PacketRailOps implements IMessage {
             boolean handheld = player.getHeldItemMainhand().getItem() instanceof ItemRailMap
                     || player.getHeldItemOffhand().getItem() instanceof ItemRailMap;
             if (!atBoard && !handheld) return;
+            if (com.dogpound.railmap.admin.Access.denyRailOp(player, msg.op, msg.text, msg.entityId, msg.a)) return;   // #111 access + #115 desk locks
 
             RailwayData data = RailwayData.get(world);
             String reply;
@@ -204,9 +206,11 @@ public class PacketRailOps implements IMessage {
                     if (name.isEmpty()) { reply = "Give the line a name"; break; }
                     if (msg.list.size() < 2) { reply = "A line needs at least two stations"; break; }
                     data.saveLine(name, msg.list, msg.ints);
+                    RailwayData.Line saved = data.lines().get(name);
+                    if (saved != null) { saved.movingBlock = msg.a == 1; data.markDirty(); }
                     int special = 0;
                     for (int o : msg.ints) if (o != 0) special++;
-                    reply = "Line saved: " + name + " · " + msg.list.size() + " stations" + (special > 0 ? " · " + special + " special orders" : "");
+                    reply = "Line saved: " + name + " · " + msg.list.size() + " stations" + (special > 0 ? " · " + special + " special orders" : "") + (msg.a == 1 ? " · moving block" : "");
                 }
                 case LINE_DELETE -> {
                     data.deleteLine(msg.text);

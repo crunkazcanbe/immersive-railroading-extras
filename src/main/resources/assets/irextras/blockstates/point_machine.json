@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:point_machine"
+  },
+  "facing=east": {
+   "model": "irextras:point_machine",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:point_machine",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:point_machine",
+   "y": 270
+  }
+ }
+}

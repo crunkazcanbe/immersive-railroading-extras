@@ -181,6 +181,15 @@ public class BlockGrid extends Block {
         drops.add(s);
     }
 
+    /** a burnt-out machine smokes, and now and then a lick of flame comes out of it */
+    @Override
+    public void randomDisplayTick(IBlockState s, World w, BlockPos p, java.util.Random rnd) {
+        if (!(w.getTileEntity(p) instanceof TileGrid t) || !t.burntClient) return;
+        double x = p.getX() + 0.2 + rnd.nextDouble() * 0.6, z = p.getZ() + 0.2 + rnd.nextDouble() * 0.6;
+        w.spawnParticle(rnd.nextInt(3) == 0 ? net.minecraft.util.EnumParticleTypes.SMOKE_LARGE : net.minecraft.util.EnumParticleTypes.SMOKE_NORMAL, x, p.getY() + 1.0, z, 0, 0.03, 0);
+        if (rnd.nextInt(6) == 0) w.spawnParticle(net.minecraft.util.EnumParticleTypes.FLAME, x, p.getY() + 0.9, z, 0, 0.01, 0);
+    }
+
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing f,
                                     float hx, float hy, float hz) {
@@ -188,10 +197,17 @@ public class BlockGrid extends Block {
             if (!world.isRemote) ItemPadlock.remove(lt, player);
             return true;
         }
+        if (player.getHeldItem(hand).getItem() instanceof com.dogpound.railmap.wire.ItemWire && world.getTileEntity(pos) instanceof TileGrid wt) {
+            if (!world.isRemote) player.sendStatusMessage(new TextComponentString(com.dogpound.railmap.wire.WireNet.landWire(wt, com.dogpound.railmap.wire.ItemWire.colour(player.getHeldItem(hand)))), true);
+            return true;
+        }
         if (world.isRemote || player.isSneaking()) return !player.isSneaking();
         if (world.getTileEntity(pos) instanceof TileGrid t) {
+            boolean front = Panel.of(kind) != null && f == state.getValue(FACING);
+            if (front && t.pv("door") == 0) { player.sendStatusMessage(new TextComponentString(t.press("door", player)), true); return true; }   // open the cabinet
             Panel.C c = panelHit(kind, state.getValue(FACING), pos, player);
             com.dogpound.railmap.RailMap.LOG.debug("[IR Extras] {} clicked: face {} -> control {}", kind, f, c == null ? null : c.id);
+            if (front && c == null) { player.sendStatusMessage(new TextComponentString(t.press("door", player)), true); return true; }          // shut it
             player.sendStatusMessage(new TextComponentString(c != null ? t.press(c.id, player) : t.click(player)), true);
         }
         else if (kind == GridKind.CABLE) {
@@ -215,7 +231,11 @@ public class BlockGrid extends Block {
      * intersected with THAT plane, in the model's own (north-facing) space - exact even at an angle.
      */
     static Panel.C panelHit(GridKind kind, EnumFacing facing, BlockPos pos, EntityPlayer player) {
-        Panel panel = Panel.of(kind);
+        return panelHit(Panel.of(kind), facing, pos, player);
+    }
+
+    /** API: which control of `panel` (on the block at pos, front facing `facing`) the player is pointing at */
+    public static Panel.C panelHit(Panel panel, EnumFacing facing, BlockPos pos, EntityPlayer player) {
         if (panel == null) return null;
         net.minecraft.util.math.Vec3d eye = player.getPositionEyes(1f), look = player.getLook(1f);
         double ex = eye.x - pos.getX() - 0.5, ey = eye.y - pos.getY(), ez = eye.z - pos.getZ() - 0.5, dx = look.x, dy = look.y, dz = look.z;
@@ -229,7 +249,7 @@ public class BlockGrid extends Block {
         double t = (planeZ - ez) / dz;
         if (t < 0 || t > 6) return null;
         double mx = (ex + dx * t + 0.5) * 16, my = (ey + dy * t) * 16;
-        return Panel.hit(kind, 16 - mx, my);                                  // model +x is the viewer's left
+        return panel.hitAt(16 - mx, my);                                     // model +x is the viewer's left
     }
 
     // ---- shape -------------------------------------------------------------------------------------------------
@@ -250,6 +270,14 @@ public class BlockGrid extends Block {
 
     @Override @SuppressWarnings("deprecation")
     public boolean hasComparatorInputOverride(IBlockState s) { return kind == GridKind.METER || kind == GridKind.BATTERY || kind == GridKind.INTAKE; }
+
+    @Override @SuppressWarnings("deprecation")
+    public boolean canProvidePower(IBlockState s) { return kind == GridKind.AUTO; }
+
+    @Override @SuppressWarnings("deprecation")
+    public int getWeakPower(IBlockState s, net.minecraft.world.IBlockAccess w, BlockPos p, net.minecraft.util.EnumFacing side) {
+        return kind == GridKind.AUTO && w.getTileEntity(p) instanceof TileGrid g && g.autoAlarmOut() ? 15 : 0;
+    }
 
     @Override @SuppressWarnings("deprecation")
     public int getComparatorInputOverride(IBlockState s, World world, BlockPos pos) {

@@ -30,6 +30,10 @@ public class GridData extends WorldSavedData {
         public boolean ownFirst = true; // feeder: spend its own store (fed by any mod's cables) before the grid
         public float heat;            // transformer winding temperature rise, 0..120
         public boolean hot;           // transformer tripped on overtemperature until it cools below 40
+        /** burnt out (meltdown / windings / electronics destroyed): electrically dead until repaired with a screwdriver */
+        public boolean burnt;
+        public String burntWhy = "";
+        public transient long lastHotTrip = -100000; public transient int hotTrips;   // transformer: overheat trips in a row
         // ---- real controls (Panel, Requested) - defaults = as-built, so old saves behave as before
         public int tap = 9;           // transformer on-load tap changer 1..17 (9 = nominal, 1.25 % per step)
         public boolean avr;           // transformer automatic voltage regulator (moves the tap by itself)
@@ -63,10 +67,31 @@ public class GridData extends WorldSavedData {
         public long drawThis, drawLast;   // feeder: FE drawn through it this / last second
         public int upNet = -1;        // converter: the network on its primary side
         public double amps, pu = 1;   // last solve: current through it, its voltage per unit
+        // ---- protection, history, insulation, permits (her ChatGPT list section 6, 2026-10-10) - defaults = as built
+        /** settings mirrored from the machine's console so protection / automation works with the chunk unloaded */
+        public final Map<String, Integer> set = new HashMap<>();
+        /** latched state: relay targets (LEDs), timers, battery health... */
+        public final Map<String, Integer> st = new HashMap<>();
+        /** maintenance history: "tick|TYPE|text", newest last */
+        public final List<String> log = new ArrayList<>();
+        public int ops;               // breaker / switch: mechanical operations
+        public float wear;            // breaker contact wear, 1.0 = maintenance due
+        public float insul = 1;       // insulation condition 1 new .. 0 broken down
+        public byte efault;           // earth fault: 0 none, 1 phase / + pole to earth, 2 - pole to earth
+        public String lastTrip = "";  // why it last tripped (follow the fault: network problem text shows it)
+        public boolean fanFail;       // transformer cooling fans failed (ONAN only)
+        public float fanHours;        // fan running hours
+        public boolean lvd;           // UPS: low-voltage disconnect (battery flat)
+        public long deadTestAt = -1;  // last proven-dead test with the multimeter (permits)
+        public String deadTestBy = "";
+        public transient long par = Long.MIN_VALUE;   // last solve: the node it is fed from (MIN = not fed)
+        public transient double ambient = 25, derate = 1;   // °C round it, thermal capacity factor
+        public int get(String k, int d) { Integer v = set.get(k); return v == null ? d : v; }
+        public int st(String k) { Integer v = st.get(k); return v == null ? 0 : v; }
         /** a converter whose back face is its primary side */
         public boolean sided() { return realSides && facing >= 0 && kind.converter(); }
         /** a converter passing power right now (power electronics have an output breaker) */
-        public boolean passes() { return !kind.electronic() || dcOn; }
+        public boolean passes() { return !kind.electronic() || dcOn && !(kind == GridKind.UPS && lvd); }
         /** the control-panel face, which takes no cable (null = none / unknown / an old build) */
         public EnumFacing panelFace() { return frontOk || facing < 0 || kind == GridKind.CABLE || Panel.of(kind) == null ? null : EnumFacing.byHorizontalIndex(facing); }
         public EnumFacing back() { return EnumFacing.byHorizontalIndex(facing).getOpposite(); }
@@ -93,8 +118,14 @@ public class GridData extends WorldSavedData {
         public double pW, qVar, sVA, amps, pf = 1, lossW, eff = 1, puSource = 1;   // last solve
         public double faultVA, isc;
         public boolean utility;       // tied to the utility (intake) somewhere upstream: frequency held at 1.0
+        public double efAmps;         // standing earth-fault current flowing now (A); -1 = a DC first fault (leakage only)
+        // power quality (PowerQuality, once a second)
+        public double vuf, thdV, thdI, ripple;   // voltage unbalance %, voltage / current THD %, DC ripple %
+        public String resonance = "";            // harmonic resonance warning
         public double hzPu = 1;       // frequency per unit: 1 on the utility, the generators' speed on an island   // prospective short-circuit power (VA) and current (A) at this network's bus
         public long energy, capacity;
+        /** FE fed back up the line by regenerative braking this second (AC traction) */
+        public long regenOut;
         public long drawThisSecond, lastSecond, total;
         public String problem = "";
     }
@@ -136,6 +167,14 @@ public class GridData extends WorldSavedData {
         return n == null || n.net < 0 || n.net >= nets.size() ? null : nets.get(n.net);
     }
 
+    /** the network a wire touching face `touched` of the block at p sees: a converter's back is its primary side */
+    public Net netAt(BlockPos p, net.minecraft.util.EnumFacing touched) {
+        Net n = netOf(p);
+        Node x = nodes.get(p.toLong());
+        if (x != null && x.sided() && touched == x.back() && x.upNet >= 0 && x.upNet < nets.size()) return nets.get(x.upNet);
+        return n;
+    }
+
     /** flood-fill over saved positions only (no chunk access): neighbours in 6 directions; open breakers don't pass */
     void rebuild() {
         if (!dirty) return;
@@ -144,7 +183,9 @@ public class GridData extends WorldSavedData {
         for (Net n : nets) for (long p : n.nodes) keep.putIfAbsent(n.id, new long[]{n.total});
         nets.clear();
         for (Node n : nodes.values()) n.net = -1;
-        for (Map.Entry<Long, Node> e : nodes.entrySet()) {
+        List<Map.Entry<Long, Node>> starts = new ArrayList<>(nodes.entrySet());
+        starts.sort((a, b) -> Boolean.compare(a.getValue().kind.control(), b.getValue().kind.control()));   // control gear joins the plant it touches
+        for (Map.Entry<Long, Node> e : starts) {
             if (e.getValue().net >= 0) continue;
             Net net = new Net();
             net.id = nets.size();
@@ -155,6 +196,7 @@ public class GridData extends WorldSavedData {
                 long cur = q.poll();
                 Node cn = nodes.get(cur);
                 net.nodes.add(cur);
+                if (cn.burnt) { net.problem = "BURNT OUT - " + cn.burntWhy + " (screwdriver to repair)"; continue; }   // dead on its own
                 switch (cn.kind) {
                     case INTAKE: case DIESEL: case TURBINE: case SOLAR: case WIND:
                         if (!cn.feeding()) break;                       // main switch / generator breaker open
@@ -171,13 +213,14 @@ public class GridData extends WorldSavedData {
                 if (cn.kind.machine() && !cn.sided() && cn.kind.converter()) net.legacy = true;
                 if (cn.sided()) net.ins.add(cur);                               // its secondary side is this network
                 if (opens(cn) && cn.breaker != 0 && cur != e.getKey()) continue;   // open: stop here
+                if (cn.kind.control()) continue;                                  // relays, analysers, controllers carry no power
                 BlockPos bp = BlockPos.fromLong(cur);
                 for (EnumFacing f : EnumFacing.values()) {
                     if (cn.sided() && f == cn.back()) continue;                 // a converter's primary side is another network
                     if (f == cn.panelFace()) continue;                          // nothing connects through a control panel
                     long nb = bp.offset(f).toLong();
                     Node nn = nodes.get(nb);
-                    if (nn == null) continue;
+                    if (nn == null || nn.burnt) continue;                       // a burnt-out machine is an open circuit
                     if (f.getOpposite() == nn.panelFace()) continue;
                     if (nn.sided() && f.getOpposite() == nn.back()) {            // we touch that converter's PRIMARY side
                         if (!net.outs.contains(nb)) net.outs.add(nb);
@@ -186,6 +229,7 @@ public class GridData extends WorldSavedData {
                     if (nn.net >= 0) continue;
                     if (opens(cn) && cn.breaker != 0) continue;
                     if (opens(nn) && nn.breaker != 0) { nn.net = net.id; net.nodes.add(nb); continue; }
+                    if (nn.kind.control()) { nn.net = net.id; net.nodes.add(nb); continue; }
                     nn.net = net.id;
                     q.add(nb);
                 }
@@ -195,6 +239,7 @@ public class GridData extends WorldSavedData {
         for (Net net : nets) for (long c : net.outs) { Node cv = nodes.get(c); if (cv != null) cv.upNet = net.id; }
         for (Net net : nets) levelOf(net);
         for (Net net : nets) net.energy += upstreamEnergy(net, new HashSet<>());
+        for (Net net : nets) for (long c : net.ins) { Node u = nodes.get(c); if (u != null && u.kind == GridKind.UPS && u.passes()) net.energy += u.energy; }
         for (Net net : nets) problemOf(net);
     }
 
@@ -206,7 +251,7 @@ public class GridData extends WorldSavedData {
             Elec.Level l = null;
             if (n.kind == GridKind.INTAKE && n.mainOn) l = n.lvl(Elec.Level.MV13800);
             else if (n.kind.generator() && n.gcb) l = n.lvl(n.kind == GridKind.SOLAR || n.kind == GridKind.WIND ? Elec.Level.AC480 : Elec.Level.AC480);
-            else if (n.sided() && n.passes()) l = n.lvl(n.kind == GridKind.RECTIFIER ? Elec.Level.DC750 : n.kind == GridKind.DCDC ? Elec.Level.DC48 : n.kind == GridKind.TRACTION ? Elec.Level.AC25000 : Elec.Level.AC480);
+            else if (n.sided() && n.passes()) l = n.lvl(n.kind == GridKind.UPS ? Elec.Level.DC12 : n.kind == GridKind.RECTIFIER ? Elec.Level.DC750 : n.kind == GridKind.DCDC ? Elec.Level.DC48 : n.kind == GridKind.TRACTION ? Elec.Level.AC25000 : Elec.Level.AC480);
             if (l == null) continue;
             if (net.level != null && net.level != l) { net.problem = "VOLTAGE CLASH: " + net.level.label + " tied to " + l.label; return; }
             net.level = l;
@@ -238,15 +283,24 @@ public class GridData extends WorldSavedData {
             else if (net.energy <= 0) net.problem = "No energy - feed RF / FE into the intake";
             return;
         }
-        if (net.level == null) { net.problem = "No supply: no intake, generator or transformer feeds this network"; return; }
+        if (net.level == null) { net.problem = "No supply: no intake, generator or transformer feeds this network" + whyOpen(net); return; }
         for (long p : net.nodes) {                                                  // cables rated below the voltage flash over
             Node n = nodes.get(p);
             if (n.kind == GridKind.CABLE && n.cable().ins.maxVolts < net.level.volts) {
                 net.problem = "FLASHOVER: " + n.cable().ins.label + " cable on " + net.level.label; return;
             }
         }
+        boolean ups = false;
         for (long c : net.ins) {                                                    // converters fed far over their rated primary
             Node cv = nodes.get(c);
+            if (cv.kind == GridKind.UPS) {                                          // battery charger / UPS: its battery carries the output
+                ups = true;
+                Net up = cv.upNet >= 0 && cv.upNet < nets.size() ? nets.get(cv.upNet) : null;
+                if (up != null && up.level != null && !up.level.ac) { net.problem = "UPS fed DC - its charger needs AC in"; return; }
+                if (cv.lvd) { net.problem = "UPS battery exhausted - low-voltage disconnect (restore its AC supply)"; return; }
+                if (cv.energy <= 0 && (up == null || !up.problem.isEmpty() || up.level == null)) { net.problem = "UPS: no AC in and the battery is flat"; return; }
+                continue;
+            }
             if (cv.upNet < 0 || cv.upNet >= nets.size()) { net.problem = "Converter's primary side (back) isn't connected"; return; }
             Net up = nets.get(cv.upNet);
             Elec.Level rated = Elec.Level.byName(cv.primary, Elec.Level.MV13800);
@@ -258,11 +312,30 @@ public class GridData extends WorldSavedData {
                 if (!up.level.ac && cv.kind == GridKind.RECTIFIER) { net.problem = "Rectifier fed DC - it needs AC in (use a DC-DC converter)"; return; }
                 if (cv.kind.electronic() && up.level.volts < rated.volts * 0.8) { net.problem = "UNDERVOLTAGE: " + rated.label + " input fed " + up.level.label + " - converter locked out"; return; }
             }
-            if (!up.problem.isEmpty() && !net.intake) { net.problem = "Upstream: " + up.problem; return; }
+            if (!up.problem.isEmpty() && !net.intake && !ups) { net.problem = "Upstream: " + up.problem; return; }
         }
-        if (!net.earthed) net.problem = "Not earthed - fit an Earthing Switch (protection can't clear faults)";
+        if (!net.earthed && !ups) net.problem = "Not earthed - fit an Earthing Switch (protection can't clear faults)";
         else if (net.hot) net.problem = "Transformer OVERHEATED - tripped until it cools (or fit a bigger one)";
         else if (net.energy <= 0) net.problem = "No energy - nothing upstream has any stored";
+    }
+
+    /** follow the fault: the open / tripped switch that leaves this network without supply, and why */
+    private String whyOpen(Net net) {
+        long best = Long.MIN_VALUE;
+        for (long p : net.nodes) {
+            BlockPos b = BlockPos.fromLong(p);
+            for (int i = -1; i < 6; i++) {                                      // the node itself, or the open switch beside it
+                long q = i < 0 ? p : b.offset(EnumFacing.byIndex(i)).toLong();
+                Node n = nodes.get(q);
+                if (n == null || !opens(n) || n.breaker == 0) continue;
+                if (best == Long.MIN_VALUE || n.breaker == 2 && nodes.get(best).breaker != 2) best = q;
+            }
+        }
+        if (best == Long.MIN_VALUE) return "";
+        Node n = nodes.get(best);
+        BlockPos b = BlockPos.fromLong(best);
+        return " - " + (n.breaker == 2 ? "TRIPPED " : "open ") + n.kind.label.toLowerCase(Locale.ROOT) + " at " + b.getX() + " " + b.getY() + " " + b.getZ()
+                + (n.breaker == 2 && !n.lastTrip.isEmpty() ? " (" + n.lastTrip + ")" : "");
     }
 
     /** breakers and disconnectors both break the flood-fill when open */
@@ -378,6 +451,7 @@ public class GridData extends WorldSavedData {
             n.range = t.hasKey("range") ? t.getInteger("range") : 64;
             n.heat = t.getFloat("heat");
             n.hot = t.getBoolean("hot");
+            n.burnt = t.getBoolean("burnt"); n.burntWhy = t.getString("burntWhy");
             if (t.hasKey("ctl")) {
                 NBTTagCompound c = t.getCompoundTag("ctl");
                 n.tap = c.getInteger("tap"); n.avr = c.getBoolean("avr"); n.cool = c.getInteger("cool"); n.dcv = c.getInteger("dcv"); if (c.hasKey("kA")) n.kA = c.getInteger("kA"); n.octap = c.getInteger("octap"); n.speed = c.getFloat("speed");
@@ -387,6 +461,17 @@ public class GridData extends WorldSavedData {
                 n.facing = c.hasKey("facing") ? c.getByte("facing") : -1; n.frontOk = !c.hasKey("v2") || c.getBoolean("frontOk"); n.realSides = c.getBoolean("realSides");
                 n.level = c.getString("level"); n.primary = c.getString("primary"); n.kva = c.hasKey("kva") ? c.getInteger("kva") : 5000;
                 n.spec = c.getString("spec"); n.temp = c.hasKey("temp") ? c.getFloat("temp") : 20;
+            }
+            if (t.hasKey("prot")) {
+                NBTTagCompound c = t.getCompoundTag("prot");
+                NBTTagCompound a = c.getCompoundTag("set"), b = c.getCompoundTag("st");
+                for (String k : a.getKeySet()) n.set.put(k, a.getInteger(k));
+                for (String k : b.getKeySet()) n.st.put(k, b.getInteger(k));
+                NBTTagList lg = c.getTagList("log", Constants.NBT.TAG_STRING);
+                for (int j = 0; j < lg.tagCount(); j++) n.log.add(lg.getStringTagAt(j));
+                n.ops = c.getInteger("ops"); n.wear = c.getFloat("wear"); n.insul = c.hasKey("insul") ? c.getFloat("insul") : 1; n.efault = c.getByte("ef");
+                n.lastTrip = c.getString("lastTrip"); n.fanFail = c.getBoolean("fanFail"); n.fanHours = c.getFloat("fanH"); n.lvd = c.getBoolean("lvd");
+                n.deadTestAt = c.hasKey("dtAt") ? c.getLong("dtAt") : -1; n.deadTestBy = c.getString("dtBy");
             }
             nodes.put(t.getLong("pos"), n);
         }
@@ -407,6 +492,7 @@ public class GridData extends WorldSavedData {
             t.setInteger("range", e.getValue().range);
             if (e.getValue().heat > 0) t.setFloat("heat", e.getValue().heat);
             if (e.getValue().hot) t.setBoolean("hot", true);
+            if (e.getValue().burnt) { t.setBoolean("burnt", true); t.setString("burntWhy", e.getValue().burntWhy); }
             Node n = e.getValue();
             NBTTagCompound c = new NBTTagCompound();
             c.setInteger("tap", n.tap); c.setBoolean("avr", n.avr); c.setInteger("cool", n.cool); c.setInteger("dcv", n.dcv); c.setInteger("kA", n.kA); c.setInteger("octap", n.octap); c.setFloat("speed", n.speed);
@@ -416,6 +502,19 @@ public class GridData extends WorldSavedData {
             c.setByte("facing", n.facing); c.setBoolean("v2", true); c.setBoolean("frontOk", n.frontOk); c.setBoolean("realSides", n.realSides); c.setString("level", n.level); c.setString("primary", n.primary);
             c.setInteger("kva", n.kva); c.setString("spec", n.spec); c.setFloat("temp", n.temp);
             t.setTag("ctl", c);
+            if (!n.set.isEmpty() || !n.st.isEmpty() || !n.log.isEmpty() || n.ops > 0 || n.insul < 1 || n.efault != 0 || !n.lastTrip.isEmpty() || n.fanFail || n.fanHours > 0 || n.lvd || n.deadTestAt >= 0) {
+                NBTTagCompound pc = new NBTTagCompound(), a = new NBTTagCompound(), b = new NBTTagCompound();
+                for (Map.Entry<String, Integer> x : n.set.entrySet()) a.setInteger(x.getKey(), x.getValue());
+                for (Map.Entry<String, Integer> x : n.st.entrySet()) b.setInteger(x.getKey(), x.getValue());
+                pc.setTag("set", a); pc.setTag("st", b);
+                NBTTagList lg = new NBTTagList();
+                for (String x : n.log) lg.appendTag(new net.minecraft.nbt.NBTTagString(x));
+                pc.setTag("log", lg);
+                pc.setInteger("ops", n.ops); pc.setFloat("wear", n.wear); pc.setFloat("insul", n.insul); pc.setByte("ef", n.efault);
+                pc.setString("lastTrip", n.lastTrip); pc.setBoolean("fanFail", n.fanFail); pc.setFloat("fanH", n.fanHours); pc.setBoolean("lvd", n.lvd);
+                pc.setLong("dtAt", n.deadTestAt); pc.setString("dtBy", n.deadTestBy);
+                t.setTag("prot", pc);
+            }
             l.appendTag(t);
         }
         nbt.setTag("nodes", l);

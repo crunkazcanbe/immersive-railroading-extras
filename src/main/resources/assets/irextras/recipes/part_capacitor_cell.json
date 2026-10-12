@@ -1,0 +1,31 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "IXI",
+  "GLG",
+  "IXI"
+ ],
+ "key": {
+  "I": {
+   "type": "forge:ore_dict",
+   "ore": "ingotIron"
+  },
+  "X": {
+   "item": "irextras:part",
+   "data": 15
+  },
+  "G": {
+   "type": "forge:ore_dict",
+   "ore": "ingotGold"
+  },
+  "L": {
+   "type": "forge:ore_dict",
+   "ore": "blockLapis"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 16,
+  "count": 1
+ }
+}

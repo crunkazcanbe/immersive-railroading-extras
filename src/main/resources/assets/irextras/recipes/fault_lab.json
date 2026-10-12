@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "CPC",
+  "RTR",
+  "I I"
+ ],
+ "key": {
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "T": {
+   "item": "minecraft:observer"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:fault_lab",
+  "count": 1
+ }
+}

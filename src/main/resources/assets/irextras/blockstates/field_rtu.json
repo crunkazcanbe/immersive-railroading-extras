@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:field_rtu"
+  },
+  "facing=east": {
+   "model": "irextras:field_rtu",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:field_rtu",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:field_rtu",
+   "y": 270
+  }
+ }
+}

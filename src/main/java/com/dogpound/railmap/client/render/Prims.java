@@ -80,12 +80,19 @@ public final class Prims {
         TESS.draw();
     }
 
+    /**
+     * Night lighting: every halo is scaled by this (light.NightGlow sets it once a frame - bigger and stronger at night;
+     * the signal renderers raise it with distance so a lit aspect still reads far down the line). 1 = as drawn.
+     */
+    public static float glowBoost = 1f, glowAlpha = 0.55f;
+
     /** Soft halo around a lit lamp, so it reads at distance and at night. */
     public static void glow(double cx, double cy, double z, double r, int rgb) {
+        r *= glowBoost;
         BufferBuilder b = TESS.getBuffer();
         GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ZERO);
         b.begin(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.POSITION_COLOR);
-        vert(b, cx, cy, z, rgb, 0.55f);
+        vert(b, cx, cy, z, rgb, glowAlpha);
         int segs = 18;
         for (int i = 0; i <= segs; i++) {
             double a = i * Math.PI * 2 / segs;

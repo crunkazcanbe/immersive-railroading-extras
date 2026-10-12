@@ -16,7 +16,15 @@ public class FeederCableRenderer extends TileEntitySpecialRenderer<TileGrid> {
 
     @Override
     public void render(TileGrid te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        if (te.getWorld() != null && te.kind() != GridKind.FEEDER) { GridPanelRenderer.render(te, x, y, z, partialTicks); return; }   // real control panels
+        if (te.getWorld() != null && te.kind() == GridKind.SOLAR) SolarDeck.render(te, x, y, z, partialTicks);   // the tracking deck
+        if (te.getWorld() != null && te.kind() == GridKind.EARTHING) BondStrap.render(te, x, y, z);              // earth bonding straps
+        if (te.getWorld() != null && te.kind() == GridKind.WIND) WindRotor.render(te, x, y, z, partialTicks);     // nacelle + rotor on its tower
+        if (te.getWorld() != null && te.kind() != GridKind.FEEDER) {
+            GridPanelRenderer.render(te, x, y, z, partialTicks);                                                    // real control panels
+            if (te.burntClient) scorch(x, y, z, te.getPos().hashCode());                                           // burnt out: charred over everything
+            return;
+        }
+        if (te.getWorld() != null && te.burntClient) scorch(x, y, z, te.getPos().hashCode());
         if (te.getWorld() == null || te.kind() != GridKind.FEEDER || !te.jumper()) return;
         BlockPos rail = te.nearestRail();
         if (rail == null) return;
@@ -52,5 +60,32 @@ public class FeederCableRenderer extends TileEntitySpecialRenderer<TileGrid> {
     @Override
     public boolean isGlobalRenderer(TileGrid te) {
         return te.kind() == GridKind.FEEDER;
+    }
+
+    /** soot over the whole machine, black streaks running up from where it burnt, a blistered top */
+    static void scorch(double x, double y, double z, int seed) {
+        java.util.Random r = new java.util.Random(seed);
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(x, y, z);
+        GlStateManager.scale(1 / 16.0, 1 / 16.0, 1 / 16.0);
+        GlStateManager.disableCull();
+        Prims.begin();
+        Prims.box(-0.08, -0.02, -0.08, 16.08, 16.08, 16.08, 0x120D09, 0.62f);           // soot
+        for (int i = 0; i < 7; i++) {                                                      // smoke streaks up the sides
+            double u = 1 + r.nextDouble() * 14, h = 6 + r.nextDouble() * 10, w = 0.6 + r.nextDouble() * 1.4;
+            switch (i % 4) {
+                case 0: Prims.box(u, 16 - h, -0.12, u + w, 16.1, -0.1, 0x050505, 0.85f); break;
+                case 1: Prims.box(u, 16 - h, 16.1, u + w, 16.1, 16.12, 0x050505, 0.85f); break;
+                case 2: Prims.box(-0.12, 16 - h, u, -0.1, 16.1, u + w, 0x050505, 0.85f); break;
+                default: Prims.box(16.1, 16 - h, u, 16.12, 16.1, u + w, 0x050505, 0.85f); break;
+            }
+        }
+        for (int i = 0; i < 5; i++) {                                                      // blistered paint on top
+            double a = 2 + r.nextDouble() * 10, b = 2 + r.nextDouble() * 10, sz = 1 + r.nextDouble() * 2.5;
+            Prims.box(a, 16.1, b, a + sz, 16.35, b + sz, 0x2A1E14);
+        }
+        Prims.end();
+        GlStateManager.enableCull();
+        GlStateManager.popMatrix();
     }
 }

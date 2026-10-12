@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IRI",
+  "CDC",
+  "IRI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "R": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  },
+  "D": {
+   "item": "minecraft:repeater"
+  }
+ },
+ "result": {
+  "item": "irextras:axle_evaluator",
+  "count": 1
+ }
+}

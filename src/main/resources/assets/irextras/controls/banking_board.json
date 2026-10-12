@@ -1,0 +1,351 @@
+{
+ "title": "banking_board",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 7.88,
+   "title": "BANKING BOARD",
+   "controls": [
+    {
+     "id": "d_stage",
+     "t": "digits",
+     "u": 6.6,
+     "v": 11.0,
+     "w": 7.2,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_count",
+     "t": "digits",
+     "u": 12.6,
+     "v": 11.0,
+     "w": 2.6,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d"
+    },
+    {
+     "id": "d_train",
+     "t": "digits",
+     "u": 5.0,
+     "v": 10.0,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "TRAIN",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_banker",
+     "t": "digits",
+     "u": 11.2,
+     "v": 10.0,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "BANKER",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_tonnes",
+     "t": "digits",
+     "u": 5.0,
+     "v": 9.0,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_kn",
+     "t": "digits",
+     "u": 11.2,
+     "v": 9.0,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "ff6040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_summit",
+     "t": "digits",
+     "u": 5.0,
+     "v": 8.0,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "ffd020",
+     "label": "SUMMIT",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_foot",
+     "t": "digits",
+     "u": 11.2,
+     "v": 8.0,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "ffd020",
+     "label": "FOOT",
+     "fmt": "%s"
+    },
+    {
+     "id": "l_wait",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ffb020",
+     "label": "WAITING"
+    },
+    {
+     "id": "l_bank",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "BANKER"
+    },
+    {
+     "id": "l_att",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ffb020",
+     "label": "ATTACH",
+     "blink": true
+    },
+    {
+     "id": "l_push",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "BANKING"
+    },
+    {
+     "id": "l_summit",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "9ad8ff",
+     "label": "DROP OFF"
+    },
+    {
+     "id": "l_ret",
+     "t": "lamp",
+     "u": 11.6,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "9ad8ff",
+     "label": "RETURN"
+    },
+    {
+     "id": "l_over",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 5.5,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff2020",
+     "label": "OVERLOAD",
+     "blink": true
+    },
+    {
+     "id": "l_none",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 5.5,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffd020",
+     "label": "NO BANKER"
+    },
+    {
+     "id": "l_flt",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 5.5,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff2020",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "l_sum",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 5.5,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "SUMMIT SET"
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 5.5,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "g_kn",
+     "t": "gauge",
+     "u": 3.6,
+     "v": 3.4,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "BUFF KN",
+     "max": 600
+    },
+    {
+     "id": "g_lead",
+     "t": "gauge",
+     "u": 6.2,
+     "v": 3.4,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "LEAD %",
+     "max": 100
+    },
+    {
+     "id": "g_notch",
+     "t": "gauge",
+     "u": 8.8,
+     "v": 3.4,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "BANKER %",
+     "max": 100
+    },
+    {
+     "id": "s_on",
+     "t": "selector",
+     "u": 11.4,
+     "v": 4.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "AUTO",
+     "pos": [
+      "OFF",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 13.4,
+     "v": 4.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "COUPLED",
+      "BUFFER"
+     ]
+    },
+    {
+     "id": "s_share",
+     "t": "selector",
+     "u": 11.4,
+     "v": 2.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "TE SHARE",
+     "pos": [
+      "25",
+      "50",
+      "75"
+     ]
+    },
+    {
+     "id": "s_tonnes",
+     "t": "selector",
+     "u": 13.4,
+     "v": 2.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "OVER T",
+     "pos": [
+      "ALL",
+      "500",
+      "1000",
+      "1500",
+      "2000"
+     ]
+    },
+    {
+     "id": "s_range",
+     "t": "selector",
+     "u": 2.6,
+     "v": 1.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "RANGE M",
+     "pos": [
+      "60",
+      "100",
+      "150"
+     ]
+    },
+    {
+     "id": "p_off",
+     "t": "mushroom",
+     "u": 5.2,
+     "v": 1.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d02020",
+     "label": "DROP OFF"
+    },
+    {
+     "id": "p_reset",
+     "t": "push",
+     "u": 7.6,
+     "v": 1.4,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.4,
+     "v": 13.4,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

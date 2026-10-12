@@ -1,0 +1,63 @@
+{
+ "title": "banner_repeater",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 6.18,
+   "title": "BANNER",
+   "controls": [
+    {
+     "id": "arm",
+     "t": "synchro",
+     "u": 8.0,
+     "v": 12.5,
+     "w": 6.0,
+     "h": 6.0,
+     "col": "f4f4ee",
+     "label": ""
+    },
+    {
+     "id": "lit",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 15.2,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "fff0c0",
+     "label": ""
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 4.6,
+     "v": 15.2,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "sig",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.6,
+     "w": 3.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 4.8,
+     "v": 9.2,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

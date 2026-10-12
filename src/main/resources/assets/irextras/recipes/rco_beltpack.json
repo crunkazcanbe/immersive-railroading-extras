@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  " A ",
+  "BCB",
+  "YRY"
+ ],
+ "key": {
+  "A": {
+   "item": "minecraft:redstone_torch"
+  },
+  "B": {
+   "item": "minecraft:stone_button"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "Y": {
+   "item": "minecraft:dye",
+   "data": 11
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:rco_beltpack"
+ }
+}

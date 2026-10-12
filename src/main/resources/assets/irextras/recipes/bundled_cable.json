@@ -1,0 +1,22 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "WWW",
+  "WSW",
+  "WWW"
+ ],
+ "key": {
+  "W": {
+   "item": "irextras:instrument_wire",
+   "data": 32767
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:bundled_cable",
+  "count": 2
+ }
+}

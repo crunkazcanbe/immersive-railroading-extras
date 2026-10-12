@@ -1,0 +1,12 @@
+{
+ "parent": "block/cube",
+ "textures": {
+  "particle": "irextras:blocks/machine_casing",
+  "down": "irextras:blocks/machine_casing",
+  "up": "irextras:blocks/power_inlet",
+  "north": "irextras:blocks/power_inlet",
+  "south": "irextras:blocks/power_inlet",
+  "east": "irextras:blocks/power_inlet",
+  "west": "irextras:blocks/power_inlet"
+ }
+}

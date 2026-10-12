@@ -1,0 +1,43 @@
+{
+ "title": "cctv_platform",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.55,
+   "title": "PLATFORM",
+   "controls": [
+    {
+     "id": "led_pwr",
+     "t": "lamp",
+     "u": 8.64,
+     "v": 11.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "led_net",
+     "t": "lamp",
+     "u": 8,
+     "v": 11.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "NET"
+    },
+    {
+     "id": "led_rec",
+     "t": "lamp",
+     "u": 7.36,
+     "v": 11.8,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ff2020",
+     "label": "REC",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

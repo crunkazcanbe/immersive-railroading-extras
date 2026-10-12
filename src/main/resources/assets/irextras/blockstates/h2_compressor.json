@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:h2_compressor"
+  },
+  "facing=east": {
+   "model": "irextras:h2_compressor",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:h2_compressor",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:h2_compressor",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:brake_test"
+  },
+  "facing=east": {
+   "model": "irextras:brake_test",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:brake_test",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:brake_test",
+   "y": 270
+  }
+ }
+}

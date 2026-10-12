@@ -1,0 +1,27 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "PRP",
+  "PLP",
+  "PRP"
+ ],
+ "key": {
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "R": {
+   "type": "forge:ore_dict",
+   "ore": "blockRedstone"
+  },
+  "L": {
+   "type": "forge:ore_dict",
+   "ore": "blockLapis"
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 22,
+  "count": 1
+ }
+}

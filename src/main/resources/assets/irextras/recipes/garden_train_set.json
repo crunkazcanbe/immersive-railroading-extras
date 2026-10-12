@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "  I",
+  "GII",
+  "WWW"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "G": {
+   "item": "minecraft:gold_nugget"
+  },
+  "W": {
+   "item": "minecraft:wooden_slab",
+   "data": 0
+  }
+ },
+ "result": {
+  "item": "irextras:garden_train_set",
+  "count": 1,
+  "data": 0
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:platform_heater"
+  },
+  "facing=east": {
+   "model": "irextras:platform_heater",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:platform_heater",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:platform_heater",
+   "y": 270
+  }
+ }
+}

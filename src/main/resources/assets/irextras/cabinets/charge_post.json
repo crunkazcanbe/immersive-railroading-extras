@@ -1,0 +1,49 @@
+{
+ "block": "charge_post",
+ "title": "RECTIFIER DC/DC 1 MW",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "charge_post_door1",
+   "hinge": [
+    1.05,
+    5.78
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "charge_post_door2",
+   "hinge": [
+    9.75,
+    5.78
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "main",
+   "label": "MAINS"
+  },
+  {
+   "id": "scr",
+   "label": "SCREEN"
+  },
+  {
+   "id": "out",
+   "label": "DC OUT"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

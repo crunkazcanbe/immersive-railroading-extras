@@ -1,0 +1,209 @@
+{
+ "title": "balise",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.48,
+   "title": "LEU",
+   "controls": [
+    {
+     "id": "bg",
+     "t": "digits",
+     "u": 11.6,
+     "v": 7.2,
+     "w": 2.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tel",
+     "t": "digits",
+     "u": 6.6,
+     "v": 7.2,
+     "w": 7.0,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "kmh",
+     "t": "digits",
+     "u": 11.6,
+     "v": 6.2,
+     "w": 2.6,
+     "h": 0.6,
+     "col": "ffd27a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rd",
+     "t": "digits",
+     "u": 6.6,
+     "v": 6.2,
+     "w": 7.0,
+     "h": 0.6,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "k_prog",
+     "t": "key",
+     "u": 12.2,
+     "v": 4.5,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "c0a040",
+     "label": "PROG",
+     "pos": [
+      "RUN",
+      "PROG"
+     ]
+    },
+    {
+     "id": "spdup",
+     "t": "push",
+     "u": 10.4,
+     "v": 5.0,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2050d0",
+     "label": "SPD+"
+    },
+    {
+     "id": "spddn",
+     "t": "push",
+     "u": 10.4,
+     "v": 3.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "2050d0",
+     "label": "SPD-"
+    },
+    {
+     "id": "s_off",
+     "t": "selector",
+     "u": 8.6,
+     "v": 4.5,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "OFFSET",
+     "pos": [
+      "0",
+      "50",
+      "100",
+      "200",
+      "400"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 6.6,
+     "v": 4.5,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "FIXED",
+      "SWITCHED"
+     ]
+    },
+    {
+     "id": "s_dir",
+     "t": "selector",
+     "u": 4.6,
+     "v": 4.5,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "DIR",
+     "pos": [
+      "BOTH",
+      "FACING",
+      "TRAIL"
+     ]
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 2.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "tx",
+     "t": "lamp",
+     "u": 11.2,
+     "v": 2.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30a0ff",
+     "label": "TX"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 2.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "FLT",
+     "blink": true
+    },
+    {
+     "id": "prog",
+     "t": "lamp",
+     "u": 8.8,
+     "v": 2.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ffb020",
+     "label": "PRG",
+     "blink": true
+    },
+    {
+     "id": "sigstop",
+     "t": "lamp",
+     "u": 7.6,
+     "v": 2.4,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "ff3030",
+     "label": "SIG"
+    },
+    {
+     "id": "passes",
+     "t": "digits",
+     "u": 5.4,
+     "v": 2.4,
+     "w": 2.8,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d PASS"
+    },
+    {
+     "id": "lamptest",
+     "t": "push",
+     "u": 3.6,
+     "v": 2.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "f0f0f0",
+     "label": "LAMP"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,206 @@
+{
+ "title": "card_reader",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 5.45,
+   "title": "PRIDE CARD READER",
+   "controls": [
+    {
+     "id": "pad",
+     "t": "zone",
+     "u": 8.0,
+     "v": 14.4,
+     "w": 3.1,
+     "h": 3.1,
+     "col": "000000",
+     "label": ""
+    },
+    {
+     "id": "l1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.55,
+     "w": 5.6,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "l2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 11.7,
+     "w": 5.6,
+     "h": 0.6,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "go",
+     "t": "lamp",
+     "u": 10.4,
+     "v": 16.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "GO"
+    },
+    {
+     "id": "stop",
+     "t": "lamp",
+     "u": 5.6,
+     "v": 16.6,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "STOP"
+    },
+    {
+     "id": "inl",
+     "t": "lamp",
+     "u": 10.6,
+     "v": 14.4,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "ffb020",
+     "label": "IN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 10.6,
+     "v": 13.9,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "IN"
+    },
+    {
+     "id": "outl",
+     "t": "lamp",
+     "u": 5.4,
+     "v": 14.4,
+     "w": 0.4,
+     "h": 0.4,
+     "col": "4080ff",
+     "label": "OUT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 5.4,
+     "v": 13.9,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OUT"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 5.35,
+   "title": "STATION",
+   "controls": [
+    {
+     "id": "stn",
+     "t": "digits",
+     "u": 8.0,
+     "v": 18.9,
+     "w": 5.4,
+     "h": 0.7,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "south",
+   "face": 5.38,
+   "title": "SERVICE",
+   "controls": [
+    {
+     "id": "k_mode",
+     "t": "key",
+     "u": 6.6,
+     "v": 15.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "ENTRY",
+      "EXIT"
+     ]
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 6.6,
+     "v": 14.1,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MODE"
+    },
+    {
+     "id": "modet",
+     "t": "digits",
+     "u": 6.6,
+     "v": 13.2,
+     "w": 2.2,
+     "h": 0.5,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 9.6,
+     "v": 15.0,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 9.6,
+     "v": 14.2,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TEST"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 13.0,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "ntaps",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.0,
+     "w": 2.6,
+     "h": 0.5,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d TAPS"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "L L",
+  " S "
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:leather"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 12
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 7,
+  "count": 4
+ }
+}

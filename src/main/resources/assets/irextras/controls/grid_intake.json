@@ -1,0 +1,82 @@
+{
+ "title": "grid_intake",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -0.15,
+   "title": "",
+   "controls": [
+    {
+     "id": "vpis1",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 14.9,
+     "w": 0.7,
+     "h": 0.3,
+     "col": "ff5a28",
+     "label": ""
+    },
+    {
+     "id": "vpis2",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 14.9,
+     "w": 0.7,
+     "h": 0.3,
+     "col": "ff5a28",
+     "label": ""
+    },
+    {
+     "id": "vpis3",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 14.9,
+     "w": 0.7,
+     "h": 0.3,
+     "col": "ff5a28",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 10.4,
+   "title": "",
+   "controls": [
+    {
+     "id": "surges",
+     "t": "digits",
+     "u": 11.5,
+     "v": 16.3,
+     "w": 0.7,
+     "h": 0.4,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%03d"
+    },
+    {
+     "id": "surges",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.3,
+     "w": 0.7,
+     "h": 0.4,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%03d"
+    },
+    {
+     "id": "surges",
+     "t": "digits",
+     "u": 4.5,
+     "v": 16.3,
+     "w": 0.7,
+     "h": 0.4,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%03d"
+    }
+   ]
+  }
+ ]
+}

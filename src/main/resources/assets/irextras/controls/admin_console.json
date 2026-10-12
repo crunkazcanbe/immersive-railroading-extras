@@ -1,0 +1,466 @@
+{
+ "title": "admin_console",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 2.35,
+   "title": "LOGBOOK",
+   "controls": [
+    {
+     "id": "logbook",
+     "t": "zone",
+     "u": 2.9,
+     "v": 4.4,
+     "w": 4.4,
+     "h": 7.2,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 2.3,
+   "title": "RACK",
+   "controls": [
+    {
+     "id": "r_cpu",
+     "t": "lamp",
+     "u": 12.6,
+     "v": 7.0,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "ffb020",
+     "label": "CPU"
+    },
+    {
+     "id": "r_net",
+     "t": "lamp",
+     "u": 12.6,
+     "v": 6.0,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "30e060",
+     "label": "NET"
+    },
+    {
+     "id": "r_disk",
+     "t": "lamp",
+     "u": 11.7,
+     "v": 4.95,
+     "w": 0.35,
+     "h": 0.35,
+     "col": "40a0ff",
+     "label": "TAPE",
+     "blink": true
+    },
+    {
+     "id": "tapes",
+     "t": "zone",
+     "u": 13.2,
+     "v": 2.05,
+     "w": 4.2,
+     "h": 3.2,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 10.9,
+   "title": "MAIN SCREEN",
+   "controls": [
+    {
+     "id": "t1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 16.75,
+     "w": 6.2,
+     "h": 0.72,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.93,
+     "w": 6.2,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 15.11,
+     "w": 6.2,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.29,
+     "w": 6.2,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t5",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.47,
+     "w": 6.2,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t6",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.65,
+     "w": 6.2,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t7",
+     "t": "digits",
+     "u": 8.0,
+     "v": 11.83,
+     "w": 6.2,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "t8",
+     "t": "digits",
+     "u": 8.0,
+     "v": 11.01,
+     "w": 6.2,
+     "h": 0.72,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.05,
+   "title": "SERVER LOAD",
+   "controls": [
+    {
+     "id": "g_mspt",
+     "t": "gauge",
+     "u": 2.1,
+     "v": 14.6,
+     "w": 2.6,
+     "h": 2.6,
+     "col": "f2f0e6",
+     "label": "MS/TICK",
+     "max": 100
+    },
+    {
+     "id": "g_share",
+     "t": "gauge",
+     "u": 2.1,
+     "v": 11.6,
+     "w": 2.2,
+     "h": 2.2,
+     "col": "f2f0e6",
+     "label": "IRX %",
+     "max": 100
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.05,
+   "title": "STATUS",
+   "controls": [
+    {
+     "id": "page",
+     "t": "digits",
+     "u": 13.9,
+     "v": 15.4,
+     "w": 3.4,
+     "h": 0.9,
+     "col": "8ad4ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "tps",
+     "t": "digits",
+     "u": 13.9,
+     "v": 14.0,
+     "w": 3.4,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cells",
+     "t": "digits",
+     "u": 13.9,
+     "v": 12.6,
+     "w": 3.4,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%d CELLS"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 12.35,
+   "title": "STATUS LAMPS",
+   "controls": [
+    {
+     "id": "l_power",
+     "t": "lamp",
+     "u": 1.1,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "30e060",
+     "label": "POWER"
+    },
+    {
+     "id": "l_armed",
+     "t": "lamp",
+     "u": 2.8,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ff3020",
+     "label": "ARMED",
+     "blink": true
+    },
+    {
+     "id": "l_paused",
+     "t": "lamp",
+     "u": 4.5,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ffb020",
+     "label": "PAUSED"
+    },
+    {
+     "id": "l_locks",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "40a0ff",
+     "label": "DESKS"
+    },
+    {
+     "id": "l_backup",
+     "t": "lamp",
+     "u": 7.9,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "30e060",
+     "label": "BACKUP"
+    },
+    {
+     "id": "l_recovery",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ff3020",
+     "label": "RECOVERY",
+     "blink": true
+    },
+    {
+     "id": "l_overload",
+     "t": "lamp",
+     "u": 11.3,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ff6020",
+     "label": "OVERLOAD",
+     "blink": true
+    },
+    {
+     "id": "l_sla",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ffd040",
+     "label": "CONTRACT"
+    },
+    {
+     "id": "l_allstop",
+     "t": "lamp",
+     "u": 14.7,
+     "v": 19.35,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ff2020",
+     "label": "ALL STOP",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "up",
+   "face": 6.75,
+   "title": "DESK",
+   "controls": [
+    {
+     "id": "prev",
+     "t": "push",
+     "u": 4.8,
+     "v": 7.8,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "1a1a1a",
+     "label": "<"
+    },
+    {
+     "id": "next",
+     "t": "push",
+     "u": 5.75,
+     "v": 7.8,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "1a1a1a",
+     "label": ">"
+    },
+    {
+     "id": "act",
+     "t": "push",
+     "u": 6.7,
+     "v": 7.8,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "2050d0",
+     "label": "ACTION"
+    },
+    {
+     "id": "print",
+     "t": "push",
+     "u": 7.65,
+     "v": 7.8,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "f0f0f0",
+     "label": "PRINT"
+    },
+    {
+     "id": "export",
+     "t": "push",
+     "u": 8.6,
+     "v": 7.8,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "30a050",
+     "label": "EXPORT"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 9.55,
+     "v": 7.8,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "808080",
+     "label": "RESET"
+    },
+    {
+     "id": "restore",
+     "t": "push",
+     "u": 10.5,
+     "v": 7.8,
+     "w": 0.65,
+     "h": 0.65,
+     "col": "e08020",
+     "label": "RESTORE"
+    },
+    {
+     "id": "s_page",
+     "t": "selector",
+     "u": 2.6,
+     "v": 8.0,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "PAGE",
+     "pos": [
+      "OVERVIEW",
+      "TRAINS",
+      "SUBSYS",
+      "DESKS",
+      "BACKUP",
+      "STATS",
+      "PROFILE",
+      "COMMERCE"
+     ]
+    },
+    {
+     "id": "k_arm",
+     "t": "key",
+     "u": 2.6,
+     "v": 5.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "c0a040",
+     "label": "ADMIN KEY",
+     "pos": [
+      "SAFE",
+      "ARMED"
+     ]
+    },
+    {
+     "id": "allstop",
+     "t": "mushroom",
+     "u": 13.5,
+     "v": 5.7,
+     "w": 1.3,
+     "h": 1.3,
+     "col": "d02020",
+     "label": "ALL STOP"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 8.0,
+     "v": 9.6,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "< >  ACTION  PRINT  EXPORT  RESET  RESTORE"
+    }
+   ]
+  }
+ ]
+}

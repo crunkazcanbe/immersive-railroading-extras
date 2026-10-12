@@ -1,0 +1,63 @@
+{
+ "title": "axle_counter_head",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 3.28,
+   "title": "AXLE HEAD",
+   "controls": [
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 12.1,
+     "v": 3.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "sa",
+     "t": "lamp",
+     "u": 10.9,
+     "v": 3.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "A"
+    },
+    {
+     "id": "sb",
+     "t": "lamp",
+     "u": 9.7,
+     "v": 3.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "B"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 8.5,
+     "v": 3.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "FLT",
+     "blink": true
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 10.3,
+     "v": 1.8,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  }
+ ]
+}

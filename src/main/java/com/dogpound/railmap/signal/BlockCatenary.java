@@ -47,7 +47,15 @@ public class BlockCatenary extends Block {
         MAST("catenary_mast", "Catenary Mast", 0.5f, 1.0f),
         PORTAL("catenary_portal", "Portal Girder", 1.0f, 1.0f),
         WIRE("catenary_wire", "Contact Wire", 1.0f, 1.0f),
-        CANTILEVER("catenary_cantilever", "Cantilever Arm", 1.0f, 1.0f);
+        CANTILEVER("catenary_cantilever", "Cantilever Arm", 1.0f, 1.0f),
+        /** her ChatGPT list #31: an insulated gap in the contact wire the pantograph runs through on skids - splits the
+         *  line into electrical sections (a Motorised Isolator beside it can bridge it) */
+        SECTION_INSULATOR("catenary_section_insulator", "Section Insulator", 1.0f, 1.0f),
+        /** a dead, earthed-free neutral section between two differently fed (phase) sections: trains coast through */
+        NEUTRAL_SECTION("catenary_neutral_section", "Neutral Section", 1.0f, 1.0f);
+
+        /** part of the running contact line (wire, insulator, neutral): pantographs run on it, wires join to it */
+        public boolean line() { return this == WIRE || this == SECTION_INSULATOR || this == NEUTRAL_SECTION; }
 
         public final String id;
         public final String label;
@@ -121,10 +129,10 @@ public class BlockCatenary extends Block {
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
         switch (kind) {
             case WIRE:
-                return state.withProperty(NORTH, is(world, pos.north(), Kind.WIRE))
-                        .withProperty(SOUTH, is(world, pos.south(), Kind.WIRE))
-                        .withProperty(EAST, is(world, pos.east(), Kind.WIRE))
-                        .withProperty(WEST, is(world, pos.west(), Kind.WIRE))
+                return state.withProperty(NORTH, isLine(world, pos.north()))
+                        .withProperty(SOUTH, isLine(world, pos.south()))
+                        .withProperty(EAST, isLine(world, pos.east()))
+                        .withProperty(WEST, isLine(world, pos.west()))
                         .withProperty(ARM_N, is(world, pos.north(), Kind.CANTILEVER))
                         .withProperty(ARM_S, is(world, pos.south(), Kind.CANTILEVER))
                         .withProperty(ARM_E, is(world, pos.east(), Kind.CANTILEVER))
@@ -142,6 +150,38 @@ public class BlockCatenary extends Block {
         }
     }
 
+    /** wire, section insulator or neutral section */
+    public static boolean isLine(IBlockAccess world, BlockPos pos) {
+        net.minecraft.block.Block b = world.getBlockState(pos).getBlock();
+        return b instanceof BlockCatenary && ((BlockCatenary) b).kind.line();
+    }
+
+    @Override
+    public void addInformation(net.minecraft.item.ItemStack stack, World world, java.util.List<String> tip, net.minecraft.client.util.ITooltipFlag flag) {
+        switch (kind) {
+            case WIRE -> { tip.add("§7Runs on by itself. Right-click worn / torn-down wire with Contact Wire to renew it"); tip.add("§8(the section must be dead - earth it at a Motorised Isolator first)"); }
+            case SECTION_INSULATOR -> { tip.add("§7Splits the contact wire into two electrical sections"); tip.add("§8Place in the wire run, facing along the track. A Motorised Isolator beside it bridges it"); }
+            case NEUTRAL_SECTION -> { tip.add("§7Dead gap between two differently fed sections: trains coast through"); tip.add("§8Locos open their circuit breaker automatically (APC); one drawing power across it arcs and trips both sides"); }
+            default -> { }
+        }
+    }
+
+    /** her list #32: renew worn / torn-down contact wire with a Contact Wire item (refused - and a shock - on a live section) */
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, net.minecraft.entity.player.EntityPlayer player, net.minecraft.util.EnumHand hand,
+                                    EnumFacing side, float hx, float hy, float hz) {
+        if (kind != Kind.WIRE || player.getHeldItem(hand).getItem() != com.dogpound.railmap.ohle.Ohle.wireItem()) return false;
+        if (!com.dogpound.railmap.ohle.Ohle.needsRenewal(world, pos)) return false;      // sound wire: the item places wire as usual
+        if (!world.isRemote) player.sendStatusMessage(new net.minecraft.util.text.TextComponentString(com.dogpound.railmap.ohle.Ohle.renew(world, pos, player, player.getHeldItem(hand))), true);
+        return true;
+    }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        if (!world.isRemote && kind.line()) com.dogpound.railmap.ohle.Ohle.removed(world, pos);
+        super.breakBlock(world, pos, state);
+    }
+
     private static boolean is(IBlockAccess world, BlockPos pos, Kind k) {
         net.minecraft.block.Block b = world.getBlockState(pos).getBlock();
         return b instanceof BlockCatenary && ((BlockCatenary) b).kind == k;
@@ -152,6 +192,7 @@ public class BlockCatenary extends Block {
                                             float hitY, float hitZ, int meta, EntityLivingBase placer,
                                             net.minecraft.util.EnumHand hand) {
         if (kind == Kind.WIRE) return getDefaultState();
+        if (kind.line()) return getDefaultState().withProperty(FACING, placer.getHorizontalFacing());   // along the track
         // mast + cantilever face the way you look (towards the track); a girder lies across your view
         return getDefaultState().withProperty(FACING, kind == Kind.PORTAL ? placer.getHorizontalFacing().rotateY()
                 : placer.getHorizontalFacing());

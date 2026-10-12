@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GPG",
+  "BIB",
+  "RIR"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  },
+  "B": {
+   "item": "minecraft:blaze_powder"
+  },
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "R": {
+   "item": "minecraft:rail"
+  }
+ },
+ "result": {
+  "item": "irextras:rail_welder",
+  "count": 1
+ }
+}

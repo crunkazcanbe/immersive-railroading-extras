@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IGI",
+  "ICI",
+  "IHI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  },
+  "H": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:vending_machine",
+  "count": 1
+ }
+}

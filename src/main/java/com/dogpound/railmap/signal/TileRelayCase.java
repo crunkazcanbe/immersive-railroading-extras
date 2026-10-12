@@ -32,7 +32,52 @@ import java.util.List;
  * In every mode the box also emits the report value on its comparator output, so you can read
  * the railroad without giving up the control modes.
  */
-public class TileRelayCase extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder {
+public class TileRelayCase extends TileEntity implements ITickable, com.dogpound.railmap.settings.ISettingsHolder, com.dogpound.railmap.wire.IWiredGear, com.dogpound.railmap.controls.IControlled {
+    // ---- 12 V terminal: no power = every relay drops out and its signals hold at STOP (fail-safe, like real relay interlocking)
+    private final com.dogpound.railmap.wire.Terminal term = new com.dogpound.railmap.wire.Terminal();
+    /** the signal-box lever over the control wire: holds the linked signals like a redstone HOLD */
+    private boolean wireHold;
+    @Override public com.dogpound.railmap.wire.Terminal term() { return term; }
+    // ---- opening cabinet doors + working insides (cabinet.Cabinet, 2026-10-11): MCBs, fuses, relays, PLC live in here
+    private final com.dogpound.railmap.controls.ControlState ctl = new com.dogpound.railmap.controls.ControlState();
+    @Override public com.dogpound.railmap.controls.ControlState controls() { return ctl; }
+    @Override public void controlsChanged() { markDirty(); sync(); }
+    @Override public int controlValue(String id) { return id.startsWith("m_") || term.powered() ? ctl.get(id) : 0; }
+    @Override public void gearChanged() { lastPower = -1; markDirty(); sync(); }
+    @Override public String wiredName() { return "Relay case"; }
+    @Override public String gearState() { return !term.powered() ? "NO 12 V - relays down, signals at STOP" : (wireHold ? "HELD from the console · " : "") + mode.name() + " · " + linked.size() + " signal(s)"; }
+    @Override public int wiredLamp() { return term.burnt || !term.powered() ? 3 : wireHold || lastPower > 0 && mode == Mode.HOLD ? 2 : 1; }
+    @Override public void gearInfo(java.util.Map<String, Object> m) { m.put("mode", mode.name()); m.put("signals", linked.size()); m.put("input", lastInput); m.put("output", redstoneOutput()); m.put("wireHold", wireHold); }
+    private static final com.dogpound.railmap.grid.Panel CASE;
+    static {
+        CASE = new com.dogpound.railmap.grid.Panel("RELAY CASE", 2.5, 2, 13.5, 14, -1.0, 0x8C9196);
+        CASE.label(8, 13, "LOCATION CASE");
+        CASE.lamp("power", 4.5, 10.5, com.dogpound.railmap.grid.Panel.GREEN, "12 V");
+        CASE.lamp("held", 8, 10.5, com.dogpound.railmap.grid.Panel.RED, "HELD");
+        CASE.lamp("clear", 11.5, 10.5, com.dogpound.railmap.grid.Panel.WHITE, "ALL CLR");
+        CASE.key("hold", 5, 6.5, "SIG HOLD", "NORM", "HOLD");
+        CASE.sel("mode", 11, 6.5, "MODE", "HOLD", "DRIVE", "REPORT");
+        CASE.digits("signals", 8, 3.5, 4, 0x40FF60, "%d SIG", 1);
+    }
+    @Override public com.dogpound.railmap.grid.Panel wiredPanel() { return CASE; }
+    @Override public int wiredState(String id) {
+        return switch (id) {
+            case "power" -> term.powered() ? 1 : 0;
+            case "held" -> wireHold || mode == Mode.HOLD && lastPower > 0 || !term.powered() ? 1 : 0;
+            case "clear" -> rawOutput() >= 15 ? 1 : 0;
+            case "hold" -> wireHold ? 1 : 0;
+            case "mode" -> mode.ordinal();
+            case "signals" -> linked.size();
+            default -> 0;
+        };
+    }
+    @Override public String wiredPress(String id, String who) {
+        if (!term.powered()) return "§cThe relay case is dead - no 12 V";
+        if (id.equals("hold")) { wireHold = !wireHold; lastPower = -1; markDirty(); return wireHold ? "§cSignals HELD at Stop from the console" : "§aSignal hold released"; }
+        if (id.equals("mode")) { cycleMode(); return "§eRelay case mode: " + mode.label; }
+        return "§7No such control";
+    }
+
     public enum Mode {
         HOLD("Hold at Stop when powered"),
         DRIVE("Aspect follows input strength"),
@@ -98,10 +143,13 @@ public class TileRelayCase extends TileEntity implements ITickable, com.dogpound
 
     @Override
     public void update() {
-        if (world.isRemote || ++ticks % Math.max(1, cfg.num("every")) != 0) return;
+        if (world.isRemote) return;
+        if (term.tick(world, pos, wiredName())) gearChanged();
+        if (++ticks % Math.max(1, cfg.num("every")) != 0) return;
         int power = world.getRedstonePowerFromNeighbors(pos);
         if (cfg.bool("invert")) power = 15 - power;
         if (power < cfg.num("deadband")) power = 0;
+        if (wireHold && mode == Mode.HOLD) power = 15;
         lastInput = power;
         if (power != lastPower) {
             lastPower = power;
@@ -124,6 +172,7 @@ public class TileRelayCase extends TileEntity implements ITickable, com.dogpound
             if (!world.isBlockLoaded(p)) continue;      // not loaded is not the same as gone
             TileEntity te = world.getTileEntity(p);
             if (te instanceof TileSignalMast mast) {
+                if (!term.powered() || wireHold && mode != Mode.HOLD) { mast.setRelayControl(true, null); continue; }
                 switch (mode) {
                     case HOLD   -> mast.setRelayControl(power > 0, null);
                     case DRIVE  -> mast.setRelayControl(false, aspectFor(power, cfg.num("restrict"), cfg.num("approach"), cfg.num("clear")));
@@ -202,6 +251,7 @@ public class TileRelayCase extends TileEntity implements ITickable, com.dogpound
             l.add(com.dogpound.railmap.settings.Setting.info("Status", "Linked signals", linked.size() + (linked.isEmpty() ? " (link with the Signal Wrench)" : "")));
             l.add(com.dogpound.railmap.settings.Setting.info("Status", "Input now", String.valueOf(lastInput)));
             l.add(com.dogpound.railmap.settings.Setting.info("Status", "Output now", String.valueOf(redstoneOutput())));
+            com.dogpound.railmap.wire.IWiredGear.settings(l, "Status", this);
             for (int i = 0; i < Math.min(8, linked.size()); i++) {
                 BlockPos p = linked.get(i);
                 l.add(com.dogpound.railmap.settings.Setting.info("Status", "Signal " + (i + 1), p.getX() + ", " + p.getY() + ", " + p.getZ()));
@@ -255,7 +305,10 @@ public class TileRelayCase extends TileEntity implements ITickable, com.dogpound
         }
         t.setIntArray("links", packed);
         t.setByte("mode", (byte) mode.ordinal());
+        t.setBoolean("wireHold", wireHold);
+        term.write(t);
         cfg.write(t);
+        ctl.write(t);
         return t;
     }
 
@@ -271,7 +324,10 @@ public class TileRelayCase extends TileEntity implements ITickable, com.dogpound
         Mode[] all = Mode.values();
         int m = t.getByte("mode");
         mode = m >= 0 && m < all.length ? all[m] : Mode.HOLD;
+        wireHold = t.getBoolean("wireHold");
+        term.read(t);
         cfg.read(t);
+        ctl.read(t);
         lastPower = -1;
     }
 

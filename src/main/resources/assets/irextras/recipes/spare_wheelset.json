@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "I I",
+  "ISI",
+  "I I"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 10
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 1,
+  "count": 1
+ }
+}

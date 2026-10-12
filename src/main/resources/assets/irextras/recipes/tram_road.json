@@ -1,0 +1,20 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "CIC",
+  "CCC"
+ ],
+ "key": {
+  "C": {
+   "item": "minecraft:coal",
+   "data": 0
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  }
+ },
+ "result": {
+  "item": "irextras:tram_road",
+  "count": 6
+ }
+}

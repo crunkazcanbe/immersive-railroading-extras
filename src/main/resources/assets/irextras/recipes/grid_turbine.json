@@ -1,0 +1,38 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "BBB",
+  "GFM",
+  "PAP"
+ ],
+ "key": {
+  "B": {
+   "item": "irextras:part",
+   "data": 24
+  },
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "F": {
+   "item": "irextras:part",
+   "data": 1
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "A": {
+   "item": "irextras:part",
+   "data": 7
+  }
+ },
+ "result": {
+  "item": "irextras:grid_turbine",
+  "count": 1
+ }
+}

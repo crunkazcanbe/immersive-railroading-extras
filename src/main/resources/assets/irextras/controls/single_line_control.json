@@ -1,0 +1,406 @@
+{
+ "title": "single_line_control",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 8.88,
+   "title": "SINGLE LINE",
+   "controls": [
+    {
+     "id": "id",
+     "t": "digits",
+     "u": 3.0,
+     "v": 13.0,
+     "w": 3.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "dir",
+     "t": "digits",
+     "u": 8.6,
+     "v": 13.0,
+     "w": 5.4,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "len",
+     "t": "digits",
+     "u": 13.2,
+     "v": 13.0,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "end_a",
+     "t": "lamp",
+     "u": 2.0,
+     "v": 11.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "A"
+    },
+    {
+     "id": "end_b",
+     "t": "lamp",
+     "u": 14.0,
+     "v": 11.0,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "B"
+    },
+    {
+     "id": "t1",
+     "t": "lamp",
+     "u": 4.0,
+     "v": 11.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "t2",
+     "t": "lamp",
+     "u": 6.0,
+     "v": 11.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "t3",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 11.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "t4",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 11.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "t5",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 11.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": ""
+    },
+    {
+     "id": "ab",
+     "t": "lamp",
+     "u": 5.0,
+     "v": 12.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "A>B"
+    },
+    {
+     "id": "ba",
+     "t": "lamp",
+     "u": 11.0,
+     "v": 12.1,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "B>A"
+    },
+    {
+     "id": "enta",
+     "t": "lamp",
+     "u": 2.0,
+     "v": 9.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "ENT A"
+    },
+    {
+     "id": "reqa",
+     "t": "lamp",
+     "u": 3.6,
+     "v": 9.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffd020",
+     "label": "REQ A",
+     "blink": true
+    },
+    {
+     "id": "occ",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 9.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "OCC"
+    },
+    {
+     "id": "reqb",
+     "t": "lamp",
+     "u": 12.4,
+     "v": 9.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffd020",
+     "label": "REQ B",
+     "blink": true
+    },
+    {
+     "id": "entb",
+     "t": "lamp",
+     "u": 14.0,
+     "v": 9.9,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "ENT B"
+    },
+    {
+     "id": "qa",
+     "t": "digits",
+     "u": 3.0,
+     "v": 8.7,
+     "w": 2.8,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "trains",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.7,
+     "w": 3.0,
+     "h": 0.7,
+     "col": "ff6040",
+     "label": "",
+     "fmt": "%d IN"
+    },
+    {
+     "id": "qb",
+     "t": "digits",
+     "u": 13.0,
+     "v": 8.7,
+     "w": 2.8,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "ends",
+     "t": "digits",
+     "u": 6.0,
+     "v": 7.6,
+     "w": 9.0,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "grant",
+     "t": "digits",
+     "u": 13.0,
+     "v": 7.6,
+     "w": 2.8,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "sig_a",
+     "t": "lamp",
+     "u": 2.4,
+     "v": 6.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "SIG A"
+    },
+    {
+     "id": "sig_b",
+     "t": "lamp",
+     "u": 4.65,
+     "v": 6.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "SIG B"
+    },
+    {
+     "id": "link",
+     "t": "lamp",
+     "u": 6.9,
+     "v": 6.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "SECT"
+    },
+    {
+     "id": "clsd",
+     "t": "lamp",
+     "u": 9.15,
+     "v": 6.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3030",
+     "label": "CLOSED"
+    },
+    {
+     "id": "cfl",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 6.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff2020",
+     "label": "CONFL",
+     "blink": true
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 13.65,
+     "v": 6.3,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "g_dir",
+     "t": "gauge",
+     "u": 3.2,
+     "v": 3.6,
+     "w": 2.6,
+     "h": 2.6,
+     "col": "f2f0e6",
+     "label": "DIRECTION",
+     "max": 2
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 6.6,
+     "v": 4.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "A>B",
+      "B>A",
+      "CLOSED"
+     ]
+    },
+    {
+     "id": "s_follow",
+     "t": "selector",
+     "u": 9.0,
+     "v": 4.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "WORKING",
+     "pos": [
+      "ONE",
+      "FOLLOW"
+     ]
+    },
+    {
+     "id": "s_kind",
+     "t": "selector",
+     "u": 11.4,
+     "v": 4.4,
+     "w": 1.1,
+     "h": 1.1,
+     "col": "202020",
+     "label": "TRACK",
+     "pos": [
+      "SINGLE",
+      "GAUNTLET"
+     ]
+    },
+    {
+     "id": "p_cancel",
+     "t": "push",
+     "u": 6.6,
+     "v": 1.8,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "d8b020",
+     "label": "CANCEL"
+    },
+    {
+     "id": "p_reset",
+     "t": "push",
+     "u": 9.0,
+     "v": 1.8,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.8,
+     "v": 1.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "f0f0f0",
+     "label": "TEST"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 9.48,
+   "title": "",
+   "controls": [
+    {
+     "id": "g_dir",
+     "t": "gauge",
+     "u": 8.0,
+     "v": 19.0,
+     "w": 5.0,
+     "h": 5.0,
+     "col": "f2efe2",
+     "label": "",
+     "max": 2
+    }
+   ]
+  }
+ ]
+}

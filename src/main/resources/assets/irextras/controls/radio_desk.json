@@ -1,0 +1,300 @@
+{
+ "title": "radio_desk",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 6.8,
+   "title": "DISPATCH DESK",
+   "controls": [
+    {
+     "id": "tprev",
+     "t": "push",
+     "u": 1.8,
+     "v": 6.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "TRN<"
+    },
+    {
+     "id": "tnext",
+     "t": "push",
+     "u": 3.2,
+     "v": 6.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "TRN>"
+    },
+    {
+     "id": "mprev",
+     "t": "push",
+     "u": 4.8,
+     "v": 6.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "MSG<"
+    },
+    {
+     "id": "mnext",
+     "t": "push",
+     "u": 6.2,
+     "v": 6.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "MSG>"
+    },
+    {
+     "id": "lnext",
+     "t": "push",
+     "u": 7.8,
+     "v": 6.1,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "1a1a1a",
+     "label": "LINE"
+    },
+    {
+     "id": "call",
+     "t": "push",
+     "u": 1.9,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "1fa34a",
+     "label": "CALL"
+    },
+    {
+     "id": "bcast",
+     "t": "push",
+     "u": 3.7,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f0d020",
+     "label": "LINE"
+    },
+    {
+     "id": "all",
+     "t": "push",
+     "u": 5.5,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f08020",
+     "label": "ALL"
+    },
+    {
+     "id": "answer",
+     "t": "push",
+     "u": 7.3,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "2050d0",
+     "label": "ANSWER"
+    },
+    {
+     "id": "confirm",
+     "t": "push",
+     "u": 9.1,
+     "v": 3.9,
+     "w": 1.2,
+     "h": 1.2,
+     "col": "f0f0f0",
+     "label": "INTEG"
+    },
+    {
+     "id": "m_emerg",
+     "t": "mushroom",
+     "u": 12.7,
+     "v": 3.6,
+     "w": 1.8,
+     "h": 1.8,
+     "col": "d01818",
+     "label": "ALL STOP"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 9.6,
+     "v": 6.3,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "incoming",
+     "t": "lamp",
+     "u": 10.8,
+     "v": 6.3,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "CALL",
+     "blink": true
+    },
+    {
+     "id": "pending",
+     "t": "lamp",
+     "u": 12.0,
+     "v": 6.3,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "ACK?"
+    },
+    {
+     "id": "fail",
+     "t": "lamp",
+     "u": 13.2,
+     "v": 6.3,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff3030",
+     "label": "FAIL"
+    },
+    {
+     "id": "tx",
+     "t": "lamp",
+     "u": 14.4,
+     "v": 6.3,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "30a0ff",
+     "label": "TX"
+    },
+    {
+     "id": "emerg",
+     "t": "lamp",
+     "u": 14.8,
+     "v": 1.9,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff2020",
+     "label": "",
+     "blink": true
+    },
+    {
+     "id": "npend",
+     "t": "digits",
+     "u": 2.6,
+     "v": 1.9,
+     "w": 2.2,
+     "h": 0.9,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d UNACK"
+    },
+    {
+     "id": "ncall",
+     "t": "digits",
+     "u": 5.4,
+     "v": 1.9,
+     "w": 2.2,
+     "h": 0.9,
+     "col": "ff4040",
+     "label": "",
+     "fmt": "%d CALLS"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 7.6,
+     "v": 1.9,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 7.48,
+   "title": "COMMS SCREEN",
+   "controls": [
+    {
+     "id": "train",
+     "t": "digits",
+     "u": 8.0,
+     "v": 13.9,
+     "w": 13.0,
+     "h": 0.9,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "msg",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.9,
+     "w": 13.0,
+     "h": 0.9,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "line",
+     "t": "digits",
+     "u": 8.0,
+     "v": 11.9,
+     "w": 13.0,
+     "h": 0.8,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "log1",
+     "t": "digits",
+     "u": 8.0,
+     "v": 10.95,
+     "w": 13.2,
+     "h": 0.65,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "log2",
+     "t": "digits",
+     "u": 8.0,
+     "v": 10.2,
+     "w": 13.2,
+     "h": 0.65,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "log3",
+     "t": "digits",
+     "u": 8.0,
+     "v": 9.45,
+     "w": 13.2,
+     "h": 0.65,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "log4",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.7,
+     "w": 13.2,
+     "h": 0.65,
+     "col": "b8f0c8",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

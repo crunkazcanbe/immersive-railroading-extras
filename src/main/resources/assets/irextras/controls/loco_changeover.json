@@ -1,0 +1,319 @@
+{
+ "title": "loco_changeover",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 7.88,
+   "title": "LOCO CHANGEOVER",
+   "controls": [
+    {
+     "id": "d_stage",
+     "t": "digits",
+     "u": 8.0,
+     "v": 11.0,
+     "w": 7.0,
+     "h": 0.8,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_train",
+     "t": "digits",
+     "u": 5.0,
+     "v": 10.0,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "TRAIN",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_mode",
+     "t": "digits",
+     "u": 11.2,
+     "v": 10.0,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "9ad8ff",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_old",
+     "t": "digits",
+     "u": 5.0,
+     "v": 9.0,
+     "w": 5.0,
+     "h": 0.7,
+     "col": "ff9040",
+     "label": "OLD",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_new",
+     "t": "digits",
+     "u": 11.2,
+     "v": 9.0,
+     "w": 4.8,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "NEW",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_time",
+     "t": "digits",
+     "u": 5.6,
+     "v": 8.0,
+     "w": 6.0,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "d_done",
+     "t": "digits",
+     "u": 11.8,
+     "v": 8.0,
+     "w": 3.6,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%d DONE"
+    },
+    {
+     "id": "l_in",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "IN"
+    },
+    {
+     "id": "l_stby",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "STBY"
+    },
+    {
+     "id": "l_att",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ffb020",
+     "label": "ATTACH",
+     "blink": true
+    },
+    {
+     "id": "l_det",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ffb020",
+     "label": "DETACH"
+    },
+    {
+     "id": "l_bt",
+     "t": "lamp",
+     "u": 9.8,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "BRK OK"
+    },
+    {
+     "id": "l_btf",
+     "t": "lamp",
+     "u": 11.6,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "ff3030",
+     "label": "BRK FAIL",
+     "blink": true
+    },
+    {
+     "id": "l_done",
+     "t": "lamp",
+     "u": 13.4,
+     "v": 6.8,
+     "w": 0.62,
+     "h": 0.62,
+     "col": "30e060",
+     "label": "RIGHT AWAY"
+    },
+    {
+     "id": "l_over",
+     "t": "lamp",
+     "u": 2.6,
+     "v": 5.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff6020",
+     "label": "OVER DWELL",
+     "blink": true
+    },
+    {
+     "id": "l_none",
+     "t": "lamp",
+     "u": 4.4,
+     "v": 5.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffd020",
+     "label": "NO STBY"
+    },
+    {
+     "id": "l_flt",
+     "t": "lamp",
+     "u": 6.2,
+     "v": 5.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff2020",
+     "label": "FAULT",
+     "blink": true
+    },
+    {
+     "id": "l_pwr",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 5.4,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "g_dwell",
+     "t": "gauge",
+     "u": 12.0,
+     "v": 5.0,
+     "w": 2.4,
+     "h": 2.4,
+     "col": "f2f0e6",
+     "label": "DWELL %",
+     "max": 100
+    },
+    {
+     "id": "s_on",
+     "t": "selector",
+     "u": 2.8,
+     "v": 3.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "AUTO",
+     "pos": [
+      "OFF",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 5.0,
+     "v": 3.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "TRACTION",
+     "pos": [
+      "ANY",
+      "ELEC",
+      "DIESEL",
+      "STEAM"
+     ]
+    },
+    {
+     "id": "s_dwell",
+     "t": "selector",
+     "u": 7.2,
+     "v": 3.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "MAX DWELL",
+     "pos": [
+      "5",
+      "10",
+      "15",
+      "20"
+     ]
+    },
+    {
+     "id": "s_range",
+     "t": "selector",
+     "u": 9.4,
+     "v": 3.4,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "202020",
+     "label": "RANGE M",
+     "pos": [
+      "40",
+      "80",
+      "120"
+     ]
+    },
+    {
+     "id": "k_bypass",
+     "t": "key",
+     "u": 2.8,
+     "v": 1.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "c0a040",
+     "label": "BRAKE TEST",
+     "pos": [
+      "NORMAL",
+      "BYPASS"
+     ]
+    },
+    {
+     "id": "p_step",
+     "t": "push",
+     "u": 6.0,
+     "v": 1.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d8b020",
+     "label": "GIVE UP"
+    },
+    {
+     "id": "p_reset",
+     "t": "push",
+     "u": 8.4,
+     "v": 1.8,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 13.4,
+     "v": 13.4,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "f0f0f0",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "title": "cctv_night",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 1.15,
+   "title": "NIGHT IR",
+   "controls": [
+    {
+     "id": "led_pwr",
+     "t": "lamp",
+     "u": 8.72,
+     "v": 6.1,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "30e060",
+     "label": "PWR"
+    },
+    {
+     "id": "led_net",
+     "t": "lamp",
+     "u": 8,
+     "v": 6.1,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ffb020",
+     "label": "NET"
+    },
+    {
+     "id": "led_rec",
+     "t": "lamp",
+     "u": 7.28,
+     "v": 6.1,
+     "w": 0.45,
+     "h": 0.45,
+     "col": "ff2020",
+     "label": "REC",
+     "blink": true
+    },
+    {
+     "id": "ir",
+     "t": "lamp",
+     "u": 8,
+     "v": 7.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "ff3020",
+     "label": "IR"
+    }
+   ]
+  }
+ ]
+}

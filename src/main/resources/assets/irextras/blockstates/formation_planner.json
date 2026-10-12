@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:formation_planner"
+  },
+  "facing=east": {
+   "model": "irextras:formation_planner",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:formation_planner",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:formation_planner",
+   "y": 270
+  }
+ }
+}

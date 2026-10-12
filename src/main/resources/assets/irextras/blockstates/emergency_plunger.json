@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:emergency_plunger"
+  },
+  "facing=east": {
+   "model": "irextras:emergency_plunger",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:emergency_plunger",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:emergency_plunger",
+   "y": 270
+  }
+ }
+}

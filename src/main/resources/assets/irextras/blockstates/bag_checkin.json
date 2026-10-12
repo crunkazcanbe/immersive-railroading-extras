@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:bag_checkin"
+  },
+  "facing=east": {
+   "model": "irextras:bag_checkin",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:bag_checkin",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:bag_checkin",
+   "y": 270
+  }
+ }
+}

@@ -13,5 +13,10 @@ public class BlockSignalBox extends BlockDispatcherBoard {
     }
 
     @Override
+    public net.minecraft.tileentity.TileEntity createTileEntity(net.minecraft.world.World world, net.minecraft.block.state.IBlockState state) {
+        return new TileSignalBox();
+    }
+
+    @Override
     protected int gui() { return RailMap.GUI_SIGNAL_BOX; }
 }

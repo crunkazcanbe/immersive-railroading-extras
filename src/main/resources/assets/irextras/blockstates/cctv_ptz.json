@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:cctv_ptz"
+  },
+  "facing=east": {
+   "model": "irextras:cctv_ptz",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:cctv_ptz",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:cctv_ptz",
+   "y": 270
+  }
+ }
+}

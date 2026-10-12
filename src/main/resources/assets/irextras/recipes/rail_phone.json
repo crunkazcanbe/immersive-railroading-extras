@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IGI",
+  "IRI",
+  "ICI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_nugget"
+  },
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "C": {
+   "item": "minecraft:comparator"
+  }
+ },
+ "result": {
+  "item": "irextras:travel",
+  "data": 1,
+  "count": 1
+ }
+}

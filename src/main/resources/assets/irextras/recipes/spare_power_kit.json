@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GSG",
+  "IPI"
+ ],
+ "key": {
+  "G": {
+   "item": "irextras:part",
+   "data": 5
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 12
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "P": {
+   "item": "minecraft:piston"
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 4,
+  "count": 1
+ }
+}

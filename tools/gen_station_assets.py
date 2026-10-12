@@ -289,6 +289,8 @@ def el(a, b, t, rot=None, faces=None):  # uv_fix
 
 
 def model(name, els, st, particle="paving"):
+    if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'blockbench/models', name + '.bbmodel')):
+        return   # replaced by a detailed bbkit model (gen_bb_station.py)
     tex = {
         "paving": "stn_%s_paving" % st, "wall": "stn_%s_wall" % st, "column": "stn_%s_column" % st, "glass": "stn_%s_glass" % st,
         "roof": "stn_%s_roof" % st, "wood": "stn_%s_wood" % st, "trim": "stn_%s_trim" % st, "sign": "stn_%s_sign" % st,

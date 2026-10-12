@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:ferry_dock"
+  },
+  "facing=east": {
+   "model": "irextras:ferry_dock",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:ferry_dock",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:ferry_dock",
+   "y": 270
+  }
+ }
+}

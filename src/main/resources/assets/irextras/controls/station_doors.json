@@ -1,0 +1,134 @@
+{
+ "title": "station_doors",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 4.54,
+   "title": "SCREEN",
+   "controls": [
+    {
+     "id": "phase",
+     "t": "digits",
+     "u": 8.0,
+     "v": 14.2,
+     "w": 5.0,
+     "h": 1.2,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "info",
+     "t": "digits",
+     "u": 8.0,
+     "v": 12.6,
+     "w": 5.0,
+     "h": 1.2,
+     "col": "5bcefa",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 4.99,
+   "title": "DOORS",
+   "controls": [
+    {
+     "id": "lopen",
+     "t": "lamp",
+     "u": 10.2,
+     "v": 10.3,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "lshut",
+     "t": "lamp",
+     "u": 8.0,
+     "v": 10.3,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "f4f4f4",
+     "label": ""
+    },
+    {
+     "id": "llock",
+     "t": "lamp",
+     "u": 5.8,
+     "v": 10.3,
+     "w": 0.7,
+     "h": 0.7,
+     "col": "ffb02e",
+     "label": ""
+    },
+    {
+     "id": "open",
+     "t": "push",
+     "u": 10.2,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2fcb5a",
+     "label": ""
+    },
+    {
+     "id": "close",
+     "t": "push",
+     "u": 8.0,
+     "v": 7.6,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "26282c",
+     "label": ""
+    },
+    {
+     "id": "mode",
+     "t": "key",
+     "u": 5.8,
+     "v": 7.6,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "",
+     "pos": [
+      "AUTO",
+      "MAN",
+      "LOCK"
+     ]
+    },
+    {
+     "id": "estop",
+     "t": "mushroom",
+     "u": 8.0,
+     "v": 4.6,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "c81e1e",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 7.254,
+   "title": "BEACON",
+   "controls": [
+    {
+     "id": "beacon",
+     "t": "lamp",
+     "u": 10.0,
+     "v": 18.2,
+     "w": 1.1,
+     "h": 0.9,
+     "col": "ff9a20",
+     "label": "",
+     "blink": true
+    }
+   ]
+  }
+ ]
+}

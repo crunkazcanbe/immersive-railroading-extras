@@ -1,0 +1,32 @@
+{
+ "block": "grid_battery",
+ "title": "BMS 12 RACKS",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "grid_battery_door1",
+   "hinge": [
+    -1.42,
+    1.65
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V BMS"
+  },
+  {
+   "id": "out",
+   "label": "BATT DC"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:room_lock"
+  },
+  "facing=east": {
+   "model": "irextras:room_lock",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:room_lock",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:room_lock",
+   "y": 270
+  }
+ }
+}

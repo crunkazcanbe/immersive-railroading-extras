@@ -1,0 +1,222 @@
+{
+ "title": "gap_filler",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": -0.1,
+   "title": "GAP FILLER",
+   "controls": [
+    {
+     "id": "msg",
+     "t": "digits",
+     "u": 13.5,
+     "v": 9.3,
+     "w": 4.2,
+     "h": 0.7,
+     "col": "ffd040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "cnt",
+     "t": "digits",
+     "u": 13.5,
+     "v": 8.4,
+     "w": 4.2,
+     "h": 0.7,
+     "col": "8a94a0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "l_ext",
+     "t": "lamp",
+     "u": 15.2,
+     "v": 7.1,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "OUT"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.2,
+     "v": 6.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OUT"
+    },
+    {
+     "id": "l_ret",
+     "t": "lamp",
+     "u": 14.1,
+     "v": 7.1,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "IN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.1,
+     "v": 6.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "IN"
+    },
+    {
+     "id": "l_moving",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 7.1,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ffb020",
+     "label": "MOVE",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.0,
+     "v": 6.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MOVE"
+    },
+    {
+     "id": "l_obst",
+     "t": "lamp",
+     "u": 11.9,
+     "v": 7.1,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "OBST",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.9,
+     "v": 6.68,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "OBST"
+    },
+    {
+     "id": "l_fault",
+     "t": "lamp",
+     "u": 15.2,
+     "v": 5.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "ff3030",
+     "label": "FLT",
+     "blink": true
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 15.2,
+     "v": 5.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "FLT"
+    },
+    {
+     "id": "l_train",
+     "t": "lamp",
+     "u": 14.1,
+     "v": 5.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "4080ff",
+     "label": "TRAIN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 14.1,
+     "v": 5.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "TRAIN"
+    },
+    {
+     "id": "pwr",
+     "t": "lamp",
+     "u": 13.0,
+     "v": 5.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 13.0,
+     "v": 5.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "12V"
+    },
+    {
+     "id": "mainsl",
+     "t": "lamp",
+     "u": 11.9,
+     "v": 5.8,
+     "w": 0.42,
+     "h": 0.42,
+     "col": "30e060",
+     "label": "MAIN"
+    },
+    {
+     "id": "",
+     "t": "label",
+     "u": 11.9,
+     "v": 5.38,
+     "w": 0,
+     "h": 0,
+     "col": "e8e8e8",
+     "label": "MAIN"
+    },
+    {
+     "id": "s_mode",
+     "t": "selector",
+     "u": 14.6,
+     "v": 3.9,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "202020",
+     "label": "MODE",
+     "pos": [
+      "AUTO",
+      "OUT",
+      "IN"
+     ]
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 12.4,
+     "v": 3.9,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "RESET"
+    }
+   ]
+  }
+ ]
+}

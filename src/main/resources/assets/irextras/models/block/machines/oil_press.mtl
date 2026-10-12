@@ -1,0 +1,3 @@
+newmtl oil_press
+Kd 1 1 1
+map_Kd irextras:blocks/machines/oil_press

@@ -33,6 +33,8 @@ public class SignalBridgeRenderer extends TileEntitySpecialRenderer<TileSignalBr
         GlStateManager.rotate(-f.getHorizontalIndex() * 90f, 0, 1, 0);
         GlStateManager.disableCull();
         Prims.begin();
+        float keepBoost = Prims.glowBoost;
+        Prims.glowBoost = com.dogpound.railmap.light.NightGlow.signalBoost(x, y, z);   // night lighting
 
         // Every leg draws itself again. This was briefly conditional, back when a paired
         // gantry stamped real tower blocks and the drawn lattice would have doubled them --
@@ -47,12 +49,13 @@ public class SignalBridgeRenderer extends TileEntitySpecialRenderer<TileSignalBr
                 GlStateManager.pushMatrix();
                 // +X is the viewer's right, which is the direction the span runs.
                 GlStateManager.translate(h.along, DECK - 0.55, 0);
-                drawHead(h.aspect, ticks);
+                drawHead(te.shown(h), ticks);
                 GlStateManager.popMatrix();
             }
         }
 
         Prims.emissive(false);
+        Prims.glowBoost = keepBoost;
         GlStateManager.enableLighting();
         GlStateManager.enableCull();
         Prims.end();

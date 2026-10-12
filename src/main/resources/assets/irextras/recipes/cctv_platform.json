@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "IEI",
+  " S ",
+  " I "
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  },
+  "S": {
+   "item": "minecraft:sign"
+  }
+ },
+ "result": {
+  "item": "irextras:cctv_platform",
+  "count": 1
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:tunnel_concrete_haunch"
+  },
+  "facing=east": {
+   "model": "irextras:tunnel_concrete_haunch",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:tunnel_concrete_haunch",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:tunnel_concrete_haunch",
+   "y": 270
+  }
+ }
+}

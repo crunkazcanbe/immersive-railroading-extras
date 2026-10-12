@@ -29,7 +29,7 @@ import java.util.Map;
  * cycle. Loading Silos / Unloading Pits, hoppers and any mod's pipes reach the stockpile through the
  * normal item capability: they can only put in what the industry uses and only take out what it makes.
  */
-public class TileIndustry extends TileEntity implements ITickable, ISettingsHolder {
+public class TileIndustry extends TileEntity implements ITickable, ISettingsHolder, IndustryLink.Endpoint {
     private IndustryKind kind = IndustryKind.COAL_MINE;
     private final SettingsStore cfg = new SettingsStore(this);
     private final ItemStackHandler stock = new ItemStackHandler(18) {
@@ -44,14 +44,47 @@ public class TileIndustry extends TileEntity implements ITickable, ISettingsHold
 
     public IndustryKind kind() { return kind; }
 
+    // ---- every loaded industry, per dimension (freight contracts pair producers with consumers) ----
+    public static final java.util.Map<Integer, java.util.Set<Long>> LOADED = new java.util.concurrent.ConcurrentHashMap<>();
+    @Override public void onLoad() { if (world != null && !world.isRemote) { LOADED.computeIfAbsent(world.provider.getDimension(), d -> java.util.concurrent.ConcurrentHashMap.newKeySet()).add(pos.toLong()); IndustryLink.register(this); } }
+    @Override public void invalidate() { super.invalidate(); forget(); }
+    @Override public void onChunkUnload() { forget(); }
+    private void forget() { if (world != null && !world.isRemote && LOADED.containsKey(world.provider.getDimension())) LOADED.get(world.provider.getDimension()).remove(pos.toLong()); IndustryLink.forget(this); }
+
+    // ---- the railway sees it as an endpoint (IndustryLink) ----------------------------------------------------------
+    @Override public String endpointName() { return world == null ? kind.id : label(); }
+
+    @Override
+    public List<ItemStack> makes() {
+        List<ItemStack> l = new ArrayList<>();
+        for (String o : kind.out) { ItemStack s = spec(o); if (!s.isEmpty()) { s.setCount(Math.max(1, stockOf(s, true))); l.add(s); } }
+        return l;
+    }
+
+    /** an input below 64 in the yard is a shortage (the town only while it is supplied at all) */
+    @Override
+    public List<ItemStack> wants() {
+        List<ItemStack> l = new ArrayList<>();
+        if (!cfg.bool("on")) return l;
+        for (String in : kind.in) {
+            ItemStack s = spec(in);
+            if (s.isEmpty()) continue;
+            int have = stockOf(s, false);
+            if (have < 16) { s.setCount(64 - have); l.add(s); }
+        }
+        return l;
+    }
+
+    @Override public String endpointState() { return !cfg.bool("on") ? "OFF" : status.startsWith("waiting") ? "NO FEED" : status.startsWith("stockpile full") ? "YARD FULL" : status.startsWith("no power") ? "NO POWER" : "RUNNING"; }
+
     // ---- item specs "modid:item:meta:count" ------------------------------------------------------
-    static ItemStack spec(String s) {
+    public static ItemStack spec(String s) {
         String[] p = s.split(":");
         Item it = Item.REGISTRY.getObject(new ResourceLocation(p[0], p[1]));
         return it == null ? ItemStack.EMPTY : new ItemStack(it, Integer.parseInt(p[3]), Integer.parseInt(p[2]));
     }
 
-    private boolean accepts(ItemStack s) {
+    public boolean accepts(ItemStack s) {
         for (String in : kind.in) { ItemStack w = spec(in); if (!w.isEmpty() && w.isItemEqual(s)) return true; }
         return false;
     }
@@ -86,6 +119,7 @@ public class TileIndustry extends TileEntity implements ITickable, ISettingsHold
     // ---- production -------------------------------------------------------------------------------
     @Override
     public void update() {
+        if (world != null && !world.isRemote && world.getTotalWorldTime() % 200 == 0) onLoad();   // placed this session: make sure it is known (a set add is cheap)
         if (world == null || world.isRemote) return;
         if (kind == IndustryKind.POWER_STATION) pushPower();
         if (!cfg.bool("on")) { status = "switched off"; return; }
@@ -132,7 +166,14 @@ public class TileIndustry extends TileEntity implements ITickable, ISettingsHold
         status = kind.makesFE > 0 ? "burning coal - generating" : "working";
     }
 
-    long population() { return 100 + prosperity / 10; }
+    public long population() {
+        long base = 100 + prosperity / 10;
+        if (world == null || world.isRemote || kind != IndustryKind.TOWN_MARKET || !com.dogpound.railmap.biz.BizConfig.enabled) return base;
+        return com.dogpound.railmap.biz.BizData.get(world).towns.marketPop(world, pos, base);   // #13: a market's town lives and grows
+    }
+
+    /** how many of an item the industry holds: its finished goods (output) or its deliveries (input) - markets read this */
+    public int stockOf(ItemStack w, boolean output) { return countOf(w, output ? 9 : 0, output ? 18 : 9); }
 
     private void pushPower() {
         int rate = cfg.num("exportRate");
@@ -205,7 +246,7 @@ public class TileIndustry extends TileEntity implements ITickable, ISettingsHold
         return "§b" + label() + " §7· " + status + (kind.needsFE > 0 || kind.makesFE > 0 ? String.format(Locale.ROOT, " · %,d FE", fe) : "");
     }
 
-    String label() {
+    public String label() {
         return new ItemStack(world.getBlockState(pos).getBlock()).getDisplayName();
     }
 

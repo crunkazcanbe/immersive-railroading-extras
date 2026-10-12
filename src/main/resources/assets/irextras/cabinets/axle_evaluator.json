@@ -1,0 +1,41 @@
+{
+ "block": "axle_evaluator",
+ "title": "AXLE COUNTER EVALUATOR",
+ "hv": false,
+ "doors": [
+  {
+   "id": "m_cab_door1",
+   "model": "axle_evaluator_door1",
+   "hinge": [
+    14.15,
+    15.22
+   ],
+   "angle": 105
+  },
+  {
+   "id": "m_cab_door2",
+   "model": "axle_evaluator_door2",
+   "hinge": [
+    1.85,
+    15.22
+   ],
+   "angle": -105
+  }
+ ],
+ "fns": [
+  {
+   "id": "ctl",
+   "label": "12V CTL"
+  },
+  {
+   "id": "scr",
+   "label": "SCREENS"
+  }
+ ],
+ "relays": [
+  "K1 12V",
+  "K2 MAINS",
+  "K3 FAULT",
+  "K4 DOOR"
+ ]
+}

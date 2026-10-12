@@ -1,0 +1,18 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "M  ",
+  "MM ",
+  "MMM"
+ ],
+ "key": {
+  "M": {
+   "item": "minecraft:concrete",
+   "data": 8
+  }
+ },
+ "result": {
+  "item": "irextras:tunnel_concrete_haunch",
+  "count": 8
+ }
+}

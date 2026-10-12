@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "ERE",
+  " I ",
+  " I "
+ ],
+ "key": {
+  "E": {
+   "item": "minecraft:ender_pearl"
+  },
+  "R": {
+   "item": "minecraft:repeater"
+  },
+  "I": {
+   "item": "minecraft:iron_bars"
+  }
+ },
+ "result": {
+  "item": "irextras:radio_repeater"
+ }
+}

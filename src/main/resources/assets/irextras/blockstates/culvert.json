@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:culvert"
+  },
+  "facing=east": {
+   "model": "irextras:culvert",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:culvert",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:culvert",
+   "y": 270
+  }
+ }
+}

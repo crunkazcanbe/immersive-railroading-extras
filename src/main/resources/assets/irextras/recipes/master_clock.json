@@ -1,0 +1,32 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "GCG",
+  "DQD",
+  "PRP"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_pane"
+  },
+  "C": {
+   "item": "minecraft:clock"
+  },
+  "D": {
+   "item": "minecraft:daylight_detector"
+  },
+  "Q": {
+   "item": "minecraft:quartz"
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "R": {
+   "item": "minecraft:redstone"
+  }
+ },
+ "result": {
+  "item": "irextras:master_clock"
+ }
+}

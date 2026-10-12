@@ -1,0 +1,32 @@
+{
+ "title": "pa_speaker",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 13.39,
+   "title": "PA LINE",
+   "controls": [
+    {
+     "id": "line",
+     "t": "lamp",
+     "u": 9.1,
+     "v": 4.8,
+     "w": 0.5,
+     "h": 0.5,
+     "col": "30e060",
+     "label": ""
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 6.9,
+     "v": 4.8,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "e8e8e8",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

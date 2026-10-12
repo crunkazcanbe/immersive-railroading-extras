@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:axle_evaluator"
+  },
+  "facing=east": {
+   "model": "irextras:axle_evaluator",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:axle_evaluator",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:axle_evaluator",
+   "y": 270
+  }
+ }
+}

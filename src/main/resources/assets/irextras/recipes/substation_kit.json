@@ -1,0 +1,36 @@
+{
+ "type": "forge:ore_shapeless",
+ "ingredients": [
+  {
+   "item": "irextras:grid_breaker"
+  },
+  {
+   "item": "irextras:grid_breaker"
+  },
+  {
+   "item": "irextras:grid_relay"
+  },
+  {
+   "item": "irextras:grid_relay"
+  },
+  {
+   "item": "irextras:grid_transformer"
+  },
+  {
+   "item": "irextras:grid_earthing"
+  },
+  {
+   "item": "irextras:grid_earthing"
+  },
+  {
+   "item": "irextras:grid_arrester"
+  },
+  {
+   "item": "irextras:grid_meter"
+  }
+ ],
+ "result": {
+  "item": "irextras:substation_kit",
+  "count": 1
+ }
+}

@@ -1,0 +1,395 @@
+{
+ "title": "fire_panel",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 10.9,
+   "title": "FIRE PANEL",
+   "controls": [
+    {
+     "id": "stat",
+     "t": "digits",
+     "u": 8.0,
+     "v": 24.4,
+     "w": 11.2,
+     "h": 0.8,
+     "col": "ff6040",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "plac",
+     "t": "digits",
+     "u": 8.0,
+     "v": 23.5,
+     "w": 11.2,
+     "h": 0.7,
+     "col": "ffb020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "rule",
+     "t": "digits",
+     "u": 8.0,
+     "v": 22.6,
+     "w": 11.2,
+     "h": 0.7,
+     "col": "f0f0f0",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "fire",
+     "t": "lamp",
+     "u": 2.2,
+     "v": 21.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff2020",
+     "label": "FIRE",
+     "blink": true
+    },
+    {
+     "id": "pre",
+     "t": "lamp",
+     "u": 4.5,
+     "v": 21.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffb020",
+     "label": "PRE"
+    },
+    {
+     "id": "fault",
+     "t": "lamp",
+     "u": 6.8,
+     "v": 21.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ffd020",
+     "label": "FAULT"
+    },
+    {
+     "id": "predis",
+     "t": "lamp",
+     "u": 9.1,
+     "v": 21.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff2020",
+     "label": "PRE-DIS",
+     "blink": true
+    },
+    {
+     "id": "disch",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 21.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff8020",
+     "label": "DISCH"
+    },
+    {
+     "id": "haz",
+     "t": "lamp",
+     "u": 13.7,
+     "v": 21.0,
+     "w": 0.6,
+     "h": 0.6,
+     "col": "ff8020",
+     "label": "HAZ",
+     "blink": true
+    },
+    {
+     "id": "iso",
+     "t": "lamp",
+     "u": 2.2,
+     "v": 19.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffb020",
+     "label": "ISOL"
+    },
+    {
+     "id": "abort",
+     "t": "lamp",
+     "u": 4.5,
+     "v": 19.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffd020",
+     "label": "ABORT"
+    },
+    {
+     "id": "auto",
+     "t": "lamp",
+     "u": 6.8,
+     "v": 19.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "AUTO"
+    },
+    {
+     "id": "sil",
+     "t": "lamp",
+     "u": 9.1,
+     "v": 19.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ffd020",
+     "label": "SIL"
+    },
+    {
+     "id": "power",
+     "t": "lamp",
+     "u": 11.4,
+     "v": 19.2,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "30e060",
+     "label": "12V"
+    },
+    {
+     "id": "cnt",
+     "t": "digits",
+     "u": 13.4,
+     "v": 19.2,
+     "w": 1.6,
+     "h": 0.8,
+     "col": "ff3020",
+     "label": "",
+     "fmt": "%d S"
+    },
+    {
+     "id": "zonem",
+     "t": "digits",
+     "u": 13.4,
+     "v": 18.2,
+     "w": 1.6,
+     "h": 0.7,
+     "col": "7cf29a",
+     "label": "",
+     "fmt": "%d M"
+    },
+    {
+     "id": "silence",
+     "t": "push",
+     "u": 2.2,
+     "v": 17.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0d020",
+     "label": "SILENCE"
+    },
+    {
+     "id": "reset",
+     "t": "push",
+     "u": 4.15,
+     "v": 17.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "2050d0",
+     "label": "RESET"
+    },
+    {
+     "id": "evac",
+     "t": "push",
+     "u": 6.1,
+     "v": 17.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d02020",
+     "label": "EVACUATE"
+    },
+    {
+     "id": "isolate",
+     "t": "push",
+     "u": 8.05,
+     "v": 17.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "e08020",
+     "label": "ISOLATE"
+    },
+    {
+     "id": "discharge",
+     "t": "push",
+     "u": 10.0,
+     "v": 17.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "d02020",
+     "label": "RELEASE"
+    },
+    {
+     "id": "test",
+     "t": "push",
+     "u": 11.95,
+     "v": 17.0,
+     "w": 0.9,
+     "h": 0.9,
+     "col": "f0f0f0",
+     "label": "TEST"
+    },
+    {
+     "id": "s_zone",
+     "t": "selector",
+     "u": 3.0,
+     "v": 15.9,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "202020",
+     "label": "",
+     "pos": [
+      "8M",
+      "16M",
+      "24M",
+      "32M"
+     ]
+    },
+    {
+     "id": "k_mode",
+     "t": "key",
+     "u": 6.4,
+     "v": 15.9,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "",
+     "pos": [
+      "MAN",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "k_iso",
+     "t": "key",
+     "u": 9.4,
+     "v": 15.9,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "c0a040",
+     "label": "",
+     "pos": [
+      "MAN",
+      "AUTO"
+     ]
+    },
+    {
+     "id": "s_abort",
+     "t": "selector",
+     "u": 12.6,
+     "v": 15.9,
+     "w": 0.8,
+     "h": 0.8,
+     "col": "ffd020",
+     "label": "",
+     "pos": [
+      "NORM",
+      "ABORT"
+     ]
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 13.15,
+   "title": "STROBE",
+   "controls": [
+    {
+     "id": "fire",
+     "t": "lamp",
+     "u": 3.0,
+     "v": 29.0,
+     "w": 1.4,
+     "h": 1.0,
+     "col": "ff2020",
+     "label": "",
+     "blink": true
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 12.5,
+   "title": "RELEASE",
+   "controls": [
+    {
+     "id": "m_release",
+     "t": "mushroom",
+     "u": 12.5,
+     "v": 12.3,
+     "w": 1.4,
+     "h": 1.4,
+     "col": "d02020",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 10.6,
+   "title": "AGENT",
+   "controls": [
+    {
+     "id": "agent",
+     "t": "gauge",
+     "u": 3.4,
+     "v": 3.6,
+     "w": 1.6,
+     "h": 1.6,
+     "col": "f2f0e6",
+     "label": "AGENT %",
+     "max": 100
+    },
+    {
+     "id": "agent",
+     "t": "zone",
+     "u": 3.4,
+     "v": 7.0,
+     "w": 3.0,
+     "h": 3.0,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 11.5,
+   "title": "CABINET",
+   "controls": [
+    {
+     "id": "ext",
+     "t": "zone",
+     "u": 10.2,
+     "v": 5.0,
+     "w": 7.6,
+     "h": 7.6,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 12.3,
+   "title": "KIT",
+   "controls": [
+    {
+     "id": "kit",
+     "t": "zone",
+     "u": 7.7,
+     "v": 12.1,
+     "w": 3.2,
+     "h": 1.6,
+     "col": "000000",
+     "label": ""
+    }
+   ]
+  }
+ ]
+}

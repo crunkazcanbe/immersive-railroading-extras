@@ -1,0 +1,73 @@
+{
+ "title": "ticket_gate",
+ "surfaces": [
+  {
+   "side": "up",
+   "face": 2.59,
+   "title": "READERS",
+   "controls": [
+    {
+     "id": "go1",
+     "t": "lamp",
+     "u": 14.8,
+     "v": 5.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "40ff70",
+     "label": ""
+    },
+    {
+     "id": "stop1",
+     "t": "lamp",
+     "u": 14.0,
+     "v": 5.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3a30",
+     "label": ""
+    },
+    {
+     "id": "go2",
+     "t": "lamp",
+     "u": 2.0,
+     "v": 5.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "40ff70",
+     "label": ""
+    },
+    {
+     "id": "stop2",
+     "t": "lamp",
+     "u": 1.2,
+     "v": 5.8,
+     "w": 0.55,
+     "h": 0.55,
+     "col": "ff3a30",
+     "label": ""
+    }
+   ]
+  },
+  {
+   "side": "north",
+   "face": 1.69,
+   "title": "STAFF",
+   "controls": [
+    {
+     "id": "override",
+     "t": "key",
+     "u": 14.4,
+     "v": 5.2,
+     "w": 1.0,
+     "h": 1.0,
+     "col": "c0a040",
+     "label": "",
+     "pos": [
+      "AUTO",
+      "OPEN"
+     ]
+    }
+   ]
+  }
+ ]
+}

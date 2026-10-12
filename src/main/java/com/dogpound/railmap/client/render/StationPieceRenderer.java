@@ -85,7 +85,7 @@ public class StationPieceRenderer extends TileEntitySpecialRenderer<TileStationP
             minutes = t.getMinute() + t.getSecond() / 60.0;
             seconds = t.getSecond();
         } else {
-            double ticks = (te.getWorld().getWorldTime() + 6000 + pt) % 24000;   // 0 = 6 am in Minecraft
+            double ticks = Math.floorMod(te.getWorld().getWorldTime() + 6000 + com.dogpound.railmap.ops6.MasterClocks.clientOffset(te.getPos()), 24000L) + pt;   // 0 = 6 am in Minecraft; + this slave clock's drift (batch 6 E #24)
             double h = ticks / 1000.0;
             hours = h % 12;
             minutes = (h * 60) % 60;

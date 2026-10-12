@@ -1,0 +1,45 @@
+{
+ "title": "tunnel_marker",
+ "surfaces": [
+  {
+   "side": "north",
+   "face": 15.34,
+   "title": "MARKER",
+   "controls": [
+    {
+     "id": "km",
+     "t": "digits",
+     "u": 8.0,
+     "v": 8.8,
+     "w": 8.4,
+     "h": 1.6,
+     "col": "101010",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "from",
+     "t": "digits",
+     "u": 8.0,
+     "v": 6.6,
+     "w": 8.4,
+     "h": 0.7,
+     "col": "202020",
+     "label": "",
+     "fmt": "%s"
+    },
+    {
+     "id": "exit",
+     "t": "digits",
+     "u": 8.0,
+     "v": 5.4,
+     "w": 8.4,
+     "h": 0.7,
+     "col": "14843a",
+     "label": "",
+     "fmt": "%s"
+    }
+   ]
+  }
+ ]
+}

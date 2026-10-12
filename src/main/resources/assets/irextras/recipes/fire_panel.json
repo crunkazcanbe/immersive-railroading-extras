@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RLR",
+  "RNR",
+  "BCB"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:red_nether_brick"
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "N": {
+   "item": "minecraft:noteblock"
+  },
+  "B": {
+   "item": "minecraft:bucket"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "item": "irextras:fire_panel"
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "WMW",
+  "IBI"
+ ],
+ "key": {
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "M": {
+   "item": "irextras:part",
+   "data": 3
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "B": {
+   "item": "irextras:part",
+   "data": 9
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 3,
+  "count": 1
+ }
+}

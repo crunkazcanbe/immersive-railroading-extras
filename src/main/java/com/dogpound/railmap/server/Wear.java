@@ -72,7 +72,7 @@ public final class Wear {
                 double km = kmh / 3600.0;                       // one second of running
                 r.km += km;
                 r.kmSinceService += km;
-                add(r, Part.WHEELS, km * 0.5 * (kmh > 120 ? 2 : 1) * rate);
+                add(r, Part.WHEELS, km * 0.5 * (kmh > 120 ? 2 : 1) * rate * com.dogpound.railmap.ops6.Lubricators.wheel(mc, stock.getPosition().x, stock.getPosition().y, stock.getPosition().z));   // batch 6 E #23: greased flanges
                 add(r, Part.BEARINGS, km * (0.3 + 0.3 * load(stock) / 100.0) * rate);
                 if (loco != null) {
                     add(r, Part.ENGINE, km * 0.4 * (0.5 + loco.getThrottle()) * rate);

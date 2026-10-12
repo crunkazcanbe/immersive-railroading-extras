@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "RGR",
+  "YCY"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:redstone"
+  },
+  "G": {
+   "item": "minecraft:glass"
+  },
+  "Y": {
+   "item": "minecraft:glowstone_dust"
+  },
+  "C": {
+   "item": "irextras:part",
+   "data": 2
+  }
+ },
+ "result": {
+  "item": "irextras:spare",
+  "data": 13,
+  "count": 2
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "type": "forge:ore_shaped",
+ "pattern": [
+  "GWG",
+  "PSP"
+ ],
+ "key": {
+  "G": {
+   "type": "forge:ore_dict",
+   "ore": "ingotGold"
+  },
+  "W": {
+   "item": "irextras:part",
+   "data": 13
+  },
+  "P": {
+   "item": "irextras:part",
+   "data": 0
+  },
+  "S": {
+   "item": "irextras:part",
+   "data": 11
+  }
+ },
+ "result": {
+  "item": "irextras:part",
+  "data": 18,
+  "count": 1
+ }
+}

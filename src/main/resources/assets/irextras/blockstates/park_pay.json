@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "irextras:park_pay"
+  },
+  "facing=east": {
+   "model": "irextras:park_pay",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "irextras:park_pay",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "irextras:park_pay",
+   "y": 270
+  }
+ }
+}
